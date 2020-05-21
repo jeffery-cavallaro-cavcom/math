@@ -1,0 +1,52 @@
+\usepackage[margin=1in]{geometry}
+\usepackage{libertine}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+
+% Theorems and such
+
+\renewcommand{\familydefault}{\sfdefault}
+\newtheoremstyle{mathitem}
+                {\topskip} % space above
+                {\topskip} % space below
+                {} % body font
+                {} % indent amount
+                {\bfseries} % head font
+                {} % punctuation after head
+                {\newline} % space after head
+                {\underline{\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}\vspace{0.75\topskip}}
+\theoremstyle{mathitem}
+\newtheorem*{definition}{Definition}
+\newtheorem*{example}{Example}
+\newtheorem*{examples}{Examples}
+\newtheorem*{notation}{Notation}
+\newtheorem*{properties}{Properties}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{corollary}{Corollary}
+\renewcommand{\qedsymbol}{\rule{1ex}{1ex}}
+
+% Symbols
+
+\newcommand{\ps}{\mathcal{P}}  % power set
+
+% Helpful Constructs
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\set}{\{}{\}}
+\newcommand{\setb}[2]{\left\{{#1}\,\middle|\,{#2}\right\}}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\newcommand{\restrict}[2]{#1\raise-0.5ex\hbox{\ensuremath|}_{#2}}
+
+% Number Subsets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
