@@ -7,6 +7,7 @@
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{mathrsfs}
+\usepackage{tikz}
 
 % Theorems and such
 
@@ -50,3 +51,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+
+% Drawing
+\tikzset{open point/.style={draw,circle,inner sep=0cm,minimum size=0.15cm}}
+\tikzset{closed point/.style={open point,fill}}

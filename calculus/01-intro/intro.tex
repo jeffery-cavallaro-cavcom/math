@@ -1,0 +1,137 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\section*{Introduction}
+
+There are some problems that algebra alone cannot solve.  A new principle is needed in order to solve these
+harder problems.
+
+\subsection*{Arbitrarily Large}
+
+Infinity (\(\infty\)) is not an actual number, but instead is indicative of a process:
+
+\begin{enumerate}
+\item Select a positive number.
+\item\label{step:large} Now select a next number that is larger than the previous number.
+\item Go to \ref{step:large}.
+\end{enumerate}
+
+This is possible because the real numbers are unbounded: for every \(y\in\R\) there exists some \(x\in\R\) such
+that \(x>y\).
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [help lines,<->] (-3,0) -- (3,0) node [right] {\(\infty\)};
+    \node (y) [closed point] at (-1,0) {};
+    \node [below] at (y) {\(y\)};
+    \node (x) [closed point] at (1,0) {};
+    \node [below] at (x) {\(x\)};
+  \end{tikzpicture}
+\end{center}
+
+\begin{definition}[Arbitrarily Large]
+  To say that a value \(x\in\R\) is \emph{arbitrarily large}, denoted by \(x\to\infty\), means that for every
+  \(y\in\R\), \(x>y\).
+\end{definition}
+
+This also works in the negative direction.  For \(x\to-\infty\), select a negative number and then continually
+select numbers that are less than the previous number.  In other words, for every \(y\in\R,x<y\).
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [help lines,<->] (3,0) -- (-3,0) node [left] {\(-\infty\)};
+    \node (y) [closed point] at (1,0) {};
+    \node [below] at (y) {\(y\)};
+    \node (x) [closed point] at (-1,0) {};
+    \node [below] at (x) {\(x\)};
+  \end{tikzpicture}
+\end{center}
+
+\subsection*{Arbitrarily Small}
+
+A number can also be said to be arbitrarily small.  Like infinity, this is not an actual number, but is indicative
+of a process:
+
+\begin{enumerate}
+\item Select a positive number.
+\item\label{step:small} Now select a next positive number that is smaller than the previous number.
+\item Go to \ref{step:small}.
+\end{enumerate}
+
+This is possible because between any two real numbers there are an infinite number of real numbers.  Thus, for any
+value \(y>0\) there exists some \(x\) such that \(0<x<y\).
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [help lines,<->] (-1,0) -- (5,0);
+    \node (z) [closed point] at (0,0) {};
+    \node [below] at (z) {\(0\)};
+    \node (y) [closed point] at (3,0) {};
+    \node [below] at (y) {\(y\)};
+    \node (x) [closed point] at (1.5,0) {};
+    \node [below] at (x) {\(x\)};
+  \end{tikzpicture}
+\end{center}
+
+\begin{definition}[Arbitrarily Small]
+  To say that a value \(x\in\R^+\) is \emph{arbitrarily small}, denoted by \(x\to0^+\), means that for every
+  \(y\in\R^+,0<x<y\).
+\end{definition}
+
+The Greek letters epsilon (\(\e\)) and delta (\(\d\)) are typically used to represent arbitrarily small values.
+
+\subsection*{Arbitrarily Close}
+
+\begin{definition}[Arbitrarily Close]
+  To say that a value \(x\in\R\) is \emph{arbitrarily close} to another value \(c\in\R\), denoted by \(x\to c\),
+  means that for all \(\e>0,\abs{x-c}<\e\).  In other words: \(c-\e<x<c+\e\).
+\end{definition}
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [help lines,<->] (-3,0) -- (3,0);
+    \node (c) [closed point] at (0,0) {};
+    \node [below] at (c) {\(c\)};
+    \node (cpe) [closed point] at (2,0) {};
+    \node [below] at (cpe) {\(c+\e\)};
+    \node (cme) [closed point] at (-2,0) {};
+    \node [below] at (cme) {\(c-\e\)};
+    \node (x) [closed point,red] at (1,0) {};
+    \node [below] at (x) {\(x\)};
+
+    \draw [help lines,<->] (-3,-2) -- (3,-2);
+    \node (c) [closed point] at (0,-2) {};
+    \node [below] at (c) {\(c\)};
+    \node (cpe) [closed point] at (2,-2) {};
+    \node [below] at (cpe) {\(c+\e\)};
+    \node (cme) [closed point] at (-2,-2) {};
+    \node [below] at (cme) {\(c-\e\)};
+    \node (x) [closed point,red] at (-1,-2) {};
+    \node [below] at (x) {\(x\)};
+  \end{tikzpicture}
+\end{center}
+
+\subsection*{Problems}
+
+\subsubsection*{Slope}
+
+\subsubsection*{Area}
+
+\subsubsection*{Sequences and Series}
+
+\end{document}
