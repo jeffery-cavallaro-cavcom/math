@@ -93,6 +93,43 @@ value \(y>0\) there exists some \(x\) such that \(0<x<y\).
 
 The Greek letters epsilon (\(\e\)) and delta (\(\d\)) are typically used to represent arbitrarily small values.
 
+\subsection*{Distance}
+
+The first time students are introduced to the concept of \emph{absolute value}, they are given a formula:
+\[\abs{x}=\begin{cases}
+x, & x\ge0 \\
+-x, & x<0
+\end{cases}\]
+This is a perfectly good definition; however, it lacks meaning.  Instead, consider two points on the real
+number line:
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [help lines,<->] (-1,0) -- (5,0);
+    \node (x) [closed point] at (1,0) {};
+    \node [below] at (x) {\(1\)};
+    \node (y) [closed point] at (4,0) {};
+    \node [below] at (y) {\(4\)};
+  \end{tikzpicture}
+\end{center}
+
+How does one calculate the \emph{distance} from \(1\) to \(4\):
+\[4-1=3\]
+How about from \(4\) to \(1\):
+\[1-4=-3\]
+But distance is an unsigned quantity (different from displacement).  Furthermore, the distance from \(1\) to \(4\)
+should be the same as the distance from \(4\) to \(1\).  Thus, we use absolute value:
+\[\abs{4-1}=\abs{1-4}=3\]
+
+\begin{definition}[Distance]
+  Let \(x,y\in\R\).  The \emph{distance} from \(x\) to \(y\) (and from \(y\) to \(x\)) is given by:
+  \[d(x,y)=\abs{x-y}=\abs{y-x}\]
+\end{definition}
+
+Thus, \(\abs{x}=\abs{x-0}\), which is the distance from \(x\) to \(0\).
+
 \subsection*{Arbitrarily Close}
 
 \begin{definition}[Arbitrarily Close]
@@ -125,6 +162,34 @@ The Greek letters epsilon (\(\e\)) and delta (\(\d\)) are typically used to repr
     \node [below] at (x) {\(x\)};
   \end{tikzpicture}
 \end{center}
+
+Thus, as \(\e\) gets arbitrarily small, \(x\) gets arbitrarily close to \(c\).
+
+Also important is the negation: there exists an \(\e>0\) such that \(\abs{x-c}\ge\e\).
+
+\begin{theorem}
+  Arbitrarily close is equivalent to equality.
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+    \item[]
+    \item[\(\implies\)] Assume that \(x\to c\).
+
+      ABC that \(x\ne c\).  Thus, there exist some \(d>0\) such that \(\abs{x-c}\ge d\).  So let \(\e=d\):
+      \[\abs{x-c}\ge d=\e\]
+      This means that there exists an \(\e>0\) such that \(\abs{x-c}\ge\e\) and hence \(x\not\to c\), contradicting
+      the assumption.
+
+      Therefore \(x=c\).
+
+    \item[\(\impliedby\)] Assume that \(x=c\)
+
+      Assume that \(\e>0\):
+      \[\abs{x-c}=0<\e\]
+      Therefore \(x\to c\).
+  \end{description}
+\end{proof}
 
 \subsection*{Problems}
 
