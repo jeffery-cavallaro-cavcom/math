@@ -2,6 +2,8 @@
 \usepackage{matharticle}
 \usepackage{siunitx}
 
+\newcommand{\w}{\omega}
+
 \pagestyle{empty}
 
 \begin{document}
@@ -13,8 +15,7 @@ There are some problems that algebra alone cannot solve:
 \begin{enumerate}
 \item The slope of a tangent line to a curve
 \item The area under a curve
-\item Infinite sequences
-\item Infinite series
+\item Infinite sequences and series
 \end{enumerate}
 
 \subsection*{Slope of a Tangent Line to a Curve}
@@ -147,8 +148,8 @@ This is easy when the model is linear: \(y=f(x)\) is a line.
 But what happens when the function is not linear?
 
 \begin{definition}[Rate-of-change of a Function at a Point]
-  Let \(f(x)\) be a function.  The \emph{rate-of-change} of the the function at a point \((c,f(c))\) is the slope
-  of the tangent line to the function at that point.
+  Let \(f(x)\) be a function.  The \emph{rate-of-change} of the function at a point \((c,f(c))\) is the slope of
+  the tangent line to the function at that point.
 \end{definition}
 
 We use this definition because it works.  In the above example, the tangent line at \((t_1,f(t_1))\) appears to be
@@ -161,7 +162,7 @@ point.
 
 Why do we care?
 \begin{enumerate}
-\item Was a car exceeding a speed limit when it passed a checkpoint?
+\item Was a car exceeding the speed limit when it passed a checkpoint?
 \item Which chemical reaction produces product the fastest?
 \item Is a radioactive substance safe for humans?
 \item Has a population's reproduction rate fallen beneath the replacement level?
@@ -171,8 +172,8 @@ Why do we care?
 \subsection*{Area Under a Curve}
 
 \begin{definition}[Summation Problem]
-  A \emph{summation problem} seeks to determine the accumulation of a changing quantity given a change in
-  another quantity.
+  A \emph{summation problem} seeks to determine the total amount of a quantity based on its rate of change over
+  a particular range of values (region) of the other quantity.
 \end{definition}
 
 For summation problems, a rate-of-change function \(f(x)\) and a region of the independent variable \(x\) are
@@ -251,8 +252,86 @@ But what if the rate-of-change function is not constant?  The total is still the
   \[d=\frac{1}{2}(\SI{60}{mi/hr})(\SI{2}{hr})=\SI{60}{mi}\]
 \end{example}
 
-\subsection*{Infinite Sequences}
+But what happens if there is no convenient geometric formula for the area under the curve?
 
-\subsection*{Infinite Series}
+\begin{center}
+  \begin{tikzpicture}[scale=0.9]
+    \begin{axis}[
+        axis lines=middle,
+        xmin=0,
+        xmax=7,
+        ymin=0,
+        ymax=5,
+        ticks=none,
+        xlabel={\(t\)},
+        ylabel={\(v\)},
+        x label style={at={(axis cs:7,0)},anchor=west},
+        y label style={at={(axis cs:0,5)},anchor=south},
+        clip=false
+      ]
+      \addplot [domain=0:2*pi,blue] {2+(1/2)*sin(deg(x))} node [right] {\(v(t)\)};
+      \draw [dashed] (3*pi/2,3/2) -- (3*pi/2,0);
+      \fill [green!25!white] (0,0) -- (0,2) --  plot [domain=0:3*pi/2] ({\x},{2+(1/2)*sin(deg(\x))}) --
+      (3*pi/2,0) -- cycle;
+      \node [below] at (0,0) {\(0\)};
+      \node [below] at (3*pi/2,0) {\(t\)};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+Unfortunately, there is no way using just algebra to determine the area under a general curve.
+
+Why do we care?
+\begin{enumerate}
+\item How far does a car travel that varies its speed along the way?
+\item How much product is produced during a chemical reaction that has a particular reaction rate?
+\item What is the projected population given a particular growth rate?
+\item Which requires less work to lift a box: pushing it up a ramp or lifting it with a pulley.
+\end{enumerate}
+
+\subsection*{Infinite Sequences and Series}
+
+A sequence is an ordered collection of real numbers.  Examples are:
+\begin{enumerate}
+\item Finite:
+  \[1,2,3,4,5\]
+\item Infinite with elements going to infinity:
+  \[1,2,3,4,5,\ldots\]
+\item Infinite with elements jumping around:
+  \[1,-1,1,-1,1,-1,\ldots\]
+\item Infinite with elements approaching a particular finite value:
+  \[1,-\frac{1}{2},\frac{1}{3},-\frac{1}{4},\frac{1}{5},\ldots\]
+\item Decimal estimates of rational numbers:
+  \[0.1,0.11,0.111,0.1111,0.11111,\ldots\]
+\item Decimal estimates of irrational numbers:
+  \[3,3.1,3.14,3.141,3.1415,3.14159,\ldots\]
+\end{enumerate}
+
+The behavior of infinite sequences cannot be described using algebra alone.
+
+A series is the sum of the terms of a sequence.  Examples are:
+\begin{enumerate}
+\item Finite:
+  \[1+2+3+4+5=15\]
+\item Infinite with elements going to infinity:
+  \[1+2+3+4+5+\cdots\to\infty\]
+\item Infinite with elements jumping around:
+  \[1+(-1)+1+(-1)+1+(-1)+\cdots\stackrel{?}{=}0\]
+\item Infinite with elements approaching a particular finite value that \emph{diverge}:
+  \[1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{5},\cdots\to\infty\]
+\item Infinite with elements approaching a particular finite value that \emph{converge}:
+  \[1+\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+\frac{1}{16}+\cdots=2\]
+\end{enumerate}
+
+The behavior of infinite series cannot be described using algebra alone.
+
+The behavior of infinite sequences and series are important for:
+\begin{enumerate}
+\item Determining series equivalents for some functions:
+  \[\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\cdots\]
+\item Problems involving mechanical vibrations and signal processing: infinite series of harmonics:
+  \[f(t)=a_1\sin\w t+a_2\sin2\w t+a_3\sin3\w t+a_4\sin4\w t+\cdots\]
+\item Providing a rigorous theoretical basis for calculus in a real analysis class.
+\end{enumerate}
 
 \end{document}
