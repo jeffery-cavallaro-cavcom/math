@@ -38,6 +38,20 @@ that \(x>y\).
 
 Note that as \(y\) increases, \(x\) is pushed to the right.
 
+\begin{example}
+  \[\begin{array}{l}
+  1 \\
+  10 \\
+  100 \\
+  500 \\
+  123,456 \\
+  4,126,789 \\
+  1,000,000,000,000 \\
+  1,000,000,000,001 \\
+  \qquad\vdots
+  \end{array}\]
+\end{example}
+
 \begin{definition}[Arbitrarily Large]
   To say that a value \(x\in\R\) is \emph{arbitrarily large}, denoted by \(x\to\infty\), means that for every
   \(y\in\R\), \(x>y\).
@@ -59,6 +73,20 @@ select numbers that are less than the previous number.  In other words, for ever
 \end{center}
 
 Note that as \(y\) decreases, \(x\) is pushed to the left.
+
+\begin{example}
+  \[\begin{array}{l}
+  -1 \\
+  -10 \\
+  -100 \\
+  -500 \\
+  -123,456 \\
+  -4,126,789 \\
+  -1,000,000,000,000 \\
+  -1,000,000,000,001 \\
+  \qquad\vdots
+  \end{array}\]
+\end{example}
 
 \subsection*{Arbitrarily Small}
 
@@ -89,6 +117,21 @@ value \(y>0\) there exists some \(x\) such that \(0<x<y\).
 \end{center}
 
 Note that as \(y\) decreases, \(x\) is squeezed between \(0\) and \(y\).
+
+\begin{example}
+  \[\begin{array}{l}
+  100 \\
+  1 \\
+  \frac{1}{2} \\
+  \frac{1}{4} \\
+  \frac{1}{8} \\
+  0.1 \\
+  0.0001 \\
+  0.00005 \\
+  0.00000000001 \\
+  \qquad\vdots
+  \end{array}\]
+\end{example}
 
 \begin{definition}[Arbitrarily Small]
   To say that a value \(x\in\R^+\) is \emph{arbitrarily small}, denoted by \(x\to0^+\), means that for every
@@ -169,7 +212,13 @@ Thus, \(\abs{x}=\abs{x-0}\), which is the distance from \(x\) to \(0\).
 
 Thus, as \(\e\) gets arbitrarily small, \(x\) gets arbitrarily close to \(c\).
 
-Also important is the negation: there exists an \(\e>0\) such that \(\abs{x-c}\ge\e\).
+\begin{definition}[Neighborhood]
+  Let \(x,\e\in\R\) such that \(\e>0\).  The open interval \((c-\e,c+\e)\) is called an \emph{\(\e\)-neighbohood}
+  of \(x\).
+\end{definition}
+
+Also important is the negation: To say that \(x\not\to c\) means that there exists an \(\e>0\) such that
+\(\abs{x-c}\ge\e\).
 
 \bigskip
 
@@ -275,6 +324,25 @@ Also important is the negation: there exists an \(\e>0\) such that \(\abs{x-c}\g
       \node (z) [closed point,red] at (2.5,0) {};
     \end{tikzpicture}
   \end{center}
+\end{example}
+
+\begin{example}
+  \begin{align*}
+    \frac{1}{7} &= 0.1428571429 \\
+    \pi &= 3.141592654 \\
+    e &= 2.718281828
+  \end{align*}
+  \[\begin{array}{|c|c|c|c|}
+  \hline
+  \e & \frac{1}{7} & \pi & e \\
+  \hline
+  0.001 & 0.142 & 3.141 & 2.718 \\
+  \hline
+  0.0005 & 0.1428 & 3.1415 & 2.718 \\
+  \hline
+  0.000001 & 0.142857 & 3.141592 & 2.718281 \\
+  \hline
+  \end{array}\]
 \end{example}
 
 \end{document}
