@@ -2,6 +2,9 @@
 \usepackage{matharticle}
 \pagestyle{empty}
 
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+
 \begin{document}
 
 \section*{Limits}
@@ -222,5 +225,42 @@ we don't actually care about the function value at \(x=2\).  In fact, the functi
   \emph{indeterminate form}; we cannot tell if the function is actually defined at \(x=0\) or not.  In this case
   it is and \(f(0)=1\).
 \end{example}
+
+\begin{definition}[Limit of a Function at a Point]
+  Let \(f(x)\) be a function on \(R\).  To say that the \emph{limit} of \(f(x)\) at \(x=c\) is \(L\), denoted by
+  \(\displaystyle\lim_{x\to c}f(x)=L\), means that \(f(x)\to L\) as \(x\to c\) but \(x\ne c\).  In other words, for
+  all \(\e>0\) there exists some \(\d>0\) such that if \(0<\abs{x-c}<\d\) then \(\abs{f(x)-L}<\e\).
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xmin=0,
+        xmax=5,
+        ymin=0,
+        ymax=2,
+        ticks=none,
+        xlabel={\(x\)},
+        ylabel={\(y\)},
+        x label style={at={(axis cs:5,0)},anchor=west},
+        y label style={at={(axis cs:0,2)},anchor=south},
+        clip=false
+      ]
+      \fill [lightgray] (3-0.9273,0.8) -- (3+0.9273,0.8) -- (3+0.9273,1.2) -- (3-0.9273,1.2) -- cycle;
+      \addplot [domain=0:5,blue,smooth] {(sin(deg(x-3)))/(x-3)};
+      \draw [dashed,green] (5,1.2) -- (0,1.2) node [left] {\(L+\e\)};
+      \draw [dashed,green] (5,1) -- (0,1) node [left] {\(L\)};
+      \draw [dashed,green] (5,0.8) -- (0,0.8) node [left] {\(L-\e\)};
+      \draw [dashed,red] (3-0.9273,2) -- (3-0.9273,0) node [below] {\(c-\d\)};
+      \draw [dashed,red] (3,2) -- (3,0) node [below=0.5ex] {\(c\)};
+      \draw [dashed,red] (3.9273,2) -- (3.9273,0) node [below] {\(c+\d\)};
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+Select an \(\e>0\) and then find a \(\d>0\) such that \(f(x)\) is contained in the bounding box.  As \(\e\to0\),
+this forces \(\d\to0\) and the bounding box converges to the point \((c,L)\).  This does not imply that \(f(c)=L\).
+In fact since \(\abs{x-c}>0\), \(x\ne c\) so we don't care what actually happens at \(x=c\).
 
 \end{document}
