@@ -264,22 +264,50 @@ this forces \(\d\to0\) and the bounding box converges to the point \((c,L)\).  T
 In fact since \(\abs{x-c}>0\), \(x\ne c\) so we don't care what actually happens at \(x=c\).
 
 \begin{example}
-  Consider the function \(f(x)=x^2+2x-1\) and note that \(\displaystyle\lim_{x\to1}=2\).  Find a suitable \(\d\) to
-  two decimal places for \(\e=0.1\).
+  Consider the function \(f(x)=x^2+2x-1\) and note that \(\displaystyle\lim_{x\to1}f(x)=2\).  Find a suitable
+  \(\d\) to two decimal places for \(\e=0.1\).
 
   \bigskip
 
-  \includegraphics[scale=0.75]{poly01a}\qquad
-  \includegraphics[scale=0.75]{poly01b}
+  Although this can be done analytically, the algebra tends to get messy.  A convenient shortcut is to use a
+  graphing calculator.  The general procedure is as follows:
 
-  \begin{gather*}
-    \d_1=1.0248457-1=0.0248457 \\
-    \d_2=1-0.9748418=0.0251582 \\
-    \\
-    \d=\min\set{\d_1,\d_2}=0.0248457
-  \end{gather*}
+  \bigskip
 
-  Be sure to round down: \(\d=0.24\).
+  \begin{enumerate}
+  \item Graph the function and mark the \(\e\)-neighborhood around the limit by graphing the constant functions
+    \(y=2+0.1=2.1\) and \(y=2-0.1=1.9\).  Window in so that there is sufficient separation to see all three
+    graphs.
+
+    \bigskip
+
+    \includegraphics[scale=0.75]{poly01a}\qquad
+    \includegraphics[scale=0.75]{poly01b}
+
+    \bigskip
+
+  \item Use the \emph{intersection} function to determine the minimum and maximum \(x\) values around \(x=1\) such
+    that the graph of the function is completely within the marked \(\e\)-neighborhood.
+    \begin{gather*}
+      x_1=0.9748418 \\
+      x_2=1.0248457 \\
+      \\
+      0.9748418<x<1.0248457
+    \end{gather*}
+  \item Calculate the distance of each endpoint from \(x=1\):
+    \begin{gather*}
+      \d_1=1.024845-1=0.0248457 \\
+      \d_2=1-0.9748418=0.0251582
+    \end{gather*}
+  \item Select the smaller of the two distances for \(\d\):
+    \[\d=\min\set{\d_1,\d_2}=0.0248457\]
+  \item Be sure to round down to stay within the selected interval.
+    \[\d=0.024\]
+  \end{enumerate}
+
+  Therefore, if \(\abs{x-1}<0.024\) then \(\abs{f(x)-2}<0.1\).
+
+  \bigskip
 
   Find a suitable \(\d\) to four decimal places for \(\e=0.01\).
 
@@ -295,7 +323,60 @@ In fact since \(\abs{x-c}>0\), \(x\ne c\) so we don't care what actually happens
     \d=\min\set{\d_1,\d_2}=0.0024984
   \end{gather*}
 
-  Be sure to round down: \(\d=0.0024\).
+  \(\d=0.0024\).
+
+  Therefore, if \(\abs{x-1}<0.0024\) then \(\abs{f(x)-2}<0.01\).
+\end{example}
+
+\begin{example}
+  Solve the previous problem for \(\e=0.1\) analytically.
+  \begin{gather*}
+    \abs{f(x)-2}<0.1 \\
+    \abs{(x^2+2x-1)-2}<0.1 \\
+    \abs{x^2+2x-3}<0.1 \\
+    -0.1<x^2+2x-3<0.1 \\
+    \\
+    x^2+2x-3>-0.1 \\
+    x^2+2x-2.9>0 \\
+    x=\frac{-2\pm\sqrt{2^2-4(1)(-2.9)}}{2(1)}=-1\pm\sqrt{3.9} \\
+    x=-2.9748,0.9748 \\
+    0^2+2(0)-2.9=-2.9<0 \\
+    x\in(-\infty,-2.9748)\cup(0.9748,\infty) \\
+    \\
+    x^2+2x-3<0.1 \\
+    x^2+2x-3.1<0 \\
+    x=\frac{-2\pm\sqrt{2^2-4(1)(-3.1)}}{2(1)}=-1\pm\sqrt{4.1} \\
+    x=-3.0248,1.0248 \\
+    0^2+2(0)-3.1=-3.1<0 \\
+    x\in(-3.0248,1.0248)
+  \end{gather*}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw [<->] (-5,0) -- (5,0);
+      \node (A) [open point] at (-4,0) {};
+      \node [below] at (A) {\(-3.0248\)};
+      \node (B) [open point] at (-2,0) {};
+      \node [below] at (B) {\(-2.9748\)};
+      \node (C) [open point] at (2,0) {};
+      \node [below] at (C) {\(0.9748\)};
+      \node (D) [open point] at (4,0) {};
+      \node [below] at (D) {\(1.0248\)};
+      \draw [very thick, blue] (A) -- (B);
+      \draw [very thick, blue] (C) -- (D);
+      \node (E) [closed point,red] at (3,0) {};
+      \node [above] at (E) {\(1\)};
+    \end{tikzpicture}
+  \end{center}
+  \begin{gather*}
+    0.9748<x<1.0248
+    \\
+    \d_1=1-0.9748=0.0252 \\
+    \d_2=1.0248-1=0.0248 \\
+    \\
+    \d=\min\set{\d_1,\d_2}=0.0248 \\
+    \\
+    \d=0.248
+  \end{gather*}
 \end{example}
 
 \end{document}
