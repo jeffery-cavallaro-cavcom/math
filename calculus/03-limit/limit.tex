@@ -227,7 +227,7 @@ we don't actually care about the function value at \(x=2\).  In fact, the functi
 \end{example}
 
 \begin{definition}[Limit of a Function at a Point]
-  Let \(f(x)\) be a function on \(R\).  To say that the \emph{limit} of \(f(x)\) at \(x=c\) is \(L\), denoted by
+  Let \(f(x)\) be a function on \(\R\).  To say that the \emph{limit} of \(f(x)\) at \(x=c\) is \(L\), denoted by
   \(\displaystyle\lim_{x\to c}f(x)=L\), means that \(f(x)\to L\) as \(x\to c\) but \(x\ne c\).  In other words, for
   all \(\e>0\) there exists some \(\d>0\) such that if \(0<\abs{x-c}<\d\) then \(\abs{f(x)-L}<\e\).
 \end{definition}
@@ -262,5 +262,40 @@ we don't actually care about the function value at \(x=2\).  In fact, the functi
 Select an \(\e>0\) and then find a \(\d>0\) such that \(f(x)\) is contained in the bounding box.  As \(\e\to0\),
 this forces \(\d\to0\) and the bounding box converges to the point \((c,L)\).  This does not imply that \(f(c)=L\).
 In fact since \(\abs{x-c}>0\), \(x\ne c\) so we don't care what actually happens at \(x=c\).
+
+\begin{example}
+  Consider the function \(f(x)=x^2+2x-1\) and note that \(\displaystyle\lim_{x\to1}=2\).  Find a suitable \(\d\) to
+  two decimal places for \(\e=0.1\).
+
+  \bigskip
+
+  \includegraphics[scale=0.75]{poly01a}\qquad
+  \includegraphics[scale=0.75]{poly01b}
+
+  \begin{gather*}
+    \d_1=1.0248457-1=0.0248457 \\
+    \d_2=1-0.9748418=0.0251582 \\
+    \\
+    \d=\min\set{\d_1,\d_2}=0.0248457
+  \end{gather*}
+
+  Be sure to round down: \(\d=0.24\).
+
+  Find a suitable \(\d\) to four decimal places for \(\e=0.01\).
+
+  \bigskip
+
+  \includegraphics[scale=0.75]{poly001a}\qquad
+  \includegraphics[scale=0.75]{poly001b}
+
+  \begin{gather*}
+    \d_1=1.0024984-1=0.0024984 \\
+    \d_2=1-0.9974984=0.0025016 \\
+    \\
+    \d=\min\set{\d_1,\d_2}=0.0024984
+  \end{gather*}
+
+  Be sure to round down: \(\d=0.0024\).
+\end{example}
 
 \end{document}
