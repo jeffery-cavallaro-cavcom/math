@@ -1,0 +1,310 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+
+\begin{document}
+
+\section*{Arbitrarily Close}
+
+\begin{itemize}[left=0in]
+\item Everything that we can do in algebra is ultimately based on three things:
+  \begin{enumerate}
+  \item The substitution principle.
+  \item The closed and well-defined nature of addition and multiplication.
+  \item The nine real number (field) axioms.
+  \end{enumerate}
+
+\item But there are some problems that algebra cannot solve:
+  \begin{enumerate}
+  \item The slope of a tangent line to a non-linear curve.
+  \item The area under a non-linear curve.
+  \end{enumerate}
+
+\item A new concept is needed to solve problems that algebra alone cannot solve: arbitrarily close.
+\end{itemize}
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \node (C) at (0,3) {CALCULUS};
+    \node (L) at (0,1.5) {LIMITS};
+    \node (A) at (0,0) {ARBITRARILY CLOSE};
+    \draw [<-] (C) to (L);
+    \draw [<-] (L) to (A);
+  \end{tikzpicture}
+\end{center}
+
+\bigskip
+
+\fbox{\parbox{\textwidth}{
+    Q: What is meant by saying that one thing is \emph{close} to another?
+
+    \bigskip
+
+    A: The \emph{distance} between them is \emph{small}.
+}}
+
+\bigskip
+
+But this is a subjective statement.  In math, we want objective facts.
+
+\begin{definition}[Distance]
+  Let \(a,b\in\R\) such that \(a\le b\).  The \emph{distance} from \(a\) to \(b\) is given by:
+  \[d(a,b)=\abs{b-a}\]
+\end{definition}
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [fill,green] (-1,-0.25) rectangle (2,0.25);
+    \draw [<->] (-3,0) -- (4,0);
+    \node (a) [closed point] at (-1,0) {};
+    \node [below,text height=1.5ex] at (a) {\(a\)};
+    \node (b) [closed point] at (2,0) {};
+    \node [below,text height=1.5ex] at (b) {\(b\)};
+  \end{tikzpicture}
+\end{center}
+
+\begin{properties}[Distance]
+  \begin{enumerate}
+  \item[]
+  \item \(d(a,b)=\abs{b-a}=\abs{a-b}=d(b,a)\)
+  \item \(d(a,0)=\abs{a-0}=\abs{a}\)
+  \end{enumerate}
+\end{properties}
+
+Let \(a\in\R^+\).  By the density of \(\R\), there always exists some number \(x\in\R\) such that \(0<x<a\).
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [<->] (0,0) -- (6,0);
+    \node (z) [closed point] at (1,0) {};
+    \node [below,text height=1.5ex] at (z) {\(0\)};
+    \node (x) [closed point] at (3,0) {};
+    \node [below,text height=1.5ex] at (x) {\(x\)};
+    \node (a) [closed point] at (5,0) {};
+    \node [below,text height=1.5ex] at (a) {\(a\)};
+  \end{tikzpicture}
+\end{center}
+
+\begin{definition}[Arbitrarily Small]
+  To say that a value \(x\in\R^+\) is \emph{arbitrarily small} means that for every \(a\in\R^+,0<x<a\).
+\end{definition}
+
+Saying that \(x\) is arbitrarily small does not imply that \(x\) is assigned a particular value nor does it say
+that \(x=0\); instead, it is indicative of an infinite process:
+
+\begin{enumerate}
+\item Select a positive number \(a\).
+\item\label{step:small} Now select a number \(x\) such that \(0<x<a\).
+\item Let \(a=x\).
+\item Go to \ref{step:small}.
+\end{enumerate}
+
+\begin{example}
+  \[\begin{array}{l}
+  1 \\
+  \\
+  \frac{1}{2} \\
+  \\
+  \frac{1}{4} \\
+  \\
+  \frac{1}{8} \\
+  \\
+  0.1 \\
+  \\
+  0.0001 \\
+  \\
+  0.00005 \\
+  \\
+  0.00000000001 \\
+  \\
+  \vdots
+  \end{array}\]
+\end{example}
+
+The lowercase Greek letters epsilon (\(\e\)) and delta (\(\d\)) are typically used to represent arbitrarily small
+values.
+
+\newpage
+
+\begin{definition}[Arbitrarily Close]
+  To say that a value \(x\in\R\) is \emph{arbitrarily close} to another value \(a\in\R\), denoted by \(x\to a\),
+  means that the distance between \(x\) and \(a\) becomes arbitrarily small (but not 0):
+  \[\forall\,\e>0,0<\abs{x-a}<\e\]
+\end{definition}
+
+This means that for every \(\e>0\), \(a-\e<x<a+\e\):
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [<->] (-4,0) -- (4,0);
+    \node (a) [closed point] at (0,0) {};
+    \node [below] at (a) {\(a\)};
+    \node (ape) [closed point] at (2,0) {};
+    \node [below] at (ape) {\(a+\e\)};
+    \node (ame) [closed point] at (-2,0) {};
+    \node [below] at (ame) {\(a-\e\)};
+    \node (x) [closed point,red] at (1,0) {};
+    \node [below] at (x) {\(x\)};
+
+    \draw [<->] (-4,-2) -- (4,-2);
+    \node (a) [closed point] at (0,-2) {};
+    \node [below] at (a) {\(a\)};
+    \node (ape) [closed point] at (2,-2) {};
+    \node [below] at (ape) {\(a+\e\)};
+    \node (ame) [closed point] at (-2,-2) {};
+    \node [below] at (ame) {\(a-\e\)};
+    \node (x) [closed point,red] at (-1,-2) {};
+    \node [below] at (x) {\(x\)};
+  \end{tikzpicture}
+\end{center}
+
+Thus, as \(\e\) gets arbitrarily small, the distance between \(x\) and \(a\) gets arbitrarily small, but never \(0\).
+
+\begin{definition}[Neighborhood]
+  Let \(x,\e\in\R\) such that \(\e>0\).  The open interval \((x-\e,x+\e)\) is called an \emph{\(\e\)-neighbohood}
+  of \(x\).
+\end{definition}
+
+Also important is the negation: To say that \(x\not\to a\) means that there exists an \(\e>0\) such that
+\(\abs{x-a}\ge\e\).
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [<->] (-4,0) -- (4,0);
+    \node (a) [closed point] at (0,0) {};
+    \node [below] at (a) {\(a\)};
+    \node (ape) [closed point] at (2,0) {};
+    \node [below] at (ape) {\(a+\e\)};
+    \node (ame) [closed point] at (-2,0) {};
+    \node [below] at (ame) {\(a-\e\)};
+    \node (x) [closed point,red] at (3,0) {};
+    \node [below] at (x) {\(x\)};
+
+    \draw [<->] (-4,-2) -- (4,-2);
+    \node (a) [closed point] at (0,-2) {};
+    \node [below] at (a) {\(a\)};
+    \node (ape) [closed point] at (2,-2) {};
+    \node [below] at (ape) {\(a+\e\)};
+    \node (ame) [closed point] at (-2,-2) {};
+    \node [below] at (ame) {\(a-\e\)};
+    \node (x) [closed point,red] at (-3,-2) {};
+    \node [below] at (x) {\(x\)};
+  \end{tikzpicture}
+\end{center}
+
+Thus, there is always some finite gap between \(x\) and \(a\).
+
+\begin{theorem}
+  If \(x\to a\) then \(x=a\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(x\ne a\).  Then there exist some \(\e>0\) such that \(\abs{x-a}\ge\e\).  Therefore \(x\not\to a\).
+\end{proof}
+
+Note that the converse is not true because if \(x=a\) then \(\abs{x-a}=0\), which violates the definition of
+arbitrarily close.
+
+\newpage
+
+\begin{example}
+  Recall that one of the ways of representing a rational number is a terminating infinite repeating sequence of
+  decimal digits.  For example:
+  \[\frac{1}{9}=0.11111\ldots=0.\overline{1}\]
+  It is easy to mark \(\frac{1}{9}\) on the number line.  But how does \(0.\overline{1}\) correspond to this point?
+  As each repeated digit is added, the value \(0.\overline{1}\) gets \emph{arbitrarily close} to \(\frac{1}{9}\).
+  For every \(\e>0\), enough digits can be added so that the result is eventually within \(\e\) of \(\frac{1}{9}\).
+
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw [<->] (-1,0) -- (4,0);
+      \node (x) [closed point] at (0,0) {};
+      \node [below] at (x) {\(0\)};
+      \node (y) [closed point] at (3,0) {};
+      \node [below] at (y) {\(\frac{1}{9}\)};
+      \node (z) at (2,0) {\((\)};
+      \node [below] at (z) {\(\frac{1}{9}-\e\)};
+      \node (z) [closed point,red] at (2.5,0) {};
+    \end{tikzpicture}
+  \end{center}
+
+  How many digits are required for \(\e=0.001\)?
+  \[0.\bar{9}-0.9=0.0\bar{9}>0.001\]
+  \[0.\bar{9}-0.99=0.00\bar{9}>0.001\]
+  \[0.\bar{9}-0.999=0.000\bar{9}=0.001\]
+  \[0.\bar{9}-0.9999=0.0000\bar{9}=0.0001<0.001\]
+\end{example}
+
+\begin{example}
+  This works for irrational numbers as well, which are represented by terminating infinite sequences of
+  non-repeating digits.  Consider \(\pi=3.1415926\ldots\).  For every \(\e>0\), enough digits can be added so that
+  the result is eventually within \(\e\) or \(\pi\).
+
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw [<->] (-1,0) -- (4,0);
+      \node (x) [closed point] at (0,0) {};
+      \node [below] at (x) {\(0\)};
+      \node (y) [closed point] at (3,0) {};
+      \node [below] at (y) {\(\pi\)};
+      \node (z) at (2,0) {\((\)};
+      \node [below] at (z) {\(\pi-\e\)};
+      \node (z) [closed point,red] at (2.5,0) {};
+    \end{tikzpicture}
+  \end{center}
+
+  How many digits are required for \(\e=0.001\)?
+  \[3.1415926\ldots-3=0.1415926\ldots>0.001\]
+  \[3.1415926\ldots-3.1=0.0415926\ldots>0.001\]
+  \[3.1415926\ldots-3.14=0.0015926\ldots>0.001\]
+  \[3.1415926\ldots-3.141=0.0005926\ldots<0.001\]
+\end{example}
+
+\begin{example}
+  Why isn't \(24.57\bar{9}\) arbitrarily close to \(24.6\)?
+
+  Since \(24.57\bar{9}\le24.58\):
+  \[24.6-24.57\bar{9}\ge24.6-24.58=0.02\]
+  So there exists \(\e=0.02\) such that \(24.6-24.57\bar{9}\ge\e\).
+\end{example}
+
+\begin{example}
+  Consider the real numbers \(\frac{1}{7}\), \(\pi\), and \(\e\).  How many digits in the decimal forms are required
+  such that each value is within \(0.005\) and then \(0.000001\) of its corresponding exact value?
+  \begin{align*}
+    \frac{1}{7} &= 0.14285714\ldots \\
+    \pi &= 3.14159265\ldots \\
+    e &= 2.71828182\ldots
+  \end{align*}
+  \[\begin{array}{|c||c|c|c|}
+  \hline
+  & & & \\
+  \e & \frac{1}{7} & \pi & e \\
+  & & & \\
+  \hline
+  \hline
+  0.0005 & 0.1428 & 3.1415 & 2.718 \\
+  \hline
+  0.000001 & 0.142857 & 3.141592 & 2.718281 \\
+  \hline
+  \end{array}\]
+\end{example}
+
+\end{document}
