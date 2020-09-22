@@ -140,8 +140,9 @@ Let \(\e>0\).  By the density of \(\R\), there always exists some \(x\) such tha
 \item This does not imply that \(x\) is assigned a particular value nor does it say that \(x=0\).
 \item It is indicative of an infinite argument: no matter which \(\e\) is selected, \(x\) is smaller (less) than
   \(\e\) (but not \(0\)).
-\item It is tempting to think of \(\e\) constantly decreasing, pushing \(x\) continually closer to \(0\); however,
-  this is imprecise: there are ways to continually decrease \(\e\) such that \(x\) gets no closer to \(0\).
+\item Another interpretation is that as \(\e\) approaches \(0\), \(x\) is squeezed towards \(0\) as well.  This is
+  valid as long as all values of \(\e\) are considered: there are ways to continually decrease \(\e\) such that
+  \(x\) gets no closer to \(0\).
 \end{itemize}
 
 \begin{example}
@@ -155,8 +156,9 @@ Let \(\e>0\).  By the density of \(\R\), there always exists some \(x\) such tha
       \draw [<->] (-1,0) -- (5,0);
       \node (z) [closed point] at (0,0) {};
       \node [below,text height=1.5ex] at (z) {\(0\)};
-      \node (o) [closed point] at (1,0) {};
-      \node [below,text height=1.5ex] at (o) {\(x=1\)};
+      \node (o) [closed point,red] at (1,0) {};
+      \node [below,text height=1.5ex] at (o) {\(1\)};
+      \node [above] at (o) {\(x\)};
       \node (t) [closed point] at (2,0) {};
       \node [below,text height=1.5ex] at (t) {\(2\)};
       \node (e1) [closed point] at (4,0) {};
@@ -208,6 +210,9 @@ This means that for every \(\e>0\), \(a-\e<x<a+\e\):
   of \(x\).
 \end{definition}
 
+Likewise, this can be interpreted as the \(\e\)-neighborhoods getting continually smaller and squeezing \(x\)
+towards \(a\).  This is OK as long as all values of \(\e\) are considered.
+
 \begin{notation}[One-sided]
 Note that \(x\to a\) implies that \(x\) can approach \(a\) from either direction (from the left or from the right).
 When we are only interested in one direction:
@@ -237,9 +242,8 @@ small.
   Recall that one of the ways of representing a rational number is a terminating infinite repeating sequence of
   decimal digits.  For example:
   \[\frac{1}{9}=0.11111\ldots=0.\overline{1}\]
-  It is easy to mark \(\frac{1}{9}\) on the number line.  But how does \(0.\overline{1}\) correspond to this point?
-  As each repeated digit is added, the value \(0.\overline{1}\) gets \emph{arbitrarily close} to \(\frac{1}{9}\).
-  For every \(\e>0\), enough digits can be added so that the result is eventually within \(\e\) of \(\frac{1}{9}\).
+  So let \(a=\frac{1}{9}\) and let \(x\) represent an estimate of \(a\).  Then \(x\) can be made to be arbitrarily
+  close to \(a\) by adding digits to the approximation.
 
   \bigskip
 
