@@ -5,8 +5,6 @@
 \newcommand{\e}{\epsilon}
 \renewcommand{\d}{\delta}
 
-\allowdisplaybreaks
-
 \begin{document}
 
 \section*{Limits}
@@ -317,145 +315,200 @@ It is tempting to think that \(\e\to0\) \emph{forces} \(\d\to0\); however, this 
 \end{example}
 
 \begin{example}
-  Let \(f(x)=x^2\) and assume that \(\displaystyle\lim_{x\to2}f(x)=4\).  Find a suitable \(\d\) (to four decimal
-  places) for \(\e=0.1\).
-
-  Using a calculator:
+  Consider the function \(f(x)=x^2+2x-1\) and note that \(\displaystyle\lim_{x\to1}f(x)=2\).  Find a suitable
+  \(\d\) to two decimal places for \(\e=0.1\).
 
   \bigskip
 
-  \includegraphics[scale=0.75]{x2lower}\qquad
-  \includegraphics[scale=0.75]{x2upper}
-  \begin{gather*}
-    \d_1=2-1.9748418=0.0251582 \\
-    \d_2=2.0248457-2=0.0248457 \\
-    \\
-    \d=\min\set{\d_1,\d_2}=0.0248457 \\
-    \\
-    \d=0.0248
-  \end{gather*}
-
-  \newpage
-
-  Analytically:
-  \begin{gather*}
-    \abs{f(x)-L}<0.1 \\
-    \abs{x^2-4}<0.1 \\
-    -0.1<x^2-4<0.1 \\
-    \\
-    -0.1<x^2-4 \\
-    x^2>3.9 \\
-    \pm x>\sqrt{3.9} \\
-    x<-\sqrt{3.9}\ \text{or}\ x>\sqrt{3.9} \\
-    x\in(-\infty,-\sqrt{3.9})\cup(\sqrt{3.9},\infty) \\
-    \\
-    x^2-4<0.1 \\
-    x^2<4.1 \\
-    \pm x<\sqrt{4.1} \\
-    -\sqrt{4.1}<x<\sqrt{4.1} \\
-    x\in(-\sqrt{4.1},\sqrt{4.1}) \\
-    \\
-    x\in(-\sqrt{4.1},-\sqrt{3.9})\cup(\sqrt{3.9},\sqrt{4.1})
-  \end{gather*}
+  Although this can be done analytically, the algebra tends to get messy.  A convenient shortcut is to use a
+  graphing calculator.  The general procedure is as follows:
 
   \bigskip
 
+  \begin{enumerate}
+  \item Graph the function and mark the \(\e\)-neighborhood around the limit by graphing the constant functions
+    \(y=2+0.1=2.1\) and \(y=2-0.1=1.9\).  Adjust the Window so that there is sufficient separation to see all three
+    graphs.
+
+    \bigskip
+
+    \includegraphics[scale=0.75]{poly01a}\qquad
+    \includegraphics[scale=0.75]{poly01b}
+
+    \bigskip
+
+  \item Use the \emph{intersection} function to determine the minimum and maximum \(x\) values around \(x=1\) such
+    that the graph of the function is completely within the marked \(\e\)-neighborhood.
+    \begin{gather*}
+      x_1=0.9748418 \\
+      x_2=1.0248457 \\
+      \\
+      0.9748418<x<1.0248457
+    \end{gather*}
+  \item Calculate the distance of each endpoint from \(x=1\):
+    \begin{gather*}
+      \d_1=1.024845-1=0.0248457 \\
+      \d_2=1-0.9748418=0.0251582
+    \end{gather*}
+  \item Select the smaller of the two distances for \(\d\):
+    \[\d=\min\set{\d_1,\d_2}=0.0248457\]
+  \item Be sure to round down to stay within the selected interval.
+    \[\d=0.024\]
+  \end{enumerate}
+
+  Therefore, if \(\abs{x-1}<0.024\) then \(\abs{f(x)-2}<0.1\).
+
+  \bigskip
+
+  Find a suitable \(\d\) to four decimal places for \(\e=0.01\).
+
+  \bigskip
+
+  \includegraphics[scale=0.75]{poly001a}\qquad
+  \includegraphics[scale=0.75]{poly001b}
+
+  \begin{gather*}
+    \d_1=1.0024984-1=0.0024984 \\
+    \d_2=1-0.9974984=0.0025016 \\
+    \\
+    \d=\min\set{\d_1,\d_2}=0.0024984
+  \end{gather*}
+
+  \(\d=0.0024\).
+
+  Therefore, if \(\abs{x-1}<0.0024\) then \(\abs{f(x)-2}<0.01\).
+\end{example}
+
+\begin{example}
+  Solve the previous problem for \(\e=0.1\) analytically.
+  \begin{gather*}
+    \abs{f(x)-2}<0.1 \\
+    \abs{(x^2+2x-1)-2}<0.1 \\
+    \abs{x^2+2x-3}<0.1 \\
+    -0.1<x^2+2x-3<0.1 \\
+    \\
+    x^2+2x-3>-0.1 \\
+    x^2+2x-2.9>0 \\
+    x=\frac{-2\pm\sqrt{2^2-4(1)(-2.9)}}{2(1)}=-1\pm\sqrt{3.9} \\
+    x=-2.9748,0.9748 \\
+    0^2+2(0)-2.9=-2.9<0 \\
+    x\in(-\infty,-2.9748)\cup(0.9748,\infty) \\
+    \\
+    x^2+2x-3<0.1 \\
+    x^2+2x-3.1<0 \\
+    x=\frac{-2\pm\sqrt{2^2-4(1)(-3.1)}}{2(1)}=-1\pm\sqrt{4.1} \\
+    x=-3.0248,1.0248 \\
+    0^2+2(0)-3.1=-3.1<0 \\
+    x\in(-3.0248,1.0248) \\
+    \\
+    x\in((-\infty,-2.9748)\cup(0.9748,\infty))\cap(-3.0248,1.0248)
+  \end{gather*}
   \begin{center}
     \begin{tikzpicture}
       \draw [<->] (-5,0) -- (5,0);
       \node (A) [open point] at (-4,0) {};
-      \node [below] at (A) {\(-\sqrt{4.1}\)};
+      \node [below] at (A) {\(-3.0248\)};
       \node (B) [open point] at (-2,0) {};
-      \node [below] at (B) {\(-\sqrt{3.9}\)};
+      \node [below] at (B) {\(-2.9748\)};
       \node (C) [open point] at (2,0) {};
-      \node [below] at (C) {\(\sqrt{3.9}\)};
+      \node [below] at (C) {\(0.9748\)};
       \node (D) [open point] at (4,0) {};
-      \node [below] at (D) {\(\sqrt{4.1}\)};
+      \node [below] at (D) {\(1.0248\)};
       \draw [very thick, blue] (A) -- (B);
       \draw [very thick, blue] (C) -- (D);
       \node (E) [closed point,red] at (3,0) {};
-      \node [above] at (E) {\(2\)};
+      \node [above] at (E) {\(1\)};
     \end{tikzpicture}
   \end{center}
   \begin{gather*}
-    \d_1=2-\sqrt{3.9}=0.0251582 \\
-    \d_2=\sqrt{4.1}-2=0.0248456 \\
+    0.9748<x<1.0248
     \\
-    \d=\min\set{\d_1,\d_2}=0.0248456 \\
+    \d_1=1-0.9748=0.0252 \\
+    \d_2=1.0248-1=0.0248 \\
     \\
-    \d=0.0248
+    \d=\min\set{\d_1,\d_2}=0.0248 \\
+    \\
+    \d=0.248
   \end{gather*}
 \end{example}
 
-\newpage
+However, proving that \(\displaystyle\lim_{x\to c}f(x)=L\) cannot be done by example --- the result must hold for all
+\(\e>0\).
+
+Strategy:
+\begin{enumerate}
+\item Assume that \(\e>0\).
+\item Rewrite \(f(x)-L<\e\) as \(g(x-c)<\e\) for \(0<\abs{x-c}<\d\).
+\item Consider \(g(\d)=\e\).
+\item Solve for \(\d(\e)\).
+\item Show that the selected \(\d\) works.
+\end{enumerate}
+
+Helpful tools:
+\begin{enumerate}
+\item \(x=(x-c)+c\)
+\item Triangle inequality: \(\abs{a+b}<\abs{a}+\abs{b}\)
+\end{enumerate}
+
+Template:
+\begin{enumerate}[start=0]
+\item Determine a suitable \(\d(\e)\) on the side.
+\item Assume that \(\e>0\).
+\item Let \(\d=\d(\e)\) previously found.
+\item Show that if \(0<\abs{x-c}<\d\) then \(f(x)-L<e\).
+\end{enumerate}
 
 \begin{example}
-  Let \(f(x)=x^2+3x-2\) and assume that \(\displaystyle\lim_{x\to-3}f(x)=-2\).  Find a suitable \(\d\) (to four
-  decimal places) for \(\e=0.1\).
-
-  Using a calculator:
-
-  \bigskip
-
-  \includegraphics[scale=0.75]{polylower}\qquad
-  \includegraphics[scale=0.75]{polyupper}
+  Prove: \(\displaystyle\lim_{x\to1}(2x+5)=7\)
   \begin{gather*}
-    \d_1=-2.966288-(-3)=0.033712 \\
-    \d_2=-3-(-3.032971)=0.032971 \\
-    \\
-    \d=\min\set{\d_1,\d_2}=0.032971 \\
-    \\
-    \d=0.0329
+    \abs{(2x+5)-7}=\abs{2x-2}=2\abs{x-1}<\e \\
+    2\d=\e \\
+    \d=\frac{\e}{2}
   \end{gather*}
+  Assume that \(\e>0\). \\
+  Let \(\d=\frac{\e}{2}\). \\
+  Assume that \(0<\abs{x-1}<\d\). \\
+  \(\abs{f(x)-L}=\abs{(2x+5)-7}=\abs{2x-2}=2\abs{x-2}<2\d=2\frac{\e}{2}=\e\)
+\end{example}
 
-  \bigskip
-
-  Analytically:
+\begin{example}
+  Prove: \(\displaystyle\lim_{x\to1}(x^2+2x-1)=2\)
+  \begin{align*}
+    \abs{(x^2+2x-1)-2)} &= \abs{x^2+2x-3} \\
+    &= \abs{(x-1)(x+3)} \\
+    &= \abs{x-1}\abs{x+3} \\
+    &= \abs{x-1}\abs{(x-1)+4} \\
+    &\le \abs{x-1}(\abs{x-1}+4) \\
+    &= \abs{x-1}^2+4\abs{x-1} \\
+    &< \e
+  \end{align*}
   \begin{gather*}
-    \abs{f(x)-L}<0.1 \\
-    \abs{x^2+3x-2-(-2)}<0.1 \\
-    -0.1<x^2+3x<0.1 \\
+    \d^2+4\d=\e \\
+    \d^2+4\d-\e=0 \\
+    \d=\frac{-4\pm\sqrt{4^2-4(1)(-\e)}}{2(1)}=-2\pm\sqrt{4+\e} \\
     \\
-    -0.1<x^2+3x \\
-    x^2+3x+0.1>0 \\
-    x=\frac{-3\pm\sqrt{(-3)^2-4(1)(0.1)}}{2(1)}=\frac{-3\pm\sqrt{8.6}}{2} \\
-    x<\frac{-3-\sqrt{8.6}}{2}\ \text{or}\ x>\frac{-3+\sqrt{8.6}}{2} \\
-    \\
-    x^2+3x<0.1 \\
-    x^2+3x-0.1<0 \\
-    x=\frac{-3\pm\sqrt{(-3)^2-4(1)(-0.1)}}{2(1)}=\frac{-3\pm\sqrt{9.4}}{2} \\
-    \frac{-3-\sqrt{9.4}}{2}<x<\frac{-3+\sqrt{9.4}}{2} \\
-    \\
-    x\in(\frac{-3-\sqrt{9.4}}{2},\frac{-3-\sqrt{8.6}}{2})\cup(\frac{-3+\sqrt{8.6}}{2},\frac{-3+\sqrt{9.4}}{2})
+    \d=\sqrt{4+\e}-2
   \end{gather*}
+  Assume \(\e>0\). \\
+  Let \(\d=\sqrt{4+\e}-2\). \\
+  Assume that \(0<\abs{x-1}>\d\)
+  \begin{align*}
+    \abs{f(x)-L} &= \abs{(x^2+2x-1)-2} \\
+    &= \abs{x^2+2x-3} \\
+    &= \abs{(x-1)(x+3)} \\
+    &= \abs{x-1}\abs{x+3} \\
+    &= \abs{x-1}\abs{(x-1)+4} \\
+    &\le \abs{x-1}(\abs{x-1}+4) \\
+    &< \d(\d+4) \\
+    &= \d^2+4\d \\
+    &= (\sqrt{4+\e}-2)^2+4(\sqrt{4+\e}-2) \\
+    &= (4+\e)-4\sqrt{4+\e}+4+4\sqrt{4+\e}-8 \\
+    &= \e
+  \end{align*}
+\end{example}
 
-  \bigskip
-
-  \begin{center}
-    \begin{tikzpicture}
-      \draw [<->] (-5,0) -- (5,0);
-      \node (A) [open point] at (-4,0) {};
-      \node [below] at (A) {\(\frac{-3-\sqrt{9.4}}{2}\)};
-      \node (B) [open point] at (-2,0) {};
-      \node [below] at (B) {\(\frac{-3-\sqrt{8.6}}{2}\)};
-      \node (C) [open point] at (2,0) {};
-      \node [below] at (C) {\(\frac{-3+\sqrt{8.6}}{2}\)};
-      \node (D) [open point] at (4,0) {};
-      \node [below] at (D) {\(\frac{-3+\sqrt{9.4}}{2}\)};
-      \draw [very thick, blue] (A) -- (B);
-      \draw [very thick, blue] (C) -- (D);
-      \node (E) [closed point,red] at (-3,0) {};
-      \node [above] at (E) {\(-3\)};
-    \end{tikzpicture}
-  \end{center}
-  \begin{gather*}
-    \d_1=-3-\frac{-3-\sqrt{9.4}}{2}=0.0329709717 \\
-    \d_2=\frac{-3-\sqrt{8.6}}{2}-(-3)=0.0337121701 \\
-    \\
-    \d=\min\set{\d_1,\d_2}=0.0329709717 \\
-    \\
-    \d=0.0329
-  \end{gather*}
+\begin{example}
+  Prove: \(\displaystyle\lim_{x\to e}\ln(x)=1\)
 \end{example}
 
 \end{document}
