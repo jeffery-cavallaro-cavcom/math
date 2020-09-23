@@ -27,6 +27,8 @@ There are three possibilities:
 
 \subsection*{Gaps}
 
+Gaps introduced by piecewise functions result in the non-existence of the limit at the gap.
+
 \begin{example}[The Heaviside Function]
   Define \(H(x)\) as follows:
   \[H(x)=\begin{cases}
@@ -189,6 +191,10 @@ There are three possibilities:
 
 \subsection*{Arbitrarily Large}
 
+Functions that result in \(\frac{b}{0}\) for some constant \(b\in\R\) when evaluated at \(x=a\) get arbitrarily
+large:
+\[f(x)\to\pm\infty\ \text{as}\ x\to a\]
+
 \begin{definition}[Arbitrarily Large]
   To say that \(x\in\R\) is \emph{arbitrarily large}, denoted by \(x\to\infty\) or \(x\to+\infty\), means that:
   \[\forall\,y\in\R,x>y\]
@@ -337,6 +343,8 @@ Saying that \(f(x)\to\infty\) or \(f(x)\to-\infty\) as \(x\to a\) is preferred t
 \end{example}
 
 \subsection*{Oscillations}
+
+Functions that oscillate infinitely about a point will always escape the bounding box for some \(\e\) at the point.
 
 \begin{example}
   Let \(f(x)=\sin\frac{1}{x}\).
