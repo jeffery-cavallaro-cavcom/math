@@ -1,0 +1,281 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\newcommand{\e}{\epsilon}
+\newcommand{\Tstd}{\T_{\text{std}}}
+\begin{document}
+\section*{Topological Spaces}
+
+\begin{definition}[Topology]
+  Let \(X\) be a set.  To say that \(\T\) is a \emph{topology} on \(X\) means that \(\T\) is a collection of
+  subsets of \(X\) such that:
+  \begin{enumerate}
+  \item \(\emptyset\in\T\)
+  \item \(X\in\T\)
+  \item \(U,V\in\T\implies U\cap V\in\T\)
+  \item \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T\implies \bigcup_{\a\in\l}U_{\a}\in\T\).
+  \end{enumerate}
+  A \emph{topological space} is a tuple \((X,\T)\) where \(X\) is a set and \(\T\) is a topology on \(X\).
+\end{definition}
+
+\begin{definition}[Open Set]
+  Let \((X,\T)\) be a topological space and let \(U\subset X\).  To say that \(U\) is an \emph{open set} in
+  \((X,\T)\) means that \(U\in\T\).
+\end{definition}
+
+\begin{theorem}
+  The intersection of a finite number of open sets is open.
+\end{theorem}
+
+\begin{proof}
+  Let \((X,\T)\) be a topological space and Let \(\set{U:1\le i\le n}\) be a finite collection of open sets in
+  \((X,\T)\).
+
+  Induction on \(n\).
+
+  \begin{description}
+  \item[Base Case:] \(n=1\)
+    \[\bigcap_{i=1}^1U_i=U_1\in\T\]
+
+  \item[Inductive Hypothesis:] Assume \(\bigcap_{i=1}^nU_i\in\T\).
+
+  \item[Inductive Step:] Consider \(n+1\).
+    \[\bigcap_{i=1}^{n+1}U_i=\bigcap_{i=1}^nU_i\cap U_{n+1}\]
+    But \(\bigcap_{i=1}^nU_i\in\T\) (inductive assumption) and \(U_{n+1}\in\T\) (assumption).
+
+    \(\therefore\bigcap_{i=1}^{n+1}U_i\in\T\) (property 3).
+  \end{description}
+
+  Therefore, by the principle of induction, \(\bigcap_{i=1}^nU_i\in\T\).
+\end{proof}
+
+Note that this proof does not work for an infinite number of open sets because induction is only valid for a finite
+number of steps.
+
+\begin{theorem}
+  Let \(X,\T\) be a topological space and let \(U\subset X\):
+  \[U\in\T\iff\forall\,x\in U,\exists\,U_x\in\T,x\in U_x\subset U\]
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+
+  \item[\(\implies\)] Assume \(U\in\T\).
+
+    Assume \(x\in U\).  So \(x\in U\subset U\).
+
+  \item[\(\impliedby\)] Assume \(\forall\,x\in U,\exists U_x\in\T,x\in U_x\subset U\).
+
+    Claim: \(\bigcup_{x\in U}U_x=U\)
+
+    First, assume that \(y\in \bigcup_{x\in U}U_x\).  Therefore \(\exists\,x\in U\) such that \(y\in U_x\subset U\).
+
+    Next, assume that \(y\in U\).  This means that \(\exists\,U_y\in\T\) such that \(y\in U_y\subset U\), and
+    therefore \(y\in\bigcup_{x\in U}U_x\).
+
+    Thus, \(U\) is an arbitrary union of open sets and hence is open.
+
+    \(\therefore U\in\T\)
+  \end{description}
+\end{proof}
+
+\begin{definition}
+  Let \((X,\T)\) be a topological space and let \(x\in X\).  To say that a set \(U\subset X\) is a \emph{neighborhood}
+  of \(x\) means that \(x\in U\) and \(U\in\T\).
+\end{definition}
+
+\begin{corollary}
+  Let \((X,\T)\) be a topological space and let \(U\subset X\).  \(U\) is an open set iff every point in \(U\) has
+  a neighborhood that lies within \(U\).
+\end{corollary}
+
+\begin{definition}[Open Ball]
+  Let \(p\in\R^n\).  The \emph{open ball} around \(p\) of radius \(\e>0\) is given by:
+  \[B(p,\e)=\setb{x\in X}{d(p,x)<\e}\]
+  where \(d(p,x)\) is the Euclidean distance from \(p\) to \(x\) given by:
+  \[d(p,x)=\sqrt{\sum_{i=1}^n(p_i-x_i)^2}\]
+\end{definition}
+
+\begin{definition}[Topologies]
+  \begin{description}
+  \item[]
+  \item[Standard:] \((\R^n,\Tstd)\)
+    \[U\in\T\iff\forall\,x\in U,\exists\,\e_x>0,B(x,\e_x)\subset U\]
+  \item[Discrete:] \((X,2^X)\)
+    \[\forall\,U\subset X,U\in\T\]
+  \item[Indiscrete:] \((X,\set{\emptyset,X})\)
+    \[\T=\set{\emptyset,X}\]
+  \item[Cofinite:] \((X,\T)\)
+    \[U\in\T\iff U=\emptyset\ \text{or}\ X-U\ \text{is finite}\]
+  \item[Cocountable:] \((X,\T)\)
+    \[U\in\T\iff U=\emptyset\ \text{or}\ X-U\ \text{is countable}\]
+  \end{description}
+\end{definition}
+
+\begin{example}
+  Verify that \(\Tstd\) is a topology on \(R^n\).
+
+  \begin{enumerate}
+  \item \(\emptyset\in\Tstd\) (vacuously).
+
+  \item Assume \(x\in R^n\).
+
+    Let \(e_x=1\).  Since \(R^n\) includes everything it must be the case that \(B(x,1)\subset R^n\).
+
+    Therefore \(R^n\in\Tstd\).
+
+  \item Assume \(U,V\in\Tstd\).
+
+    Assume \(x\in U\cap V\).  This means that \(x\in U\) and \(x\in V\).  So there exists \(\e_U,\e_V\) such that
+    \(B(x,\e_U)\subset U\) and \(B(x,\e_V)\subset V\).  Let \(\e=\min\set{\e_U,\e_V}\).  Thus
+    \(B(x,\e)\subset U\cap V\).
+
+    Therefore \(U\cap V\in\Tstd\).
+
+  \item Assume \(\set{U_{\a}:\a\in\l}\) is a family of sets such that \(U_{\a}\in\Tstd\).
+
+    Let \(U=\bigcup_{\a\in\l}U_{\a}\) and assume \(x\in U\).  This means that there exists \(\a\in\l\) such that
+    \(x\in U_{\a}\).  Furthermore, there exists \(\e_x>0\) such that \(B(x,\e_x)\subset U_{\a}\subset U\).
+
+    Therefore \(U\in\Tstd\).
+  \end{enumerate}
+\end{example}
+
+\begin{example}
+  Verify that the discrete, indiscrete, cofinite, and cocountable topologies are indeed topologies for any set \(X\).
+
+  \begin{description}
+  \item[Discrete]
+    \begin{enumerate}
+    \item[]
+    \item \(\emptyset\subset X\) and so \(\emptyset\in\T\).
+
+    \item \(X\subset X\) and so \(X\in\T\).
+
+    \item Assume \(U,V\in\T\).
+
+      \(U,V\subset X\) and so \(U\cap V\subset X\).
+
+      Therefore \(U\cap V\in\T\).
+
+    \item Assume \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T\).
+
+      \(\forall\,\a\in\l,U_{\a}\subset X\) and so \(\bigcup_{\a\in\l}U_{\a}\subset X\).
+
+      Therefore \(\bigcup_{\a\in\l}U_{\a}\in\T\).
+    \end{enumerate}
+
+  \item[Indiscrete]
+    \begin{enumerate}
+    \item[]
+    \item By definition, \(\emptyset\in\T\).
+
+    \item By definition, \(X\in\T\).
+
+    \item Assume \(U,V\in\T\).
+      \begin{align*}
+        \emptyset\cap\emptyset &= \emptyset\in\T \\
+        \emptyset\cap X &= \emptyset\in\T \\
+        X\cap\emptyset &= \emptyset\in\T \\
+        X\cap X &= X\in\T
+      \end{align*}
+
+      Therefore \(U\cap V\in\T\).
+
+    \item Assume \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T\).
+      \begin{align*}
+        \emptyset\cup\emptyset &= \emptyset\in\T \\
+        \emptyset\cup X &= X\in\T \\
+        X\cup\emptyset &= X\in\T \\
+        X\cup X &= X\in\T
+      \end{align*}
+
+      Therefore \(\bigcup_{\a\in\l}U_{\a}\in\T\).
+    \end{enumerate}
+
+  \item[Cofinite]
+    \begin{enumerate}
+    \item[]
+    \item By definition, \(\emptyset\in\T\).
+
+    \item \(X-X=\emptyset\), which is finite.  Therefore \(X\in\T\).
+
+    \item Assume \(U,V\in\T\).
+
+      \(X-(U\cap V)=(X-U)\cup(X-V)\).  But \(X-U\) and \(X-V\) are both finite and so their union is finite.
+
+      Therefore \(U\cap V\in\T\).
+
+    \item Assume \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T\).
+
+      \(X-\bigcup_{\a\in\l}U_{\a}=\bigcap_{\a\in\l}(X-U_{\a})\).  But for all \(\a\in\l\) it is the case that
+      \(X-U_{\a}\) is finite and so their intersection is finite.
+
+      Therefore \(\bigcup_{\a\in\l}U_{\a}\in\T\).
+    \end{enumerate}
+
+  \item[Cocountable]
+    \begin{enumerate}
+    \item[]
+    \item By definition, \(\emptyset\in\T\).
+
+    \item \(X-X=\emptyset\), which is finite and thus countable.  Therefore \(X\in\T\).
+
+    \item Assume \(U,V\in\T\).
+
+      \(X-(U\cap V)=(X-U)\cup(X-V)\).  But \(X-U\) and \(X-V\) are both countable and so their union is countable.
+
+      Therefore \(U\cap V\in\T\).
+
+    \item Assume \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T\).
+
+      \(X-\bigcup_{\a\in\l}U_{\a}=\bigcap_{\a\in\l}(X-U_{\a})\).  But for all \(\a\in\l\) it is the case that
+      \(X-U_{\a}\) is countable.  Now, for some \(\a\in\l\):
+      \[\bigcap_{\a\in\l}(X-U_{\a})\subset(X-U_{\a})\]
+      However, the subset of a countable set is countable.
+
+      Therefore \(\bigcup_{\a\in\l}U_{\a}\in\T\).
+    \end{enumerate}
+  \end{description}
+\end{example}
+
+\begin{example}
+  Describe some of the open sets you get if \(\R\) is endowed with the standard, discrete, indiscrete, cofinite,
+  and cocountable topologies.  Specifically, identify sets that demonstrate the differences among these topologies,
+  that is, find sets that are open in some topologies but not in others.  For each of the topologies, determine
+  if the interval \((0,1)\) is an open set in that topology.
+
+  Of course, \(\emptyset\) and \(\R\) are in \(\T\) for all topologies.
+
+  \begin{description}
+  \item[Standard:] All open intervals, but not closed intervals, are in \(\T\).  Therefore \((0,1)\in\T\).
+
+  \item[Discrete:] All open and closed intervals are in \(\T\).  Therefore \((0,1)\in\T\) and \([0,1]\in\T\)
+
+  \item[Indiscrete:] Nothing other than \(\emptyset\) and \(\R\).  Therefore \((0,1)\notin\T\).
+
+  \item[Cofinite] All open sets are of the form \(\R-X\) where \(X\) is finite.  For example: \(\R-\set{1,2,3}\).
+    Thus, the open sets are uncountable.  Such sets are also open sets in all the other topologies sans indiscrete.
+    Therefore \((0,1)\notin\T\).
+
+  \item[Cocountable] All open sets are of the form \(\R-X\) where \(X\) is countable.  Thus, all open sets must
+    include all but a countable number of irrational numbers and are thus uncountable.  For example: \(\R-\Q\) or
+    \((\R-\Q)\cup\set{\sqrt{2},\sqrt{3}}\) or \((\R-\Q)\cup\set{\sqrt{2},\sqrt{3},\sqrt{5},\ldots}\).  Such sets are
+    also open in the standard and discrete topologies.  Since finite sets are countable, it is the case that
+    \(\T_{cof}\subset\T_{coc}\).  Therefore \((0,1)\notin\T\).
+  \end{description}
+\end{example}
+
+\begin{example}
+  Give an example of a topological space and a collection of open sets in that topological space that show that the
+  infinite intersection of open sets need not be open.
+
+  Consider \((\R,\Tstd)\) and the open sets \(\setb{(-\frac{1}{n},\frac{1}{n})}{n\in\N}\).  Their infinite
+  intersection is \(\set{0}\), which is not open.
+\end{example}
+
+\end{document}

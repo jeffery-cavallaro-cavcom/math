@@ -1,0 +1,131 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\U}{\mathcal{U}}
+\renewcommand{\sc}{\(2^{nd}\) countable}
+\newcommand{\fc}{\(1^{st}\) countable}
+\newcommand{\Rs}{\R_{\text{std}}}
+\newcommand{\RL}{\R_{LL}}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\begin{document}
+\section*{Countable Spaces}
+
+\begin{definition}[\(2^{nd}\) Countable]
+  Let \(X\) be a topological space.  To say that \(X\) is \emph{\sc} means that \(X\) has a countable basis.
+\end{definition}
+
+\begin{theorem}
+  Let \(X\) be a topological space.  If \(X\) is \sc\ then \(X\) is separable.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is \sc\ and let \(\B=\set{B_i:i\in\N}\) be a countable basis for \(X\).  From each \(B_i\),
+  select a value \(x_i\) and construct the set \(A=\set{x_1,x_2,\ldots}\).  Thus \(x_i\mapsto B_i\) is one-to-one
+  and so \(A\) is countable.  Now assume that \(U\in\T\).  Then there exists at least some \(B_i\subset U\) and
+  hence \(U\cap A\ne\emptyset\), and so \(A\) is countable and dense in \(X\).
+
+  Therefore \(X\) is separable.
+\end{proof}
+
+There are two ways to determine that a set is not \sc:
+\begin{enumerate}
+\item Show that all possible bases are uncountable.
+\item Show that all countable subsets are not bases.
+\end{enumerate}
+
+\begin{example}
+  \begin{enumerate}
+    \item[]
+    \item Show that \(\Rs\) is \sc\ (and hence separable).
+
+      Consider the countable set \(\B=\setb{(a,b)}{a,b\in\Q}\).  Since \(\Q\) is countable, \(\Q\times\Q\) is
+      countable and hence \(\B\) is countable.  Now assume that \(U\in\T\) and assume \(x\in U\).  Since \(x\) is
+      an interior point of \(U\), there exists some \(\e>0\) such that \(x\in(x-\e,x+\e)\subset U\).  So there must
+      exist \(\d\in\Q\) such that \(0<\d<\e\), and so \(x\in(x-\d,x+\d)\subset(x-\e,x+\e)\subset U\).  But
+      \((x-\d,d+\d)\in\B\), and so \(\B\) is a countable basis for \(\Rs\).
+
+      Therefore \(\Rs\) is \sc.
+
+    \item Show that \(\RL\) is separable but not \sc.
+
+      It was already shown that \(\RL\) is separable.  So assume that \(\B\) is a basis for \(\RL\) and consider
+      \(\displaystyle U_a=[a,\infty)=\bigcup_{b>a}[a,b)\in\T\).  Then there exists some \(B_a\in\B\) such that
+      \(a\in B_a\).  Now, assume \(x,y\in\R\) such that \(x<y\).  Since \(U_y\subsetneq U_x\), there exists
+      \(B_x\subset U_x\) and \(B_y\subset U_y\) such that \(B_x\ne B_y\).  Thus, \(x\mapsto B_x\) is injective
+      and hence \(\B\) is uncountable.
+
+      Therefore \(\RL\) is not \sc.
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}
+  Every uncountable set in a \sc\ space has a limit point.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a \sc\ space and assume that \(A\subset X\) such that \(A\) is uncountable.  Now, ABC that
+  \(A\) has no limit points.  This means that for all \(a\in A\) it is the case that there exists \(U\in\U_a\) such
+  that \(U_a\cap A=\set{a}\) and hence every \(a\in A\) is an isolated point.  So assume that \(x,y\in A\) such
+  that \(x\ne y\).  There exists \(U\in\U_x\) and \(V\in\U_y\) such that \(U\ne V\).  So for any basis \(\B\) of
+  \(X\), there exists \(B_x,B_y\in B\) such that \(B_x\ne B_y\) and \(B_x\subset U\) and \(B_y\subset V\).  Thus,
+  \(a\mapsto B_a\) is injective and hence \(\B\) is uncountable, contradicting the assumption that \(X\) is \sc.
+
+  Therefore \(A\) contains a limit point.
+\end{proof}
+
+\begin{theorem}
+  If \(X\) and \(Y\) are \sc\ spaces then \(X\times Y\) is \sc.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(\B_X\) is a countable basis for \(X\) and \(B_y\) is a countable basis for \(Y\).
+
+  Claim: \(\B_X\times\B_Y\) is a countable basis for \(X\times Y\).
+
+  \(\B_X\times\B_Y\) is countable.  So assume that \(U\in\T_{X\times Y}\) and assume \((a,b)\in U\).  This means that
+  there exists \(U_a\in\T_X\) and \(V_b\in\T_Y\) such that \((a,b)\in U_a\times V_b\subset U\).  Furthermore, there
+  exists \(B_a\in\B_X\) and \(B_b\in\B_Y\) such that \((a,b)\in B_a\times B_b\subset U_a\times V_b\subset U\) and
+  so \(\B_X\times\B_Y\) is a countable basis for \(X\times Y\).
+
+  Therefore \(X\times Y\) is \sc.
+\end{proof}
+
+\begin{definition}[Neighborhood Basis]
+  Let \(X\) be a topological space and let \(p\in X\).  To say that a collection of sets
+  \(\set{U_{\a}\in\U_p : \a\in\l}\) is a \emph{neighborhood basis} for \(p\) means that for all \(U\in\U_p\)
+  there exists some \(U_{\a}\subset U\).
+\end{definition}
+
+\begin{definition}[\(1^{st}\) Countable]
+  Let \(X\) be a topological space.  To say that \(X\) is \emph{\fc} means that every \(p\in X\) has a countable
+  neighborhood basis.
+\end{definition}
+
+\begin{theorem}
+  Let \(X\) be a topological space.  If \(X\) is \sc\ then \(X\) is \fc.
+\end{theorem}
+
+\begin{definition}[Souslin]
+  Let \(X\) be a topological space.  To say that \(X\) has the \emph{Souslin property} means that \(X\) does not
+  contain uncountable collection of disjoint open sets.
+\end{definition}
+
+\begin{theorem}
+  \(\Rs\) is Souslin.
+\end{theorem}
+
+\begin{proof}
+  ABC that \(\Rs\) is not Souslin, meaning it does contain an uncountable collection of disjoint open sets.  Let
+  \(\U\) be such a set.  Since \(\Q\) is countable and dense in \(\Rs\), every \(U\in\U\) contains some
+  \(r_U\in\Q\).  So select one value from each \(U\in\U\) to construct the set \(\setb{r_U\in Q}{U\in\U}\).
+  Thus \(r_U\mapsto U\) is injective and hence \(\U\) is countable, contradicting the assumption.
+
+  Therefore \(\Rs\) is Souslin.
+\end{proof}
+
+\end{document}

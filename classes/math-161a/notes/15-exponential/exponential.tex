@@ -1,0 +1,194 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepgfplotslibrary{groupplots}
+\DeclareMathOperator{\expd}{Exp}
+\renewcommand{\l}{\lambda}
+\pagestyle{empty}
+\allowdisplaybreaks
+\begin{document}
+\section*{Exponential Distribution}
+
+\begin{definition}[Exponential PDF]
+  To say that a continuous random variable \(X\) has an \emph{exponential distribution} with parameter \(\l>0\), denoted
+  \(X\sim\expd(\l)\), means that it has the following pdf:
+  \[f(x)=\begin{cases}
+  \l e^{-\l x} & x\ge0 \\
+  0 & \text{otherwise}
+  \end{cases}\]
+\end{definition}
+
+Note that:
+\begin{align*}
+  \int_{-\infty}^{\infty}f(x)dx &= \l\int_0^{\infty}e^{-\l x}dx \\
+  &= \left.\l\left(-\frac{1}{\l}\right)e^{-\l x}\right|_0^{\infty} \\
+  &= \left.-e^{-\l x}\right|_0^{\infty} \\
+  &= \left.e^{-\l x}\right|_{\infty}^0 \\
+  &= 1-0 \\
+  &= 1
+\end{align*}
+
+\begin{theorem}[Exponential CDF]
+  Let \(X\) be a continuous random variable such that \(X\sim\expd(\l)\).  The cdf of \(X\) is given by:
+  \[F(x)=\begin{cases}
+  1-e^{-\l x} & x\ge0 \\
+  0 & \text{otherwise}
+  \end{cases}\]
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    F(x) &= \int_{-\infty}^xf(x)dx \\
+    &= \l\int_0^xe^{-\l x}dx \\
+    &= \left.\l\left(-\frac{1}{\l}\right)e^{-\l x}\right|_0^x \\
+    &= \left.-e^{-\l x}\right|_0^x \\
+    &= \left.e^{-\l x}\right|_x^0 \\
+    &= 1-e^{-\l x}
+  \end{align*}
+\end{proof}
+
+\begin{center}
+  \begin{tikzpicture}[scale=0.75]
+    \begin{groupplot}[
+        group style={
+          group size=1 by 2,
+          horizontal sep=0pt,
+          vertical sep=0pt,
+          x descriptions at=edge bottom,
+          y descriptions at=edge left,
+        },
+        xmin=-1,
+        xmax=4,
+        axis x line=middle,
+        axis y line=middle,
+        y axis line style=-,
+        xmajorticks=false,
+        title style={at={(0.5,0)}}
+      ]
+      \nextgroupplot[
+        ymin=-1/2,
+        ymax=5/4,
+        ytick={1},
+        yticklabels={\(\l\)},
+        title={pdf}
+      ]
+      \addplot [domain=-1:0, very thick] {0};
+      \addplot [domain=0:4] {exp(-x)};
+      \node [draw,circle,scale=0.5] at (0,0) {};
+      \node [draw,circle,fill,scale=0.5] at (0,1) {};
+      \nextgroupplot[
+        ymin=-1/2,
+        ymax=3/2,
+        ytick={1},
+        title={cdf}
+      ]
+      \addplot [domain=-1:0, very thick] {0};
+      \addplot [domain=0:4] {1-exp(-x)};
+      \draw [dashed] (0,1) -- (4,1);
+    \end{groupplot}
+  \end{tikzpicture}
+\end{center}
+
+\begin{corollary}
+  Let \(X\) be a continuous random variable such that \(X\sim\expd(\l)\):
+  \[P(a\le X\le b)=e^{-\l a}-e^{-\l b}\]
+\end{corollary}
+
+\begin{corollary}
+  Let \(X\) be a continuous random variable such that \(X\sim\expd(\l)\):
+  \[\bar{F}(x)=e^{-\l x}\]
+\end{corollary}
+
+\begin{theorem}[Exponential Mean and Variance]
+  Let \(X\) be a continuous random variable such that \(X\sim\expd(\l)\):
+  \begin{itemize}
+  \item \(\displaystyle E(X)=\frac{1}{\l}\)
+  \item \(\displaystyle V(X)=\frac{1}{\l^2}\)
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  \[E(X)=\int_{-\infty}^{\infty}xf(x)dx=\l\int_0^{\infty}xe^{-\l x}dx\]
+  \begin{quote}
+    \begin{tabular}{cc}
+      \(u=x\) & \(dv=e^{-\l x}dx\) \\
+      \(du=dx\) & \(v=-\frac{1}{\l}e^{-\l x}\)
+    \end{tabular}
+  \end{quote}
+  \begin{align*}
+    E(X) &= \l\left(\left.-\frac{1}{\l}xe^{-\l x}\right|_0^{\infty}+\frac{1}{\l}\int_0^{\infty}e^{-\l x}dx\right) \\
+    &= \l\left(0-\left.\frac{1}{\l^2}e^{-\l x}\right|_0^{\infty}\right) \\
+    &= -\left.\frac{1}{\l}e^{-\l x}\right|_0^{\infty} \\
+    &= \left.\frac{1}{\l}e^{-\l x}\right|_{\infty}^0 \\
+    &= \frac{1}{\l}(1-0) \\
+    &= \frac{1}{\l}
+  \end{align*}
+  \[E(X^2)=\int_{-\infty}^{\infty}x^2f(x)dx=\l\int_0^{\infty}x^2e^{-\l x}dx\]
+  \begin{quote}
+    \begin{tabular}{cc}
+      \(x^2\) & \(e^{-\l x}\) \\
+      \(2x\) & \(-\frac{1}{\l}e^{-\l x}\) \\
+      \(2\) & \(\frac{1}{\l^2}e^{-\l x}\) \\
+      & \(-\frac{1}{\l^3}e^{-\l x}\) \\
+    \end{tabular}
+  \end{quote}
+  \begin{align*}
+    E(X^2) &= \left.\l\left(-\frac{1}{\l}x^2e^{-\l x}-\frac{2}{\l^2}xe^{-\l x}-\frac{2}{\l^3}e^{-\l x}\right)
+    \right|_0^{\infty} \\
+    &= \left.\left(-x^2e^{-\l x}-\frac{2}{\l}xe^{-\l x}-\frac{2}{\l^2}e^{-\l x}\right)\right|_0^{\infty} \\
+    &= \left.\left(x^2e^{-\l x}+\frac{2}{\l}xe^{-\l x}+\frac{2}{\l^2}e^{-\l x}\right)\right|_{\infty}^0 \\
+    &= \left(0+0+\frac{2}{\l^2}\right)-(0+0+0) \\
+    &= \frac{2}{\l^2}
+  \end{align*}
+  \[V(X)=E(X^2)-E(X)^2=\frac{2}{\l^2}-\frac{1}{\l^2}=\frac{1}{\l^2}\]
+\end{proof}
+
+\begin{example}
+  The lifetime of a certain brand of lightbulbs is exponentially distributed with an average of 1000 hours.  What is
+  the probability that a new lightbulb will still be working after this amount of time?  Between 1000 and 2000 hours?
+  \begin{gather*}
+    \frac{1}{\l}=1000\implies\l=\frac{1}{1000} \\
+    \\
+    P(1000<X)=1-P(X\le1000)=1-F(1000)=1-\left(1-e^{-\frac{1000}{1000}}\right)=e^{-1}\approx0.3679 \\
+    \\
+    P(1000\le X\le2000)=e^{-\frac{1000}{1000}}-e^{-\frac{2000}{1000}}=e^{-1}-e^{-2}\approx0.2325
+  \end{gather*}
+\end{example}
+
+\begin{theorem}[The Memoryless Property]
+  Let \(X\) be a continuous random variable such that \(X\sim\expd(\l)\):
+  \[\forall\,t_0,t\ge0,P\left(X\ge t_0+t\,\middle|\,X\ge t_0\right)=P(X\ge t)\]
+\end{theorem}
+
+\begin{proof}
+  Assume \(t_0,t\ge0\):
+  \begin{align*}
+    P\left(X\ge t_0+t\,\middle|\,X\ge t_0\right) &= \frac{P((X\ge t_0+t)\cap(X\ge t_0))}{P(X\ge t_0)} \\
+    &= \frac{P(X\ge t_0+t)}{P(X\ge t_0)} \\
+    &= \frac{\bar{F}(t_0+t)}{\bar{F}(t_o)} \\
+    &= \frac{e^{-\l(t_0+t)}}{e^{-\l t_0}} \\
+    &= e^{\l t} \\
+    &= \bar{F}(t) \\
+    &= P(X\ge t)
+  \end{align*}
+  Note that the event \(X\ge t_0\) must have occurred if the event \(X\ge t_o+t\) has occurred.
+\end{proof}
+The exponential distribution is the only distribution that has the memoryless property.
+
+\begin{example}
+  Jones figures that the total number of thousands of miles an auto can be driven before it would need to be junked is an
+  exponential random variable with parameter \(\l=\frac{1}{20}\).  Smith has a used car that he claims has been driven only
+  10,000 miles.  If Jones purchases the car, what is the probability that he would get at least 20,000 additional miles out
+  of it?  Repeat under the assumption that the lifetime mileage of the car is not exponentially distributed but rather is
+  (in thousands of miles) uniformly distributed over \([0,40]\).
+
+  Exponential:
+  \[P\left(X\ge30\middle|X\ge10\right)=P(X\ge20)=\bar{F}(20)=e^{-\frac{20}{20}}=e^{-1}=0.3679\]
+  Uniform:
+  \[P\left(X\ge30\middle|X\ge10\right)=\frac{P((X\ge30)\cap(X\ge10))}{P(X\ge10)}=\frac{P(X\ge30)}{P(X\ge10)}=
+  \frac{\bar{F}(30)}{\bar{F}(10)}=\frac{\left(1-\frac{30}{40}\right)}{\left(1-\frac{10}{40}\right)}=\frac{1}{3}\]
+\end{example}
+
+\end{document}

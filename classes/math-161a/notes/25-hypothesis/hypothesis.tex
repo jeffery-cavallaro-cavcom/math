@@ -1,0 +1,118 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\usepackage{siunitx}
+\pagestyle{empty}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\renewcommand{\O}{\theta}
+\begin{document}
+\section*{Hypothesis Testing}
+
+\begin{definition}[Statistical Hypothesis]
+  A \emph{statistical hypothesis} is a claim concerning the parameter(s) or form of a probability distribution.
+\end{definition}
+
+\begin{example}
+  Consider a farm that produces brown eggs.  The farm claims that the weight of each egg is normally distributed with
+  \(\m=\SI{65}{g}\) and \(\o=\SI{2}{g}\).
+\end{example}
+
+Suppose a carton of eggs is purchased from the farm in the example and the average weight of the sample is only
+\SI{61.5}{g}.  Is the difference due to randomness or is this significant evidence against the farm's claim of
+\SI{65}{g}?
+
+\begin{definition}[Hypothesis Test]
+  A \emph{hypothesis test} compares a favored statistical hypothesis, called the \emph{null hypothesis} and denoted \(H_0\),
+  and a contradictory statistical hypothesis, called the \emph{alternate hypothesis} and denote \(H_a\).  A sample is used to
+  obtain statistical information related to \(H_0\).  If the evidence against \(H_0\) is strong enough then \(H_0\) is
+  rejected in favor of \(H_a\).  Otherwise, the test fails to reject \(H_0\).  Thus, the two outcomes of a hypothesis test
+  are:
+  \begin{enumerate}
+  \item Reject \(H_0\)
+  \item Fail to reject \(H_0\)
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  In the above example, the two hypotheses are:
+  \begin{description}[left=0.5in]
+  \item[\(H_0\):] \(\m=65\)
+  \item[\(H_a\):] \(\m\ne65\)
+  \end{description}
+\end{example}
+
+\begin{definition}[Null Value]
+  The \emph{null value} of a hypothesis test, denoted \(\O_0\), is the claimed parameter value in the null hypothesis.
+\end{definition}
+
+Thus, for a null hypothesis: \(H_0:\O=\O_0\) there is a two-sided and two one-sided alternate hypotheses:
+\begin{enumerate}
+\item \(H_a: \O\ne\O_0\)
+\item \(H_a: \O<\O_0\)
+\item \(H_a: \O>\O_0\)
+\end{enumerate}
+For the two one-sided alternates, the null hypothesis is assumed to be the fully contradictory \(\O\ge\O_0\) or \(\O\le\O_0\);
+however, during calculations the equality form is simplier and deemed sufficient.
+
+\begin{example}
+  In the above example, the FDA wishes to enforce that \(\m=65\) by making sure that the true value just is not less than
+  the claimed value - i.e., \(H_a:\m<65\).  A true value greater than 65 simply benefits the customer.
+\end{example}
+
+\subsection*{Hypothesis Test Procedure}
+
+\begin{enumerate}
+\item Construct \(H_0\) and \(H_a\) in terms of some null value \(\O_0\).
+\item Select an unbiased point estimator \(\hat{\O}\) for \(\O_0\).
+\item Collect sample data.
+\item Compare the observation to the claim to see if there is sufficient reason to reject \(H_0\).
+\end{enumerate}
+
+\begin{example}
+  In the above example, for \(H_0:\m=65\), select \(\bar{X}\) as a suitable (unbiased) point estimator for \(\m\).  A sample
+  is then collected and \(\bar{x}\) is calculated.  The three possible alternatives would then be judged as follows:
+  \begin{enumerate}
+  \item \(H_a:\m\ne65\)
+
+    Reject \(H_0\) if \(\bar{x}\) is either too small or too large:
+
+    \begin{tikzpicture}
+      \draw (0,0) -- (10,0) node [right] {\(\m\)};
+      \node (X) at (5,0) {\scalebox{1.5}{\(\times\)}};
+      \node [below=5pt] at (X) {\(65\)};
+      \node [draw,circle,scale=0.5,red,fill=red] (B) at (2,0) {};
+      \node [below=5pt] at (B) {\(\bar{x}\)};
+      \node [draw,circle,scale=0.5,red,fill=red] (A) at (8,0) {};
+      \node [below=5pt] at (A) {\(\bar{x}\)};
+    \end{tikzpicture}
+
+  \item \(H_a:\m<65\)
+
+    Reject \(H_0\) if \(\bar{x}\) is too small.
+
+    \begin{tikzpicture}
+      \draw (0,0) -- (10,0) node [right] {\(\m\)};
+      \node (X) at (5,0) {\scalebox{1.5}{\(\times\)}};
+      \node [below=5pt] at (X) {\(65\)};
+      \node [draw,circle,scale=0.5,red,fill=red] (B) at (2,0) {};
+      \node [below=5pt] at (B) {\(\bar{x}\)};
+    \end{tikzpicture}
+
+  \item \(H_a:\m>65\)
+
+    Reject \(H_0\) if \(\bar{x}\) is too large.
+
+    \begin{tikzpicture}
+      \draw (0,0) -- (10,0) node [right] {\(\m\)};
+      \node (X) at (5,0) {\scalebox{1.5}{\(\times\)}};
+      \node [below=5pt] at (X) {\(65\)};
+      \node [draw,circle,scale=0.5,red,fill=red] (A) at (8,0) {};
+      \node [below=5pt] at (A) {\(\bar{x}\)};
+    \end{tikzpicture}
+  \end{enumerate}
+\end{example}
+
+Notions of ``too small'' and ``too large'' will be developed by balancing test error and using \(p\)-values.
+
+\end{document}

@@ -1,0 +1,444 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\pgfplotsset{compat=1.16}
+\newcommand{\m}{\tilde{\mu}}
+\renewcommand{\o}{\sigma}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 161A \\
+Homework \#5
+
+\bigskip
+
+\section*{4.1}
+
+The current in a certain circuit as measured by an ammeter is a continuous random variable \(X\) with the following density
+function:
+\[f(x)=\begin{cases}
+0.075x+0.2 & 3\le x\le 5 \\
+0 & \text{otherwise}
+\end{cases}\]
+\begin{enumerate}[label={\alph*)}]
+\item Graph the pdf and verify that the total area under the density curve is indeed 1.
+  \begin{align*}
+    f(3) &= 0.075(3)+0.2=0.425 \\
+    f(5) &= 0.075(5)+0.2=0.575
+  \end{align*}
+  \begin{tikzpicture}[scale=0.75]
+    \begin{axis}[
+        xlabel={\(x\)},
+        ylabel={\(f(x)\)},
+        axis lines=middle,
+        xmin={-1/4},
+        xmax={6},
+        ymin={-1/4},
+        ymax={5/4},
+        xtick={3,5},
+        ytick={0.425,0.575,1},
+        every axis x label/.style={
+          at={(ticklabel* cs:1)},
+          anchor=west
+        },
+        every axis y label/.style={
+          at={(ticklabel* cs:1)},
+          anchor=south,
+        },
+        yticklabel style={
+          /pgf/number format/fixed,
+          /pgf/number format/precision=3
+        }
+      ]
+      \node [draw,circle,scale=0.5] at (3,0) {};
+      \node [draw,circle,fill=black,scale=0.5] at (3,0.425) {};
+      \node [draw,circle,fill=black,scale=0.5] at (5,0.575) {};
+      \node [draw,circle,scale=0.5] at (5,0) {};
+      \addplot [domain=3:5] {0.075*x+0.2};
+      \addplot [domain=-1/4:3, very thick] {0};
+      \addplot [domain=5:6, very thick] {0};
+      \draw [dashed] (3,0.425) to (3,0);
+      \draw [dashed] (5,0.575) to (5,0);
+      \draw [dashed] (0,0.425) to (3,0.425);
+      \draw [dashed] (0,0.575) to (5,0.575);
+    \end{axis}
+  \end{tikzpicture}
+  \[A=0.5(0.425+0.575)(5-3)=0.5(1)(2)=1\]
+\item Calculate \(P(X\le 4)\).  How does this probability compare to \(P(X<4)\)?
+  \begin{gather*}
+    f(4)=0.075(4)+0.2=0.5 \\
+    \\
+    P(X\le4)=0.5(0.425+0.5)(4-3)=0.5(0.925)(1)=0.4625
+  \end{gather*}
+  Since endpoints don't matter, \(P(X<4)=P(X\le4)=0.4625\).
+
+\item Calculate \(P(3.5<X<4.5)\) and also \(P(4.5<X)\).
+  \begin{gather*}
+    f(3.5)=0.075(3.5)+0.2=0.4625 \\
+    f(4.5)=0.075(4.5)+0.2=0.5375 \\
+    \\
+    P(3.5<X<4.5)=0.5(0.4625+0.5375)(4.5-3.5)=0.5(1)(1)=0.5 \\
+    P(4.5<X)=0.5(0.5375+0.575)(5-4.5)=0.5(1.1125)(0.5)=0.2781
+  \end{gather*}
+\end{enumerate}
+
+\section*{4.5}
+
+A college professor never finishes his lecture before the end of the hour and always finishes his lectures within 2 minutes
+after the hour.  Let \(X=\) the time that elapses between the end of the hour and the end of the lecture and suppose the
+pdf for \(X\) is:
+\[f(x)=\begin{cases}
+kx^2 & 0\le x\le 2 \\
+0 & \text{otherwise}
+\end{cases}\]
+\begin{enumerate}[label={\alph*)}]
+\item Find the value of \(k\) and draw the corresponding density curve. [Hint: Total area under the graph of \(f(x)\) is 1.]
+  \begin{gather*}
+    \int_0^2kx^2dx=1 \\
+    \left.\frac{1}{3}kx^3\right|_0^1=1 \\
+    \frac{8}{3}k=1 \\
+    k=\frac{3}{8}=0.375
+  \end{gather*}
+\item What is the probability that the lecture ends within 1 minute of the end of the hour?
+  \[P(X\le1)=0.375\int_0^1x^2dx=\left.0.125x^3\right|_0^1=0.125(1^3-0^3)=0.125\]
+\item What is the probability that the lecture continues beyond the hour for between 60 and 90 seconds?
+  \[P(1\le X\le1.5)=\left.0.125x^3\right|_1^{1.5}=0.125(1.5^3-1^3)=0.297\]
+\item What is the probability that the lecture continues for at least 90 seconds beyond the end of the hour?
+  \[P(1.5<X)=1-P(X\le1)-P(1\le X\le1.5)=1-0.125-0.297=0.578\]
+\end{enumerate}
+
+\section*{4.7}
+
+The article \emph{Second Moment Reliability Evaluation vs. Monte Carlo Simulations for Weld Fatigue Strength} (Quality and
+Reliability Engr. Intl., 2012: 887--896) considered the use of a uniform distribution with \(A=0.20\) and \(B=4.25\) for the
+diameter \(X\) of a certain type of weld (mm).
+\begin{enumerate}[label={\alph*)}]
+\item Determine the pdf of \(X\) and graph it.
+  \begin{gather*}
+    \frac{1}{4.25-0.2}=\frac{1}{4.05} \\
+    \\
+    f(x)=\begin{cases}
+    \frac{1}{4.05} & 0.2\le x\le4.25 \\
+    0 & \text{otherwise}
+    \end{cases}
+  \end{gather*}
+  \begin{tikzpicture}[scale=0.75]
+    \begin{axis}[
+        xlabel={\(x\)},
+        ylabel={\(f(x)\)},
+        axis lines=middle,
+        xmin={-1/4},
+        xmax={5},
+        ymin={-1/4},
+        ymax={1/2},
+        xtick={0.2,4.25},
+        ytick={1/4.05},
+        every axis x label/.style={
+          at={(ticklabel* cs:1)},
+          anchor=west
+        },
+        every axis y label/.style={
+          at={(ticklabel* cs:1)},
+          anchor=south,
+        },
+        yticklabel style={
+          /pgf/number format/fixed,
+          /pgf/number format/precision=3
+        }
+      ]
+      \node [draw,circle,scale=0.5] at (0.2,0) {};
+      \node [draw,circle,fill=black,scale=0.5] at (0.2,1/4.05) {};
+      \node [draw,circle,fill=black,scale=0.5] at (4.25,1/4.05) {};
+      \node [draw,circle,scale=0.5] at (4.25,0) {};
+      \addplot [domain=0.2:4.25] {1/4.05};
+      \addplot [domain=-1/4:0.2, very thick] {0};
+      \addplot [domain=4.25:5, very thick] {0};
+      \draw [dashed] (0.2,1/4.05) to (0.2,0);
+      \draw [dashed] (4.25,1/4.05) to (4.25,0);
+    \end{axis}
+  \end{tikzpicture}
+
+\item What is the probability that diameter exceeds 3mm?
+  \[P(3\le X)=\frac{4.25-0.2}{4.05}=0.309\]
+\item What is the probability that diameter is within 1mm of the mean diameter?
+  \begin{gather*}
+    \mu=\frac{0.2+4.25}{2}=\frac{4.45}{2}=2.225 \\
+    \\
+    P(1.225\le X\le3.225)=\frac{3.225-1.225}{4.05}=\frac{2}{4.05}=0.494
+  \end{gather*}
+\item For any value \(a\) satisfying \(0.20<a<a+1<4.25\), what is \(P(a<X<a+1)\)?
+  \[P(a<X<a+1)=\frac{(a+1)-a}{4.05}=\frac{1}{4.05}=0.247\]
+\end{enumerate}
+
+\section*{4.8}
+
+In commuting to work, a professor must first get on a bus near her house and then transfer to a second bus.  If the waiting
+time (in minutes) at each stop has a uniform distribution with \(A=0\) and \(B=5\), then it can be shown that the total
+waiting time \(Y\) has the pdf:
+\[f(y)=\begin{cases}
+\frac{1}{25}y & 0\le y<5 \\
+\frac{2}{5}-\frac{1}{25}y & 5\le y\le10 \\
+0 & y<0\ \text{or}\ y>10
+\end{cases}\]
+\begin{enumerate}[label={\alph*)}]
+\item Sketch a graph of the pdf.
+
+  \begin{tikzpicture}[scale=0.75]
+    \begin{axis}[
+        xlabel={\(x\)},
+        ylabel={\(f(x)\)},
+        axis lines=middle,
+        xmin={-1},
+        xmax={11},
+        ymin={-1/4},
+        ymax={1/2},
+        xtick={5,10},
+        ytick={0.2},
+        every axis x label/.style={
+          at={(ticklabel* cs:1)},
+          anchor=west
+        },
+        every axis y label/.style={
+          at={(ticklabel* cs:1)},
+          anchor=south,
+        }
+      ]
+      \node [draw,circle,fill=black,scale=0.5] at (0,0) {};
+      \node [draw,circle,fill=black,scale=0.5] at (5,0.2) {};
+      \node [draw,circle,fill=black,scale=0.5] at (10,0) {};
+      \addplot [domain=0:5] {(1/25)*x};
+      \addplot [domain=5:10] {(2/5)-(1/25)*x};
+      \addplot [domain=-1:0,very thick] {0};
+      \addplot [domain=10:11,very thick] {0};
+      \draw [dashed] (0,0.2) to (5,0.2);
+    \end{axis}
+  \end{tikzpicture}
+
+\item Verify that \(\int_{-\infty}^{\infty}f(y)dy=1\).
+  \[\int_{-\infty}^{\infty}f(y)dy=0.5(10)(0.2)=1\]
+\item What is the probability that total waiting time is at most 3 minutes?
+  \[P(X\le3)=\int_0^3\frac{1}{25}ydy=\left.\frac{1}{50}y^2\right|_0^3=\frac{9}{50}=0.18\]
+\item What is the probability that total waiting time is at most 8 minutes?
+  \begin{align*}
+    P(X\le8) &= \int_0^5\frac{1}{25}ydy+\int_5^8\left(\frac{2}{5}-\frac{1}{25}y\right)dy \\
+    &= \left.\frac{1}{50}y^2\right|_0^5+\left.\left(\frac{2}{5}y-\frac{1}{50}y^2\right)\right|_5^8 \\
+    &= \frac{1}{2}+\left[\left(\frac{16}{5}-\frac{32}{25}\right)-\left(2-\frac{1}{2}\right)\right] \\
+    &= 0.5 +[(3.2-1.28)-1.5] \\
+    &= 0.5+1.92-1.5 \\
+    &= 0.92
+  \end{align*}
+\item What is the probability that total waiting time is between 3 and 8 minutes?
+  \[P(3\le Y\le8)=P(Y\le8)-P(Y\le3)=0.92-0.18=0.74\]
+\item What is the probability that total waiting time is either less than 2 minutes or more than 6 minutes?
+  \begin{align*}
+    P(Y\le2\ \text{or}\ 6\le Y) &= \int_0^2\frac{1}{25}ydy+\int_6^{10}\left(\frac{2}{5}-\frac{1}{25}y\right)dy \\
+    &= \left.\frac{1}{50}y^2\right|_0^2+\left.\left(\frac{2}{5}y-\frac{1}{50}y^2\right)\right|_6^{10} \\
+    &= \frac{2}{25}+\left[(4-2)-\left(\frac{12}{5}-\frac{18}{25}\right)\right] \\
+    &= \frac{2}{25}+2-\frac{42}{25} \\
+    &= \frac{10}{25} \\
+    &= \frac{2}{5} \\
+    &= 0.4
+  \end{align*}
+\end{enumerate}
+
+\section*{4.11}
+
+Let \(X\) denote the amount of time a book on two-hour reserve is actually checked out, and suppose the cdf is:
+\[F(x)=\begin{cases}
+0 & x<0 \\
+\frac{x^2}{4} & 0\le x<2 \\
+1 & 2\le x
+\end{cases}\]
+\begin{enumerate}[label={\alph*)}]
+\item Calculate \(P(X\le1)\).
+  \[P(X\le1)=F(1)=\frac{1}{4}=0.25\]
+\item Calculate \(P(0.5\le x\le1)\).
+  \[P(0.5\le x\le1)=F(1)-F(0.5)=\frac{1}{4}-\frac{1}{16}=\frac{3}{16}=0.1875\]
+\item Calculate \(P(X>1.5)\).
+  \[P(X>1.5)=1-F(1.5)=1-\frac{9}{16}=\frac{7}{16}=0.4375\]
+\item What is the median checkout duration \(\m\)? [solve \(0.5=F(\m)\)].
+  \begin{gather*}
+    \frac{1}{2}=F(\m)=\frac{\m^2}{4} \\
+    \m^2=2 \\
+    \m=\pm\sqrt{2}
+  \end{gather*}
+  Honoring the domain:
+  \[\m=\sqrt{2}=1.4142\]
+\item Obtain the density function \(f(x)\).
+  \[f(x)=F'(x)=\begin{cases}
+  \frac{1}{2}x & 0\le x\le 2 \\
+  0 & \text{otherwise}
+  \end{cases}\]
+\item Calculate \(E(X)\).
+  \[E(X)=\int_0^2x\left(\frac{1}{2}x\right)dx=\frac{1}{2}\int_0^2x^2dx=\left.\frac{1}{6}x^2\right|_0^2=\frac{8}{6}=
+  \frac{4}{3}=1.3333\]
+\item Calculate \(V(X)\) and \(\o_X\).
+  \begin{gather*}
+    E(X^2)=\int_0^2x^2\left(\frac{1}{2}x\right)dx=\frac{1}{2}\int_0^2x^3dx=\left.\frac{1}{8}x^4\right|_0^2=\frac{16}{8}=2 \\
+    \\
+    V(X)=2-\left(\frac{4}{3}\right)^2=2-\frac{16}{9}=\frac{2}{9}=0.2222 \\
+    \\
+    \o=\sqrt{\frac{2}{9}}=\frac{1}{3}\sqrt{2}=0.4714
+  \end{gather*}
+\item If the borrower is charged an amount \(h(X)=X^2\) when checkout duration is \(X\), compute the expected charge
+  \(E(h(X))\).
+  \[E(h(X))=\int_0^2x^2\left(\frac{1}{2}x\right)dx=\frac{1}{2}\int_0^2x^3dx=\left.\frac{1}{8}x^4\right|_0^2=\frac{16}{8}=2\]
+\end{enumerate}
+
+\section*{4.13}
+
+Example 4.5 introduced the concept of time headway in traffic flow and proposed a particular distribution for \(X=\) the
+headway between two randomly selected consecutive cars (seconds).  Suppose that in a different traffic environment, the
+distribution of time headway has the form:
+\[f(x)=\begin{cases}
+\frac{k}{x^4} & x>1 \\
+0 & x\le1
+\end{cases}\]
+\begin{enumerate}[label={\alph*)}]
+\item Determine the value of \(k\) for which \(f(x)\) is a legitimate pdf.
+  \begin{gather*}
+    \int_1^{\infty}\frac{k}{x^4}dx=1 \\
+    \left.-\frac{k}{3x^3}\right|_1^{\infty}=1 \\
+    \left.\frac{k}{3x^3}\right|_{\infty}^1=1 \\
+    \frac{k}{3}=1 \\
+    k=3
+  \end{gather*}
+\item Obtain the cumulative distribution function.
+  \begin{gather*}
+    \int_1^x\frac{3}{t^4}dt=\left.-\frac{1}{t^3}\right|_1^x=\left.\frac{1}{t^3}\right|_x^1=1-\frac{1}{x^3} \\
+    \\
+    F(x)=\begin{cases}
+    1-\frac{1}{x^3} & x>1 \\
+    0 & \text{otherwise}
+    \end{cases}
+  \end{gather*}
+\item Use the cdf from (b) to determine the probability that headway exceeds 2 seconds and also the probability that
+  headway is between 2 and 3 seconds.
+  \begin{gather*}
+    P(2\le X)=1-F(2)=1-\left(1-\frac{1}{2^3}\right)=\frac{1}{8}=0.125 \\
+    \\
+    P(2\le X\le 3)=F(3)-F(2)=\left(1-\frac{1}{3^3}\right)-\left(1-\frac{1}{2^3}\right)=\frac{1}{8}-\frac{1}{27}=0.088
+  \end{gather*}
+\item Obtain the mean value of headway and the standard deviation of headway.
+  \begin{gather*}
+    E(X)=\int_1^{\infty}x\left(\frac{3}{x^4}\right)dx=3\int_1^{\infty}\frac{1}{x^3}dx=\left.-\frac{3}{2x^2}\right|_1^{\infty}=
+    \left.\frac{3}{2x^2}\right|_{\infty}^1=\frac{3}{2}=1.5 \\
+    \\
+    E(X^2)=\int_1^{\infty}x^2\left(\frac{3}{x^4}\right)dx=3\int_1^{\infty}\frac{1}{x^2}dx=\left.-\frac{3}{x}\right|_1^{\infty}=
+    \left.\frac{3}{x}\right|_{\infty}^1=3 \\
+    \\
+    \o^2=3-\left(\frac{3}{2}\right)^2=3-\frac{9}{4}=\frac{3}{4}=0.75 \\
+    \\
+    \o=\sqrt{\frac{3}{4}}=\frac{\sqrt{3}}{2}=0.866
+  \end{gather*}
+\item What is the probability that headway is within 1 standard deviation of the mean value?
+  \[P(0.634<X<2.366)=P(X<2.366)=F(2.366)=1-\frac{1}{2.366^3}=0.9245\]
+\end{enumerate}
+
+\section*{4.20}
+
+Consider the pdf for total waiting time \(Y\) for two buses:
+\[f(y)=\begin{cases}
+\frac{1}{25}y & 0\le y<5 \\
+\frac{2}{5}-\frac{1}{25}y & 5\le y \le10 \\
+0 & \text{otherwiser}
+\end{cases}\]
+introduced in Exercise 8.
+
+\begin{enumerate}[label={\alph*)}]
+\item Compute and sketch the cdf of \(Y\). [Hint: Consider separately \(0\le y<5\) and \(5\le y\le10\) in computing
+  \(F(y)\).  A graph of the pdf should be helpful.]
+
+  Based on the pdf sketched above in Exercise 4.8:
+
+  For \(0\le y<5\):
+  \[F(y)=\int_0^y\frac{1}{25}tdt=\frac{1}{50}y^2\]
+  At \(y=5\):
+  \[F(5)=\frac{1}{50}(5)^2=\frac{1}{2}\]
+  For \(5\le y\le10\):
+  \begin{align*}
+    F(y) & =\frac{1}{2}+\int_5^y\left(\frac{2}{5}-\frac{1}{25}t\right)dt \\
+    &= \frac{1}{2}+\left.\left(\frac{2}{5}t-\frac{1}{50}t^2\right)\right|_5^y \\
+    &= \frac{1}{2}+\left(\frac{2}{5}y-\frac{1}{50}y^2\right)-\left(2-\frac{1}{2}\right) \\
+    &= -\frac{1}{50}y^2+\frac{2}{5}y-1
+  \end{align*}
+  And so:
+  \[F(y)=\begin{cases}
+  0 & y<0 \\
+  \frac{1}{50}y^2 & 0\le y<5 \\
+  -\frac{1}{50}y^2+\frac{2}{5}y-1 & 5\le y\le10 \\
+  1 & y>10
+  \end{cases}\]
+
+\item Not assigned.
+
+\item Compute \(E(Y)\) and \(V(Y)\).
+
+  By symmetry, \(E(Y)\) should be 5.  Check this:
+  \begin{align*}
+    E(Y) &= \int_0^{10}yf(y)dy \\
+    &= \int_0^5y\left(\frac{1}{25}y\right)dy+\int_5^{10}y\left(\frac{2}{5}-\frac{1}{25}y\right)dy \\
+    &= \frac{1}{25}\int_0^5y^2dy+\int_5^{10}\left(\frac{2}{5}y-\frac{1}{25}y^2\right)dy \\
+    &= \left.\frac{1}{75}y^3\right|_0^5+\left.\left(\frac{1}{5}y^2-\frac{1}{75}y^3\right)\right|_5^{10} \\
+    &= \frac{125}{75}+\left(20-\frac{1000}{75}\right)-\left(5-\frac{125}{75}\right) \\
+    &= 15-\frac{750}{75} \\
+    &= 15-10 \\
+    &= 5
+  \end{align*}
+  \begin{align*}
+    E(Y^2) &= \int_0^{10}y^2f(y)dy \\
+    &= \int_0^5y^2\left(\frac{1}{25}y\right)dy+\int_5^{10}y^2\left(\frac{2}{5}-\frac{1}{25}y\right)dy \\
+    &= \frac{1}{25}\int_0^5y^3dy+\int_5^{10}\left(\frac{2}{5}y^2-\frac{1}{25}y^3\right)dy \\
+    &= \left.\frac{1}{100}y^4\right|_0^5+\left.\left(\frac{2}{15}y^3-\frac{1}{100}y^4\right)\right|_5^{10} \\
+    &= \frac{625}{100}+\left(\frac{2000}{15}-100\right)-\left(\frac{250}{15}-\frac{625}{100}\right) \\
+    &= \frac{1250}{100}+\frac{1750}{15}-100 \\
+    &= \frac{50}{4}+\frac{250}{15} \\
+    &= \frac{50}{4}+\frac{50}{3} \\
+    &= \frac{350}{12} \\
+    &= \frac{175}{6}
+    &= 29.17
+  \end{align*}
+  \[V(X)=\frac{175}{6}-5^2=\frac{175}{6}-25=\frac{25}{6}=4.17\]
+  How do these compare with the expected waiting time and variance for a single bus when the time is uniformly distributed on
+  \([0,5]\)?
+
+  Let \(X_1=\) wait time for first bus and \(X_2=\) wait time for second bus, each with a uniform distribution over
+  \([0,5]\):
+  \begin{gather*}
+    E(X_1)=E(X_2)=\frac{1}{5}\int_0^5xdx=\left.\frac{1}{10}x^2\right|_0^5=\frac{25}{10}=\frac{5}{2}=2.5 \\
+    \\
+    E(X_1^2)=E(X_2^2)=\frac{1}{5}\int_0^5x^2dx=\left.\frac{1}{15}x^3\right|_0^5=\frac{125}{15}=\frac{25}{3}=8.33 \\
+    \\
+    V(X_1)=V(X_2)=\frac{25}{3}-\left(\frac{5}{2}\right)^2=\frac{25}{3}-\frac{25}{4}=\frac{25}{12}=2.08
+  \end{gather*}
+  And so:
+  \[E(Y)=E(X_1)+E(X_2)\]
+  and:
+  \[V(Y)=V(X_1)+V(X_2)\]
+\end{enumerate}
+
+\section*{4.21}
+
+An ecologist wishes to mark off a circular sampling region having radius 10 meters.  However, the radius of the resulting
+region is actually a random variable \(R\) with pdf:
+\[f(r)=\begin{cases}
+\frac{3}{4}[1-(10-r)^2] & 9\le r\le11 \\
+0 & \text{otherwise}
+\end{cases}\]
+What is the expected area of the resulting circular region?
+
+Let \(A=\pi r^2\):
+\begin{align*}
+  E(A) &= \int_9^{11}(\pi r^2)\left(\frac{3}{4}[1-(10-r)^2]\right)dr \\
+  &= \frac{3}{4}\pi\int_9^{11}r^2[1-(100-20r+r^2)]dr \\
+  &= \frac{3}{4}\pi\int_9^{11}r^2(-r^2+20r-99)dr \\
+  &= \frac{3}{4}\pi\int_9^{11}(-r^4+20r^3-99r^2)dr \\
+  &= \left.\frac{3}{4}\pi\left(-\frac{1}{5}r^5+5r^4-33r^3\right)\right|_9^{11} \\
+  &= \frac{3}{4}\pi[-2928.2-(-3061.8)] \\
+  &= \frac{3}{4}\pi(133.6) \\
+  &= \SI{314.79}{m^2}
+\end{align*}
+
+\end{document}

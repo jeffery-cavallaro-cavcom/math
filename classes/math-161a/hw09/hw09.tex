@@ -1,0 +1,66 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\newcommand{\iid}{\overset{\text{iid}}{\sim}}
+\DeclareMathOperator{\nd}{N}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 161A \\
+Homework \#9
+
+\bigskip
+
+\section*{8.3}
+
+For which of the given \(p\)-values would the null hypothesis be rejected when performing a level 0.05 test?
+\begin{enumerate}[label={\alph*)}]
+\item 0.001 (reject)
+\item 0.021 (reject)
+\item 0.078 (fail to reject)
+\item 0.047 (reject)
+\item 0.148 (fail to reject)
+\end{enumerate}
+
+\section*{8.9}
+
+Water samples are taken from water used for cooling as it is being discharged from a power plant into a river.  It has been
+determined that as long as the mean temperature of the discharged water is at most \(150^{\circ}F\), there will be no negative
+effects on the river's ecosystem.  To investigate whether the plant is in compliance with regulations that prohibit a mean
+discharge water temperature above \(150^{\circ}\), 50 water samples will be taken at randomly-selected times and the
+temperature of each sample recorded.  The resulting data will be used to test the hypothesis \(H_0:\m=150^{\circ}\) versus
+\(H_a:\m>150^{\circ}\).  In context of this situation, describe type I and type II errors.  Which type of error would you
+consider more serious.
+
+Type I: Concluding that the mean temperature is greater than \(150^{\circ}\) and hence the power plant is out of compliance
+when the true mean is actually less than or equal to \(150^{\circ}\) and the power plant is in compliance.
+
+Type II: Concluding that the mean temperature is less than or equal to \(150^{\circ}\) and hence the power plant is in
+compliance when the true mean is greater than \(150^{\circ}\) and the power plant is not in compliance.
+
+In this case, the type II error is more important because damage is being done to the river's ecosystem.
+
+\section*{8.12}
+
+A mixture of pulverized fuel ash and Portland cement to be used for grouting should have a compressive strength of more than
+\SI{1300}{kN/m^2}.  The mixture will not be used unless experimental evidence indicates conclusively that the strength
+specification has been met.  Suppose compressive strength for specimens of this mixture is normally distributed with
+\(\o=60\).  Let \(\m\) denote the true average compressive strength.
+\begin{enumerate}[label={\alph*)}]
+\item What are the appropriate null and alternative hypotheses?
+  \[H_0:\m=1300\qquad H_a:\m<1300\]
+\item Let \(\bar{X}\) denote the sample average compressive strength for \(n=10\) randomly selected specimens.  Consider the
+  test procedure with test statistic \(\bar{X}\) itself (not standardized).  If \(\bar{x}=1360\), should \(H_0\) be
+  rejected using a significance level of 0.01?  [Hint: What is the probability distribution of the test statistic when
+    \(H_0\) is true?]
+\end{enumerate}
+
+\section*{8.13}
+
+\section*{8.14}
+
+\section*{8.19}
+
+\end{document}

@@ -1,0 +1,487 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\usepackage{siunitx}
+\pagestyle{plain}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\renewcommand{\O}{\Phi}
+\renewcommand{\a}{\alpha}
+\newcommand{\m}{\mu}
+\DeclareMathOperator{\nord}{N}
+\DeclareMathOperator{\expd}{Exp}
+\DeclareMathOperator{\bind}{B}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 161A \\
+Homework \#6
+
+\bigskip
+
+\section*{4.28}
+
+Let \(Z\) be a standard normal random variable and calculate the following probabilities, drawing pictures wherever
+appropriate.
+\begin{enumerate}[label={\alph*)},start=5]
+\item \(P(Z\le1.37)\)
+
+  \begin{tikzpicture}
+    \draw [<->] (-5,0) -- (5,0);
+    \draw [domain=-5:5] plot ({\x},{2*exp(-(\x)^2/2)});
+    \pgfmathsetmacro{\a}{2*exp(-(-5)^2/2)}
+    \pgfmathsetmacro{\b}{2*exp(-1.37^2/2)}
+    \node [below] at (0,0) {\(0\)};
+    \node [below] at (1.37,0) {\(1.37\)};
+    \draw [fill=lightgray]
+    (-5,0) --
+    (-5,{\a}) --
+    plot [domain=-5:1.37] ({\x},{2*exp(-(\x)^2/2)}) --
+    (1.37,0) --
+    cycle;
+    \draw [->] (0,0) -- (0,3);
+  \end{tikzpicture}
+  \[P(Z\le1.37)=\O(1.37)=0.9147\]
+\item \(P(-1.75\le Z)\)
+
+  \begin{tikzpicture}
+    \draw [<->] (-5,0) -- (5,0);
+    \draw [domain=-5:5] plot ({\x},{2*exp(-(\x)^2/2)});
+    \pgfmathsetmacro{\a}{2*exp(-(5)^2/2)}
+    \pgfmathsetmacro{\b}{2*exp(-(-1.75)^2/2)}
+    \node [below] at (0,0) {\(0\)};
+    \node [below] at (-1.75,0) {\(-1.75\)};
+    \draw [fill=lightgray]
+    (-1.75,0) --
+    (-1.75,{\b}) --
+    plot [domain=-1.75:5] ({\x},{2*exp(-(\x)^2/2)}) --
+    (5,0) --
+    cycle;
+    \draw [->] (0,0) -- (0,3);
+  \end{tikzpicture}
+  \[P(-1.75\le Z)=1-\O(-1.75)=1-0.0401=0.9599\]
+\item (not assigned)
+\item \(P(1.37\le Z\le2.50)\)
+
+  \begin{tikzpicture}
+    \draw [<->] (-5,0) -- (5,0);
+    \draw [domain=-5:5] plot ({\x},{2*exp(-(\x)^2/2)});
+    \pgfmathsetmacro{\a}{2*exp(-(1.37)^2/2)}
+    \pgfmathsetmacro{\b}{2*exp(-(2.50)^2/2)}
+    \node [below] at (0,0) {\(0\)};
+    \node [below] at (1.37,0) {\(1.37\)};
+    \node [below] at (2.50,0) {\(2.50\)};
+    \draw [fill=lightgray]
+    (1.37,0) --
+    (1.37,{\a}) --
+    plot [domain=1.37:2.50] ({\x},{2*exp(-(\x)^2/2)}) --
+    (2.50,0) --
+    cycle;
+    \draw [->] (0,0) -- (0,3);
+  \end{tikzpicture}
+  \[P(1.37\le Z\le2.50)=\O(2.50)=\O(1.37)=0.9938-0.9147=0.0791\]
+\item (not assigned)
+\item \(P(\abs{Z}\le2.50)\)
+
+  \begin{tikzpicture}
+    \draw [<->] (-5,0) -- (5,0);
+    \draw [domain=-5:5] plot ({\x},{2*exp(-(\x)^2/2)});
+    \pgfmathsetmacro{\a}{2*exp(-(-2.50)^2/2)}
+    \pgfmathsetmacro{\b}{2*exp(-(2.50)^2/2)}
+    \node [below] at (0,0) {\(0\)};
+    \node [below] at (-2.50,0) {\(-2.50\)};
+    \node [below] at (2.50,0) {\(2.50\)};
+    \draw [fill=lightgray]
+    (-2.50,0) --
+    (-2.50,{\a}) --
+    plot [domain=-2.50:2.50] ({\x},{2*exp(-(\x)^2/2)}) --
+    (2.50,0) --
+    cycle;
+    \draw [->] (0,0) -- (0,3);
+  \end{tikzpicture}
+  \begin{align*}
+    P(\abs{Z}\le2.50) &= P(-2.50\le Z\le2.50) \\
+    &= 2P(0\le Z\le 2.50) \\
+    &= 2(\O(2.50)-\O(0)) \\
+    &= 2(0.9938-0.5000) \\
+    &= 2(0.4938) \\
+    &= 0.9876
+  \end{align*}
+\end{enumerate}
+
+\section*{4.29}
+
+In each case, determine the value of the constant \(c\) that makes the probability statement correct.
+\begin{enumerate}[label={\alph*)}]
+\item \(\O(c)=0.9838\)
+  \[c=2.14\]
+\item \(P(0\le Z\le c)=0.2910\)
+  \begin{gather*}
+    P(0\le Z\le c)=0.2910 \\
+    \O(c)-\O(0)=0.2910 \\
+    \O(c)-0.5000=0.2910 \\
+    \O(c)=0.7910 \\
+    c=0.81
+  \end{gather*}
+\item \(P(c\le Z)=0.1210\)
+  \begin{gather*}
+    P(c\le Z)=0.1210 \\
+    1-\O(c)=0.1210 \\
+    \O(c)=0.8790 \\
+    c=1.17
+  \end{gather*}
+\item \(P(-c\le Z\le c)=0.6680\)
+  \begin{gather*}
+    P(-c\le Z\le c)=0.6680 \\
+    2P(0\le Z\le c)=0.6680 \\
+    P(0\le Z\le c)=0.3340 \\
+    \O(c)-\O(0)=0.3340 \\
+    \O(c)-0.5000=0.3340 \\
+    \O(c)=0.8340 \\
+    c=0.97
+  \end{gather*}
+\item \(P(c\le\abs{Z})=0.0160\)
+  \begin{gather*}
+    P(c\le\abs{Z})=0.0160 \\
+    2P(Z\le(-c))=0.0160 \\
+    2\O(-c)=0.0160 \\
+    \O(-c)=0.0080 \\
+    -c=-2.41 \\
+    c=2.41
+  \end{gather*}
+\end{enumerate}
+
+\section*{4.30}
+
+Find the following percentiles for the standard normal distribution.  Interpolate where appropriate.
+\begin{enumerate}[label={\alph*)}]
+\item \(91^{st}\)
+  \begin{gather*}
+    \O(c)=0.9100 \\
+    c=1.34
+  \end{gather*}
+\item \(9^{th}\)
+  \begin{gather*}
+    \O(c)=0.0900 \\
+    c=-1.34
+  \end{gather*}
+\item \(75^{th}\)
+  \begin{gather*}
+    \O(c)=0.7500 \\
+    c=0.675
+  \end{gather*}
+\item \(25^{th}\)
+  \begin{gather*}
+    \O(c)=0.2500 \\
+    c=-0.675
+  \end{gather*}
+\item \(6^{th}\)
+  \begin{gather*}
+    \O(c)=0.0600 \\
+    c=-1.555
+  \end{gather*}
+\end{enumerate}
+
+\section*{4.31}
+
+Determine \(z_{\a}\) for the following values of \(\a\).
+\begin{enumerate}[label={\alph*)}]
+\item \(\a=0.0055\)
+  \begin{gather*}
+    \O(z_{\a})=1-0.0055=0.9945 \\
+    z_{\a}=2.54
+  \end{gather*}
+\item \(\a=0.0900\)
+  \begin{gather*}
+    \O(z_{\a})=1-0.0900=0.9100 \\
+    z_{\a}=1.34
+  \end{gather*}
+\item \(\a=0.6630\)
+  \begin{gather*}
+    \O(z_{\a})=1-0.6630=0.3370 \\
+    z_{\a}=-0.42
+  \end{gather*}
+\end{enumerate}
+
+\section*{4.45}
+
+A machine that produces ball bearings has initially been set so that the true average diameter of the bearings it produces is
+0.500 in.  A bearing is acceptable if its diameter is within 0.004 in of this target value.  Suppose, however, that the
+setting has changed during the course of production, so that the bearings have normally distributed diameters with mean value
+0.499 in and standard deviation 0.002 in.  What percentage of the bearings produced will not be accepted?
+
+Let \(X=\) diameter of ball bearing and normalize \(X\):
+\begin{align*}
+  P(\text{rejected}) &= 1-P(0.496\le X\le5.004) \\
+  &= 1-P\left(\frac{0.496-0.499}{0.002}\le Z\le\frac{0.504-0.499}{0.002}\right) \\
+  &= 1-P(-1.5\le Z\le2.5) \\
+  &= 1-(\O(2.5)-\O(-1.5)) \\
+  &= 1-(0.9938-0.0668) \\
+  &= 1-0.9270 \\
+  &= 0.0730 \\
+  &= 7.3\%
+\end{align*}
+
+\section*{4.49}
+
+Consider babies born in the ``normal'' range of 37--43 weeks gestation age.  Extensive data supports the assumption that for
+such babies born in the United States, birth weight is normally distributed with mean 3432 g and standard deviation 482 g.
+[The article ``Are Babies Normal?'' (The American Statistician, 1999:298--302) analyzed data from a particular year; for a
+  sensible choice of class intervals, a histogram did not look all that normal, but after further investigations it was
+  determined that this was due to some hospitals measuring weight in grams and others measuring to the nearest ounce and
+  then converting to grams.  A modified choice of class intervals that allowed for this gave a histogram that was well
+  described by a normal distribution.]
+\begin{enumerate}[label={\alph*)}]
+\item What is the probability that the birth weight of a randomly selected baby of this type exceeds 4000 g? Is between
+  3000 and 4000 g?
+  \begin{align*}
+    P(4000<X) &= 1-P(X\le4000) \\
+    &= 1-P\left(Z\le\frac{4000-3432}{482}\right) \\
+    &= 1-P(Z\le1.18) \\
+    &= 1-\O(1.18) \\
+    &= 1-0.8810 \\
+    &= 0.1190
+  \end{align*}
+  \begin{align*}
+    P(3000\le X\le4000) &= P\left(\frac{3000-3432}{482}\le Z\le\frac{4000-3432}{482}\right) \\
+    &= P(-0.90\le Z\le1.18) \\
+    &= \O(1.18)-\O(-0.90) \\
+    &= 0.8810-0.1841 \\
+    &= 0.6969
+  \end{align*}
+\item What is the probability that the birth weight of a randomly selected baby of this type is either less than 2000 g or
+  greater than 5000 g?
+  \begin{align*}
+    P(X<2000\ \text{or}\ X>5000) &= 1-P(2000\le X\le5000) \\
+    &= 1-P\left(\frac{2000-3432}{482}\le Z\le\frac{5000-3432}{482}\right) \\
+    &= 1-P(-2.97\le Z\le3.25) \\
+    &= 1-(\O(3.25)-\O(-2.97)) \\
+    &= 1-(0.9994-0.0015) \\
+    &= 1-0.9979 \\
+    &= 0.0021
+  \end{align*}
+
+\item What is the probability that the birth weight of a randomly selected baby of this type exceeds 7 lb?
+  \[(\SI{7}{lb})\left(\frac{\SI{453.592}{g}}{\SI{1}{lb}}\right)\approx\SI{3175}{g}\]
+  \begin{align*}
+    P(3175<X) &= 1-P(X\le3175) \\
+    &= 1-P\left(Z\le\frac{3175-3432}{482}\right) \\
+    &= 1-P(Z\le-0.53) \\
+    &= 1-\O(-0.53) \\
+    &= 1-0.2981 \\
+    &= 0.7019
+  \end{align*}
+
+\item How would you characterize the extreme 0.1\% of all birth weights?
+  Since the 0.1\% is split equally at both ends, first find \(z_{0.0005}\):
+  \[\O(z_{0.0005})=1-0.0005=0.9995\]
+  In the table, the corresponding values range from 3.27 to 3.32, so take the average of the endpoints:
+  \[z_{0.0005}=\frac{3.27+3.32}{2}=3.295\]
+  Now find the two extremes:
+  \begin{gather*}
+    -3.295=\frac{x_1-3432}{482} \\
+    -1588=x_1-3482 \\
+    x_1=1844 \\
+    \\
+    3.295=\frac{x_2-3432}{482} \\
+    1588=x_2-3432 \\
+    x_2=5020
+  \end{gather*}
+  And so the extreme 0.1\% is characterized by \(X<\SI{1844}{g}\) or \(X>\SI{5020}{g}\).
+
+\item If \(X\) is a random variable with a normal distribution and \(a\) is a numerical constant (\(a\ne0\)), then \(Y=aX\)
+  also has a normal distribution.  Use this to determine the distribution of birth weight expressed in pounds (shape, mean,
+  and standard deviation), and then recalculate the probability from part (c).  How does this compare with your previous
+  answer?
+
+  Consider the exponent of the exponential and replace \(x\) with \(ax\):
+  \[\frac{(ax-\m)^2}{2\o^2}=\frac{a^2\left(x-\frac{\m}{a}\right)^2}{2\o^2}=\frac{\left(x-\frac{\m}{a}\right)^2}{
+    2\left(\frac{\o}{a}\right)^2}\]
+  and so:
+  \begin{gather*}
+    \m_Y=\frac{3432}{453.592}=7.566 \\
+    \\
+    \o_Y=\frac{482}{453.592}=1.063 \\
+    \\
+    Y=aX\sim\nord(7.566,1.063^2)
+  \end{gather*}
+  \begin{align*}
+    P(7.000<Y) &= 1-P(Y\le7.000) \\
+    &= 1-P\left(Z\le\frac{7.000-7.566}{1.063}\right) \\
+    &= 1-P(Z\le-0.53) \\
+    &= 1-\O(-0.53) \\
+    &= 1-0.2981 \\
+    &= 0.7019
+  \end{align*}
+  This matches the answer from part (c).
+\end{enumerate}
+
+\section*{4.50}
+
+In response to concerns about nutritional contents of fast foods, McDonald's has announced that it will use a new cooking oil
+for its french fries that will decrease substantially trans fatty acid levels and increase the amount of more beneficial
+ployunsaturated fat.  The company claims that 97 out of 100 people cannot detect a difference in taste between the new and old
+oils.  Assuming that this figure is correct (as a long-run proportion), what is the approximate probability that in a random
+sample of 1000 individuals who have purchased fries at McDonald's:
+
+Let \(X=\) number of people who can taste the difference:
+\[X\sim\bind(1000,0.03)\]
+which can be approximated by:
+\[X\sim\nord(1000\cdot0.03,1000\cdot0.03\cdot0.97)=\nord(30,29.1)\]
+\begin{enumerate}[label={\alph*)}]
+\item At least 40 can taste the difference between the two oils?
+  \begin{align*}
+    P(40\le X) &= 1-P(X<40) \\
+    &= 1-P(X\le39.5)\qquad\text{(with continuity correction)} \\
+    &= 1-P\left(Z\le\frac{39.5-30}{\sqrt{29.1}}\right) \\
+    &= 1-P(Z\le1.76) \\
+    &= 1-\O(1.76) \\
+    &= 1-0.9608 \\
+    &= 0.0392
+  \end{align*}
+\item At most 5\% can taste the difference between the two oils?
+  \begin{align*}
+    P(X\le50) &= P(X\le50.5)\qquad\text{(with continuity correction)} \\
+    &= P\left(Z\le\frac{50.5-30}{\sqrt{29.1}}\right) \\
+    &= P(Z\le3.80) \\
+    &= \O(3.80) \\
+    &\approx1
+  \end{align*}
+\end{enumerate}
+
+\section*{4.55}
+
+Suppose that only 75\% of all drivers in a certain state regularly wear a seat belt.  A random sample of 500 drivers is
+selected.  What is the probability that:
+
+Let \(X=\) number of drivers who regularly wear seat belts.
+\[X\sim\bind(500,0.75)\]
+which can be approximated by:
+\[X\sim\nord(500\cdot0.75,500\cdot0.75\cdot0.25)=\nord(375,93.75)\]
+\begin{enumerate}[label={\alph*)}]
+\item Between 360 and 400 (inclusive) of the drivers in the sample regularly wear a seat belt?
+  \begin{align*}
+    P(360\le X\le 400) &= P(359.5<X\le400.5)\qquad\text{(with continuity correction)} \\
+    &= P\left(\frac{359.5-375}{\sqrt{93.75}}<Z\le\frac{400.5-375}{\sqrt{93.75}}\right) \\
+    &= P(-1.60<Z\le2.63) \\
+    &= \O(2.63)-\O(-1.60) \\
+    &= 0.9957-0.0548 \\
+    &= 0.9409
+  \end{align*}
+\item Fewer than 400 of those in the sample regularly wear a seat belt?
+  \begin{align*}
+    P(X<400) &= P(X\le399.5)\qquad\text{(with continuity correction)} \\
+    &= P\left(Z\le\frac{399.5-375}{\sqrt{93.75}}\right) \\
+    &= P(Z\le2.53) \\
+    &= \O(2.53) \\
+    &= 0.9943
+  \end{align*}
+\end{enumerate}
+
+\section*{4.58}
+
+There is no nice formula for the standard normal cdf \(\O(x)\), but several good approximations have been published in
+articles.  The following is from ``Approximations for Hand Calculators Using Small Integer Coefficients'' (Mathematics
+of Computation, 1977:214--222).  For \(0<z\le5.5\):
+\[P(Z\ge z)=1-\O(z)\approx0.5\exp\left\{-\left[\frac{(83z+351)z+562}{\frac{703}{z}+165}\right]\right\}\]
+The relative error of this approximation is less than 0.042\%.  Use this to calculate approximations to the following
+probabilities, and compare whenever possible to the probabilities obtained from Appendix Table A.3.
+\begin{enumerate}[label={\alph*)}]
+\item \(P(Z\ge1)\)
+  
+  Formula:
+  \[P(Z\ge1)=0.1587\]
+  Table:
+  \[P(Z\ge1)=P(Z\le-1)=0.1587\]
+\item \(P(Z<-3)\)
+  
+  Formula:
+  \[P(Z<-3)=P(Z\ge3)=0.0013\]
+  Table:
+  \[P(Z<-3)=0.0013\]
+\item \(P(-4<Z<4)\)
+
+  Formula:
+  \[P(-4<Z<-4)=1-2P(Z\ge4)=1-2(0.000032)\approx1\]
+  Table:
+  \[P(-4<Z<4)\approx1\]
+\item \(P(Z>5)\)
+
+  Formula:
+  \[P(Z>5)=0.00000029\approx0\]
+  Table:
+  \[P(Z>5)\approx0\]
+\end{enumerate}
+
+\section*{4.59}
+
+Let \(X=\) the time between two successive arrivals at the drive-up window of a local bank.  If \(X\) has an exponential
+distribution with \(\l=1\), compute the following:
+\begin{enumerate}[label={\alph*)}]
+\item The expected time between two successive arrivals.
+  \[E(X)=\frac{1}{\l}=\frac{1}{1}=1\]
+\item The standard deviation of the time between successive arrivals.
+  \[\o=\frac{1}{\l}=\frac{1}{1}=1\]
+\item \(P(X\le4\)
+  \[P(X\le4)=F(4)=1-e^{-4}=0.9819\]
+\item \(P(2\le X\le5)\)
+  \[P(2\le X\le5)=F(5)-F(2)=e^{-2}-e^{-5}=0.1286\]
+\end{enumerate}
+
+\section*{4.69}
+
+A system consists of five identical components connected in series as shown:
+
+\bigskip
+
+\begin{tikzpicture}[every node/.style={draw,minimum width=2cm,minimum height=1cm,fill=lightgray}]
+  \node (1) at (2,0) {1};
+  \node (2) at (5,0) {1};
+  \node (3) at (8,0) {1};
+  \node (4) at (11,0) {1};
+  \node (5) at (14,0) {1};
+  \draw (0,0) to (1) to (2) to (3) to (4) to (5) to (16,0);
+\end{tikzpicture}
+
+\bigskip
+
+As soon as one component fails, the entire system will fail.  Suppose each component has a lifetime that is exponentially
+distributed with \(\l=0.01\) and that components fail independently of one another.  Define events:
+\[A_i=\setb{i^{th}\ \text{component lasts at least}\ t\ \text{hours}}{i=1,\ldots5}\]
+so that the \(A_i\)s are independent events.  Let \(X=\) the time at which the system fails --- that is, the shortest (minimum)
+lifetime among the five components.
+\begin{enumerate}[label={\alph*)}]
+\item The event \(\set{X\ge t}\) is equivalent to what event involving \(A_1,\ldots,A_5\)?
+  \[\set{X\ge t}=\bigcap_{i=1}^5A_i\]
+\item Using the independence of the \(A_i\)s, compute \(P(X\ge t)\).  Then obtain \(F(t)=P(X\ge t)\) and the pdf of \(X\).
+  What type of distribution does \(X\) have?
+  \begin{gather*}
+    P(X\ge t)=\prod_{i=1}^5P(A_i)=\prod_{i=1}^5e^{-0.01t}=e^{-0.05t}=\bar{F}(t) \\
+    F(t)=1-\bar{F}(t)=1-e^{-0.05t} \\
+    \\
+    f(x)=\begin{cases}
+    0.05e^{-0.05x} & x\ge 0 \\
+    0 & \text{otherwise}
+    \end{cases} \\
+    \\
+    X\sim\expd(0.05)
+  \end{gather*}
+\item Suppose there are \(n\) components, each having exponential lifetime with parameter \(\l\).  What type of distribution
+  does \(X\) have?
+  \[X\sim\expd(n\l)\]
+\end{enumerate}
+
+\section*{4.70}
+
+If \(X\) has an exponential distribution with parameter \(\l\), derive a general expression for the \((100p)^{th}\)
+percentile of the distribution.  Then specialize to obtain the median.
+\begin{gather*}
+  p=F(x)=1-e^{-\l x} \\
+  e^{-\l x}=1-p \\
+  -\l x=\ln(1-p) \\
+  x=-\frac{1}{\l}\ln(1-p) \\
+  \\
+  \text{median}=-\frac{1}{\l}\ln\left(1-\frac{1}{2}\right)=-\frac{1}{\l}\ln\left(\frac{1}{2}\right)=
+  \frac{1}{\l}\ln(2) \\
+\end{gather*}
+
+\end{document}

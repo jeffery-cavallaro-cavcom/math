@@ -1,0 +1,86 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\bern}{Bernoulli}
+\renewcommand{\o}{\sigma}
+\begin{document}
+\section*{Bernoulli Distribution}
+
+\begin{definition}[Bernoulli Trial]
+  To say that an experiment is a \emph{Bernoulli trial} means that:
+  \begin{enumerate}
+  \item There is only one trial.
+  \item There are only two possible outcomes: success (\(S\)) or failure (\(F\)).
+  \item The probability of getting a success is some number \(p\).
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Indicator Variable]
+  To say that a random variable \(X\)is an \emph{indicator} variable means that it has only two possible values:
+  \begin{itemize}
+    \item \(X=1\) (success)
+    \item \(X=0\) (failure)
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Bernoulli Distribution]
+  To say that a random variable \(X\) has a \emph{Bernoulli} distribution with parameter \(p\), denoted:
+  \[X\sim\bern(p)\]
+  means that \(X\) is an indicator variable for a Bernoulli trial with probability \(p\) for success.
+\end{definition}
+
+\begin{examples}[Bernoulli Distributions]
+  \begin{enumerate}
+  \item[]
+  \item Flip a fair coin: \(X=1\) (heads) or \(X=0\) (tails).
+    \[X\sim\bern\left(\frac{1}{2}\right)\]
+  \item Randomly select a ball from an urn that has 10 red balls and 20 green balls: \(Y=1\) (ball is red) or \(Y=0\)
+    (otherwise).
+    \[Y\sim\bern\left(\frac{1}{3}\right)\]
+  \item Randomly select an individual from a population, 40\% of whiuch have a certain characteristic: \(Z=1\) (the selected
+    person has the characteristic) or \(Z=0\) (otherwise).
+    \[Z\sim\bern\left(0.4\right)\]
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let \(X\) be a random variable with a Bernoulli distribution with parameter \(p\):
+  \begin{itemize}
+  \item \(f_X(x)=\begin{cases}
+    p^x(1-p)^{1-x} & x=0,1 \\
+    0 & \text{otherwise}
+  \end{cases}\)
+  \item \(E(X)=p\)
+  \item \(V(X)=p(1-p)\)
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  The probability for success is \(p\) (given).  Thus, since there are only two possible outcomes, the probability for
+  failure is \(1-p\).  Now check to see that candidate the pmf provides the proper results:
+  \begin{gather*}
+    P(X=0)=p^0(1-p)^{1-0}=1-p \\
+    P(X=1)=p^1(1-p)^{1-1}=p \\
+    \\
+    E(X)=0(p-1)+1\cdot p=p \\
+    \\
+    E(X^2)=0^2(1-p)+1^2\cdot p=p \\
+    \\
+    V(X)=E(X^2)-E(X)^2=p-p^2=p(1-p)
+  \end{gather*}
+\end{proof}
+
+\begin{example}
+  Flip a fair coin (\(p=\frac{1}{2}\)):
+  \begin{gather*}
+    X\sim\bern\left(\frac{1}{2}\right) \\
+    \\
+    E(X)=p=\frac{1}{2} \\
+    \\
+    V(X)=p(1-p)=\frac{1}{2}\left(1-\frac{1}{2}\right)=\frac{1}{2}\cdot\frac{1}{2}=\frac{1}{4} \\
+    \\
+    \o=\sqrt{\frac{1}{4}}=\frac{1}{2}
+  \end{gather*}
+\end{example}
+
+\end{document}

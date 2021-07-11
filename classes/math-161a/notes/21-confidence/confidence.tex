@@ -1,0 +1,126 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\newcommand{\iid}{\overset{\text{iid}}{\sim}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\O}{\theta}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\newcommand{\z}[1]{z_{#1}}
+\newcommand{\zdt}{\z{\frac{\a}{2}}}
+\renewcommand{\P}{\Phi}
+\pagestyle{empty}
+\begin{document}
+\section*{Confidence Intervals}
+
+Since a point estimate of a population parameter \(\O\) is a value of a continuous random variable (the point estimator) based
+on a particular sample, the probability that \(\hat{\O}=\O\) is 0.  The goal is to find a short interval with a high
+confidence level that the true \(\O\) value is contained within that interval.  For a given confidence level \(\a\) and some
+value \(m\):
+
+\bigskip
+
+\begin{center}
+  \(P\left(\O\in(\hat{\O}-m,\hat{\O}+m)\right)=1-\a\)
+
+  \bigskip
+
+  \begin{tikzpicture}
+    \draw (0,0) -- (10,0);
+    \node (x) at (5,0) {\scalebox{1.5}{\(\times\)}};
+    \node [below=5pt] at (x) {\(\hat{\O}\)};
+    \node (l) at (3,0) {\scalebox{1.5}{\((\)}};
+    \node [below=5pt] at (l) {\(\hat{\O}-m\)};
+    \node (r) at (7,0) {\scalebox{1.5}{\()\)}};
+    \node [below=5pt] at (r) {\(\hat{\O}+m\)};
+  \end{tikzpicture}
+\end{center}
+
+\begin{definition}[Confidence Interval]
+  Let \(\hat{\O}\) be a point estimate/estimator for a population parameter \(\O\) and let \(1-\a\) be a desired confidence
+  level.  The random interval:
+  \[\hat{\O}\pm m\]
+  such that:
+  \[P\left(\O\in(\hat{\O}-m,\hat{\O}+m)\right)=1-\a\]
+  is called \(1-\a\) \emph{confidence interval} for \(\O\).  The value \(1-\a\) is called the \emph{confidence level} and
+  the value \(m\) is called the \emph{margin of error}.
+\end{definition}
+
+\begin{theorem}
+  Let \(X_i\iid N(\m,\o^2)\) such that \(\m\) is unknown but \(\o\) is known.  The margin for error \(m\) for the
+  \(1-a\) confidence interval for \(\bar{X}\) from a sample of size \(n\) is given by:
+  \[m=\zdt{\frac{\o}{\sqrt{n}}}\]
+  Hence:
+  \[P\left(\m\in(\bar{X}-m,\bar{X}+m)\right)=1-\a\]
+\end{theorem}
+
+\begin{proof}
+  \begin{gather*}
+    P\left(\m\in(\bar{X}-m,\bar{X}+m)\right)=1-\a \\
+    P\left(-m\le\bar{X}-\m\le m)\right)=1-\a \\
+    P\left(-\frac{m}{\frac{\o}{\sqrt{n}}}\le\frac{\bar{X}-\m}{\frac{\o}{\sqrt{n}}}\le
+    \frac{m}{\frac{\o}{\sqrt{n}}}\right)=1-\a \\
+    P\left(-\frac{m}{\frac{\o}{\sqrt{n}}}\le Z\le\frac{m}{\frac{\o}{\sqrt{n}}}\right)=1-\a \\
+    \zdt=\frac{m}{\frac{\o}{\sqrt{n}}} \\
+    \\
+    \therefore m=\zdt\frac{\o}{\sqrt{n}}
+  \end{gather*}
+\end{proof}
+
+\begin{example}
+  A sample carton of a dozen brown eggs from a farm has \(\bar{x}=65.5\) and \(\o=2\).  Find the 95\% confidence for \(\m\).
+  \begin{gather*}
+    \a=1-0.95=0.05 \\
+    \z{0.025}=\P(0.975)=1.96 \\
+    \\
+    \bar{x}\pm\zdt\frac{\o}{\sqrt{n}}=65.5\pm1.96\frac{2}{\sqrt{12}}=65.5\pm1.1=(64.4,66.6)
+  \end{gather*}
+  Correct interpretation:
+  \begin{itemize}
+  \item \((64.4,66.6)\) is a 95\% confidence interval for \(\m\).
+  \item We are 95\% confident that the true value of \(\m\) is contained by this interval.
+  \end{itemize}
+
+  Incorrent interpretation:
+  \begin{itemize}
+    \item The probability that \(\m\) is contained by this interval is 0.95.
+  \end{itemize}
+\end{example}
+
+Note that \emph{probability} predicts something that hasn't happened yet, whereas \emph{confidence} describes the faith in a
+particular outcome.
+
+As sample size \(n\) increases, the width \(m\) of the confidence interval decreases.
+
+\begin{example}
+  From the previous example, increase the sample size to \(n=48\).  Find the new 95\% confidence interval.
+  \[\bar{x}\pm\zdt\frac{\o}{\sqrt{n}}=65.5\pm1.96\frac{2}{\sqrt{48}}=65.5\pm0.6=(64.9,66.1)\]
+  How large must the sample size be in order for the margin of error to be 0.2?
+  \[n=\left(\zdt\frac{\o}{m}\right)^2=\left(1.96\frac{2}{0.2}\right)^2=384.2\]
+  Thus, the minimum necessary sample size is \(n=385\).
+\end{example}
+
+As confidence level \(1-a\) increases, \(\a\) decreases and \(\zdt\) increases, thus increasing the width \(m\) of the
+confidence interval.
+
+\begin{example}
+  From the previous example with \(n=12\), find the 90\% and 99\% confidence intervals.
+
+  For 90\%:
+  \begin{gather*}
+    \a=1-0.90=0.10 \\
+    \z{0.05}=\P(0.95)=1.645 \\
+    \\
+    \bar{x}\pm\zdt\frac{\o}{\sqrt{n}}=65.5\pm1.645\frac{2}{\sqrt{12}}=65.5\pm0.9=(64.6,66.4)
+  \end{gather*}
+  For 99\%:
+  \begin{gather*}
+    \a=1-0.99=0.01 \\
+    \z{0.005}=\P(0.995)=2.575 \\
+    \\
+    \bar{x}\pm\zdt\frac{\o}{\sqrt{n}}=65.5\pm2.575\frac{2}{\sqrt{12}}=65.5\pm1.5=(64.0,67.0)
+  \end{gather*}
+  As expected, 99\% CI is wider that 95\% CI is wider than 90\% CI.
+\end{example}
+
+\end{document}

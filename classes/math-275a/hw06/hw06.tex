@@ -1,0 +1,191 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{array}
+\usepackage{tikz}
+\pagestyle{plain}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\U}{\mathcal{U}}
+\renewcommand{\C}{\checkmark}
+\newcommand{\X}{\(\bigtimes\)}
+\newcommand{\A}{
+  \begin{minipage}{1in}
+    \(X\) finite: \C \\
+    \(X\) infinite: \X
+  \end{minipage}
+}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#6
+
+\bigskip
+
+\begin{example}[Exercise 4.13]
+  \setlength\extrarowheight{2ex}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \(SPACE\) & \(T_1\) & \(T_2\) & REGULAR & NORMAL \\
+    \hline
+    \(R_{\text{std}}\) & \C & \C & \C & \C \\
+    \hline
+    \(R^n_{\text{std}}\) & \C & \C & \C & \C \\
+    \hline
+    indiscrete & \X & \X & \X & \X \\
+    \hline
+    discrete & \C & \C & \C & \C \\
+    \hline
+    cofinite & \C & \A & \A & \A \\
+    \hline
+    cocountable & \C & \A & \A & \A \\
+    \hline
+    \(R_{LL}\) & \C & \C & \C & \C \\
+    \hline
+    \(R_{+00}\) & \C & \X & \X & \X \\
+    \hline
+    LOS & \C & \C & \C & \C \\
+    \hline
+  \end{tabular}
+
+  \bigskip
+
+  \underline{\(R\) and \(\R^n\)}
+
+  Since there is a finite distance between points and closed sets (not containing those points), there is always room
+  for enclosing disjoint balls.
+
+  \underline{indiscrete}
+
+  Since the only non-empty set is the entire space, there is no separation.
+
+  \underline{discrete}
+
+  Since all disjoint subsets are both open and closed, they are self-enclosed.
+
+  \underline{cofinite}
+
+  All finite sets are closed.  Thus, single points can be viewed as closed sets.  Given any two closed sets \(A\) and
+  \(B\), the sets \(X-A\) and \(X-B\) with \(A\notin X-A\), \(A\in X-B\), \(B\notin X-B\), and \(B\in X-A\).  Thus,
+  cofinite is \(T_1\).  If \(X\) is finite then all disjoint subsets are both open and closed and hence
+  self-enclosing.  Otherwise, enclosing open sets will always have some overlap.
+
+  \underline{cocountable}
+
+  Analagous to cofinite.
+
+  \underline{\(\R_{LL}\)}
+
+  Since \(R_{LL}\) is finer than \(\R\), it has the same separation properties.
+
+  \underline{\(\R_{+00}\)}
+
+  Any two points can be \(T_1\) separated using the basis elements; however, if one point or closed set contains
+  \(0'\) and the other point or closed set contains \(0''\) then there is always overlap between the two containing
+  basis elements.
+
+  \underline{Lexigraphically Ordered Square}
+
+  Use the alternate definitions.  For any point \(p\in X\), there exists some containing open set (strip), and it is
+  always possible to use a smaller strip whose closure is contained in the original strip.  For any closed set
+  \(A\in X\), \(X-A\) is an enclosing open set, and likewise, a smaller open set with contained closure is possible.
+\end{example}
+
+\begin{theorem}[4.16]
+  \(X,Y\) are \(T_2\implies X\times Y\) is \(T_2\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) and \(Y\) are \(T_2\) and assume \(p_1,p_2\in X\times Y\) where \(p_1=(x_1,y_1)\) and
+  \(p_2=(x_2,y_2)\).  Since \(X\) is \(T_2\), there exists \(U_1,U_2\in\T_X\) such that \(x_1\in U_1\) and
+  \(x_2\in U_2\) and \(U_1\cap U_2=\emptyset\).  Likewise, since \(Y\) is \(T_2\), there exists \(V_1,V_2\in\T_Y\)
+  such that \(y_1\in V_1\) and \(y_2\in V_2\) and \(V_1\cap V_2=\emptyset\).  So \(p_1\in U_1\times V_1\) and
+  \(p_2\in U_2\times V_2\).  Furthermore, \(U_1\times V_1,U_2\times V_2\in\T_{X\times Y}\) and
+  \[(U_1\times V_1)\cap(U_2\times V_2)=(U_1\cap U_2)\times(V_1\cap V_2)=\emptyset\]
+
+  Therefore \(X\times Y\) is \(T_2\).
+\end{proof}
+
+\begin{lemma}
+  Let \(X\) and \(Y\) be topological spaces and let \(A\subset X\) and \(B\subset Y\):
+  \[\overline{A\times B}=\bar{A}\times\bar{B}\]
+\end{lemma}
+
+\begin{proof}
+  Assume that \(p\in\overline{A\times B}\).  This means that for all \(U\in\T_{X\times B}\) such that \(p\in U\):
+  \[U\cap(A\times B)\ne\emptyset\]
+  Now assume \(U_1\in\T_X\) and \(U_2\in T_Y\) such that \(p\in U_1\times U_2\in\T_{A\times B}\).  Then it must be the
+  case that \((U_1\times U_2)\cap(A\times B)=(U_1\cap A)\times(U_2\cap B)\ne\emptyset\).  This is only possible if
+  \(U_1\cap A\ne\emptyset\) and \(U_2\cap B\ne\emptyset\).
+
+  Therefore \(p\in\bar{A}\times\bar{B}\).
+
+  Assume that \(p\in\bar{A}\times\bar{B}\).  This means that for all \(U_1\in\T_X\) and \(U_2\in\T_Y\) such that
+  \(p\in U_1\times U_2\):
+  \[(U_1\cap A)\times(U_2\cap B)\ne\emptyset\]
+  Now assume \(U\in\T_{A\times B}\) such that \(p\in U\in\T_{A\times B}\).  Then there exists \(U_1\in\T_X\) and
+  \(U_2\in T_Y\) such that \(p\in U_1\times U_2=U\).  So it must be the case that:
+  \[U\cap(A\times B)=(U_1\times U_2)\cap(A\times B)=(U_1\cap A)\times(U_2\cap B)\ne\emptyset\]
+
+  Therefore \(p\in\overline{A\times B}\).
+\end{proof}
+
+\begin{theorem}[4.17]
+  \(X,Y\) are regular \(\implies X\times Y\) is regular.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) and \(Y\) are regular and assume \(p\in X\times Y\) and \(U\in\U_p\).  Then there exists
+  \(U_1\in\T_X\) and \(U_2\in\T_Y\) such that \(p\in U_1\times U_2\subset U\).  Now, since \(X\) and \(Y\) are
+  regular, there exists \(V_1\in\T_X\) and \(V_2\in\T_y\) such that \(p\in V_1\times V_2\),
+  \(V_1\subset\overline{V_1}\subset U_1\), and \(V_2\subset\overline{V_2}\subset U_2\).  Furthermore, since
+  \(\overline{V_1}\) is closed in \(X\) and \(\overline{V_2}\) is closed in \(Y\),
+  \(\overline{V_1}\times\overline{V_2}\) (and hence \(\overline{V_1\times V_2}\)) is closed in \(X\times Y\).
+  And so:
+  \[p\in V_1\times V_2\subset\overline{V_1\times V_2}=\overline{V_1}\times\overline{V_2}\subset U_1\times U_2\]
+  Therefore \(X\times Y\) is regular.
+\end{proof}
+
+\begin{theorem}[4.19]
+  Every \(T_2\) space is hereditarily \(T_2\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a \(T_2\) topological space and assume that \(Y\subset X\).  Now assume that \(a,b\in Y\).
+  Thus \(a,b\in X\) and, since \(X\) is \(T_2\), there exists \(U,V\in\T_X\) such that \(a\in U\), \(b\in V\), and
+  \(U\cap V=\emptyset\).  Furthermore, \(a\in U\cap Y\in\T_Y\) and \(b\in V\cap Y\in\T_Y\).  And so:
+  \[(Y\cap U)\cap(Y\cap V)=Y\cap(U\cap V)=Y\cap\emptyset=\emptyset\]
+  Therefore \(Y\) is also \(T_2\).
+\end{proof}
+
+\begin{theorem}[4.20]
+  Every regular space is hereditarily regular.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a regular topological space and assume that \(Y\subset X\).  Assume \(p\in Y\).  There
+  exists \(U_X\in\T_X\) such that \(p\in U_X\) and so \(p\in U_X\cap Y=U_Y\in\T_Y\).  Now, since \(X\) is regular,
+  there exists \(V_X\in\T_X\) such that \(p\in V_X\subset\overline{V_X}\subset U_X\), and hence
+  \(p\in V_X\cap Y=V_Y\in\T_Y\).  Furthermore, since \(\overline{V_X}\) is closed in \(X\),
+  \(\overline{V_X}\cap Y=W_Y\) is closed in \(Y\).  Finally, since \(\overline{V_Y}\) is the smallest closed set in
+  \(Y\) containing \(V_Y\):
+  \[p\in V_Y\subset\overline{V_Y}\subset W_Y\subset U_Y\]
+  Therefore \(Y\) is regular.
+\end{proof}
+
+\begin{theorem}[4.23]
+  Let \(X\) be a normal topological space and let \(Y\subset X\) such that \(Y\) is closed in \(X\).  \(Y\) is
+  normal when given the relative topology.
+\end{theorem}
+
+\begin{proof}
+  Assume \(A,B\subset Y\) such that \(A\) and \(B\) are closed in \(Y\) and \(A\cap B=\emptyset\).  Since \(A\) is
+  closed in \(Y\), \(Y-A\in\T_Y\).  This means that there exists \(W\in\T_X\) such that \(W\cap Y=Y-A\).
+  Furthermore, \(X-W\) is closed in \(X\).  Now:
+  \[(X-W)\cap Y=(X\cap Y)-(W\cap Y)=Y-(Y-A)=A\]
+  But \(X-W\) and \(Y\) are closed in \(X\) and hence \(A\) is also closed in \(X\).  By similar argument, \(B\) is
+  also closed in \(X\).  And, since \(X\) is normal, there exists \(U,V\in\T_X\) such that \(A\in U\), \(B\in V\),
+  and \(U\cap V=\emptyset\).  Finally, since \(A\subset(U\cap Y)\in\T_Y\) and \(B\subset(V\cap Y)\in\T_Y\):
+  \[(U\cap Y)\cap(V\cap Y)=(U\cap V)\cap Y=\emptyset\cap Y=\emptyset\]
+  Therefore \(Y\) is normal.
+\end{proof}
+
+\end{document}

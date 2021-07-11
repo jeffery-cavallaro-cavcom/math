@@ -1,0 +1,135 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{empty}
+\newcommand{\iid}{\overset{\text{iid}}{\sim}}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\renewcommand{\P}{\Phi}
+\renewcommand{\l}{\lambda}
+\newcommand{\xb}{\bar{X}}
+\DeclareMathOperator{\nd}{N}
+\DeclareMathOperator{\bd}{B}
+\DeclareMathOperator{\bernd}{Bernoulli}
+\begin{document}
+\section*{Sample Mean}
+
+\begin{theorem}
+  Let \(X_i\) be random variables such that \(X_i\iid f(x)\) with population mean \(E(X_i)=\m\) and variance \(V(X_i)=\o^2\).
+  The mean and variance of \(\bar{X}\) are given by:
+  \begin{gather*}
+    E(\bar{X})=\m \\
+    V(\bar{X})=\frac{\o^2}{n}
+  \end{gather*}
+  regardless of the distribution of \(\bar{X}\).
+\end{theorem}
+
+\begin{proof}
+  Since \(E(X_i)=\m\) and variance \(V(X_i)=\o^2\):
+
+  \begin{minipage}{3in}
+    \begin{align*}
+      E(\bar{X}) &= E\left(\frac{1}{N}\sum_{i=1}^NX_i\right) \\
+      &= \frac{1}{N}\sum_{i=1}^NE(X_i) \\
+      &= \frac{1}{N}(N\m) \\
+      &= \m
+    \end{align*}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{align*}
+      V(\bar{X}) &= V\left(\frac{1}{N}\sum_{i=1}^NX_i\right) \\
+      &= \frac{1}{N^2}\sum_{i=1}^NV(X_i) \\
+      &= \frac{1}{N^2}(N\o^2) \\
+      &= \frac{\o^2}{N}
+    \end{align*}
+  \end{minipage}
+\end{proof}
+
+Thus, the sample standard deviation is inversely proportional to sample size.
+
+\begin{theorem}
+  Let \(X_i\) be random variables such that \(X_i\iid\nd(\m,\o^2)\):
+  \[\xb\sim\nd\left(\m,\frac{\o^2}{N}\right)\]
+\end{theorem}
+
+\begin{example}
+  The weight of eggs produced on a farm have a normal distribution of \(\nd(65,2^2)\).  For a sample of size 12, what is the
+  probability that \(\xb\) is within \(65\pm1\)?  What about an individual egg?
+  \[\xb\sim\nd\left(56,\frac{2^2}{12}\right)=\nd\left(56,\frac{1}{3}\right)\]
+  \begin{align*}
+    P(64\le\xb\le66) &= P\left(\frac{64-65}{\frac{1}{\sqrt{3}}}\le Z\le\frac{66-65}{\frac{1}{\sqrt{3}}}\right) \\
+    &= (-1.73\le Z\le1.73) \\
+    &= \P(1.73)-\P(-1.73) \\
+    &= 0.9582-0.0418 \\
+    &= 0.9164
+  \end{align*}
+  \begin{align*}
+    P(64\le X\le66) &= P\left(\frac{64-65}{2}\le Z\le\frac{66-65}{2}\right) \\
+    &= (-0.50\le Z\le0.50) \\
+    &= \P(0.50)-\P(0.50) \\
+    &= 0.6915-0.3085 \\
+    &= 0.3830
+  \end{align*}
+\end{example}
+
+\begin{example}
+  In the library elevator of a large university, there is a sign indicating a 16-person limit as well as a weight limit of
+  \SI{2500}{lbs}.  When the elevator is full, we can think of the 16 people in the elevator as a random sample of people on
+  campus.  Suppose that the weight of the students, faculty, and staff is normally distributed with a mean weight of
+  \SI{150}{lbs} and a standard deviation of \SI{27}{lbs}.  What is the probability that the total weight of a random sample
+  of 16 people in the elevator will exceed the weight limit?
+  \begin{gather*}
+    E(16\xb)=16E(\xb)=16\cdot150=\SI{2400}{lbs} \\
+    \\
+    V(16\xb)=16^2V(\xb)=16^2\cdot\frac{27^2}{16}=16\cdot27^2 \\
+    \\
+    \o=4\cdot27=\SI{108}{lbs}
+  \end{gather*}
+  \begin{align*}
+    P(16\xb>2500) &= 1-P(16\xb\le2500) \\
+    &= 1-P\left(Z\le\frac{2500-2400}{108}\right) \\
+    &= 1-P(Z\le0.93) \\
+    &= 1-\P(0.93) \\
+    &= 1-0.8238 \\
+    &= 0.1762
+  \end{align*}
+\end{example}
+
+\begin{theorem}[Central Limit Theorem (CLT)]
+  Let \(X_i\iid f(x)\) for any distribution \(f(x)\) (discrete or continuous) such that both \(\m\) and \(\o^2\) are
+  finite.  If \(n\) is large (\(\ge30\)) then:
+  \[\xb\sim\nd\left(\m,\frac{\o^2}{n}\right)\]
+\end{theorem}
+
+\begin{example}
+  Suppose that the salaries of all SJSU employees follow an exponential distribution with the average salary is 45 (in
+  thousands of dollars, which means that \(\l=\frac{1}{45}\)).  We draw a random sample of size 30 from the population, and
+  let \(\xb\) be the sample mean.  Find \(P(\xb>55)\).
+  \[\xb\approx\nd\left(45,\frac{45^2}{30}\right)\]
+  \begin{align*}
+    P(\xb>55) &= 1-P(\xb\le55) \\
+    &= 1-P\left(Z\le\frac{55-45}{\frac{45}{\sqrt{30}}}\right) \\
+    &= 1-P(Z\le1.22) \\
+    &= 1-\P(1.22) \\
+    &= 1-0.8888 \\
+    &= 0.1112
+  \end{align*}
+  Note that the exact value is 0.1157.
+\end{example}
+
+Note that the normal approximation to the binomial distribution is a direct consequence of the CLT:
+
+\begin{theorem}
+  Let \(X\sim\bd(n,p)\).  If \(n\) is large (\(np,n(1-p)\ge10\)) then:
+  \[X\approx\nd(np,np(1-p))\]
+\end{theorem}
+
+\begin{proof}
+  Let \(X_i\sim\bernd(p)\).  Then:
+  \[X=\sum_{i=1}^nX_i\sim\bd(n,p)\]
+  But according to the CT:
+  \[\frac{\xb-\m}{\frac{\o}{\sqrt{n}}}=\frac{\xb-p}{\frac{\sqrt{p(1-p)}}{\sqrt{n}}}=\frac{X-np}{\sqrt{np(1-p)}}
+  \approx\nd(0,1)\]
+\end{proof}
+
+\end{document}

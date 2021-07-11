@@ -1,0 +1,32 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\e}{\epsilon}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#3 Rewrite
+
+\bigskip
+
+\begin{theorem}[2.31]
+  Let \((\R^n,\T)\) be the standard topology, \(A\subset\R^n\), and \(p\in X\) be a limit point of \(A\).  There
+  exists a sequence of points in \(A\) that converge to \(p\).
+\end{theorem}
+
+\begin{proof}
+  Let \(U_i=B\left(p,\e_i\right)\) where \(\e_i=\frac{1}{i}\) for \(i\in\N\).  Note that \(\e_i=\frac{1}{i}\to0\)
+  as \(i\to\infty\).  Also note that \(U_i\cap A\ne\emptyset\) because \(p\) is a limit point of \(A\), so select
+  \(x_i\in U_i\cap A\).  Thus, all of the \(x_i\in A\).
+
+  Claim: \((x_i)_{i\in\N}\) is a sequence in \(A\) converging to \(p\).
+
+  Assume \(U\in\U_p\).  Then there exists some \(\e>0\) such that \(B(p,\e)\subset U\).  Since the \(\e_i\to0\),
+  there exists some \(\e_N<\e\).  Assume \(i>N\).  This means that \(e_i<e_N<e\) and so
+  \(x_i\in U_i\subset U_N\subset U\) and therefore \(x_i\in U\).
+\end{proof}
+
+\end{document}

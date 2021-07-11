@@ -1,0 +1,279 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\pagestyle{plain}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\Tstd}{\T_{\text{std}}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\newcommand{\e}{\epsilon}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#2
+
+\bigskip
+
+\begin{theorem}[1.20]
+  Let \(A\) be a set and let \(P\) be the set of all functions from \(A\) to the two-point set \(\set{0,1}\):
+  \[\abs{P}=\abs{2^A}\]
+\end{theorem}
+
+\begin{proof}
+  Consider the function \(f:P\to2^A\) defined by \(f(p)=B\) such that:
+  \[p(a)=\begin{cases}
+  0, & a\notin B \\
+  1, & a\in B
+  \end{cases}\]
+  Claim: \(f\) is a bijection.
+
+  Assume \(f(p_1)=f(p_2)=B\).  Assume \(a\in A\).  If \(a\notin B\) then \(p_1(a)=p_2(a)=0\).  If \(a\in B\) then
+  \(p_1(a)=p_2(a)=1\).  So \(\forall\,a\in A,p_1(a)=p_2(a)\).  Thus, by definition, \(p_1=p_2\) and therefore
+  \(f\) is injective.
+
+  Now, assume \(B\in 2^A\).  Since \(B\subset A\), for each \(a\in A\), \(a\) is either not in \(B\) or in \(B\).
+  So define \(p:A\to\set{0,1}\) as above.  Thus \(p\in P\) and \(f(p)=B\).  Therefore \(f\) is surjective.
+
+  Therefore \(f\) is a bijection and thus \(\abs{P}=\abs{2^A}\).
+\end{proof}
+
+\begin{theorem}[1.22]
+  Let \(A\) be a set:
+  \[\abs{A}\ne\abs{2^A}\]
+\end{theorem}
+
+\begin{proof}
+  Let \(f:A\to2^A\) and ABC that \(f\) is bijective.  For all \(a\in A\) let \(f(a)=B_a\).  This means that either
+  \(a\notin B_a\) or \(a\in B_a\).  Now, construct \(B\in2^A\) as follows:
+  \[B=\setb{a\in A}{a\notin f(a)}\]
+  Note that if \(a\notin B_a\) then \(a\in B\) and if \(a\in B_a\) then \(a\notin B\) and so \(\forall\,a\in
+  A,B_a\ne B\).  Thus, \(B\in2^A\) but \(B\notin f(A)\), contradicting the bijectiveness of \(f\).
+
+  \(\therefore\abs{A}\ne\abs{2^A}\)
+\end{proof}
+
+\begin{theorem}[2.3]
+  Let \(X,\T\) be a topological space and let \(U\subset X\):
+  \[U\in\T\iff\forall\,x\in U,\exists\,U_x\in\T,x\in U_x\subset U\]
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+
+  \item[\(\implies\)] Assume \(U\in\T\).
+
+    Assume \(x\in U\).  So \(x\in U\subset U\).
+
+  \item[\(\impliedby\)] Assume \(\forall\,x\in U,\exists U_x\in\T,x\in U_x\subset U\).
+
+    Claim: \(\bigcup_{x\in U}U_x=U\)
+
+    First, assume that \(y\in \bigcup_{x\in U}U_x\).  Therefore \(\exists\,x\in U\) such that \(y\in U_x\subset U\).
+
+    Next, assume that \(y\in U\).  This means that \(\exists\,U_y\in\T\) such that \(y\in U_y\subset U\), and
+    therefore \(y\in\bigcup_{x\in U}U_x\).
+
+    Thus, \(U\) is an arbitrary union of open sets and hence is open.
+
+    \(\therefore U\in\T\)
+  \end{description}
+\end{proof}
+
+\begin{example}[Exercise 2.4]
+  Verify that \(\Tstd\) is a topology on \(R^n\).
+
+  \begin{enumerate}
+  \item \(\emptyset\in\Tstd\) (vacuously).
+
+  \item Assume \(x\in R^n\).
+
+    Let \(e_x=1\).  Since \(R^n\) includes everything it must be the case that \(B(x,1)\subset R^n\).
+
+    Therefore \(R^n\in\Tstd\).
+
+  \item Assume \(U,V\in\Tstd\).
+
+    Assume \(x\in U\cap V\).  This means that \(x\in U\) and \(x\in V\).  So there exists \(\e_U,\e_V\) such that
+    \(B(x,\e_U)\subset U\) and \(B(x,\e_V)\subset V\).  Let \(\e=\min\set{\e_U,\e_V}\).  Thus
+    \(B(x,\e)\subset U\cap V\).
+
+    Therefore \(U\cap V\in\Tstd\).
+
+  \item Assume \(\set{U_{\a}:\a\in\l}\) is a family of sets such that \(U_{\a}\in\Tstd\).
+
+    Let \(U=\bigcup_{\a\in\l}U_{\a}\) and assume \(x\in U\).  This means that there exists \(\a\in\l\) such that
+    \(x\in U_{\a}\).  Furthermore, there exists \(\e_x>0\) such that \(B(x,\e_x)\subset U_{\a}\subset U\).
+
+    Therefore \(U\in\Tstd\).
+  \end{enumerate}
+\end{example}
+
+\begin{example}[Exercise 2.5]
+  Verify that the discrete, indiscrete, cofinite, and cocountable topologies are indeed topologies for any set \(X\).
+
+  \begin{description}
+  \item[Discrete]
+    \begin{enumerate}
+    \item[]
+    \item \(\emptyset\subset X\) and so \(\emptyset\in\T\).
+
+    \item \(X\subset X\) and so \(X\in\T\).
+
+    \item Assume \(U,V\in\T\).
+
+      \(U,V\subset X\) and so \(U\cap V\subset X\).
+
+      Therefore \(U\cap V\in\T\).
+
+    \item Assume \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T\).
+
+      \(\forall\,\a\in\l,U_{\a}\subset X\) and so \(\bigcup_{\a\in\l}U_{\a}\subset X\).
+
+      Therefore \(\bigcup_{\a\in\l}U_{\a}\in\T\).
+    \end{enumerate}
+
+  \item[Indiscrete]
+    \begin{enumerate}
+    \item[]
+    \item By definition, \(\emptyset\in\T\).
+
+    \item By definition, \(X\in\T\).
+
+    \item Assume \(U,V\in\T\).
+      \begin{align*}
+        \emptyset\cap\emptyset &= \emptyset\in\T \\
+        \emptyset\cap X &= \emptyset\in\T \\
+        X\cap\emptyset &= \emptyset\in\T \\
+        X\cap X &= X\in\T
+      \end{align*}
+
+      Therefore \(U\cap V\in\T\).
+
+    \item Assume \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T\).
+      \begin{align*}
+        \emptyset\cup\emptyset &= \emptyset\in\T \\
+        \emptyset\cup X &= X\in\T \\
+        X\cup\emptyset &= X\in\T \\
+        X\cup X &= X\in\T
+      \end{align*}
+
+      Therefore \(\bigcup_{\a\in\l}U_{\a}\in\T\).
+    \end{enumerate}
+
+  \item[Cofinite]
+    \begin{enumerate}
+    \item[]
+    \item By definition, \(\emptyset\in\T\).
+
+    \item \(X-X=\emptyset\), which is finite.  Therefore \(X\in\T\).
+
+    \item Assume \(U,V\in\T\).
+
+      \(X-(U\cap V)=(X-U)\cup(X-V)\).  But \(X-U\) and \(X-V\) are both finite and so their union is finite.
+
+      Therefore \(U\cap V\in\T\).
+
+    \item Assume \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T\).
+
+      \(X-\bigcup_{\a\in\l}U_{\a}=\bigcap_{\a\in\l}(X-U_{\a})\).  But for all \(\a\in\l\) it is the case that
+      \(X-U_{\a}\) is finite and so their intersection is finite.
+
+      Therefore \(\bigcup_{\a\in\l}U_{\a}\in\T\).
+    \end{enumerate}
+
+  \item[Cocountable]
+    \begin{enumerate}
+    \item[]
+    \item By definition, \(\emptyset\in\T\).
+
+    \item \(X-X=\emptyset\), which is finite and thus countable.  Therefore \(X\in\T\).
+
+    \item Assume \(U,V\in\T\).
+
+      \(X-(U\cap V)=(X-U)\cup(X-V)\).  But \(X-U\) and \(X-V\) are both countable and so their union is countable.
+
+      Therefore \(U\cap V\in\T\).
+
+    \item Assume \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T\).
+
+      \(X-\bigcup_{\a\in\l}U_{\a}=\bigcap_{\a\in\l}(X-U_{\a})\).  But for all \(\a\in\l\) it is the case that
+      \(X-U_{\a}\) is countable.  Now, for some \(\a\in\l\):
+      \[\bigcap_{\a\in\l}(X-U_{\a})\subset(X-U_{\a})\]
+      However, the subset of a countable set is countable.
+
+      Therefore \(\bigcup_{\a\in\l}U_{\a}\in\T\).
+    \end{enumerate}
+  \end{description}
+\end{example}
+
+\begin{example}[Exercise 2.6]
+  Describe some of the open sets you get if \(\R\) is endowed with the standard, discrete, indiscrete, cofinite,
+  and cocountable topologies.  Specifically, identify sets that demonstrate the differences among these topologies,
+  that is, find sets that are open in some topologies but not in others.  For each of the topologies, determine
+  if the interval \((0,1)\) is an open set in that topology.
+
+  Of course, \(\emptyset\) and \(\R\) are in \(\T\) for all topologies.
+
+  \begin{description}
+  \item[Standard:] All open intervals, but not closed intervals, are in \(\T\).  Therefore \((0,1)\in\T\).
+
+  \item[Discrete:] All open and closed intervals are in \(\T\).  Therefore \((0,1)\in\T\) and \([0,1]\in\T\)
+
+  \item[Indiscrete:] Nothing other than \(\emptyset\) and \(\R\).  Therefore \((0,1)\notin\T\).
+
+  \item[Cofinite] All open sets are of the form \(\R-X\) where \(X\) is finite.  For example: \(\R-\set{1,2,3}\).
+    Thus, the open sets are uncountable.  Such sets are also open sets in all the other topologies sans indiscrete.
+    Therefore \((0,1)\notin\T\).
+
+  \item[Cocountable] All open sets are of the form \(\R-X\) where \(X\) is countable.  Thus, all open sets must
+    include all but a countable number of irrational numbers and are thus uncountable.  For example: \(\R-\Q\) or
+    \((\R-\Q)\cup\set{\sqrt{2},\sqrt{3}}\) or \((\R-\Q)\cup\set{\sqrt{2},\sqrt{3},\sqrt{5},\ldots}\).  Such sets are
+    also open in the standard and discrete topologies.  Since finite sets are countable, it is the case that
+    \(\T_{cof}\subset\T_{coc}\).  Therefore \((0,1)\notin\T\).
+  \end{description}
+\end{example}
+
+\begin{theorem}[2.13]
+  Let \((X,\T)\) be a topological space.  For all \(A\subset X\):
+  \[\bar{\bar{A}}=\bar{A}\]
+\end{theorem}
+
+\begin{proof}
+  \(\bar{\bar{\emptyset}}=\bar{\emptyset}=\emptyset\) is vacuously true, so assume \(A\ne\emptyset\).
+
+  \(\bar{A}\subset\bar{\bar{A}}\) by definition, so assume \(p\in\bar{\bar{A}}\).  This means that for all
+  \(U\in\U_p,U\cap\bar{A}\ne\emptyset\).  So assume that \(U\in\U_p\) and \(x\in U\cap\bar{A}\), meaning \(x\in U\)
+  and \(x\in\bar{A}\).  But this is only true if \(U\cap A\ne\emptyset\) and so \(p\in\bar{A}\).
+
+  Therefore \(\bar{\bar{A}}=\bar{A}\).
+\end{proof}
+
+\begin{theorem}[2.14]
+  Let \((X,\T)\) be a topological space.  For all \(A\subset X\), \(A\) is closed iff \(X-A\) is open.
+\end{theorem}
+
+\begin{proof}
+  \(X\) is closed iff \(X-X=\emptyset\) is open is true, so assume that \(A\ne X\).
+
+  \begin{description}
+  \item[\(\implies\)] Assume \(A\) is closed.
+
+    Assume \(p\in X-A\).  Since \(p\notin A\), \(p\) is not a limit point of \(A\).  Thus, there exists a neighborhood
+    \(U_p\) of \(p\) such \(U_p\cap A=\emptyset\).  But this means that \(U_p\subset X-A\).
+
+    Therefore \(X-A\) is open.
+
+  \item[\(\impliedby\)] Assume \(X-A\) is open.
+
+    Assume \(p\in X-A\).  So there exists a neighborhood \(U_p\) of \(p\) such that \(U_p\subset X-A\).  But this
+    means that \(U_p\cap A=\emptyset\) and hence \(p\) is not a limit point of \(A\).  Thus \(A\) contains all of
+    its limit points.
+
+    Therefore \(A\) is closed.
+  \end{description}
+\end{proof}
+
+\end{document}

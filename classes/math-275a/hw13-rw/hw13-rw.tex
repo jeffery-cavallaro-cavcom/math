@@ -1,0 +1,45 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\newcommand{\T}{\mathscr{T}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+\newcommand{\e}{\epsilon}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#13
+
+\bigskip
+
+\begin{theorem}[8.3]
+  \(\R_{\text{std}}\) is connected.
+\end{theorem}
+
+\begin{proof}
+  Since \(\R\) is homeomorphic to \((0,1)\), it is sufficient to show that \((0,1)\) is connected.  So ABC that
+  \((0,1)\) is disconnected.  This means that there exists \(A\subset(0,1)\) such that \(A\ne\emptyset,(0,1)\) and
+  \(A\) is clopen.  Since \(A\) is bounded, it has a \(\sup\), so let \(a=\sup A\).  But \(A\) is closed, so
+  \(a\in A\).  But \(A\) is also open, so there exists \(\e>0\) such that \(B(a,\e)\subset A\), violating the fact
+  that \(a=\sup A\).  Therefore \((0,1)\) is connected, and so \(\R\) is connected.
+\end{proof}
+
+\begin{theorem}[Exercise 8.7]
+  The closure of the topologist's sine curve in \(\R^2\) is connected.
+\end{theorem}
+
+\begin{proof}
+  Let:
+  \begin{gather*}
+    S=\setb{\left(x,\sin\left(\frac{1}{x}\right)\right)}{x\in(0,1)} \\
+    \\
+    \bar{S}=S\cup\set{(1,\sin(1))}\cup\setb{(0,y)}{y\in[-1,1]}
+  \end{gather*}
+  ABC that \(S\) is not connected.  This means that there exists \(g:S\to\set{0,1}\) such that \(g\) is continuous
+  and surjective.  But \(f:(0,1)\to S\) defined by \(f(x)=(x,\sin\frac{1}{x})\) is also continuous and surjective.
+  This means that \(g\circ f:(0,1)\to\set{0,1}\) is also continuous and surjective, indicating that \((0,1)\)
+  is not connected, contradicting the connectedness of the interval.  Therefore \(S\) is connected, and by
+  previous corollary, \(\bar{S}\) is connected.
+\end{proof}
+
+\end{document}

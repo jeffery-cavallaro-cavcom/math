@@ -1,0 +1,65 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\begin{document}
+\section*{Heredity}
+
+\begin{definition}[Heredity]
+  Let \(P\) be a topological property.  To say that a topological space \(X\) is hereditarily \(P\) means that each
+  subspace \(Y\) of \(X\) has property \(P\) when \(Y\) is given the relative topology from \(X\).
+\end{definition}
+
+\begin{theorem}
+  Every \(T_2\) space is hereditarily \(T_2\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a \(T_2\) topological space and assume that \(Y\subset X\).  Now assume that \(a,b\in Y\).
+  Thus \(a,b\in X\) and, since \(X\) is \(T_2\), there exists \(U,V\in\T_X\) such that \(a\in U\), \(b\in V\), and
+  \(U\cap V=\emptyset\).  Furthermore, \(a\in U\cap Y\in\T_Y\) and \(b\in V\cap Y\in\T_Y\).  And so:
+  \[(Y\cap U)\cap(Y\cap V)=Y\cap(U\cap V)=Y\cap\emptyset=\emptyset\]
+  Therefore \(Y\) is also \(T_2\).
+\end{proof}
+
+\begin{theorem}
+  Every regular space is hereditarily regular.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a regular topological space and assume that \(Y\subset X\).  Assume that \(p\in Y\).  This
+  means that there exists some \(U_Y\in\T_Y\) such that \(p\in U_Y\), and hence there exists \(U_X\in\T_X\) such
+  that \(U_Y=U_X\cap Y\) and so \(p\in U_X\).  Now, since \(X\) is regular, there exists \(V_X\in\T_X\) such that
+  \(p\in V_X\subset\overline{V_X}\subset U_X\), and hence \(p\in V_X\cap Y=V_Y\in\T_Y\).  Furthermore, since
+  \(\overline{V_X}\) is closed in \(X\), \(\overline{V_X}\cap Y=W_Y\) is closed in \(Y\).  Finally, since
+  \(\overline{V_Y}\) is the smallest closed set in \(Y\) containing \(V_Y\):
+  \[p\in V_Y\subset\overline{V_Y}\subset W_Y\subset U_Y\]
+  Therefore \(Y\) is regular.
+\end{proof}
+
+\begin{lemma}
+  Let \(X\) be a normal topological space and let \(Y\subset X\) such that \(Y\) is closed in \(X\).  For all
+  \(A\subset Y\), if \(A\) is closed in \(Y\) then \(A\) is closed in \(X\).
+\end{lemma}
+
+\begin{proof}
+  Assume \(A\subset Y\) such that \(A\) is closed in \(Y\).  This means that \(Y-A\in\T_Y\), and so there exists
+  \(W\in\T_X\) such that \(W\cap Y=Y-A\).  Furthermore, \(X-W\) is closed in \(X\).  Now:
+  \[(X-W)\cap Y=(X\cap Y)-(W\cap Y)=Y-(Y-A)=A\]
+  But \(X-W\) and \(Y\) are closed in \(X\) and therefore \(A\) is also closed in \(X\).
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) be a normal topological space and let \(Y\subset X\) such that \(Y\) is closed in \(X\).  \(Y\) is
+  normal when given the relative topology.
+\end{theorem}
+
+\begin{proof}
+  Assume \(A,B\subset Y\) such that \(A\) and \(B\) are closed in \(Y\) and \(A\cap B=\emptyset\).  This means that
+  \(A\) and \(B\) are also closed in \(X\).  Since \(X\) is normal, there exists \(U,V\in\T_X\) such that \(A\in U\),
+  \(B\in V\), and \(U\cap V=\emptyset\).  Finally, since \(A\subset(U\cap Y)\in\T_Y\) and \(B\subset(V\cap Y)\in\T_Y\):
+  \[(U\cap Y)\cap(V\cap Y)=(U\cap V)\cap Y=\emptyset\cap Y=\emptyset\]
+  Therefore \(Y\) is normal.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,102 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\geom}{Geom}
+\renewcommand{\o}{\sigma}
+\allowdisplaybreaks
+\begin{document}
+\section*{Geometric Distribution}
+
+\begin{definition}[Geometric Distribution]
+  To say that a random variable \(X\) has a \emph{Geometric} distribution with parameter \(p\), denoted:
+  \[X\sim\geom(p)\]
+  means that:
+  \begin{enumerate}
+  \item The underlying experiment is composed of repeated Bernoulli trials until the first success occurs.
+  \item The trials are independent.
+  \item Each of the trials has fixed probability \(p\) for success.
+  \item \(X\) counts the number of trials up to and including the first success.
+  \end{enumerate}
+\end{definition}
+
+\begin{examples}[Geometric Distributions]
+  \begin{enumerate}
+  \item[]
+  \item Flip a fair coin until the first head occurs: \(X=\) the number trials.
+    \[X\sim\geom\left(\frac{1}{2}\right)\]
+  \item Select (with replacement) balls from an urn that has \(N\) balls, \(r\) of which are red, until the first red ball
+    is selected: \(Y=\) the number of balls selected.
+    \[Y\sim\geom\left(\frac{r}{N}\right)\]
+  \end{enumerate}
+\end{examples}
+
+\begin{lemma}
+  Assume \(a\in\R\) such that \(0<\abs{a}<1\):
+  \begin{gather*}
+    \sum_{x=1}^{\infty}xa^{x-1}=\frac{1}{(1-a)^2} \\
+    \sum_{x=2}^{\infty}x(x-1)a^{x-2}=\frac{2}{(1-a)^3}
+  \end{gather*}
+\end{lemma}
+
+\begin{proof}
+  \begin{gather*}
+    \sum_{x=0}^{\infty}a^x=\frac{1}{1-a} \\
+    \frac{d}{da}\left[\sum_{x=0}^{\infty}a^x\right]=\frac{d}{da}\left[\frac{1}{1-a}\right] \\
+    \sum_{x=1}^{\infty}xa^{x-1}=\frac{1}{(1-a)^2} \\
+    \frac{d}{da}\left[\sum_{x=1}^{\infty}xa^{x-1}\right]=\frac{d}{da}\left[\frac{1}{(1-a)^2}\right] \\
+    \sum_{x=2}^{\infty}x(x-1)a^{x-2}=\frac{2}{(1-a)^3}
+  \end{gather*}
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) be a random variable with a Geometric distribution with parameter \(p\):
+  \begin{itemize}
+  \item \(f_X(x)=\begin{cases}
+    p(1-p)^{x-1} & x\in\N \\
+    0 & \text{otherwise}
+  \end{cases}\)
+  \item \(E(X)=\frac{1}{p}\)
+  \item \(V(X)=\frac{1-p}{p^2}\)
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  For \(P(X=x)\), the first \(x-1\) failures have probability \((1-p)^{x-1}\) and the final success has probability \(p\).
+  Therefore:
+  \[f_X(x)=p(1-p)^{x-1}\]
+  To calculate the expected value:
+  \[E(X)=\sum_{x=1}^{\infty}xp(1-p)^{x-1}=p\sum_{x=1}^{\infty}x(1-p)^{x-1}=p\cdot\frac{1}{[1-(1-p)]^2}=p\cdot\frac{1}{p^2}=
+  \frac{1}{p}\]
+  To calculate the variance:
+  \begin{align*}
+    V(X) &= E(X^2)-E(X)^2 \\
+    &= E(X^2-X+X)-E(X)^2 \\
+    &= E(X^2-X)+E(X)-E(X)^2 \\
+    &= E(X(X-1))+E(X)-E(X)^2 \\
+    &= \sum_{x=2}^{\infty}x(x-1)p(1-p)^{x-1}+\frac{1}{p}-\frac{1}{p^2} \\
+    &= p(1-p)\sum_{x=2}^{\infty}x(x-1)(1-p)^{x-2}+\frac{p-1}{p^2} \\
+    &= p(1-p)\frac{2}{[1-(1-p)]^3}+\frac{p-1}{p^2} \\
+    &= \frac{2(1-p)}{p^2}+\frac{p-1}{p^2} \\
+    &= \frac{2-2p+p-1}{p^2} \\
+    V(X) &= \frac{1-p}{p^2}
+  \end{align*}
+\end{proof}
+
+\begin{example}
+  Suppose \(X\) has a Geometric distribution with \(p=\frac{1}{2}\).
+  \begin{gather*}
+    X\sim\geom\left(\frac{1}{2}\right) \\
+    \\
+    P(X=4)=\frac{1}{2}\left(1-\frac{1}{2}\right)^{4-1}=\left(\frac{1}{2}\right)^4=\frac{1}{16} \\
+    P(X\ge4)=\sum_{x=4}^{\infty}\frac{1}{2}\left(1-\frac{1}{2}\right)^{x-1}=\sum_{x=4}^{\infty}\left(\frac{1}{2}\right)^x=
+    \frac{1}{1-\frac{1}{2}}-1-\frac{1}{2}-\frac{1}{4}-\frac{1}{8}=\frac{1}{8}\\
+    \\
+    E(X)=\frac{1}{p}=\frac{1}{\frac{1}{2}}=2 \\
+    \\
+    V(X)=\frac{1-p}{p^2}=\frac{1-\frac{1}{2}}{\frac{1}{4}}=2 \\
+    \\
+    \o=\sqrt{2}\approx1.41
+  \end{gather*}
+\end{example}
+
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\hg}{HyperGeom}
+\DeclareMathOperator{\bin}{Binomial}
+\renewcommand{\o}{\sigma}
+\begin{document}
+\section*{Hypergeometric Distribution}
+
+\begin{definition}[Binomial Distribution]
+  To say that a random variable \(X\) has a \emph{Hypergeometric} distribution with parameters \(N\), \(r\), and \(n\),
+  denoted:
+  \[X\sim\hg(n,p)\]
+  means that:
+  \begin{enumerate}
+  \item The underlying experiment is composed of \(n\) repeated Bernoulli trials of selecting elements from a population of
+    finite size \(N\).
+  \item The \(n\) trials are independent.
+  \item There are \(r\) elements in the population that result in success when selected.
+  \item Every subset of \(n\) elements from the population has an equal probability of being selected.
+  \item \(X\) counts the number of successes resulting from the \(n\) trials.
+  \end{enumerate}
+\end{definition}
+
+Note that a Hypergeometric distribution for selection from a population implies \emph{no} replacement.
+
+\begin{example}[Hypergeometric Distributions]
+  \begin{enumerate}
+  \item[]
+  \item Select (without replacement) 10 balls from an urn that has 30 red balls and 20 blue balls: \(X=\) the number of
+    selected red balls.
+    \[X\sim\hg(50,30,10)\]
+  \item Poll \(n\) different voters at random from the whole pool of \(N\) registered voters, \(r\) of which support a
+    certain presidential candidate: \(Y=\) the number of polled voters that support the candidate.
+    \[X\sim\hg(N,r,n)\]
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}
+  Let \(X\) be a random variable with a Hypergeometric distribution with parameters \(N\), \(r\), and \(n\) such that
+  \(x\le r\) and \(n-x\le N-r\), and let \(p=\frac{r}{n}\):
+  \begin{itemize}
+  \item \(f_X(x)=\begin{cases}
+    \frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}} & x=0,1,2,\ldots,n \\
+    0 & \text{otherwise}
+  \end{cases}\)
+  \item \(E(X)=\frac{nr}{N}=np\)
+  \item \(V(X)=np(1-p)\left(\frac{N-n}{N-1}\right)\)
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  For \(P(X=x)\), select any \(x\) of \(r\): \(\binom{r}{x}\), then select any \(n-x\) of \(N-r\): \(\binom{N-r}{n-x}\).  The
+  total number of possible selections is \(\binom{N}{n}\).  Therefore:
+  \[f_X(x)=\frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}}\]
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) be a random variable with a Hypergeometric distribution \(\hg(N,r,n)\). \\
+  If \(N,r\gg n\):
+  \[\hg(N,r,n)\approx\bin\left(n,p=\frac{r}{N}\right)\]
+\end{theorem}
+
+Note that when comparing a Hypergeometric distribution to its Binomial approximation, the expected values are the same;
+however, the exact variance is always less than or equal to the approximation due to the extra correction factor.
+
+\begin{example}
+  Select 5 balls at random from an urn containing 300 red balls and 200 blue balls.  Let \(X=\) the number of selected red
+  balls.
+  \begin{gather*}
+    X\sim\hg(500,200,5) \\
+    \\
+    P(X=3)=\frac{\binom{300}{3}\binom{500-300}{5-3}}{\binom{500}{5}}=
+    \frac{\binom{300}{3}\binom{200}{2}}{\binom{500}{5}}=\frac{4455100\cdot19900}{255244687600}=0.3473 \\
+    \\
+    X\sim\hg(5,0.6) \\
+    \\
+    P(X=3)\approx\binom{5}{3}(0.6)^3(0.4)^2=10\cdot0.216\cdot0.16=0.3456 \\
+    \\
+    E(X)=np=5\cdot0.6=3 \\
+    \\
+    V(X)=np(1-p)\frac{N-n}{N-1}=5\cdot0.6\cdot0.4\cdot\frac{495}{499}=1.1904 \\
+    \\
+    \o=\sqrt{1.1904}\approx1.0910
+  \end{gather*}
+\end{example}
+
+\end{document}

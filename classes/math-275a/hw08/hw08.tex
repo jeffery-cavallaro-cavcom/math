@@ -1,0 +1,182 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\newcommand{\U}{\mathcal{U}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\newcommand{\Rs}{\R_{\text{std}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\K}{\mathcal{K}}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#8
+
+\bigskip
+
+\begin{theorem}[6.1]
+  Let \(X\) be a topological space.  If \(X\) is finite then \(X\) is compact.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is finite and assume that \(\U\) is an open cover of \(X\).  For each \(p\in X\) there exists
+  some \(U_p\in\U\) such that \(p\in U_p\).  Thus, \(p\mapsto\U_p\) is injective and so \(\set{U_p:p\in X}\) is a
+  finite subcover of \(X\).
+
+  Therefore \(X\) is compact.
+\end{proof}
+
+\begin{theorem}[6.2]
+  Let \(A\subset\Rs\).  If \(A\) is compact then \(A\) has a maximum point.
+\end{theorem}
+
+\begin{proof}
+  If \(A\) is finite then trivial, so assume that \(A\) is infinite.  Let \(\U=\set{(-\infty,x):x\in A}\), which is
+  an open cover for \(A\).  Since \(A\) is compact, \(\U\) contains a finite subcover.  So ABC that \(A\) has no
+  maximum point: \(\forall\,x\in A,\exists\,y\in A,y>x\).  Assume \(x,y\in A\) such that \(y>x\).  This means
+  \((-\infty,x)\subsetneq(-\infty,y)\) and so \(x\mapsto(-\infty,x)\) is injective.  Hence there is no possible
+  finite subcover, contradicting the compactness of \(A\).
+
+  Therefore \(A\) has a maximum point.
+\end{proof}
+
+\begin{theorem}[6.3]
+  If \(X\) is a compact space then every infinite subset of \(X\) has a limit point.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a compact set and assume that \(A\subset X\) is infinite.  Now, ABC that \(A\) has no
+  limit points, and so all \(a\in A\) are isolated points.  So let \(\U=\set{U_a:a\in A}\) be an open cover of \(A\)
+  such that the \(U_a\cap A=\set{a}\).  Thus the \(U_a\) are disjoint and so \(a\mapsto U_a\) is bijective.  Hence
+  \(\U\) is an infinite cover and no finite subcover is possible, violating the compactness of \(A\).
+
+  Therefore \(A\) has a limit point.
+\end{proof}
+
+\begin{theorem}[6.5]
+  Let \(X\) be a topological space.  \(X\) is compact iff every collection of closed subsets of \(X\) with the
+  finite intersection property has a non-empty intersection.
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume that \(X\) is compact.
+
+    Assume that \(\A=\set{A_{\a}:\a\in\l}\) is a collection of closed subsets of \(X\) with the finite intersection
+    property.  Now, ABC that \(\bigcap_{\a\in\l}A_{\a}=\emptyset\).  But since the \(A_{\a}\) are closed, the
+    \(A_{\a}^C\) are open and \(\bigcup_{\a\in\l}A_{\a}^C=X\) is an open cover for \(X\).  Furthermore, since \(X\)
+    is compact, there exists a finite subcover \(A_{\a_1}^C\cup\cdots\cup A_{a_n}^C=X\).  Thus,
+    \(A_{\a_1}\cap\cdots\cap A_{a_n}=\emptyset\) is a finite subcollection of \(\A\) with empty intersection,
+    contradicting the finite intersection property of \(\A\).
+
+    Therefore, every collection of closed subsets of \(X\) with the finite intersection property has a non-empty
+    intersection.
+
+  \item[\(\impliedby\)] Assume that every collection of closed subsets of \(X\) with the finite intersection property
+    has a non-empty intersection.
+
+    Assume that \(\U=\set{U_{\a}:\a\in\l}\) is an open cover of \(X\) and ABC that \(\U\) contains no finite
+    subcover.  This means that for all finite subcollections \(\set{U_{\a_1},\ldots,U_{\a_n}}\subset\U\) there
+    exists \(x\in X\) such that \(x\notin U_{\a_1}\cup\cdots\cup U_{\a_n}\) and hence
+    \(x\in U_{\a_1}^C\cap\cdots\cap U_{\a_n}^C\) and so \(U_{\a_1}^C\cap\cdots\cap U_{\a_n}^C\ne\emptyset\).  This shows
+    that \(\set{U_{\a}^C:\a\in\l}\) is a collection of closed sets with the finite intersection property, and so by
+    assumption, \(\bigcap_{\a\in\l}U_{\a}^C\ne\emptyset\).  But this means that \(\bigcup_{\a\in\l}U_{\a}\ne X\),
+    contradicting the assumption that \(\U\) is a cover for \(X\), and so \(\U\) must contain a finite subcover.
+
+    Therefore \(X\) is compact.
+  \end{description}
+\end{proof}
+
+\begin{theorem}[6.6]
+  Let \(X\) be a topological space.  \(X\) is compact iff for all \(U\in\T\) and all collections of closed sets
+  \(\K=\set{K_{\a}:\a\in\l}\) such that \(\bigcap\K\subset U\), there exists a finite subcollection of \(\K\)
+  whose intersection \(K_{\a_1}\cap\cdots\cap K_{\a_n}\subset U\).
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume that \(X\) is compact.
+
+    Assume that \(U\in\T\) and \(\K=\set{K_{\a}:\a\in\l}\) is a collection of closed sets such that
+    \(\bigcap_{\a\in\l}K_{\a}\subset U\).  Let \(U_{\a}=K_{a}^C\in\T\).  This means that
+    \(\bigcup_{\a\in\l}U_{\a}\supset U^C\) and so \(\U=\set{U}\cup\set{U_{\a}:\a\in\l}\) is an open cover for \(X\),
+    which must contain a finite subcover.  Now, note that \(\bigcap_{\a\in\l}K_{\a}\subset U\) but
+    \(\bigcap_{\a\in\l}K_{\a}\not\subset\bigcup_{\a\in\l}U_{\a}\), so any finite subcover must contain \(U\) and some
+    finite subcollection of the \(U_{\a}\).  So assume that \(U\cup U_{\a_1}\cup\cdots\cup U_{\a_n}=X\) is such a
+    finite subcover.  Therefore \(U_{\a_1}\cup\cdots\cup U_{\a_n}\supset U^C\) and hence
+    \(K_{\a_1}\cap\cdots\cap K_{\a_n}\subset U\).
+
+  \item[\(\impliedby\)] Assume that for all \(U\in\T\) and all collections of closed sets \(\K=\set{K_{\a}:\a\in\l}\)
+    such that \(\bigcap\K\subset U\), there exists a finite subcollection of \(\K\) whose intersection
+    \(K_{\a_1}\cap\cdots\cap K_{\a_n}\subset U\).
+
+    Assume that \(\U=\set{U_{\a}:\a\in\l}\) is an open cover for \(X\).  Now, assume \(U_{\a_0}\in\U\).  This means
+    that \(U_{\a_0}\cup\bigcup_{\a\ne\a_0}U_{\a}=X\).  Let \(K_{\a}=U_{\a}^C\), and so the \(K_{\a}\) are closed.  Then
+    \(K_{\a_0}\cap\bigcap_{\a\ne\a_0}K_{\a}=\emptyset\) and hence \(\bigcap_{\a\ne\a_0}K_{\a}\subset U_{\a_0}\).
+    Furthermore, by the assumption, there exists a finite subcollection \(\set{K_{\a_1},\ldots,K_{\a_n}}\) such that
+    \(K_{\a_1}\cap\cdots\cap K_{\a_n}\subset U_{\a_0}\) and so \(U_{\a_1}\cup\ldots\cup U_{\a_n}\supset K_{\a_0}\).
+    Therefore \(U_{\a_0}\cup U_{\a_1}\cup\cdots\cup U_{\a_n}=X\) is a finite subcover, hence \(X\) is compact.
+  \end{description}
+\end{proof}
+
+\begin{theorem}[6.8]
+  Every closed subspace of a compact space is compact.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a compact topological space and \(A\) is a closed subspace of \(X\).  Now, assume that
+  \(\U\) is an open cover of \(X\) and \(\U_A=\set{U_{\a}:\a\in\l}\subset\U\) is an open cover of \(A\).  Since \(A\)
+  is closed, let \(U=A^C\in\T\).  Thus, \(U\cup\bigcup_{\a\in\l}U_{\a}=X\) is also an open cover of \(X\).  But \(X\)
+  is compact and so this open cover contains a finite subcover.  Since any such finite subcover can always include
+  \(U\) and still be finite, let \(U\cup U_{\a_1}\cup\ldots U_{\a_n}=X\) be such a finite subcover.  This requires that
+  \(U_{\a_1}\cup\ldots U_{\a_n}\supset A\) be a finite subcover for \(A\).  Therefore,
+  \((U_{\a_1}\cup\ldots U_{\a_n})\cap A=(U_{\a_1}\cap A)\cup\cdots\cup(U_{\a_n}\cap A)=A\) is a finite open cover of the
+  subspace \(A\) and hence \(A\) is compact.
+\end{proof}
+
+\begin{theorem}[6.9]
+  Every compact subspace of a Hausdorff space is closed.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is Hausdorff and \(A\) is a compact subspace of \(X\).  Assume that \(b\in A^C\).  Since \(X\)
+  is Hausdorff, for every \(a\in A\) there exists \(U_a,V_a\in\T_X\) such that \(a\in U_a\), \(b\in V_a\), and
+  \(U_a\cap V_a=\emptyset\).  So let the \(\set{U_a:a\in A}\) be an open cover of \(A\) in \(X\).  Thus
+  \(\set{U_a\cap A:a\in A}\) for \(U_a\cap A\in\T_Y\) is an open cover of \(A\) in \(A\).  Now, since \(A\) is a
+  compact subspace of \(X\), there exists a finite subcover \((U_{a_1}\cap A)\cup\cdots\cup(U_{a_n}\cap A)\) of
+  \(A\) in \(A\), and hence a finite subcover \(U_{a_1}\cup\cdots\cup U_{a_n}\) of \(A\) in \(X\).  Let
+  \(V=V_{a_1}\cup\cdots\cup V_{a_n}\).  Note that \(b\in V\) and \(V\in\T_X\).  Furthermore, since all the
+  \(U_a\cap V_a=\emptyset\), it must be the case that \(V\cap(U_{a_1}\cup\cdots\cup U_{a_n})=\emptyset\).  But
+  since \(U_{a_1}\cup\cdots\cup U_{a_n}\supset A\) it must be the case that \(V\subset A^C\).  So \(b\) is an
+  interior point in \(A^C\), meaning that all the points in \(A^C\) are interior, and so \(A^C\in\T_X\).  Therefore
+  \(A\) is closed in \(X\).
+\end{proof}
+
+\begin{lemma}
+  Every compact, Hausdorff space is regular.
+\end{lemma}
+
+\begin{proof}
+  Assume that \(X\) is compact and Hausdorff.  Assume that \(A\subset X\) is closed.  Thus, by previous theorem,
+  \(A\) is also compact.  So assume \(p\in A^C\).  This means that \(p\notin A\) and so, by the previous proof,
+  there exists \(U,V\in\T\) such that \(A\subset U\) and \(p\in V\) and \(U\cap V=\emptyset\).
+
+  Therefore \(X\) is regular.
+\end{proof}
+
+\begin{theorem}[6.12]
+  Every compact, Hausdorff space is normal.
+\end{theorem}
+
+\begin{proof}
+  Assume \(A,B\subset X\) are closed.  Since \(X\) is regular (by the previous lemma), for all \(b\in B\) there
+  exists \(U_b,V_b\in\T\) such that \(A\subset U_b\) and \(b\in V_b\) and \(U_b\cap V_b=\emptyset\).  So let
+  \(V=\set{V_b:b\in B}\) be an open cover for \(B\).  But, by previous theorem, \(B\) is also compact, and so
+  there exists a finite subcover \(V_{b_1}\cup\cdots\cup V_{b_n}\subset B\).  So let
+  \(U=U_{b_1}\cap\cdots\cap U_{b_n}\in\T\).  Note that \(A\subset U\) and, since all the \(U_b\cap V_b=\emptyset\),
+  \(U\cap V=\emptyset\).  Therefore, \(X\) is normal.
+\end{proof}
+
+\end{document}

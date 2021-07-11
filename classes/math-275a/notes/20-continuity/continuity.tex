@@ -1,0 +1,288 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\renewcommand{\N}{\mathcal{N}}
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\Rs}{\R_{\text{std}}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\newcommand{\f}{\(1^{st}\ \)}
+\begin{document}
+\section*{Continuity}
+
+\begin{definition}[Continuity]
+  Let \(X\) and \(Y\) be topological spaces.  To say that \(f:X\to Y\) is \emph{continuous} means that for every
+  \(U\in\T_Y\), \(f^{-1}(U)\in\T_X\).
+\end{definition}
+
+\begin{definition}[Neighborhood]
+  Let \(X\) be a topological space and \(p\in X\).  To say that \(U_p\subset X\) is a \emph{neighborhood} of \(p\)
+  means that \(p\in U_p\) and \(U_p\in\T\).
+\end{definition}
+
+\begin{notation}
+  Let \(X\) be a topological space and \(p\in X\).  \(\N_p=\) the set of all neighborhoods of \(p\) in \(X\).
+\end{notation}
+
+\begin{lemma}
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\).  For all \(B\subset Y\):
+  \[X-f^{-1}(B)=f^{-1}(Y-B)\]
+\end{lemma}
+
+\begin{proof}
+  Assume \(A\subset Y\).
+  \begin{align*}
+    x\in X-f^{-1}(B) &\iff x\notin f^{-1}(B) \\
+    &\iff f(x)\notin B \\
+    &\iff f(x)\in Y-B \\
+    &\iff x\in f^{-1}(Y-B)
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\).  TFAE:
+  \begin{enumerate}
+  \item \(f\) is continuous.
+  \item For every closed set \(K\subset Y\), \(f^{-1}(K)\) is closed in \(X\).
+  \item For all \(A\subset X\), \(f(\bar{A})\subset\overline{f(A)}\).
+  \item For every \(x\in X\) and \(V\in\N_{f(x)}\) there exists \(U\in\N_x\) such that \(f(U)\subset V\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(1\implies2\)] Assume that \(f\) is continuous.
+
+    Assume that \(K\subset Y\) is closed, and so \(Y-K\in\T_Y\).  Since \(f\) is continuous,
+    \(f^{-1}(Y-K)\in\T_X\).  Now, applying the lemma, \(f^{-1}(Y-K)=X-f^{-1}(K)\in\T_X\).  Therefore
+    \(f^{-1}(K)\) is closed.
+
+  \item[\(2\implies3\)] Assume that for every closed set \(K\subset Y\), \(f^{-1}(K)\) is closed in \(X\).
+
+    Assume \(A\subset X\).  Since \(\overline{f(A)}\) is closed, by the assumption, \(f^{-1}(\overline{f(A)})\) is
+    closed.  Furthermore, since \(f(A)\subset\overline{f(A)}\), it must be the case that
+    \(f^{-1}(f(A))=A\subset f^{-1}(\overline{f(A)})\).  But \(\bar{A}\) is the smallest closed set containing \(A\),
+    and so \(\bar{A}\subset f^{-1}(\overline{f(A)})\).
+    Therefore \(f(\bar{A})\subset f(f^{-1}(\overline{f(A)}))\subset\overline{f(A)}\).
+
+  \item[\(3\implies4\)] Assume that for all \(A\subset X\), \(f(\bar{A})\subset\overline{f(A)}\).
+
+    Assume \(x\in X\) and \(V\in\N_{f(x)}\).  Note that \(Y-V\) is closed.  Now, let \(U=f^{-1}(V)\) and so
+    \(x\in U\) and \(f(U)=f(f^{-1}(V)\subset V\).
+
+    WTS: \(U\) open.
+
+    ABC that \(X-U\) is not closed.  This means that there exists \(p\in\overline{X-U}\) but \(p\notin X-U\).
+    And so, by the assumption and the lemma:
+    \[f(p)\in f(\overline{X-U})\subset\overline{f(X-U)}=\overline{f(X-f^{-1}(V))}=\overline{f(f^{-1}(Y-V))}\subset
+    \overline{Y-V}=Y-V\]
+    This means that \(p\in f^{-1}(Y-V)=X-f^{-1}(V)=X-U\), contradicting the assumption that \(p\notin X-U\).
+    Thus \(X-U\) contains all of its limit points and is closed.  Therefore \(U\) is open.
+
+  \item[\(4\implies1\)] Assume that for every \(x\in X\) and \(V\in\N_{f(x)}\) there exists \(U\in\N_x\) such that
+    \(f(U)\subset V\).
+
+    Assume \(V\in\T_Y\) and assume \(p\in f^{-1}(V)\).  Thus \(f(p)\in V\in\N_{f(p)}\).  Now, by the assumption,
+    there exists \(U\in\N_p\) such that \(f(U)\subset V\), and hence \(f^{-1}(f(U))=U\subset f^{-1}(V)\).  This
+    means that \(p\) is an interior point of \(f^{-1}(V)\) and hence \(f^{-1}(V)\) is open.  Therefore \(f\) is
+    continuous.
+  \end{description}
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces and let \(y_0\in Y\).  The constant map \(f:X\to Y\) defined by
+  \(f(x)=y_0\) is continuous.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(V\in\T_Y\).  If \(y_0\in V\) then \(f^{-1}(V)=X\).  Otherwise, \(f^{-1}(V)=\emptyset\).  In either
+  case, \(f^{-1}(V)\in\T_X\).  Therefore \(f\) is continuous.
+\end{proof}
+
+\begin{theorem}
+  Let \(Y\) be a topological space and let \(X\) be a subspace of \(Y\).  The inclusion map \(i:X\to Y\) defined
+  by \(i(x)=x\) is continuous.
+\end{theorem}
+
+\begin{proof}
+  Assume \(V\in\T_Y\).  Then \(i^{-1}(V)=V\cap X\in\T_X\).  Therefore \(i\) is continuous.
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\) be continuous.  For all \(A\subset X\),
+  \(\restrict{f}{A}\) is continuous.
+\end{theorem}
+
+\begin{proof}
+  Assume \(A\subset X\) and assume \(V\) is open in \(Y\).  Since \(f\) is continuous, \(f^{-1}(V)\) is open in
+  \(X\).  Furthermore, by definition of the subspace topology, \(\restrict{f}{A}^{-1}(B)=f^{-1}(B)\cap A\) is open
+  in \(A\).  Therefore \(\restrict{f}{A}\) is continuous.
+\end{proof}
+
+\begin{definition}[Continuous]
+  Let \(X\) and \(Y\) be topological spaces and \(f:X\to Y\).  To say that \(f\) is \emph{continuous} at a point
+  \(x\in X\) means that for all \(V\in\N_{f(x)}\) there exists \(U\in\N_x\) such that \(f(U)\subset V\).  Thus,
+  to say that \(f\) is continuous means that it is continuous at each \(x\in X\).
+\end{definition}
+
+\begin{theorem}
+  A function \(f:\Rs\to\Rs\) is continuous iff for every \(x\in\R\) and \(\e>0\) there exists \(\d>0\) such that
+  for every \(y\in\R\):
+  \[d(x,y)<\d\implies d(f(x),f(y))<\e\]
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume that \(f\) is continuous.
+
+    Assume \(x\in\R\) and \(\e>0\).  Let \(V=B(f(x),\e)\in\N_{f(x)}\).  Since \(f\) is continuous, there exists
+    \(U\in\N_x\) such that \(f(U)\subset V\).  But, since \(U\) is open, there exists \(\d>0\) such that
+    \(B(x,\d)\subset U\).  Now, assume \(y\in\R\) such that \(d(x,y)<\d\).  This means
+    \(y\in B(x,\d)\subset U\subset f^{-1}(V)\).  Therefore \(f(y)\in V\) and thus \(d(f(x),f(y))<\e\).
+
+  \item[\(\impliedby\)] Assume for every \(x\in\R\) and \(\e>0\) there exists \(\d>0\) such that for every \(y\in\R\):
+    \[d(x,y)<\d\implies d(f(x),f(y))<\e\]
+
+    Assume \(x\in\R\) and \(V\in\N_{f(x)}\).  Since \(f(x)\) is an interior point of \(V\), there exists \(\e>0\)
+    such that \(B(f(x),\e)\subset V\).  But by the assumption, this means that there exists \(\d>0\) such that
+    \(U=B(x,\d)\subset f^{-1}(V)\).  Therefore \(f(U)\subset V\) and thus \(f\) is continuous.
+  \end{description}
+\end{proof}
+
+\begin{lemma}
+  Let \(X\) be a \f countable topological space, \(A\subset X\), and \(p\in A\).  There exists a sequence
+  \((a_n)\) in \(A\) such that \(a_n\to p\) iff \(p\in\bar{A}\).
+\end{lemma}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume that there exists a sequence \((a_n)\) in \(A\) such that \(a_n\to p\).
+
+    Assume that \(U\in\N_p\).  This means that there exists some \(N\in\nat\) such that for all \(n>N\),
+    \(a_n\in U\).  But \(a_n\in A\) also, so \(U\cap A\ne\emptyset\).  Therefore \(p\in\bar{A}\).
+
+  \item[\(\impliedby\)] Assume that \(p\in\bar{A}\).
+
+    This means that for all \(U\in\N_p\) it must be the case that \(U\cap A\ne\emptyset\).  Now, since \(X\) is \f
+    countable, assume that \(\set{B_k:k\in N}\) is a countable neighborhood basis for \(p\).  Define the collection
+    \(\set{U_n:n\in\nat}\) such that:
+    \[U_n=\bigcap_{k=1}^nB_k\]
+    Note that each \(U_n\) is a finite intersection of open sets and so \(U_n\in\N_p\).  Furthermore, since
+    \(p\in U_n\) and \(p\in\bar{A}\), it must be the case that \(U_n\cap A\ne\emptyset\).  So select
+    \(a_n\in U_n\cap A\).  Therefore \((a_n)\) is in sequence in \(A\) and \(a_n\to p\).
+  \end{description}
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces such that \(X\) is \f countable.  \(f:X\to Y\) is continuous iff
+  for every convergent sequence \(x_n\to x\) in \(X\), \(f(x_n)\to f(x)\) in \(Y\).
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume that \(f\) is continuous.
+
+    Assume that \(f(x_n)\not\to f(x)\).  This means that there exists a \(V\in\N_{f(x)}\) such that for all
+    \(N\in\nat\) there exists an \(n>N\) such that \(f(x_n)\notin V\).  So \(f(x_n)\in Y-V\) and hence \(x_n\in
+    f^{-1}(Y-V)=X-f^{-1}(V)\).  Thus \(x_n\notin f^{-1}(V)\).  But \(f\) is continuous, so \(f^{-1}(V)\in\N_x\).
+    Let \(U=f^{-1}(V)\).  Therefore, there exists \(U\in\N_x\) such that for all \(N\in\nat\) there exists \(n>N\)
+    such that \(x_n\notin U\), and thus \(x_n\not\to x\).
+
+  \item[\(\impliedby\)] Assume for all sequences \((x_n)\) in \(A\), \(x_n\to x\) implies \(f(x_n)\to f(x)\).
+
+    Assume \(A\subset X\) and \(x\in\bar{A}\), and hence \(f(x)\in f(\bar{A})\).  By the lemma, there exists a
+    sequence \((x_n)\) in \(A\) such that \(x_n\to x\).  Furthermore, by the assumption, \(f(x_n)\to f(x)\).  But
+    \(f(x_n)\in f(A)\) and so \(f(x)\in\overline{f(A)}\).  Therefore \(f(\bar{A})\subset\overline{f(A)}\) and thus
+    \(f\) is continuous.
+  \end{description}
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces such that \(D\subset X\) is dense and \(Y\) is Hausdorff.  Let
+  \(f:X\to Y\) and \(g:X\to Y\) be continuous such that \(\forall\,d\in D,f(d)=g(d)\).  Then
+  \(\forall\,x\in X, f(x)=g(x)\).
+\end{theorem}
+
+\begin{proof}
+  ABC that there exists \(x\in X\) such that \(f(x)\ne g(x)\).  Now, since \(Y\) is Hausdorff, there exists
+  \(U\in\N_{f(x)}\) and \(V\in\N_{g(x)}\) such that \(U\cap V=\emptyset\).  Furthermore, since \(f\) and \(g\) are
+  continuous, \(f^{-1}(U)\in\N_x\) and \(g^{-1}(V)\in\N_x\).  Since \(x\in f^{-1}(U)\) and \(x\in g^{-1}(V)\), this
+  means that \(f^{-1}(U)\cap g^{-1}(V)\ne\emptyset\), and so, since \(D\) is dense in \(X\), there must exists
+  \(d\in D\) such that \(d\in f^{-1}(U)\cap g^{-1}(V)\).  But this means that \(f(d)\in U\cap V\), contradicting
+  the assumption that \(U\) and \(V\) are disjoint.  Therefore \(\forall\,x\in X,f(x)=g(x)\).
+\end{proof}
+
+\begin{lemma}
+  Let \(X,Y,Z\) be topological spaces.  If \(f:X\to Y\) and \(g:Y\to Z\) are continuous then for all
+  \(W\subset Z\):
+  \[(g\circ f)^{-1}(W)=(f^{-1}\circ g^{-1})(W)\]
+\end{lemma}
+
+\begin{proof}
+  Assume \(W\subset Z\).
+  \begin{align*}
+    x\in(g\circ f)^{-1}(W) &\iff (g\circ f)(x)\in W \\
+    &\iff g(f(x))\in W \\
+    &\iff f(x)\in g^{-1}(W) \\
+    &\iff x\in f^{-1}(g^{-1}(W)) \\
+    &\iff x\in (f^{-1}\circ g^{-1})(W)
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  Let \(X,Y,Z\) be topological spaces.  If \(f:X\to Y\) and \(g:Y\to Z\) are continuous then their composition
+  \(g\circ f:X\to Z\) is continuous.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(f\) and \(g\) are continuous and \(W\in\T_Z\).  Since \(g\) is continuous, \(g^{-1}(W)\in\T_Y\).
+  And, since \(f\) is continuous, \(f^{-1}(g^{-1}(W))=(f^{-1}\circ g^{-1})(W)=(g\circ f)^{-1}(W)\in\T_X\).
+  Therefore \(g\circ f\) is continuous.
+\end{proof}
+
+\begin{theorem}[Pasting Lemma]
+  Let \(X\) and \(Y\) be a topological spaces such that \(A\cup B=X\) for \(A,B\) closed in \(X\) and \(f,g:A\to Y\)
+  continuous functions that agree on \(A\cup B\).  The function \(h:A\cup B\to Y\) defined by \(h=f\) on \(A\) and
+  \(h=g\) on \(B\) is continuous.
+\end{theorem}
+
+\begin{proof}
+  Assume \(K\subset Y\) is closed in \(Y\).  Since \(f\) and \(g\) are continuous, \(f^{-1}(K)\) and \(g^{-1}(K)\)
+  are closed in \(X\).  Now, since \(f\) and \(g\) agree on \(A\cup B\):
+  \[h^{-1}(K)=(h^{-1}(K)\cap A)\cup(h^{-1}(K)\cap B)=f^{-1}(K)\cap g^{-1}(K)\]
+  which is closed in \(X\).  Therefore \(h\) is continuous.
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces.  If \(X\) is compact and \(f:X\to Y\) is continuous and surjective then
+  \(Y\) is compact.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is compact and \(f:X\to Y\) is continuous and surjective.  Assume that \(\set{V_{\a}:\a\in\l}\)
+  is an open cover for \(Y\).  Since \(f\) is continuous, each \(f^{-1}(V_{\a})\in\T_X\).  Furthermore, since \(f\)
+  is surjective, \(\displaystyle f^{-1}(\bigcup_{\a\in\l}V_{\a})=\bigcup_{\a\in\l}f^{-1}(V)\) is an open cover of \(X\).
+  But \(X\) is compact, so there exists a finite subcover \(\set{f^{-1}(V_1),\ldots,f^{-1}(V_n)}\) of \(X\).  And
+  since \(f\) is surjective \(\set{V_1,\ldots,V_n}\) is a finite subcover for \(Y\).  Therefore \(Y\) is compact.
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces.  If \(D\) is dense in \(X\) and \(f:X\to Y\) is continuous and surjective
+  then \(f(D)\) dense in \(Y\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(D\) is dense in \(X\) and \(f:X\to Y\) is continuous and surjective.  Assume that \(V\in\T_Y\) and
+  \(V\ne\emptyset\).  Since \(f\) is continuous, \(f^{-1}(V)\in\T_Y\).  Furthermore, since \(f\) is surjective,
+  \(f^{-1}(V)\ne\emptyset\), and since \(D\) is dense in \(X\), \(f^{-1}(V)\cap D\ne\emptyset\).  Therefore
+  \(f(U)\cap f(D)\ne\emptyset\) and thus \(f(D)\) is dense in \(Y\).
+\end{proof}
+
+\end{document}

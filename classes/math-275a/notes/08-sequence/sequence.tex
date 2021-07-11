@@ -1,0 +1,59 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\e}{\epsilon}
+\begin{document}
+\section*{Sequences}
+
+\begin{definition}[Sequence]
+  Let \((X,\T)\) be a topological space.  A \emph{sequence} in \(X\), denoted by \((x_i)_{i\in\N}\) or just
+  \((x_i)\), is a function \(f:\N\to X\) where \(f(i)=x_i\).
+\end{definition}
+
+\begin{definition}[Limit]
+  Let \((X,\T)\) be a topological space, \((x_i)\) a sequence in \(X\), and \(p\in X\).  To say that \(p\) is the
+  \emph{limit} of \((x_i)\), also stated as \((x_i)\) \emph{converges} to \(p\) and denote by \(x_i\to p\), means:
+  \[\forall\,U\in\U_p,\exists N\in\N,i>N\implies x_i\in U\]
+\end{definition}
+
+\begin{theorem}
+  Let \((X,\T)\) be a topological space, \(A\subset X\), and \(p\in X\):
+  \[\setb{x_i}{i\in\N}\subset A\ \text{and}\ x_i\to p\implies p\in\bar{A}\]
+\end{theorem}
+
+\begin{proof}
+  Assume that \(\setb{x_i}{i\in\N}\subset A\ \text{and}\ x_i\to p\).  Assume that \(U\in\U_p\).  This means that
+  there exists some \(N\in\N\) such that for all \(i>N\) it is the case that \(x_i\in U\).  But \(x_i\in A\) also,
+  and so \(U\cap A\ne\emptyset\).
+
+  Therefore \(p\in\bar{A}\).
+\end{proof}
+
+\begin{theorem}
+  Let \((\R^n,\T)\) be the standard topology, \(A\subset\R^n\), and \(p\in X\) be a limit point of \(A\).  There
+  exists a sequence of points in \(A\) that converge to \(p\).
+\end{theorem}
+
+\begin{proof}
+  Let \(U_i=B\left(p,\e_i\right)\) where \(\e_i=\frac{1}{i}\) for \(i\in\N\).  Note that \(\e_i=\frac{1}{i}\to0\)
+  as \(i\to\infty\).  Also note that \(U_i\cap A\ne\emptyset\) because \(p\) is a limit point of \(A\), so select
+  \(x_i\in U_i\cap A\).  Thus, all of the \(x_i\in A\).
+
+  Claim: \((x_i)_{i\in\N}\) is a sequence in \(A\) converging to \(p\).
+
+  Assume \(U\in\U_p\).  Then there exists some \(\e>0\) such that \(B(p,\e)\subset U\).  Since the \(\e_i\to0\),
+  there exists some \(\e_N<\e\).  Assume \(i>N\).  This means that \(e_i<e_N<e\) and so
+  \(x_i\in U_i\subset U_N\subset U\) and therefore \(x_i\in U\).
+\end{proof}
+
+\begin{example}
+  Find an example of a topological space and a convergent sequence in that space for which the limit of the
+  sequence is not unique.
+
+  Consider \((\R,\T)\) with the indiscrete topology and consider any random sequence of points \(x_i\).  Since
+  \(\R\) is the only non-empty open set, any \(p\in\R\) is a suitable limit for \((x_i)\).
+\end{example}
+
+\end{document}

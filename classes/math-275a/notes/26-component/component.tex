@@ -1,0 +1,50 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\begin{document}
+\section*{Components}
+
+\begin{definition}[Component]
+  Let \(X\) be a topological space and let \(p\in X\).  The \emph{(connected) component} of \(p\) in \(X\) is the
+  union of all connected subsets of \(X\) that contain \(p\).
+\end{definition}
+
+\begin{theorem}
+  Let \(X\) be a topological space.  Each component of \(X\) is connected, closed, and not contained in any
+  strictly larger connected subset of \(X\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(U\) is a component of \(X\) and that \(p\in U\).  By definition, \(U=\bigcup_{\a\in\l}U_{\a}\)
+  where \(U_{\a}\) is a connected subset of \(X\) containing \(p\).  Now, for each \(U_{\a}\),
+  \(U_{\a}\cap\set{p}\ne\emptyset\) and \(\set{p}\) is trivially connected.  Therefore \(U\) is connected.
+
+  Assume that \(V\) is a connected component of \(X\) such that \(U\subset V\).  This means that \(p\in V\) and
+  so, by definition, \(U=U\cup V\).  But this is ony true if \(V\subset U\).  Therefore \(U=V\).
+
+  Now, since \(U\) is connected, \(\bar{U}\) is connected.  But \(p\in\bar{U}\) and so, by definition,
+  \(U=U\cup\bar{U}\).  But this is only true if \(\bar{U}\subset U\).  Therefore \(U=\bar{U}\) and hence \(U\) is
+  closed.
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) be a topological space.  The set of components of \(X\) are a partition of \(X\).
+\end{theorem}
+
+\begin{theorem}
+  Let \(X\) be a topological space with a finite number of components.  The components are clopen in \(X\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X=U_1\sqcup\cdots\sqcup U_n\).  All of the \(U_k\) are closed.  But
+  \(U_k=X-(U_1\sqcup\cdots\sqcup U_{k-1}\sqcup U_{k+1}\sqcup\cdots\sqcup U_n)\) is then open.  Therefore, all of the
+  \(U_k\) are clopen.
+\end{proof}
+
+This result does not hold for an infinite number of components.  Consider \(Q\subset\R\) with the subspace
+topology.  \(Q\) is disconnected with components \(\setb{\set{r}}{r\in\Q}\).  But \(\set{r}\) is closed and not
+open.
+
+\end{document}

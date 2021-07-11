@@ -1,0 +1,139 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\begin{document}
+\section*{Open and Closed Functions}
+
+\begin{definition}[Open and Closed Functions]
+  Let \(X\) and \(Y\) be topological spaces.  To say that \(f:X\to Y\) is open means that for all \(A\in\T_X\),
+  \(f(A)\in\T_Y\).  Likewise, to say that \(f:X\to Y\) is closed means that for all closed \(A\subset X\),
+  \(f(A)\subset Y\) is closed.
+\end{definition}
+
+\begin{example}
+  \begin{enumerate}
+  \item[]
+  \item An open function that is not continuous.
+
+    Consider \(f:\R_{\text{cof}}\to\R_{\text{coc}}\) defined by \(f(x)=x\).  Since every open set in the cofinite
+    topology is open in the cocountable topology, \(f\) is open.  However, \(\R-\Q\) is open in the cocountable
+    topology but not in cofinite topology and so \(f\) is not continuous.
+
+  \item A closed function that is not continuous.
+
+    Consider \(f:\R_{\text{cof}}\to\R_{\text{coc}}\) defined by \(f(x)=x\).  Since every closed set in the cofinite
+    topology is closed in the cocountable topology, \(f\) is closed.  However, \(\Q\) is closed in the cocountable
+    topology but not in cofinite topology and so \(f\) is not continuous.
+
+  \item A continuous function that is neither open nor closed.
+
+    Consider \(f:\R_{\text{dis}}\to\R_{\text{ind}}\) defined by \(f(x)=x\).  Since the only open (and closed) sets
+    in the indiscrete topology are \(\emptyset\) and \(R\), and these sets are also open in the indiscrete
+    topology, \(f\) is continuous.  However, \([0,1]\) is open and closed in the discrete topology, but neither
+    in the indiscrete topology, so \(f\) is neither open nor closed.
+
+  \item A continuous function that is open but not closed.
+
+    Consider \(f:\R\to\R\) defined by \(f(x)=e^x\), which is continuous.  Since \(f((a,b))=(e^a,e^b)\), open sets
+    will always map to open sets.  However, \(\R\) is closed in \(\R\) and \(f(\R)=(0,\infty)\), which is not
+    closed in \(R\).  Thus, \(f\) is open but not closed.
+
+  \item A continuous function that is closed but not open.
+
+    Consider \(f:\R\to\R\) defined by \(f(x)\to y_0\).  This was already shown to be continuous.  Note that
+    \(\set{y}\) is closed in \(\R\) so closed sets will always map to closed sets; however, open sets will also
+    map to the closed set and thus \(f\) is closed but not open.
+  \end{enumerate}
+\end{example}
+
+\begin{lemma}
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\) be bijective.  For all \(A\subset X\):
+  \[f(A)=Y-f(X-A)\]
+\end{lemma}
+
+\begin{proof}
+  Assume \(A\subset X\).
+  \begin{description}
+  \item[\((\subset)\)] Assume \(y\in f(A)\).
+
+    Since \(f\) is injective, there exists one and only one \(x\in X\) such that \(y=f(x)\) and that \(x\in A\).
+    Thus, \(x\notin X-A\) and so \(y=f(x)\notin f(X-A)\).  Therefore \(y\in Y-f(X-A)\).
+
+  \item[\((\supset)\)] Assume \(y\in Y-f(X-A)\).
+
+    Thus, \(y\notin f(X-A)\) and so there is no \(x\in X-A\) such that \(y=f(x)\).  But \(f\) is surjective, and
+    so there is such an \(x\in X\) and that \(x\in A\).  Therefore \(y=f(x)\in f(A)\).
+  \end{description}
+\end{proof}
+
+\begin{lemma}
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\) be bijective.  \(f\) is open iff \(f\) is closed.
+\end{lemma}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume \(f\) is open.
+
+    Assume that \(A\subset X\) is closed.  Then \(X-A\) is open, and since \(f\) is open, \(f(X-A)\) is open and
+    \(Y-f(X-A)\) is closed.  But \(f\) is bijective, so \(Y-f(X-A)=f(A)\).  Therefore \(f(A)\) is closed.
+    
+  \item[\(\impliedby\)] Assume \(f\) is closed.
+
+    Assume that \(A\subset X\) is open.  Then \(X-A\) is closed, and since \(f\) is closed, \(f(X-A)\) is closed and
+    \(Y-f(X-A)\) is open.  But \(f\) is bijective, so \(Y-f(X-A)=f(A)\).  Therefore \(f(A)\) is open.
+  \end{description}
+\end{proof}
+
+\begin{lemma}
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\) be continuous and closed.  For all \(A\subset X\),
+  \(f(\bar{A})=\overline{f(A)}\).
+\end{lemma}
+
+\begin{proof}
+  Assume that \(A\subset X\).  Since \(f\) is continuous, \(f(\bar{A})\subset\overline{f(A)}\).  Now, since
+  \(A\subset\bar{A}\), \(f(A)\subset f(\bar{A})\).  Furthermore, \(\bar{A}\) is closed and \(f\) is closed, so
+  \(f(\bar{A})\) is closed.  But \(\overline{f(A)}\) is the smallest closed set containing \(f(A)\), and so
+  \(f(A)\subset\overline{f(A)}\subset f(\bar{A})\).  Therefore \(f(\bar{A})=\overline{f(A)}\).
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces.  If \(X\) is normal and \(f:X\to Y\) is continuous, surjective, and
+  closed then \(Y\) is normal.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is normal and \(f:X\to Y\) is continuous, surjective, and closed.  Assume that \(B\) is closed
+  in \(Y\) and assume that \(V\in\T_Y\) such that \(B\subset V\).  Since \(f\) is continuous, \(f^{-1}(B)\) is
+  closed in \(X\) and \(f^{-1}(V)\in\T_X\) with \(f^{-1}(B)\subset f^{-1}(V)\).  Now, since \(X\) is normal, there
+  exists \(U\in\T_X\) such that \(f^{-1}(B)\subset U\) and \(\bar{U}\subset f^{-1}(V)\).  Now, since \(U\in\T_X\),
+  \(X-U\) is closed in \(X\).  Since \(f\) is closed, \(f(X-U)\) is closed in \(Y\) and thus
+  \(Y-f(X-U)\subset f(U)\in\T_Y\).
+
+  Claim: \(B\subset Y-f(X-U)\)
+
+  Assume \(y\in B\).  Since \(f\) is surjective, \(y\) is mapped and all such \(x\in f^{-1}(B)\subset U\).  Thus,
+  \(x\notin X-U\), so \(y=f(x)\notin f(X-U)\), and hence \(y\in Y-f(X-U)\).
+
+  Claim: \(\overline{Y-f(X-U)}\subset V\)
+
+  Since \(Y-f(X-U)\subset f(U)\), \(\overline{Y-f(X-U)}\subset\overline{f(U)}\).  Now, since
+  \(\bar{U}\subset f^{-1}(V)\), \(f(\bar{U})\subset f(f^{-1}(V))\subset V\).  But \(f\) is continuous, so
+  \(f(\bar{U})=\overline{f(U)}\), and so \(\overline{Y-f(X-U)}\subset\overline{f(U)}\subset V\).
+
+  Therefore \(Y\) is normal.
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces such that \(X\) is compact and \(Y\) is Hausdorff.  For all \(f:X\to Y\),
+  if \(f\) is continuous then \(f\) is closed.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(f\) is continuous and assume that \(A\subset X\) is closed in \(X\).  Since \(X\) is compact,
+  \(A\) is also compact.  Now, consider \(f(A)\) as a subspace of \(Y\).  Since \(f|_A\) is surjective, \(f(A)\)
+  is compact.  Finally, since \(Y\) is Hausdorff, \(f(A)\) is closed.  Therefore \(f\) is closed.
+\end{proof}
+
+\end{document}

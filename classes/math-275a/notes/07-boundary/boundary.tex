@@ -1,0 +1,171 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\U}{\mathcal{U}}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Bd}{Bd}
+\begin{document}
+\section*{Boundaries}
+
+\begin{notation}
+  Let \((X,\T)\) be a topological space and let \(A\subset X\):
+  \[\U_A=\setb{U\in\T}{U\subset A}\]
+\end{notation}
+
+\begin{definition}[Interior]
+  Let \((X,\T)\) be a topological space and let \(A\subset X\).  The \emph{interior} of \(A\), denoted by
+  \(\Int(A)\), is given by:
+  \[\Int(A)=\bigcup\U_A\]
+  To say that a \(p\in X\) is an \emph{interior point} of \(A\) means that \(p\in\Int(A)\).
+\end{definition}
+
+\begin{theorem}
+  Let \((X,\T)\) be a topological space, \(A\subset X\), and \(p\in X\).  \(p\) is an interior point of \(A\) iff
+  there exists \(U\in\T\) such that \(p\in U\subset A\).
+\end{theorem}
+
+\begin{proof}
+  \(p\in\Int(A)\iff p\in\bigcup\U_A\iff\exists\,U\in\U_A,p\in U\subset A\)
+\end{proof}
+
+\begin{theorem}
+  Let \((X,\T)\) be a topological space and \(U\subset\T\):
+  \[U\in\T\iff\forall\,p\in U,p\in\Int(U)\]
+\end{theorem}\
+
+\begin{proof}
+  \(\U\in T\iff\forall\,p\in U,\exists U_p\in\T,p\in U_p\subset U\iff\forall\,p\in U,p\in\Int(U)\)
+\end{proof}
+
+\begin{definition}[Boundary]
+  Let \((X,\T)\) be a topological space and let \(A\subset X\).  The \emph{boundary} or \(A\), denoted by
+  \(\Bd(A)\), is given by:
+  \[\Bd(A)=\bar{A}\cap\overline{X-A}\]
+\end{definition}
+
+\begin{theorem}
+  Let \((X,\T)\) be a topological space and let \(A\subset X\).  \(\Int(A)\), \(\Bd(A)\), and \(\Int(X-A)\) are
+  disjoint sets whose union is \(X\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(p\in\Int(A)\).  This means that there exists \(U\in\U_A\) such that \(p\in U\subset A\).  Now ABC
+  that \(p\in\Bd(A)\).  This means that \(p\in\overline{X-A}\) and so for all \(U\in\U_p, U\cap(X-A)\ne\emptyset\).
+  This contradicts the fact that there exists a \(U\in\U_p\) that is a subset of \(A\).
+
+  Therefore \(\Int(A)\cap\Bd(A)=\emptyset\).
+
+  Similarly, assume that \(p\in\Int(X-A)\).  This means that there exists \(U\in\U_{X-A}\) such that \(p\in
+  U\subset(X-A)\).  Now ABC that \(p\in\Bd(A)\).  This means that \(p\in\bar{A}\) and so for all \(U\in\U_p, U\cap
+  A\ne\emptyset\).  This contradicts the fact that there exists a \(U\in\U_p\) that is a subset of \(X-A\).
+
+  Therefore \(\Int(X-A)\cap\Bd(A)=\emptyset\).
+
+  Finally, note that for all \(U\in\U_p\), \(U\) cannot be a subset of both \(A\) and \(X-A\).
+
+  Therefore \(\Int(A)\cap\Int(X-A)=\emptyset\).
+
+  Clearly, \(\Int(A)\cup\Int(X-A)\cup\Bd(A)\subset X\).  Assume that \(p\in X\).  If \(p\in\Int(A)\) or
+  \(p\in\Int(X-A)\) then done, so assume that \(X\) is in neither.  This means that for all \(U\in\U_p\),
+  \(U\cap A\ne\emptyset\) and \(U\cap(X-A)\ne\emptyset\), and thus \(p\in\bar{A}\) and \(p\in\overline{X-A}\).
+
+  Therefore, \(p\in\Bd(A)\).
+\end{proof}
+
+\begin{example}
+  Pick several different subsets \(A\) of \(\R\) and for each one find its interior and boundary using:
+  \begin{enumerate}
+  \item The discrete topology.
+
+    Since \(A=\bar{A}\) and \(\R-A=\overline{\R-A}\), \(\Bd(A)=A\cap(\R-A)=\emptyset\).  Therefore \(\Int(A)=A\).
+
+  \item The indiscrete topology.
+    \[\Int(A)=\begin{cases}
+    \emptyset, & A\ne\R \\
+    \R, & A=\R
+    \end{cases}\]
+    \[\bar{A}=\begin{cases}
+    \emptyset, & A=\emptyset \\
+    \R, & A\ne\emptyset
+    \end{cases}\]
+    \[\overline{\R-A}=\begin{cases}
+    \emptyset, & A=\R \\
+    \R, & A\ne\R
+    \end{cases}\]
+    \[\Bd(A)=\begin{cases}
+    \emptyset\cap\R=\emptyset, & A=\emptyset \\
+    \R\cap\R=\R, & A\ne\emptyset,\R \\
+    \R\cap\emptyset=\emptyset, & A=\R
+    \end{cases}\]
+
+  \item The cofinite topology.
+
+    Assume that \(A\) is finite (closed):
+    \begin{gather*}
+      \Int(A)=\emptyset \\
+      \bar{A}=A \\
+      \Int(\R-A)=\R-A \\
+      \overline{\R-A}=\R \\
+      \Bd(A)=A\cap\R=A
+    \end{gather*}
+
+    Assume that \(A=\R-F\) where \(F\) is finite (thus \(A\) is open and \(F\) is closed):
+    \begin{gather*}
+      \Int(A)=A \\
+      \bar{A}=\R \\
+      \Int(\R-A)=\emptyset \\
+      \overline{\R-A}=F \\
+      \Bd(A)=\R\cap F=F
+    \end{gather*}
+
+    Assume that \(A=\Z\):
+    \begin{gather*}
+      \Int(\Z)=\emptyset\\
+      \bar{\Z}=\R \\
+      \Int(\R-\Z)=\emptyset \\
+      \overline{\R-\Z}=\R \\
+      \Bd(Z)=\R\cap\R=\R
+    \end{gather*}
+
+  \item The standard topology.
+
+    Assume that \(A=(a,b)\):
+    \begin{gather*}
+      \Int(A)=A \\
+      \bar{A}=[a,b] \\
+      \Int(\R-A)=(-\infty,a)\cup(b,\infty) \\
+      \overline(\R-A)=(-\infty,a]\cup[b,\infty) \\
+      \Bd(A)=[a,b]\cap(-\infty,a]\cup[b,\infty)=\set{a,b} \\
+    \end{gather*}
+
+    Assume that \(A=[a,b]\):
+    \begin{gather*}
+      \Int(A)=(a,b) \\
+      \bar{A}=A \\
+      \Int(\R-A)=(-\infty,a)\cup(b,\infty) \\
+      \overline(\R-A)=(-\infty,a]\cup[b,\infty) \\
+      \Bd(A)=[a,b]\cap(-\infty,a]\cup[b,\infty)=\set{a,b} \\
+    \end{gather*}
+
+    Assume that \(A=\Z\):
+    \begin{gather*}
+      \Int(\Z)=\emptyset \\
+      \bar{\Z}=\Z \\
+      \Int(\R-\Z)=\R-\Z \\
+      \overline{\R-\Z}=\R \\
+      \Bd(Z)=\R\cap\Z=\Z
+    \end{gather*}
+
+    Assume that \(A=\Q\):
+    \begin{gather*}
+      \Int(\Q)=\emptyset \\
+      \bar{\Q}=\R \\
+      \Int(\R-\Q)=\R-\Q \\
+      \overline{\R-\Q}=\R \\
+      \Bd(\Q)=\R\cap\R=\R
+    \end{gather*}
+  \end{enumerate}
+\end{example}
+
+\end{document}

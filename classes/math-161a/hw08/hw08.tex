@@ -1,0 +1,234 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\renewcommand{\a}{\alpha}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\renewcommand{\P}{\Phi}
+\newcommand{\zadt}{z_{\frac{\a}{2}}}
+\newcommand{\td}[2]{t_{{#1},{#2}}}
+\newcommand{\X}{\chi}
+\newcommand{\Xs}{\X^2}
+\newcommand{\xd}[2]{\Xs_{{#1},{#2}}}
+\allowdisplaybreaks
+\begin{document}
+Cavallaro, Jeffery \\
+Math 161A \\
+Homework \#8
+
+\bigskip
+
+\section*{7.2}
+
+Each of the following is a confidence interval for \(\m=\) true average (i.e., population mean) resonance frequency (Hz) for
+all tennis rackets of a certain type.
+\[(114.4, 115.6)\qquad(114.1,115.9)\]
+\begin{enumerate}[label={\alph*)}]
+\item What is the value of the sample mean resonance frequency?
+  \[\bar{x}=\frac{114.4+115.6}{2}=\frac{230}{2}=\SI{115.0}{Hz}\]
+\item Both intervals were calculated from the same sample data.  The confidence level for one of these intervals is 90\% and
+  for the other is 99\%.  Which of the intervals has the 90\% confidence level, and why?
+
+  For the same sample data, the less-confident interval will be narrower.  Thus, the 90\% confidence interval is
+  \((114.4, 115.6)\).
+\end{enumerate}
+
+\section*{7.3}
+
+Suppose that a random sample of 50 bottles of a particular brand of cough syrup is selected and the alcohol content of each
+bottle is determined.  Let \(\m\) denote the average alcohol content for the population of all bottles of the brand under
+study.  Suppose that the resulting 95\% confidence interval is \((7.8,9.4)\).
+\begin{enumerate}[label={\alph*)}]
+\item Would a 90\% confidence interval calculated from this same sample have been narrower or wider than the given
+  interval?  Explain your reasoning.
+
+  A less confident interval for the same sample data results in a smaller \(1-\a\), which results in a larger \(\a\), which
+  results in a smaller \(\zadt\), which results in a smaller \(m\) (margin of error).  Thus, the less confident interval is
+  narrower.
+
+\item Consider the following statement: There is a 95\% chance that \(\m\) is between 7.8 and 9.4.  Is this statement
+  correct?  Why or why not.
+
+  The statement is incorrect.  The \(m\) is fixed and the interval is probabilistic, yet probability is being applied to the
+  fixed \(\m\) value.  When addressing the fixed (or an already determined) value, confidence should be used instead of
+  probability.
+
+\item Consider the following statement: We can be highly confident that 95\% of all bottles of this type of cough syrup
+  have an alcohol content that is between 7.8 and 9.4.  Is this statement correct?  Why or why not?
+
+  The statement is incorrect.  The given confidence interval applies to the mean for a sample of 50, not a single bottle.
+
+\item Consider the following statement: If the process of selecting a sample of size 50 and then computing the corresponding
+  95\% interval is repeated 100 times, 95 of the resulting intervals will include \(\m\).  Is this statement correct?  Why or
+  why not?
+
+  The statement is not quite correct.  We are highly confident that 95 of the resulting intervals will include \(\m\), but
+  this is not guaranteed.
+\end{enumerate}
+
+\section*{7.4}
+
+A CI is desired for the true average stray-load loss \(\m\) (watts) for a certain type of induction motor when the line
+current is held at \SI{10}{amps} for a speed of \SI{1500}{rpm}.  Assume that stray-load loss is normally distributed with
+\(\o=3\).
+\begin{enumerate}[label={\alph*)}]
+\item Compute a 95\% CI for \(\m\) when \(n=25\) and \(\bar{x}=58.3\).
+  \begin{gather*}
+    1-\a=0.95 \\
+    \a=1-0.95=0.05 \\
+    \frac{a}{2}=0.025 \\
+    z_{0.025}=\P^{-1}(1-0.025)=\P^{-1}(0.975)=1.96 \\
+    \\
+    m=1.96\frac{3}{\sqrt{25}}=1.176\approx1.2 \\
+    \\
+    58.3\pm1.2=(57.1,59.5)
+  \end{gather*}
+\item Compute a 95\% CI for \(\m\) when \(n=100\) and \(\bar{x}=58.3\).
+  \begin{gather*}
+    m=1.96\frac{3}{\sqrt{100}}=0.588\approx0.6 \\
+    \\
+    58.3\pm0.6=(57.7,58.9)
+  \end{gather*}
+\item Compute a 99\% CI for \(\m\) when \(n=100\) and \(\bar{x}=58.3\).
+  \begin{gather*}
+    1-\a=0.99 \\
+    \a=1-0.99=0.01 \\
+    \frac{a}{2}=0.005 \\
+    z_{0.005}=\P^{-1}(1-0.005)=\P^{-1}(0.995)=2.575 \\
+    \\
+    m=2.575\frac{3}{\sqrt{100}}=0.7725\approx0.8 \\
+    \\
+    58.3\pm0.8=(57.5,59.1)
+  \end{gather*}
+\item Compute a 82\% CI for \(\m\) when \(n=100\) and \(\bar{x}=58.3\).
+  \begin{gather*}
+    1-\a=0.82 \\
+    \a=1-0.82=0.18 \\
+    \frac{a}{2}=0.09 \\
+    z_{0.09}=\P^{-1}(1-0.09)=\P^{-1}(0.91)=1.34 \\
+    \\
+    m=1.34\frac{3}{\sqrt{100}}=0.402\approx0.4 \\
+    \\
+    58.3\pm0.4=(57.9,58.7)
+  \end{gather*}
+\item How large must \(n\) be if the width of the 99\% interval for \(\m\) is to be 1.0?
+  \[n=\left(2\cdot2.575\cdot\frac{3}{1}\right)^2=238.7\]
+  Thus, the minimum required size is \(n=239\).
+\end{enumerate}
+
+\section*{7.7}
+
+By how much must the sample size \(n\) be increased if the width of the CI (7.5) is to be halved?
+\[n=\left(2\zadt\frac{\o}{\frac{w}{2}}\right)^2=\left(2\zadt\frac{2\o}{w}\right)^2=4\left(2\zadt\frac{\o}{w}\right)^2\]
+Thus, \(n\) must be increased by a factor of 4.
+
+If the sample size is increased by a factor of 25, what effect will this have on the width of the interval?
+\[w=2\zadt\frac{\o}{\sqrt{25n}}=2\zadt\frac{\o}{5\sqrt{n}}=\frac{1}{5}\left(2\zadt\frac{\o}{\sqrt{n}}\right)\]
+Thus, \(w\) will be decreased by a factor of 5.
+
+\section*{7.8}
+
+Let \(\a_1>0\), \(\a_2>0\), with \(\a_1+\a_2=\a\).  Then:
+\[P\left(-z_{\a_1}<\frac{\bar{X}-\m}{\frac{\o}{\sqrt{n}}}<z_{\a_2}\right)=1-\a\]
+\begin{enumerate}[label={\alph*)}]
+\item Use this equation to derive a more general expression for a \(100(1-\a)\%\) CI for \(\m\) of which the interval (7.5) is
+  a special case.
+  \begin{gather*}
+    P\left(-z_{\a_1}<\frac{\bar{X}-\m}{\frac{\o}{\sqrt{n}}}<z_{\a_2}\right)=1-\a \\
+    P\left(-z_{\a_1}\frac{\o}{\sqrt{n}}<\bar{X}-\m<z_{\a_2}\frac{\o}{\sqrt{n}}\right)=1-\a \\
+    P\left(-z_{\a_2}\frac{\o}{\sqrt{n}}<\m-\bar{X}<z_{\a_1}\frac{\o}{\sqrt{n}}\right)=1-\a \\
+    P\left(\bar{X}-z_{\a_2}\frac{\o}{\sqrt{n}}<\m<z_{\a_1}\bar{X}+\frac{\o}{\sqrt{n}}\right)=1-\a \\
+    P\left(\m\in\left(\bar{X}-z_{\a_2}\frac{\o}{\sqrt{n}},z_{\a_1}\bar{X}+\frac{\o}{\sqrt{n}}\right)\right)=1-\a
+  \end{gather*}
+\item Let \(\a=0.05\) and \(\a_1=\frac{\a}{4}\), \(\a_2=\frac{3\a}{4}\).  Does this result in a narrower or wider interval
+  than the interval (7.5)?
+  \begin{gather*}
+    \a_1=\frac{0.05}{4}=0.0125 \\
+    z_{0.0125}=\P^{-1}(1-0.0125)=\P^{-1}(0.9875)=2.24 \\
+    \\
+    \a_2=\frac{3\cdot0.05}{4}=0.0375 \\
+    z_{0.0375}=\P^{-1}(1-0.0375)=\P^{-1}(0.9625)=1.78 \\
+    \\
+    \frac{\a}{2}=\frac{0.05}{2}=0.025 \\
+    \zadt=\P^{-1}(1-0.025)=P^{-1}(0.975)=1.96
+    \\
+    (2.24+1.78)\frac{\o}{\sqrt{n}}=4.02\frac{\o}{\sqrt{n}} \\
+    (2\cdot2.24)\frac{\o}{\sqrt{n}}=4.48\frac{\o}{\sqrt{n}}
+  \end{gather*}
+  Therefore, the skewed interval is narrower than the standard centered interval.
+\end{enumerate}
+
+\section*{7.28}
+
+Determine the values for the following quantities:
+\begin{enumerate}[label={\alph*)}]
+\item \(\td{0.1}{15}=1.341\)
+\item \(\td{0.05}{15}=1.753\)
+\item \(\td{0.05}{25}=1.708\)
+\item \(\td{0.05}{40}=1.684\)
+\item \(\td{0.005}{40}=2.704\)
+\end{enumerate}
+
+\section*{7.30}
+
+Determine the \(t\) critical value for a two-sided confidence interval in each of the following situations:
+\begin{enumerate}[label={\alph*)}]
+\item Confidence level=95\%, df=10
+  \[\td{0.025}{10}=2.228\]
+\item Confidence level=95\%, df=15
+  \[\td{0.025}{15}=2.131\]
+\item Confidence level=99\%, df=15
+  \[\td{0.005}{15}=2.947\]
+\item Confidence level=99\%, n=5
+  \[\td{0.005}{4}=4.604\]
+\end{enumerate}
+
+\section*{7.31}
+
+Determine the \(t\) critical value for a lower or an upper confidence bound for each of the situations described in
+Exercise 30.
+\begin{enumerate}[label={\alph*)}]
+\item Confidence level=95\%, df=10
+  \[\td{0.05}{10}=1.812\]
+\item Confidence level=95\%, df=15
+  \[\td{0.05}{15}=1.753\]
+\item Confidence level=99\%, df=15
+  \[\td{0.01}{15}=2.602\]
+\item Confidence level=99\%, n=5
+  \[\td{0.01}{4}=3.747\]
+\end{enumerate}
+
+\section*{7.32}
+
+According to the article ``Fatigue Testing of Condoms'' (Polymer Testing, 2009: 567--571), ``tests currently used for condoms
+are surrogates for the challenges they face in use,'' including a test for holes, an inflation test, a package seal test, and
+tests of dimensions and lubricant quality (all fertile territory for the use of statistical methodology!).  The investigators
+developed a new test that adds cyclic strain to a level well below breakage and determines the number of cycles to break.  A
+sample of 20 condoms of one particular type resulted in a sample mean number of 1584 and a sample standard deviation of 607.
+Calculate and interpret a confidence interval at the 99\% confidence level for the true average number of cycles to
+break. [Note: The article presented the results of hypothesis tests based on the \(t\) distribution; the validity of these
+  depends on assuming normal population distributions.]
+\begin{gather*}
+  1-\a=0.99 \\
+  \a=1-0.99=0.01 \\
+  \frac{\a}{2}=\frac{0.01}{2}=0.005 \\
+  \td{0.005}{19}=2.861 \\
+  \\
+  \bar{x}\pm\td{0.005}{19}\frac{s}{\sqrt{n}}=1584\pm2.861\cdot\frac{607}{\sqrt{20}}\approx1584\pm388=(1196,1972)
+\end{gather*}
+Thus, we are 99\% confident that the true value lies within the interval \((1196,1972)\).
+
+\section*{7.42}
+
+Determine the values of the following quantities:
+\begin{enumerate}[label={\alph*)}]
+\item \(\xd{0.1}{15}=22.307\)
+\item \(\xd{0.1}{25}=34.381\)
+\item \(\xd{0.01}{25}=44.313\)
+\item \(\xd{0.005}{25}=46.925\)
+\item \(\xd{0.99}{25}=11.523\)
+\item \(\xd{0.995}{25}=10.519\)
+\end{enumerate}
+
+\end{document}

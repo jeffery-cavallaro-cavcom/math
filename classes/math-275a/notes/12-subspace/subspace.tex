@@ -1,0 +1,69 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\begin{document}
+\section*{Subspaces}
+
+\begin{definition}[Subspace]
+  Let \((X,\T)\) be a topological space and let \(Y\subset X\).  The set:
+  \[\T_Y=\setb{V\cap Y}{V\in\T}\]
+  is a topology on \(Y\) called the \emph{subspace} topology or the \emph{relative} topology on \(Y\)
+  \emph{inherited} from \(X\).  The topological space \((Y,\T_Y)\) is called a \emph{subspace} of \((X,\T)\).
+\end{definition}
+
+\begin{theorem}
+  Let \((X,\T)\) be a topological space and let \(Y\subset X\).  \(\T_Y\) is a topology on \(Y\).
+\end{theorem}
+
+\begin{proof}
+  \(\emptyset\cap Y=\emptyset\in\T_Y\) and \(X\cap Y=Y\in\T_Y\).
+
+  Assume \(U,V\in\T_Y\).  Then there exists \(U',V'\in\T\) such that \(U=U'\cap Y\) and \(V=V'\cap Y\).  So:
+  \[U\cap V=(U'\cap Y)\cap(V'\cap Y)=(U'\cap V')\cap Y\]
+  But \(U'\cap V'\in\T\).  Therefore \(U\cap V\in\T_Y\).
+
+  Now, assume that \(\set{U_{\a}:\a\in\l}\) such that \(U_{\a}\in\T_Y\).  Then for each \(U_{\a}\) there exists a
+  \(U_{\a}'\in\T\) such that \(U_{\a}=U_{\a}'\cap Y\).  So:
+  \[U=\bigcup_{\a\in\l}U_{\a}=\bigcup_{\a\in\l}(U_{\a}'\cap Y)=\left(\bigcup_{\a\in\l}U_{\a}'\right)\cap Y\]
+  But \(\bigcup_{\a\in\l}U_{\a}'\in\T\).  Therefore, \(U\in\T_Y\).
+
+  Therefore \(\T_Y\) is a topology on \(Y\).
+\end{proof}
+
+\begin{example}
+  Consider \(Y=[0,1)\) as a subspace of \(\R_{std}\).  In \(Y\), is the set \(\left[\frac{1}{2},1\right)\) open,
+  closed, neither, or both?
+
+  There is no open set in \(X\) that will result in a closed endpoint at \(\frac{1}{2}\) so the set is not open.
+  However, \([0,1)\cap\left(\frac{1}{2},1\right)=\left(\frac{1}{2},1\right)\in\T_Y\) and \(\frac{1}{2}\) serves as
+  a limit point in \(Y\) so \(\left[\frac{1}{2},1\right)\) is closed in \(Y\).  Hence it is not neither and not
+  both.
+\end{example}
+
+\begin{theorem}
+  Let \((Y,\T_Y)\) be a subspace of \((X,\T)\).  \(C\subset Y\) is closed in \((Y,\T_Y)\) iff there exists
+  \(D\subset X\), closed in \((X,\T)\), such that \(C=D\cap Y\).
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume \(C\subset Y\) is closed in \((Y,\T_Y)\).
+
+    Since \(C\) in closed in \(Y\), \(Y-C\) is open in \(Y\).  So there exists some \(U\in\T\) such that
+    \(Y-C=U\cap Y\).  Let \(D=X-U\), which is closed in \(X\):
+    \[D\cap Y=(X-U)\cap Y=(X\cap Y)-(U\cap Y)=Y-(Y-C)=C\]
+    Therefore there exists \(D\subset X\), closed in \((X,\T)\), such that \(C=D\cap Y\).
+
+  \item[\(\impliedby\)] Assume there exists \(D\subset X\), closed in \((X,\T)\), such that \(C=D\cap Y\).
+
+    Since \(D\) is closed in \(X\), \(X-D\) is open in \(X\) and \((X-D)\cap Y\) is open in \(Y\):
+    \[(X-D)\cap Y=(X\cap Y)-(D\cap Y)=Y-C\]
+    Therefore \(C\) is closed in \((Y,\T_Y)\).
+  \end{description}
+\end{proof}
+
+\end{document}

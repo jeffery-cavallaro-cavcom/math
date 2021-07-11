@@ -1,0 +1,179 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{array}
+\usepackage{tikz}
+\pagestyle{plain}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\U}{\mathcal{U}}
+\renewcommand{\sc}{\(2^{nd}\) countable}
+\newcommand{\Rs}{\R_{\text{std}}}
+\newcommand{\RL}{\R_{LL}}
+\newcommand{\RZ}{\R_{+00}}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#7
+
+\bigskip
+
+\begin{theorem}[5.1]
+  Let \(X\) be a topological space and let \(A\subset X\).  \(A\) is dense in \(X\) iff for all \(U\in\T\),
+  \(U\ne\emptyset\implies U\cap A\ne\emptyset\).
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume that \(A\) is dense in \(X\), and hence \(\bar{A}=X\).
+
+    Assume that \(U\in\T\) and assume that \(U\ne\emptyset\).  Since \(\bar{A}=X\) it must be the case that
+    \(U\cap\bar{A}\ne\emptyset\).  So assume that \(x\in U\cap\bar{A}\), meaning that \(x\in U\) and
+    \(x\in\bar{A}\).  Therefore, since \(x\in\bar{A}\), it must be the case that \(U\cap A\ne\emptyset\).
+
+  \item[\(\impliedby\)] Assume that \(\forall\,U\in\T,U\ne\emptyset\implies U\cap A\ne\emptyset\).
+
+    Clearly, \(\bar{A}\subset X\).  So assume that \(x\in X\).  But by the assumption, \(x\in\bar{A}\).
+    Therefore \(\bar{A}=X\) and hence \(A\) is dense in \(X\).
+  \end{description}
+\end{proof}
+
+\begin{example}[Exercise 5.2]
+  Show that \(\Rs\) is separable.  Which of the previously investigated topologies on \(\R\) are not separable?
+
+  Consider \(\Q\subset\R\) and assume that \(x\in\R-\Q\).  But \(x\) is the limit of some sequence in \(\Q\) and
+  hence \(x\in\bar{\Q}\).  This means that \(\bar{\Q}=\R\) and thus \(\Q\) is a countable dense subset of \(\R\).
+  Therefore \(\Rs\) is separable.
+
+  For \(\RL\), also consider \(\Q\subset\R\).  Assume \(U\in\T\).  This means that there exists some \(a,b\in\R\)
+  such that \([a,b)\subset U\).  If \(a\in\Q\) then done, so assume \(a\in\R-\Q\).  Since \(\Q\) is dense in
+  \(\Rs\), there exists \(x\in\Q\) such that \(x\in(a,b)\subset[a,b)\subset U\).  Therefore \(\Q\) is dense in
+  \(\RL\) as well and so \(\RL\) is separable.
+
+  For \(\RZ\), consider \(A=\set{0',0''}\cup\Q^+\).  Assume \(U\in\T\).  If \(0'\in U\) or \(0''\in U\) then done,
+  so assume that neither is in \(U\).  This means that there exists some \(a,b\in\R^+\) such that \((a,b)\subset U\).
+  Since \(\Q\) is dense in \(\Rs\), there exists \(x\in\Q+\) such that \(x\in(a,b)\).  Therefore \(A\) is dense
+  and countable in \(\RZ\) and so \(\RZ\) is separable.
+\end{example}
+
+\begin{lemma}
+  \((A\cap X)\times(B\cap Y)=(A\times B)\cap(X\times Y)\)
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    (a,b)\in(A\cap X)\times(B\cap Y) &\iff a\in A\cap X\ \text{and}\ b\in B\cap Y \\
+    &\iff a\in X\ \text{and}\ a\in X\ \text{and}\ b\in B\ \text{and}\ b\in Y \\
+    &\iff (a,b)\in A\times B\ \text{and}\ (a,b)\in X\times Y \\
+    &\iff (a,b)\in (A\times B)\cap(X\times Y)
+  \end{align*}
+\end{proof}
+
+\begin{theorem}[5.5]
+  Let \(X\) and \(Y\) be topological spaces.  If \(X\) and \(Y\) are separable then \(X\times Y\) is separable.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) and \(Y\) are separable.  This means that there exists a countable dense \(A\subset X\) and a
+  countable dense \(B\subset Y\).
+
+  Claim: \(A\times B\) is countable and dense in \(X\times Y\).
+
+  Since \(A\) and \(B\) are countable, \(A\times B\) is countable.
+
+  Now, assume \(W\in\T_{X\times Y}\).  This means that there exists \(U\in\T_X\) and \(V\in\T_Y\) such that
+  \(U\times V\subset W\).  But \(A\) is dense in \(X\) and so \(U\cap A\ne\emptyset\).  Likewise, \(B\) is dense in
+  \(Y\) and so \(V\cap B\ne\emptyset\).  And so:
+  \[(U\cap A)\times(V\cap B)=(U\times V)\cap(A\times B)\ne\emptyset\]
+  Thus, \(W\cap (A\times B)\ne\emptyset\) and so \(A\times B\) is dense in \(X\times Y\).
+
+  Therefore \(A\times B\) is countable and dense in \(X\times Y\) and hence \(X\times Y\) is separable.
+\end{proof}
+
+\begin{theorem}[5.9]
+  Let \(X\) be a topological space.  If \(X\) is \sc\ then \(X\) is separable.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is \sc\ and let \(\B=\set{B_i:i\in\N}\) be a countable basis for \(X\).  From each \(B_i\),
+  select a value \(x_i\) and construct the set \(A=\set{x_1,x_2,\ldots}\).  Thus \(x_i\mapsto B_i\) is one-to-one
+  and so \(A\) is countable.  Now assume that \(U\in\T\).  Then there exists at least some \(B_i\subset U\) and
+  hence \(U\cap A\ne\emptyset\), and so \(A\) is countable and dense in \(X\).
+
+  Therefore \(X\) is separable.
+\end{proof}
+
+\begin{example}[Exercise 5.10]
+  \begin{enumerate}
+    \item[]
+    \item Show that \(\Rs\) is \sc\ (and hence separable).
+
+      Consider the countable set \(\B=\setb{(a,b)}{a,b\in\Q}\).  Since \(\Q\) is countable, \(\Q\times\Q\) is
+      countable and hence \(\B\) is countable.  Now assume that \(U\in\T\) and assume \(x\in U\).  Since \(x\) is
+      an interior point of \(U\), there exists some \(\e>0\) such that \(x\in(x-\e,x+\e)\subset U\).  So there must
+      exist \(\d\in\Q\) such that \(0<\d<\e\), and so \(x\in(x-\d,x+\d)\subset(x-\e,x+\e)\subset U\).  But
+      \((x-\d,d+\d)\in\B\), and so \(\B\) is a countable basis for \(\Rs\).
+
+      Therefore \(\Rs\) is \sc.
+
+    \item Show that \(\RL\) is separable but not \sc.
+
+      It was already shown that \(\RL\) is separable.  So assume that \(\B\) is a basis for \(\RL\) and consider
+      \(\displaystyle U_a=[a,\infty)=\bigcup_{b>a}[a,b)\in\T\).  Then there exists some \(B_a\in\B\) such that
+      \(a\in B_a\).  Now, assume \(x,y\in\R\) such that \(x<y\).  Since \(U_y\subsetneq U_x\), there exists
+      \(B_x\subset U_x\) and \(B_y\subset U_y\) such that \(B_x\ne B_y\).  Thus, \(x\mapsto B_x\) is injective
+      and hence \(\B\) is uncountable.
+
+      Therefore \(\RL\) is not \sc.
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}[5.11]
+  Every uncountable set in a \sc\ space has a limit point.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a \sc\ space and assume that \(A\subset X\) such that \(A\) is uncountable.  Now, ABC that
+  \(A\) has no limit points.  This means that for all \(a\in A\) it is the case that there exists \(U\in\U_a\)
+  such that \(U_a\cap A=\set{a}\) and hence every \(a\in A\) is an isolated point.  So assume that \(x,y\in A\)
+  such that \(x\ne y\).  There exists \(U\in\U_x\) and \(V\in\U_y\) such that \(U\ne V\).  So for any basis
+  \(\B\) of \(X\), there exists \(B_x\subset U\) and \(B_y\subset V\) such that \(B_x\ne B_y\).  Thus,
+  \(a\mapsto B_a\) is injective and hence \(\B\) is uncountable, contradicting the assumption that \(X\)
+  is \sc.
+
+  Therefore \(A\) contains a limit point.
+\end{proof}
+
+\begin{theorem}[5.13]
+  If \(X\) and \(Y\) are \sc\ spaces then \(X\times Y\) is \sc.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(\B_X\) is a countable basis for \(X\) and \(B_y\) is a countable basis for \(Y\).
+
+  Claim: \(\B_X\times\B_Y\) is a countable basis for \(X\times Y\).
+
+  \(\B_X\times\B_Y\) is countable.  So assume that \(U\in\T_{X\times Y}\) and assume \((a,b)\in U\).  This means that
+  there exists \(U_a\in\T_X\) and \(V_b\in\T_Y\) such that \((a,b)\in U_a\times V_b\subset U\).  Furthermore, there
+  exists \(B_a\in\B_X\) and \(B_b\in\B_Y\) such that \((a,b)\in B_a\times B_b\subset U_a\times V_b\subset U\) and
+  so \(\B_X\times\B_Y\) is a countable basis for \(X\times Y\).
+
+  Therefore \(X\times Y\) is \sc.
+\end{proof}
+
+\begin{theorem}[5.21]
+  \(\Rs\) is Souslin.
+\end{theorem}
+
+\begin{proof}
+  ABC that \(\Rs\) is not Souslin, meaning it does contain an uncountable collection of disjoint open sets.  Let
+  \(\U\) be such a set.  Since \(\Q\) is countable and dense in \(\Rs\), every \(U\in\U\) contains some
+  \(r_U\in\Q\).  So select one value from each \(U\in\U\) to construct the set \(\setb{r_U\in Q}{U\in\U}\).
+  Thus \(r_U\mapsto U\) is injective and hence \(\U\) is countable, contradicting the assumption.
+
+  Therefore \(\Rs\) is Souslin.
+\end{proof}
+
+\end{document}

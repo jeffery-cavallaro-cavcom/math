@@ -1,0 +1,168 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\newcommand{\T}{\mathscr{T}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\renewcommand{\O}{\theta}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#12
+
+\bigskip
+
+\begin{theorem}[7.32]
+  Let \(X\) and \(Y\) be topological spaces.  The projection maps \(\pi_X\) and \(\pi_Y\) are continuous,
+  surjective, and open.
+\end{theorem}
+
+\begin{proof}
+  Assume \(U\in\T_X\).  \(\pi_X^{-1}(U)=U\times Y\in\T_{X\times Y}\).  Therefore \(\pi_X\) is continuous.
+
+  Next, assume that \(x\in X\).  Now, assume that \(y\in Y\), and so \((x,y)\in X\times Y\).  Thus,
+  \(\pi_X(x,y)=X\).  Therefore \(\pi_X\) is surjective.
+
+  Assume \(W\in\T_{X\times Y}\).  Then \(W=\bigcup_{\a\in\l}U_{\a}\times V_{\a}\), where \(U_{\a}\in\T_X\) and
+  \(V_{\a}\in\T_Y\).  Now:
+  \[\pi_X(W)=\pi_X(\bigcup_{\a\in\l}U_{\a}\times V_{\a})=\bigcup_{\a\in\l}\pi_X(U_{\a}\times V_{\a})=
+  \bigcup_{\a\in\l}U_{\a}\in\T_X\]
+  Thus, \(\pi_X\) is open.
+
+  A similar argument is used for \(\pi_Y\).
+
+  Therefore, \(\pi_X\) and \(\pi_Y\) are continuous, surjective, and open.
+\end{proof}
+
+\begin{theorem}[7.36]
+  Let \(X\), \(Y\), and \(Z\) be topological spaces.  A function \(g:Z\to X\times Y\) is continuous iff
+  \(\pi_X\circ g\) and \(\pi_Y\circ g\) are both continuous.
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume that \(g:Z\to X\times Y\) is continuous.
+
+    Since \(\pi_X\) and \(\pi_Y\) are continuous, and since the composition of continuous functions is continuous,
+    \(\pi_X\circ g\) and \(\pi_Y\circ g\) are both continuous.
+
+  \item[\(\impliedby\)] Assume that \(\pi_X\circ g\) and \(\pi_Y\circ g\) are both continuous.
+
+    Assume that \(W\in\T_{X\times Y}\).  So \(W=\bigcup_{\a\in\l}U_{\a}\times V_{\a}\) where \(U_{\a}\in\T_X\) and
+    \(V_{\a}\in\T_Y\).  Then:
+    \begin{align*}
+      g^{-1}(W) &= g^{-1}(\bigcup_{\a\in\l}U_{\a}\times V_{\a}) \\
+      &= g^{-1}(\bigcup_{\a\in\l}((U_{\a}\times Y)\cap(X\times V_{\a}))) \\
+      &= g^{-1}(\pi_X^{-1}(\bigcup_{\a\in\l}U_{\a})\cap\pi_Y^{-1}(\bigcup_{\a\in\l}V_{\a})) \\
+      &= g^{-1}(\pi_X^{-1}(\bigcup_{\a\in\l}U_{\a}))\cap g^{-1}(\pi_Y^{-1}(\bigcup_{\a\in\l}V_{\a})) \\
+      &= (\pi_X^{-1}\circ g^{-1})(\bigcup_{\a\in\l}U_{\a})\cap (\pi_Y\circ g^{-1})(\bigcup_{\a\in\l}V_{\a}) \\
+    \end{align*}
+    Now, since \(\pi_X^{-1}\circ g^{-1}\) is continuous and \(\bigcup_{\a\in\l}U_{\a}\in\T_X\),
+    \((\pi_X^{-1}\circ g^{-1})(\bigcup_{\a\in\l}U_{\a})\in\T_X\).  Similarly,
+    \((\pi_Y^{-1}\circ g^{-1})(\bigcup_{\a\in\l}V_{\a})\in\T_Y\).  Thus, \(g^{-1}(W)\in\T_Z\).
+
+    Therefore \(g:Z\to X\times Y\) is continuous.
+  \end{description}
+\end{proof}
+
+\begin{example}[Exercise 7.44]
+  Construct a M\"{o}bius band explicitly as an identification space of \(X=[0,8]\times[0,1]\).
+  \[X^*=\setb{\set{(x,y)}}{x\in(0,8),y\in[0,1]}\cup\setb{{(0,y),(8,1-y)}}{y\in[0,1]}\]
+\end{example}
+
+\begin{example}[Exercise 7.45]
+  Construct a torus explicitly as:
+  \begin{enumerate}
+  \item An identification space of a cylinder \(C\).
+    \[C=\setb{(R\sin\O,R\cos\O,\ell)}{\O\in[0,2\pi),\ell\in[0,L]}\]
+    \begin{align*}
+      C^* =& \setb{\set{(R\sin\O,R\cos\O,\ell)}}{\O\in[0,2\pi),\ell\in(0,L)}\cup \\
+      & \setb{\set{(R\sin\O,R\cos\O,0),(R\sin\O,R\cos\O,L)}}{\O\in[0,2\pi)}
+    \end{align*}
+  \item An identification space of \(X=[0,1]\times[0,1]\).
+    \begin{align*}
+      X^* =& \setb{\set{(x,y)}}{x\in(0,1),y\in(0,1)}\cup \\
+      & \setb{\set{(x,0),(x,1)}}{x\in(0,1)}\cup \\
+      & \setb{\set{(0,y),(1,y)}}{y\in[0,1]}
+    \end{align*}
+  \item An identification space of \(\R^2\).
+    \[(x,y)\sim(u,v)\iff x-u\in\Z\ \text{and}\ y-v\in\Z\]
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}[7.47]
+  The quotient topology actually defines a topology.
+\end{theorem}
+
+\begin{proof}
+  Assume \(X\) is a topological space, \(Y\) is a set, and \(f:X\to Y\) is surjective.
+  \begin{enumerate}
+  \item \(f^{-1}(\emptyset)=\emptyset\in\T_X\).  Therefore \(\emptyset\in\T_Y\).
+
+  \item \(f^{-1}(Y)=X\in\T_X\).  Therefore \(Y\in\T_Y\).
+
+  \item Assume that \(U,V\in\T_Y\).  This means that \(f^{-1}(U),f^{-1}(V)\in\T_X\) and so:
+    \[f^{-1}(U)\cap f^{-1}(V)=f^{-1}(U\cap V)\in\T_X\]
+    Therefore \(U\cap V\in\T_Y\).
+
+  \item Assume that \(\set{U_{\a}:\a\in\l}\subset\T_Y\).  This means that for all \(a\in\l\),
+    \(f^{-1}(U_{\a})\in\T_X\) and so:
+    \[\bigcup_{\a\in\l}f^{-1}(U_{\a})=f^{-1}(\bigcup_{\a\in\l}U_{\a})\in\T_X\]
+    Therefore \(\bigcup_{\a\in\l}U_{\a}\in\T_Y\).
+  \end{enumerate}
+
+  Therefore, the quotient topology on \(Y\) defines a topology.
+\end{proof}
+
+\begin{theorem}[7.48]
+  Let \(X\) be a topological space and \(Y\) be a set, and let \(f:X\to Y\) be surjective.  The quotient topology on
+  \(Y\) is the finest topology that makes \(f\) continuous.
+\end{theorem}
+
+\begin{proof}
+  ABC there exists some topology \(\T\) on \(T\) that is finer than \(T_Y\).  Thus, there exists \(U\in\T\) but
+  \(U\notin\T_Y\).  This would mean that \(f^{-1}(U)\) is not open in \(X\), contradicting the continuity of \(f\).
+
+  Therefore \(\T=\T_Y\).
+\end{proof}
+
+\begin{theorem}[7.49]
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\) be a continuous, surjective, open map.  \(f\) is
+  a quotient map.
+\end{theorem}
+
+\begin{proof}
+  Let \(\T_Y^f=\setb{U\subset Y}{f^{-1}(U)\in\T_X}\).  Since \(\T_Y^f\) is the finest topology that makes \(f\)
+  continuous, it must be the case that \(\T_Y\subset\T_Y^f\).
+
+  WTS: \(\T_Y^f\subset\T_Y\).
+
+  Assume \(U\in\T_Y^f\).  Then, by definition, \(f^{-1}(U)\in\T_X\).  But \(f\) is open and surjective, so:
+  \[f(f^{-1}(U))=U\in\T_Y\]
+  Therefore \(\T_Y^f\subset\T_Y\) and hence \(T_Y^f=T_Y\).
+\end{proof}
+
+\begin{theorem}[7.53]
+  Let \(X\), \(Y\), and \(Z\) be topological spaces and let \(f:X\to Y\) be a quotient map.  The map \(g:Y\to Z\)
+  is continuous iff \(g\circ f\) is continuous.
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume \(g:Y\to Z\) is continuous.
+
+    But the composition of continuous functions is continuous.
+
+    Therefore \(g\circ f\) is continuous.
+
+  \item[\(\impliedby\)] Assume \(g\circ f\) is continuous.
+
+    Assume \(W\in\T_Z\), and thus \((g\circ f)^{-1}(W)=f^{-1}(g^{-1}(W))\in\T_X\).  But \(f\) is a quotient map, and
+    so by definition, \(g^{-1}(W)\in\T_Y\).
+
+    Therefore \(g\) is continuous.
+  \end{description}
+\end{proof}
+
+\end{document}

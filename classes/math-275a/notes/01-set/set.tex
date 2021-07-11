@@ -1,0 +1,101 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\begin{document}
+\section*{Sets}
+
+\begin{notation}[Element]
+  Let \(A\) be a set.  The notation \(a\in A\) indicates that \emph{element} \(a\) is in set \(A\).
+\end{notation}
+
+\begin{definition}[Subset]
+  Let \(A\) and \(B\) be sets.  To say that \(A\) is a \emph{subset} of \(B\), denoted by \(A\subset B\), means
+  that:
+  \[a\in A\implies a\in B\]
+  In particular, a set is a subset of itself (\(A\subset A\)) and the empty set \(\emptyset\) is a subset of every
+  other set.
+\end{definition}
+
+\begin{definition}[Equality]
+  Let \(A\) and \(B\) be sets.  To say that \(A\) is \emph{equal} to \(B\), denoted by \(A=B\), means that:
+  \[a\in A\iff a\in B\]
+  or alternatively:
+  \[A\subset B\ \text{and}\ B\subset A\]
+\end{definition}
+
+\begin{definition}[Proper]
+  Let \(A\) and \(B\) be sets.  To say that \(A\) is a \emph{proper} subset of \(B\), denoted by \(A\subsetneq B\),
+  means that \(A\subset B\) but \(A\ne B\).  Thus, \(B\not\subset A\), meaning \(\exists\,b\in B,b\notin A\).
+\end{definition}
+
+\begin{definition}[Operations]
+  Let \(A\), \(B\), and \(X\) be sets such that \(A,B\subset X\):
+  \begin{description}
+  \item[Union:] \(A\cup B=\setb{x\in X}{x\in A\ \text{or}\ x\in B}\)
+  \item[Intersection:] \(A\cap B=\setb{x\in X}{x\in A\ \text{and}\ x\in B}\)
+  \item[Complement:] \(X-A=\setb{x\in X}{x\notin A}\)
+  \end{description}
+  When \(X\) is understood, \(X-A\) can be denoted by \(A^C\).
+\end{definition}
+
+\begin{theorem}[DeMorgan]
+  Let \(A_1\), \(A_2\), and \(X\) be sets such that \(A_1,A_2\subset X\):
+  \begin{gather*}
+  (A_1\cup A_2)^C=A_1^C\cap A_2^C \\
+  (A_1\cap A_2)^C=A_1^C\cup A_2^C
+  \end{gather*}
+\end{theorem}
+
+\begin{proof}
+  Assume \(x\in X\):
+  \begin{align*}
+    x\in(A_1\cup A_2)^C &\iff x\notin A_1\cup A_2 \\
+    &\iff x\notin A_1\ \text{and}\ x\notin A_2 \\
+    &\iff x\in A_1^C\ \text{and}\ x\in A_2^C \\
+    &\iff x\in A_1^C\cap A_2^C \\
+    \therefore(A_1\cup A_2)^C=A_1^C\cap A_2^C \\
+    \\
+    x\in(A_1\cap A_2)^C &\iff x\notin A_1\cap A_2 \\
+    &\iff x\notin A_1\ \text{or}\ x\notin A_2 \\
+    &\iff x\in A_1^C\ \text{or}\ x\in A_2^C \\
+    &\iff x\in A_1^C\cup A_2^C \\
+    \therefore(A_1\cap A_2)^C=A_1^C\cup A_2^C
+  \end{align*}
+\end{proof}
+
+\begin{notation}
+  Let \(X\) be a set and let \(\set{A_{\a}:\a\in\l}\) be a family of sets such that \(A_{\a}\subset X\):
+  \begin{gather*}
+    \bigcup_{\a\in\l}A_{\a}=\setb{x\in X}{\exists\,\a\in\l,x\in A_{\a}} \\
+    \bigcap_{\a\in\l}A_{\a}=\setb{x\in X}{\forall\,\a\in\l,x\in A_{\a}}
+  \end{gather*}
+\end{notation}
+
+\begin{theorem}[General DeMorgan]
+  Let \(X\) be a set and let \(\set{A_{\a}:\a\in\l}\) be a family of sets such that \(A_{\a}\subset X\):
+  \begin{gather*}
+    \left(\bigcup_{\a\in\l}A_{\a}\right)^C=\bigcap_{\a\in\l}A_{\a}^C \\
+    \left(\bigcap_{\a\in\l}A_{\a}\right)^C=\bigcup_{\a\in\l}A_{\a}^C
+  \end{gather*}
+\end{theorem}
+
+\begin{proof}
+  Assume \(x\in X\):
+  \begin{align*}
+    x\in\left(\bigcup_{\a\in\l}A_{\a}\right)^C &\iff x\notin\bigcup_{\a\in\l}A_{\a} \\
+    &\iff \forall\,\a\in\l,x\notin A_{\a} \\
+    &\iff \forall\,\a\in\l,x\in A_{\a}^C \\
+    &\iff x\in\bigcap_{\a\in\l}A_{\a}^C \\
+    \therefore\left(\bigcup_{\a\in\l}A_{\a}\right)^C=\bigcap_{\a\in\l}A_{\a}^C \\
+    \\
+    x\in\left(\bigcap_{\a\in\l}A_{\a}\right)^C &\iff x\notin\bigcap_{\a\in\l}A_{\a} \\
+    &\iff \exists\,\a\in\l,x\notin A_{\a} \\
+    &\iff \exists\,\a\in\l,x\in A_{\a}^C \\
+    &\iff x\in\bigcup_{\a\in\l}A_{\a}^C \\
+    \therefore\left(\bigcap_{\a\in\l}A_{\a}\right)^C=\bigcup_{\a\in\l}A_{\a}^C
+  \end{align*}
+\end{proof}
+
+\end{document}

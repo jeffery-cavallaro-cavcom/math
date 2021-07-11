@@ -1,0 +1,123 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\S}{\mathcal{S}}
+\begin{document}
+\section*{Probability}
+
+\begin{definition}[Probability]
+  Probability is a function defined on a space of events that satisfies the following axioms:
+  \begin{enumerate}
+  \item \(\forall\,E\subseteq S,P(E)\ge0\)
+  \item \(P(\S)=1\)
+  \item Let \(\set{E_1,E_2,\ldots}\) be a countably-infinite set of pairwise disjoint events:
+    \[P\left(\bigcup_{i=1}^{\infty}E_i\right)=\sum_{i=1}^{\infty}P(E_i)\]
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Relative Frequency]
+  Assume that an experiment is repeated \(n\) times and event \(E\) occurred \(n(E)\) times.  The \emph{relative frequency}
+  of \(E\) is given by:
+  \[\frac{n(E)}{n}\]
+  The probability of \(E\) can then be interpreted as:
+  \[P(E)=\lim_{n->\infty}\frac{n(E)}{n}\]
+\end{definition}
+
+\begin{theorem}
+\(P(\emptyset)=0\)
+\end{theorem}
+
+\begin{proof}
+  Let \(\set{E_1,E_2,\ldots}\) be a countably-infinite set of events such that all the \(E_i=\emptyset\).  Since
+  \(E_i\cap E_j=\emptyset\cap\emptyset=\emptyset\), the \(E_i\) are pairwise disjoint.  So, from the third axiom:
+  \begin{gather*}
+    P(\bigcup_{i=1}^{\infty}E_i)=\sum_{i=1}^{\infty}P(E_i) \\
+    P(\bigcup_{i=1}^{\infty}\emptyset)=\sum_{i=1}^{\infty}P(\emptyset) \\
+    P(\emptyset)=\sum_{i=1}^{\infty}P(\emptyset)
+  \end{gather*}
+  But this can only happen when \(P(\emptyset)=0\).
+\end{proof}
+
+\begin{theorem}
+  Let \(\set{E_1,\ldots,E_k}\) be a finite set of pairwise disjoint events:
+  \[P\left(\bigcup_{i=1}^kE_i\right)=\sum_{i=1}^kP(E_i)\]
+\end{theorem}
+
+\begin{proof}
+  Let \(\set{E_{k+1},E_{k+2},\ldots}\) be a countably-infinite set of events such that all the \(E_i=\emptyset\).  By the
+  third axiom and previous theorem:
+  \[P(\bigcup_{i=1}^kE_i)=P(\bigcup_{i=1}^{\infty}E_i)=\sum_{i=1}^{\infty}E_i=\sum_{i=1}^kE_i\]
+\end{proof}
+
+\begin{theorem}
+\(P(E)=1-P(E^c)\)
+\end{theorem}
+
+\begin{proof}
+  By definition, \(E\) and \(E^c\) are disjoint.  So, by the previous theorem:
+  \begin{gather*}
+    P(E\cup E^c)=P(E)+P(E^c) \\
+    P(\S)=P(E)+P(E^c)
+  \end{gather*}
+  But by the second axiom, \(P(\S)=1\), and therefore:
+  \[P(E)+P(E^c)=1\]
+  and:
+  \[P(E)=1-P(E^c)\]
+\end{proof}
+
+\begin{corollary}
+  \(0\le P(E)\le1\)
+\end{corollary}
+
+\begin{theorem}
+  \(A\subseteq B\implies P(A)\le P(B)\)
+\end{theorem}
+
+\begin{proof}
+  Let \(C=B-A\), and thus \(B=A\cup C\) and \(A\cap C=\emptyset\).  By the previous theorem:
+  \[P(B)=P(A\cup C)=P(A)+P(C)\]
+  But, by the first axiom, \(P(C)\ge0\).  Therefore:
+  \[P(A)\le P(B)\]
+\end{proof}
+
+\begin{theorem}[PIE]
+  \(P(A\cup B)=P(A)+P(B)-P(A\cap B)\)
+\end{theorem}
+
+\begin{proof}
+  First, decompose \(B\) into two disjoint events:
+  \begin{gather*}
+    B=(A\cap B)\cup(A^c\cap B) \\
+    P(B)=P((A\cap B)\cup(A^c\cap B))=P(A\cap B)+P(A^c\cap B) \\
+    P(A^c\cap B)=P(B)-P(A\cap B)
+  \end{gather*}
+  Now, decompose \(A\cup B\) into two disjoint events:
+  \begin{gather*}
+    A\cup B=A\cup(A^c\cap B) \\
+    P(A\cup B)=P\left(A\cup(A^c\cap B)\right)=P(A)+P(A^c\cap B)=P(A)+P(B)-P(A\cap B)
+  \end{gather*}
+\end{proof}
+
+\begin{example}
+  In a large discrete math class, 55\% of the students are math majors, 35\% are CS majors, and 5\% are dual majors (in
+  math and CS).  What percentage of the class majors in neither of them?
+
+  Let:
+  \begin{gather*}
+    A=\set{\text{majors in math}} \\
+    B=\set{\text{majors in CS}}
+  \end{gather*}
+  \begin{align*}
+    P(A^c\cap B^c) &= P\left((A\cap B)^c\right) \\
+    &= 1-P(A\cap B) \\
+    &= 1-\left(P(A)+P(B)-P(A\cap B)\right) \\
+    &= 1-(0.55+0.35-0.05) \\
+    &= 1-0.985 \\
+    &= 0.15
+  \end{align*}
+\end{example}
+
+This theorem can be expanded to three events:
+\[P(A\cup B\cup C)=P(A)+P(B)+P(C)-P(A\cap B)-P(A\cap C)-P(B\cap C)+P(A\cap B\cap C)\]
+
+\end{document}

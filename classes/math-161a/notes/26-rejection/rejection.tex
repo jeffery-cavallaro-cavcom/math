@@ -1,0 +1,234 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\usepackage{tikz}
+\pagestyle{empty}
+\renewcommand{\O}{\theta}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\renewcommand{\P}{\Phi}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\iid}{\overset{\text{iid}}{\sim}}
+\newcommand{\cond}[2]{P\left({#1}\middle\vert{#2}\right)}
+\DeclareMathOperator{\nd}{N}
+\begin{document}
+\section*{Rejection Region}
+
+\begin{definition}[Decision Rule]
+  A \emph{decision rule} specifies the criteria by which \(H_0\) should be rejected.  The criteria is in the form of a
+  so-called \emph{rejection region}: \(H_0\) is rejected if \(\hat{\O}\) falls within the rejection region.
+\end{definition}
+
+Given a tolerance \(c\), the rejection regions for the three alternate hypothesis types are as follows:
+\begin{enumerate}
+\item \(H_a:\O\ne\O_0\)
+  \[\abs{\hat{\O}-\O_0}>c\]
+  \begin{tikzpicture}
+    \draw (0,0) -- (10,0) node [right] {};
+    \node [circle,draw,fill,scale=0.5] (X) at (5,0) {};
+    \node [below=5pt] at (X) {\(\O_0\)};
+    \node [circle,draw,fill,scale=0.5] (B) at (3,0) {};
+    \node [below=5pt] at (B) {\(\O_0-c\)};
+    \node [circle,draw,fill,scale=0.5] (A) at (7,0) {};
+    \node [below=5pt] at (A) {\(\O_0+c\)};
+    \draw [<-,red,very thick] (0,0) to (B);
+    \draw [->,red,very thick] (A) to (10,0);
+    \draw [green,very thick] (B) to (X) to (A);
+  \end{tikzpicture}
+
+\item \(H_a:\O<\O_0\)
+  \[\hat{\O}<\O_0-c\]
+  \begin{tikzpicture}
+    \draw (0,0) -- (10,0) node [right] {};
+    \node [circle,draw,fill,scale=0.5] (X) at (5,0) {};
+    \node [below=5pt] at (X) {\(\O_0\)};
+    \node [circle,draw,fill,scale=0.5] (B) at (3,0) {};
+    \node [below=5pt] at (B) {\(\O_0-c\)};
+    \draw [<-,red,very thick] (0,0) to (B);
+    \draw [->,green,very thick] (B) to (X) to (10,0);
+  \end{tikzpicture}
+
+\item \(H_a:\O>\O_0\)
+  \[\hat{\O}>\O_0+c\]
+  \begin{tikzpicture}
+    \draw (0,0) -- (10,0) node [right] {};
+    \node [circle,draw,fill,scale=0.5] (X) at (5,0) {};
+    \node [below=5pt] at (X) {\(\O_0\)};
+    \node [circle,draw,fill,scale=0.5] (A) at (7,0) {};
+    \node [below=5pt] at (A) {\(\O_0+c\)};
+    \draw [<-,green,very thick] (0,0) to (X) to (A);
+    \draw [->,red,very thick] (A) to (10,0);
+  \end{tikzpicture}
+\end{enumerate}
+
+\begin{definition}[Hypothesis Test Errors]
+  Hypothesis tests can have the following results:
+  \begin{enumerate}
+  \item Retaining a true \(H_0\) and rejecting a false \(H_0\) are both \emph{\textcolor{green}{correct decisions}}.
+  \item Rejecting a true \(H_0\) is called a \emph{\textcolor{red}{type I error}}.
+  \item Retaining a false \(H_0\) is called a \emph{\textcolor{red}{type II error}}.
+  \end{enumerate}
+\end{definition}
+
+\subsection*{Calculating Type I Error}
+
+Note that as \(c\) increases, the rejection region gets smaller, making it harder to reject \(H_0\).  Thus, the possibility
+of a type I error is decreased.
+
+\begin{definition}[Level]
+  The \emph{level} of a hypothesis test, denoted \(\a\), is the probability of making a type I error.
+\end{definition}
+
+\begin{example}
+  A brown egg farm claims that the average weight of their eggs is \(\m=\SI{65}{g}\).  The true standard deviation is known
+  to be \(\o=\SI{2}{g}\).  What is the level of a two-sided test with a carton sample \((n=12)\) and with \(c=1\) and \(c=2\)?
+  \begin{gather*}
+    H_0:\m=65\qquad H_a:\m\ne65 \\
+    \\
+    X_i\iid\nd(65,2^2)\qquad\bar{X}\sim\nd\left(65,\frac{2^2}{12}\right) \\
+    \\
+    \abs{\bar{x}-65}>c
+  \end{gather*}
+  \begin{align*}
+    \a &= \cond{\text{reject}\ H_0}{H_0\ \text{true}} \\
+    &= \cond{\abs{\bar{X}-65}>1}{\m=65} \\
+    &= \cond{\bar{X}<64\ \text{or}\ \bar{X}>66}{\m=65} \\
+    &= \cond{\bar{X}<64}{\m=65}+\cond{\bar{X}>66}{\m=65} \\
+    &= P\left(Z<\frac{64-65}{\frac{2}{\sqrt{12}}}\right)+P\left(Z>\frac{66-65}{\frac{2}{\sqrt{12}}}\right) \\
+    &= P(Z<-\sqrt{3})+P(Z>\sqrt{3}) \\
+    &= 2P(Z<-1.73) \\
+    &= 2\P(-1.73) \\
+    &= 2(0.0418) \\
+    &= 0.0836 \\
+    \\
+    \a &= \cond{\abs{\bar{X}-65}>2}{\m=65} \\
+    &= \cond{\bar{X}<63\ \text{or}\ \bar{X}>67}{\m=65} \\
+    &= \cond{\bar{X}<63}{\m=65}+\cond{\bar{X}>67}{\m=65} \\
+    &= P\left(Z<\frac{63-65}{\frac{2}{\sqrt{12}}}\right)+P\left(Z>\frac{67-65}{\frac{2}{\sqrt{12}}}\right) \\
+    &= P(Z<-2\sqrt{3})+P(Z>2\sqrt{3}) \\
+    &= 2P(Z<-3.46) \\
+    &= 2\P(-3.46) \\
+    &= 2(0.0003) \\
+    &= 0.0006
+  \end{align*}
+\end{example}
+
+Note that the probability of making a type I error decreased as \(c\) increased.
+
+\begin{example}
+  Repeat the above example for a one-sided test with \(H_a:\m<65\).
+
+  In each case, only one side of the symmetric distribution is selected, and so the probability is halved:
+  \begin{gather*}
+    c=1 : 0.0418 \\
+    c=2 : 0.0003
+  \end{gather*}
+\end{example}
+
+\subsection*{Calculating Type II Error}
+
+Although decreasing the size of the rejection region decreases the probability of a type I error, the smaller rejection region
+makes it harder to reject \(H_0\) if it is false.  Thus, the probability for a type II error increases.  Since it is unknown
+whether whether \(H_0\) is true or not, a balance between the possibility of either type of error is needed.
+
+If \(H_0\) is false, then each possible value of \(\O\) results in a different probability for type II error.
+
+\begin{definition}[Power]
+  Let \(\b(\O)\) be the probability for a type II error.  The \emph{power} of a hypothesis test, given by \(1-\b(\O)\), is
+  the probability of correctly rejecting a false \(H_0\).
+\end{definition}
+
+So the desire is to have a small type I error probability (typically 5\%) and large power (typically 80\%) and hence a small
+type II error probability (typically 20\%).
+
+\begin{example}
+  For the above example, calculate the probability of a two-sided test type II error when \(\m=64\) and
+  \(c=\frac{1}{2}\), \(1\), and \(2\).
+  \begin{gather*}
+    \b(\m)=\cond{\text{fail to reject}\ H_0}{H_0\ \text{is false}} \\
+    \b(64)=\cond{\abs{\bar{X}-65}<c}{\m\ne65} \\
+    \\
+    \bar{X}\sim\nd\left(64,\frac{2^2}{12}\right)
+  \end{gather*}
+  \begin{align*}
+    \b(64) &= \cond{\abs{\bar{X}-65}<c}{\m\ne65} \\
+    &= \cond{64.5<\bar{X}<65.5}{\m=64} \\
+    &= P\left(\frac{64.5-64}{\frac{2}{\sqrt{12}}}<Z<\frac{65.5-64}{\frac{2}{\sqrt{12}}}\right) \\
+    &= P(0.5\sqrt{3}<Z<1.5\sqrt{3}) \\
+    &= P(2.60)-\P(0.87) \\
+    &= 0.9953-0.8078 \\
+    &= 0.1875 \\
+    \\
+    \b(64) &= \cond{\abs{\bar{X}-65}<c}{\m\ne65} \\
+    &= \cond{64<\bar{X}<66}{\m=64} \\
+    &= P\left(\frac{64-64}{\frac{2}{\sqrt{12}}}<Z<\frac{66-64}{\frac{2}{\sqrt{12}}}\right) \\
+    &= P(0<Z<2\sqrt{3}) \\
+    &= \P(3.46)-P(0) \\
+    &= 0.9997-0.500 \\
+    &= 0.4997
+    \\
+    \b(64) &= \cond{\abs{\bar{X}-65}<c}{\m\ne65} \\
+    &= \cond{63<\bar{X}<67}{\m=64} \\
+    &= P\left(\frac{63-64}{\frac{2}{\sqrt{12}}}<Z<\frac{67-64}{\frac{2}{\sqrt{12}}}\right) \\
+    &= P(-\sqrt{3}<Z<3\sqrt{3}) \\
+    &= \P(5.20)-P(-1.73) \\
+    &= 1-0.0418 \\
+    &= 0.9582
+  \end{align*}
+\end{example}
+
+The goal is to select appropriate \(c\) and \(n\) values for a desired \(a\) (typically 5\%) and \(b\) (typically 20\%).
+
+\begin{theorem}
+  Let \(\a\) be the desired level and \(1-\b(\O')\) be the desired power for a hypothesis test with claim \(H_0:\O=\O_0\) and
+  known standard deviation \(\o\).  For a two-sided hypothesis test \(Ha:\O\ne\O_0\):
+  \begin{gather*}
+    c=z_{\frac{\a}{2}}\frac{\o}{\sqrt{n}} \\
+    n\approx\left(\frac{\o\left(z_{\frac{\a}{2}}+z_{\b}\right)}{\O-\O'}\right)^2
+  \end{gather*}
+  For a one-sided hypothesis test:
+  \begin{gather*}
+    c=z_{\a}\frac{\o}{\sqrt{n}} \\
+    n\approx\left(\frac{\o\left(z_{\a}+z_{\b}\right)}{\O-\O'}\right)^2
+  \end{gather*}
+\end{theorem}
+
+\begin{example}
+  For the above example, determine the desired \(c\) and \(n\) of a two-sided and a one-sided hypothesis test for
+  \(\a=5\%\) and \(\b=20\%\).
+  \begin{gather*}
+    n\approx\left(\frac{\o\left(z_{0.025}+z_{0.20}\right)}{\O-\O'}\right)^2=
+    \left(\frac{2\left(1.96+0.84\right)}{65-64}\right)^2=31.36\approx32 \\
+    c=z_{0.025}\frac{\o}{\sqrt{n}}=1.96\frac{2}{\sqrt{32}}=0.6930\approx0.7 \\
+    \\
+    n\approx\left(\frac{\o\left(z_{0.05}+z_{0.20}\right)}{\O-\O'}\right)^2=
+    \left(\frac{2\left(1.645+0.84\right)}{65-64}\right)^2=24.7\approx25 \\
+    c=z_{0.05}\frac{\o}{\sqrt{n}}=1.645\frac{2}{\sqrt{25}}=0.6580\approx0.7 \\
+  \end{gather*}
+\end{example}
+
+\subsection*{Test Result}
+
+Note that \(\displaystyle c=z_{\a}{2}\frac{\o}{\sqrt{n}}\) is actually the margin of error for the \(1-\a\) confidence
+interval.  Therefore:
+\begin{quote}
+  \(H_0\) is not rejected if \(\hat{\O}\) falls within the \(1-\a\) confidence interval.
+
+  \(H_0\) is rejected if \(\hat{\O}\) falls outside the \(1-\a\) confidence interval.
+\end{quote}
+
+\begin{example}
+  The heights of a random sample of 400 male high school sophomores in a mid-western state are measured.  The sample mean
+  is \(\bar{x}=\SI{66.2}{in}\).  Suppose that the heights of all male high school sophomores in that state follow a normal
+  distribution with a standard deviation of \(\o=\SI{4.1}{in}\).  Conduct the following hypothesis test at the 5\% level:
+  \[H_0:\m=66.8\qquad H_a:\m\ne66.8\]
+  \[\pm z_{0.025}\frac{\o}{\sqrt{n}}=1.96\frac{4.1}{\sqrt{400}}\approx0.4\]
+  Since \(66.2\notin(66.4,67.2)\), reject \(H_0\).
+
+  Reconduct the test for the one-sided alternative: \(H_a:\m<66.8\).
+  \[z_{0.05}\frac{\o}{\sqrt{n}}=1.645\frac{4.1}{\sqrt{400}}\approx0.3\]
+  Since \(66.2\notin(66.5,\infty)\), reject \(H_0\).
+\end{example}
+
+\end{document}

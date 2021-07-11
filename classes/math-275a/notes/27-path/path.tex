@@ -1,0 +1,95 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\newcommand{\norm}[1]{\left\lVert{#1}\right\rVert}
+\begin{document}
+\section*{Path Connectedness}
+
+\begin{definition}[Path]
+  Let \(X\) be a topological space and let \(x_0,x_1\in X\).  A \emph{path} from \(x_0\) to \(x_1\) is a continuous
+  function \(f:[0,1]\to X\) such that \(f(0)=x_0\) an \(f(1)=x_1\).  \(x_0\) is called the initial point of the path
+  and \(x_1\) is called the final point of the path.
+\end{definition}
+
+\begin{definition}[Path Connected]
+  Let \(X\) be a topological space.  To say that \(X\) is \emph{path connected} means that between every
+  \(x_0,x_1\in X\) there exists some path.
+\end{definition}
+
+\begin{definition}[Convex]
+  Let \(A\subset\R^n\).  To say that \(A\) is \emph{convex} means that for all \(x,y\in A\):
+  \[\setb{(1-t)x+ty}{t\in[0,1]}\subset A\]
+\end{definition}
+
+Thus, every convex subset of \(\R^n\) is path connected.
+
+\begin{theorem}
+  A path connected topological space is connected.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a path connected topological space and ABC that \(X\) is disconnected.  This means that
+  there exists \(A,B\subset X\) such that \(A\sqcup B=X\) where \(A,B\) are open and non-empty.  So assume that
+  \(x\in A\) and \(y\in B\).  Since \(X\) is path connected, there exists some continuous \(f:[0,1]\to X\) such
+  that \(f(0)=x\in A\) and \(f(1)=y\in B\).  This mean that \([0,1]=f^{-1}(A)\cup f^{-1}(B)\) where neither
+  \(f^{-1}(A)\) nor \(f^{-1}(B)\) are empty.  Furthermore, since \(A\) and \(B\) are disjoint, \(f^{-1}(A)\) and
+  \(f^{-1}(B)\) must also be disjoint, contradicting the connectedness of \([0,1]\).  Therefore \(X\) is
+  connected.
+\end{proof}
+
+\begin{example}
+  The closure of the topologist's sine curve is connected but not path connected.
+
+  The topologists sine curve is given by:
+  \[S=\setb{\left(x,\sin\frac{1}{x}\right)}{x\in(0,1)}\]
+  and its closure is given by:
+  \[\bar{S}=S\cup\set{(1,\sin(1)}\cup\setb{(0,y)}{y\in[-1,1]}\]
+  Note that \(\bar{S}\) was already shown to be connected.
+
+  ABC that \(\bar{S}\) is path connected and assume that \(p\in S\).  This means that there exists a path in
+  \(\bar{S}\) such that \(f(0)=p\) and \(f(1)=(0,0)\).  Let \(f(t)=(x(t),y(t))\).  Note that since \(f\) is
+  continuous, \(x(t)\) and \(y(t)\) are also continuous.  Now, defined \(U=\setb{t\in[0,1]}{x(t)>0}\).  Thus,
+  for all \(t\in U\), \(f(t)\in S\) and \(y(t)=\frac{1}{x(t)}\).
+
+  Next, since \(U\subset[0,1]\), \(U\) is bounded and thus has a sup.  So let \(t_*=\sup U\).  Note that \(t_*\)
+  is the final value of \(t\) at which the path jumps to the y-axis part of \(\bar{S}\) and stays there on the
+  way to \((0,0)\).  So \(x(t_*)=0\).  Let \(b=y(t_*)\) and let select \(\e>0\) such that:
+  \[\e<\begin{cases}
+  1-b, & b<1 \\
+  \frac{1}{2}, & b=1
+  \end{cases}\]
+  Now, since \(f\) is continuous, there exists \(\d>0\) such that for all \(t\in[0,1]\), if \(\abs{t-t_*}<\d\)
+  then \(\norm{f(t)-f(t_*)}<\e\).  Note that \([t_*-\d,t_*]\) is connected and compact.  Furthermore, \(f\) is
+  continuous.  Hence \(f[t_*-\d,t_*]\) is connected and compact, and thus must be an interval.  So let
+  \(x([t_*-\d,t_*)=[0,x_0]\) for some \(x_0\in(0,1]\).  This means that for every \(x\in(0,x_0]\) there exists
+  some \(t\in[t_*-\d,t_*]\) such that \(f(t)\in S\), meaning \(f(t)=(x,\sin\frac{1}{x})\).
+
+  Define a sequence \(x_n\) in [0,1] by:
+  \[x_n=\frac{1}{2n\pi+\frac{\pi}{2}}\]
+  Note that \(x_n\to0\) and:
+  \[\sin\frac{1}{x_n}=\sin\left(2n\pi+\frac{\pi}{2}\right)=\sin\frac{\pi}{2}=1\]
+  But since \(x_n\to 0\), there exists \(N\in\N\) such that for all \(x_n<x_0\) for all \(n>N\).  And so there
+  exists \(t_n\in[t_*-\d,t_*)\) such that:
+  \[f(t_n)=\left(x_n,\sin\frac{1}{x_n}\right)=(x_n,1)\]
+  Thus:
+  \[\norm{f(t_n)-f(t_*)}=\norm{(x_n,1)-(0,b)}\ge1-b>\e\]
+  This contradicts the continuity of \(f\).  Therefore \(\bar{S}\) is not path connected.
+\end{example}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces.  If \(X\) and \(Y\) are path connected then \(X\times Y\) is path
+  connected.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) and \(Y\) are path connected and assume that \((x_1,y_1),(x_2,y_2)\in X\times Y\).  This means
+  that there must exist a path \(f\) from \(x_1\) to \(x_2\) and a path \(g\) from \(y_1\) to \(y_2\).  Now,
+  defined \(h:[0,1]\to X\times Y\) as \(h(t)=(f(t),g(t))\).  But \(\pi_X\circ h=f\) and \(\pi_Y\circ h=g\) are
+  by definition continuous, and thus \(h\) is continuous.  Furthermore, \(h(0)=(f(0),g(0))=(x_1,y_1)\) and
+  \(h(1)=(f(1),g(1))=(x_2,y_2)\), and so \(h\) is a path between \((x_1,y_1)\) and \((x_2,y_2)\).  Therefore
+  \(X\times Y\) is path connected.
+\end{proof}
+
+\end{document}

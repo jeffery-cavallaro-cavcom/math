@@ -1,0 +1,302 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\usepackage{venndiagram}
+\usepackage{siunitx}
+\pagestyle{plain}
+\renewcommand{\S}{\mathcal{S}}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 161A \\
+Homework \#1
+
+\bigskip
+
+\section*{2.2}
+
+Suppose that vehicles taking a particular freeway exit can turn right (\(R\)), turn left (\(L\)), or go straight (\(S\)).
+Consider observing the direction for each of three successive vehicles.
+\begin{enumerate}[label=\alph*)]
+\item List all outcomes in the event \(A\) that all three vehicles go in the same direction.
+  \[A=\set{RRR,LLL,SSS}\]
+\item List all outcomes in the event \(B\) that all three vehicles take different directions.
+  \[B=\set{RLS,RSL,LRS,LSR,SRL,SLR}\]
+\item List all outcomes in the event \(C\) that exactly two of the three vehicles turn right.
+  \[C=\set{RRL,RRS,RLR,RSR,LRR,SRR}\]
+\item List all outcomes in the event \(D\) that exactly two vehicles go in the same direction.
+  \begin{align*}
+    D=\{ & RRL,RRS,RLR,RSR,LRR,SRR, \\
+    & LLR,LLS,LRL,LSL,RLL,SLL, \\
+    & SSR,SSL,SRS,SLS,RSS,LSS \}
+  \end{align*}
+\item List outcomes in \(D'\), \(C\cup D\), and \(C\cap D\).
+  \begin{align*}
+    D' &= \set{\text{all vehicles go in the same direction or different directions}} \\
+    &= A\cup B \\
+    &= \set{RLS,RSL,LRS,LSR,SRL,SLR,RRR,LLL,SSS}
+  \end{align*}
+  Note that \(C\subset D\):
+  \begin{align*}
+    C\cup D=D=\{ & RRL,RRS,RLR,RSR,LRR,SRR, \\
+    & LLR,LLS,LRL,LSL,RLL,SLL, \\
+    & SSR,SSL,SRS,SLS,RSS,LSS \}
+  \end{align*}
+  \[C\cap D=C=\set{RRL,RRS,RLR,RSR,LRR,SRR}\]
+\end{enumerate}
+
+\bigskip
+
+\section*{2.3}
+
+Three components are connected to form a system as shown in the accompanying diagram.  Because the components in the \(2-3\)
+subsystem are connected in parallel, that subsystem will function if at least one of the two individual components function.
+For the entire system to function, component \(1\) must function and so must the \(2-3\) subsystem.
+
+\begin{tikzpicture}[every node/.style={draw,rectangle}]
+  \node (1) at (1,0) {\(1\)};
+  \node (2) at (4,1) {\(2\)};
+  \node (3) at (4,-1) {\(3\)};
+  \draw (0,0) to (1) to (2,0) to (3,1) to (2) to (5,1) to (6,0) to (7,0);
+  \draw (2,0) to (3,-1) to (3) to (5,-1) to (6,0);
+\end{tikzpicture}
+
+The experiment consists of determining the condition of each component [\(S\) (success) for a functioning component and
+  \(F\) (failure) for a nonfunctioning component].
+\begin{enumerate}[label=\alph*)]
+\item Which outcomes are contained in the event \(A\) that exactly two out of the three components function?
+  \[A=\set{SSF,SFS,FSS}\]
+\item Which outcomes are contained in the event \(B\) that at least two of the components function?
+  \[B=A\cup\set{SSS}=\set{SSF,SFS,FSS,SSS}\]
+\item Which outcomes are contained in event \(C\) that the system functions?
+  \[C=\set{SSF,SFS,SSS}\]
+\item List outcomes in \(C'\), \(A\cup C\), \(A\cap C\), \(B\cup C\), and \(B\cap C\).
+  \[C'=\set{\text{the system does not function}}=\set{FFF,FFS,FSF,FSS,SFF}\]
+  \[A\cup C=\set{SSF,SFS,FSS,SSS}\]
+  \[A\cap C=\set{SSF,SFS}\]
+  Note \(C\subset B\)
+  \[B\cup C=B=\set{SSF,SFS,FSS,SSS}\]
+  \[B\cap C=C=\set{SSF,SFS,SSS}\]
+\end{enumerate}
+
+\bigskip
+
+\section*{2.6}
+
+A college library has five copies of a certain text on reserve.  Two copies (\(1\) and \(2\)) are first printings, and the
+other three (\(3\), \(4\), and \(5\)) are second printings.  A student examines these books in random order, stopping only
+when a second printing has been selected.  One possible outcome is \(5\), and another is \(213\).
+\begin{enumerate}[label=\alph*)]
+\item List the outcomes in \(\S\).
+  \[\S=\set{3,4,5,13,14,15,23,24,25,123,124,125,213,214,215}\]
+\item Let \(A\) denote the event that exactly one book must be examined.  What outcomes are in \(A\)?
+  \[A=\set{3,4,5}\]
+\item Let \(B\) be the event that book \(5\) is the one selected.  What outcomes are in \(B\)?
+  \[B=\set{5,15,25,125,215}\]
+\item Let \(C\) be the event that book \(1\) is not examined.  What outcomes are in \(C\)?
+  \[C=\set{3,4,5,23,24,25}\]
+\end{enumerate}
+
+\bigskip
+
+\section*{2.12}
+
+Consider randomly selecting a student at a large university, and let \(A\) be the event that the selected student has a
+VISA card and \(B\) be the analagous event for MasterCard.  Suppose \(P(A)=0.6\) and \(P(B)=0.4\).
+\begin{enumerate}[label=\alph*)]
+\item Could it be the case that \(P(A\cap B)=0.5\)?  Why or why not?
+
+  No, because:
+  \begin{gather*}
+    A\cap B\subseteq B \\
+    P(A\cap B)\le P(B) \\
+    0.5\not\le0.4
+  \end{gather*}
+
+\item From now on, suppose \(P(A\cap B)=0.3\).  What is the probability that the selected student has at least one
+  of these cards?
+  \[P(A\cup B)=P(A)+P(B)-P(A\cap B)=0.6+0.4-0.3=0.7\]
+
+\item What is the probability that the selected student has neither type of card?
+  \[P\left(A^C\cap B^C\right)=P\left((A\cup B)^C\right)=1-P(A\cup B)=1.0-0.7=0.3\]
+
+\item Describe, in terms of \(A\) and \(B\), the event that the selected student has a VISA card but not a MasterCard, and
+  then calculate the probability of this event.
+
+  \begin{minipage}{2.25in}
+    \begin{venndiagram2sets}
+      \fillOnlyA
+    \end{venndiagram2sets}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    \(\displaystyle P\left(A\cap B^C\right)=P(A)-P(A\cap B)=0.6-0.3=0.3\)
+  \end{minipage}
+
+\item Calculate the probability that the selected student has exactly one of the two types of cards.
+  
+  \begin{minipage}{2.25in}
+    \begin{venndiagram2sets}
+      \fillOnlyA
+      \fillOnlyB
+    \end{venndiagram2sets}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    \begin{gather*}
+      P\left(A\cap B^C\right)=0.3 \\
+      P\left(B\cap A^C\right)=P(B)-P(A\cap B)=0.4-0.3=0.1 \\
+      P\left(\left(A\cap B^C\right)\cup\left(B\cap A^C\right)\right)=0.3+0.1=0.4
+    \end{gather*}
+  \end{minipage}
+\end{enumerate}
+
+\bigskip
+
+\section*{2.16}
+
+An individual is presented with three different glasses of cola, labeled \(C\), \(D\), and \(P\).  He is asked to taste all
+three and then list them in order of precedence.  Suppose the same cola has actually been put into all three glasses.
+\begin{enumerate}[label=\alph*)]
+\item What are the simple events in this ranking experiment, and what probability would you assign to each?
+
+  Since the three glasses are filled with the \emph{same} cola, we can assume that each outcome is a random permutation of
+  the three choices:
+  \[\S=\set{CDP,CPD,DCP,DPC,PCD,PDC}\]
+  \[P(CDP)=P(CPD)=P(DCP)=P(DPC)=P(PCD)=P(PDC)=\frac{1}{6}\]
+
+\item What is the probability that \(C\) is ranked first?
+  \[P(Cxx)=\frac{2}{6}=\frac{1}{3}\]
+
+\item What is the probability that \(C\) is ranked first and \(D\) is ranked last?
+  \[P(CxD)=\frac{1}{6}\]
+\end{enumerate}
+
+\bigskip
+
+\section*{2.26}
+
+A certain system can experience three different types of defects.  Let \(A_i(i=1,2,3)\) denote the event that the system
+has a defect of type \(i\). Suppose that
+\begin{gather*}
+  P(A_1)=0.12 \\
+  P(A_2)=0.07 \\
+  P(A_3)=0.05 \\
+  P(A_1\cup A_2)=0.13 \\
+  P(A_1\cup A_3)=0.14 \\
+  P(A_2\cup A_3)=0.10 \\
+  P(A_1\cap A_2\cap A_3)=0.01
+\end{gather*}
+\begin{enumerate}[label=\alph*)]
+\item What is the probability that the system does not have a type 1 defect?
+
+  \begin{minipage}{2.25in}
+    \begin{venndiagram3sets}[labelA=\(A_1\),labelB=\(A_2\),labelC=\(A_3\)]
+      \fillNotA
+    \end{venndiagram3sets}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    \(\displaystyle P\left(A_1^C\right)=1-P(A_1)=1-0.12=0.88\)
+  \end{minipage}
+
+\item What is the probability that the system has both type 1 and type 2 defects?
+
+  \begin{minipage}{2.25in}
+    \begin{venndiagram3sets}[labelA=\(A_1\),labelB=\(A_2\),labelC=\(A_3\)]
+      \fillACapB
+    \end{venndiagram3sets}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    \begin{align*}
+      P(A_1\cap A_2) &= P(A_1)+P(A_2)-P(A_1\cup A_2) \\
+      &= 0.12+0.07-0.13 \\
+      &= 0.06
+    \end{align*}
+  \end{minipage}
+
+\item What is the probability that the system has both type 1 and type 2 defects but not a type 3 defect?
+  
+  \begin{minipage}{2.25in}
+    \begin{venndiagram3sets}[labelA=\(A_1\),labelB=\(A_2\),labelC=\(A_3\)]
+      \fillACapBNotC
+    \end{venndiagram3sets}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    \begin{align*}
+      P\left(A_1\cap A_2\cap A_3^C\right) &= P(A_1\cap A_2)-P(A_1\cap A_2\cap A_3) \\
+      &= 0.06-0.01 \\
+      &= 0.05
+    \end{align*}
+  \end{minipage}
+
+\item What is the probability that the system has at most two of these defects?
+  
+  \begin{minipage}{2.25in}
+    \begin{venndiagram3sets}[labelA=\(A_1\),labelB=\(A_2\),labelC=\(A_3\)]
+      \fillNotABC
+      \fillOnlyA
+      \fillOnlyB
+      \fillOnlyC
+      \fillACapBNotC
+      \fillACapCNotB
+      \fillBCapCNotA
+    \end{venndiagram3sets}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    \begin{align*}
+      P\left(\left(A_1\cap A_2\cap A_3\right)^C\right) &= 1-P(A_1\cap A_2\cap A_3) \\
+      &= 1-0.01 \\
+      &= 0.99
+    \end{align*}
+  \end{minipage}
+\end{enumerate}
+
+\bigskip
+
+\section*{2.31}
+
+The composer Beethoven wrote 9 symphonies, 5 piano concertos (music for piano and orchestra), and 32 piano sonatas (music
+for solo piano).
+\begin{enumerate}[label=\alph*)]
+\item How many ways are there to play first a Beethoven symphony and then a Beethoven piano concerto?
+  \[9\cdot5=45\]
+
+\item The manager of a radio station decides that on each successive evening (7 days per week), a Beethoven symphony will be
+  played followed by a Beethoven piano concerto followed by a Beethoven piano sonata.  For how many years could this policy
+  be continued before exactly the same program would have to be repeated?
+  \[9\cdot5\cdot7=\SI{1440}{days}\sim\SI{4}{years}\]
+\end{enumerate}
+
+\bigskip
+
+\section*{2.34}
+
+Computer keyboard failures can be attributed to electrical defects or mechanical defects.  A repair facility currently has
+25 failed keyboards, 6 of which have electrical defects and 19 of which have mechanical defects.
+\begin{enumerate}[label=\alph*)]
+\item How many ways are there to randomly select 5 of these keyboards for a thorough inspection (without regard to order)?
+  \[\binom{25}{5}=53130\]
+
+\item In how many ways can a sample of 5 keyboards be selected so that exactly two have an electrical defect?
+  \[\binom{6}{2}\binom{19}{3}=15\cdot969=14535\]
+
+\item If a sample of 5 keyboards is randomly selected, what is the probability that at least 4 of these will have a
+  mechanical defect?
+  \[\frac{\binom{19}{4}\binom{6}{1}+\binom{19}{5}\binom{6}{0}}{\binom{25}{5}}=
+  \frac{3876\cdot6+11628\cdot1}{53130}\approx0.66\]
+\end{enumerate}
+
+\bigskip
+
+\section*{2.36}
+
+An academic department with five faculty members narrowed its choice for department head to either candidate \(A\) or
+candidate \(B\).  Each member then voted on a slip of paper for one of the candidates.  Supposed there are actually three
+votes for \(A\) and two for \(B\).  If the slips are selected for tallying in random order, what is the probability that
+\(A\) remains ahead of \(B\) throughout the vote count (e.g., this event occurs if the selected ordering is \(AABAB\), but
+not \(ABBAA\)?
+
+For this problem, the three \(A\) votes are considered identical, as are the two \(B\) votes.  To determine the total
+number of possible tallying sequences, place the three \(A\) votes in the five slots:
+\[\binom{5}{3}=10\]
+The only two outcomes for \(A\) always ahead are \(AAABB\) and \(AABAB\).  Thus, the probability that \(A\) remains ahead is:
+\[\frac{2}{10}=\frac{1}{5}=0.2\]
+
+\end{document}

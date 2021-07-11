@@ -1,0 +1,32 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{array}
+\usepackage{tikz}
+\pagestyle{plain}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\sc}{\(2^{nd}\) countable}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#7 Rewrite
+
+\bigskip
+
+\begin{theorem}[5.11]
+  Every uncountable set in a \sc\ space has a limit point.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is a \sc\ space and assume that \(A\subset X\) such that \(A\) is uncountable.  Now, ABC that
+  \(A\) has no limit points.  This means that for all \(a\in A\) it is the case that there exists \(U\in\U_a\)
+  such that \(U_a\cap A=\set{a}\) and hence every \(a\in A\) is an isolated point.  So assume that \(x,y\in A\)
+  such that \(x\ne y\).  There exists \(U\in\U_x\) and \(V\in\U_y\) such that \(U\ne V\).  So for any basis
+  \(\B\) of \(X\), there exists \(B_x\subset U\) and \(B_y\subset V\) such that \(B_x\ne B_y\).  Thus,
+  \(a\mapsto B_a\) is injective and hence \(\B\) is uncountable, contradicting the assumption that \(X\)
+  is \sc.
+
+  Therefore \(A\) contains a limit point.
+\end{proof}
+
+\end{document}

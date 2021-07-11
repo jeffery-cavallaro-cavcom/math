@@ -1,0 +1,59 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\O}{\theta}
+\newcommand{\xb}{\bar{X}}
+\newcommand{\m}{\mu}
+\DeclareMathOperator{\ud}{Unif}
+\begin{document}
+\section*{Point Estimation}
+
+Up to this point, both the population and its parameters have been known.  Now, suppose that only the population is known (or
+suspected); however, the parameters are not known.  The use of sample statistics to make educated guesses of the parameters is
+known as \emph{statistical inference}.
+
+\begin{definition}[Point Estimate]
+  A \emph{point estimate} of a population parameter \(\O\) is a single number that can be regarded as a sensible value for
+  \(\O\).  It is obtained by selecting a suitable statistic and computing its value from the given sample data.  The selected
+  statistic is called the \emph{point estimator} of \(\O\).
+
+  The notation \(\hat{\O}\) is used to represent either the estimator or the estimate, depending on context.
+\end{definition}
+
+\begin{example}
+  Suppose that the weight of 12 eggs in a selected carton are as follows:
+  \begin{align*}
+    x_1 &= 63.3 \\
+    x_2 &= 63.4 \\
+    x_3 &= 64.0 \\
+    x_4 &= 63.0 \\
+    x_5 &= 70.4 \\
+    x_6 &= 65.7 \\
+    x_7 &= 63.7 \\
+    x_8 &= 65.8 \\
+    x_9 &= 67.5 \\
+    x_{10} &= 66.4 \\
+    x_{11} &= 66.8 \\
+    x_{12} &= 66.0
+  \end{align*}
+  Let \(\xb\) be a point estimator for \(\m\):
+  \[\hat{\m}=65.5\]
+\end{example}
+
+Note that since \(\hat{\O}\) is a random variable, different random samples will yield different point estimates.
+
+There may also be multiple choices of estimator for \(\O\).
+
+\begin{example}
+  Suppose we draw a random sample \(X_i\) from the uniform distribution \(\ud(0,\O)\).  Then the sample maximum:
+  \[\hat{\O}=\max_{1\le i\le n}X_i\]
+  can be used as a point estimator for \(\O\).
+
+  Alternatively,
+  \[\hat{\O}=2\xb\]
+  is another possible estimator for \(\O\).
+\end{example}
+
+The question of which estimator is best for a given \(\O\) involves the question of \emph{bias}.
+
+\end{document}

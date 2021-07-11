@@ -1,0 +1,82 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Functions}
+
+\begin{definition}[Function]
+  A \emph{function} (\emph{map}) from a set \(X\) to a set \(Y\), denoted by \(f:X\to Y\), is a rule that assigns to
+  each \(x\in X\) a corresponding \(f(x)\in Y\).  \(X\) is called the \emph{domain} of \(f\) and \(Y\) is called
+  the \emph{codomain} of \(f\).
+\end{definition}
+
+\begin{definition}[Image]
+  Let \(f:X\to Y\) be a function and let \(A\subset X\).  The \emph{image} of \(A\) under \(f\) is given by:
+  \[f(A)=\setb{f(a)\in Y}{a\in A}\]
+\end{definition}
+
+\begin{definition}[Preimage]
+  Let \(f:X\to Y\) be a function and let \(B\subset Y\).  The \emph{preimage} of \(B\) under \(f\) is given by:
+  \[f^{-1}(B)=\setb{x\in X}{f(x)\in B}\]
+  When \(B=\set{y}\) (a single point) then the alternate notation \(f^{-1}(y)\) is often used.
+\end{definition}
+
+\begin{theorem}
+  Let \(f:X\to Y\) be a function and let \(A,B\subset Y\):
+  \begin{gather*}
+    f^{-1}(A\cup B)=f^{-1}(A)\cup f^{-1}(B) \\
+    f^{-1}(A\cap B)=f^{-1}(A)\cap f^{-1}(B)
+  \end{gather*}
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    x\in f^{-1}(A\cup B) &\iff f(x)\in A\cup B \\
+    &\iff f(x)\in A\ \text{or}\ f(x)\in B \\
+    &\iff x\in f^{-1}(A)\ \text{or}\ x\in f^{-1}(B) \\
+    &\iff x\in f^{-1}(A)\cup f^{-1}(B) \\
+    \therefore f^{-1}(A\cup B)=f^{-1}(A)\cup f^{-1}(B) \\
+    \\
+    x\in f^{-1}(A\cap B) &\iff f(x)\in A\cap B \\
+    &\iff f(x)\in A\ \text{and}\ f(x)\in B \\
+    &\iff x\in f^{-1}(A)\ \text{and}\ x\in f^{-1}(B) \\
+    &\iff x\in f^{-1}(A)\cap f^{-1}(B) \\
+    \therefore f^{-1}(A\cap B)=f^{-1}(A)\cap f^{-1}(B)
+  \end{align*}
+\end{proof}
+
+\begin{definition}[Injection]
+  Let \(f:X\to Y\) be a function.  To say that \(f\) is an \emph{injection} (\emph{one-to-one}) means that:
+  \[\forall\,a,b\in X,f(a)=f(b)\implies a=b\]
+\end{definition}
+
+\begin{definition}[Surjection]
+  Let \(f:X\to Y\) be a function.  To say that \(f\) is a \emph{surjection} (\emph{onto}) means that:
+  \[\forall\,b\in Y,\exists\,a\in X,f(a)=b\]
+\end{definition}
+
+\begin{definition}[Bijection]
+  Let \(f:X\to Y\) be a function.  To say that \(f\) is a \emph{bijection} (\emph{one-to-one correspondence}) means
+  that \(f\) is both an injection and a surjection.
+\end{definition}
+
+\begin{theorem}
+  Let \(f:X\to Y\) be a function and let \(y\in Y\).  If \(f\) is injective then \(f^{-1}(y)\) contains at most
+  one point.
+\end{theorem}
+
+\begin{proof}
+  Assume \(a,b\in f^{-1}(y)\).  By definition: \(f(a)=f(b)=y\).  But \(f\) is injective and therefore \(a=b\).
+\end{proof}
+
+\begin{theorem}
+  Let \(f:X\to Y\) be a function and let \(y\in Y\).  If \(f\) is surjective then \(f^{-1}(y)\) contains at least
+  one point.
+\end{theorem}
+
+\begin{proof}
+  Since \(f\) is surjective, for all \(y\in Y\), there exists \(x\in X\) such that \(f(x)=y\).  Therefore, by
+  definition, \(x\in f^{-1}(y)\).
+\end{proof}
+
+\end{document}

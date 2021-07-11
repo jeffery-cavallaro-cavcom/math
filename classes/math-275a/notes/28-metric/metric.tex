@@ -1,0 +1,319 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\norm}[1]{\left\lVert{#1}\right\rVert}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\C}{\mathcal{C}}
+\newcommand{\T}{\mathscr{T}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\DeclareMathOperator{\dist}{dist}
+\begin{document}
+\section*{Metric Spaces}
+
+\begin{definition}[Metric]
+  Let \(M\) be a set.  A \emph{metric} is a function \(d:M\times M\to\R^+\cup\set{0}\) such that for all \(a,b,c\in
+  M\) the following properties hold:
+  \begin{enumerate}
+  \item \(d(a,b)\ge0\) with \(d(a,b)=0\) iff \(a=b\)\qquad(positive definite)
+  \item \(d(a,b)=d(b,a)\)\qquad(symmetric)
+  \item \(d(a,c)\le d(a,b)+d(b,c)\)\qquad(triangle inequality)
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Metric Space]
+  A \emph{metric space} \((M,d)\) is a set \(M\) imbued with a metric \(d\).
+\end{definition}
+
+\begin{examples}
+  Show that the following are all metrics on \(\R^n\):
+  \begin{enumerate}
+  \item The \emph{Euclidean metric} defined by:
+    \[d(x,y)=\norm{x-y}=\sqrt{\sum_{k=1}^n(x_k-y_k)^2}\]
+
+    \begin{description}
+    \item[Positive Definition:]
+      \begin{gather*}
+        (x_k-y_k)^2\ge0 \\
+        \sum(x_k-y_k)^2\ge0 \\
+        \sqrt{\sum(x_k-y_k)^2}\ge0 \\
+        d(x,y)\ge0
+      \end{gather*}
+      \begin{align*}
+        d(x,y)=0 &\iff \sqrt{\sum(x_k-y_k)^2}=0 \\
+        &\iff \sum(x_k-y_k)^2=0 \\
+        &\iff (x_k-y_k)^2=0 \\
+        &\iff x_k-y_k=0 \\
+        &\iff x_k=y_k \\
+        &\iff x=y
+      \end{align*}
+    \item[Symmetric:]
+      \[d(x,y)=\sqrt{\sum(x_k-y_k)^2}=\sqrt{\sum(y_k-x_k)^2}=d(y,x)\]
+    \item[Triangle Inequality:]
+      \begin{align*}
+        [d(x,y)]^2 &= \sum(x_k-y_k)^2 \\
+        &= \sum\abs{(x_k-z_k)+(z_k-y_k)}^2 \\
+        &\le \sum(\abs{x_k-z_k}+\abs{z_k-y_k})^2 \\
+        &= \sum(\abs{x_k-z_k}^2+\abs{z_k-y_k}^2+2\abs{x_k-z_k}\abs{z_k-y_k}) \\
+        &= \sum\abs{x_k-z_k}^2+\sum\abs{z_k-y_k}^2+2\sum\abs{x_k-z_k}\abs{z_k-y_k}
+      \end{align*}
+      Now, by the Cauchy-Schwarz inequality:
+      \begin{align*}
+        \sum\abs{x_k-z_k}\abs{z_k-y_k} &\le \sqrt{\left(\sum(x_k-z_k)^2\right)\left(\sum(z_k-y_k)^2\right)} \\
+        &= \sqrt{[d(x,z)]^2[d(z,y)]^2} \\
+        &= d(x,z)d(z,y)
+      \end{align*}
+      and so:
+      \[[d(x,y)]^2\le[d(x,z)]^2+[d(z,y)]^2+2d(x,z)d(z,y)=[d(x,z)+d(z,y)]^2\]
+      Therefore \(d(x,y)\le d(x,z)+d(z,y)\).
+    \end{description}
+
+  \item The \emph{box metric} defined by:
+    \[d(x,y)=\max_{1\le k\le n}\set{\abs{x_k-y_k}}\]
+
+    \begin{description}
+    \item[Positive Definition:]
+      \begin{gather*}
+        \abs{x_k-y_k}\ge0 \\
+        \max\set{x_k-y_k}\ge0 \\
+        d(x,y)\ge0
+      \end{gather*}
+      \begin{align*}
+        d(x,y)=0 &\iff \max\set{\abs{x_k-y_k}}=0 \\
+        &\iff \abs{x_k-y_k}=0 \\
+        &\iff x_k-y_k=0 \\
+        &\iff x_k=y_k \\
+        &\iff x=y
+      \end{align*}
+    \item[Symmetric:]
+      \[d(x,y)=\max\set{\abs{x_k-y_k}}=\max\set{\abs{y_k-x_k}}=d(y,x)\]
+    \item[Triangle Inequality:]
+      \begin{align*}
+        d(x,y) &= \max\set{\abs{x_k-y_k}} \\
+        &= \max\set{\abs{(x_k-z_k)+(z_k-y_k)}} \\
+        &\le \max\set{\abs{x_k-z_k}+\abs{z_k-y_k}} \\
+        &\le \max\set{\abs{x_k-z_k}}+\max\set{\abs{z_k-y_k}} \\
+        &= d(x,z)+d(z,y)
+      \end{align*}
+    \end{description}
+
+  \item The \emph{taxi-cab metric} defined by:
+    \[d(x,y)=\sum_{k=1}^n\abs{x_k-y_k}\]
+
+    \begin{description}
+    \item[Positive Definition:]
+      \begin{gather*}
+        \abs{x_k-y_k}\ge0 \\
+        \sum\abs{x_k-y_k}\ge0 \\
+        d(x,y)\ge0
+      \end{gather*}
+      \begin{align*}
+        d(x,y)=0 &\iff \sum\abs{x_k-y_k}=0 \\
+        &\iff \abs{x_k-y_y}=0 \\
+        &\iff x_k-y_k=0 \\
+        &\iff x_k=y_k \\
+        &\iff x=y
+      \end{align*}
+    \item[Symmetric:]
+      \[d(x,y)=\sum\abs{x_k-y_k}=\sum\abs{y_k-x_k}=d(y,x)\]
+    \item[Triangle Inequality:]
+      \begin{align*}
+        d(x,y) &= \sum\abs{x_k-y_k} \\
+        &= \sum\abs{(x_k-z_k)+(z_k-y_k)} \\
+        &\le \sum(\abs{x_k-z_k}+\abs{z_k-y_k}) \\
+        &= \sum\abs{x_k-z_k}+\sum\abs{z_k-y_k} \\
+        &= d(x,z)+d(z,y)
+      \end{align*}
+    \end{description}
+  \end{enumerate}
+
+  Show that when \(n\ge2\), these metrics are different.
+
+  Consider \((0,0),(3,4)\in\R^2\):
+  \begin{gather*}
+    d_E=\sqrt{(3-0)^2+(4-0)^2}=5 \\
+    d_B=\max\set{(3-0),(4-0)}=4 \\
+    d_T=(3-0)+(4-0)=7
+  \end{gather*}
+\end{examples}
+
+\begin{example}
+  Let \(X\) be a compact topological space and let \(\C(X)\) denote the set of continuous functions \(f:X\to\R\).  We
+  can endow \(\C(X)\) with a metric:
+  \[d(f,g)=\sup_{x\in X}\set{\abs{f(x)-g(x)}}\]
+  This distance is sometimes denoted \(\norm{f-g}\).  Check that \(d\) is a well-defined metric on \(\C(X)\).
+
+  Note that for any \(f\in\C(X)\), since \(X\) is compact and \(f:X\to f(X)\) is surjective, \(f(X)\) is compact
+  and thus bounded.  Therefore, all sups are finite.
+
+  \begin{description}
+  \item[Positive Definition:]
+    \begin{gather*}
+      \abs{f(x)-g(x)}\ge0 \\
+      \sup\set{\abs{f(x)-g(x)}}\ge0 \\
+      d(f,g)\ge0
+    \end{gather*}
+    \begin{align*}
+      d(f,g)=0 &\iff \sup\set{\abs{f(x)-g(x)}}=0 \\
+      &\iff \abs{f(x)-g(x)}=0 \\
+      &\iff f(x)-g(x)=0 \\
+      &\iff f(x)=g(x) \\
+      &\iff f=g
+    \end{align*}
+  \item[Symmetric:]
+    \[d(f,g)=\sup\set{\abs{f(x)-g(x)}}=\sup\set{\abs{g(x)-f(x)}}=f(g,f)\]
+  \item[Triangle Inequality:]
+    \begin{align*}
+      d(f,g) &= \sup\set{\abs{f(x)-g(x)}} \\
+      &= \sup\set{\abs{(f(x)-h(x))+(h(x)-g(x))}} \\
+      &\le \sup\set{\abs{f(x)-h(x)}+\abs{h(x)-g(x)}} \\
+      &\le \sup\set{\abs{f(x)-h(x)}}+\sup\set{\abs{h(x)-g(x)}} \\
+      &= d(f,h)+d(h,g)
+    \end{align*}
+  \end{description}
+\end{example}
+
+\begin{definition}[d-Metric Topology]
+  Let \((X,d)\) be a metric space.  The collection of open balls:
+  \[\B=\setb{B(p,\e)}{p\in X, \e>0}\]
+  is called the \emph{d-metric topology} on \(X\).
+\end{definition}
+
+\begin{lemma}
+  Let \((X,d)\) be a metric space.  For all \(x\in X\) and for all \(\e>0\), for every \(y\in B(x,\e)\), there
+  exists a \(\d>0\) such that \(B(y,\d)\subset B(x,\e)\).
+\end{lemma}
+
+\begin{proof}
+  Assume that \(x\in X\) and \(\e>0\).  Now, assume \(y\in B(x,\e)\) and let \(\d=\e-d(x,y)\).  Assume
+  \(z\in B(y,\d)\).  This means that \(d(y,z)<\d=\e-d(x,y)\), and so \(d(x,y)+d(y,z)<\e\).  Thus
+  \(d(x,z)<e\).  Therefore \(B(y,\d)\subset B(x,\e)\).
+\end{proof}
+
+\begin{theorem}
+  Let \(X,d\) be a metric space.  The d-metric topology is a basis for a topology on \(X\)
+\end{theorem}
+
+\begin{proof}
+  Assume that \(p\in X\).  There exists \(\e>0\) such that \(p\in B(p,\e)\in\B\).
+
+  Now, assume that \(B_1\) and \(B_2\) are open balls such that \(B_1\cap B_2\ne\emptyset\).  Assume that
+  \(y\in B_1\cap B_2\).  This means that there exists \(\d_1,\d_2>0\) such that \(B(y,\d_1)\subset B_1\) and
+  \(B(y,\d_2)\subset B_2\).  So let \(\d=\min\set{\d_1,\d2}\).  Thus, \(B(y,\d)\subset B_1\cap B_2\).
+
+  Therefore the d-metric is a basis for a topology on \(X\).
+\end{proof}
+
+\begin{lemma}
+  Let \(X\) be a metric space with metrics \(d_1\) and \(d_2\).  If there exists \(\a,\b>0\) such that for all
+  \(x,y\in X\):
+  \[\a d_1(x,y)\le d_2(x,y)\le\b d_1(x,y)\]
+  then \(d_1\) and \(d_2\) generate the same topology.
+\end{lemma}
+
+\begin{proof}
+  Let \(B_1\) denote a ball using \(d_1\) and let \(B_2\) denote a ball using \(d_2\).  Assume that \(x\in X\) and
+  \(\e>0\).
+
+  First, assume that \(y\in B_2(x,\e)\).  This means that \(d_2(x,y)<\e\), and so \(d_1(x,y)<\frac{\e}{\a}\).
+  Hence \(y\in B_1\left(x,\frac{\e}{\a}\right)\), and so \(B_2(x,\e)\subset B_1\left(x,\frac{\e}{\a}\right)\).
+
+  Next, assume that \(y\in B_1(x,\e)\).  This means that \(d_1(x,y)<\e\), and so \(d_2(x,y)<\b\e\).  Hence
+  \(y\in B_2(x,\b\e)\), and so \(B_1(x,\e)\subset B_2(x,\b\e)\).
+
+  Now, assume that \(B_1\in\T_1\).  For every \(x\in B_1\) there exists \(B_{2_x}\in\T_2\) such that
+  \(B_{2_x}\subset B_1\).  Thus, \(\T_2\) generates \(\T_1\).  Likewise, assume that \(B_{2_x}\in\T_2\).  For every
+  \(x\in B_2\) there exists \(B_{1_x}\in\T_1\) such that \(B_{1_x}\in\T_1\).  Thus \(\T_1\) generates \(\T_2\).
+
+  Therefore \(\T_1=\T_2\).
+\end{proof}
+
+\begin{example}
+  Show that the Euclidean metric, box metric, and taxicab metric generate the same topology as the product
+  topology on \(n\) copies of \(\R\).
+  \begin{align*}
+    d_E(x,y) &= \sqrt{\sum(x_k-y_k)^2} \\
+    &\le \sqrt{\sum\max\set{(x_k-y_k)^2}} \\
+    &= \sqrt{n\cdot\max\set{(x_k-y_k)^2}} \\
+    &=\sqrt{n}\max\set{\abs{x_k-y_k}} \\
+    &= \sqrt{n}\cdot d_B(x,y) \\
+  \end{align*}
+  Also:
+  \begin{align*}
+    d_E(x,y) &= \sqrt{\sum(x_k-y_k)^2} \\
+    &\ge \sqrt{\max\set{(x_k-y_k)^2}} \\
+    &= \max\set{\sqrt{(x_k-y_k)^2}} \\
+    &= \max\set{\abs{x_k-y_k}} \\
+    &= d_B(x,y)
+  \end{align*}
+  So \(d_B(x,y)\le d_E(x,y)\le\sqrt{n}d_B(x,y)\) and thus \(\T_B=\T_E\).
+
+  Similarly:
+  \begin{align*}
+    d_T(x,y) &= \sum\abs{x_k-y_k} \\
+    &\le \sum\max\set{x_k-y_k} \\
+    &= n\cdot\max\set{x_k-y_k} \\
+    &= n\cdot d_B(x,y)
+  \end{align*}
+  Also:
+  \begin{align*}
+    d_T(x,y) &= \sum\abs{x_k-y_k} \\
+    &\ge \max\set{x_k-y_k} \\
+    &= d_B(x,y)
+  \end{align*}
+  So \(\frac{1}{n}d_T(x,y)\le d_B(x,y)\le d_T(x,y)\) and thus \(\T_T=\T_B\).
+
+  Therefore \(\T_E=\T_B=\T_T\).
+
+  Now, consider a basis element \(U=\prod_{k=1}^nU_k\in\R^n\) and assume that \(p\in U\).  Then there exists some
+  \(\e>0\) such that \(p\in\prod_{k=1}^n(p-\e,p+\e)\).  But \(B(p,\e)\subset\prod_{k=1}^n(p-\e,p+\e)\) and so
+  \(\T_E\) generates \(\T_{\R^n}\).  Similarly, consider a basis element \(B(p,r)\in\R^n\) and assume that
+  \(a\in B(p,r)\).  Then there exists some \(\e>0\) such that \(B(a,\e)\in B(p,r)\).  But
+  \(\prod_{k=1}^n\left(a-\frac{\e}{2},a+\frac{\e}{2}\right)\subset B(a,\e)\) and so \(\T_{\R^n}\) generates \(T_E\).
+
+  Therefore \(\T_E=\T_B=\T_T=\T_{\R^n}\).
+\end{example}
+
+\begin{lemma}
+  Let \((X,d)\) be a metric space and let \(p\in X\) and \(A\subset X\) such that \(p\notin A\) and \(A\) is
+  closed:
+  \[\dist(p,A)=\inf\setb{d(a,p)}{a\in A}>0\]
+\end{lemma}
+
+\begin{proof}
+  Since \(A\) is closed and \(p\notin A\), \(p\) is not a limit point of \(A\).  Thus, there exists \(\e>0\) such
+  that \(B(p,\e)\cap A=\emptyset\) and so for all \(a\in A\) the distance from \(p\) to \(a\) is at least \(\e\).
+
+  Therefore, \(\inf\setb{d(a,p)}{a\in A}>\e>0\).
+\end{proof}
+
+\begin{theorem}
+  A metric space is Hausdorff, regular, and normal.
+\end{theorem}
+
+\begin{proof}
+  Let \((X,d)\) be a metric space and let \(p\in X\) and \(A\subset X\) such that \(p\notin A\) and \(A\) is
+  closed.  Then there exists some \(\e>0\) such that for all \(a\in A\), \(d(p,a)>\e\).  Let \(\d=\frac{\e}{3}\)
+  and consider \(U=B(p,\d)\) and open set \(V\) generated by \(\setb{B(a,\d_a)}{a\in A,\d_a<\d}\).  Thus, for every
+  point \(x\in U\) and \(y\in V\), \(d(x,y)\ge\d\) and so \(U\cap V=\emptyset\).
+
+  Therefore \((X,d)\) is regular, and hence also Hausdorff.
+
+  Now, assume that \(A,B\subset(X,d)\) such that \(A\) and \(B\) are closed and \(A\cap B=\emptyset\).  Then for
+  every \(a\in A\) there exists \(B(a,\e_a)\) such that \(B(a,\e_a)\cap B=\emptyset\).  Likewise, for every \(b\in B\)
+  there exists \(B(b,\e_b)\) such that \(B(b,\e_b)\cap A=\emptyset\).  So let \(\d_a=\frac{\e_a}{3}\) and let
+  \(\d_b=\frac{\e_b}{3}\) and consider the families of open sets \(U_a=B(a,\d_a)\) and \(V_b=B(b,\d_b)\).  Let:
+  \begin{align*}
+    U=\bigcup_{a\in A}U_a\supset A \\
+    V=\bigcup_{b\in B}V_b\supset B
+  \end{align*}
+  Now, assume that \(a\in A\) and \(b\in B\):
+  \[d(a,b)\ge\max\set{\e_a,\e_b}>\max\set{\d_a,\d_b}\]
+  Thus \(U_a\cap V_b=\emptyset\) and hence \(U\cap V=\emptyset\).
+
+  Therefore \((X,d)\) is normal.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,228 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\e}{\epsilon}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\renewcommand{\C}{\mathcal{C}}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Bd}{Bd}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#3
+
+\bigskip
+
+\begin{lemma}
+  Let \((X,\T)\) be a topological space, \(A\subset X\), and \(p\in X\):
+  \[p\in\bar{A}\iff\forall\,U\in\U_p,U\cap A\ne\emptyset\]
+\end{lemma}
+
+\begin{proof}
+  By definition, \(p\in\bar{A}\) iff \(p\in A\) or \(\forall\,U\in\U_p,(U-\set{p})\cap A\ne\emptyset\).  Assume that
+  \(U\in\U_p\).  If \(p\in A\) then \(p\in U\cap A\ne\emptyset\).  If \(p\notin A\) then
+  \((U-\set{p})\cap A=U\cap A\).  In either case: \(p\in A\) or \(\forall\,U\in\U_p,(U-\set{p})\cap A\ne\emptyset\)
+  is logically equivalent to \(\forall\,U\in\U_p,U\cap A\ne\emptyset\).
+\end{proof}
+
+\begin{theorem}[2.16]
+  Let \((X,\T)\) be a topological space:
+  \begin{enumerate}
+  \item \(\emptyset\) is closed.
+  \item \(X\) is closed.
+  \item The union of finitely many closed sets is closed.
+  \item Let \(\set{A_{\a}:\a\in\l}\) be a family of closed sets.  \(\bigcap_{\a\in\l}A_{\a}\) is closed.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+  \item[]
+  \item \(X\) is open, so \(X-X=\emptyset\) is closed.
+  \item \(\emptyset\) is open, so \(X-\emptyset=X\) is closed.
+  \item \(X-\bigcup_{i=1}^nA_i=\bigcap_{i=1}^n(X-A_i)\).
+
+    But the \(X-A_i\) are open and thus \(X-\bigcup_{i=1}^nA_i\) is open.
+
+    Therefore \(\bigcup_{i=1}^nA_i\) is closed.
+
+  \item \(X-\bigcap_{\a\in\l}A_{\a}=\bigcup_{\a\in\l}(X-A_{\a})\).
+
+    But the \(X-A_{\a}\) are open and thus \(X-\bigcap_{\a\in\l}A_{\a}\) is open.
+
+    Therefore \(\bigcup_{\a\in\l}A_{\a}\) is closed.
+  \end{enumerate}
+\end{proof}
+
+\begin{notation}
+  Let \((X,\T)\) be a topological space and \(A\subset X\):
+  \begin{gather*}
+    \C=\setb{B\subset X}{B\ \text{is closed}} \\
+    \C_A=\setb{B\in\C}{A\subset B}
+  \end{gather*}
+\end{notation}
+
+\begin{theorem}[2.20]
+  Let \((X,\T)\) be a topological space and \(A\subset X\).  The closure of \(A\) equals the intersection of all
+  closed sets containing \(A\):
+  \[\bar{A}=\bigcap\C_A\]
+  Thus, \(\bar{A}\) is the smallest closed set containing \(A\).
+\end{theorem}
+
+\begin{proof}
+  Since \(A\subset\bar{A}\) and \(\bar{A}\) is closed, \(\bar{A}\in\C_A\) and so:
+  \[\bar{A}\supset\bigcap\C_A\]
+  ABC:
+  \[\bar{A}\supsetneq\bigcap\C_A\]
+  This means that there exists some \(B'\in\C_A\) such that:
+  \[\bar{A}\supsetneq\bar{A}\cap B'\supset A\]
+  where \(\bar{A}\cap B'\in\C\).
+
+  This would imply that there exists some closed set containing \(A\) with less limit points of \(A\) than
+  \(\bar{A}\), which contradicts the definition of \(\bar{A}\).
+
+  Therefore, \(\displaystyle\bar{A}=\bigcap\C_A\).
+\end{proof}
+
+\begin{theorem}[2.22]
+  Let \((X,\T)\) be a topological space and \(A,B\subset X\):
+  \begin{enumerate}
+  \item \(A\subset B\implies \bar{A}\subset\bar{B}\)
+  \item \(\overline{A\cup B}=\bar{A}\cup\bar{B}\)
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+  \item[]
+  \item Assume \(A\subset B\).
+
+    Assume \(p\in\bar{A}\).  This means that:
+    \[\forall\,U\in\U_p,U\cap A\ne\emptyset\]
+    But \(A\subset B\) and so
+    \[\forall\,U\in\U_p,U\cap B\ne\emptyset\]
+    meaning that \(p\in\bar{B}\) as well.
+
+    Therefore \(\bar{A}\subset\bar{B}\).
+
+  \item
+    \begin{description}
+    \item[\((\subset)\)] Since \(A\subset\bar{A}\) and \(B\subset\bar{B}\):
+      \[A\cup B\subset\bar{A}\cap\bar{B}\]
+      But \(\bar{A}\cap\bar{B}\) is closed and the smallest closed set containing \(A\cup B\) is
+      \(\overline{A\cup B}\).  Therefore:
+      \[A\cup B\subset\overline{A\cup B}\subset\bar{A}\cup\bar{B}\]
+    \item[\((\supset)\)] Since \(A\subset A\cup B\):
+      \[\bar{A}\subset\overline{A\cup B}\]
+      and similarly:
+      \[\bar{B}\subset\overline{A\cup B}\]
+      Therefore:
+      \[\bar{A}\cup\bar{B}\subset\overline{A\cup B}\]
+    \end{description}
+  \end{enumerate}
+\end{proof}
+
+\begin{example}[Exercise 2.24]
+  Let \((R^2,\T)\):
+
+  \begin{enumerate}
+    \item Topologist's Sine Curve
+      \[S=\setb{\left(x,\sin\left(\frac{1}{x}\right)\right)}{x\in(0,1)}\]
+
+      \begin{tikzpicture}
+        \draw [help lines] (-1,0) -- (4,0);
+        \draw [help lines] (0,-2) -- (0,2);
+        \draw [samples=10000,domain=0.04:4] plot ({\x},{sin(deg(4/(\x)))});
+      \end{tikzpicture}
+      \[\bar{S}=S\cup\set{(1,\sin(1))}\cup\setb{(0,y)}{y\in[-1,1]}\]
+
+    \item Topologists Comb
+      \[C=\setb{(x,0)}{x\in[0,1]}\cap\bigcup_{n=1}^{\infty}\setb{\left(\frac{1}{n},1)\right)}{y\in[0,1]}\]
+
+      \begin{tikzpicture}
+        \draw [help lines] (-1,0) -- (4,0);
+        \draw [help lines] (0,-1) -- (0,2);
+        \draw [very thick] (0,0) -- (3,0);
+        \foreach \n in {1,...,100}{
+          \draw ({3/(\n)},0) -- ({3/(\n)},1);
+        }
+      \end{tikzpicture}
+      \[\bar{C}=C\cup\setb{(0,y)}{y\in[0,1]}\]
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}[2.26]
+  Let \((X,\T)\) be a topological space, \(A\subset X\), and \(p\in X\).  \(p\) is an interior point of \(A\) iff
+  there exists \(U\in\T\) such that \(p\in U\subset A\).
+\end{theorem}
+
+\begin{proof}
+  \(p\in\Int(A)\iff p\in\bigcup\U_A\iff\exists\,U\in\U_A,p\in U\subset A\)
+\end{proof}
+
+\begin{theorem}[2.28]
+  Let \((X,\T)\) be a topological space and let \(A\subset X\).  \(\Int(A)\), \(\Bd(A)\), and \(\Int(X-A)\) are
+  disjoint sets whose union is \(X\).
+\end{theorem}
+
+\begin{proof}
+  Assume that \(p\in\Int(A)\).  This means that there exists \(U\in\U_A\) such that \(p\in U\subset A\).  Now ABC
+  that \(p\in\Bd(A)\).  This means that \(p\in\overline{X-A}\) and so for all \(U\in\U_p, U\cap(X-A)\ne\emptyset\).
+  This contradicts the fact that there exists a \(U\in\U_p\) that is a subset of \(A\).
+
+  Therefore \(\Int(A)\cap\Bd(A)=\emptyset\).
+
+  Similarly, assume that \(p\in\Int(X-A)\).  This means that there exists \(U\in\U_{X-A}\) such that \(p\in
+  U\subset(X-A)\).  Now ABC that \(p\in\Bd(A)\).  This means that \(p\in\bar{A}\) and so for all \(U\in\U_p, U\cap
+  A\ne\emptyset\).  This contradicts the fact that there exists a \(U\in\U_p\) that is a subset of \(X-A\).
+
+  Therefore \(\Int(X-A)\cap\Bd(A)=\emptyset\).
+
+  Finally, note that for all \(U\in\U_p\), \(U\) cannot be a subset of both \(A\) and \(X-A\).
+
+  Therefore \(\Int(A)\cap\Int(X-A)=\emptyset\).
+
+  Clearly, \(\Int(A)\cup\Int(X-A)\cup\Bd(A)\subset X\).  Assume that \(p\in X\).  If \(p\in\Int(A)\) or
+  \(p\in\Int(X-A)\) then done, so assume that \(X\) is in neither.  This means that for all \(U\in\U_p\),
+  \(U\cap A\ne\emptyset\) and \(U\cap(X-A)\ne\emptyset\), and thus \(p\in\bar{A}\) and \(p\in\overline{X-A}\).
+
+  Therefore, \(p\in\Bd(A)\).
+\end{proof}
+
+\begin{theorem}[2.30]
+  Let \((X,\T)\) be a topological space, \(A\subset X\), and \(p\in X\):
+  \[\setb{x_i}{i\in\N}\subset A\ \text{and}\ x_i\to p\implies p\in\bar{A}\]
+\end{theorem}
+
+\begin{proof}
+  Assume that \(\setb{x_i}{i\in\N}\subset A\ \text{and}\ x_i\to p\).  Assume that \(U\in\U_p\).  This means that
+  there exists some \(N\in\N\) such that for all \(i>N\) it is the case that \(x_i\in U\).  But \(x_i\in A\) also,
+  and so \(U\cap A\ne\emptyset\).
+
+  Therefore \(p\in\bar{A}\).
+\end{proof}
+
+\begin{theorem}[2.31]
+  Let \((\R^n,\T)\) be the standard topology, \(A\subset\R^n\), and \(p\in X\) be a limit point of \(A\).  There
+  exists a sequence of points in \(A\) that converge to \(p\).
+\end{theorem}
+
+\begin{proof}
+  Select \(x_1\in A\) such that \(x_1\ne p\).  Note that \(x_1\in B(p,2\abs{x_1-p})\).  Now select \(x_{i+1}\in
+  B(p,\abs{x_i-p})\cap A\), which cannot be empty since \(p\) is a limit point of \(A\).  These \(x_i\) fulfill the
+  requirements for a sequence \((x_i)\) in \(A\) that converges to \(p\).
+\end{proof}
+
+\begin{example}[Exercise 2.32]
+  Find an example of a topological space and a convergent sequence in that space for which the limit of the
+  sequence is not unique.
+
+  Consider \((\R,\T)\) with the indiscrete topology and consider any random sequence of points \(x_i\).  Since
+  \(\R\) is the only non-empty open set, any \(p\in\R\) is a suitable limit for \((x_i)\).
+\end{example}
+
+\end{document}

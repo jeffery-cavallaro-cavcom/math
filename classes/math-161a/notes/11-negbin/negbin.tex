@@ -1,0 +1,78 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\nb}{NB}
+\DeclareMathOperator{\geom}{Geom}
+\renewcommand{\o}{\sigma}
+\begin{document}
+\section*{Negative Binomial Distribution}
+
+\begin{definition}[Negative Binomial Distribution]
+  To say that a random variable \(X\) has a \emph{Negative Binomial} distribution with parameters \(p\) and \(r\), denoted:
+  \[X\sim\nb(p,r)\]
+  means that:
+  \begin{enumerate}
+  \item The underlying experiment is composed of repeated Bernoulli trials until \(r\) successes occur.
+  \item The trials are independent.
+  \item Each of the trials has fixed probability \(p\) for success.
+  \item \(X\) counts the number of trials up to and including the last success.
+  \end{enumerate}
+\end{definition}
+
+\begin{examples}[Negative Binomial Distributions]
+  \begin{enumerate}
+  \item[]
+  \item Flip a fair coin until 5 heads occur: \(X=\) the number trials.
+    \[X\sim\nb\left(\frac{1}{2},5\right)\]
+  \item Select (with replacement) balls from an urn that has 30 red balls and 20 blue balls until 3 red balls are
+    selected: \(Y=\) the number of balls selected.
+    \[Y\sim\nb\left(0.6,3\right)\]
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let \(X\) be a random variable with a Negative Binomial distribution with parameters \(r\) and \(p\):
+  \begin{itemize}
+  \item \(f_X(x)=\begin{cases}
+    \binom{x-1}{r-1}p^r(1-p)^{x-r} & x=r,r+1,r+2,\ldots \\
+    0 & \text{otherwise}
+  \end{cases}\)
+  \item \(E(X)=\frac{r}{p}\)
+  \item \(V(X)=\frac{r(1-p)}{p^2}\)
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  For \(P(X=x)\), fix a success in the \(x^{th}\) trial with probability \(p\).  The remaining \(x-1\) trials contain \(r-1\)
+  successes with probability \(p^{r-1}\) and \((x-1)-(r-1)=x-r\) failures with probability \((1-p)^{x-r}\).  Therefore:
+  \[f_X(x)=\binom{x-1}{r-1}p^{r-1}(1-p)^{x-r}p=\binom{x-1}{r-1}p^r(1-p)^{x-r}\]
+  Now, let \(X_i=\) the number of trials since \(i^{th}-1\) success until the \(i^{th}\) success, with \(X_1\) measured from
+  the first trial.  Note that each of these \(X_i\) are independent and \(X_i\sim\geom(p)\).  Thus:
+  \begin{gather*}
+    E(X)=E(\sum_{i=1}^rX_i)=\sum_{i=1}^rE(X_i)=\sum_{i=1}^r\frac{1}{p}=\frac{r}{p} \\
+    V(X)=V(\sum_{i=1}^rX_i)=\sum_{i=1}^rV(X_i)=\sum_{i=1}^r\frac{1-p}{p^2}=\frac{r(1-p)}{p^2}
+  \end{gather*}
+\end{proof}
+
+\begin{example}
+  Suppose \(X\) has a Negative Binomial distribution with \(p=\frac{1}{2}\) and \(r=3\).
+  \begin{gather*}
+    X\sim\nb\left(\frac{1}{2},3\right) \\
+    \\
+    P(X=2)=0 \\
+    P(X=3)=\binom{3-1}{3-1}\left(\frac{1}{2}\right)^3\left(1-\frac{1}{2}\right)^{3-3}=\left(\frac{1}{2}\right)^3=\frac{1}{8} \\
+    P(X=4)=\binom{4-1}{3-1}\left(\frac{1}{2}\right)^3\left(1-\frac{1}{2}\right)^{4-3}=
+    \binom{3}{2}\left(\frac{1}{2}\right)^4=3\cdot\frac{1}{16}=\frac{3}{16} \\
+    P(X=5)=\binom{5-1}{3-1}\left(\frac{1}{2}\right)^3\left(1-\frac{1}{2}\right)^{5-3}=
+    \binom{4}{2}\left(\frac{1}{2}\right)^5=6\cdot\frac{1}{32}=\frac{3}{16} \\
+    P(X\ge5)=1-P(X=3)-p(X=4)=1-\frac{1}{8}-\frac{3}{16}=\frac{11}{16} \\
+    \\
+    E(X)=\frac{r}{p}=\frac{3}{\frac{1}{2}}=6 \\
+    \\
+    V(X)=\frac{r(1-p)}{p^2}=\frac{3(1-\frac{1}{2})}{\frac{1}{4}}=6 \\
+    \\
+    \o=\sqrt{6}\approx2.45
+  \end{gather*}
+\end{example}
+
+\end{document}

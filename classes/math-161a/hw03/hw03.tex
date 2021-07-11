@@ -1,0 +1,438 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage{siunitx}
+\pagestyle{plain}
+\DeclareMathOperator{\range}{Range}
+\tikzset{
+  dot/.style={mark=*,solid},
+  opendot/.append style={dot,fill=white},
+  filldot/.append style={dot,fill=black}
+}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 161A \\
+Homework \#3
+
+\bigskip
+
+\section*{3.1}
+
+A concrete beam may fail either from shear (\(S\)) or flexure (\(F\)).  Suppose that three failed beams are randomly selected
+and the type of failure is determined for each one.  Let \(X=\) the number of beams among the three selected that failed by
+shear.  List each outcome in the sample space along with the associated value of \(X\).
+
+\bigskip
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \(\omega\) & \(X(\omega)\) \\
+    \hline
+    SSS & 3 \\
+    \hline
+    SSF & 2 \\
+    \hline
+    SFS & 2 \\
+    \hline
+    SFF & 1 \\
+    \hline
+    FSS & 2 \\
+    \hline
+    FSF & 1 \\
+    \hline
+    FFS & 1 \\
+    \hline
+    FFF & 0 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\section*{3.6}
+
+Starting at a fixed time, each car entering an intersection is observed to see whether it turns left (\(L\)), right (\(R\)),
+or goes straight ahead (\(A\)).  The experiment terminates as soon as a car is observed to turn left.  Let \(X=\) the number
+of cars observed.  What are the possible \(X\) values?
+\[\range(X)=\mathbb{N}\]
+List five outcomes and their associated \(X\) values.
+
+\bigskip
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \(\omega\) & \(X(\omega)\) \\
+    \hline
+    \(L\) & 1 \\
+    \hline
+    \(RL\) & 2 \\
+    \hline
+    \(AL\) & 2 \\
+    \hline
+    \(RRL\) & 3 \\
+    \hline
+    \(AAL\) & 3 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\section*{3.7}
+
+For each random variable defined here, describe the set of possible values for the variable, and state whether the value is
+discrete.
+
+\begin{enumerate}[label={\alph*)}]
+\item \(X=\) the number of unbroken eggs in a randomly chosen standard egg carton.
+  \[\range(X)=\setb{n\in\mathbb{Z}}{0\le n\le12}\]
+  Discrete
+
+  \setcounter{enumi}{3}
+\item \(X=\) the length of a randomly selected rattlesnake.
+  
+  Theoretically:
+  \[\range(X)=(0,\infty)\]
+  However, according to wikipedia, baby rattlesnakes are about 6 inches in length and the longest rattlesnake on record is
+  8 feet and 3 inches, so more realistically:
+  \[\range(X)=(5,100)\]
+  in inches.
+
+  Continuous, in either case.
+\end{enumerate}
+
+\section*{3.8}
+
+Each time a component is tested, the trial is a success (\(S\)) or failure (\(F\)).  Suppose the component is tested
+repeatedly until a success occurs on three \emph{consecutive} trials.  Let \(Y\) denote the number of trials necessary
+to achieve this.  List all outcomes corresponding to the five smallest possible values of \(Y\), and state which \(Y\)
+value is associated with each one.
+
+\bigskip
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    \(\omega\) & \(Y(\omega)\) \\
+    \hline
+    SSS & 3 \\
+    \hline
+    FSSS & 4 \\
+    \hline
+    FFSSS & 5 \\
+    \hline
+    SFSSS & 5 \\
+    \hline
+    FFFSSS & 6 \\
+    \hline
+    SFFSSS & 6 \\
+    \hline
+    FSFSSS & 6 \\
+    \hline
+    SSFSSS & 6 \\
+    \hline
+    FFFFSSS & 7 \\
+    \hline
+    SFFFSSS & 7 \\
+    \hline
+    FSFFSSS & 7 \\
+    \hline
+    SSFFSSS & 7 \\
+    \hline
+    FFSFSSS & 7 \\
+    \hline
+    SFSFSSS & 7 \\
+    \hline
+    FSSFSSS & 7 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\section*{3.12}
+
+Airlines sometimes overbook flights.  Suppose that for a plane with 50 seats, 55 passengers have tickets.  Define the random
+variable \(Y\) as the number of ticketed passengers who actually show up for the flight.  The probability mass function of
+\(Y\) appears in the accompanying table.
+
+\begin{tabular}{c|ccccccccccc}
+  \(y\) & 45 & 46 & 47 & 48 & 49 & 50 & 51 & 52 & 53 & 54 & 55 \\
+  \hline
+  \(p(y)\) & 0.05 & 0.10 & 0.12 & 0.14 & 0.25 & 0.17 & 0.06 & 0.05 & 0.03 & 0.02 & 0.01
+\end{tabular}
+
+\begin{enumerate}[label={\alph*)}]
+\item What is the probability that the plight will accommodate all ticketed passengers who show up?
+  \begin{align*}
+    P(Y\le50) &= p(45)+p(46)+p(47)+p(48)+p(49)+p(50) \\
+    &= 0.05+0.10+0.12+0.14+0.25+0.17 \\
+    &= 0.83
+  \end{align*}
+
+\item What is the probability that not all ticketed passengers who show up can be accommodated?
+  \[P(Y>50)=1-P(Y\le50)=1-0.83=0.17\]
+
+\item If you are the first person on the standby list (which means you will be the first one to get on the plane if there
+  are any seats available after all ticketed passengers have been accommodated), what is the probability that you will be
+  able to get on the flight?
+  \[P(Y<50)=P(Y\le50)-P(Y=50)=0.83-0.17=0.66\]
+  What is this probability if you are the third person on the standby list?
+  \[P(Y\le47)=p(45)+p(46)+p(47)=0.05+0.10+0.12=0.27\]
+\end{enumerate}
+
+\section*{3.18}
+
+Two fair six-sided dice are tossed independently.  Let \(M=\) the maximum of the two tosses (so \(M(1,5)=5\), \(M(3,3)=3\),
+etc.).
+\begin{enumerate}[label={\alph*)}]
+\item What is the pmf of \(M\)? [Hint: first determine \(p(1)\), the \(p(2)\), and so on.]
+  \begin{align*}
+    p(1) &= P(\set{(1,1)})=\frac{1}{36} \\
+    p(2) &= P(\setb{(2,x)}{x=1,2})+P(\set{(1,2)})=\frac{1}{6}\cdot\frac{2}{6}+\frac{1}{36}=\frac{3}{36} \\
+    p(3) &= P(\setb{(3,x)}{x=1,2,3})+P(\setb{(x,3)}{x=1,2})=\frac{1}{6}\cdot\frac{3}{6}+\frac{2}{6}\cdot\frac{1}{6}=
+    \frac{5}{36} \\
+    p(4) &= P(\setb{(4,x)}{x=1,2,3,4})+P(\setb{(x,4)}{x=1,2,3})=\frac{1}{6}\cdot\frac{4}{6}+\frac{3}{6}\cdot\frac{1}{6}=
+    \frac{7}{36} \\
+    p(5) &= P(\setb{(5,x)}{x=1,2,3,4,5})+P(\setb{(x,5)}{x=1,2,3,4})=\frac{1}{6}\cdot\frac{5}{6}+\frac{4}{6}\cdot\frac{1}{6}=
+    \frac{9}{36} \\
+    p(6) &= P(\setb{(6,x)}{x=1,2,3,4,5,6})+P(\setb{(x,6)}{x=1,2,3,4,5})=\frac{1}{6}\cdot1+\frac{5}{6}\cdot\frac{1}{6}=
+    \frac{11}{36} \\
+  \end{align*}
+
+  \begin{tabular}{c|cccccc}
+    \(m\) & 1 & 2 & 3 & 4 & 5 & 6 \\
+    \hline
+    \(p(m)\) & \(\frac{1}{36}\) & \(\frac{3}{36}\) & \(\frac{5}{36}\) & \(\frac{7}{36}\) & \(\frac{9}{36}\) &
+    \(\frac{11}{36}\)
+  \end{tabular}
+
+  \bigskip
+
+  \begin{tikzpicture}
+    \begin{axis}[axis x line=bottom, axis y line=left,
+        xtick distance=1, xmin=0, xmax=7, xtick={1,2,3,4,5,6},
+        ytick distance={1/36}, ymin=0, ymax=12/36, ytick={1/36,3/36,5/36,7/36,9/36,11/36},
+        yticklabels={\(\frac{1}{36}\),
+          \(\frac{3}{36}\),
+          \(\frac{5}{36}\),
+          \(\frac{7}{36}\),
+          \(\frac{9}{36}\),
+          \(\frac{11}{36}\)}
+      ]
+      \addplot [black] coordinates {(1,0) (1,1/36)};
+      \addplot [only marks] coordinates {(1,1/36)};
+      \addplot [black] coordinates {(2,0) (2,3/36)};
+      \addplot [only marks] coordinates {(2,3/36)};
+      \addplot [black] coordinates {(3,0) (3,5/36)};
+      \addplot [only marks] coordinates {(3,5/36)};
+      \addplot [black] coordinates {(4,0) (4,7/36)};
+      \addplot [only marks] coordinates {(4,7/36)};
+      \addplot [black] coordinates {(5,0) (5,9/36)};
+      \addplot [only marks] coordinates {(5,9/36)};
+      \addplot [black] coordinates {(6,0) (6,11/36)};
+      \addplot [only marks] coordinates {(6,11/36)};
+    \end{axis}
+  \end{tikzpicture}
+
+  \bigskip
+
+\item Determine the cdf of \(M\) and graph it.
+  \begin{align*}
+    P(M\le1) &= p(1)=\frac{1}{36} \\
+    P(M\le2) &= P(M\le1)+p(2)=\frac{1}{36}+\frac{3}{36}=\frac{4}{36} \\
+    P(M\le3) &= P(M\le2)+p(3)=\frac{4}{36}+\frac{5}{36}=\frac{9}{36} \\
+    P(M\le4) &= P(M\le3)+p(4)=\frac{9}{36}+\frac{7}{36}=\frac{16}{36} \\
+    P(M\le5) &= P(M\le4)+p(5)=\frac{16}{36}+\frac{9}{36}=\frac{25}{36} \\
+    P(M\le6) &= P(M\le5)+p(6)=\frac{25}{36}+\frac{11}{36}=\frac{36}{36}=1 \\
+  \end{align*}
+  
+  \bigskip
+
+  \begin{tikzpicture}
+    \begin{axis}[axis x line=bottom, axis y line=left,
+        xtick distance=1, xmin=0, xmax=7, xtick={1,2,3,4,5,6},
+        ytick distance={1/36}, ymin=0, ymax=1.1, ytick={1/36,4/36,9/36,16/36,25/36,1},
+        yticklabels={\(\frac{1}{36}\),
+          \(\frac{4}{36}\),
+          \(\frac{9}{36}\),
+          \(\frac{16}{36}\),
+          \(\frac{25}{36}\),
+          \(1\)}
+      ]
+      \addplot [black] coordinates {(1,1/36) (2,1/36)};
+      \addplot [only marks,filldot] coordinates {(1,1/36)};
+      \addplot [only marks,opendot] coordinates {(2,1/36)};
+      \addplot [black] coordinates {(2,4/36) (3,4/36)};
+      \addplot [only marks,filldot] coordinates {(2,4/36)};
+      \addplot [only marks,opendot] coordinates {(3,4/36)};
+      \addplot [black] coordinates {(3,9/36) (4,9/36)};
+      \addplot [only marks,filldot] coordinates {(3,9/36)};
+      \addplot [only marks,opendot] coordinates {(4,9/36)};
+      \addplot [black] coordinates {(4,16/36) (5,16/36)};
+      \addplot [only marks,filldot] coordinates {(4,16/36)};
+      \addplot [only marks,opendot] coordinates {(5,16/36)};
+      \addplot [black] coordinates {(5,25/36) (6,25/36)};
+      \addplot [only marks,filldot] coordinates {(5,25/36)};
+      \addplot [only marks,opendot] coordinates {(6,25/36)};
+      \addplot [only marks,filldot] coordinates {(6,1)};
+      \draw [->] (axis cs:6,1) -- (axis cs:7,1);
+    \end{axis}
+  \end{tikzpicture}
+\end{enumerate}
+
+\section*{3.23}
+
+A branch of a certain bank in New York City has six ATMs.  Let \(X\) represent the number of machines in use at a particular
+time of the day.  The cdf of \(X\) is as follows:
+\[F(x)=\begin{cases}
+0 & x < 0 \\
+0.06 & 0\le x<1 \\
+0.19 & 1\le x<2 \\
+0.39 & 2\le x<3 \\
+0.67 & 3\le x<4 \\
+0.92 & 4\le x<5 \\
+0.97 & 5\le x<6 \\
+1 & 6\le x
+\end{cases}\]
+Calculate the following probabilities directly from the cdf:
+\begin{enumerate}[label={\alph*)}]
+\item \(p(2)\), that is, \(P(X=2)\)
+  \[P(X=2)=F(2)-F(1)=0.39-0.19=0.20\]
+\item \(P(X>3)\)
+  \[P(X>3)=F(6)-F(3)=1-0.67=0.33\]
+\item \(P(2\le X\le5)\)
+  \[P(2\le X\le5)=F(5)-F(1)=0.97-0.19=0.78\]
+\item \(P(2<X<5)\)
+  \[P(2<X<5)=F(4)-F(2)=0.92-0.39=0.53\]
+\end{enumerate}
+
+\section*{3.29}
+
+The pmf of the amount of memory \(X\) (Gb) in a purchased flash drive was given in Example 3.13 as
+
+\bigskip
+
+\begin{tabular}{c|ccccc}
+  \(x\) & 1 & 2 & 4 & 8 & 16 \\
+  \hline
+  \(p(x)\) & 0.05 & 0.10 & 0.35 & 0.40 & 0.10
+\end{tabular}
+
+\bigskip
+
+Compute the following:
+
+\bigskip
+
+\begin{tabular}{c|ccccc}
+  \(x\) & 1 & 2 & 4 & 8 & 16 \\
+  \hline
+  \(p(x)\) & 0.05 & 0.10 & 0.35 & 0.40 & 0.10 \\
+  \hline
+  \(x\cdot p(x)\) & 0.05 & 0.20 & 1.40 & 3.20 & 1.60 \\
+  \hline
+  \((x-\pi)^2\cdot p(x)\) & 1.49 & 1.98 & 2.10 & 0.96 & 9.12 \\
+  \hline
+  \(x^2\cdot p(x)\) & 0.05 & 0.40 & 5.60 & 25.60 & 25.60
+\end{tabular}
+
+\bigskip
+
+\begin{enumerate}[label={\alph*)}]
+\item \(E(X)\)
+  \[E(X)=\pi=0.05+0.20+1.40+3.20+1.60=6.45\]
+\item \(V(X)\) directly from the definition
+  \[V(X)=1.49+1.98+2.10+0.96+9.12=15.65\]
+\item The standard deviation of \(X\)
+  \[\sigma=\sqrt{V(X)}=\sqrt{15.65}=3.96\]
+\item \(V(X)\) using the shortcut formula
+  \begin{gather*}
+    E(X^2)=0.05+0.40+5.60+25.60+25.60=57.25 \\
+    V(X)=E(X^2)-E(X)^2=57.25-6.45^2=15.65
+  \end{gather*}
+\end{enumerate}
+
+\section*{3.32}
+
+A certain brand of upright freezer is available in three different rated capacities: \SI{16}{ft^3}, \SI{18}{ft^3}, and
+\SI{20}{ft^3}.  Let \(X=\) the rated capacity of a freezer of this brand sold at a certain store.  Suppose that \(X\) has
+pmf
+
+\bigskip
+
+\begin{tabular}{c|ccc}
+  \(x\) & 16 & 18 & 20 \\
+  \hline
+  \(p(x)\) & 0.2 & 0.5 & 0.3
+\end{tabular}
+
+\bigskip
+
+\begin{enumerate}[label={\alph*)}]
+\item Compute \(E(X)\), \(E(X^2)\), and \(V(X)\).
+
+  \bigskip
+  
+  \begin{tabular}{c|ccc}
+    \(x\) & 16 & 18 & 20 \\
+    \hline
+    \(p(x)\) & 0.2 & 0.5 & 0.3 \\
+    \hline
+    \(x\cdot p(x)\) & 3.2 & 9.0 & 6.0 \\
+    \(x^2\cdot p(x)\) & 51.2 & 162.0 & 120.0 \\
+  \end{tabular}
+
+  \begin{gather*}
+    E(X)=3.2+9.0+6.0=\SI{18.2}{ft^3} \\
+    E(X^2)=51.2+162.0+120.0=\SI{333.2}{(ft^3)^2} \\
+    V(X)=E(X^2)-E(X)^2=333.2-18.2^2=\SI{1.96}{(ft^3)^2} \\
+  \end{gather*}
+
+\item If the price of a freezer having capacity \(X\) is \(70X-650\), what is the expected price paid by the next
+  customer to buy a freezer?
+
+  Let \(Y=\) the price of the next freezer purchased:
+  \[E(Y)=E(70X-650)=70E(X)-650=70(18.2)-650=\$624\]
+
+\item What is the variance of the price paid by the next customer?
+  \[V(Y)=70^2V(X)=4900\cdot1.96=\SI{9604}{dollars^2}\]
+
+\item Suppose that although the rated capacity of a freezer is \(X\), the actual capacity is \(h(x)=X-0.008X^2\).  What is
+  the expected actual capacity of the freezer purchased by the next customer?
+  \[E(H)=E(X-0.008X^2)=E(X)-0.008E(X^2)=18.2-0.008\cdot333.2=\SI{15.5}{ft^3}\]
+\end{enumerate}
+
+\section*{3.34}
+
+Suppose that the number of plants of a particular type found in a rectangular sampling region (called a quadrat by
+ecologists) in a certain geographic area is a rv \(X\) with pmf
+\[p(x)=\begin{cases}
+\frac{c}{x^3} & x=1,2,3,\ldots \\
+0 & \text{otherwise}
+\end{cases}\]
+Is \(E(X)\) finite? Justify your answer (this is another distribution that statisticians would call heavy-tailed).
+\[E(X)=\sum_{x=1}^{\infty}xp(x)=\sum_{x=1}^{\infty}x\frac{c}{x^3}=c\sum_{x=1}^{\infty}\frac{1}{x^2}\]
+By the so-called \(p\)-rule, this sum converges for \(p=2>1\).  In fact, we know:
+\[E(X)=\frac{\pi^2}{6}<\infty\]
+
+\section*{3.37}
+
+The \(n\) candidates for a job have been ranked \(1,2,3,\ldots,n\).  Let \(X=\) the rank of a randomly selected candidate,
+so \(X\) has pmf
+\[p(x)=\begin{cases}
+\frac{1}{n} & x=1,2,3,\ldots,n \\
+0 & \text{otherwise}
+\end{cases}\]
+(this is called the \emph{discrete uniform distribution}).  Compute \(E(X)\) and \(V(X)\) using the shortcut formula.
+   [Hint: The sum of the first \(n\) positive integers is \(n(n+1)/2\), whereas the sum of their squares is
+     \(n(n+1)(2n+1)/6\).]
+\begin{gather*}
+  E(X)=\sum_{x=1}^nxp(x)=\sum_{x=1}^nx\cdot\frac{1}{n}=\frac{1}{n}\sum_{x=1}^nx=\frac{1}{n}\cdot\frac{n(n+1)}{2}=\frac{n+1}{2} \\
+  E(X^2)=\sum_{x=1}^nx^2p(x)=\sum_{x=1}^nx^2\cdot\frac{1}{n}=\frac{1}{n}\sum_{x=1}^nx^2=
+  \frac{1}{n}\cdot\frac{n(n+1)(2n+1)}{6}=\frac{(n+1)(2n+1)}{6} \\
+\end{gather*}
+\begin{align*}
+  V(X) &= E(X^2)-E(X)^2 \\
+  &= \frac{(n+1)(2n+1)}{6} - \left(\frac{n+1}{2}\right)^2 \\
+  &= \frac{2(2n^2+3n+1)-3(n^2+2n+1)}{12} \\
+  &= \frac{n^2-1}{12}
+\end{align*}
+\end{document}

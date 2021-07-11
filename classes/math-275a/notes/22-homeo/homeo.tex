@@ -1,0 +1,123 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\begin{document}
+\section*{Homeomorphisms}
+
+\begin{definition}[Homeomorphism]
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\).  To say that \(f\) is a \emph{homeomorphism}
+  means that \(f\) is a continuous bijection and \(f^{-1}\) is continuous.  If such an \(f\) exists then \(X\)
+  and \(Y\) are said to be \emph{homeomorphic} or \emph{topologically equivalent}.
+\end{definition}
+
+\begin{theorem}
+  Homeomorphic is an equivalence relation.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\),\(Y\), and \(Z\) are topological spaces.
+  \begin{description}
+  \item[R:] Consider \(i_X=i_X^{-1}\), which is continuous.  Therefore \(X\) is homeomorphic to \(X\).
+
+  \item[S:] Assume that \(X\) is homeomorphic to \(Y\).
+
+    Then there exists a homeomorphism \(f:X\to Y\).  Since \(f\) is a homeomorphism, it is invertible and its
+    inverse is continuous. Thus, \(f^{-1}:Y\to X\) is a continuous, invertible function and \((f^{-1})^{-1}=f\) is
+    invertible.  Therefore \(Y\) is homeomorphic to \(X\).
+
+  \item[T:] Assume that \(X\) is homeomorphic to \(Y\) and \(Y\) is homeomorphic to \(Z\).
+
+    Then there exists homeomorphics \(f:X\to Y\) and \(g:Y\to Z\).  So consider \(g\circ f:X\to Z\).  Since \(f\)
+    and \(g\) are continuous and invertible, \(g\circ f\) is continuous and invertible.  Furthermore, since
+    \(f^{-1}\) and \(g^{-1}\) are continuous, \(f^{-1}\circ g^{-1}=(g\circ f)^{-1}\) is continuous.  Therefore
+    \(X\) is homeomorphic to \(Z\).
+  \end{description}
+\end{proof}
+
+\begin{lemma}
+  For all \(a,b\in\R\) such that \(a<b\), \((a,b)\) is homeomorphic to \((0,1)\).
+\end{lemma}
+
+\begin{proof}
+  Let \(f:(0,1)\to(a,b)\) be defined by \(f(t)=a+t(a-b)\).  \(f\) is linear, and thus continuous and invertible
+  with \(f^{-1}(s)=\frac{s-a}{b-a}\) which is also linear and thus continuous.  Therefore \((a,b)\) is homeomorphic
+  to \((0,1)\).
+\end{proof}
+
+\begin{corollary}
+  All open intervals in \(\R\) are homeomorphic.
+\end{corollary}
+
+\begin{proof}
+  Assume \((a,b),(c,d)\subset\R\).  \((a,b)\) is homeomorphic to \((0,1)\) and \((0,1)\) is homeomorphic to
+  \((c,d)\).  Therefore, \((a,b)\) is homeomorphic to \((c,d)\).
+\end{proof}
+
+\begin{theorem}
+  \((a,b)\subset\R\) is homeomorphic to \(R\).
+\end{theorem}
+
+\begin{proof}
+  \((a,b)\) is homeomorphic to \((-\frac{\pi}{2},\frac{\pi}{2})\).  Now, consider
+  \(f:(-\frac{\pi}{2},\frac{\pi}{2})\to\R\) defined by \(f(x)=\tan x\).  This is a continuous and invertible
+  function whose inverse is also continuous.  Thus, \((-\frac{\pi}{2},\frac{\pi}{2})\) is \(\R\).  Therefore,
+  \((a,b)\) is homeomorphic to \(R\).
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\) be continuous.  TFAE:
+  \begin{enumerate}
+  \item \(f\) is a homeomorphism.
+  \item \(f\) is a closed bijection.
+  \item \(f\) is an open bijection.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\((1\implies 2)\)] Assume that \(f\) is a homeomorphism.
+
+    This means that \(f\) is a bijection and its inverse is continuous.  So assume that \(A\subset X\) is closed in
+    \(X\). Since \(f\) is bijective, \(f(A)=(f^{-1})^{-1}(A)\), and since \((f^{-1})^{-1}\) is continuous, \(f(A)\)
+    is also closed.  Therefore \(f\) is a closed bijection.
+
+  \item[\((2\implies 3)\)] Assume that \(f\) is a closed bijection.
+
+    Assume that \(U\in\T_X\).  This means that \(X-U\) is closed in \(X\), and since \(f\) is closed, \(f(X-U)\)
+    is closed in \(Y\) and so \(Y-f(X-U)\in\T_Y\).  But \(f\) is a bijection and so \(Y-f(X-U)=f(U)\in\T_Y\).
+    Therefore, \(f\) is an open bijection.
+
+  \item[\((3\implies 1)\)] Assume that \(f\) is an open bijection.
+
+    Assume that \(U\in\T_Y\).  Since \(f\) is continuous, \(f^{-1}(U)\in\T_X\).  But \(f\) is open so
+    \((f^{-1})^{-1}(U)\in\T_Y\).  Therefore \(f^{-1}\) is continuous and hence \(f\) is a homeomorphism.
+  \end{description}
+\end{proof}
+
+\begin{theorem}
+  Let \(X\) and \(Y\) be topological spaces such that \(X\) is compact and \(Y\) is Hausdorff and let \(f:X\to Y\)
+  be a continuous bijection.  \(f\) is a homeomorphism.
+\end{theorem}
+
+\begin{proof}
+  Since \(X\) is compact, \(Y\) is Hausdorff, and \(f\) is a bijection, \(f\) is closed.  Therefore, since \(f\) is
+  a continuous closed bijection, \(f\) is a homeomorphism.
+\end{proof}
+
+\begin{example}
+  Let \(X\) and \(Y\) be topological spaces and let \(f\) be continuous bijection.
+  \begin{enumerate}
+  \item \(Y\) is \(T_2\) but \(X\) is not compact.
+
+    Consider \(X=[0,2\pi]\) and \(Y=S^1\) with \(f:X\to Y\) defined by \(f(t)=e^{it}\).  But \(f^{-1}(e^{it})=t\)
+    is not continuous.
+
+  \item \(X\) is compact but \(Y\) is not \(T_2\).
+
+    Consider \(X=[0,1]_{\text{std}}\) and \(Y=[0,1]_{\text{ind}}\) with \(f(x)=x\).  But \(f\) is not open.
+  \end{enumerate}
+\end{example}
+
+\end{document}

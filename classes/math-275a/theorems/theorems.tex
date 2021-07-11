@@ -1,0 +1,151 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\K}{\mathcal{K}}
+\renewcommand{\sc}{\(2^{nd}\) countable}
+\newcommand{\fc}{\(1^{st}\) countable}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\renewcommand{\N}{\mathcal{N}}
+\begin{document}
+\section*{Important Theorems}
+
+\subsection*{Separation}
+
+\begin{itemize}
+\item \(X\) is \(T_1\iff\forall\,p\in X,\set{p}\) is closed in \(X\)
+
+\item \(T_2\implies T_1\)
+
+\item \(T_3\implies T_2\)
+
+\item \(T_4\implies T_3\)
+
+\item \(X\) regular \(\iff\forall\,p\in X,\forall\,U_p\in\T,\exists\,V_p\in\T,\overline{V_p}\subset U_p\)
+
+\item \(X\) normal \(\iff\forall\,A\in X\) closed, \(\forall\,U_A\in\T,\exists\,V_A\in\T,
+  \overline{V_A}\subset U_A\)
+
+\item \(X,Y\ T_2\implies X\times Y\ T_2\)
+
+\item \(X,Y\) regular\(\implies X\times Y\) regular
+
+\item \(T_2\) is hereditary
+
+\item Regular is hereditary
+
+\item \(X\) normal and \(A\subset X\) closed \(\implies A\) normal
+\end{itemize}
+
+\subsection*{Separable}
+
+\begin{itemize}
+\item \(D\) dense in \(X\iff\forall\,U\in\T,U\ne\emptyset\implies U\cap D\ne\emptyset\)
+
+\item \(X,Y\) separable \(\implies X\times Y\) separable
+
+\item \(X\) \sc\(\implies X\) separable
+
+\item \(X\) \sc\ and \(A\subset X\) uncountable \(\implies A\) has a limit point.
+
+\item \sc\ is hereditary
+
+\item \(X,Y\) \sc \(\implies X\times Y\) \sc
+
+\item \sc\(\implies\)\fc
+
+\item \fc\ is hereditary
+
+\item \(X,Y\) \fc \(\implies X\times Y\) \fc
+\end{itemize}
+
+\newpage
+
+\subsection*{Compact}
+
+\begin{itemize}
+\item \(X\) finite\(\implies X\) compact
+
+\item \(X\) compact \(\implies\forall A\subset X,A\) infinite\(\implies A\) has a limit point
+
+\item \(X\) compact \(\iff\forall\,\A=\set{A_{\a}:\a\in\l}\) such that the \(A_{\a}\) are closed, \(\A\) has the finite
+  intersection property\(\implies\bigcap\A\ne\emptyset\)
+
+\item \(X\) compact \(\iff\forall\,U\in\T,\forall\K=\set{K_{\a}:\a\in\l}\) such that the \(\K_{\a}\) are closed and
+  \(\bigcap\K\subset U\), there exists \(\K'\subset\K\) such that \(\K'\) finite and \(\K'\subset U\)
+
+\item \(\A=\set{A_{\a}:\a\in\l}\) such that the \(A_{\a}\) compact\(\implies\bigcup\A\) compact
+
+\item \(X\) compact and subspace \(A\) closed\(\implies A\) compact
+
+\item \(X\ T_2\) and subspace \(A\) compact\(\implies A\) closed
+
+\item \(X\) compact and \(T_2\implies X\) normal.
+
+\item \([a,b]\) compact.
+
+\item \(A,B\) compact\(\implies A\times B\) compact.
+
+\item \(A\subset\R^n\) compact\(\iff A\) is closed and bounded.
+
+\item Any product of compact spaces is compact.
+\end{itemize}
+
+\subsection*{Continuity}
+
+\begin{itemize}
+\item \(X-f^{-1}(A)=f^{-1}(Y-A)\)
+
+\item \(f\) bijection\(\implies f(A)=Y-f(X-A)\)
+
+\item The constant function is continuous
+
+\item The inclusion function is continuous
+
+\item A restricted function of a continuous function is continuous
+
+\item \(f\) continuous \(\iff\forall\,K\subset Y, K\) closed\(\implies f^{-1}(K)\) closed
+
+\item \(f\) continuous \(\iff\forall\,A\subset X, f(\bar{A})\subset\overline{f(A)}\)
+
+\item \(f\) continuous \(\iff\forall\,x\in X,\forall\,V\in\N_{f(x)},\exists\,U\in\N_x,f(U)\subset V\)
+
+\item \(f\) \fc\(\implies f:X\to Y\) continuous \(\iff\forall\,(x_n),x_n\to x\implies f(x_n)\to f(x)\)
+
+\item \(f:X\to Y\) and \(g:Y\to Z\) continuous \(\implies g\circ f:X\to Z\) continuous
+
+\item \(X\) compact and \(f:X\to Y\) continuous and surjective\(\implies Y\) compact
+
+\item \(D\) dense in \(X\) and \(f:X\to Y\) continuous and surjective\(\implies f(D)\) dense in \(Y\)
+
+\item \(X\) normal and \(f:X\to Y\) continuous, surjective, and closed\(\implies Y\) is normal
+
+\item \(X\) compact and \(Y\ T_2\implies f:X\to Y\) continuous\(\implies f\) closed
+
+\item \(f:X\to Y\) bijective \(\implies f\) open\(\iff f\) closed
+
+\item \(f\) continuous and closed\(\implies f(\bar{A})=\overline{f(A)}\)
+
+\item \(X\) normal and \(f\) continuous, surjective, and closed\(\implies Y\) normal
+
+\item \(X\) compact, \(Y\) \(T_2\), \(f\) continuous\(\implies f\) closed
+\end{itemize}
+
+\subsection*{Homeomorphism}
+
+\begin{itemize}
+\item All \((a,b)\subset\R\) are homeomorphic to each other and are homeomorphic to \(\R\)
+
+\item \(f\) continuous, TFAE:
+  \begin{enumerate}
+  \item \(f\) is a homeomorphism
+  \item \(f\) is a closed bijection
+  \item \(f\) is an open bijection
+  \end{enumerate}
+
+\item \(f\) \(X\) compact, \(Y\) \(T_2\), \(f\) continuous\(\implies f\) a homeomorphism.
+\end{itemize}
+
+\end{document}

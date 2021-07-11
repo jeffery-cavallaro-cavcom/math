@@ -1,0 +1,74 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\newcommand{\U}{\mathcal{U}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\newcommand{\Rs}{\R_{\text{std}}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\K}{\mathcal{K}}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#8
+
+\bigskip
+
+\begin{theorem}[6.2]
+  Let \(A\subset\Rs\).  If \(A\) is compact then \(A\) has a maximum point.
+\end{theorem}
+
+\begin{proof}
+  If \(A\) is finite then trivial, so assume that \(A\) is infinite.  ABC that \(A\) has no maximum point.  This
+  means that for all \(a\in A\) there exists \(b_a\in A\) such that \(b_a>a\).  So let \(\set{(-\infty,b_a):a\in A}\)
+  be an open cover for \(A\).  Since \(A\) is compact, there exists a finite subcover
+  \(U=\set{(-\infty,b_{a_k}):1\le k\le n}\).  Let \(c=\max\set{b_{a_k}}\), and so \(\bigcup U=(-\infty,c)\).  Thus
+  \(c\in A\) but \(c\notin U\), contradicting the assumption that \(U\) is a finite subcover.
+
+  Therefore \(A\) has a maximum point.
+\end{proof}
+
+\begin{theorem}[6.9]
+  Every compact subspace of a Hausdorff space is closed.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) is Hausdorff and \(A\) is a compact subspace of \(X\).  Assume that \(b\in A^C\).  Since \(X\)
+  is Hausdorff, for every \(a\in A\) there exists \(U_a,V_a\in\T_X\) such that \(a\in U_a\), \(b\in V_a\), and
+  \(U_a\cap V_a=\emptyset\).  So let the \(\set{U_a:a\in A}\) be an open cover of \(A\) in \(X\).  Thus
+  \(\set{U_a\cap A:a\in A}\) for \(U_a\cap A\in\T_Y\) is an open cover of \(A\) in \(A\).  Now, since \(A\) is a
+  compact subspace of \(X\), there exists a finite subcover \((U_{a_1}\cap A)\cup\cdots\cup(U_{a_n}\cap A)\) of
+  \(A\) in \(A\), and hence a finite subcover \(U_{a_1}\cup\cdots\cup U_{a_n}\) of \(A\) in \(X\).  Let
+  \(V=V_{a_1}\cap\cdots\cap V_{a_n}\).  Note that \(b\in V\) and \(V\in\T_X\).  Furthermore, since all the
+  \(U_a\cap V_a=\emptyset\), it must be the case that \(V\cap(U_{a_1}\cup\cdots\cup U_{a_n})=\emptyset\).  But
+  since \(U_{a_1}\cup\cdots\cup U_{a_n}\supset A\) it must be the case that \(V\subset A^C\).  So \(b\) is an
+  interior point in \(A^C\), meaning that all the points in \(A^C\) are interior, and so \(A^C\in\T_X\).  Therefore
+  \(A\) is closed in \(X\).
+\end{proof}
+
+\begin{lemma}
+  Every compact, Hausdorff space is regular.
+\end{lemma}
+
+\begin{proof}
+  Assume that \(X\) is compact and Hausdorff.  Assume that \(A\subset X\) is closed.  Thus, by previous theorem,
+  \(A\) is also compact.  So assume \(p\in A^C\).  This means that \(p\notin A\) and so, by the previous proof,
+  there exists \(U,V\in\T\) such that \(A\subset U\) and \(p\in V\) and \(U\cap V=\emptyset\).
+
+  Therefore \(X\) is regular.
+\end{proof}
+
+\begin{theorem}[6.12]
+  Every compact, Hausdorff space is normal.
+\end{theorem}
+
+\begin{proof}
+  Assume \(A,B\subset X\) are closed.  Since \(X\) is regular (by the previous lemma), for all \(b\in B\) there
+  exists \(U_b,V_b\in\T\) such that \(A\subset U_b\) and \(b\in V_b\) and \(U_b\cap V_b=\emptyset\).  So let
+  \(V=\set{V_b:b\in B}\) be an open cover for \(B\).  But, by previous theorem, \(B\) is also compact, and so
+  there exists a finite subcover \(V_{b_1}\cup\cdots\cup V_{b_n}\supset B\).  So let
+  \(U=U_{b_1}\cap\cdots\cap U_{b_n}\in\T\).  Note that \(A\subset U\) and, since all the \(U_b\cap V_b=\emptyset\),
+  \(U\cap V=\emptyset\).  Therefore, \(X\) is normal.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,34 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\U}{\mathcal{U}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#9
+
+\bigskip
+
+\begin{theorem}[6.18]
+  Let \(X\times Y\) be a product space with \(Y\) compact.  If \(U\in\T_{X\times Y}\) and
+  \(\set{x_0}\times Y\subset U\) then there exists some \(W\in\T_X\) such that \(x_0\in W\) and
+  \(W\times Y\subset U\).
+\end{theorem}
+
+\begin{proof}
+  Assume \(U\in\T_{X\times Y}\) and \(\set{x_0}\times Y\subset U\).  Note that for each \(y\in Y\),
+  \((x_0,y)\in\set{x_0}\times Y\subset U\).  Thus there exists sets \(U_y\in\T_X\) and \(V_y\in\T_Y\) such that
+  \(\displaystyle\set{x_0}\times Y\subset\bigcup_{y\in Y}(U_y\times V_y)\subset U\), where the \(V_y\) are an open
+  cover of \(Y\).  But \(Y\) is compact, so there exists some finite subcover \(\set{V_{y_1},\ldots,V_{y_n}}\) of
+  \(Y\).  So select up to \(n\) open subsets of \(U_y\) and let \(\displaystyle W=\bigcap_{k=1}^nU_{y_k}\).  Note
+  that \(W\in\T_X\) because it is a finite intersection of open sets.
+
+  Claim: \(W\times Y\subset U\)
+
+  Assume that \((x,y)\in W\times Y\).  This means that for some \(k\), \(x\in U_{y_k}\) and \(y\in V_{y_k}\).  And so
+  \((x,y)\in U_{y_k}\times V_{y_k}\subset U\).
+\end{proof}
+
+\end{document}

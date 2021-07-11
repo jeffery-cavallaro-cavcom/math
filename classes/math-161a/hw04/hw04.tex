@@ -1,0 +1,277 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\DeclareMathOperator{\bin}{B}
+\DeclareMathOperator{\hg}{HyperGeom}
+\DeclareMathOperator{\nb}{NB}
+\DeclareMathOperator{\pois}{Pois}
+\renewcommand{\o}{\sigma}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 161A \\
+Homework \#4
+
+\bigskip
+
+\section*{3.48}
+
+NBC News reported on May 2, 2013 that 1 in 20 children in the United States have a food allergy of some sort.  Consider
+selecting a random sample of 25 children and let \(X\) be the number in the sample who have a food allergy.  Then
+\(X\sim B(25,0.05)\).
+
+\begin{enumerate}[label={\alph*)}]
+\item Determine both \(P(X\le3\) and \(P(X<3)\).
+  
+  From the table:
+  \begin{gather*}
+    P(X\le3)=0.966 \\
+    P(X<3)=P(X\le2)=0.873
+  \end{gather*}
+  By hand:
+  \begin{gather*}
+    P(X=0)=\binom{25}{0}(0.05)^0(0.95)^{25}=0.277 \\
+    P(X=1)=\binom{25}{1}(0.05)^1(0.95)^{24}=0.365 \\
+    P(X=2)=\binom{25}{2}(0.05)^2(0.95)^{23}=0.231 \\
+    P(X=3)=\binom{25}{3}(0.05)^3(0.95)^{22}=0.093 \\
+    \\
+    P(X<3)=0.277+0.365+0.231=0.873 \\
+    P(X\le3)=0.873+0.093=0.966
+  \end{gather*}
+
+\item Determine \(P(X\ge4)\).
+  \[P(X\ge4)=1-P(X\le3)=1-0.966=0.034\]
+
+\item Determine \(P(1\le X\le 3)\).
+  \[P(1\le X\le 3)=P(X\le3)-P(X=0)=0.966-0.277=0.693\]
+
+\item What are \(E(X)\) and \(\o_X\)?
+  \begin{gather*}
+    E(X)=np=25\cdot0.05=1.25 \\
+    V(X)=np(1-p)=25\cdot0.05\cdot0.95=1.1875 \\
+    \o_X=\sqrt{1.1875}\approx1.090
+  \end{gather*}
+
+\item In a sample of 50 children, what is the probability that none has a food allergy?
+  \begin{gather*}
+    X\sim\bin(50,0.05) \\
+    \\
+    P(X=0)=0.95^{50}\approx0.077
+  \end{gather*}
+\end{enumerate}
+
+\section*{3.60}
+
+A toll bridge charges \$1.00 for passenger cars and \$2.50 for other vehicles.  Suppose that during the daytime hours, 60\%
+of all vehicles are passenger cars.  If 25 vehicles cross the bridge during a particular daytime period, what is the resulting
+expected toll revenue? [Hint: Let \(X=\) the number of passenger cars; then the toll revenue \(h(X)\) is a linear function of
+  \(X\).]
+\begin{gather*}
+  X\sim\bin(25,0.6) \\
+  \\
+  h(X)=1.00X+2.50(25-X)=X+62.5-2.5X=62.5-1.5X
+\end{gather*}
+\begin{align*}
+  E(h(X)) &= E(62.5-1.5X) \\
+  &= 62.5-1.5E(X) \\
+  &= 62.5-1.5np \\
+  &= 62.5-1.5(25)(0.6) \\
+  &= \$40.00
+\end{align*}
+
+\section*{3.66}
+
+An airport limousine can accommodate up to four passengers on any one trip.  The company will accept a maximum of six
+reservations for a trip, and a passenger must have a reservation.  From previous records, 20\% of all those making reservations
+do not appear for the trip.  Answer the following questions, assuming independence wherever appropriate.
+
+\begin{enumerate}[label={\alph*)}]
+\item If six reservations are made, what is the probability that at least one individual with a reservation cannot be
+  accommodated on the trip?
+
+  Let \(X=\) the number of passengers who do not show up.  Then \(X\sim\bin(6,0.2)\).
+  \begin{gather*}
+    P(X=0)=\binom{6}{0}0.2^00.8^{6-0}=0.8^6=0.262 \\
+    P(X=1)=\binom{6}{1}0.2^10.8^{6-1}=6\cdot0.2\cdot0.8^5=0.393 \\
+    \\
+    P(X<2)=0.262+0.393=0.655
+  \end{gather*}
+
+\item If six reservations are made, what is the expected number of available places when the limousine departs?
+  \[E(X)=np=6\cdot0.2=1.2\]
+  On average, 1.2 people do not show up.  Thus, the limousine is always full (i.e., no available places).
+\end{enumerate}
+
+\section*{3.68}
+
+Eighteen individuals are scheduled to take a driving test at a particular DMV office on a certain day, eight of whom will be
+taking the test for the first time.  Suppose that six of these individuals are randomly assigned to a particular examiner,
+and let \(X\) be the number among the six who are taking the test for the first time.
+
+\begin{enumerate}[label={\alph*)}]
+\item What kind of distribution does \(X\) have (name and values of all parameters)?
+  \[X\sim\hg(18,8,6)\]
+\item Compute \(P(X=2)\), \(P(X\le2)\), and \(P(X\ge2)\).
+  \begin{gather*}
+    P(X=x)=\frac{\binom{8}{x}\binom{10}{6-x}}{\binom{18}{6}} \\
+    \\
+    P(X=0)=\frac{\binom{8}{0}\binom{10}{6}}{\binom{18}{6}}=\frac{1\cdot210}{18564}=0.0113 \\
+    P(X=1)=\frac{\binom{8}{1}\binom{10}{5}}{\binom{18}{6}}=\frac{8\cdot252}{18564}=0.1086 \\
+    \\
+    P(X=2)=\frac{\binom{8}{2}\binom{10}{4}}{\binom{18}{6}}=\frac{28\cdot210}{18564}=0.3167 \\
+    \\
+    P(X\le2)=P(X=0)+P(X=1)+P(X=2)=0.0113+0.1086+0.3167=0.4366 \\
+    \\
+    P(X\ge2)=1-P(X=0)-P(X=1)=1-0.0113-0.1086=0.8801
+  \end{gather*}
+\end{enumerate}
+
+\section*{3.75}
+
+The probability that a randomly selected box of a certain type of cereal has a particular prize is 0.2.  Suppose you purchase
+box after box until you have obtained two of these prizes.
+
+Let \(X=\) number of boxes purchased:
+\[X\sim\nb(0.2,2)\]
+
+\begin{enumerate}[label={\alph*)}]
+\item\label{a} What is the probability that you purchase \(x\) boxes that do not contain the desired prize?
+
+  I am interpreting this question as meaning that \(x+2\) total boxes are purchased.
+  \[P(X=x+2)=\binom{(x+2)-1}{2-1}(0.2)^2(1-0.2)^{(x+2)-2}=\binom{x+1}{1}(0.04)(0.8)^x=0.04(x+1)(0.8)^x\]
+\item What is the probability that you purchase four boxes?
+
+  From part (\ref{a} with \(x=2\):
+  \[P(X=4)=0.04(2+1)(0.8)^2=0.04(3)(0.64)=0.0768\]
+\item What is the probability that you purchase at most four boxes?
+  \begin{gather*}
+    P(X=2)=0.04(0+1)(0.8)^0=0.04(1)(1)=0.04 \\
+    P(X=3)=0.04(1+1)(0.8)^1=0.04(2)(0.8)=0.064 \\
+    \\
+    P(X\le4)=P(X=2)+P(X=3)+P(X=4)=0.04+0.064+0.0768=0.1808
+  \end{gather*}
+\item How many boxes without the desired prize do you expect to purchase?  How many boxes do you expect to purchase?
+  \[E(X)=\frac{r}{p}=\frac{2}{0.2}=10\]
+  Therefore, we would expect to purchase a total of 10 boxes, 8 of which do not have the desired prize.
+\end{enumerate}
+
+\section*{3.76}
+A family decides to have children until it has three children of the same gender.  Assuming \(P(B)=P(G)=0.5\), what is the
+pmf of \(X=\) the number of children in the family.
+
+The possibilities are as follows:
+
+\begin{tabular}{|c|c|c|}
+  \hline
+  BOYS & GIRLS & TOTAL \\
+  \hline
+  3 & 0 & 3 \\
+  \hline
+  3 & 1 & 4 \\
+  \hline
+  3 & 2 & 5 \\
+  \hline
+  0 & 3 & 3 \\
+  \hline
+  1 & 3 & 4 \\
+  \hline
+  2 & 3 & 5 \\
+  \hline
+\end{tabular}
+
+Thus, the range for \(X\) is \(\set{3,4,5}\) and each value appears twice: once for boys and once for girls.  Since each
+gender is \(\sim\nb(0.5,3)\):
+\begin{gather*}
+  f_X(x)=2\binom{x-1}{3-1}(0.5)^3(1-0.5)^{x-3}=2\binom{x-1}{2}(0.5)^3(0.5)^{x-3}=2\binom{x-1}{2}(0.5)^x \\
+  \\
+  f_X(3)=2\binom{3-1}{2}(0.5)^3=2\binom{2}{2}(0.5)^3=2(1)(0.125)=0.250 \\
+  f_X(4)=2\binom{4-1}{2}(0.5)^4=2\binom{3}{2}(0.5)^4=2(3)(0.0625)=0.375 \\
+  f_X(5)=2\binom{5-1}{2}(0.5)^5=2\binom{4}{2}(0.5)^5=2(6)(0.03125)=0.375 \\
+\end{gather*}
+And therefore:
+\[f_X(x)=\begin{cases}
+0.250 & x=3 \\
+0.375 & x=4 \\
+0.375 & x=5 \\
+0 & \text{otherwise}
+\end{cases}\]
+As expected, the total probability \(=1\).
+
+\section*{3.79}
+
+The article \emph{``Expectation Analysis of the Probability of Failure for Water Supply Pipes''} (J. of Pipeline Systems
+Engr. and Practice, May 2012: 36--46) proposed using the Poisson distribution to model the number of failures in pipelines
+of various types.  Suppose that for cast-iron pipe of a particular length, the expected number of failures is 1 (very close
+to one of the cases considered in the article).  Then \(X\), the number of failures, has a Poisson distribution with
+\(\mu=1\).
+
+\begin{enumerate}[label={\alph*)}]
+\item Obtain \(P(X\le5\) by using Appendix Table A.2.
+  \[P(X\le5)=0.999\]
+\item Determine P(X=2) first from the pmf formula and then from Appendix Table A.2.
+  \begin{gather*}
+    P(X=2)=\frac{1^2}{2!}e^{-1}=\frac{1}{2e}=0.184 \\
+    \\
+    P(X=2)=P(X\le2)-P(X\le1)=0.920-0.736=0.184
+  \end{gather*}
+\item Determine \(P(2\le X\le4)\).
+  \[P(2\le X\le4)=P(X\le4)-P(X\le1)=0.996-0.736=0.260\qquad\text{(from table)}\]
+\item What is the probability that \(X\) exceeds its mean value by more than one standard deviation?
+
+  Since \(\mu=1\) it is the case that \(E(X)=V(X)=1\) and \(\o_X=\sqrt{1}=1\). So, we want (from the table):
+  \[P(X>2)=1-P(X\le2)=1-0.920=0.080\]
+\end{enumerate}
+
+\section*{3.83}
+
+An article in the \emph{Los Angeles Times} (Dec. 3, 1993) reports that 1 in 200 people carry the defective gene that causes
+inherited colon cancer.  In a sample of 1000 individuals, what is the approximate distribution of the number who carry this
+gene?
+
+Let \(X=\) the number of people who carry the gene.
+\[X\sim\pois(\mu=1000\cdot0.005)=\pois(5)\]
+Use this distribution to calculate the approximate probability that:
+\begin{enumerate}[label={\alph*)}]
+\item Between 5 and 8 (inclusive) carry the gene.
+
+  From the table:
+  \[P(5\le X\le8)=P(X\le8)-P(X\le4)=0.932-0.440=0.492\]
+
+\item At least 8 carry the gene.
+  
+  From the table:
+  \[P(X\ge8)=1-P(X\le7)=1-0.867=0.133\]
+\end{enumerate}
+
+\section*{3.84}
+
+The \emph{Centers for Disease Control and Prevention} reported in 2012 that 1 in 88 American children had been diagnosed
+with an autism spectrum disorder (ASD).
+
+\begin{enumerate}[label={\alph*)}]
+\item If a random sample of 200 American children is selected, what are the expected value and standard deviation of the
+  number who have been diagnosed with ASD?
+  \begin{gather*}
+    \mu=200\cdot\frac{1}{88}\approx2.27 \\
+    \\
+    E(X)=\mu=2.27 \\
+    \\
+    V(X)=\mu=2.27 \\
+    \o_X=\sqrt{2.27}\approx1.51
+  \end{gather*}
+\item Referring back to (a), calculate the approximate probability that at least 2 children in the sample have been
+  diagnosed with ASD.
+  \begin{gather*}
+    P(X=0)=\frac{2.27^0}{0!}e^{-2.27}=e^{-2.27}=0.1033 \\
+    P(X=1)=\frac{2.27^1}{1!}e^{-2.27}=2.27e^{-2.27}=0.2345 \\
+    P(X=2)=\frac{2.27^2}{2!}e^{-2.27}=\frac{2.27^2}{2}e^{-2.27}=0.2662 \\
+    \\
+    P(X\le2)=P(X=0)+P(X=1)+P(X=2)=0.1033+0.2345+0.2662=0.6040
+  \end{gather*}
+\item If the sample size is 352, what is the approximate probability that fewer than 5 of the selected children have been
+  diagnosed with ASD?
+  \[\mu=352\cdot\frac{1}{88}=4\]
+  From the table:
+  \[P(X\le4)=0.440\]
+\end{enumerate}
+
+\end{document}

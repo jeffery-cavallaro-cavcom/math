@@ -1,0 +1,108 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\newcommand{\T}{\mathscr{T}}
+\renewcommand{\N}{\mathcal{N}}
+\newcommand{\nat}{\mathbb{N}}
+\newcommand{\Rs}{\R_{\text{std}}}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\newcommand{\f}{\(1^{st}\ \)}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#10
+
+\bigskip
+
+\begin{lemma}
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\).  For all \(B\subset Y\):
+  \[X-f^{-1}(B)=f^{-1}(Y-B)\]
+\end{lemma}
+
+\begin{proof}
+  Assume \(A\subset Y\).
+  \begin{align*}
+    x\in X-f^{-1}(B) &\iff x\notin f^{-1}(B) \\
+    &\iff f(x)\notin B \\
+    &\iff f(x)\in Y-B \\
+    &\iff x\in f^{-1}(Y-B)
+  \end{align*}
+\end{proof}
+
+\begin{theorem}[7.1]
+  Let \(X\) and \(Y\) be topological spaces and let \(f:X\to Y\).  TFAE:
+  \begin{enumerate}
+  \item \(f\) is continuous.
+  \item For every closed set \(K\subset Y\), \(f^{-1}(K)\) is closed in \(X\).
+  \item For all \(A\subset X\), \(f(\bar{A})\subset\overline{f(A)}\).
+  \item For every \(x\in X\) and \(V\in\N_{f(x)}\) there exists \(U\in\N_x\) such that \(f(U)\subset V\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(1\implies2\)] Assume that \(f\) is continuous.
+
+    Assume that \(K\subset Y\) is closed, and so \(Y-K\in\T_Y\).  Since \(f\) is continuous,
+    \(f^{-1}(Y-K)\in\T_X\).  Now, applying the lemma, \(f^{-1}(Y-K)=X-f^{-1}(K)\in\T_X\).  Therefore
+    \(f^{-1}(K)\) is closed.
+
+  \item[\(2\implies3\)] Assume that for every closed set \(K\subset Y\), \(f^{-1}(K)\) is closed in \(X\).
+
+    Assume \(A\subset X\).  Since \(\overline{f(A)}\) is closed, by the assumption, \(f^{-1}(\overline{f(A)})\) is
+    closed.  Furthermore, since \(f(A)\subset\overline{f(A)}\), it must be the case that
+    \(f^{-1}(f(A))=A\subset f^{-1}(\overline{f(A)})\).  But \(\bar{A}\) is the smallest closed set containing \(A\),
+    and so \(\bar{A}\subset f^{-1}(\overline{f(A)})\).
+    Therefore \(f(\bar{A})\subset f(f^{-1}(\overline{f(A)}))\subset\overline{f(A)}\).
+
+  \item[\(3\implies4\)] Assume that for all \(A\subset X\), \(f(\bar{A})\subset\overline{f(A)}\).
+
+    Assume \(x\in X\) and \(V\in\N_{f(x)}\).  Note that \(Y-V\) is closed.  Now, let \(U=f^{-1}(V)\) and so
+    \(x\in U\) and \(f(U)=f(f^{-1}(V)\subset V\).
+
+    WTS: \(U\) open.
+
+    ABC that \(X-U\) is not closed.  This means that there exists \(p\in\overline{X-U}\) but \(p\notin X-U\).
+    And so, by the assumption and the lemma:
+    \[f(p)\in f(\overline{X-U})\subset\overline{f(X-U)}=\overline{f(X-f^{-1}(V))}=\overline{f(f^{-1}(Y-V))}\subset
+    \overline{Y-V}=Y-V\]
+    This means that \(p\in f^{-1}(Y-V)=X-f^{-1}(V)=X-U\), contradicting the assumption that \(p\notin X-U\).
+    Thus \(X-U\) contains all of its limit points and is closed.  Therefore \(U\) is open.
+
+  \item[\(4\implies1\)] Assume that for every \(x\in X\) and \(V\in\N_{f(x)}\) there exists \(U\in\N_x\) such that
+    \(f(U)\subset V\).
+
+    Assume \(V\in\T_Y\) and assume \(p\in f^{-1}(V)\).  Thus \(f(p)\in V\in\N_{f(p)}\).  Now, by the assumption,
+    there exists \(U\in\N_p\) such that \(f(U)\subset V\), and hence \(f^{-1}(f(U))=U\subset f^{-1}(V)\).  This
+    means that \(p\) is an interior point of \(f^{-1}(V)\) and hence \(f^{-1}(V)\) is open.  Therefore \(f\) is
+    continuous.
+  \end{description}
+\end{proof}
+
+\begin{theorem}[7.2]
+  Let \(X\) and \(Y\) be topological spaces and let \(y_0\in Y\).  The constant map \(f:X\to Y\) defined by
+  \(f(x)=y_0\) is continuous.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(V\in\T_Y\).  If \(y_0\in V\) then \(f^{-1}(V)=X\).  Otherwise, \(f^{-1}(V)=\emptyset\).  In either
+  case, \(f^{-1}(V)\in\T_X\).  Therefore \(f\) is continuous.
+\end{proof}
+
+\begin{theorem}[7.7]
+  Let \(X\) and \(Y\) be topological spaces such that \(D\subset X\) is dense and \(Y\) is Hausdorff.  Let
+  \(f:X\to Y\) and \(g:X\to Y\) be continuous such that \(\forall\,d\in D,f(d)=g(d)\).  Then
+  \(\forall\,x\in X, f(x)=g(x)\).
+\end{theorem}
+
+\begin{proof}
+  ABC that there exists \(x\in X\) such that \(f(x)\ne g(x)\).  Now, since \(Y\) is Hausdorff, there exists
+  \(U\in\N_{f(x)}\) and \(V\in\N_{g(x)}\) such that \(U\cap V=\emptyset\).  Furthermore, since \(f\) and \(g\) are
+  continuous, \(f^{-1}(U)\in\N_x\) and \(g^{-1}(V)\in\N_x\).  Since \(x\in f^{-1}(U)\) and \(x\in g^{-1}(V)\), this
+  means that \(f^{-1}(U)\cap g^{-1}(V)\ne\emptyset\), and so, since \(D\) is dense in \(X\), there must exists
+  \(d\in D\) such that \(d\in f^{-1}(U)\cap g^{-1}(V)\).  But this means that \(f(d)\in U\cap V\), contradicting
+  the assumption that \(U\) and \(V\) are disjoint.  Therefore \(\forall\,x\in X,f(x)=g(x)\).
+\end{proof}
+
+\end{document}

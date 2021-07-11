@@ -1,0 +1,72 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\renewcommand{\P}{\Phi}
+\newcommand{\iid}{\overset{\text{iid}}{\sim}}
+\DeclareMathOperator{\nd}{N}
+\begin{document}
+\section*{One-sided Confidence Intervals}
+
+Sometimes only a one-sided confidence interval is needed:
+\begin{itemize}
+\item Lower confidence bound
+  \[1-\a=P(\bar{X}<\m)=P\left(\m\in(\bar{X}-m,\infty)\right)\]
+  \begin{quote}
+    \begin{tikzpicture}
+      \draw (0,0) -- (10,0);
+      \node (x) at (5,0) {\scalebox{1.5}{\(\times\)}};
+      \node [below=5pt] at (x) {\(\bar{X}\)};
+      \node (l) at (3,0) {\scalebox{1.5}{\((\)}};
+      \node [below=5pt] at (l) {\(\bar{X}-m\)};
+    \end{tikzpicture}
+  \end{quote}
+
+\item Upper confidence bound
+  \[1-\a=P(\m<\bar{X})=P\left(\m\in(-\infty,\bar{X}+m)\right)\]
+  \begin{quote}
+    \begin{tikzpicture}
+      \draw (0,0) -- (10,0);
+      \node (x) at (5,0) {\scalebox{1.5}{\(\times\)}};
+      \node [below=5pt] at (x) {\(\bar{X}\)};
+      \node (r) at (7,0) {\scalebox{1.5}{\()\)}};
+      \node [below=5pt] at (r) {\(\bar{X}+m\)};
+    \end{tikzpicture}
+  \end{quote}
+\end{itemize}
+
+\begin{theorem}
+  Let \(X_i\iid\nd(\m,\o^2)\) such that \(\m\) is unknown.  If \(\o\) is known then the one-sided \(1-\a\) confidence
+  intervals are given by:
+  \begin{itemize}
+  \item Upper
+    \[\m<\bar{x}+z_{\a}\frac{\o}{\sqrt{n}}\]
+  \item Lower
+    \[\m>\bar{x}-z_{\a}\frac{\o}{\sqrt{n}}\]
+  \end{itemize}
+  If \(\o\) is unknown then the one-sided \(1-a\) confidence intervals are given by:
+  \begin{itemize}
+  \item Upper
+    \[\m<\bar{x}+t_{\a,n-1}\frac{s}{\sqrt{n}}\]
+  \item Lower
+    \[\m>\bar{x}-t_{\a,n-1}\frac{s}{\sqrt{n}}\]
+  \end{itemize}
+\end{theorem}
+
+\begin{example}
+  A sample carton of brown eggs from a farm has \(\bar{x}=65.5\).  Assuming a normal population with \(\o^2=4\), obtain 95\%
+  upper and lower confidence intervals for \(\m\).
+  \begin{gather*}
+    z_{0.05}=\P(0.95)=1.645 \\
+    \\
+    z_{0.05}\frac{\o}{\sqrt{n}}=1.645\cdot\frac{2}{\sqrt{12}}=0.95
+    \\
+    65.5+0.95=66.45 \\
+    65.5-0.95=64.55
+  \end{gather*}
+\end{example}
+
+\end{document}

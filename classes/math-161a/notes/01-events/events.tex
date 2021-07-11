@@ -1,0 +1,127 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\w}{\omega}
+\renewcommand{\S}{\mathcal{S}}
+\begin{document}
+\section*{Events}
+
+\begin{definition}[Experiment]
+  An \emph{experiment} is any activity or process whose outcome is subject to uncertainty.  A \emph{trial} is one execution of
+  an experiment.  An \emph{outcome} of an experiment, denoted \(\w\), is one of the possible results from the experiment.  The
+  \emph{sample space} of an experiment, denoted \(\S\), is the set of all possible outcomes of the experiment.
+\end{definition}
+
+\begin{examples}[Sample Spaces]
+  \begin{itemize}
+  \item[]
+  \item Discrete and finite sample spaces:
+    \begin{itemize}
+    \item Toss a coin: \(\S=\set{H,T}\)
+    \item Roll a die: \(\S=\set{1,2,3,4,5,6}\)
+    \item Draw a card from a deck: \(\S=\setb{sr}{s\in\set{C,D,H,S},r\in\set{2,3,4,5,6,7,8,9,10,J,Q,K,A}}\)
+    \item Throw a coin twice: \(\S=\set{HH,HT,TH,HH}\)
+    \item Roll two dice: \(\S=\setb{(i,j)}{i,j\in\set{1,2,3,4,5,6}}\)
+    \end{itemize}
+
+  \item Discrete and infinite sample spaces:
+    \begin{itemize}
+    \item Throw a coin repeatedly until the first heads: \(\S=\set{H,TH,TTH,TTTH,\ldots}\)
+    \end{itemize}
+  
+  \item Continuous sample spaces:
+    \begin{itemize}
+    \item The lifetime of a new lightbulb: \(\S=[0,\infty)\)
+    \end{itemize}
+  \end{itemize}
+\end{examples}
+
+\begin{definition}[Event]
+  An \emph{event} is a subset of outcomes from a sample space.  To say that an event is \emph{simple} means that it contains
+  exactly one outcome.  Otherwise, an event is called \emph{compound}.  When an experiment is performed, an event \(A\) is
+  said to have \emph{occurred} if the resulting outcome \(\w\) is contained in the event (\(\w\in A\)).  In particular,
+  \(\S\) is an event that always occurs and \(\emptyset\) is an event that never occurs.
+\end{definition}
+
+\begin{example}[Roll a Die]
+  \(\S=\set{1,2,3,4,5,6}\)
+  \begin{itemize}
+  \item \(A=\set{1}\)\qquad (simple)
+  \item \(B=\set{6}\)\qquad (simple)
+  \item \(C=\set{\text{an even number}}=\set{2,4,6}\)\qquad (compound)
+  \item \(D=\set{\text{an odd number}}=\set{1,3,5}\)\qquad (compound)
+  \end{itemize}
+  Although each trial of an experiment has exactly one outcome, multiple events could occur: if \(\w=1\) then \(A\) and \(D\)
+  occur, but \(B\) and \(C\) do not occur.
+\end{example}
+
+\begin{example}[Roll Two Dice]
+  \(\S=\setb{(i,j)}{i,j\in\set{1,2,3,4,5,6}}\)
+  \begin{itemize}
+  \item \(A=\set{\text{sum equals 6}}=\set{(1,5),(2,4),(3,3),(4,2),(5,1)}\)
+  \item \(B=\set{\text{both equal}}=\set{(1,1),(2,2),(3,3),(4,4),(5,5),(6,6)}\)
+  \item \(C=\set{\text{both even}}=\set{(2,2),(2,4),(2,6),(4,2),(4,4),(4,6),(6,2),(6,4),(6,6)}\)
+  \end{itemize}
+\end{example}
+
+\begin{example}[Toss a Coin]
+  Toss a coin until the first heads: \(\S=\set{H,TH,TTH,TTH,\ldots}\)
+  \begin{itemize}
+  \item \(A=\set{\text{at most four tails}}=\set{H,TH,TTH,TTTH,TTTTH}\)
+  \end{itemize}
+\end{example}
+
+Since events are sets, the various set operations apply.  Assuming the following events from rolling two dice:
+\begin{itemize}
+\item Cardinality: \(\abs{A}=\) the number of outcomes in \(A\)
+\item Complement: \(A^c=\setb{\w}{\w\notin A}\)
+\item Union: \(A\cup B=\setb{\w}{\w\in A\ \text{or}\ \w\in B}\)
+\item Intersection: \(A\cap B=\setb{\w}{\w\in A\ \text{and}\ \w\in B}\)
+\item Difference: \(A-B=\setb{\w}{\w\in A\ \text{and}\ \w\notin B}=A\cap B^c\)
+\item Distributive:
+  \begin{itemize}
+  \item \(A\cap(B\cup C)=(A\cap B)\cup(A\cap C)\)
+  \item \(A\cup(B\cap C)=(A\cup B)\cap(A\cup C)\)
+  \end{itemize}
+\item DeMorgan:
+  \begin{itemize}
+  \item \((A\cup B)^c=A^c\cap B^c\)
+  \item \((A\cap B)^c=A^c\cup B^c\)
+  \end{itemize}
+\end{itemize}
+
+\begin{example}[Set Operations]
+  Assuming the following events from rolling two dice:
+  \begin{enumerate}
+  \item \(A=\set{\text{sum equals 6}}\)
+  \item \(B=\set{\text{both equal}}\)
+  \item \(C=\set{\text{both even}}\)
+  \end{enumerate}
+  \begin{gather*}
+    \abs{C}=9 \\
+    A\cap B=\set{(3,3)} \\
+    A\cup B=\set{(1,1),(1,5),(2,2),(2,4),(3,3),(4,2),(4,4),(5,1),(5,5),(6,6)} \\
+    B^c=\setb{(i,j)}{i,j\in\set{1,2,3,4,5,6}\ \text{and}\ i\ne j} \\
+    A-C=\set{(1,5),(3,3),(5,1)}
+  \end{gather*}
+\end{example}
+
+\begin{definition}[Disjoint]
+  To say that two events \(A\) and \(B\) are \emph{disjoint} means that \(A\cap B=\emptyset\).
+
+  Let \(\set{E_i,i\in I}\) be a family of events.  To say that the \(E_i\) are \emph{pairwise disjoint} or
+  \emph{mutually exclusive} means:
+  \[\forall i\in I,i\ne j\implies E_i\cap E_j=\emptyset\]
+\end{definition}
+
+\begin{example}[Toss Two Dice]
+  Consider the following events:
+  \begin{description}
+  \item \(A=\set{\text{sum equals 7}}\)
+  \item \(B=\set{\text{both equal}}\)
+  \end{description}
+  Since \(B\) always results in an even sum, but 7 is odd, it is the case that \(A\cap B=\emptyset\) and thus \(A\) and
+  \(B\) are disjoint.
+\end{example}
+
+\end{document}

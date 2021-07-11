@@ -1,0 +1,118 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\U}{\mathcal{U}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#9
+
+\bigskip
+
+\begin{theorem}[6.14]
+  For all \(a,b\in\R\) such that \(a\le b\), the subspace \([a,b]\) is compact.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(a,b\in\R\) such that \(a\le b\) and assume that \(\U=\set{U_{\a}:\a\in\l}\) is an open cover for
+  \([a,b]\).  If \(a=b\) then \([a,a]=\set{a}\) and there exists \(U_a\in\U\) such that \(U_a\) is a finite subcover
+  for \(\set{a}\).  So assume that \(a<b\).
+
+  Note that for all \(x\in[a,b]\) it is the case that \([a,x]\subset\bigcup\U\) as well.  So construct the set:
+  \[C=\setb{x\in[a,b]}{[a,x]\ \text{has a finite subcover in}\ \U}\subset[a,b]\]
+  Since \([a,a]\in C\), \(C\) is not empty.  Furthermore, \(C\) is bounded by \(b\).  Thus, there exists
+  \(c=\sup C\).  But since \(c\in[a,b]\), there exists some \(U_c\in\U\) such that \(c\in U_c\).
+
+  Now, since \(U_c\in\T\), there exists \((r,s)\subset U_c\) such that \(c\in(r,s)\).  Furthermore, there must
+  exist some \(x\in C\) such that \(r<x\le c\), otherwise, \(x<r<c\), violating the fact that \(c=\sup C\).  So
+  \(x\in[x,a]\), which has a finite subcover \(\U_x\subset\U\), and \(x,c\in U_0\).  Therefore \(\U_x\cup\set{U_0}\)
+  is a finite subcover for \([a,c]\) and thus \(c\in C\).
+
+  Finally, ABC that \(c<b\).  But \((c,b)\cap U_0\ne\emptyset\), so assume \(x\in(c,b)\cap U_0\).  So \([a,c]\) has
+  a finite subcover and \(c,x\in U_0\) such that \(x<c\).  Thus \([a,x]\) has a finite subcover and so \(x\in C\),
+  violating the fact that \(c=\sup C\).  Therefore \(c=b\) and \([a,b]\) has a finite subcover in \(\U\).
+
+  Therefore \([a,b]\) is compact.
+\end{proof}
+
+\begin{theorem}[6.15]
+  For all \(A\subset\R\), \(A\) is compact\(\iff A\) is closed and bounded.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(A\subset\R\).
+  \begin{description}
+  \item[\(\implies\)] Assume that \(A\) is compact.
+
+    Since \(\R\) is Hausdorff and \(A\) is compact, therefore \(A\) is closed.
+
+    Now, let \(\U=\set{(a-1,a+1):a\in A}\) be an open cover for \(A\).  Since \(A\) is compact, there exists
+    \(S=\set{a_1,\ldots a_n}\subset A\) such that \(\U'=\set{(a-1,a+1):a\in S}\subset\U\) is a finite subcover for
+    \(A\).  So let \(\displaystyle M=\max_{a\in S}\abs{a}\).  Therefore \(A\subset[-M,M]\) and hence \(A\) is bounded.
+
+  \item[\(\impliedby\)] Assume that \(A\) is closed and bounded.
+
+    Since \(A\) is bounded, there exists \(M\in\R\) such that \(A\subset[-M,M]\).  But, by the previous theorem,
+    \([-M,M]\) is compact, and so \(A\) is a closed subset of a compact set.  Therefore \(A\) is compact.
+  \end{description}
+\end{proof}
+
+\begin{theorem}[6.18]
+  Let \(X\times Y\) be a product space with \(Y\) compact.  If \(U\in\T_{X\times Y}\) and
+  \(\set{x_0}\times Y\subset U\) then there exists some \(W\in\T_X\) such that \(x_0\in W\) and
+  \(W\times Y\subset U\).
+\end{theorem}
+
+\begin{proof}
+  Assume \(U\in\T_{X\times Y}\) and \(\set{x_0}\times Y\subset U\).  This means that
+  \(\displaystyle U=\bigcup_{y\in Y}(U_y\times V_y)\), where \(x_0\in U_y\) and the \(V_y\) are an open cover of \(Y\).
+  But \(Y\) is compact, so there exists some finite subcover \(\set{V_{y_1},\ldots,V_{y_n}}\) of \(Y\).  So select
+  up to \(n\) open subsets of \(U_y\) and let \(\displaystyle W=\bigcap_{k=1}^nU_{y_k}\).  Note that \(W\in\T_X\)
+  because it is a finite intersection of open sets.
+
+  Claim: \(W\times Y\subset U\)
+
+  Assume that \((x,y)\in W\times Y\).  This means that for some \(k\), \(x\in U_{y_k}\) and \(y\in V_{y_k}\).  And so
+  \((x,y)\in U_{y_k}\times V_{y_k}\subset U\).
+\end{proof}
+
+\begin{theorem}[6.19]
+  If \(X\) and \(Y\) are compact spaces then \(X\times Y\) is compact.
+\end{theorem}
+
+\begin{proof}
+  Assume that \(X\) and \(Y\) are compact and let \(\U\) be an open cover of \(X\times Y\).  Since \(Y\) is
+  compact, for all \(x\in X\), \(\set{x}\times Y\) has a finite subcover \(\U_x=\set{U_{x_k}:1\le k\le n}\subset\U\).
+  Furthermore, for each \(x\in X\), by the previous theorem, there exists a tube \(W_x\times Y\subset\U_x\).  But
+  \(\set{W_x:x\in X}\) is an open cover of \(X\) using the tubes, and since \(X\) is compact, there exists a finite
+  subcover of tubes \(\set{W_{x_1},\ldots,W_{x_n}}\) such that \(W_{x_k}\times Y\subset U_{x_k}\).  And so:
+  \[X\times Y=\bigcup_{k=1}^n(W_{x_k}\times Y)\subset\bigcup_{k=1}^nU_{x_k}\]
+  which is a finite subcover of \(X\times Y\).  Therefore \(X\times Y\) is compact.
+\end{proof}
+
+\begin{theorem}[6.20]
+  For all \(A\subset\R^n\), \(A\) is compact\(\iff A\) is closed and bounded.
+\end{theorem}
+
+\begin{proof}
+  Assume \(A\subset\R^n\).
+  \begin{description}
+  \item[\(\implies\)] Assume that \(A\) is compact.
+
+    Since \(R^n\) is Hausdorff and \(A\subset\R^n\) is compact, \(A\) is closed.  Now, let \(\set{(-k,k)^n:k\in N}\)
+    be an open cover for \(A\).  But since \(A\) is compact, there exists a finite subcover
+    \(\set{(-k_i,k_i)^n:1\le i\le n}\).  Furthermore:
+    \[\bigcup_{i=1}^n(-k_i,k_i)^n=(-k_{max},k_{max})^n\supset A\]
+    Therefore \(A\) is bounded.
+
+  \item[\(\impliedby\)] Assume that \(A\) is closed and bounded.
+
+    Since \(A\) is bounded, there exists \(M>0\) such that \(A\subset[-M,M]^n\).  But \([-M,M]\) is compact, and so
+    by repeated application of the previous theorem, \([-M,M]^n\) is compact.  Therefore, since \(A\) is a closed
+    subset of a compact set, \(A\) is also compact.
+  \end{description}
+\end{proof}
+
+\end{document}

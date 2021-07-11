@@ -1,0 +1,126 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Uncountable Sets}
+
+\begin{theorem}[Cantor Diagonalization]
+  The set of real numbers \(\R\) is uncountable.
+\end{theorem}
+
+\begin{proof}
+  ABC that \((0,1)\) is countable.  This means that there exists some bijection \(f:\N\to(0,1)\).  Let \(a_{ij}\)
+  be \(j^{th}\) decimal digit of the \(i^{th}\) number:
+  \begin{align*}
+    f(1) &= 0.a_{11}a_{12}a_{13}a_{14}a_{15}\cdots \\
+    f(2) &= 0.a_{21}a_{22}a_{23}a_{24}a_{25}\cdots \\
+    f(3) &= 0.a_{31}a_{32}a_{33}a_{34}a_{35}\cdots \\
+    f(4) &= 0.a_{41}a_{42}a_{43}a_{44}a_{45}\cdots \\
+    f(5) &= 0.a_{51}a_{52}a_{53}a_{54}a_{55}\cdots \\
+    \vdots &= \vdots
+  \end{align*}
+  If \(f(n)\) is rational with more than one representation, for example: \(0.4\bar{9}=0.5\bar{0}\), then the
+  repeating \(0\) case is selected.
+
+  Now, let \(b=b_1b_2b_3b_4b_5\cdots\) where:
+  \[b_i=\begin{cases}
+  1, & a_{ii}\ne1 \\
+  2, & a_{ii}=1
+  \end{cases}\]
+  So \(b\) never contains a \(0\) or \(9\) digit and thus the non-unique cases are avoided.  This means that
+  \(b\in(0,1)\) but \(b\notin f(\N)\), contradicting the bijectiveness of \(f\).  Thus, \((0,1)\) is uncountable.
+  But \((0,1)\subset\R\).
+
+  Therefore \(\R\) is uncountable.
+\end{proof}
+
+\begin{definition}[Power Set]
+  Let \(A\) be a set.  The \emph{power set} of \(A\), denoted by \(2^A\), is the set of all subsets of \(A\).
+\end{definition}
+
+\begin{example}
+  Let \(A=\set{a,b,c}\):
+  \[2^A=\set{\emptyset,\set{a},\set{b},\set{c},\set{a,b},\set{a,c},\set{b,c},\set{a,b,c}}\]
+\end{example}
+
+\begin{theorem}
+  Let \(A\) be a finite set:
+  \[\abs{2^A}=2^{\abs{A}}\]
+\end{theorem}
+
+\begin{proof}
+  For each \(B\in2^A\), for each \(a\in A\), either \(a\in B\) or \(a\notin B\): \(2\) possibilities.  Therefore,
+  since there are \(\abs{A}\) elements in \(A\):
+  \[\abs{2^A}=2^{\abs{A}}\]
+\end{proof}
+
+\begin{theorem}
+  Let \(A\) be a set.  There exists an injection from \(A\) to \(2^A\).
+\end{theorem}
+
+\begin{proof}
+  Consider \(f:A\to2^A\) defined by \(f(a)=\set{a}\subset A\).  This is an injection from \(A\) to \(2^A\).
+\end{proof}
+
+\begin{theorem}
+  Let \(A\) be a set and let \(P\) be the set of all functions from \(A\) to the two-point set \(\set{0,1}\):
+  \[\abs{P}=\abs{2^A}\]
+\end{theorem}
+
+\begin{proof}
+  Consider the function \(f:P\to2^A\) defined by \(f(p)=B\) such that:
+  \[p(a)=\begin{cases}
+  0, & a\notin B \\
+  1, & a\in B
+  \end{cases}\]
+  Claim: \(f\) is a bijection.
+
+  Assume \(f(p_1)=f(p_2)=B\).  Assume \(a\in A\).  If \(a\notin B\) then \(p_1(a)=p_2(a)=0\).  If \(a\in B\) then
+  \(p_1(a)=p_2(a)=1\).  So \(\forall\,a\in A,p_1(a)=p_2(a)\).  Thus, by definition, \(p_1=p_2\) and therefore
+  \(f\) is injective.
+
+  Now, assume \(B\in 2^A\).  Since \(B\subset A\), for each \(a\in A\), \(a\) is either not in \(B\) or in \(B\).
+  So define \(p:A\to\set{0,1}\) as above.  Thus \(p\in P\) and \(f(p)=B\).  Therefore \(f\) is surjective.
+
+  Therefore \(f\) is a bijection and thus \(\abs{P}=\abs{2^A}\).
+\end{proof}
+
+\begin{theorem}
+  Let \(B\) be the set of all bit strings of infinite length.
+  \[\abs{B}=\abs{2^{\N}}\]
+\end{theorem}
+
+\begin{proof}
+  Let \(P\) be the set of all functions from \(\N\) to the two-point set \(\set{0,1}\).  Consider the function
+  \(f:P\to B\) defined by \(f(p)=b\) such that \(b=b_1b_2b_3\cdots\) and \(p(i)=b_i\).
+
+  Claim: \(f\) is a bijection.
+
+  Assume \(f(p_1)=f(p_2)=b\).  Assume \(i\in\N\).  If \(b_i=0\) then \(p_1(i)=p_2(i)=0\).  If \(b_i=1\) then
+  \(p_1(i)=p_2(i)=1\).  So \(\forall\,i\in\N,p_1(i)=p_2(i)\).  Thus, by definition, \(p_1=p_2\) and therefore \(f\)
+  is injective.
+
+  Now, assume \(b\in B\).  For each \(i\in\N\), \(b_i\) is either \(0\) or \(1\).  So define \(p:\N\to\set{0,1}\) as
+  above.  Thus \(p\in P\) and \(f(p)=b\).  Therefore \(f\) is surjective.
+
+  Thus \(f\) is a bijection and \(\abs{P}=\abs{B}\).  But, by the previous theorem, \(\abs{P}=\abs{2^{\N}}\).
+
+  \(\therefore\abs{B}=\abs{2^{\N}}\)
+\end{proof}
+
+\begin{theorem}[Cantor Power Set]
+  Let \(A\) be a set:
+  \[\abs{A}\ne\abs{2^A}\]
+\end{theorem}
+
+\begin{proof}
+  Let \(f:A\to2^A\) and ABC that \(f\) is bijective.  For all \(a\in A\) let \(f(a)=B_a\).  This means that either
+  \(a\notin B_a\) or \(a\in B_a\).  Now, construct \(B\in2^A\) as follows:
+  \[B=\setb{a\in A}{a\notin f(a)}\]
+  Note that if \(a\notin B_a\) then \(a\in B\) and if \(a\in B_a\) then \(a\notin B\) and so \(\forall\,a\in
+  A,B_a\ne B\).  Thus, \(B\in2^A\) but \(B\notin f(A)\), contradicting the bijectiveness of \(f\).
+
+  \(\therefore\abs{A}\ne\abs{2^A}\)
+\end{proof}
+
+\end{document}
