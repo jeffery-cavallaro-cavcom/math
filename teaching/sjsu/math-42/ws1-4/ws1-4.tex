@@ -1,0 +1,105 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\renewcommand{\implies}{\rightarrow}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#4
+
+  \textbf{Predicates and Qualifiers}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Let \(P(x)\) be the predicate ``\(x\) is a rational number.''  Determine the truth values of the following
+  propositions:
+  \begin{enumerate}
+  \item \(P(0)\)
+  \item \(P\left(\frac{1}{2}\right)\)
+  \item \(P(\pi)\)
+  \item \(P(0.125)\)
+  \item \(P(-5)\)
+  \item \(P(123.45\overline{67})\)
+  \item \(P(\sqrt{2})\)
+  \end{enumerate}
+
+\item Let \(P(x,y)\) be the predicate ``\(xy\) is an even number.''  Determine the truth values of the following
+  propositions:
+  \begin{enumerate}
+    \item \(P(2, 4)\)
+    \item \(P(3, 1)\)
+    \item \(P(5, -2)\)
+    \item \(P(0, \pi)\)
+    \item \(P\left(\pi, \frac{1}{\pi}\right)\)
+  \end{enumerate}
+
+\item Let \(x\in\set{-1,0,1,2,3,5,9}\) and let \(P(x)\coloneqq x\le5\).  Determine the truth values of the following
+  quantified propositions.  State a counterexample for false universal quantifiers and an example for true
+  existential quantifiers.
+  \begin{enumerate}
+  \item \(\forall\,xP(x)\)
+  \item \(\lnot\forall\,xP(x)\)
+  \item \(\forall\,x\lnot P(x)\)
+  \item \(\exists\,xP(x)\)
+  \item \(\lnot\exists\,xP(x)\)
+  \item \(\exists\,x\lnot P(x)\)
+  \end{enumerate}
+
+\item Recall that \(p\implies q\) is true whenever \(p\) is false.  Thus, constructs like:
+  \[\forall\,x(P(x)\implies Q(x))\]
+  let \(P(x)\) act like a filter to only select particular values of \(x\).  If \(P(x)\) is false then the
+  implication is true and the truth value of the universal quantifier is unaffected.  So let \(x\) and \(P(x)\)
+  be the same as the previous problem and let \(Q(x)\coloneqq x>0\).  Determine the truth values of the following
+  quantified propositions.  State a counterexample for false universal quantifiers.
+  \begin{enumerate}
+  \item \(\forall\,x(P(x)\implies Q(x))\)
+  \item \(\forall\,x(P(x)\implies\lnot Q(x))\)
+  \item \(\forall\,x(\lnot P(x)\implies Q(x))\)
+  \item \(\forall\,x(P(x)\implies\lnot Q(x))\)
+  \end{enumerate}
+
+\item Let \(R(x,y)\coloneqq ``x\ \text{is related to}\ y\text{''}\) and \(T(x)\coloneqq ``x\ \text{is a teenager''}\),
+  where \(x\) and \(y\) are taken from a particular set of people.  Convert each of the following to logic
+  expressions:
+  \begin{enumerate}
+  \item George is related to Mary.
+  \item Everyone is related to Mary.
+  \item Someone is related to Mary.
+  \item Mary is related to someone.
+  \item No one is related to Mary.
+  \item Someone is not related to Mary.
+  \item No one is related to themselves.
+  \item If someone is a teenager then they are related to Mary.
+  \item If someone is related to Mary then they are a teenager.
+  \item Everyone is a teenager and related to Mary.
+  \end{enumerate}
+
+\item Negate each expression in the previous problem (hint: deMorgan).
+
+\item An important concept that we will use in our first proofs is the concept of \emph{closure}.  Closure states
+  that if you perform an operation on one or more operands (e.g., addition or multiplication) then the result is
+  the same type of object as the two operands.  For example, if you add any two natural numbers then the result
+  must be a natural number.  If \(\N\) is the set of natural numbers, then:
+  \[\forall\,n,m\in\N,n+m\in\N\]
+  is a statement of the closure of natural numbers under addition.
+  \begin{enumerate}
+  \item Convince yourself that the natural numbers are in fact closed under addition.
+  \item Construct a similar logical expression for the closure of natural numbers under multiplication.  Is it
+    true?
+  \item If \(\Z\) is the set of integers, write similar logical expressions for the closure of integers under
+    addition and multiplication.  Are they true?
+  \item If \(\Q\) is the set of rational numbers, write similar logical expressions for the closure of rational
+    numbers under addition and multiplication.  Are they true?
+  \item If \(\R\) is the set of real numbers, write similar logical expressions for the closure of real numbers
+    under addition and multiplication.  Are they true?
+  \end{enumerate}
+
+\item The set of irrational numbers is \emph{not} closed under addition or multiplication.  Find counterexamples
+  where adding or multiplying two irrational numbers results in a rational number.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,127 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\renewcommand{\implies}{\rightarrow}
+\renewcommand{\iff}{\longleftrightarrow}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#6
+
+  \textbf{Rules of Inference}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Identify each rule of inference, or state that an argument is a fallacy:
+  \begin{enumerate}
+  \item \(n\in\N\) or \(n<0\).  \(n\notin\N\) or \(n=1\).  Therefore \(n<0\) or \(n=1\).
+  \item If \(n\) is odd then \(n^2\) is odd.  \(n\) is odd.  Therefore \(n^2\) is odd.
+  \item  For all \(n\in\Z\), if \(n\) is even then there exists \(k\in\Z\) such that \(n=2k\).  \(100\) is even.
+    Therefore there exists \(k\in\Z\) such that \(100=2k\).
+  \item \(n\in\N\) and \(n\in\Z\).  Therefore \(n\in\Z\).
+  \item \(a<x\). \(x<b\).  Therefore \(a<x<b\).
+  \item If \(n<n^2\) then \(n\ne1\).  If \(n\ne1\) then \(n+5\ne6\).  Therefore if \(n<n^2\) then \(n+5\ne 6\).
+  \item If \(n=1\) then \(n^2=1\).  \(n^2=1\).  Therefore \(n=1\).
+  \item If \(n\) is even then \(n^2\) is even.  \(n^2\) is odd.  Therefore \(n\) is odd.
+  \item \(a\le b\).  \(a\ne b\).  Therefore \(a<b\).
+  \item \(a<b\).  Therefore \(a\le b\).
+  \item If \(n=1\) then \(n^2=1\).  \(n\ne1\).  Therefore \(n^2\ne1\).
+  \item For all \(n\in\Z\), if \(n\) is even then \(n^2\) is even.  \(225=15^2\) is odd.  Therefore \(15\) is
+    odd.
+  \end{enumerate}
+
+\item Consider the following two predicates:
+  \begin{gather*}
+    C(x)\coloneqq x\ \text{is an calculus problem} \\
+    H(x)\coloneqq x\ \text{is a hard problem} \\
+  \end{gather*}
+  and the following premises:
+  \begin{itemize}
+  \item If \(x\) is a calculus problem then it is hard.
+  \item Integration is a calculus problem.
+  \item Solving a linear equation in one variable is not hard.
+  \item Solving a system of \(100\) linear equation in \(100\) unknowns is not a calculus problem.
+  \end{itemize}
+  \begin{enumerate}
+  \item Write each premise as a logical expression.
+  \item What conclusions can you make from the premises?
+  \item Which premise does not lead to any conclusion and why?
+  \end{enumerate}
+
+\item Consider the following three predicates:
+  \begin{gather*}
+    Z(x)\coloneqq x\ \text{is an integer} \\
+    O(x)\coloneqq x\ \text{is odd} \\
+    E(x)\coloneqq x\ \text{is even}
+  \end{gather*}
+  and the following premises:
+  \begin{itemize}
+  \item If \(x\) is an integer then it is either even or odd.
+  \item \(a\) is an integer or \(b\) is an integer.
+  \item \(a\) is neither even nor odd.
+  \item \(b\) is not even.
+  \end{itemize}
+  \begin{enumerate}
+  \item Write each premise as a logical expression.
+  \item What three conclusions can you make from the premises?
+  \item What is the rule of inference used for each conclusion?
+  \end{enumerate}
+
+\item One of the most important uses of rules of inference is modus ponens (or modus tolens) on a definition.  A
+  definition is an equivalence: \(p\iff q\), meaning \(p\) is the same thing as \(q\).  Thus, if \(p\) is true then
+  we can conclude that \(q\) is true and if \(q\) is true then we can conclude that \(p\) is true.  Also, by modus
+  tolens, if \(q\) is false then \(p\) is false and if \(p\) is false then \(q\) is false.  Some common ways to
+  state definitions are:
+  \begin{itemize}
+  \item \(p\iff q\)
+  \item \(p\) if and only if \(q\)
+  \item \(p\) iff \(q\)
+  \item To say that \(p\) means \(q\)
+  \item If \(p\) then \(q\).
+  \end{itemize}
+  Note that in the last case a simple implication is used; however, if it is understood that what is being stated
+  is a definition then an equivalence is assumed.
+
+  So consider the following definition of a rational number:
+  \[x\in\Q\iff\exists\,p,q\in\Z,q\ne0\land x=\frac{p}{q}\]
+  Use modus pollens or modus tollens to make conclusions from the following premises:
+  \begin{enumerate}
+  \item \(0.5\) is a rational number.
+  \item \(0.5=\frac{1}{2}\)
+  \item \(\pi\) is an irrational number.
+  \item \(\forall\,p,q\in\Z,\sqrt{2}\ne\frac{p}{q}\)
+  \end{enumerate}
+
+\item Consider the following argument:
+  \begin{itemize}
+  \item For all candy, if the candy contains chocolate then it is good.
+  \item A Hersey bar contains chocolate.
+  \item A Hershey bar is good.
+  \item There exists a good candy.
+  \end{itemize}
+  \begin{enumerate}
+  \item Convert the propositions in the argument to logical expressions.
+  \item If the first two propositions are premises, what are the rules of inference that result in the third and fourth
+    propositions?
+  \end{enumerate}
+
+\item Consider the following argument:
+  \begin{gather*}
+    \exists\,x(P(x)\land Q(x)) \\
+    \forall\,x(Q(x)\implies R(x)) \\
+    P(a)\land Q(a) \\
+    P(a) \\
+    Q(a) \\
+    R(a) \\
+    P(a)\land R(a) \\
+    \exists\,x(P(x)\land R(x))
+  \end{gather*}
+  Assuming that the first two lines are premises, what are the rules of inference that result in each of the
+  remaining lines.
+\end{enumerate}
+
+\end{document}

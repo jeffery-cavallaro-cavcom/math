@@ -1,0 +1,42 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{venndiagram}
+\pagestyle{plain}
+\renewcommand{\a}{\ \text{and}\ }
+\renewcommand{\o}{\ \text{or}\ }
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#7 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+\begin{enumerate}[left=0in]
+\item Prove: \(A-(B\cap C)=(A-B)\cup(A-C)\)
+  \begin{align*}
+    x\in A-(B\cap C) &\iff x\in A\a x\notin(B\cap C) \\
+    &\iff x\in A\a x\in\overline{B\cap C} \\
+    &\iff x\in A\a x\in\bar{B}\cup\bar{C} \\
+    &\iff x\in A\a(x\in\bar{B}\o x\in\bar{C}) \\
+    &\iff (x\in A\a x\in\bar{B})\o(x\in A\a x\in\bar{C}) \\
+    &\iff (x\in A\a x\notin B)\o(x\in A\a x\notin C) \\
+    &\iff x\in(A-B)\o x\in(A-C) \\
+    &\iff x\in(A-B)\cup(A-C)
+  \end{align*}
+\item Show the corresponding region on a Venn diagram.
+
+  \begin{center}
+    \begin{venndiagram3sets}
+      \fillOnlyA
+      \fillACapBNotC
+      \fillACapCNotB
+    \end{venndiagram3sets}
+  \end{center}
+\end{enumerate}
+
+\end{document}

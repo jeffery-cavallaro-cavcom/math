@@ -1,0 +1,95 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-08 Homework \#4 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\begin{itemize}
+\item Text book section 0.5, 0.6, and 0.7
+\end{itemize}
+
+\underline{Problems}
+
+\begin{enumerate}
+\item Expand the following. Your answer should contain \emph{no} radicals.
+  \begin{eqnarray*}
+    (4x^2-3y)(x^{\frac{1}{3}}+2\sqrt{y}) &=&
+    (4x^2-3y)(x^{\frac{1}{3}}+2y^{\frac{1}{2}}) \\
+    &=& (4x^2)(x^{\frac{1}{3}})+(4x^2)(2y^{\frac{1}{2}})+(-3y)(x^{\frac{1}{3}})+
+    (-3y)(2y^{\frac{1}{2}}) \\
+    &=& 4x^{\frac{7}{3}}+8x^2y^{\frac{1}{2}}-3x^{\frac{1}{3}}y-6y^{\frac{3}{2}} \\
+  \end{eqnarray*}
+
+\item Explain why the following is incorrect, and then state what it should
+  be:
+  \[(2x+3y)^2=4x^2+9y^2\]
+
+  Never distribute an exponent across addition! This needs to be FOIL'ed:
+  \[(2x+3y)^2=(2x)^2+2(2x)(3y)+(3y)^2=4x^2+12xy+9x^2\]
+
+\item Factor the following. Your answer should contain \emph{no} negative
+  exponents:
+  \begin{eqnarray*}
+    x^{\frac{5}{3}}-2x^{\frac{2}{3}}+x^{-\frac{1}{3}} &=&
+    x^{-\frac{1}{3}}\left(x^{\frac{5}{3}+\frac{1}{3}}-2x^{\frac{2}{3}+\frac{1}{3}}+1\right) \\
+    &=& x^{-\frac{1}{3}}(x^2-2x+1) \\
+    &=& x^{-\frac{1}{3}}(x-1)^2 \\
+    &=& \frac{(x-1)^2}{x^{\frac{1}{3}}} \\
+    &=& \frac{(x-1)^2}{\sqrt[3]{x}} \\
+  \end{eqnarray*}
+
+\item Consider:
+  \[\frac{x+1}{x+2}\left(\frac{1}{x}+\frac{2}{x+1}-\frac{x-5}{x-2}\right)\]
+  \begin{enumerate}
+  \item Combine into a single, simplified rational expression.
+
+    Work on the inside first. We need a common denominator, which will be
+    $x(x+1)(x-2)$. We adjust each numerator for the common denominator by
+    multiplying by the missing factors:
+    \[\frac{x+1}{x+2}\left[\frac{(x+1)(x-2)+2x(x-2)-x(x-5)(x+1)}{x(x+1)(x-2)}
+      \right]\]
+
+    Now, do the necessary FOIL'ing in the numerator. Be careful of the minus
+    sign in the last term!
+    \[\frac{x+1}{x+2}\left[\frac{(x^2-x-2)+(2x^2-4x)-(x^3-4x^2-5x)}{x(x+1)(x-2)}
+      \right]\]
+
+    Now, combine like terms in the numerator:
+    \[\frac{x+1}{x+2}\left[\frac{-x^3+7x^2-2}{x(x+1)(x-2)}\right]\]
+
+    We can now do the multiplication. Note that the $(x+1)$ factor cancels;
+    however, we make a little note to ourselves that $x\ne-1$ for when we
+    determine the domain at the end:
+    \[\frac{-x^3+7x^2-2}{x(x+1)(x-2)(x+2)}\]
+
+    We can leave it like this. Don't bother to multiply out the denominator -
+    the factored form gives us more information. One optional step is to
+    factor out the negative in the numerator:
+    \[-\frac{x^3-7x^2+2}{x(x-2)(x+2)}\]
+    
+  \item State the domain.
+
+    A zero denominator is not allowed:
+    \[x(x-2)(x+2)\ne0\]
+    We use the property of zero that says if you multiply a bunch of factors
+    and the result in non-zero, then none of the factors is zero:
+
+    $x\ne0$ \\
+    $x-2\ne0$ \\
+    $x+2\ne0$ \\
+
+    Which results in $x\ne0,\pm2$. But don't forget, we eliminated $x=-1$
+    earlier as well. So the final domain is:
+    \[\{x\in\R\mid x\ne0,-1,\pm2\}\]
+  \end{enumerate}
+\end{enumerate}
+  
+\end{document}

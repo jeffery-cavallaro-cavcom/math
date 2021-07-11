@@ -1,0 +1,203 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\renewcommand{\o}{\theta}
+\newcommand{\w}{\omega}
+\newcommand{\p}{\phi}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Exam \#5
+\end{center}
+
+\vspace{0.5in}
+
+Name: \rule{4in}{1pt}
+
+\vspace{0.5in}
+
+This exam is closed book and notes. You may use a calculator; however, no cell
+phones or tablets are allowed. Show all work; there is no credit for guessed
+answers. All values should be exact with no decimals unless you are
+specifically asked for an approximate or decimal answer. Be careful to check
+for extraneous solutions.
+
+\vspace{0.5in}
+
+\begin{center}
+  \scalebox{2}{
+    \begin{tabular}{|c|c|}
+      \hline
+      problem & score \\
+      \hline
+      1 & \hspace{0.5in} \\
+      \hline
+      2 & \\
+      \hline
+      3 & \\
+      \hline
+      4 & \\
+      \hline
+      5 & \\
+      \hline
+      6 & \\
+      \hline
+      7 & \\
+      \hline
+      8 & \\
+      \hline
+      9 & \\
+      \hline
+      10 & \\
+      \hline
+      TOTAL & \\
+      \hline
+    \end{tabular}}
+\end{center}
+
+\newpage
+
+\begin{enumerate}
+
+\item Consider the angle $\o=-42^{\circ}$.
+  \begin{enumerate}
+  \item Convert to radians (leave the answer reduced and in terms of $\pi$).
+
+    \vspace{2in}
+
+  \item Find a coterminal angle in the interval $[0,2\pi]$.
+  \end{enumerate}
+
+  \newpage
+  
+\item Consider the trigonometric function:
+  \[f(t)=-2\cos\left(2t+\frac{\pi}{3}\right)\]
+  \begin{enumerate}
+  \item What is the amplitude?
+
+    $A=$
+
+  \item What is the angular frequency?
+
+    $\w=$
+
+  \item What is the period?
+
+    $T=$
+    
+  \item What is the horizontal translation?
+
+    $b=$\hspace{1in}to the:
+    
+  \item What is the phase angle?
+
+    $\p=$
+
+  \item Sketch one period of the graph from $[b,b+T]$. Be sure to label the
+    four key $t$ values and use dotted lines to indicate the amplitude.
+
+    \begin{tikzpicture}
+      \draw (-5,0) -- (5,0);
+      \draw (0,-5) -- (0,5);
+    \end{tikzpicture}
+  \end{enumerate}
+
+  \newpage
+
+\item Consider the trigonometric function:
+  \[f(t)=2\tan\left[2\pi\left(t-\frac{1}{4}\right)\right]\]
+  \begin{enumerate}
+  \item What is the angular frequency?
+
+    $\w=$
+
+  \item What is the period?
+
+    $T=$
+    
+  \item What is the horizontal translation?
+
+    $b=$\hspace{1in}to the:
+    
+  \item Sketch one period of the graph from
+    $\left(b-\frac{T}{2},b+\frac{T}{2}\right)$. Be sure to show the asymptotes
+    at the ends of the interval and label the zero.
+
+    \vspace{0.25in}
+
+    \begin{tikzpicture}
+      \draw (-5,0) -- (5,0);
+      \draw (0,-5) -- (0,5);
+    \end{tikzpicture}
+  \end{enumerate}
+
+  \newpage
+
+\item Evaluate the following expressions:
+  \[\cos^{-1}\left(\cos\frac{2\pi}{3}\right)\]
+
+  \vspace{2in}
+
+\item Evaluate the following expressions:
+  \[\sin\left(\tan^{-1}\frac{1}{2}\right)\]
+
+  \vspace{2in}
+
+\item Rewrite the following expression in terms of $x$:
+  \[\tan\left(\cos^{-1}\frac{x}{\sqrt{1-x^2}}\right)\]
+
+  \newpage
+
+\item A car has $\SI{12}{in}$ tires that are rotating at $\SI{800}{rpm}$.
+  Assuming no slippage between the tires and the road, how fast is the car
+  traveling (in mph)?
+
+  \vspace{4in}
+
+\item A plane passes directly over a control tower. A radar sensor that is
+  located $\SI{500}{ft}$ from the tower determines that the angle of
+  elevation to the plane is $72^{\circ}$. What is the elevation of the plane
+  (to the nearest foot)?
+
+  \newpage
+
+\item Two observers on shore are $\SI{1000}{ft}$ apart and are viewing a
+  ship on the water according to the following diagram:
+
+  \vspace{0.25in}
+
+  \begin{center}
+    \begin{tikzpicture}
+      \node [draw,circle] (a) at (0,-2) {$P_1$};
+      \node [draw,circle] (b) at (0,4) {$P_2$};
+      \node [draw,circle] (c) at (5,0) {ship};
+      \draw [dashed] (a) to (b);
+      \draw [dashed] (a) to (c);
+      \draw [dashed] (b) to (c);
+      \node at (0.75,-1.25) {$60^{\circ}$};
+      \node at (0.75,2.75) {$45^{\circ}$};
+    \end{tikzpicture}
+  \end{center}
+
+  How far is the ship from person 1 (to the nearest foot)?
+
+  \newpage
+
+\item A particle undergoes damped harmonic motion in one dimension about the
+  equilibrium position $x=0$. Let $x(t)$ denote the particle's position at
+  time $t$. At $f(0)=5$ the particle is at its right-most position for the
+  first cycle. At $f(1)=-4$ the particle is at its left-most position for the
+  first cycle. Recall that the equation for this type of motion is:
+  \[f(t)=Ae^{-kt}\cos\w t\]
+  \begin{enumerate}
+  \item Identify the following values:
+    \[A=\]
+    \[T=\]
+    \[\w=\]
+  \item Calculate $k$. Round your answer to two significant digits.
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

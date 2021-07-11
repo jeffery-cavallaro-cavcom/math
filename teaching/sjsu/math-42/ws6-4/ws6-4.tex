@@ -1,0 +1,50 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#21
+
+  \textbf{Binomial Coefficients and Identities}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Expand: \((x+y)^6\)
+
+\item Expand: \((2x+3y)^4\)
+
+\item Expand: \((x^2-2y)^3\)
+
+\item What is the \(x^4y^6\) coefficient of \((x+y)^{10}\).
+
+\item What is the \(x^6y^4\) coefficient of \((x+y)^{10}\).
+
+\item What is the \(x^4y^6\) coefficient of \((x-2y)^{10}\).
+
+\item We know that \(\displaystyle2^n=\sum_{k=1}^n\binom{n}{k}\).  Construct similar expressions for \(3^n\) and
+  \(4^n\).  Can you generalize this for \(m^n\)?
+
+\item Prove Pascal's Identity analytically (i.e., by manipulating the factorials).
+
+\item Construct a clear committee selection argument for Pascal's Identity.
+
+\item For this last exercise we will prove the binomial theorem using induction:
+  \[(x+y)^n=\sum_{k=1}^n\binom{n}{k}x^{n-k}y^k\]
+  \begin{enumerate}
+  \item Start with the base case for \(n=0\).
+  \item Write the inductive hypothesis.
+  \item Rewrite \((x+y)^{n+1}\), apply the inductive hypothesis, and then distribute.
+  \item Bring the extra \(x\) and \(y\) into their respective sums (since they are not dependent on the index).
+  \item Move the index on the sum with the extra \(y\) from \(0\) to \(1\).
+  \item Pull out the \(k=0\) term from the sum with the extra \(x\).
+  \item Combine the two sums.
+  \item Apply Pascal's Identity.
+  \item Fold the \(k=0\) term back into the sum.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

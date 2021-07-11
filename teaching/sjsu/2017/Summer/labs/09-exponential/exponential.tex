@@ -1,0 +1,94 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+\section*{Lab 9: Real Exponents}
+
+Consider the exponential expression $a^b$ for $a,b\in\R$. There are three cases
+for $b$:
+\begin{enumerate}
+\item $b\in\Z$ (integer)
+\item $b\in\Q$ (rational)
+\item $b\in\R-\Q$ (irrational)
+\end{enumerate}
+
+We have already studied what the first two cases mean: when $b$ is an integer
+then we have $a\cdot a\cdots a$ a total of $b$ times (or the reciprocal when
+$b<0$) and when $b$ is a rational number $\frac{p}{q}$ then
+$a^b=\sqrt[q]{a^p}$. But what does it mean when $b$ is irrational? For example,
+what the heck does something like $2^\pi$ possibly mean?
+
+If you enter $2^\pi$ into your calculator you will get an answer like:
+$2^\pi=8.824977827$. Of course, $2^\pi$ is irrational, so this is just an
+approximation. But how did the calculator come by this answer? For this, we
+turn to our old friend \emph{arbitrarily close}. Remember that $\pi$ is the
+result of a sequence of fixed decimal (and therefore rational) approximations
+that get arbitrarily close to the exact value of $\pi$:
+\[\begin{array}{l}
+3 \\
+3.1 \\
+3.14 \\
+3.141 \\
+3.1415 \\
+3.14159 \\
+3.141592 \\
+3.1415926 \\
+\vdots
+\end{array}\]
+As such, we can calculate $2^p$ for each approximation of $\pi=p$:
+\[\begin{array}{l|l}
+\pi & 2^\pi \\
+\hline
+3 & 8 \\
+3.1 & 8.574187700 \\
+3.14 & 8.815240927 \\
+3.141 & 8.821353305 \\
+3.1415 & 8.824411082 \\
+3.14159 & 8.824961595 \\
+3.141592 & 8.824973829 \\
+3.1415926 & 8.824977499
+\end{array}\]
+
+Note that as the approximation for $\pi$ gets better and better, the
+approximation for $2^\pi$ also gets better. In fact, if you give me any
+$\epsilon>0$, no matter how small, I can eventually find an approximation $p$
+of $\pi$ such that $2^p$ is within $\epsilon$ of the exact value of $2^\pi$.
+
+Now you do it. Consider the irrational value $\pi^{\sqrt{2}}$. This time, both
+the base and exponent are irrational, so you will need to approximate both at
+each step. First get a value from your calculator. Be sure to list all of the
+decimal digits that your calculator provides:
+\[\pi^{\sqrt{2}}=\]
+Now get values for $\pi$ and $\sqrt{2}$:
+\[\pi=\]
+\[\sqrt{2}=\]
+Now complete the following table (I have done the first two rows for you):
+\[\begin{array}{|l|l|l|}
+  \hline
+  \pi & \sqrt{2} & \pi^{\sqrt{2}} \\
+  \hline
+  3 & 1 & 3.000000000 \\
+  \hline
+  3.1 & 1.4 & 4.874233962 \\
+  \hline
+  \hspace{16ex} & \hspace{16ex} & \hspace{32ex} \\
+  \hline
+  & & \\
+  \hline
+  & & \\
+  \hline
+  & & \\
+  \hline
+  & & \\
+  \hline
+  & & \\
+  \hline
+  & & \\
+  \hline
+  & & \\
+  \hline
+\end{array}\]
+Notice how your approximations for $\pi^{\sqrt{2}}$ converge to your
+calculator answer.
+
+\end{document}

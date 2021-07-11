@@ -1,0 +1,98 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\usepackage{cancel}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#2
+
+  \large
+  \textbf{Due: 2/12/2019 5:45pm}
+\end{center}
+
+\subsection*{Problem}
+
+\textbf{Note: All numerical answers must contain correct units for full credit!}
+
+A man stands on the edge of a \SI{100}{ft} cliff.  He throws a small red ball up in the air at a speed of \SI{10}{ft/s} so
+that the ball rises to a peak height, stops, and then falls to the ground at the foot of the cliff.  The equation of motion
+for this scenario is:
+\[s(t)=100+10t-16t^2\]
+where \(t\) is time (in seconds) and \(s\) is the height of the ball (in feet).
+\begin{enumerate}
+\item Use the definition of the derivative (i.e., the difference quotient from Section 7.3) to determine \(v(t)=s'(t)\),
+  which gives the instantaneous velocity of the ball (in ft/sec) at a time \(t\).
+  \begin{align*}
+    s'(t) &= \lim_{h\to0}\frac{s(t+h)-s(t)}{h} \\
+    &= \lim_{h\to0}\frac{\left[100+10(t+h)-16(t+h)^2\right]-(100+10t-16t^2)}{h} \\
+    &= \lim_{h\to0}\frac{\left[100+10t+10h-16(t^2+2th+h^2)\right]-100-10t+16t^2}{h} \\
+    &= \lim_{h\to0}\frac{\cancel{100}+\cancel{10t}+10h-\cancel{16t^2}-32th-16h^2-\cancel{100}-\cancel{10t}+\cancel{16t^2}}{h} \\
+    &= \lim_{h\to0}\frac{10h-32th-16h^2}{h} \\
+    &= \lim_{h\to0}\frac{\cancel{h}(10-32t-16h)}{\cancel{h}} \\
+    &= \lim_{h\to0}(10-32t-16h) \\
+    &= 10-32t-16(0) \\
+    &= 10-32t
+  \end{align*}
+  
+\item How fast is the ball moving at the instant it reaches its peak height?
+
+  Note that gravity is pushing against the ball as it goes higher, eventually forcing it to \emph{stop} at its peak height,
+  at which point the ball starts falling.  Since the ball is stopped, its speed is \SI{0}{ft/s}.
+  
+\item How long does it take for the ball to reach its peak height?
+
+  Since we know that the ball is stopped at its peak height, we can use our formula for \(s'(t)\) to see how long it takes:
+  \begin{align*}
+    0 &= 10-32t \\
+    32t &= 10 \\
+    t &= \frac{10}{32} = \frac{5}{16}=0.3125
+  \end{align*}
+  Thus, the ball reaches its peak height after about \SI{0.3}{s}.
+  
+\item What is the ball's peak height?
+
+  Now that we know how long it takes to reach its peak height, we can plug that time into the equation of motion to determine
+  how high the ball travels:
+  \begin{align*}
+    s\left(\frac{5}{16}\right) &= 100+10\left(\frac{5}{16}\right)-16\left(\frac{5}{16}\right)^2 \\
+    &= 100+\frac{50}{16}-\frac{25}{16} \\
+    &= \frac{1600}{16}+\frac{50}{16}-\frac{25}{16} \\
+    &= \frac{1625}{16} \\
+    &= 101.5625
+  \end{align*}
+  Thus, the ball reaches a maximum height of about \SI{101.6}{ft}.
+  
+\item How fast is the ball going when it passes the cliff edge on the way down?
+
+  You can determine this answer in one of three ways:
+  \begin{enumerate}
+  \item If you know physics (or if you have good intuition), then it is clear that the ball is going the same speed at
+    which it was initially thrown up, but in the opposite direction, so \SI{10}{ft/s} (down).
+
+  \item A slightly more complicated way that still uses some intuition is to note that the ball takes the same amount of time
+    to travel from release point to its peak as it does from its peak to its release point.  Thus, the ball takes:
+    \[2\left(\frac{5}{16}\right)=\frac{5}{8}\]
+    seconds for the round trip.  We can then plug this into our velocity equation:
+    \[s\left(\frac{5}{8}\right)=10-32\left(\frac{5}{8}\right)=10-20=-10\]
+    The negative sign indicates that the ball is traveling down.  So once again, \SI{10}{ft/s}.
+
+  \item The most complicated way is to first realize that the ball's height is \SI{100}{ft} when it passes the cliff edge and
+    use the equation of motion to determine the travel time:
+    \begin{align*}
+      \cancel{100} &= \cancel{100}+10t-16t^2 \\
+      0 &= 10t-16t^2 \\
+      0 &= 2t(5-8t)
+    \end{align*}
+    This equation has two solutions: \(t=0\), which is the starting point when the ball is tossed up, and \(t=\frac{5}{8}\)
+    when it passes the edge again.  Then as in the previous solution, use the velocity equation to determine that the speed
+    is \SI{10}{ft/s} (down).
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

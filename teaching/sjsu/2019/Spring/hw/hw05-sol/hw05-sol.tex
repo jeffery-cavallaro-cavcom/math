@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#5 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+You are a leader for your local Girl Scout troop and it has fallen upon you to plan next year's cookie sales.  It has become
+common to adjust the price of a box of cookies to maximize profits based on the affluence of the community.  From past years,
+you know that when the price was \$5.00 per box about 10,000 boxes were sold.  When the price was raised to \$6.00 per box,
+only 7500 boxes were sold.  Assume that the demand function \(n(p)\) is linear.  The factory that makes the cookies reports
+that the fixed costs are \$10,000 and the variable costs are \$2.00 per box.
+\begin{enumerate}
+\item At what sales price will your troop maximize its profits?
+
+  We start by recognizing that we what a profit function in terms of price: \(P(p)\).  Once we have this, we can calculate
+  \(P'(p)\) and find critical points.  First of all, we know that:
+  \[P(p)=R(p)-C(p)\]
+  where \(R(p)\) is a revenue function and \(C(p)\) is a cost function.
+
+  Let's start with \(R(p)\).  We also know that revenue is quantity (\(n\))times price (\(p\)):
+  \[R(p)=np\]
+  However, \(n\) is actually a function \(p\) via the demand function:
+  \[R(p)=n(p)\cdotp\]
+  So we need the construct the demand function.
+
+  We are told to assume that the demand function is linear, and we are given two points:
+  \begin{align*}
+    n(\$5) &= \SI{10000}{boxes} \\
+    n(\$6) &= \SI{7500}{boxes}
+  \end{align*}
+  This is sufficient information to construct a line:
+  \begin{gather*}
+    m=\frac{10000-7500}{5-6}=\SI{-2500}{boxes/\$} \\
+    n-10000=-2500(p-5) \\
+    n(p)=-2500p+22500
+  \end{gather*}
+
+  We can now construct the revenue function:
+  \[R(p)=p\cdot n(p)=p(-2500p+22500)=-2500p^2+22500p\]
+
+  Now onto the cost function.  We are given the fixed and variable costs, so:
+  \begin{align*}
+    C(p) &= 10000+2n(p) \\
+    &= 10000+2(-2500p+22500) \\
+    &= 10000-5000p+45000 \\
+    C(p) &= 55000-5000p
+  \end{align*}
+
+  And so, the final profit function is:
+  \begin{align*}
+    P(p) &= R(p)-C(p) \\
+    &= (-2500p^2+22500p)-(55000-5000p) \\
+    P(p) &= -2500p^2+27500p-55000
+  \end{align*}
+
+  We can no differentiate with respect to \(p\):
+  \[P'(p)=-5000p+27500\]
+
+  To find all critical points we set this to 0:
+  \begin{gather*}
+    0=-5000p+27500 \\
+    5000p=27500 \\
+    p=\$5.50
+  \end{gather*}
+
+  Therefore, to maximize profits, boxes should be sold at \$5.50 per box.
+  
+\item At that price, how many boxes is your troop projected to sell?
+  \[n(\$5.50)=-2500(5.50)+22500=\SI{8750}{boxes}\]
+  
+\item What is the expected profit?
+  \[P(\$5.50)=-2500(5.50)^2+27500(5.50)-55000=\$20625\]
+\end{enumerate}
+
+\end{document}

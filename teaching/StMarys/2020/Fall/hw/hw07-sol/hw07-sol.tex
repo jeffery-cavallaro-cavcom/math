@@ -1,0 +1,64 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-13 Sections 01 and 02
+
+  \Large
+  Homework \#7 Solutions
+\end{center}
+
+A ball is thrown upward off of a \SI{100}{ft} cliff at a velocity of \SI{64}{ft/s}.  The equation of motion for the
+ball is:
+\[h(t)=100+64t-16t^2\]
+\begin{enumerate}[left=0in]
+\item\label{part-a} Using the derivative formulas, determine \(h'(t)\).
+  \[h'(t)=0+64(1)-2(16)t^{2-1}=64-32t\]
+\item Using your answer to part (\ref{part-a}) (and not the vertex formula \(-\frac{b}{2a}\)), at what time does the
+  ball reach its maximum height (hint: how fast is the ball going at that point)?
+
+  When the ball reaches its maximum height, gravity has stopped it so the velocity at the maximum height is 0:
+  \begin{gather*}
+    64-32t=0 \\
+    32t=64 \\
+    t=2
+  \end{gather*}
+  Therefore, the ball reaches its maximum height after \SI{2}{s}.
+
+\item What is the balls maximum height?
+  \[h(2)=100+64(2)-16(2)^2=100+128-64=164\]
+  Therefore, the ball reaches a maximum height of \SI{164}{ft}
+
+\item\label{part-d} How long before the ball hits the ground?
+
+  When the ball hits the ground, \(h(t)=0\):
+  \begin{gather*}
+    100+64t-16t^2=0 \\
+    4t^2-16t-25=0 \\
+    t=\frac{16\pm\sqrt{(-16)^2-4(4)(-25)}}{2(4)} \\
+    t=\frac{16\pm\sqrt{256+400}}{8} \\
+    t=\frac{16\pm\sqrt{656}}{8} \\
+    t=\frac{16\pm4\sqrt{41}}{8} \\
+    t=\frac{4\pm\sqrt{41}}{2} \\
+    t\approx-1.2,5.2
+  \end{gather*}
+  Therefore, the ball hits the ground after \SI{5.2}{s}.
+  
+\item Note that you probably got two solutions (one positive and one negative) for the part (\ref{part-d}), and you
+  should have selected the positive one.  What is the meaning of the negative solution (hint: what is the meaning
+  of negative time)?
+
+  The negative solution corresponds to the ball being thrown up from the ground \SI{1.2}{s} earlier with sufficient
+  velocity such that it is going \SI{64}{ft/s} as it passes the top of the cliff.  Note that the ball will follow the
+  same path once it passes that top of the cliff.  The required initial velocity will be the same as the velocity when
+  the ball hits the ground:
+  \[v(5.2)=64-32(5.2)=-102.4\]
+  So the ball must be thrown upward from the ground at a velocity of \SI{102.4}{ft/s} so that it follows the same
+  path as a ball thrown upward from the cliff at \SI{64}{ft/s}.
+\end{enumerate}
+
+\end{document}

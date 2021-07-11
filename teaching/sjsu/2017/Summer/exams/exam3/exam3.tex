@@ -1,0 +1,192 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-8 Exam \#3
+\end{center}
+
+\vspace{0.5in}
+
+Name: \rule{4in}{1pt}
+
+\vspace{0.5in}
+
+This exam is closed book and notes. You may use a calculator; however, no other
+electronics are allowed. Show all work; there is no credit for guessed
+answers. All answers should be in exact values, unless you are specifically
+asked for an approximate value.
+
+\vspace{0.5in}
+
+\newcommand{\fillin}{\rule[-10pt]{3in}{1pt}}
+\newcommand{\sfillin}{\rule[-10pt]{0.5in}{1pt}}
+
+\begin{enumerate}
+\item Identify each of the following formulas. Be very specific.
+  Differentiate between general and standard forms and call out important
+  points (like the center of a circle).
+
+\vspace{0.25in}
+
+\begin{tabular}{cc}
+$d=[(x_1-x_2)^2+(y_1-y_2)^2]^{1/2}$ & \fillin \\
+\\
+$\left(\frac{x_1+x_2}{2},\frac{y_1+y_2}{2}\right)$ & \fillin \\
+\\
+$m=\frac{y_1-y_2}{x_1-x_2}$ & \fillin \\
+\\
+$y-y_1=m(x-x_1)$ & \fillin \\
+\\
+$y=mx+b$ & \fillin \\
+\\
+$m_1=m_2$ & \fillin \\
+\\
+$m_1m_2=-1$ & \fillin \\
+\\
+$(x-h)^2+(y-k)^2=r^2$ & \fillin \\
+\\
+$x^2+y^2+Dx+Ey+F=0$ & \fillin \\
+\end{tabular}
+
+\newpage
+
+\item You have two dogs: Fido and Fluffy. Each dog is tied to its
+own stake in your backyard by a leash. Fido's stake and leash allow him to roam
+around an area defined by:
+\[(x-2)^2+(y-1)^2=9\]
+What are the coordinates of Fido's stake and the length of his leash?
+
+\vspace{1in}
+
+\item Fluffy's stake and leash allow her to roam around an area defined by:
+\[x^2+y^2-10x-8y+37=0\]
+What are the coordinates of Fluffy's stake and the length of her leash?
+
+\vspace{2in}
+
+\item What is the equation of the line between the two stakes, in
+slope-intercept form?
+
+\vspace{2in}
+
+\newpage
+
+\item It is mating season. Fido and Fluffy are not fixed; however, you do not want
+them to mate. To be safe, you decide to erect a straight wall that is
+perpendicular to the line joining the two stakes and going through the midpoint
+of that line. What is the equation of the wall, in slope-intercept form?
+
+\newpage
+
+\item Identify each of the following standard functions:
+
+\vspace{0.25in}
+
+\begin{tabular}{cc}
+\begin{tikzpicture}
+\draw [<->] (-2,0) -- (2,0);
+\draw [<->] (0,-2) -- (0,2);
+\draw [domain=0.5:1.9] plot (\x,{1/\x});
+\draw [domain=-1.9:-0.5] plot (\x,{1/\x});
+\node at (-1,-3) {$y=$};
+\end{tikzpicture} \hspace{1in} &
+\begin{tikzpicture}
+\draw [<->] (-2,0) -- (2,0);
+\draw [<->] (0,-2) -- (0,2);
+\draw [domain=-2:2] plot (\x,{abs(\x)});
+\node at (-1,-3) {$y=$};
+\end{tikzpicture} \\
+\end{tabular}
+
+\begin{tabular}{cc}
+\begin{tikzpicture}
+\draw [<->] (-2,0) -- (2,0);
+\draw [<->] (0,-2) -- (0,2);
+\draw [domain=0:2] plot (\x,{sqrt(\x)});
+\node at (-1,-3) {$y=$};
+\end{tikzpicture} \hspace{1in} &
+\begin{tikzpicture}
+\draw [<->] (-2,0) -- (2,0);
+\draw [<->] (0,-2) -- (0,2);
+\draw [domain=0:2] plot (\x,{(\x)^(1/3)});
+\draw [domain=-2:0] plot (\x,{-(-\x)^(1/3)});
+\node at (-1,-3) {$y=$};
+\end{tikzpicture} \\
+\end{tabular}
+
+\begin{tabular}{cc}
+\begin{tikzpicture}
+\draw [<->] (-2,0) -- (2,0);
+\draw [<->] (0,-2) -- (0,2);
+\draw [domain=-1.4:1.4] plot (\x,{(\x)^2});
+\node at (-1,-3) {$y=$};
+\end{tikzpicture} \hspace{1in} &
+\begin{tikzpicture}
+\draw [<->] (-2,0) -- (2,0);
+\draw [<->] (0,-2) -- (0,2);
+\draw [domain=-1.25:1.25] plot (\x,{(\x)^3});
+\node at (-1,-3) {$y=$};
+\end{tikzpicture} \\
+\end{tabular}
+
+\newpage
+
+\item Consider the function:
+\[f(x)=-(x-1)^2+4\]
+Identify the initial standard function and then the three transformations in the
+  order that they should be applied.
+\begin{enumerate}
+\item
+\item
+\item
+\item
+\end{enumerate}
+
+\item For the function in (7):
+  \begin{enumerate}
+  \item Determine the x-intercept(s) (if any).
+
+    \vspace{2in}
+
+  \item Determine the y-intercept(s) (if any).
+
+    \vspace{1in}
+
+  \item Sketch the graph. Be sure to label all key points for full credit!
+  \end{enumerate}
+
+\newpage
+\item Based on your graph in (8):
+  \begin{enumerate}
+  \item Where is the function increasing, if anywhere (in interval notation)?
+
+    \vspace{1in}
+    
+  \item Where is the function decreasing, if anywhere (in interval notation)?
+
+    \vspace{1in}
+
+  \item Identify any minima.
+
+    \vspace{1in}
+    
+  \item Identify any maxima.
+
+    \vspace{1in}
+
+  \end{enumerate}
+
+\item Based on your graph in (8):
+  \begin{enumerate}
+  \item State the domain, in interval notation.
+
+    \vspace{1in}
+    
+  \item State the range, in interval notation.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

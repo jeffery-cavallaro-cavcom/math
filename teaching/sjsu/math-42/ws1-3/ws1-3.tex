@@ -1,0 +1,58 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\renewcommand{\implies}{\rightarrow}
+\renewcommand{\iff}{\leftrightarrow}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#3
+
+  \textbf{Propositional Equivalences}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Using truth tables, show that implication is left distributive:
+  \begin{gather*}
+    p\implies(q\land r)\equiv(p\implies q)\land(p\implies r) \\
+    p\implies(q\lor r)\equiv(p\implies q)\lor(p\implies r)
+  \end{gather*}
+\item Using truth tables, show that implication is \emph{not} right distributive.
+\item What are the correct equivalences for right distributivity?
+
+\item Prove that \(\lnot(p\implies q)\equiv p\land\lnot q\) using:
+  \begin{enumerate}
+  \item A truth table.
+  \item Logical equivalences (hint: implication equivalence and deMorgan).
+  \end{enumerate}
+
+\item Negate each of the following compound propositions:
+  \begin{enumerate}
+  \item Jack goes to school and he gets good grades.
+  \item If Jack goes to school then he will get good grades.
+  \item If Jack goes to school and gets good grades then he will get a good job.
+  \item Jack goes to school or gets a good job.
+  \end{enumerate}
+
+\item Prove that \([\lnot p\land(p\lor q)]\implies q\) is a tautology using:
+  \begin{enumerate}
+  \item A truth table.
+  \item Logical equivalences.
+  \end{enumerate}
+
+\item Prove that \(p\oplus q\) is equivalent to \(\lnot(p\iff q)\) using:
+  \begin{enumerate}
+  \item A truth table.
+  \item Logical equivalences.
+  \end{enumerate}
+
+\item Consider the following logical equation
+  \[(p\land q)\land(p\iff r)\land(r\lor p\implies q)\land(s\implies\lnot r)\land s\]
+  Without using a truth table (and you wouldn't want to), determine whether the logical equation is satisfiable.
+\end{enumerate}
+
+\end{document}

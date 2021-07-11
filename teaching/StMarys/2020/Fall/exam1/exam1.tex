@@ -1,0 +1,160 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+  \large
+  Math-13 Sections 01, 02
+
+  \Large
+  Exam \#1
+
+  Due: 10/4/2020 at 11:59pm
+\end{center}
+
+\vspace{0.5in}
+
+This exam is open book and notes.  You may use a calculator.  No collaboration or other web access is allowed. All
+answers must be in exact form unless stated otherwise (i.e., no decimal answers allowed).  You \emph{must} show all
+work and that work must be logical and complete; there is \emph{no} credit for guessed answers or answers without
+supporting work.
+
+You must work the exam problems, in order, on separate sheets of paper; camscan your results into a single PDF
+file; and then submit your PDF file back to Moodle (just like the written homeworks).  This \emph{must} be done by
+the deadline; late exams, multiple page or non-PDF submissions, and exams sent by email will not be accepted.
+
+Good luck!
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0pt,itemsep=0.5in]
+
+\item Explain why \(\pi\) is an irrational number.  Note: do not just say, ``because it is not rational.''
+  Be more specific.
+
+\item In class, we discussed the fact that every function is a relation, but not every relation is a function.
+  Explain what makes a relation a function.
+
+\item The follow function shows the population of bacteria \(p\) in a petri dish at time \(t\) (in days):
+
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}[scale=0.8]
+      \begin{axis}[
+          axis lines=middle,
+          xmin=-1,
+          xmax=4,
+          ymin=-100,
+          ymax=2000,
+          ticks=none,
+          xlabel={\(t\)},
+          ylabel={\(p(t)\)},
+          x label style={at={(axis cs:4,0)},anchor=west},
+          y label style={at={(axis cs:0,2000)},anchor=south},
+          clip=false
+        ]
+        \addplot [domain=0:4,blue] {100*2^x+400};
+        \node [left] at (0,500) {\(100\)};
+        \node [closed point,red] (P) at (3,1200) {};
+        \node [right] at (P) {\((3,800)\)};
+        \node [below left] at (0,0) {\(0\)};
+        \node [above right] at (4,2000) {\(p(t)\)};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+  \bigskip
+
+  \begin{enumerate}
+  \item What is the initial \((t=0)\) number of bacteria in the dish?
+  \item Describe using words the meaning of the point \((3,800)\) on the graph.
+  \item What is the alternate functional syntax for the point \((3,800)\)?
+  \item What is \(\displaystyle\lim_{t\to3}p(t)\)?
+  \item Is \(p(t)\) continuous at \(t=3\)?  If not then indicate which requirement for continuity fails.
+  \end{enumerate}
+
+  \bigskip
+
+\item Determine the implicit domain for the function:
+  \[f(x)=\sqrt{6x^2+5x-4}\]
+  Your work must include a real number line graph containing the critical points and an indication of the sign in
+  each interval between the critical points.  You may use test points or factor multiplicity to determine the sign
+  changes across the critical points.  Your final answer must be in interval notation.
+
+\item Determine the smallest approximation for \(e^{\pi}\) that is with \(0.000005\) of the exact value.  Make sure
+  that your final answer is the \emph{approximation} and not the error.
+
+\item Determine the following limit:
+  \[\lim_{x\to1}\frac{2x^2-x-1}{x^2-1}\]
+
+\item Let \(f(x)=\sqrt{x+1}\).  Determine the following limit:
+  \[\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\]
+
+\item Consider the following piecewise function:
+  \[f(x)=\begin{cases}
+  x^2, & x<2 \\
+  3, & x=2 \\
+  2x, & x>2
+  \end{cases}\]
+  Is \(f(x)\) continuous at \(x=2\)?  If not, then state the specific reason why not.
+
+\item Consider the following function:
+
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          xmin=-5,
+          xmax=5,
+          ymin=-5,
+          ymax=5,
+          ticks=none,
+          minor tick num=1,
+          xlabel={\(5\)},
+          ylabel={\(5\)},
+          axis line style={very thick},
+          x label style={at={(axis cs:5,0)},anchor=west},
+          y label style={at={(axis cs:0,5)},anchor=south},
+          grid=both,
+          clip=false
+        ]
+        \addplot [<-,domain=-5:-1,blue] {-2};
+        \addplot [->,domain=-1:0.9,blue] {(x+1)^2+1};
+        \addplot [<->,domain=1.2:5,blue] {-1/(x-1)};
+        \node [closed point] (A) at (-1,-2) {};
+        \node [open point] (B) at (-1,1) {};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+  \bigskip
+
+  Determine the following.  If a value does not exists then write DNE.
+
+  \begin{enumerate}
+  \item\(\displaystyle\lim_{x\to-\infty}f(x)\)
+  \item\(\displaystyle\lim_{x\to-1^-}f(x)\)
+  \item\(\displaystyle\lim_{x\to-1^+}f(x)\)
+  \item\(\displaystyle\lim_{x\to-1}f(x)\)
+  \item\(\displaystyle f(-1)\)
+  \item\(\displaystyle\lim_{x\to1^-}f(x)\)
+  \item\(\displaystyle\lim_{x\to1^+}f(x)\)
+  \item\(\displaystyle\lim_{x\to1}f(x)\)
+  \item\(\displaystyle f(1)\)
+  \item\(\displaystyle\lim_{x\to\infty}f(x)\)
+  \end{enumerate}
+
+\item Sketch the graph for the following function:
+  \[f(x)=\frac{x^2-x-6}{(x+1)(x+2)(x+3)}\]
+  Your work must clearly show how you determined the critical points.  Your sketch must clearly show and label any
+  and all zeros, vertical asymptotes, horizontal asymptotes, and holes.
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,136 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-2in}
+\addtolength{\textheight}{-\footskip}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+
+\pagestyle{empty}
+
+\usepackage{amsfonts}
+
+\begin{document}
+
+\begin{center}
+\bfseries
+San Jos\'{e} State University \\
+Fall 2015 \\
+Math-8: College Algebra \\
+Section 03: MW noon--1:15pm \\
+Section 05: MW 4:30--5:45pm \\
+\bigskip
+Quiz \#8
+\end{center}
+
+\bigskip
+
+Closed book and notes, and no calculators. Show all work for full credit.
+
+\bigskip
+
+\newcommand{\answer}[1]{\textbf{\underline{#1}}}
+
+1. A function maps a set of independent values called the \answer{domain}\ to a
+set of dependent values called the \answer{codomain}. The subset of the
+codomain actually used is called the \answer{range}.
+
+\bigskip
+
+2. What are the two requirements for values in the domain of a function?
+
+\begin{enumerate}
+\item{All values must be used.}
+\item{Each value must map to exactly one value in the codomain/range.}
+\end{enumerate}
+
+3. Solve for $x$, giving your answer in interval notation.
+
+\bigskip
+
+First, we need to get the inequality in $|x-a|<b$ form:
+
+\begin{eqnarray*}
+2|5-3x|+7 &<& 21 \\
+2|5-3x] &<& 14 \\
+|5-3x| &<& 7 \\
+\end{eqnarray*}
+
+Now, since this is a less-than inequality, we use a 3-way expression:
+
+\begin{eqnarray*}
+-7 < 5-3x < 7 \\
+-12 < -3x < 2 \\
+4 > x > -\frac{2}{3} \\
+-\frac{2}{3} < x < 4 \\
+\end{eqnarray*}
+
+Note that we turn around the inequality when we divide by $-3$. Thus, the
+final solution in interval notation is: $(-\frac{2}{3},4)$.
+
+\bigskip
+
+4. You start a side-business manufacturing widgets. The variable costs are \$2
+per widget. The fixed costs are \$500 per month. You would like to keep your
+monthly costs between \$1000 and \$2000 per month. What are the minimum and
+maximum number of widgets that you can make per month?
+
+First, we build a cost function using the variable and fixed costs:
+
+\[C(x)=2x+500\]
+
+Now, we build a 3-way inequality and solve:
+
+\begin{eqnarray*}
+1000 \le C(x) \le 2000 \\
+1000 \le 2x+500 \le 2000 \\
+500 \le 2x \le 1500 \\
+250 \le x \le 750 \\
+\end{eqnarray*}
+
+Thus, the minimum is 250 widgets and the maximum is 750 widgets.
+
+\bigskip
+
+5. Determine the domain of the following function:
+
+\[f(x)=\frac{x-5}{\sqrt{x^2-9}}\]
+
+The $x-5$ in the numerator is not under the square root and thus has no affect
+on the domain. Remember, the numerator can be 0. But, the denominator may not
+be 0 and the radicand under the square root must be positive. Thus, we have:
+
+\begin{eqnarray*}
+x^2-9 &>& 0 \\
+(x+3)(x-3) &>& 0 \\
+\end{eqnarray*}
+
+which results in the critical points: $\pm3$. Picking test values, we can
+build a sign table as follows:
+
+\bigskip
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & $(x+3)$ & $(x-3)$ & \\
+\hline
+-4 & - & - & + \\
+\hline
+0 & + & - & - \\
+\hline
+4 & + & + & + \\
+\hline
+\end{tabular}
+
+\bigskip
+
+Thus, the final domain is: $(-\infty,-3)\cup(3,\infty)$.
+
+\end{document}

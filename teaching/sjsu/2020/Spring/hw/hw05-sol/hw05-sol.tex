@@ -1,0 +1,71 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\implies}{\rightarrow}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#5 Solutions
+
+\end{center}
+
+Prove the following theorem:
+
+\begin{theorem}
+  \(\forall\,n\in\Z,n\) is either even or odd (but not both).
+\end{theorem}
+
+Your proof must address the following points:
+\begin{enumerate}
+\item \(n\) is even or odd (and nothing else).
+\item \(n\) is odd \(\implies n\) is not even (hint: contradiction).
+\item \(n\) is even \(\implies n\) is not odd (hint: contrapositive).
+\end{enumerate}
+
+The first point is a bit more difficult.  Start by making a statement about 0.  Then assuming that \(n\) is even,
+what can you say about \(n-1\) and \(n+1\)?  Likewise, assuming that \(n\) is odd, what can you say about \(n-1\)
+and \(n+1\).  Can you organize these facts into an argument that shows that you have accounted for all possible
+\(n\in\Z\)?
+
+\begin{proof}
+  First, we need to prove that integers are either even or odd and nothing else.  So we start with \(0\):
+  \[0=2(0)\]
+  Therefore, \(0\) meets the definition of being an even number.
+
+  Next, assume that \(n\in\Z\) is even.  This means that \(\exists\,k\in\Z,n=2k\).  Consider the next value:
+  \(n+1=2k+1\).  This meets the definition of being an odd number.  Next, consider the previous value:
+  \(n-1=2k-1=2k-2+1=2(k-1)+1\).  But \(k-1\in\Z\) by closure and so the previous value is also odd.  So both the
+  next and previous values are odd.
+
+  Now, assume that \(n\in\Z\) is odd.  This means that \(\exists\,k\in\Z,n=2k+1\).  Consider the next value:
+  \(n+1=(2k+1)+1=2k+2=2(k+1)\).  But \(k+1\in\Z\) by closure and so the next value is even.  Next, consider the
+  previous value: \((2k+1)-1=2k\).  This meets the definition of being an even number.  So both the next and
+  previous values are even.
+
+  In summary, we have showed that \(0\) is even, and every even is surrounded by odds, and every odd is surrounded
+  by evens.  Thus, we have accounted for all the integers and shown that they are either even or odd and nothing
+  else.
+
+  Now, we need to show that a number cannot be both even an odd at the same time.  So assume that \(n\in\Z\) and
+  assume that it is odd.  This means that \(\exists\,k\in\Z,n=2k+1\).  Now, ABC that \(n\) is also even.  This means
+  that \(\exists\,\ell\in\Z,n=2\ell\).  Since these are both valid representations of \(n\):
+  \begin{gather*}
+    2k+1=2\ell \\
+    2\ell-2k=1 \\
+    2(\ell-k)=1 \\
+    \ell-k=\frac{1}{2}
+  \end{gather*}
+  But this is a contradiction because it violates closure.  Therefore \(n\) is not even.
+
+  Finally, we need to prove that if \(n\) is even then it is not odd.  But note that this is just the
+  contrapositive of the previous proposition, and so we can conclude that this is a true statement.
+\end{proof}
+
+In summary, we have proved that every integer is either even or odd, but not both.  Thus, we can now say that
+``not even'' means odd and ``not odd'' means even.
+
+\end{document}

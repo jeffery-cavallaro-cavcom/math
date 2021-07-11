@@ -1,0 +1,46 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 02, 03, 60
+
+  \Large
+  Homework \#5
+
+  \large
+  \textbf{Due: 9/30/2019 1:15pm}
+\end{center}
+
+\subsection*{Reading}
+
+Read sections 8.5, 8.6, and 9.1
+
+\subsection*{Problem}
+
+A triangle is inscribed inside a semi-circle of radius 2 as shown below:
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [<->] (-4,0) -- (4,0);
+    \draw [<->] (0,-1) -- (0,4);
+    \draw (3,0) arc (0:180:3);
+    \draw (-3,0) -- ({3*cos(60)},{3*sin(60)}) -- (3,0);
+    \node [below] at (-3,0) {-2};
+    \node [below] at (3,0) {2};
+    \node [above right] at (0,3) {2};
+    \node [below right] at (0,0) {0};
+  \end{tikzpicture}
+\end{center}
+
+\bigskip
+
+Find the maximum possible area of the inscribed triangle.  Be sure to prove why it is a maximum by either a plausible
+explanation or by using the first or second derivative test.
+
+\end{document}

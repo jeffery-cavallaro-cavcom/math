@@ -1,0 +1,155 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Exam \#4
+\end{center}
+
+\vspace{0.5in}
+
+Name: \rule{4in}{1pt}
+
+\vspace{1in}
+
+This exam is closed book and notes. You may use a calculator and both sides of
+a $3\times 5$ note card; however, no cell phones or tablets are allowed. Show
+all work; there is no credit for guessed answers. All values should be exact
+with no decimals unless you are specifically asked for an approximate or
+decimal answer.
+
+\vspace{0.5in}
+
+\begin{center}
+  \scalebox{2}{
+    \begin{tabular}{|c|c|}
+      \hline
+      problem & score \\
+      \hline
+      1 & \hspace{0.5in} \\
+      \hline
+      2 & \\
+      \hline
+      3 & \\
+      \hline
+      4 & \\
+      \hline
+      5 & \\
+      \hline
+      TOTAL & \\
+      \hline
+    \end{tabular}}
+\end{center}
+
+\newpage
+
+\begin{enumerate}
+\item Shown below is the graph for the parabola $y=2(x+1)^2-2$:
+
+  \begin{tikzpicture}
+    \draw (-4,0) -- (4,0);
+    \draw (0,-4) -- (0,4);
+    \draw [smooth,domain=-2.75:0.75] plot ({\x},{2*(\x+1)^2-2});
+    \node [draw,circle,fill,scale=0.5] (v) at (-1,-2) {};
+    \node [below] at (v) {$(-1,-2)$};
+    \node [draw,circle,fill,scale=0.5] (a) at (-2,0) {};
+    \node [above left] at (a) {$(-2,0)$};
+    \node [draw,circle,fill,scale=0.5] (b) at (0,0) {};
+    \node [above right] at (b) {$(0,0)$};
+  \end{tikzpicture}
+
+  \begin{enumerate}
+  \item State a limited explicit domain (in interval notation) such that
+    the function with your limited domain has an inverse.
+
+    \vspace{0.5in}
+    
+  \item How do you know that the function with your limited domain has an
+    inverse?
+
+    \vspace{0.5in}
+    
+  \item Determine the inverse function.
+
+    \vspace{2.5in}
+    
+  \item Assuming that it is in your selected domain, what is $f^{-1}(-2)$?
+  \end{enumerate}
+
+  \newpage
+
+\item A parabola has its focus at $(-1,2)$ and its directrix at $x=1$.
+  \begin{enumerate}
+  \item What are the coordinates of the vertex?
+
+    \vspace{1in}
+    
+  \item What is the value for $p$?
+
+    \vspace{1in}
+    
+  \item What are the y-intercepts (if any)?
+
+    \vspace{1in}
+    
+  \item What are the x-intercepts (if any)?
+
+    \vspace{1in}
+    
+  \item Sketch the graph. For full credit you must show the vertex, focus,
+    directrix, and any intercepts.
+
+    \begin{tikzpicture}
+      \draw (-5,0) -- (5,0);
+      \draw (0,-3.5) -- (0,3.5);
+    \end{tikzpicture}
+  \end{enumerate}
+
+  \newpage
+
+\item Consider the conic section:
+  \[16x^2+y^2+32x-2y+13=0\]
+  \begin{enumerate}
+  \item What are the values for $a$, $b$, and $c$?
+
+    \vspace{4in}
+      
+  \item What are the coordinates of the center?
+
+    \vspace{1in}
+      
+  \item What are the coordinates of the foci?
+
+    \vspace{1in}
+      
+  \item What are the coordinates of the vertices?
+
+    \newpage
+      
+  \item Sketch the graph. For full credit you must show the center, foci, and
+    all vertices.
+
+    \begin{tikzpicture}
+      \draw (-5,0) -- (5,0);
+      \draw (0,-5) -- (0,5);
+    \end{tikzpicture}
+  \end{enumerate}
+
+  \vspace{0.5in}
+
+\item Solve for $x$:
+  \[\log_4(x)+\log_4(x-1)=\frac{1}{2}\]
+
+  \newpage
+  
+\item Some archaeologists are digging at what appears to be a pre-Columbian
+  human campsite in California.  They find some animal bones with human teeth
+  marks on them.  Upon carbon-14 analysis, it is found that the bones have 75\%
+  of their original $C_{14}$.  About how old are the bones, and hence the
+  campsite?  The half-life of $C_{14}$ is 5730 years.
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,65 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage[makeroom]{cancel}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-1003b Homework \#2 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\bigskip
+
+\begin{itemize}
+\item Text book sections 7.3 and 7.4.
+\end{itemize}
+
+\bigskip
+
+\underline{Problems}
+
+\bigskip
+
+\begin{enumerate}
+\item Simplify:
+  \[\frac{3x}{x^2+6x+9}-\frac{x}{x^2+5x+6}\]
+
+  Start by factoring everything:
+  \[\frac{3x}{(x+3)^2}-\frac{x}{(x+2)(x+3)}\]
+  Next, determine the LCM. List all of the unique factors in all denominators
+  and then take the highest power of each factor:
+  \[LCM=(x+2)(x+3)^2\]
+  Now, combine the two rational expressions using the LCM as the common
+  denominator, and multiplying each numerator by what is ``missing'' in the
+  corresponding denominator:
+  \[\frac{3x(x+2)-x(x+3)}{(x+2)(x+3)^2}\]
+  Next, use polynomial multiplication and addition to simplify the numerator.
+  Note that this is the only time that we expand things. Be careful of the
+  minus sign!:
+  \[\frac{(3x^2+6x)-(x^2+3x)}{(x+2)(x+3)^2}\]
+  \[\frac{(3x^2-x^2)+(6x-3x)}{(x+2)(x+3)^2}\]
+  \[\frac{2x^2+3x}{(x+2)(x+3)^2}\]
+  Finally, factor the numerator to see if anything cancels with the
+  denominator; nothing does in this case:
+  \[\frac{x(2x+3)}{(x+2)(x+3)^2}\]
+
+  \bigskip
+  
+\item Simplify:
+  \[\frac{2}{a+b}-\frac{2}{a-b}+\frac{4a}{a^2-b^2}\]
+
+  \bigskip
+
+  \[\frac{2}{a+b}-\frac{2}{a-b}+\frac{4a}{(a+b)(a-b)}\]
+  \[\frac{2(a-b)-2(a+b)+4a}{(a+b)(a-b)}\]
+  \[\frac{2a-2b-2a-2b+4a}{(a+b)(a-b)}\]
+  \[\frac{(\cancel{2a}-\cancel{2a}+4a)+(-2b-2b)}{(a+b)(a-b)}\]
+  \[\frac{4a-4b}{(a+b)(a-b)}\]
+  \[\frac{4\cancel{(a-b)}}{(a+b)\cancel{(a-b)}}\]
+  \[\frac{4}{a+b}\]
+\end{enumerate}
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#22
+
+  \textbf{Generalized Permutations and Combinations}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item How many \(10\)-letter strings can be made from the \(26\)-letter alphabet when:
+  \begin{enumerate}
+  \item Repetition is allowed.
+  \item Repetition is not allowed.
+  \item The word must be a sequence of zero or more Z's, followed by a sequence of zero or more A's, followed by
+    a sequence of zero or more T's.
+  \end{enumerate}
+
+\item How many distinct strings can be constructed by arranging all the letters in MISSISSIPPI?  Previously, you
+  learned how to do this by placing letters via selection.  This time, use the formula for arrangement of
+  indistinguishable objects.
+
+\item A hot dog cart offers chili-cheese dogs, mustard dogs, and kraut dogs.  How many different ways are there to
+  select a dozen hot dogs when:
+  \begin{enumerate}
+  \item The cart can make up to twenty of each type.
+  \item You want to buy at least four chili-cheese dogs.
+  \item You want to buy at least two of each type.
+  \item The cart can only make three more chili-cheese dogs. You could partition this into cases of \(0\), \(1\),
+    \(2\), or \(3\) chili-cheese dogs selected; however, there is an easier way using a complement.
+  \end{enumerate}
+
+\item How many solutions are there to the equation \(x_1+x_2+x_3+x_4=23\) where the \(x_i\) are nonnegative
+  integers and:
+  \begin{enumerate}
+  \item \(x_1,x_2,x_3,x_4\ge0\)
+  \item \(x_1,x_2,x_3,x_4>0\)
+  \item \(x_1,x_3,x_5\ge2\) and \(x_2,x_4\ge1\).
+  \end{enumerate}
+
+\item The so-called \emph{ball-and-walls} method for selection with repetition is fairly easy when there are
+  no bounds or just lower bounds for each box.  It is a bit harder when there are upper bounds.  Let's work the
+  following problem step by step:
+
+  You have three boxes in which you must place red balls in the first box, green balls in the second box, and
+  blue balls in the third box.  The total number of balls is limited to \(19\) and the number of balls allowed in
+  each box is:
+  \begin{gather*}
+    1\le\abs{b_1}\le4 \\
+    2\le\abs{b_2}\le6 \\
+    5\le\abs{b_3}
+  \end{gather*}
+  How many ways are there to arrange the \(19\) balls in the three boxes?
+  \begin{enumerate}
+  \item Start by allocating the lower bounds to each box and restate the problem with the lower bounds removed.
+  \item Focusing on the new problem, how many ways total are there if the upper bounds are ignored?
+  \item How many ways are there if there are \(4\) or more red balls in the first box, ignoring the upper
+    bound for the second box?
+  \item How many ways are there if there are \(5\) or more green balls in the second box, ignoring the upper
+    bound for the first box?
+  \item How many ways are there for \(4\) more red balls in the first box \emph{and} \(5\) or more green balls in
+    the second box?
+  \item Can you put these results together to obtain the answer for the original problem?  (Hint: PIE).
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,274 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Exam \#3
+\end{center}
+
+\vspace{0.5in}
+
+Name: \rule{4in}{1pt}
+
+\vspace{0.5in}
+
+This exam is closed book and notes. You may use a calculator and both sides of
+a $3\times 5$ note card; however, no cell phones or tablets are allowed. Show
+all work; there is no credit for guessed answers. All values should be exact
+with no decimals unless you are specifically asked for an approximate or
+decimal answer.
+
+\vspace{0.5in}
+
+\begin{enumerate}
+\item A certain chemical reaction produces product at a rate of $\SI{5}{g/s}$.
+  After $\SI{1}{minute}$, $\SI{425}{g}$ of product is produced. Let $p(t)$ be
+  the amount of product after $t$ seconds and let $p(0)$ be the amount of
+  product at $t=0$.
+  \begin{enumerate}
+  \item Construct a linear model for this reaction.
+
+    \vspace{1in}
+    
+  \item Find $p(0)$.
+  \end{enumerate}
+
+  \vspace{2in}
+
+\item Consider $x^2+y^2=4$. Answer true or false?
+  \begin{enumerate}
+  \item This is an example of a function.
+
+    \bigskip
+    
+  \item This is an example of a relation.
+  \end{enumerate}
+
+  \bigskip
+
+  \newpage
+
+\item Calculate the difference quotient for $f(x)=\frac{1}{x}$.
+
+  \vspace{3in}
+
+\item Let $h(x)=\sqrt{x+1}-x-1$. Find an $f(x)$ and a $g(x)$ such that
+  $h(x)=(f\circ g)(x)$ with the constraint that neither $f(x)=x$ nor
+  $g(x)=x$.
+
+  \newpage
+  
+\item Consider the following graph of a polynomial $p(x)$:
+
+  \begin{tikzpicture}
+    \draw (-4,0) -- (4,0);
+    \draw (0,-4) -- (0,4);
+    \draw [smooth,domain=-2.3:2.3]
+    plot ({\x},{-0.5*(\x-2)*(\x-1)*(\x+1)*(\x+2)});
+    \node [draw,circle,fill,scale=0.5] at (-1,0) {};
+    \node [below right] at (-1,0) {$(-1,0)$};
+    \node [draw,circle,fill,scale=0.5] at (1/2,-45/32) {};
+    \node [below right] at (1/2,-45/32) {$(\frac{3}{4},-\frac{6}{5})$};
+  \end{tikzpicture}
+
+  \begin{enumerate}
+  \item Solve for $x$: $p(x)=-\frac{6}{5}$
+
+    \vspace{1in}
+    
+  \item What is the remainder when the polynomial is divided by
+    $\left(x-\frac{3}{4}\right)$?
+
+    \vspace{1in}
+    
+  \item What is the remainder when the polynomial is divided by $(x+1)$?
+
+    \vspace{1in}
+    
+  \item List two equivalent statements to the fact that $(-1,0)$ is a point
+    in the graph of $p(x)$.
+    \begin{enumerate}
+    \item
+    \item
+    \end{enumerate}
+  \end{enumerate}
+
+  \newpage
+
+\item Let $f(x)=3-2\sqrt{x+1}$.
+  \begin{enumerate}
+  \item List the starting function and the three transformations in the order
+    that they should be applied:
+    \begin{enumerate}
+      \item
+      \item
+      \item
+      \item
+    \end{enumerate}
+  \item What are the $x$ intercepts (if any)?
+
+    \vspace{2in}
+    
+  \item What are the $y$ intercepts (if any)?
+
+    \vspace{1in}
+    
+  \item Sketch the graph. Be sure to label \emph{all} key points.
+
+    \bigskip
+
+    \begin{figure}[h]
+      \setlength{\leftskip}{1in}
+      \begin{tikzpicture}
+        \draw (-3.5,0) -- (3.5,0);
+        \draw (0,-3.5) -- (0,3.5);
+      \end{tikzpicture}
+    \end{figure}
+  \end{enumerate}
+
+  \newpage
+
+\item Consider the parabola: $y=1-3x+2x^2$.
+  \begin{enumerate}
+  \item Convert the general form to standard form by completing the square.
+
+    \vspace{3in}
+    
+  \item What are the coordinates of the vertex?
+
+    \vspace{1in}
+
+  \item What are the $x$ intercepts (if any)?
+
+    \vspace{2in}
+    
+  \item What are the $y$ intercepts (if any)?
+
+    \newpage
+    
+  \item Where is the function increasing (in interval notation)?
+
+    \vspace{0.5in}
+    
+  \item Where is the function decreasing (in interval notation)?
+
+    \vspace{0.5in}
+    
+  \item What is the domain (in interval notation)?
+
+    \vspace{0.5in}
+
+  \item What is the range (in interval notation)?
+
+    \vspace{0.5in}
+    
+  \item Where are the local maxima (if any)?
+
+    \vspace{0.5in}
+    
+  \item Where are the local minima (if any)?
+
+    \vspace{0.5in}
+    
+  \item Where is the axis of symmetry?
+
+    \vspace{0.5in}
+    
+  \item Sketch the graph. Be sure to label \emph{all} key points.
+
+    \bigskip
+
+    \begin{figure}[h]
+      \setlength{\leftskip}{1in}
+      \begin{tikzpicture}
+        \draw (-3.5,0) -- (3.5,0);
+        \draw (0,-3.5) -- (0,3.5);
+      \end{tikzpicture}
+    \end{figure}
+  \end{enumerate}
+
+  \newpage
+
+\item A child throws a ball up with an initial velocity of $\SI{32}{ft/s}$.
+  When the ball leaves the child's hand it is already $\SI{4}{ft}$ in the air.
+  How high does the ball go before it stops and comes back down?
+
+  \newpage
+
+\item Consider the polynomial $p(x)=2x^3-7x^2+4x+4$
+  \begin{enumerate}
+  \item List all of the possible candidates for real zeros of the polynomial.
+
+    \vspace{2in}
+    
+  \item Completely factor $p(x)$. How you select candidates and pull out
+    linear factors should be clear for full credit.
+
+    \newpage
+
+  \item What are the $x$ intercepts (if any)?
+
+    \vspace{1in}
+    
+  \item What are the $y$ intercepts (if any)?
+
+    \vspace{1in}
+
+  \item Sketch the graph.
+
+    \bigskip
+
+    \begin{figure}[h]
+      \setlength{\leftskip}{1in}
+      \begin{tikzpicture}
+        \draw (-5,0) -- (5,0);
+        \draw (0,-5) -- (0,5);
+      \end{tikzpicture}
+    \end{figure}
+  \end{enumerate}
+
+  \newpage
+
+\item Consider the rational function $r(x)=\frac{x^2+x-2}{(x^2-9)^2}$.
+  \begin{enumerate}
+  \item What are the zeros?
+
+    \vspace{0.5in}
+    
+  \item What are the poles?
+
+    \vspace{0.5in}
+
+  \item What are the $y$-intercepts (if any)?
+
+    \vspace{1in}
+
+  \item Where is the horizontal asymptote?
+
+    \vspace{0.5in}
+
+  \item Where are the vertical asymptotes?
+
+    \vspace{0.5in}
+
+  \item Sketch the graph. Be sure to label all intercepts and show all
+    asymptotes.
+
+    \bigskip
+
+    \begin{figure}[h]
+      \setlength{\leftskip}{1in}
+      \begin{tikzpicture}
+        \draw (-5,0) -- (5,0);
+        \draw (0,-3) -- (0,3);
+      \end{tikzpicture}
+    \end{figure}
+    
+  \item The graph has one local extrema. Use your calculator to locate it and
+    indicate whether it is a minimum or a maximum.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

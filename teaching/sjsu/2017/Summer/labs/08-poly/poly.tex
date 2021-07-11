@@ -1,0 +1,86 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+\section*{Lab 8: Factoring and Sketching Polynomials}
+
+In class we learned how to factor a polynomial:
+\begin{enumerate}
+\item Use the rational root test to identify a set of candidate roots/zeros.
+\item Use the remainder (factor) theorem to identify actual roots/zeros from
+  the set of candidates.
+\item Use long division to decompose the polynomial into linear factors.
+\end{enumerate}
+
+The examples we did in class all had the leading coefficient $a_n=1$ and the
+constant coefficient $a_0\ne0$. Lets examine a case where neither of these two
+things are true. Consider the polynomial:
+\[y=-2x^5+3x^4+2x^3-3x^2\]
+Note that $a_n=-2$ and $a_0=0$.
+
+\textbf{Step one} is to simply divide out a $-1$. Do so now:
+\[y=\]
+
+Now you have something of the form $y=-\left(p(x)\right)$, where the leading coefficient
+of $p(x)$ is now positive.
+
+\textbf{Step two} is to factor out some power of $x$ so that the resulting polynomial has
+a non-zero constant term. Do so now:
+\[y=\]
+
+Your answer should now look somthing like: $y=-x^k\left(q(x)\right)$ for some integer
+$k$ and some cubic polynomial $q(x)$ with an $a_0\ne0$.
+
+\textbf{Step three} is to apply the rational root test to the resulting $q(x)$ in order
+to find candidate roots/zeros.
+Let $p$ represent all of the factors of $a_0$:
+\[p:\]
+Let $q$ represent all of the factors of $a_n$:
+\[q:\]
+Now determine the set of candidate roots by making all possible combinations of
+$\frac{p}{q}$:
+\[\frac{p}{q}:\]
+
+\newpage
+
+If you did this correctly then you have some fractional roots, since $a_n\ne1$. One of
+these should be $\frac{3}{2}$. Apply the remainder/factor test to verify that this is in
+fact a root/zero of the polynomial $q(x)$:
+\[q\left(\frac{3}{2}\right)=\]
+
+\vspace{1in}
+
+\textbf{Step four} is to use long division to factor the $\left(x-\frac{3}{2}\right)$ out
+of $q(x)$. But this would be a mess due to the fraction, so let's think about an easier
+way. If it is true that $\left(x-\frac{3}{2}\right)$ divides $q(x)$, then we would have
+the following:
+\[y=-x^k\left(x-\frac{3}{2}\right)q_2(x)\]
+for some quadratic polynomial $q_2(x)$. Now, if we factor a $\frac{1}{2}$ out of the
+linear factor, we have:
+\[y=-\frac{1}{2}x^k(2x-3)q_2(x)\]
+Make sure that you understand how to factor out the fractional value! Thus, if
+$\left(x-\frac{3}{2}\right)$ divides the original $q(x)$ then it must be the case that
+$(2x-3)$ also divides the original $q(x)$. Make sure that you understand this! So
+instead of doing long division with $\left(x-\frac{3}{2}\right)$, we can do so with the
+much easier $(2x-3)$. Do that now:
+
+\newpage
+
+Using the result to rewrite the original polynomial in the form
+$y=-\frac{1}{2}x^k(2x-3)q_2(x)$, where $q_2(x)$ is some quadratic polynomial:
+\[y=\]
+The $q_2(x)$ should be factorable by inspection. Write the final factored polynomial:
+\[y=\]
+Now we are ready to sketch. Plot the zeros and y-intercept, determine the end behavior,
+and use multiplicity to sketch the graph:
+
+\newpage
+
+Your graph should have two local minima and two local maxima. Use your calculator to
+determine where these four points occur:
+\[min_1=\]
+\[min_2=\]
+\[max_1=\]
+\[max_2=\]
+Remember that these are points, so they should be stated in $(x,y)$ form.
+\end{document}

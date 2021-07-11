@@ -1,0 +1,80 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\newcommand{\cm}{\checkmark}
+
+\begin{document}
+
+\begin{center}
+  \large
+  Math-13 Sections 01 and 02
+
+  \Large
+  Homework \#1 Solutions
+\end{center}
+
+\begin{enumerate}
+  \setlength\itemsep{5ex}
+\item Indicate which subsets of the real numbers that the following values are members of:
+
+  \bigskip
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|c||c|c|c|c|c|}
+      \hline
+      VALUE & \(\N\) & \(\Z\) & \(\Q\) & \(\R-\Q\) & \(\R\) \\
+      \hline
+      \hline
+      \(0\) & & \cm & \cm & & \cm \\
+      \hline
+      \(\sqrt{2}\) & & & & \cm & \cm \\
+      \hline
+      \(\sqrt{9}\) & \cm & \cm & \cm & & \cm \\
+      \hline
+      \(123.4\) & & & \cm & & \cm \\
+      \hline
+      \(-123\) & & \cm & \cm & & \cm \\
+      \hline
+      \(\pi\) & & & & \cm & \cm \\
+      \hline
+      \(12.34\overline{56}\) & & & \cm & & \cm \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  \bigskip
+
+\item Convert the rational value \(12.34\overline{56}\) to integer ratio form using the algorithm that we learned
+  in class.
+  \begin{enumerate}
+  \item \(x=12.34\overline{56}\).  The goal is to find the alternate syntax for \(x\).
+  \item Capture all non-repeating digits: \(100x=1234.\overline{56}\).
+  \item Capture one set of repeated digits: \(10000x=123456.\overline{56}\).
+  \item Subtract the two equations (note that the repeating part cancels) and solve for \(x\):
+    \begin{gather*}
+      (10000-100)x=123456-1234 \\
+      9900x=122222 \\
+      x=\frac{122222}{9900}
+    \end{gather*}
+  \end{enumerate}
+  Therefore, \(12.34\overline{56}=\frac{122222}{9900}\).
+
+\item Convert \(24.57\overline{9}\) to integer ratio form \emph{without} using the algorithm and justify your
+  answer.  (Hint: look for an alternate syntax for the value.)
+
+  Note that \(24.57\overline{9}\) becomes arbitrarily close to \(24.58\), and is thus equal to it.  Now, use the
+  algorithm to convert this finite decimal value to an integer ratio:
+  \[24.58\left(\frac{100}{100}\right)=\frac{2458}{100}\]
+
+\item Is \(\displaystyle\frac{123.4}{56.99}\) a rational number?  If so, then explain why \emph{without} using the
+  algorithm.
+
+  Note that:
+  \[\frac{123.4}{56.99}=\frac{\frac{1234}{10}}{\frac{5699}{100}}=
+  \left(\frac{1234}{10}\right)\left(\frac{100}{5699}\right)=\frac{12340}{5699}\]
+  This is an integer ratio where the denominator is not zero, and is therefore a rational number.
+\end{enumerate}
+
+\end{document}

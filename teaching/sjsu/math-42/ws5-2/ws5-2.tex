@@ -1,0 +1,52 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#17
+
+  \textbf{Strong Induction and Well-ordering}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Assume that you have an unlimited number of \(2\)-cent and \(3\)-cent stamps and the package that you want to
+  mail requires a postage of \(n\) cents, where \(n\ge2\).  Prove that this is always possible using:
+  \begin{enumerate}
+  \item Simple induction.  (Hint: proof by cases may be useful here.)
+  \item Strong induction.
+  \end{enumerate}
+
+\item Now, assume that you have only \(3\)-cent and \(8\)-cent stamps.
+  \begin{enumerate}
+  \item For what \(n\) can you make all postages for greater than or equal to \(n\).
+  \item Prove this using strong induction.
+  \end{enumerate}
+
+\item Use strong induction to prove that every positive integer is a product of one or more primes.
+
+\item Prove using the well-ordering principle that there are no integers between \(0\) and \(1\).  (Hint:
+  contradiction).
+
+\item Show that the well-ordering principle does not hold for the set of integers \(\Z\).
+
+\item The well-ordering principle is crucial to proving the \emph{existence} part of the division algorithm:
+
+  \begin{quote}
+    For every \(n,d\in\Z\) where \(d>0\) there exists \emph{unique} \(q,r\in\Z\) such that \(n=dq+r\) and
+    \(0\le r<d\).
+  \end{quote}
+
+  \begin{enumerate}
+  \item Start by definition the set \(S=\setb{n-ds}{s\in\Z}\) and then define \(T=\setb{t\in S}{t\ge0}\).  Show
+    that \(T\ne\emptyset\).
+  \item Apply the well-ordering principle to \(T\).  Call the minimum value \(r\).
+  \item Prove by contradiction that \(0\le r<d\).  Since a choice of \(r\) results in a corresponding choice for
+    \(q\), this proves existence. See if you can prove uniqueness.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

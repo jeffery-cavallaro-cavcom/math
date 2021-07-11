@@ -1,0 +1,95 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#13 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Problems}
+
+\begin{enumerate}
+
+\item Given:
+  \[\log_b{2}=0.6931\]
+  \[\log_b{3}=1.0986\]
+  \[\log_b{5}=1.6094\]
+  find $\log_b{\left(\frac{75}{4}\right)}$. You must use each one of the given
+  values, you are not allowed to determine the value of $b$, and you must show
+  exactly how you obtained the answer.
+
+  \begin{eqnarray*}
+    \log_b{\left(\frac{75}{4}\right)} &=& \log_b75-\log_b4 \\
+    &=& \log_b(3\cdot25)-\log_b2^2 \\
+    &=& \log_b3+\log_b25-2\log_b2 \\
+    &=& \log_b3+\log_b5^2-2\log_b2 \\
+    &=& \log_b3+2\log_b5-2\log_b2 \\
+    &=& 1.0986+2(1.6094)-2(0.6931) \\
+    &=& 2.9312
+  \end{eqnarray*}
+
+\item Consider the equation: $y=\log_a{x}$
+\begin{enumerate}
+\item Derive the change of base formula for some arbitrary base $b$.
+  \begin{eqnarray*}
+    y &=& \log_ax \\
+    a^y &=& x \\
+    \log_ba^y &=& \log_bx \\
+    y\log_ba &=& \log_bx \\
+    y &=& \frac{\log_bx}{\log_ba}
+  \end{eqnarray*}
+  
+\item Use your formula with $b=e$ and your calculator to compute $\log_7100$.
+  \[\log_7100=\frac{\ln{100}}{\ln7}=2.3666\]
+  
+\item Assume that you made a mistake and used the common log key instead of the
+natural log key in the above calculation. Would you get a different answer?
+Why or why not?
+
+No, because the equation is good for any base.
+\end{enumerate} 
+
+\item Researchers tend to prefer exponential (base $e$) equations. For example,
+the normal equation for the radioactive decay of Carbon-14, which has a
+half-life of 5730 years, would be:
+\[A=A_0\cdot2^{-\frac{t}{5730}}\]
+Find a value for $x$ such that:
+\[A=A_oe^{xt}\]
+is an equivalent equation.
+\begin{eqnarray*}
+  2^{-\frac{t}{5730}} &=& e^{xt} \\
+  \ln2^{-\frac{t}{5730}} &=& \ln e^{xt} \\
+  -\frac{t}{5730}\ln2 &=& xt \\
+  x &=& -\frac{\ln2}{5730} \\
+  &\approx& -1.21\times10^{-4}
+\end{eqnarray*}
+
+\item The San Francisco earthquake of 1906 was estimated at 7.8 on the Richter
+Scale. Current building codes have resulted in skyscrapers that can withstand
+an 8.0 earthquake. How much strong is this than the 1906 quake?
+
+The equation for a reading on the Richter scale is:
+\[r=\log\frac{I}{I_0}\]
+where $I_0$ is the reference intensity.
+
+Let $I_1$ be the intensity of an $8.0$ earthquake and $I_2$ be the intensity of
+a $7.8$ earthquake:
+\begin{eqnarray*}
+  8.0-7.8 &=& \log\frac{I_1}{I_0}-\log\frac{I_2}{I_0} \\
+  0.2 &=& \log\frac{\frac{I_1}{I_0}}{\frac{I_2}{I_0}} \\
+  0.2 &=& \log\left(\frac{I_1}{I_0}\cdot\frac{I_0}{I_2}\right) \\
+  0.2 &=& \log\frac{I_1}{I_2} \\
+  10^{0.2} &=& 10^{\log\frac{I_1}{I_2}} \\
+  \frac{I_1}{I_2} &=& 10^{0.2} \\
+\end{eqnarray*}
+So: $\frac{I_1}{I_2}\approx1.6$
+
+Therefore, today's skyscrapes can withstand an earthquake that is $1.6$ times
+as strong as the 1906 earthquake.
+
+\end{enumerate}
+ 
+\end{document}

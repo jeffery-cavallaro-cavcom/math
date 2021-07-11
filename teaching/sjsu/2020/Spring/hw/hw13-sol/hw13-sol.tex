@@ -1,0 +1,33 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#13 Solutions
+\end{center}
+
+\subsection*{Problems}
+
+You have an urn that contains 3 red balls and 5 blue balls.  You randomly select 4 balls from the urn with no
+replacement.  What is the probability that you will end up with exactly 2 red balls?
+
+There are \(C(4,2)=6\) possible selections.  The probability of each is as follows:
+\[\begin{array}{c|c|c|c|c|c}
+\text{POSSIBLE} & p(1) & p(2|1) & p(3|12) & p(4|123) & p \\
+\hline
+RRBB & \frac{3}{3+5} & \frac{2}{2+5} & \frac{5}{1+5} & \frac{4}{1+4} & 0.0714 \\
+RBRB & \frac{3}{3+5} & \frac{5}{2+5} & \frac{2}{2+4} & \frac{4}{1+4} & 0.0714 \\
+RBBR & \frac{3}{3+5} & \frac{5}{2+5} & \frac{4}{2+4} & \frac{2}{2+3} & 0.0714 \\
+BRRB & \frac{5}{3+5} & \frac{3}{3+4} & \frac{2}{2+4} & \frac{4}{1+4} & 0.0714 \\
+BRBR & \frac{5}{3+5} & \frac{3}{3+4} & \frac{4}{2+4} & \frac{2}{2+3} & 0.0714 \\
+BBRR & \frac{5}{3+5} & \frac{4}{3+4} & \frac{3}{3+3} & \frac{2}{2+3} & 0.0714
+\end{array}\]
+All the possibilities have the same probability.  Thus, the probability of exactly two red is:
+\[p(2R)=6(0.0714)=0.4286\]
+
+\end{document}

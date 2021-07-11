@@ -1,0 +1,132 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\twocolumn
+\begin{document}
+
+\subsubsection*{Derivatives}
+
+\begin{gather*}
+  f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}{h} \\
+  \frac{d}{dx}\left[c\right]=0 \\
+  \frac{d}{dx}\left[x^c\right]=cx^{c-1} \\
+  \frac{d}{dx}\left[cf(x)\right]=cf'(x) \\
+  \frac{d}{dx}\left[f(x)\pm g(x)\right]=f'(x)\pm g'(x) \\
+  \frac{d}{dx}\left[f(x)g(x)\right]=f(x)g'(x)+f'(x)g(x) \\
+  \frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x)f'(x)-g'(x)f(x)}{[g(x)]^2} \\
+  \frac{d}{dx}\left[f(u(x))\right]=f'(u)u'(x) \\
+  \frac{d}{dx}\left[\frac{1}{x}\right]=-\frac{1}{x^2} \\
+  \frac{d}{dx}\left[e^x\right]=e^x \\
+  \frac{d}{dx}\left[e^{u(x)}\right]=e^{u(x)}u'(x) \\
+  \frac{d}{dx}\left[a^x\right]=a^x\ln(a) \\
+  \frac{d}{dx}\left[a^{u(x)}\right]=a^{u(x)}u'(x)\ln(a) \\
+  \frac{d}{dx}\left[\ln(x)\right]=\frac{1}{x} \\
+  \frac{d}{dx}\left[\ln(u(x))\right]=\frac{u'(x)}{u(x)} \\
+  \frac{d}{dx}\left[\log_a(x)\right]=\frac{1}{\ln(a)}\cdot\frac{1}{x} \\
+  \frac{d}{dx}\left[\log_a(u(x))\right]=\frac{1}{\ln(a)}\cdot\frac{u'(x)}{u(x)}
+\end{gather*}
+
+\subsection*{Probability}
+
+\[p(x)=\frac{1}{\o\sqrt{2\pi}}e^{\frac{-(x-\m)^2}{2\o^2}}\]
+68--95--99.7 rule
+
+\subsubsection*{First/Second Derivative Tests}
+
+\begin{tabular}{|l|l|l|}
+  \hline
+  & \(<0\) & \(>0\) \\
+  \hline
+  \(f'(x)\) & decreasing & increasing \\
+  \hline
+  \(f''(x)\) & concave down & concave up \\
+  \hline
+\end{tabular}
+
+\subsection*{Business}
+
+\begin{gather*}
+  C(n)=F+n(p)V \\
+  R(n)=pn(p) \\
+  P(n)=R(n)-C(n)
+\end{gather*}
+
+\subsubsection*{Lagrange Multiplier}
+
+\begin{gather*}
+f_x=\l g_x \\
+f_y=\l g_y \\
+\vdots \\
+g(x,y,\ldots)=0
+\end{gather*}
+
+\subsubsection*{Interest}
+
+\begin{tabular}{ll}
+  Compound Interest & \(A=P\left(1+\frac{r}{n}\right)^{nt}\) \\
+  Population Growth & \(P(t)=P(0)e^{rt}\) \\
+  Radioactive Decay & \(m(t)=m(0)e^{-\frac{t\ln(2)}{h_0}}\)
+\end{tabular}
+
+\subsubsection*{Logarithms}
+
+\begin{gather*}
+  \ln(1)=0 \\
+  \ln(e)=1 \\
+  e^{\ln(x)}=x \\
+  \ln(e^x)=x \\
+  e^x=e^y\iff x=y \\
+  \ln(x)=\ln(y)\iff x=y \\
+  \ln(xy)=\ln(x)+\ln(y) \\
+  \ln\left(\frac{x}{y}\right)=\ln(x)-\ln(y) \\
+  \ln\left(x^y\right)=y\ln(x)
+\end{gather*}
+
+\subsection*{Indefinite Integrals}
+
+\begin{gather*}
+  \int kdx=kx+C \\
+  \int x^kdx=\frac{x^{k+1}}{k+1} \\
+  \int kf(x)dx=k\int f(x)dx \\
+  \int\left[f(x)\pm g(x)\right]dx=\int f(x)dx\pm\int g(x)dx \\
+  \int e^xdx=e^x+C \\
+  \int\left[u'(x)e^{u(x)}\right]dx=e^{u(x)}+C \\
+  \int\frac{dx}{x}=\ln\abs{x}+C \\
+  \int\frac{u'(x)}{u(x)}dx=\ln\abs{u(x)}+C
+\end{gather*}
+
+\subsection*{Numerical Integration}
+
+\begin{gather*}
+  \int_a^b f(x)dx\approx\left(\frac{b-a}{2n}\right)\left[f(x_0)+2f(x_1)+\cdots+2f(x_{n-1})+f(x_n)\right] \\
+  \int_a^b f(x)dx\approx\left(\frac{b-a}{3n}\right)
+  \left[f(x_0)+4f(x_1)+2f(x_2)+\cdots+2f(x_{n-2})+4f(x_{n-1})+f(x_n)\right]
+\end{gather*}
+
+\subsection*{Even/Odd}
+
+\begin{gather*}
+  E+E=E \\
+  O+O=O \\
+  E\cdot E=E \\
+  O\cdot O=E \\
+  E\cdot O=O
+\end{gather*}
+
+\subsection*{Definite Integrals}
+
+\begin{gather*}
+  \int_a^bf(x)dx=F(b)-F(a) \\
+  \int_a^b kf(x)dx=k\int_a^b f(x)dx \\
+  \int_a^b\left[f(x)\pm g(x)\right]dx=\int_a^b f(x)dx\pm\int_a^b g(x)dx \\
+  \int_a^b f(x)dx=\int_a^c f(x)dx+\int_c^b f(x)dx \\
+  \int_a^a f(x)dx = 0 \\
+  \int_a^b f(x)dx = -\int_b^a f(x)dx \\
+  \int_{-a}^af(x)dx=2\int_0^a f(x)dx\qquad(f(x)\ \text{even}) \\
+  \int_{-a}^af(x)dx=0\qquad(f(x)\ \text{odd}) \\
+\end{gather*}
+
+\end{document}

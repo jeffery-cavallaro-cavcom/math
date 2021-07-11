@@ -1,0 +1,100 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Final Exam Cheat Sheet
+\end{center}
+
+\vspace{0.25in}
+
+\subsection*{Limits}
+
+Assume \(\displaystyle\lim_{x\to a}f(x)=L\) and \(\displaystyle\lim_{x\to a}g(x)=M\), and \(c\in\mathbb{R}\):
+\begin{enumerate}[left=0pt]
+\item \(\displaystyle\lim_{x\to a}[c]=c\)
+\item \(\displaystyle\lim_{x\to a}[x^c]=a^c\)
+\item \(\displaystyle\lim_{x\to a}[f(x)\pm g(x)]=L\pm M\)
+\item \(\displaystyle\lim_{x\to a}[f(x)g(x)]=LM\)
+\item \(\displaystyle\lim_{x\to a}\left[\frac{f(x)}{g(x)}\right]=\frac{L}{M}\quad M\ne0\)
+\end{enumerate}
+
+\subsection*{Derivatives}
+
+Assume \(f(x)\) and \(g(x)\) are differentiable and \(c\in\mathbb{R}\):
+\begin{enumerate}[left=0pt]
+\item \(\frac{d}{dx}[c]=0\)
+\item \(\frac{d}{dx}[x^c]=cx^{c-1}\)
+\item \(\frac{d}{dx}[cf(x)]=cf'(x)\)
+\item \(\frac{d}{dx}[f(x)\pm g(x)]=f'(x)\pm g'(x)\)
+\item \(\frac{d}{dx}[f(x)g(x)]=f(x)g'(x)+f'(x)g(x)\)
+\item \(\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x)f'(x)-g'(x)f(x)}{[g(x)]^2}\)
+\item \(\frac{d}{dx}\left[f\left(u(x)\right)\right]=f'\left(u(x)\right)u'(x)\)
+\item \(\frac{d}{dx}\left[e^x\right]=e^x\)
+\item \(\frac{d}{dx}\left[\ln(x)\right]=\frac{1}{x}\)
+\item \(\frac{d}{dx}\left[\frac{1}{x}\right]=-\frac{1}{x^2}\)
+\end{enumerate}
+
+\begin{minipage}{3in}
+  \subsection*{Optimization}
+
+  \begin{tabular}{|l|l|l|}
+    \hline
+    & \(<0\) & \(>0\) \\
+    \hline
+    \(f'(x)\) & decreasing & increasing \\
+    \hline
+    \(f''(x)\) & concave down & concave up \\
+    \hline
+  \end{tabular}
+\end{minipage}
+\begin{minipage}{3in}
+  \subsection*{Lagrange Multiplier}
+  \begin{gather*}
+    f_x=\lambda g_x \\
+    f_y=\lambda g_y \\
+    g(x,y)=0
+  \end{gather*}
+\end{minipage}
+
+\begin{minipage}{3in}
+\subsection*{Interest}
+
+\begin{enumerate}[left=0pt]
+\item \(A=P(1+rt)\)
+\item \(A=P\left(1+\frac{r}{n}\right)^{nt}\)
+\item \(A=Pe^{rt}\)
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{3in}
+\subsection*{Probability}
+
+\begin{enumerate}[left=0pt]
+  \setlength{\itemsep}{5pt}
+\item \(\displaystyle p(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{-(x-\mu)^2}{2\sigma^2}}\)
+\item 68--95--99.7 rule
+\end{enumerate}
+\end{minipage}
+
+\subsection*{Integrals}
+
+\begin{enumerate}[left=0pt]
+  \setlength{\itemsep}{5pt}
+\item \(\displaystyle\int kdx=kx+C\)
+\item \(\displaystyle\int x^kdx=\frac{1}{k+1}x^{k+1}+C\)
+\item \(\displaystyle\int kf(x)dx=k\int f(x)dx\)
+\item \(\displaystyle\int[f(x)\pm g(x)]dx=\int f(x)dx\pm\int g(x)dx\)
+\item \(\displaystyle\int e^xdx=e^x+C\)
+\item \(\displaystyle\int \frac{dx}{x}=\ln(x)+C\)
+\item \(\displaystyle\int_a^af(x)dx=0\)
+\item \(\displaystyle\int_a^bf(x)dx+\int_b^cf(x)dx=\int_a^cf(x)dx=0\)
+\item \(\displaystyle\int_a^bf(x)dx=-\int_b^af(x)dx\)
+\end{enumerate}
+
+\end{document}

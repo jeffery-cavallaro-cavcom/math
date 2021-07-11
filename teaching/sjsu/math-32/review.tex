@@ -1,0 +1,342 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{libertine}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{esvect}
+\usepackage{diagbox}
+\newcommand{\uv}[1]{\hat{#1}}
+\newcommand{\iv}{\uv{\text{\i}}}
+\newcommand{\jv}{\uv{\text{\j}}}
+\newcommand{\kv}{\uv{\text{k}}}
+\renewcommand{\O}{\theta}
+\newcommand{\p}{\rho}
+\newcommand{\setb}[2]{\left\{{#1}\,\middle|\,{#2}\right\}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclareMathOperator{\comp}{comp}
+\DeclareMathOperator{\proj}{proj}
+\pagestyle{plain}
+\begin{document}
+\section*{Math-32 Spring 2020 Final Review Problems}
+
+\subsection*{Vectors and the Geometry of Space}
+
+\begin{enumerate}
+\item Let \(\vec{a}=2\iv-3\jv+\kv\) and \(\vec{b}=2\jv+5\kv\).  Calculate the following:
+  \begin{enumerate}
+  \item \(\vec{a}+\vec{b}\)
+  \item \(\vec{b}-\vec{a}\)
+  \item \(\vec{a}\cdot\vec{b}\)
+  \item \(\vec{b}\times\vec{a}\)
+  \item \(\abs{\vec{a}}\)
+  \item \(\uv{a}\)
+  \item \(\comp_{\vec{a}}(\vec{b})\)
+  \item \(\proj_{\vec{b}}(\vec{a})\)
+  \item Are \(\vec{a}\) and \(\vec{b}\) orthogonal?  Give your reason.
+  \item Are \(\vec{a}\) and \(\vec{b}\) parallel?  Give your reason.
+  \item Assuming that \(\vec{a}\) and \(\vec{b}\) are in the standard position, what is the measure of the
+    angle between them (in radians).
+  \end{enumerate}
+
+\item Consider the four points:
+  \begin{gather*}
+    A(-1,-1,-1) \\
+    B(2,2,0) \\
+    C(-2,2,1) \\
+    D(1,1,3)
+  \end{gather*}
+  What is the volume of the parallelepiped defined by \(\vv{AB}\), \(\vv{AC}\), and \(\vv{AD}\)?
+
+\item Consider the tetrahedron with vertices \((0,0,2)\), \((0,1,0)\), \((0,0,0)\), and \(1,2,0\).
+  \begin{enumerate}
+  \item Sketch the tetrahedron.
+  \item Determine the volume of the tetrahedron.
+  \end{enumerate}
+
+\item Consider the line through the points \(A(-1,3,2)\) and \(B(5,0,1)\):
+  \begin{enumerate}
+  \item Determine the vector equation for the line.
+  \item Determine the parametric equations for the line.
+  \item Determine the symmetric equations for the line.
+  \item Find a third point on the line not the same as \(A\) or \(B\).
+  \item Determine the equation of the line orthogonal to this line through the third point that you found.
+  \end{enumerate}
+
+\item Consider the points \(A(1,1,1)\), \(B(5,0,6)\), and \(C(-1,-2,-3)\):
+  \begin{enumerate}
+  \item Determine the scalar equation of the plane containing these three points.
+  \item Determine the \(x\), \(y\), and \(z\) intercepts of the plane.
+  \item Sketch the plane.
+  \item Determine the distance from the point \((10,10,10)\) to the plane.
+  \end{enumerate}
+
+\item Determine the scalar equation for the plane through the point \((1,2,-2)\) that contains the line with the
+  parametric equations:
+  \begin{gather*}
+    x=2t \\
+    y=3-t \\
+    z=1+3t
+  \end{gather*}
+
+\item Consider the following linear equations for two planes:
+  \begin{gather*}
+    3x+5y-z=3 \\
+    2x-3y+5z=4
+  \end{gather*}
+  \begin{enumerate}
+  \item Show that these planes are neither parallel nor orthogonal.
+  \item Determine the measure of the angle between the two planes (in radians, to 2 decimal places).
+  \item Determine the parametric equations for the line of intersection between the two planes.
+  \item Determine the symmetric equations for the line of intersection between the two planes.
+  \end{enumerate}
+
+\item Consider the following linear equations for two planes:
+  \begin{gather*}
+    3x+y-4z=2 \\
+    3x+y-4z=24
+  \end{gather*}
+  \begin{enumerate}
+  \item Show why these planes are parallel.
+  \item Determine the distance between the two planes.
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{Vector Functions}
+
+\begin{enumerate}
+\item Consider the following parameterized equation for a curve:
+  \[\left.\begin{array}{l}
+  x = \sin\O \\
+  y = \cos\O
+  \end{array}\right\}\quad0\le\O\le\pi\]
+  \begin{enumerate}
+  \item Determine the Cartesion equation for the curve by eliminating the parameter.
+  \item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter
+    increases.
+  \end{enumerate}
+
+\item Determine the speed of a particle with the position function:
+  \[\vec{r}(t)=\frac{\sqrt{5}}{2}t\iv+e^{5t}\jv-e^{-5t}\kv\]
+
+\item Consider the curve \(\vec{r}(t)=\langle t^2,0,t\rangle\).
+  \begin{enumerate}
+  \item Determine the length of the curve for \(1\le t\le4\) (to four decimal places).
+  \item Determine the curvature.
+  \end{enumerate}
+
+\item Determine the curvature of the curve \(\vec{r}(t)=\langle\sqrt{15}t,e^t,e^{-t}\rangle\) at the point
+  \((0,1,1)\).  Simplify your answer.
+
+\item Consider the following parameterized equation for a curve:
+  \begin{gather*}
+    x = 2\sin(3t) \\
+    y = t \\
+    z=2\cos(3t)
+  \end{gather*}
+  at the point \((0,\pi,-2)\).
+  \begin{enumerate}
+  \item Determine the unit vector \(\vec(T)(t)\).
+  \item Determine the unit normal vector \(\vec{N}(t)\).
+  \item Determine the unit binormal vector \(\vec{B}(t)\).
+  \item Determine the equation of the normal plane to the curve at the point.
+  \item Determine the equation of the osculating plane to the curve at the point.
+  \end{enumerate}
+
+\item Two particles travel along the space curves:
+  \begin{gather*}
+    \vec{r}_1(t)=\langle t,t^2,t^3\rangle \\
+    \vec{r}_2(s)=\langle 1+2s,1+6s,1+14s\rangle \\
+  \end{gather*}
+  \begin{enumerate}
+  \item Determine all point of intersection.
+  \item Do the two particles collide?  Explain why or why not.
+  \item Determine the angle between the curves at any one point of intersection (in radians, rounded to two decimal
+    places).
+  \end{enumerate}
+
+\item Reparameterize the curve:
+  \[\vec{r}(t)=e^{7t}\cos(7t)\iv+6\jv+e^{7t}\sin(7t)\kv\]
+  with respect to arc length \(s\) measured from \(t=0\) in the direction of increasing \(t\).
+\end{enumerate}
+
+\subsection*{Partial Derivatives}
+
+\begin{enumerate}
+\item Consider the function \(f(x,y)=\ln(x+y+1)\).
+  \begin{enumerate}
+  \item Determine an expression for the domain.
+  \item Sketch the domain.
+  \end{enumerate}
+
+\item Let \(\displaystyle N(u,v,w)=\frac{p+q}{p+r}\) where:
+  \begin{gather*}
+    p=u+vw \\
+    q=v+uw \\
+    r=w+uv
+  \end{gather*}
+  \begin{enumerate}
+  \item Using proper chain rule notation, determine all three first order partial derivatives.
+  \item Evaluate the partial derivatives at \(u=2\), \(v=3\), and \(w=4\).
+  \end{enumerate}
+
+\item How many critical points does the following function have?
+  \[g(x,y)=-32xy+(x+y)^4\]
+
+\item Find all extrema and saddle points for the function:
+  \[f(x,y)=x^2+x^2y+2y^2+3\]
+
+\item Use the second partial derivative test to determine all extrema for the function:
+  \[f(x,y)=\frac{1}{3}x^3+y^2+2xy-6x-3y+4\]
+
+\item Find the absolute minimum and maximum value of the function:
+  \[f(x,y)=x^2-2xy+4y^2-4x-2y+24\]
+  over the region \(R=[0,4]\times[0,2]\).
+
+\item Determine the absolute maximum value of \(f(x,y)=2x^3+y^4\) on the disk
+  \(D=\setb{(x,y)}{0\le x\le3,0\le y\le2}\).
+
+\item Determine the gradient of the function \(f(x,y,z)=z^2e^{x\sqrt{y}}\).
+
+\item Consider the function \(f(x,y)=xe^{xy}\).
+  \begin{enumerate}
+  \item Determine the linearization \(L(x,y)\) of the function  at the point \((1,0)\).
+  \item Use \(L(x,y)\) to approximate \(f(1.1,-0.1)\).
+  \end{enumerate}
+
+\item Find three positive numbers whose sum is \(12\) and whose squares is as small as possible.
+
+\item At what point on the paraboloid \(y=x^2+z^2\) is the tangent plane parallel to the plane
+  \(7x+4y+5z=4\)?
+
+\item The electric potential \(V\) at any point \((x,y)\) is given by \(V=\ln\sqrt{x^2+y^2}\).
+  \begin{enumerate}
+  \item Determine the rate of change in \(V\) at the point \((3,4)\) in the direction of the point \((2,6)\).
+  \item What is the direction of maximum change in \(V\) from the point \((3,4)\).
+  \item What is the maximum rate of change?
+  \end{enumerate}
+
+\item The temperature in \(^{\circ}C\) of a flat plate is a function of the distances \(x\) [mm]  and \(y\) [mm]
+  from the center of the plate.  The following table samples some values of the function \(T(x,y)\) in the
+  vicinity of the point \((-2,1)\).  Assume that \(T(x,y)\) is continuous and differentiable everywhere (i.e., is
+  smooth).
+
+  \begin{tabular}{|c||c|c|c|c|c|}
+    \hline
+    1.2 & 36.12 & 35.45 & 34.80 & 34.17 & 33.56 \\
+    \hline
+    1.1 & 35.18 & 34.53 & 33.90 & 33.29 & 32.70 \\
+    \hline
+    1.0 & 34.24 & 33.61 & 33.00 & 32.41 & 31.84 \\
+    \hline
+    0.9 & 33.30 & 32.69 & 32.10 & 31.53 & 30.98 \\
+    \hline
+    0.8 & 32.36 & 31.77 & 31.20 & 30.65 & 30.12 \\
+    \hline
+    \hline
+    \slashbox{y}{x} & -2.2 & -2.1 & -2.0 & -1.9 & -1.8 \\
+    \hline
+  \end{tabular}
+
+  Select the best estimate for \(\left\lVert\nabla T(-2,1)\right\rVert\):
+  \begin{enumerate}
+  \item \(10.8\)
+  \item \(15.0\)
+  \item \(4.0\)
+  \item \(12.6\)
+  \item \(20.8\)
+  \end{enumerate}
+  and select the best estimate for the direction of \(\nabla T(-2,1)\):
+  \begin{enumerate}
+  \item \(\langle-3,-2\rangle\)
+  \item \(\langle3,3\rangle\)
+  \item \(\langle-3,2\rangle\)
+  \item \(\langle2,-3\rangle\)
+  \item \(\langle-2,3\rangle\)
+  \end{enumerate}
+
+\item The temperature over a particular surface is given by:
+  \[T(x,y,z)=300e^{-x^2-3y^2-7z^2}\]
+  where \(T\) is measured in \(^{\circ}C\) and \(x,y,x\) is measured in meters.  Consider an ant on the surface at
+  position \(P(2,-1,5)\) who starts crawling toward the point \(Q(5,-2,6)\).  For each of the following questions,
+  all answers must be in exact form (i.e., no decimals).
+  \begin{enumerate}
+  \item Determine the rate of change of temperature in the indicated direction.
+  \item Is the temperature getting hotter or cooler in the indicated direction.
+  \item In what direction does the temperature increase the fastest?
+  \item What is the maximum rate of change at \(P\).
+  \end{enumerate}
+
+\item Use the Lagrange multiplier technique to determine the extreme values of the function \(f(x,y)=xe^y\) subject
+  to the constraint \(x^2+y^2=3\).
+\end{enumerate}
+
+\subsection*{Multiple Integrals}
+
+\begin{enumerate}
+\item Evaluate the integral \(\displaystyle\iint_Dxy\,dA\) where \(D\) is the triangle with vertices
+  \((0,2)\), \((3,-1)\), and \((3,2)\).
+  
+\item Consider the integral \(\displaystyle\iint_D(x^2+2y)dA\) where \(D\) is the region bounded by \(y=x\),
+  \(y=x^3\), and \(x\ge0\).
+  \begin{enumerate}
+  \item Set up (but do not evaluate) the integral as a type 1 region.
+  \item Set up (but do not evaluate) the integral as a type 2 region.
+  \item Evaluate once using either order of integration.
+  \end{enumerate}
+  
+\item Evaluate \(\displaystyle\iint_D(x+y)\,dA\) where \(D\) is the region that lies to the left of the \(y\)-axis
+  between the circles \(x^2+y^2=1\) and \(x^2+y^2=4\).
+
+\item Determine the area of the surface \(z=xy\) that lies within the cylinder \(x^2+y^2=4\).
+
+\item Consider the lamina that occupies the region \(D\) bounded by the parabolas \(y=x^2\) and \(x=y^2\) with
+  density \(\p(x,y)=\sqrt{x}\).
+  \begin{enumerate}
+  \item Determine the total mass of the lamina.
+  \item Determine the position of the lamina's center of mass.
+  \end{enumerate}
+
+\item Determine the volume of the solid under the paraboloid \(z=x^2+4y^2\) and above the rectangle
+  \(R=[0,2]\times[1,4]\).
+
+\item Evaluate \(\displaystyle\iiint_Ez\,dV\) where \(E\) is the region enclosed by the paraboloid \(z=x^2+y^2\)
+  and the plane \(z=4\).
+
+\item Which of the following describes the boundary of \(E\) in the following integral:
+  \[\iiint_Ef(x,y,z)dV=\int_{-1}^1\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}\int_{\sqrt{x^2+y^2}}^{2-x^2-y^2}\]
+  \begin{enumerate}
+  \item A paraboloid and a plane
+  \item A sphere
+  \item A cone and a half-sphere
+  \item A paraboloid and a half-sphere
+  \item A cone and a plane
+  \item An ellipsoid
+  \item Two cones
+  \item A cone and a paraboloid
+  \end{enumerate}
+
+\item Evaluate the integral \(\displaystyle\iint_D(x^2+y^2)y\,dA\) where \(D\) is the region bounded by the
+  circle \(x^2+y^2=2x\) using polar coordinates.
+
+\item Use cylindrical coordinates to determine the volume of the solid that is enclosed by the cone
+  \(z=\sqrt{x^2+y^2}\) and the sphere \(x^2+y^2+z^2=50\).  Your answer must be in exact form (i.e., no decimals).
+
+\item Use cylindrical coordinates to evaluate \(\displaystyle\iint_E(x^3+xy^2)dV\) where \(E\) is the solid in the
+  first octant the lies beneath the paraboloid \(z=1-x^2-y^2\).
+
+\item Use spherical coordinates to determine the volume of the solid that lies within the sphere \(x^2+y^2+z^2=36\),
+  above the \(xy\)-plane, and before the cone \(z=\sqrt{x^2+y^2}\).  Your answer must be in exact form (i.e., no
+  decimals).
+
+\item Evaluate \(\displaystyle\iiint_Exe^{x^2+y^2+z^2}\,dV\) where \(E\) is the portion of the unit ball
+  \(x^2+y^2+z^2\le1\) that lies in the first octant.
+
+\item Change \(\displaystyle\int_0^1\int_0^{\sqrt{1-x^2}}\int_{\sqrt{x^2+y^2}}^{\sqrt{2-x^2-y^2}}xy\,dzdydx\) to spherical
+  coordinates and evaluate it.
+\end{enumerate}
+
+\end{document}

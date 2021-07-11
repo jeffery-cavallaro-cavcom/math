@@ -1,0 +1,308 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+
+\begin{document}
+
+\section*{Mathematical Logic}
+
+When we speak in mathematical terms, our use of language needs to be as precise
+as possible. In short, clarity is good and ambiguity is bad. To help ensure
+clarity, we use logical constructs to help communicate the gist of what we are
+trying to say. Thus, a short introduction to these logical constructs is in
+order.
+
+\subsection*{Statements}
+
+The most basic logical construct is the \emph{statement}, which is defined as
+follows:
+
+\begin{definition}[Statement]
+A statement is a fact that is \emph{unambiguously} either true or false.
+\end{definition}
+
+Thus, $2<3$ is a fact that is unambiguously \emph{true} and is therefore a
+statement.  Likewise, $3<2$ is a fact that is unambiguously \emph{false} and is
+therefore also a statement. But, $x<2$, assuming that we know nothing about the
+value of $x$, could be true or false, so it is \emph{not} a statement. However,
+if we claim that $x$ has the value 1 then $x<2$ becomes unambiguously true and
+is now a statement.
+
+We tend to use capital letters, starting with $P$, to represent statements and
+the `$\coloneqq$' symbol to indicate definitions.  For example:
+\[P\coloneqq2<3\]
+would indicate that $P$ is defined to be the true statement $2<3$.
+
+\subsection*{Logical Operators}
+
+Single statements can be combined into \emph{compound} statements using logical
+operators. There are three logical operators commonly in use:
+\begin{enumerate}
+\item NOT
+\item AND
+\item OR
+\end{enumerate}
+
+\subsubsection*{NOT}
+
+The NOT operator flips the truth about a statement: $not\ P$ is true when $P$
+is false and false when $P$ is true. For example, if $P\coloneqq 2<3$ then $P$
+is true and $not\ P$ is false. Note that in this case $not\ 2<3$ would mean
+$2\ge3$, which is clearly false.
+
+We can capture the effect of a logical operator using something called a
+\emph{truth table}. The truth table for the NOT operator applied to a statement
+$P$ would be as follows (T=true and F=false):
+
+\begin{tabular}{|c|c|}
+\hline
+$P$ & $not\ P$ \\
+\hline
+T & F \\
+\hline
+F & T \\
+\hline
+\end{tabular}
+
+Note that the first column lists all of the possible truth states of $P$ and the
+second column lists the resulting truth states of $not\ P$
+
+\subsubsection*{AND}
+
+The AND operator combines two statements $P$ and $Q$, such that $P\ and\ Q$ is
+true when $P$ and $Q$ are both true, and otherwise false. The truth table is as
+follows:
+
+\begin{tabular}{|cc|c|}
+\hline
+$P$ & $Q$ & $P\ and\ Q$ \\
+\hline
+T & T & T \\
+\hline
+T & F & F \\
+\hline
+F & T & F \\
+\hline
+F & F & F \\
+\hline
+\end{tabular}
+
+For example, let:
+\begin{eqnarray*}
+P &\coloneqq& 2<3 \\
+Q &\coloneqq& 3<4 \\
+R &\coloneqq& 5<4 \\
+\end{eqnarray*}
+Then $P\ and\ Q$ is true (since both $P$ and $Q$ are true), but $P\ and\ R$ is
+false because even though $P$ is true, $R$ is false.
+
+\subsubsection*{OR}
+
+The OR operator combines two statements $P$ and $Q$, such that $P\ or\ Q$ is
+true when either $P$, $Q$, or both are true. In fact, it is only false when
+both $P$ and $Q$ are false. The truth table is as follows:
+
+\begin{tabular}{|cc|c|}
+\hline
+$P$ & $Q$ & $P\ or\ Q$ \\
+\hline
+T & T & T \\
+\hline
+T & F & T \\
+\hline
+F & T & T \\
+\hline
+F & F & F \\
+\hline
+\end{tabular}
+
+For example, assuming the above definitions of $P$, $Q$, and $R$, $P\ or\ Q$ and
+$P\ or\ R$ are both true. However, $(not\ Q)\ or\ R$ is false, because both
+$not\ Q$ and $R$ are false.
+
+Note that this type of OR is often referred to as an \emph{inclusive} OR, since
+the OR statement is true when both statements are true. There is another type
+of OR called an \emph{exclusive} OR, which is false when both statements are
+true, and thus has the following truth table:
+
+\begin{tabular}{|cc|c|}
+\hline
+$P$ & $Q$ & $P\ xor\ Q$ \\
+\hline
+T & T & F \\
+\hline
+T & F & T \\
+\hline
+F & T & T \\
+\hline
+F & F & F \\
+\hline
+\end{tabular}
+
+We assume that all of our OR statements are inclusive, unless explicitly stated
+otherwise.
+
+\subsection*{Operator Precedence}
+
+When a compound statement contains multiple operators then we need to pay
+attention to operator precedence, just like we do with the arithmetic operators
+plus and multiply. For logical operators, the order of precedence is NOT, AND,
+then OR. When consecutive operators are the same then NOT is evaluated from
+right to left, and AND and OR are evaluated from left to right. We use
+parentheses if we need to override this precedence, again, just like in
+arithmetic.
+
+For example, the compound statement:
+\[P\ and\ Q\ or\ not\ not\ P\ and\ not\ Q\]
+would be evaluated as follows:
+\[(P\ and\ Q)\ or\ (not\ (not\ P)\ and\ (not\ Q))\]
+Assuming the definitions of $P$ and $Q$ above, this would be a true statement:
+$(P\ and\ Q)$ is true, and thus the OR statement is true. Make sure that you
+can see why this is true.
+
+\subsection*{Implication}
+
+Mathematical systems start with a small collection of relatively simple facts
+and use those facts to discover new, more complicated facts. This is done by
+implication, thus making implication the most important logical construct in
+mathematics.
+
+Implication is an if-then statement of the form:
+
+\hspace{0.5in}if \emph{(hypothesis)} then \emph{(consequence)}
+
+The hypothesis and consequence are statements. We make the claim that if the
+hypothesis is true (know facts), then the consequence must be true (new
+facts). Note that such implication must have a proof that supports it.
+Discovery of such proofs is the main task in higher mathematics.
+
+As a simple example, consider the implication:
+
+\hspace{0.5in}if $x=1$ then $x<2$
+
+We claim that $x=1$ is a true statement, and can thus conclude that $x<2$; the
+implication is a true statement. A more complicated example would be:
+
+\hspace{0.5in}if $x=1$ and $y=2$ then $x+y=3$
+
+Now, the hypothesis is a compound AND statement. We are claiming that the
+hypothesis is true, so both parts of the AND must be true, so the consequence
+does follow; indeed, $x+y=1+2=3$ and the implication is a true statement. But
+consider this example:
+
+\hspace{0.5in}if $x=1$ or $y=2$ then $x+y=3$
+
+Now, the hypothesis is an OR statement, so only one of its parts need be true.
+If they are both true then the consequence follows; however, if $x=1$ is true
+but $y=2$ is false, then the consequence does not follow. We cannot conclude
+that the consequence is true in all cases, so the implication is false.
+
+Sometimes, an arrow is used to indication implication: $P\rightarrow Q$.
+
+\subsection*{Equivalence}
+
+We need to be careful that we properly observe the direction of an implication
+statement.  For example:
+
+\hspace{0.5in}if $x=1$ then $x<2$
+
+is a true statement; however,
+
+\hspace{0.5in}if $x<2$ then $x=1$
+
+does not follow (for example, $x$ could be 0 and $0\ne1$). However, there are
+some implications that are true in both directions. Consider the example:
+
+\hspace{0.5in}if $x$ is even then $x$ is divisible by 2
+
+This is a true statement. But the other direction:
+
+\hspace{0.5in}if $x$ is divisible by 2 then $x$ is even
+
+is also a true statement. When $P\rightarrow Q$ and $Q\rightarrow P$ are both
+true then we say that $P$ and $Q$ are \emph{equivalent}. This means that either
+both $P$ and $Q$ must be true or that both must be false. As a short cut, we
+represent equivalences using \emph{if and only if} statements, usually
+abbreviated $P$ iff $Q$ or also $P\leftrightarrow Q$.
+
+\subsection*{Quantifiers}
+
+Although the statement $1<2$ may be true, it is sort of obvious and not very
+interesting. Instead, what we might want to do is compare all the values in
+some, possibly infinite, collection of values to the number 2 --- something
+like $x<2$ for all considered values of $x$. We do this using parameterized
+statements and quantifiers.
+
+\subsubsection*{Parameterized Statements}
+
+We determined that something like $x<2$ is not a statement until we have a
+definite value of $x$. We call something like this a \emph{parameterized}
+statement, where $x$ is the parameter. When using letters to represent
+statements, we add the parameter as follows:
+\[P(x)\coloneqq x<2\]
+Now, we need a way to provide various values of $x$. We will see how to
+identify a collection of possible $x$ when we look at \emph{sets}. Until then,
+we will assume that we have some collection of $x$ values in which we are
+interested. We then apply those $x$ values to our parameterized statement using
+a \emph{quantifier}.
+
+\subsubsection*{Universal Quantifier}
+
+We use the universal quantifier to test all of the values in our collection.
+The universal quantifier uses the word ``all''. Continuing with the example
+above, we would say something like:
+
+\hspace{0.5in}For all $x$, $x<2$ is true
+
+Using mathematical syntax, we would write: $\forall x, P(x)$. The upside-down
+`A' stands for ``all''. Note that this is a statement that is true if $P(x)$ is
+true for all of our $x$ values. It is false if there is at least one $x$ value
+for which P(x) is false. So, you can think of the universal quantifier as a
+shortcut for a long compound AND statement:
+\[\forall x,P(x)\coloneqq P(x_1)\ and\ P(x_2)\ and\ P(x_3)\ and\ \ldots\]
+If we can find at least one $x$ value such that $P(x)$ is false we call that
+$x$ value a \emph{counterexample}.
+
+For example, let our collection of $x$ values be the numbers 3, 4, and 5 and
+$P(x):=x\ge3$. We can see that $\forall x,P(x)$ is a true statement. But if we
+added the number 1 to our set of $x$ then the statement would be false, since
+$1\not\ge3$.
+
+\subsubsection*{Existential Quantifier}
+
+We use the existential quantifier to see if there is at least one value in our
+collection that makes our parameterized statement true. The existential
+quantifier uses the words ``there exists''. Once again, continuing with the
+example above, we would say something like:
+
+\hspace{0.5in}There exists $x$ such that $x<2$ is true
+
+Using mathematical syntax, we would write: $\exists x,P(x)$. The backwards `E'
+stands for ``there exists''. Note that this is a statement that is true if
+$P(x)$ is true for at least one of our $x$ values --- there can be more, but
+there is at least one. It is false if $P(x)$ is false for all of our $x$
+values. So, you can think of the existential quantifier as a shortcut for a
+long compound OR statement:
+\[\exists x,P(x)\coloneqq P(x_1)\ or\ P(x_2)\ or\ P(x_3)\ or\ \ldots\]
+
+For example, let our collection of $x$ values be the numbers 3, 4, and 5 and
+$P(x):=x<4$. We can see that $\exists x,P(x)$ is a true statement. But if we
+remove the number 3 from our set of $x$ then the statement would be false, since
+neither 4 nor 5 are less than 4.
+
+Note that there is a similar quantifier denoted $\exists!$ that stands for
+``there exists one and only one'' that we use when we are interested in the
+existence of a unique value. For example, let our collection of $x$ values be
+the numbers 3, 4, and 5 and $P(x):=x\le4$. We can see that $\exists! x,P(x)$ is
+a false statement because both 3 and 4 are less than or equal to 4.
+
+\subsubsection*{Nested Quantifiers}
+
+Quantifiers can be nested, mixed, and matched. For example, the statement:
+
+\hspace{0.5in}For all $x$ there exists a $y$ such that $x+y=0$
+
+would be written as:
+\[\forall x,\exists y,x+y=0\]
+
+\end{document}

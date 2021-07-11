@@ -1,0 +1,36 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#10 Solutions
+\end{center}
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item Prove: \(\forall\,a,b,c\in\Z\):
+  \[a|b\ \text{and}\ b|c\implies a|c\]
+
+  Assume that \(a,b,c\in\Z\) such that \(a|b\) and \(b|c\). \\
+  \(\exists\,k\in\Z,b=ka\) and \(\exists\,\ell\in\Z,c=\ell b\) \\
+  \(c=\ell b=\ell(ka)=(k\ell)a\) \\
+  \(\therefore a|c\)
+
+  \bigskip
+  
+\item Give an example with \(a=7\) and \(b,c\ne7\).
+
+  Let \(a=7\), \(b=21\), and \(c=84\).
+  
+  \(7|21\) because \(3\cdot7=21\). \\
+  \(21|84\) because \(4\cdot21=84\). \\
+  \(7|84\) because \(12\cdot7=84\).
+\end{enumerate}
+
+\end{document}

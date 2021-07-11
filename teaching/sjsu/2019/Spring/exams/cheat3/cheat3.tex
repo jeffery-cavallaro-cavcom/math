@@ -1,0 +1,78 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\l}{\lambda}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Exam \#3 Cheat Sheet
+\end{center}
+
+\vspace{0.25in}
+
+\begin{minipage}[t]{3in}
+  \subsection*{Derivatives}
+
+  \begin{enumerate}[left=0pt]
+    \setlength{\itemsep}{5pt}
+  \item \(\displaystyle\frac{d}{dx}[c]=0\)
+  \item \(\displaystyle\frac{d}{dx}[x^c]=cx^{c-1}\)
+  \item \(\displaystyle\frac{d}{dx}[cf(x)]=cf'(x)\)
+  \item \(\displaystyle\frac{d}{dx}[f(x)\pm g(x)]=f'(x)\pm g'(x)\)
+  \item \(\displaystyle\frac{d}{dx}[f(x)g(x)]=f(x)g'(x)+f'(x)g(x)\)
+  \item \(\displaystyle\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x)f'(x)-g'(x)f(x)}{[g(x)]^2}\)
+  \item \(\displaystyle\frac{d}{dx}[f(u(x))]=f'(u)u'(x)\)
+  \item \(\displaystyle\frac{d}{dx}[e^x]=e^x\)
+  \item \(\displaystyle\frac{d}{dx}[\ln(x)]=\frac{1}{x}\)
+  \end{enumerate}
+\end{minipage}
+\begin{minipage}[t]{3.5in}
+  \subsection*{Integrals}
+
+  \begin{enumerate}[left=0pt]
+    \setlength{\itemsep}{5pt}
+  \item \(\displaystyle\int kdx=kx+C\)
+  \item \(\displaystyle\int x^kdx=\frac{1}{k+1}x^{k+1}+C\)
+  \item \(\displaystyle\int kf(x)dx=k\int f(x)dx\)
+  \item \(\displaystyle\int[f(x)\pm g(x)]dx=\int f(x)dx\pm\int g(x)dx\)
+  \item \(\displaystyle\int_a^af(x)dx=0\)
+  \item \(\displaystyle\int_a^bf(x)dx+\int_b^cf(x)dx=\int_a^cf(x)dx=0\)
+  \item \(\displaystyle\int_a^bf(x)dx+-\int_b^af(x)dx\)
+  \item \(\displaystyle\int e^xdx=e^x+C\)
+  \item \(\displaystyle\int \frac{dx}{x}=\ln(x)+C\)
+  \end{enumerate}
+\end{minipage}
+
+\vspace{0.5in}
+
+\begin{minipage}[t]{3in}
+  \subsection*{Second Partial Derivative Test}
+
+  \[f_x=0\ \text{and}\ f_y=0\]
+  \[d=f_{xx}f_{yy}-[f_{xy}]^2\]
+  \begin{tabular}{c|c|c}
+    \(d\) & \(f_{xx}\) & result \\
+    \hline
+    \(>0\) & \(>0\) & relative minimum \\
+    \(>0\) & \(<0\) & relative maximum \\
+    \(<0\) & & saddle point \\
+    \(=0\) & & inconclusive
+  \end{tabular}
+\end{minipage}
+\begin{minipage}[t]{3in}
+\subsection*{Lagrange Multiplier}
+
+\begin{gather*}
+F(x,y,\l)=f(x,y)-\l g(x,y) \\
+\\
+f_x=\l g_x \\
+f_y=\l g_y \\
+g(x,y)=0
+\end{gather*}
+\end{minipage}
+
+\end{document}

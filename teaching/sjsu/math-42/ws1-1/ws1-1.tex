@@ -1,0 +1,110 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{numprint}
+\npthousandsep{,}
+\renewcommand{\implies}{\longrightarrow}
+\renewcommand{\iff}{\longleftrightarrow}
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#1
+
+  \textbf{Propositional Logic}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Determine whether or not the following sentences are statements of propositions.  If a sentence
+  is a proposition then determine whether it is true or false.  If a sentence is not a proposition then indicate
+  whether it is subjective or ambiguous.
+  \begin{enumerate}
+  \item Microsoft Windows is an operating system.
+  \item Linux is an operating system.
+  \item Linux is a better operating system than Windows.
+  \item \(1+1=3\)
+  \item \(\numprint{1000000}\) is a big number.
+  \item \(x+1=4\)
+  \item The letter `y' is a vowel.
+  \item \(0\) is an even integer.
+  \item \(0\) is a rational number.
+  \item \(\pi\) is a rational number.
+  \end{enumerate}
+
+\item Negate the following propositions.  State whether the original or negated proposition is true.
+  \begin{enumerate}
+  \item It is raining in San Jose.
+  \item \(7\) is a prime number.
+  \item \(1+1=3\)
+  \item \(2>3\)
+  \item \(0\) is an even number.
+  \end{enumerate}
+
+\item Consider the following propositions:
+  \begin{align*}
+    p &\coloneqq\text{Skiing in Lake Tahoe is fun.} \\
+    q &\coloneqq\text{Driving to Lake Tahoe is boring.} \\
+    r &\coloneqq\text{Ann hates going to Lake Tahoe.}
+  \end{align*}
+  Represent the following statements using logical operators:
+  \begin{enumerate}
+  \item Skiing in Lake Tahoe is fun but it is boring to drive there.
+  \item If driving to Lake Tahoe is fun then Ann likes going there.
+  \item Driving to Lake Tahoe is entertaining and skiing there is fun.
+  \item Ann likes going to Lake Tahoe if and only if driving to there is not boring and skiing there is fun.
+  \item Driving to or skiing in Lake Tahoe is boring.
+  \end{enumerate}
+
+\item Rewrite each implication in \(p\implies q\) form:
+  \begin{enumerate}
+  \item There are clouds in the sky if it is raining.
+  \item You will pass the exam only if you receive a score of \(70\) or better.
+  \item \(x\) is an integer is sufficient to conclude that \(x\) is a rational number.
+  \item \(x\) is an integer is a necessary condition for \(x\) to be a rational number.
+  \item \(x\) is irrational unless \(x\) can be written as a ratio of integers \(\frac{p}{q}\) where \(q\ne0\).
+  \end{enumerate}
+
+\item Determine whether the following implications are true or false.
+  \begin{enumerate}
+  \item If \(0\) is an even number then \(\sqrt{2}\) is rational.
+  \item If \(0\) is an even number then \(\sqrt{2}\) is irrational.
+  \item If \(0\) is an odd number then \(\sqrt{2}\) is rational.
+  \item If \(0\) is an odd number then \(\sqrt{2}\) is irrational.
+  \end{enumerate}
+
+\item Consider the proposition: if \(x=\sqrt{2}\) then \(x\) is a irrational number.
+  \begin{enumerate}
+  \item Construct the inverse, converse, and contrapositive.
+  \item Of the four forms of the implication, which are true and which are false?
+  \end{enumerate}
+
+\item Determine whether the following equivalences are true or false.
+  \begin{enumerate}
+  \item Sacramento is the capital of California if and only if Carson City is the capital of Nevada.
+  \item \(x\) is an even integer is equivalent to there exists an integer \(k\) such that \(x=2k\).
+  \item Pigs can grow wings and fly iff the moon is made of green cheese.
+  \item An integer is composite if and only if it is not prime.
+  \item An integer \(x\) is a perfect square iff there exists an integer \(k\) such that \(x=k+k\).
+  \end{enumerate}
+
+\item Let \(p\), \(q\), and \(r\)  be propositions and consider the compound proposition:
+  \[p\implies p\land\lnot q\iff q\lor r\]
+  \begin{enumerate}
+    \item Use parentheses to indicate the correct order of operation with respect to operator precedence.
+    \item Construct a truth table for this 3-variable proposition.  Be sure to show each intermediary result and then
+      the final result.
+    \item Consider the following propositions:
+      \begin{align*}
+        p &\coloneqq\sqrt{2}\ \text{is a rational number.} \\
+        q &\coloneqq0\ \text{is an even number.} \\
+        r &\coloneqq x^2=1\implies x=1
+      \end{align*}
+      Using your truth table, indicate whether the compound proposition is true or false.  Be sure to clearly
+      indicate the row that gives you the correct answer.
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,141 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{cancel}
+\pagestyle{plain}
+\begin{document}
+
+\section*{Algebra Review}
+
+\bigskip
+
+\fbox{
+  \parbox{\textwidth}{
+    It is strongly suggested that you make use of the \emph{Personal Study Plan} in Webassign to at least review the
+    material in Chapter 0, especially if you got a C in Math 8.
+  }
+}
+
+\bigskip
+
+Recall the real number axioms from Section 0.2, Basic Rules of Algebra, p12:
+
+\fbox{
+  \parbox{6in}{
+    \(\forall\,a,b,c\in\R\):
+
+    \bigskip
+
+    \begin{tabular}{clc}
+      1) & Commutative Addition & \(a+b=b+a\) \\
+      2) & Commutative Multiplication & \(ab=ba\) \\
+      3) & Associative Addition & \((a+b)+c=a+(b+c)\) \\
+      4) & Associative Multiplication & \((ab)c=a(bc)\) \\
+      5) & Additive Identity & \(a+0=a\) \\
+      6) & Multiplicative Identity & \(a\cdot1=a\) \\
+      7) & Additive Identity & \(a+(-a)=0\) \\
+      8) & Multiplicative Identity (reciprocal) & \(a\cdot\frac{1}{a}=1\qquad (a\ne0)\) \\
+      9) & Left Distributive & \(a(b+c)=ab+ac\) \\
+      10) & Right Distributive & \((b+c)a=ba+ca\) \\
+    \end{tabular}
+  }
+}
+
+Note that the right distributive property is usually stated as a tenth axiom; however, it can be derived from the
+others:
+\[(b+c)a=a(b+c)=ab+ac=ba+ca\]
+
+To these axioms, we added the axioms of equality from Section 0.2, p16:
+
+\fbox{
+  \parbox{6in}{
+    \(\forall\,a,b,c\in\R\):
+
+    \bigskip
+
+    \begin{description}
+    \item{Reflexive:} \(a=a\)
+    \item{Symmetric:} \(a=b\implies b=a\)
+    \item{Transitive:} \(a=b\) and \(b=c\implies a=c\)
+    \end{description}
+  }
+}
+
+And then, the substitution principle:
+
+\fbox{
+  \parbox{6in}{
+    If two real value expressions are equal then one can be typographically replaced with the other.
+  }
+}
+
+For example, consider the expression:
+\[a+5\]
+If it is true that \(a=-1\) then I can replace \(a\) with \(-1\) and evaluate:
+\[(-1)+5=5\]
+
+And finally, some notation:
+
+\fbox{
+  \parbox{6in}{
+    \begin{tabular}{lc}
+      Subtraction: & \(a-b=a+(-b)\) \\
+      Division: & \(\frac{a}{b}=a\cdot\frac{1}{b}=\frac{1}{b}\cdot a\)
+    \end{tabular}
+  }
+}
+
+So note that subtraction and division don't really exist --- they are convenience notations for addition of an
+additive inverse and multiplication of a multiplicative inverse (reciprocal), respectively.
+
+\bigskip
+
+\fbox{
+  \parbox{6in}{
+    \emph{\underline{EVERYTHING}} that we do with the real numbers must be traceable back to one of these axioms!
+    We add to our algebra toolbox by making new definitions (like exponentiation) and using the axioms to prove new
+    rules called \emph{theorems}.  We then use the definitions, axioms, and theorems that we have already proved to
+    create new definitions and prove even more theorems.  This is how mathematics works.  Students make algebra
+    mistakes when they try and make up their own rules.  Sometimes, these made-up rules resemble a true rule,
+    adding to the confusion.
+  }
+}
+
+\bigskip
+
+\begin{examples}
+  Let \(a,b\in\R\):
+  \begin{enumerate}
+  \item The exponent rules from Section 0.3, Integer Exponents, p21:
+    \[(ab)^2=(ab)(ab)=a(ba)b=a(ab)b=(aa)(bb)=a^2b^2\]
+    It looks like we are ``distributing'' the exponent, but that is not correct, we distribute factors:
+    \(2(a+b)=2a+2b\); not exponents.
+
+  \item Special products from Section 0.5, p43:
+    
+    NO:
+    \[(a+b)^2=a^2+b^2\]
+    Although it resembles the previous example, it is not the same (addition, not multiplication).
+
+    YES:
+    \[(a+b)^2=(a+b)(a+b)=(a+b)a+(a+b)b=aa+ba+ab+bb=a^2+ab+ab+b^2=a^2+2ab+b^2\]
+    FOILing is a shortcut.
+
+  \item Cancellation of factors:
+
+    \[\frac{ab}{a}=\frac{1}{a}\cdot(ab)=\left(\frac{1}{a}\cdot a\right)b=1b=b\]
+
+  \item \(\frac{a+b}{a}\)
+
+    NO:
+    \[\frac{\cancel{a}+b}{\cancel{a}}=1+b\]
+    Although it resembles the previous example, it is not the same (addition, not multiplication).
+
+    YES:
+    \[\frac{a+b}{a}=\frac{1}{a}(a+b)=\frac{1}{a}\cdot a+\frac{1}{a}\cdot b=1+\frac{b}{a}\]
+  \end{enumerate}
+\end{examples}
+
+So, if everything that we need is provided by these axioms, what in the heck is this \emph{calculus} thing and how
+is it different from algebra?  To answer this question we introduce a new concept: \emph{arbitrarily close}.
+
+\end{document}

@@ -1,0 +1,153 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#4 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Problems}
+
+\begin{enumerate}
+\item Rationalize the denominator and simplify completely. Your final answer
+  should have no radicals and no negative exponents. Be careful to use absolute
+  value where necessary.
+  \[\frac{xyz}{\sqrt[3]{x^2y^6z^4}}\]
+  First, make a table that shows what is needed to bring each factor in the
+  radicand up to an exponent that is a power of $3$:
+
+  \begin{tabular}{c|c|c}
+    factor & needed & final \\
+    \hline
+    $x^2$ & $x$ & $x^3$ \\
+    $y^6$ & $1$ & $y^6$ \\
+    $z^4$ & $z^2$ & $z^6$
+  \end{tabular}
+
+  Now apply all of the necessary factors and simplify:
+  \begin{eqnarray*}
+    \frac{xyz}{\sqrt[3]{x^2y^6z^4}} &=&
+    \frac{xyz}{\sqrt[3]{x^2y^6z^4}}\cdot\frac{\sqrt[3]{xz^2}}{\sqrt[3]{xz^2}} \\
+    &=& \frac{xyz\sqrt[3]{xz^2}}{\sqrt[3]{x^3y^6z^6}} \\
+    &=& \frac{xyzx^{\frac{1}{3}}z^{\frac{2}{3}}}{xy^2z^2} \\
+    &=& \frac{x^{\frac{4}{3}}yz^{\frac{5}{3}}}{xy^2z^2} \\
+    &=& \frac{x^{\frac{1}{3}}z^{\frac{2}{3}}}{yz} \\
+  \end{eqnarray*}
+  Now let's check to see if we need to apply any absolute values. Note that
+  for $x$, $y$, or $z<0$, the variable contributes a negative to the numerator
+  and a positive to the denominator for a net negative. In the final result,
+  each negative value contributes a net negative as well. Thus, no absolute
+  values are needed.
+
+\item Consider the quadratic equation $2x^2+5x-7=0$.
+  \begin{enumerate}
+  \item Solve for $x$ by completing the square.
+    \begin{eqnarray*}
+      2x^2+5x &=& 7 \\
+      2\left(x^2+\frac{5}{2}x\right) &=& 7 \\
+      \left(x^2+\frac{5}{2}x\right) &=& \frac{7}{2}
+    \end{eqnarray*}
+    $b=\frac{5}{2}\qquad\frac{b}{2}=\frac{5}{4}\qquad
+    \left(\frac{b}{2}\right)^2=\frac{25}{16}$ \\
+    \begin{eqnarray*}
+      x^2+\frac{5}{2}x+\frac{25}{16} &=& \frac{7}{2}+\frac{25}{16} \\
+      \left(x+\frac{5}{4}\right)^2 &=& \frac{81}{16} \\
+      \left(x+\frac{5}{4}\right)^2 &=& \frac{81}{16} \\
+      \abs{x+\frac{5}{4}} &=& \frac{9}{4} \\
+      x+\frac{5}{4} &=& \pm\frac{9}{4} \\
+      x &=& -\frac{5}{4}\pm\frac{9}{4} \\
+      x &=& -\frac{7}{2}, 1
+    \end{eqnarray*}
+
+  \item Solve for $x$ using the quadratic formula.
+    \begin{eqnarray*}
+      x &=& \frac{-5\pm\sqrt{5^2-4(2)(-7)}}{2(2)} \\
+      &=& \frac{-5\pm\sqrt{25+56}}{4} \\
+      &=& \frac{-5\pm\sqrt{81}}{4} \\
+      &=& \frac{-5\pm9}{4} \\
+      &=& -\frac{7}{2}, 1
+    \end{eqnarray*}
+  \end{enumerate}
+
+\item Solve for $x$:
+  \[\frac{5}{x+2}-\frac{x+5}{x-2}+\frac{28}{x^2-4}=0\]
+  Multiple both sides by the LCD=$(x+2)(x-2)$:
+  \begin{eqnarray*}
+    5(x-2)-(x+5)(x+2)+28 &=& 0 \\
+    5x-10-(x^2+7x+10)+28 &=& 0 \\
+    5x+18-x^2-7x-10 &=& 0 \\
+    -x^2-2x+8 &=& 0 \\
+    x^2+2x-8 &=& 0 \\
+    (x+4)(x-2) &=& 0 \\
+    x &=& -4,2
+  \end{eqnarray*}
+  However, we see that $x=2$ is an extraneous solution, and so:
+  $x=-4$
+
+\item Solve for $x$:
+  \[4(x+1)^{\frac{1}{2}}-5(x+1)^{\frac{3}{2}}+(x+1)^{\frac{5}{2}}=0\]
+  \begin{eqnarray*}
+    (x+1)^{\frac{1}{2}}[4-5(x+1)+(x+1)^2] &=& 0 \\
+    (x+1)^{\frac{1}{2}}[(x+1)^2-5(x+1)+4] &=& 0 \\
+    (x+1)^{\frac{1}{2}}[(x+1)-4][(x+1)-1] &=& 0 \\
+    x(x+1)^{\frac{1}{2}}(x-3) &=& 0 \\
+    x &=& -1,0,3
+  \end{eqnarray*}
+
+\item A man stands atop a $256ft$ cliff with a  ball.
+\begin{enumerate}
+\item How long does it take for the ball to hit the ground if he simply
+releases the ball?
+\begin{eqnarray*}
+256+0t-16t^2 &=& 0 \\
+-16(t^2-16) &=& 0 \\
+t^2-16 &=& 0 \\
+(t+4)(t-4) &=& 0 \\
+\end{eqnarray*}
+This yields two solutions: $t=\pm4$ seconds. We take the positive solution
+here: $t=4$ seconds.
+
+\item How long does it take for the ball to hit the ground if he throws the
+ball up with a velocity of $16 ft/s$?
+\begin{eqnarray*}
+256+16t-16t^2 &=& 0 \\
+-16(t^2-t-16) &=& 0 \\
+t^2-t-16 &=& 0 \\
+\end{eqnarray*}
+\begin{eqnarray*}
+t &=& \frac{1\pm\sqrt{(-1)^2-4(1)(-16)}}{2(1)} \\
+    &=& \frac{1\pm\sqrt{1+64}}{2} \\
+    &=& \frac{1\pm\sqrt{65}}{2} \\
+\end{eqnarray*}
+This yields two solutions: $t\approx-3.5$ seconds and $t\approx4.5$ seconds.
+We take the positive solution here: $t\approx4.5$; however, we save the
+negative solution for later.
+
+\item How long does it take for the ball to hit the ground if he throws the
+ball down with a velocity of $16 ft/s$? (Hint: no additional calculations are
+needed).
+
+\bigskip
+
+Note that in the previous problem the man threw the ball up at $+16 ft/s$. The
+ball is going to travel up, slow down due to gravity, eventually stop, and then
+start falling. When the ball passes the man again it must be going at
+$-16 ft/s$. Thus, the two problems are the same! Furthermore, the negative
+solution from the previous problem is the answer here: $t\approx3.5$ seconds.
+
+\item Assume that a lady is standing on the ground below the cliff and throws
+a ball up so that it passed the man on the cliff at a velocity of $16 ft/s$.
+How long would it be before the ball hits the ground? (Hint: you already have
+all the information that you need).
+
+Once again, this is the \emph{same} problem. The roundtrip time is the sum of
+the previous two times: $t\approx3.5+4.5\approx8.0$ seconds.
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

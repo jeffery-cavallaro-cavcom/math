@@ -1,0 +1,94 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#1 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+You are a business analyst for the city of Lakeside, Calfornia.  Lakeside is famous for its huge lake, which unfortunately
+has become polluted with carbon compounds over the years by a nearby factory.  The factory is now closed, so the city
+council wants to clean up the lake.  They have made you the head of the project.  You contact the EPA and find out three
+important things:
+\begin{enumerate}
+\item The lake can be cleaned up to what is considered to be a naturally-occurring level of the carbon pollutants
+  by removing \(80\%\) of the pollutants.
+\item The cost, in \emph{millions} of dollars, to reduce the pollutants in the lake to a given percentage \(p\) is estimated
+  by the following formula (function):
+  \[C(p)=\frac{10p}{100-p}\]
+\item EPA standards say that cleaning up \(75\%\) of the pollutants is good enough, because the extra \(5\%\) doesn't do any
+  significant harm.
+\end{enumerate}
+You decide that the best way to raise the money for this project is to hold a special election for a local ballot initiative to
+assess a special charge on next year's property tax bill.  You know that the population of Lakeside is 100,000 people, of
+which \(80\%\) are property owners.
+\begin{enumerate}[label={(\alph*)}]
+\item Assuming that the property tax burden is to be distributed equally, what will be the resulting assessment on each
+  property tax bill under the federal requirements?
+
+  \bigskip
+
+  First, determine the total cleanup bill:
+  \[C(75)=\frac{10(75)}{100-75}=\frac{750}{25}=30\]
+  So the total cost is \(\$30\) million.  Now, divide that amount by the number of property owners to get the per-bill
+  assessment.  To determine the number of property owners (hence property bills):
+  \[\frac{80}{100}\cdot100,000=80,000\]
+  Now distribute the total cost equally among the property owners:
+  \[\frac{30,000,000}{80,000}=375\]
+  And so the assessment per property tax bill under the federal guidelines is \(\$375\).
+  
+  \bigskip
+
+\item Governor Newsom visits the lake with a state EPA representative.  They tell you that California leads the nation in
+  environmental policy, so he says that the state requirement is to bring the pollutant level all the way to the natural
+  level.  What is the resulting property tax bill assessment now?
+
+  \[C(80)=\frac{10(80)}{100-80}=\frac{800}{20}=40\]
+  \[\frac{40,000,000}{80,000}=500\]
+  
+  And so the assessment per property tax bill under the state guidelines increases to \(\$500\).
+
+  \bigskip
+
+\item Some members from the group \emph{Save the Fish!} protest outside your office.  They claim that the lake is home to a
+  rare species of fish that is being harmed by the pollutants.  They demand that you decrease the pollutant level by \(95\%\)
+  and if you don't then they are going to sue you in federal court under the endangered species act.  What would be the
+  resulting property bill assessment for that level of cleanup?
+
+  \[C(95)=\frac{10(95)}{100-95}=\frac{950}{5}=190\]
+  \[\frac{190,000,000}{80,000}=2375\]
+  
+  And so the assessment per property tax bill under the group's demand increases to \(\$2375\).
+
+  \bigskip
+  
+\item What does the formula tell you about removing \emph{all} of the pollutants from the lake and why do you think this
+  might be so?
+
+  \bigskip
+
+  Since \(\displaystyle\lim_{p\to100}C(p)=\infty\), this means that \(100\%\) cleanup is not possible.  This is probably because
+  natural processes within the lake's ecosystem attempt to push the amount of pollutants in the lake to the natural level.
+  
+  \bigskip
+  
+\item Over what values of percentage \(p\), expressed in interval notation, is the function represented by the formula
+  continuous?
+
+  Note that \(C(p)\) is a rational function with a single vertical asymptote at \(p=100\) and no holes.  Thus, \(C(p)\) is
+  continuous for all values of \(p<100\).  Furthermore, we have a one-sided limit at \(p=0\), which can be determined by
+  substitution:
+  \[\lim_{p\to0^+}C(p)=C(0)=0\]
+  Thus, \(C(p)\) is considered continuous at \(p=0\).
+
+  So, the interval of continuity is: \([0,\infty)\)
+\end{enumerate}
+
+\end{document}

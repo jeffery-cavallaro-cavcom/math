@@ -1,0 +1,50 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\renewcommand{\l}{\lambda}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#10
+
+  \large
+  \textbf{Due: 4/30/2019 5:45pm}
+\end{center}
+
+\subsection*{Reading}
+
+Read section 13.6.
+
+\subsection*{Problem}
+
+You work for a large conglomerate of 100 associated companies.  In order to avoid antitrust issues with the DOJ, you need
+to divide the 100 companies into 4 different groups such that:
+\begin{enumerate}
+\item Companies within the same group cannot do business with each other.
+\item Companies in different groups can do business with each other.
+\end{enumerate}
+What organization of the 100 companies into the 4 groups maximimizes the number of business opportunities?
+
+\begin{enumerate}[label={\alph*)}]
+\item Start by labeling the groups \(X\), \(Y\), \(Z\), and \(W\).  Let \(x=\) the number of companies assigned to group \(X\)
+  and so on for the other groups.  Construct an equation in \(x\) for the number of business opportunities for a company in
+  group \(X\) --- i.e., how many companies can that company do business with?
+\item Now build an equation in \(x\) for the total number of business opportunities for all companies in group \(X\).
+\item Do likewise for the remaining groups and construct a function \(f(x,y,z,w)\) that gives the total number of business
+  opportunities across all the groups.
+\item What is the constraint on \(x\), \(y\), \(z\), and \(w\)?
+\item Introduce a Lagrange multiplier \(\l\) and determine \(f_x=\l g_x\), where \(g\) is the function constructed from the
+  above constraint.
+\item Do likewise for \(f_y\), \(f_z\), and \(f_w\), and combine them with the constraint so that you have 5 equations in
+  5 unknowns.
+\item Use substitution to determine a value for \(\l\).
+\item Substitute the value for \(\l\) into the other equations to determine the optimal distribution of companies into the
+  4 groups.
+\end{enumerate}
+
+\end{document}

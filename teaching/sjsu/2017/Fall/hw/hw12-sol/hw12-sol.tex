@@ -1,0 +1,202 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#12 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Problems}
+
+\begin{enumerate}
+
+\item Consider the circle $x^2+y^2=r^2$ and remember that we needed to restrict
+  the range in order to obtain the function $y=\sqrt{r^2-x^2}$.
+  \begin{enumerate}
+  \item Sketch the half-circle function and demonstrate why it is not
+    one-to-one?
+
+    \begin{tikzpicture}
+      \draw (-3,0) -- (3,0);
+      \draw (0,-3) -- (0,3);
+      \draw [smooth,domain=-2:2] plot ({\x},{sqrt(4-(\x)^2)});
+      \node [below] at (-2,0) {$-r$};
+      \node [below] at (2,0) {$r$};
+      \node [above left] at (0,2) {$r$};
+      \draw [dashed] (-3,1) -- (3,1);
+    \end{tikzpicture}
+
+    It fails the horizontal line test.
+    
+  \item Suggest a how to limit the domain so that it is a one-to-one function.
+
+    Limit the domain so that we get only one of the quarter circles.
+    
+  \item Sketch the new graph for the one-to-one function and state its domain
+    and range.
+
+    \begin{tikzpicture}
+      \draw (-3,0) -- (3,0);
+      \draw (0,-3) -- (0,3);
+      \draw [smooth,domain=0:2] plot ({\x},{sqrt(4-(\x)^2)});
+      \node [below left] at (0,0) {$0$};
+      \node [below] at (2,0) {$r$};
+      \node [above left] at (0,2) {$r$};
+    \end{tikzpicture}
+
+    Domain: $[0,r]$
+
+    Range: $[0,r]$
+
+  \item By observing the graph (and the line $y=x$), predict something about the
+    inverse function.
+
+    \begin{tikzpicture}
+      \draw (-3,0) -- (3,0);
+      \draw (0,-3) -- (0,3);
+      \draw [smooth,domain=0:2] plot ({\x},{sqrt(4-(\x)^2)});
+      \node [below left] at (0,0) {$0$};
+      \node [below] at (2,0) {$r$};
+      \node [above left] at (0,2) {$r$};
+      \draw [dashed] (-3,-3) -- (3,3);
+    \end{tikzpicture}
+
+    Notice that if we reflect the graph around $y=x$, we get the same thing!
+
+  \item Derive the inverse to prove your prediction.
+
+    Swap $x$ and $y$ and then solve for $y$:
+    \begin{eqnarray*}
+      x &=& \sqrt{r^2-y^2} \\
+      x^2 &=& r^2-y^2 \\
+      y^2 &=& r^2-x^2 \\
+      y &=& \sqrt{r^2-x^2}
+    \end{eqnarray*}
+  \end{enumerate}
+  
+\item You use \$1000 to open a savings account at your local bank on the first
+  of February. The savings account has an interest rate of 1.5\% per year and
+  compounds monthly on the last day of the month. You set up an auto-deposit
+  of \$100 from your paycheck to occur on the first of each month, starting
+  with the second month (March).  During April, you withdraw \$250 to
+  purchase a new gameboy (gotta catch em all!).
+  \begin{enumerate}
+  \item Who is the lender and who is the borrower?
+
+    You are the lender and the bank is the borrower.
+    
+  \item Calculate $x=1+\frac{r}{n}$
+    \[x=1+\frac{0.015}{12}=1.00125\]
+    
+  \item Construct a polynomial in $x$ to determine the account value on
+    July 2.
+
+    \begin{tabular}{c|c}
+      month & net \\
+      \hline
+      Feb & 1000 \\
+      Mar & 100 \\
+      Apr & -150 \\
+      May & 100 \\
+      Jun & 100 \\
+      Jul & 100 \\
+    \end{tabular}
+
+    $A=1000x^5+100x^4-150x^3+100x^2+100x+100$
+
+    Note that we are asked for the balance on July 2, the day after the last
+    autodeposit.
+    
+  \item What is the account value on July 2?
+
+    $A=\$1256.58$
+  \end{enumerate}
+
+\item Consider the exponential function $y=-2e^{-(x+1)}-3$
+  \begin{enumerate}
+  \item List the transformations in the order that they should be applied.
+
+    \begin{enumerate}
+    \item Start with $y=e^x$.
+    \item Translate left $1$.
+    \item Horizontal reflection.
+    \item Vertical scale by $2$.
+    \item Vertical reflection.
+    \item Translate down $3$.
+    \end{enumerate}
+    
+  \item What is the y-intercept (if any)?
+
+    $y(0)=-2e^{-(0+1)}-3=-2e^{-1}-3=-\left(3+\frac{2}{e}\right)\approx-3.74$
+
+    $\left(0,-\left(3+\frac{2}{e}\right)\right)$
+    
+  \item What is the domain (in interval notation)?
+
+    In order to see the domain and range, we need to sketch the graph:
+
+    \begin{tikzpicture}
+      \draw (-5,0) -- (5,0);
+      \draw (0,-10) -- (0,1);
+      \draw [dashed] (-5,-3) -- (5,-3);
+      \draw [smooth,domain=-2.25:5] plot ({\x},{-2*exp(-(\x+1))-3});
+      \node [draw,circle,fill,scale=0.5] (a) at (-1,-5) {};
+      \node [above left] at (a) {$(-1,-5)$};
+      \node [draw,circle,fill,scale=0.5] (b) at (0,-3.74) {};
+      \node [below right] at (b) {$\left(0,-3-\frac{2}{e}\right)$};
+      \node [above left] at (0,-3) {$-3$};
+    \end{tikzpicture}
+
+    Thus, the domain is $\R$.
+    
+  \item What is the range (in interval notation)?
+
+    $(-\infty,-3)$
+    
+  \end{enumerate}
+
+\item Consider the logarithmic function $y=\log(-2(x+1))+3$
+  \begin{enumerate}
+  \item List the transformations in the order that they should be applied.
+
+    \begin{enumerate}
+    \item Start with $y=\log(x)$.
+    \item Translate left $1$.
+    \item Horizontal compression by a factor of $2$.
+    \item Horizontal reflection.
+    \item Translate up $3$.
+    \end{enumerate}
+    
+  \item What is the y-intercept (if any)?
+
+    $y(0)=\log(-2(0+1))+3=\log(-2)+3$
+
+    none (cannot take the $\log$ of a negative number.
+    
+  \item What is the domain (in interval notation)?
+
+    In order to see the domain and range, we need to sketch the graph:
+
+    \begin{tikzpicture}
+      \draw (-5,0) -- (5,0);
+      \draw (0,-5) -- (0,5);
+      \draw [dashed] (-1,-5) -- (-1,5);
+      \draw [smooth,samples=10000,domain=-5:-1.0001]
+      plot ({\x},{ln(-2*(\x+1))+3});
+      \node [draw,circle,fill,scale=0.5] (a) at (-3/2,3) {};
+      \node [left] at (a) {$(-\frac{3}{2},3)$};
+      \node [above right] at (-1,0) {$-1$};
+    \end{tikzpicture}
+    
+    Thus, the domain is $(-\infty,-1)$.
+
+  \item What is the range (in interval notation)?
+
+    $\R$
+  \end{enumerate}
+\end{enumerate}
+ 
+\end{document}

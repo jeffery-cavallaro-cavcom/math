@@ -1,0 +1,142 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+
+\begin{document}
+
+\section*{Limits}
+
+\bigskip
+
+\begin{enumerate}[left=0in]
+\item For each of the following functions, determine \(\displaystyle\lim_{x\to1}f(x)\) or state that the limit DNE.
+  
+  \begin{minipage}{3in}
+    \begin{gather*}
+      f(x)=\begin{cases}
+      x, & x\le1 \\
+      (x-1)^2+2, & x>1
+      \end{cases}
+    \end{gather*}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[scale=0.75]
+        \draw [->] (-3,0) -- (3,0) node [right] {\(x\)};
+        \draw [->] (0,-3) -- (0,3) node [above] {\(f(x)\)};
+        \node [closed point,blue] (A) at (1,1) {};
+        \node [open point,blue] (B) at (1,2) {};
+        \draw [blue] (-3,-3) to (A);
+        \draw [blue] (B) parabola (3,3);
+        \draw [dashed] (B) to (A) to (1,0) node [below] {\(1\)};
+        \draw [dashed] (B) to (0,2) node [left] {\(2\)};
+        \draw [dashed] (A) to (0,1) node [left] {\(1\)};
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+
+  \bigskip
+
+  \begin{minipage}{3in}
+    \begin{gather*}
+      f(x)=\begin{cases}
+      x, & x\le1 \\
+      (x-1)^2+1, & x>1
+      \end{cases}
+    \end{gather*}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[scale=0.75]
+        \draw [->] (-3,0) -- (3,0) node [right] {\(x\)};
+        \draw [->] (0,-3) -- (0,3) node [above] {\(f(x)\)};
+        \node [closed point,blue] (A) at (1,1) {};
+        \draw [blue] (-3,-3) to (A);
+        \draw [blue] (A) parabola (3,3);
+        \draw [dashed] (A) to (1,0) node [below] {\(1\)};
+        \draw [dashed] (A) to (0,1) node [left] {\(1\)};
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+
+  \bigskip
+
+  \begin{minipage}{3in}
+    \begin{gather*}
+      f(x)=\begin{cases}
+      x, & x<1 \\
+      2, & x=1 \\
+      (x-1)^2+1, & x>1
+      \end{cases}
+    \end{gather*}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[scale=0.75]
+        \draw [->] (-3,0) -- (3,0) node [right] {\(x\)};
+        \draw [->] (0,-3) -- (0,3) node [above] {\(f(x)\)};
+        \node [open point,blue] (A) at (1,1) {};
+        \node [closed point,blue] (B) at (1,2) {};
+        \draw [blue] (-3,-3) to (A);
+        \draw [blue] (A) parabola (3,3);
+        \draw [dashed] (B) to (A) to (1,0) node [below] {\(1\)};
+        \draw [dashed] (B) to (0,2) node [left] {\(2\)};
+        \draw [dashed] (A) to (0,1) node [left] {\(1\)};
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+
+  \newpage
+
+\item Let \(\displaystyle f(x)=\frac{1}{x}\).
+
+  Does \(\displaystyle\lim_{x\to0}f(x)\) exist?
+
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          xmin=-5,
+          xmax=5,
+          ymin=-5,
+          ymax=5,
+          ticks=none,
+          xlabel={\(x\)},
+          ylabel={\(f(x)\)},
+          x label style={at={(axis cs:5,0)},anchor=west},
+          y label style={at={(axis cs:0,5)},anchor=south},
+          clip=false
+        ]
+        \addplot [domain=-5:-0.2,blue] {1/x};
+        \addplot [domain=0.2:5,blue] {1/x};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  
+\item Define \(f(x)\) as follows:
+  \[f(x)=\begin{cases}
+  1, & x\in\Q \\
+  0, & x\in\R-Q
+  \end{cases}\]
+  Does \(\displaystyle\lim_{x\to2}f(x)\) exist?
+
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (-5,0) -- (5,0) node [right] {\(x\)};
+      \draw (0,-1) -- (0,2) node [above] {\(f(x)\)};
+      \draw [blue!20!white] (-5,1) -- (5,1);
+      \draw [very thick,blue] (-5,0) -- (5,0);
+      \node [above left] at (0,1) {\(1\)};
+      \node [closed point,red] at (2,1) {};
+      \draw [dashed,red] (2,2) -- (2,0) node [below] {\(2\)};
+    \end{tikzpicture}
+  \end{center}
+
+  (Hint: density of the reals)
+\end{enumerate}
+
+\end{document}

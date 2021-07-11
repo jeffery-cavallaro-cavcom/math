@@ -1,0 +1,209 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-2in}
+\addtolength{\textheight}{-\footskip}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+
+\pagestyle{empty}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{center}
+\bfseries
+San Jos\'{e} State University \\
+Fall 2015 \\
+Math-8: College Algebra \\
+Section 03: MW noon--1:15pm \\
+Section 05: MW 4:30--5:45pm \\
+\bigskip
+Quiz \#12 (Solutions)
+\end{center}
+
+\bigskip
+
+You may use your book, notes, and homework, but please do not work together or
+ask for help from others.
+
+\bigskip
+
+\newcommand{\answer}[1]{\textbf{\underline{#1}}}
+
+1. A system of linear equations can have \answer{zero}, \answer{one}, or
+\answer{infinite}\ solutions.
+
+\bigskip
+
+2. Find all points of intersection:
+\begin{eqnarray*}
+x^2+y^2-6x-2y-6 &=& 0 \\
+x-y &=& 0 \\
+\end{eqnarray*}
+
+This is the intersection between a circle and a line. This can happen in zero
+places, one place (tangent), or two places (chord). Substitution is the best
+way to solve this. Let $y=x$ and plug into the circle equation:
+
+\begin{eqnarray*}
+x^2+x^2-6x-2x-6 &=& 0 \\
+2x^2-8x-6 &=& 0 \\
+x^2-4x-3 &=& 0 \\
+x &=& \frac{4\pm\sqrt{4^2-4(1)(-3)}}{2(1)} \\
+  &=& \frac{4\pm\sqrt{16+12}}{2} \\
+  &=& \frac{4\pm\sqrt{28}}{2} \\
+  &=& \frac{4\pm2\sqrt{7}}{2} \\
+x &=& 2\pm\sqrt{7} \\
+\end{eqnarray*}
+
+Thus, the points of intersection are $(2-\sqrt{7},2-\sqrt{7})$ and
+$(2+\sqrt{7},2+\sqrt{7})$ (since y=x).
+
+\bigskip
+
+3. Why doesn't the answer in problem 2 contradict the statement in problem 1?
+
+Because the system in (2) is not a linear system. Thus, we can have something
+other than 0, 1, or $\infty$ solutions --- in this case two solutions.
+
+\bigskip
+
+4. Solve using substitution, elimination, row operations, or matrices. You must
+show all steps for full credit:
+\begin{eqnarray*}
+x+y+z+w &=& 6 \\
+2x+3y-w &=& 0 \\
+-3x+4y+z+2w &=& 4 \\
+x+2y-z+w &=& 0 \\
+\end{eqnarray*}
+
+Start by transferring the coefficients into an augmented matrix:
+
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
+
+\[\begin{amatrix}{4}
+1 & 1 & 1 & 1 & 6 \\
+2 & 3 & 0 & -1 & 0 \\
+-3 & 4 & 1 & 2 & 4 \\
+1 & 2 & -1 & 1 & 0 \\
+\end{amatrix}\]
+
+Now, use the 1 in the (1,1) pivot position to get rid of everything in the
+column below it. The row operations are as follows:
+
+\[-2*R1+R2\to R2\]
+
+\[\begin{amatrix}{4}
+1 & 1 & 1 & 1 & 6 \\
+0 & 1 & -2 & -3 & -12 \\
+-3 & 4 & 1 & 2 & 4 \\
+1 & 2 & -1 & 1 & 0 \\
+\end{amatrix}\]
+
+\[3*R1+R3\to R3\]
+
+\[\begin{amatrix}{4}
+1 & 1 & 1 & 1 & 6 \\
+0 & 1 & -2 & -3 & -12 \\
+0 & 7 & 4 & 5 & 22 \\
+1 & 2 & -1 & 1 & 0 \\
+\end{amatrix}\]
+
+\[-1*R1+R4\to R4\]
+
+\[\begin{amatrix}{4}
+1 & 1 & 1 & 1 & 6 \\
+0 & 1 & -2 & -3 & -12 \\
+0 & 7 & 4 & 5 & 22 \\
+0 & 1 & -2 & 0 & -6 \\
+\end{amatrix}\]
+
+Now, use the 1 in the (2,2) pivot position to get rid of everything in the
+column below it:
+
+\[-7*R2+R3\to R3\]
+
+\[\begin{amatrix}{4}
+1 & 1 & 1 & 1 & 6 \\
+0 & 1 & -2 & -3 & -12 \\
+0 & 0 & 18 & 26 & 106 \\
+0 & 1 & -2 & 0 & -6 \\
+\end{amatrix}\]
+
+\[-1*R2+R4\to R4\]
+
+\[\begin{amatrix}{4}
+1 & 1 & 1 & 1 & 6 \\
+0 & 1 & -2 & -3 & -12 \\
+0 & 0 & 18 & 26 & 106 \\
+0 & 0 & 0 & 3 & 6 \\
+\end{amatrix}\]
+
+Now, do some clean-up:
+
+\[-frac{1}{2}*R3\to R3\]
+
+\[\begin{amatrix}{4}
+1 & 1 & 1 & 1 & 6 \\
+0 & 1 & -2 & -3 & -12 \\
+0 & 0 & 9 & 13 & 53 \\
+0 & 0 & 0 & 3 & 6 \\
+\end{amatrix}\]
+
+\[-frac{1}{3}*R4\to R4\]
+
+\[\begin{amatrix}{4}
+1 & 1 & 1 & 1 & 6 \\
+0 & 1 & -2 & -3 & -12 \\
+0 & 0 & 9 & 13 & 53 \\
+0 & 0 & 0 & 1 & 2 \\
+\end{amatrix}\]
+
+The matrix is now in row eschelon form! The new system of equations is:
+
+\begin{eqnarray*}
+x+y+z+w &=& 6 \\
+y-2z-3w &=& -12 \\
+9z+13w &=& 53 \\
+w &=& 2 \\
+\end{eqnarray*}
+
+Now, using back substitution:
+
+\begin{eqnarray*}
+9z+13(2) &=& 53 \\
+9z+26 &=& 53 \\
+9z &=& 27 \\
+z &=& 3 \\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+y-2(3)-3(2) &=& -12 \\
+y-6-6 &=& -12 \\
+y-12 &=& -12 \\
+y &=& 0 \\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+x+0+3+2 &=& 6 \\
+x+5 &=& 6 \\
+x &=& 1 \\
+\end{eqnarray*}
+
+So, the final answer is $(x,y,z,w)=(1,0,3,2)$.
+
+\end{document}

@@ -1,0 +1,91 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#2
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}
+\item We have fairly straightforward definitions for $a^b$ when $a$ and $b$ are
+rational numbers. When $b$ is an integer we have
+\[a^b=a\cdot a\cdot \ldots \cdot a\]
+where $a$ is multiplied $b$ times. When $b$ is rational we have:
+\[a^{\frac{p}{q}}=\sqrt[q]{a^p}\]
+where $p,q\in\mathbb{Z}$. But what about when $a$ or $b$ are irrational? For
+example, what does $\pi^{\sqrt{2}}$ even mean? Once again, we turn to the notion
+of \emph{approximate} values getting arbitrarily close to the \emph{exact}
+value.
+
+Start by using your calculator to get an approximate value for $\pi^{\sqrt{2}}$.
+Then create a table as follows:
+
+\begin{tabular}{|c|c|c|}
+\hline
+$\pi$ & $\sqrt{2}$ & $\pi^{\sqrt{2}}$ \\
+\hline
+3 & 1 & 3 \\
+\hline
+3.1 & 1.4 & 4.87423 \\
+\hline
+ & & \\
+\hline
+ & & \\
+\hline
+ & & \\
+\hline
+ & & \\
+\hline
+\end{tabular}
+
+In other words, make the approximations of $\pi$ and $\sqrt{2}$ finer and
+finer and see if the value approaches your value for $\pi^{\sqrt{2}}$ that you
+got directly from your calculator. Do up to 5 decimal places for each
+approximation.
+
+\item A careful proof for that fact that a rational number plus a rational
+number is always a rational number may look something like this:
+
+\begin{tabular}{ll}
+Let $q_1,q_2\in\mathbb{Q}$ & \\
+$q_1=\frac{a}{b}$ where $a,b\in\mathbb{Z}$ and $b\ne0$ &
+    Definition of rationals \\
+$q_2=\frac{c}{d}$ where $c,d\in\mathbb{Z}$ and $d\ne0$ &
+    Definition of rationals \\
+$q_1+q_2=\frac{a}{b}+\frac{c}{d}$ & Substitution \\
+$q_1+q_2=\frac{ad+bc}{bd}$ & Rule of fraction addition, Substitution \\
+$ad+bc\in\mathbb{Z}$ & Integers closed under addition and multiplication \\
+$bd\in\mathbb{Z}$ & Integers closed under multiplication \\
+$b\ne0$ and $d\ne0$, so $bd\ne0$ & Property of 0 \\
+$\frac{ad+bc}{bd}$ is a rational number & Definition of rationals \\
+Therefore, $q_1+q_2\in\mathbb{Q}$ & \\
+\end{tabular}
+
+Note that each step in the proof has a stated reason.
+
+In a similar manner, prove that a rational number plus an irrational
+number is always an irrational number. Start by chosing a rational number
+$q=\frac{a}{b}$ and an irrational number $i$. Assume that their sum is another
+rational number --- form an equation that represents this. Then see if that
+equation leads to some sort of contradiction. If is does, then the assumption
+that the sum is rational is incorrect, and thus the sum must be irrational.
+
+\item Simplify completely. Your answer should have no negative exponents and
+please rationalize the denominator. Don't worry if the exponents get messy.
+\[\frac{\sqrt[4]{\sqrt{75}+\sqrt{27}}}{\sqrt{4\sqrt{20}\sqrt[3]{54}}}\]
+
+\item Simplify completely:
+\[\frac{(9st)^{\frac{3}{2}}}{(27s^3t^{-4})^{\frac{2}{3}}}
+    \left(\frac{3s^{-2}}{4t^{\frac{1}{3}}}\right)^{-\frac{3}{2}}\]
+
+\item Simplify completely. Your answer should have no negative exponents but
+do not rationalize the denominator.
+\[\frac{(x^2y^{\frac{1}{3}})^{\frac{1}{2}}}{(xy^3)^{\frac{1}{3}}}\]
+\end{enumerate}
+
+\end{document}

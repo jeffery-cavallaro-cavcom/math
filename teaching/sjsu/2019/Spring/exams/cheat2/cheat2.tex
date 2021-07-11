@@ -1,0 +1,81 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Exam \#2 Cheat Sheet
+\end{center}
+
+\vspace{0.25in}
+
+\subsection*{Derivatives}
+
+\begin{minipage}{3.5in}
+  \begin{enumerate}
+  \item \(\frac{d}{dx}[c]=0\)
+  \item \(\frac{d}{dx}[x^c]=cx^{c-1}\)
+  \item \(\frac{d}{dx}[cf(x)]=cf'(x)\)
+  \item \(\frac{d}{dx}[f(x)\pm g(x)]=f'(x)\pm g'(x)\)
+  \item \(\frac{d}{dx}[f(x)g(x)]=f(x)g'(x)+f'(x)g(x)\)
+  \item \(\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x)f'(x)-g'(x)f(x)}{[g(x)]^2}\)
+  \item \(\frac{d}{dx}[f(u(x))]=f'(u)u'(x)\)
+  \item \(\frac{d}{dx}[e^x]=e^x\)
+  \end{enumerate}
+\end{minipage}
+\begin{minipage}{3in}
+  \begin{tabular}{|l|l|l|}
+    \hline
+    & \(<0\) & \(>0\) \\
+    \hline
+    \(f'(x)\) & decreasing & increasing \\
+    \hline
+    \(f''(x)\) & concave down & concave up \\
+    \hline
+  \end{tabular}
+\end{minipage}
+
+\subsection*{Transformations}
+
+\begin{tabular}{|l|l|}
+  \hline
+  \textbf{TRANSFORMATION} & \textbf{PATTERN} \\
+  \hline
+  basic graph & \(e^x\) \\
+  \hline
+  horizontal translation & \(e^{x\pm h}\) \\
+  \hline
+  horizontal scale & \(e^{b(x\pm h)}\) \\
+  \hline
+  horizontal reflection & \(e^{-b(x\pm h)}\) \\
+  \hline
+  vertical scale & \(ae^{-b(x\pm h)}\) \\
+  \hline
+  vertical reflection & \(-ae^{-b(x\pm h)}\) \\
+  \hline
+  vertical translation & \(-ae^{-b(x\pm h)}\pm k\) \\
+  \hline
+\end{tabular}
+
+\subsection*{Interest}
+
+\begin{enumerate}
+\item \(A=P(1+rt)\)
+\item \(A=P\left(1+\frac{r}{n}\right)^{nt}\)
+\item \(A=Pe^{rt}\)
+\end{enumerate}
+
+\subsection*{Probability}
+
+\begin{enumerate}
+\item \(\displaystyle p(x)=\frac{1}{\o\sqrt{2\pi}}e^{\frac{-(x-\m)^2}{2\o^2}}\)
+\item 68--95--97.7 rule
+\end{enumerate}
+
+\end{document}

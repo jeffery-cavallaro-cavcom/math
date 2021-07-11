@@ -1,0 +1,56 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-13 Sections 01 and 02
+
+  \Large
+  Homework \#3 Solutions
+\end{center}
+
+\begin{enumerate}
+\item Determine the smallest estimate for \(\pi+e\) that is within \(0.000005\) of the exact value.
+
+  Using a calculator: \(\pi+e=5.859874482\ldots\)
+  \begin{gather*}
+    (\pi+e)-5=0.859874482\ldots>0.000005 \\
+    (\pi+e)-5.8=0.059874482\ldots>0.000005 \\
+    (\pi+e)-5.85=0.009874482\ldots>0.000005 \\
+    (\pi+e)-5.859=0.000874482\ldots>0.000005 \\
+    (\pi+e)-5.8598=0.000074482\ldots>0.000005 \\
+    (\pi+e)-5.85987=0.000004482\ldots<0.000005 \\
+    \\
+    \pi+e\approx5.85987
+  \end{gather*}
+
+\item Using a table of values, determine the following:
+  \[\lim_{x\to0}\frac{\cos x-1}{x}\]
+  Be sure to approach \(0\) from both sides in your table.
+
+  Make sure that your calculator is in radians mode!
+  \[\begin{array}{|c|c|}
+  \hline
+  1 & -0.459698 \\
+  0.1 & -0.049958 \\
+  0.01 & -0.005000 \\
+  0.001 & -0.000500 \\
+  0.0001 & -0.000050 \\
+  \hline
+  0 & ??? \\
+  \hline
+  -0.0001 & 0.000050 \\
+  -0.001 & 0.000500 \\
+  -0.01 & 0.005000 \\
+  -0.1 & 0.049958 \\
+  -1 & 0.459698 \\
+  \hline
+  \end{array}\]
+  So it appears that:
+  \[\lim_{x\to0}\frac{\cos x-1}{x}=0\]
+\end{enumerate}
+
+\end{document}

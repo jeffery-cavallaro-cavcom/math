@@ -1,0 +1,56 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#7
+
+  \textbf{Introduction to Proofs}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Write the formal definition for \(x\in\Q\).
+
+\item Prove that \(Q\) is closed under addition (hint: see text).
+
+\item Prove that \(Q\) is closed under multiplication.
+
+\item In class, you probably saw a proof by contradiction that \(\sqrt{2}\) is irrational.  Here is a direct proof:
+
+  Let \(x=\sqrt{2}\).  This means that \(x^2=2\) and \(x^2-2=0\).  So, by the rational roots theorem, any rational
+  root of \(x^2-2=0\) must be of the form \(\frac{p}{q}\) where \(p\) is a factor of \(-2\) and \(q\) is a factor of
+  \(1\).  Thus, the only possible rational roots are \(\pm1\) and \(\pm2\).  But none of these four values is a
+  solution to \(x^2-2=0\).  Therefore \(x\) is not rational, and is thus irrational.
+
+  Repeat this proof for \(\sqrt{7}\).  Make sure that you understand each step.
+
+\item Write the formal definition for \(n\in\Z\) is an even number.
+
+\item Write the formal definition for \(n\in\Z\) is an odd number.
+
+\item Study the definitions and convince yourself they do not preclude a value from being both even and odd.  Forget
+  about what you think you know, just consider the content of the definitions.  Using the definitions, write down
+  what it would mean for an integer to be both odd and even.  Be sure to use a different variable in each part.
+
+\item We are used to assuming that ``not even'' means ``odd''; however, the definitions of even and odd do not
+  support this immediately---it must be proved.  This exercise provides an outline of this proof.
+  \begin{enumerate}
+  \item First, prove that \(0\) is even (based on the definition of even).
+  \item Next, prove that if \(n\) is even then \(n+1\) and \(n-1\) are odd.  Note that you will need to make use of
+    the closure principle.
+  \item Next, prove that if \(n\) is odd then \(n+1\) and \(n-1\) are even.  Note that you will need to make use of
+    the closure principle.
+  \item These first three steps prove that each integer can be labeled as even or odd.  Why did we need to start
+    with showing that \(0\) is even?
+  \item Next, prove that if \(n\) is even then it is not odd (by contradiction), using your equations from the
+    previous problem.
+  \item Finally, prove that if \(n\) is odd then it is not even.  This should be a one line proof!  Do not repeat
+    the proof from the previous step.
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

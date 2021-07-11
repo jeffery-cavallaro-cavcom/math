@@ -1,0 +1,50 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 02, 03, 60
+
+  \Large
+  Homework \#6 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+You open a new savings account on April 1 with an initial \$1000 at a local bank that pays 2\% interest, compounded
+monthly on the last day of the month.  You file the necessary direct deposit paperwork at you job, where you get
+paid monthly on the first of the month, so that \$500 will be auto-deposited into your new account each month,
+starting with your May paycheck.  In June, you withdraw \$250 to pay for a new mobile phone.  In July, you withdraw
+\$750 to help pay for your summer vacation.  There are no other transactions.  What is your account balance on
+August 2?
+
+First, calculate the compounding factor:
+\[x=1+\frac{r}{n}=1+\frac{0.02}{12}=1.001666667\]
+There are lots of decimal places here, so store this result into a storage register on your calculator.
+
+Now, construct the transaction table:
+
+\begin{center}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    month & deposit & withdrawal & net \\
+    \hline
+    Apr & 1000 & & 1000 \\
+    \hline
+    May & 500 & & 500 \\
+    \hline
+    Jun & 500 & 250 & 250 \\
+    \hline
+    Jul & 500 & 750 & -250 \\
+    \hline
+    Aug & 500 & & 500 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+Next, note that the first deposit compounds over 4 months, so we build the compounding polynomial as follows:
+\[1000x^4+500x^3+250x^2-250x+500=\$2009.60\]
+Note that the deposit occuring on Aug 1 is not compounded and thus becomes a constant term in the polynomial.
+\end{document}

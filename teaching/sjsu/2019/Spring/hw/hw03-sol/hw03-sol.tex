@@ -1,0 +1,59 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#3 Solutions
+
+  \large
+  \textbf{Due: 2/19/2019 5:45pm}
+\end{center}
+
+\subsection*{Problem}
+
+A thin board is to be rested up against a large rock such that it touches the rock at exactly one point.  Let the ground be the
+\(x\) direction and assume that the origin is at the start of the rock.  The surface of the rock follows the function:
+\[s(x)=\sqrt{x}\]
+where \(s(x)\) is the height of the surface of the rock (in feet) at position \(x\) (also in feet).
+\begin{enumerate}
+\item Use the definition of the derivative (i.e., the difference quotient from Section 7.3) to determine \(s'(t)\).
+  \begin{align*}
+    s'(x) &= \lim_{h\to0}\frac{f(x+h)-f(x)}{h} \\
+    &= \lim_{h\to0}\frac{\sqrt{x+h}-\sqrt{x}}{h} \\
+    &= \lim_{h\to0}\frac{\sqrt{x+h}-\sqrt{x}}{h}\cdot\frac{\sqrt{x+h}+\sqrt{x}}{\sqrt{x+h}+\sqrt{x}} \\
+    &= \lim_{h\to0}\frac{(x+h)-x}{h\left(\sqrt{x+h}+\sqrt{x}\right)} \\
+    &= \lim_{h\to0}\frac{h}{h\left(\sqrt{x+h}+\sqrt{x}\right)} \\
+    &= \lim_{h\to0}\frac{1}{\sqrt{x+h}+\sqrt{x}} \\
+    &= \frac{1}{\sqrt{x}+\sqrt{x}} \\
+    &= \frac{1}{2\sqrt{x}}
+  \end{align*}
+  
+\item Assuming that the board intersects with the rock surface at \(x=4\), determine where one end of the board touches the
+  ground.
+
+  We need to determine an equation of a line for the board.  Note that \(s'(x)\) is the slope of the tangent line to the
+  rock surface at position \(x\), and so:
+  \[s'(4)=\frac{1}{2\sqrt{4}}=\frac{1}{2\cdot2}=\frac{1}{4}\]
+  Now, since we know that the board touches the rock at the point \((4,\sqrt{4})=(4,2)\), use the point-slope form of the
+  line and convert to the slope-intercept form:
+  \begin{align*}
+    (y-2) &= \frac{1}{4}(x-4) \\
+    y-2 &= \frac{1}{4}x-1 \\
+    y &= \frac{1}{4}x+1
+  \end{align*}
+  Finally, we need the \(x\) intercept of the line, so set \(y=0\):
+  \begin{align*}
+    0 &= \frac{1}{4}x+1 \\
+    \frac{1}{4}x &= -1 \\
+    x &= -4
+  \end{align*}
+  Thus, the board touches the ground at \(x=\SI{-4}{ft}\).
+\end{enumerate}
+
+\end{document}

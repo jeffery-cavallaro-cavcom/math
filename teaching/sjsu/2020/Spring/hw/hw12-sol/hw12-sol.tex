@@ -1,0 +1,37 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#12 Solutions
+\end{center}
+
+\subsection*{Problems}
+
+How many possible 5-card poker hands from a standard deck are there with 3-of-a-kind (3 cards of the same rank and
+2 additional cards).  You must NOT count 4-of-a-kind and full-house hands.  Thus the 2 additional cards cannot
+match your 3-of-kind nor can they be a pair.  For full credit, you must explain each task in your procedure;
+simply stating an answer receives no credit.
+
+\begin{enumerate}
+\item Select a rank for the 3-of-a-kind: \(C(13,1)\)
+\item Select three cards from the selected rank: \(C(4,3)\)
+\item Select two other ranks for the two remaining cards: \(C(12,2)\)
+\item Select one card from the rank for the fourth card: \(C(4,1)\)
+\item Select one card from the rank for the fifth card: \(C(4,1)\)
+\end{enumerate}
+
+\begin{align*}
+  \text{Total number of ways} &= C(13,1)C(4,3)C(12,2)C(4,1)C(4,1) \\
+  &= 13\cdot4\cdot\frac{12!}{10!2!}\cdot4\cdot4 \\
+  &= 13\cdot4\cdot\frac{12\cdot11}{2}\cdot4\cdot4 \\
+  &= 13\cdot4\cdot66\cdot4\cdot4 \\
+  &= 54912
+\end{align*}
+
+\end{document}

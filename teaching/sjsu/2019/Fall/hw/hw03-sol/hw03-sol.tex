@@ -1,0 +1,43 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{cancel}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 02, 03, 60
+
+  \Large
+  Homework \#3 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+Consider the function: \(f(x)=\sqrt{x}\).
+\begin{enumerate}
+\item Calculate \(f'(x)\) using the definition of the derivative.
+  \begin{align*}
+    f'(t) &= \lim_{h\to0}\frac{f(x+h)-f(x)}{h} \\
+    &= \lim_{h\to0}\frac{\sqrt{x+h}-\sqrt{x}}{h} \\
+    &= \lim_{h\to0}\left(\frac{\sqrt{x+h}-\sqrt{x}}{h}\right)
+    \left(\frac{\sqrt{x+h}+\sqrt{x}}{\sqrt{x+h}+\sqrt{x}}\right) \\
+    &= \lim_{h\to0}\frac{(\cancel{x}+h)-(\cancel{x})}{h(\sqrt{x+h}+\sqrt{x})} \\
+    &= \lim_{h\to0}\frac{\cancel{h}}{\cancel{h}(\sqrt{x+h}+\sqrt{x})} \\
+    &= \lim_{h\to0}\frac{1}{\sqrt{x+h}+\sqrt{x}} \\
+    &= \frac{1}{\sqrt{x+0}+\sqrt{x}} \\
+    &= \frac{1}{\sqrt{x}+\sqrt{x}} \\
+    &= \frac{1}{2\sqrt{x}}
+  \end{align*}
+  
+\item Calculate \(f'(x)\) using some other method.
+
+  Make sure that your two final answers match exactly.
+  \begin{gather*}
+    f(x)=\sqrt{x}=x^{\frac{1}{2}} \\
+    \\
+    f'(x)=\frac{1}{2}x^{-\frac{1}{2}}=\frac{1}{2x^{\frac{1}{2}}}=\frac{1}{2\sqrt{x}}
+  \end{gather*}
+\end{enumerate}
+
+\end{document}

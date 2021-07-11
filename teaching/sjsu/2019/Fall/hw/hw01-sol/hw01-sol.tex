@@ -1,0 +1,53 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{cancel}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 02, 03, 60
+
+  \Large
+  Homework \#1 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+Consider the function: \(f(x)=x^2\).  Calculate the following limit:
+\[\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\]
+
+First note that if we try substitution with this form we get the indeterminant form \(\frac{0}{0}\).  So, we need
+to do some algebra first:
+
+\begin{align*}
+  \lim_{h\to0}\frac{f(x+h)-f(x)}{h} &= \lim_{h\to0}\frac{(x+h)^2-x^2}{h} \\
+  &= \lim_{h\to0}\frac{\cancel{x^2}+2xh+h^2-\cancel{x^2}}{h} \\
+  &= \lim_{h\to0}\frac{2xh+h^2}{h} \\
+  &= \lim_{h\to0}\frac{\cancel{h}(2x+h)}{\cancel{h}} \\
+  &= \lim_{h\to0}(2x+h) \\
+  &= 2x+0 \\
+  &= 2x
+\end{align*}
+
+This is how the solution should be presented, with no shortcuts.  Each line is a complete statement.  Some students
+insist on syntactic shortcuts that don't make sense, like omitting the limit operator until the end.  When you do
+this you are in danger of me not being able to follow what you are doing.  If I have to go back and reread your
+solutions 3 times to try and figure out what is going on then I am just going to assume that it is wrong and I will
+not entertain verbal explanations after the fact on why it is right --- i.e., no video replay in this game.
+
+Also please note that some students insist on continuing to write the limit operator after they have done the
+substitution:
+
+\begin{gather*}
+  \lim_{h\to0}(2x+0) \\
+  \lim_{h\to0}2x
+\end{gather*}
+
+This is incorrect.  I didn't take off points this time, but I will in the future.
+
+One final note, please submit your homework on a separate piece of college rule or graph paper --- not the original
+problem sheet.  Remove any rippy edges.  Finally, do not add extra notes or scratched out work on your submission.
+Pencil is best.
+
+\end{document}

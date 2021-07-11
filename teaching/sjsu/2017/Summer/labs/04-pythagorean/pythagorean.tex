@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+\section*{Lab 4: Pythagorean Theorem}
+
+The Pythagorean theorem is one of the oldest and best known theorems known to
+mankind. It is amazing how many times it pops up in mathematics. We start with
+a right triangle (a triangle containing a $90^{\circ}$ angle) and label the
+length of the sides as $a$, $b$, and $c$:
+
+\begin{minipage}{\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \node [scale=0.01] (A) at (0,0) {};
+    \node [scale=0.01] (B) at (4,0) {};
+    \node [scale=0.01] (C) at (4,3) {};
+    \draw (A) to node [below] {$b$} (B) to node [right] {$a$} (C)
+    to node [above left] {$c$} (A);
+  \end{tikzpicture}
+\end{minipage}
+
+Note that $c$ is the length of the hypotenuse.
+
+The theorem states the following:
+\[a^2+b^2=c^2\]
+
+Let work through a simple, but elegant, proof of the theorem. First, write
+down the equation for the area of a square with side $s$:
+\[A=\]
+Now, write down the equation for a triangle with base $b$ and height $h$:
+\[A=\]
+Now consider the following diagram of a square within a square:
+
+\begin{minipage}{\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \draw (0,0) to node [below] {$b$} (4,0);
+    \draw (4,0) to node [below] {$a$} (7,0);
+    \draw (7,0) to node [right] {$b$} (7,4);
+    \draw (7,4) to node [right] {$a$} (7,7);
+    \draw (7,7) to node [above] {$b$} (3,7);
+    \draw (3,7) to node [above] {$a$} (0,7);
+    \draw (0,7) to node [left] {$b$} (0,3);
+    \draw (0,3) to node [left] {$a$} (0,0);
+    \draw (4,0) to node [below right] {$c$} (7,4);
+    \draw (7,4) to node [above right] {$c$} (3,7);
+    \draw (3,7) to node [above left] {$c$} (0,3);
+    \draw (0,3) to node [below left] {$c$} (4,0);
+  \end{tikzpicture}
+\end{minipage}
+
+Note that there are four congruent right triangles positioned around the inner
+square. What is the equation for the area of the inner square?
+\[A=\]
+What is the equation for the area of each of the outer triangles?
+\[A=\]
+What is the equation for the area of the outer square?
+\[A=\]
+Finally, note that the area of the outer square is the sum of the areas of the
+inner square and the four outer triangles. Use this fact to derive the
+Pythagorean Theorem:
+
+\vspace{2in}
+
+When the lengths of the three sides are integers, we call the triplet a
+\emph{Pythagorean Triple}. The most common is $3-4-5$:
+\[3^2+4^2=9+16=25=5^2\]
+Fill in the missing values in the following table of Pythagorean triples:
+\renewcommand{\arraystretch}{2}
+\[\begin{array}{|c|c|c|}
+\hline
+\mathbf{a} & \mathbf{b} & \mathbf{c} \\
+\hline
+3 & 4 & \\
+\hline
+5 & & 13 \\
+\hline
+& 15 & 17 \\
+\hline
+7 & 24 & \\
+\hline
+\end{array}\]
+
+\end{document}

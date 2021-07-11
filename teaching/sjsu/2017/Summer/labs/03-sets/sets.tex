@@ -1,0 +1,205 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Lab 3: Sets}
+
+In mathematics, we use the concept of a \emph{set} to describe groups of
+related things (like the natural numbers) and solutions to certain types of
+equations. We will encounter this throughout the course, so it is good to get
+a basic understanding of sets now at the beginning. We will use the natural
+numbers for our examples, so review the notes on natural numbers if you have
+forgotten what they are.
+
+An important part of any discipline like mathematics are the definitions that
+provide the vocabulary and understanding of the subject matter. These
+definitions tend to be rather formal and hard to understand at first. The
+definition for a set that we will use is ugly. Read it through, taking note of
+the emphasized words, and then we will parse it bit by bit with examples:
+
+\begin{definition}[Set]
+  A set is an \emph{unambiguous}, \emph{distinct}, and \emph{unordered}
+  collection of members called elements, where the elements are selected from
+  an all-inclusive set called a universe.
+\end{definition}
+
+First of all, we need to admit that this is not a very good definition. We
+haven't explained what we mean by a ``collection'' or to be a ``member'' of a
+collection. Even worse, we used the word ``set'' in the definition when
+describing the universe. This is all due to the limitations of language. You can
+only break down a definition of something so far. At some point, you need to
+rely on the reader's intuition or experience relating to certain concepts.
+Hence, we are relying on your intuition on what it means to be a ``collection
+of members.''
+
+So let's consider our first example of a set: the natural numbers. The easiest
+way of representing such a set is by \emph{description}:
+\[\N=\mbox{the set of natural numbers}\]
+We typically use a capital letter to represent a set. Some of the well-known
+sets like the natural numbers use a more blocky form of letter --- note the
+extra stroke in the $\N$. But you can just write $N$ if you like.
+
+Now, back to the definition and the three emphasized adjectives:
+\begin{enumerate}
+\item Unambiguous
+
+  This means that given a thing, you can objectively determine whether or not
+  it is in the set; there is no room for subjectivity. For example, we know
+  that the number '$1$' is definitely an element of the set of natural numbers.
+  The syntax for this is as follows:
+  \[1\in\N\]
+  Note that the little curvy 'e' stands for ``is in.'' On the other hand, we
+  know that the number '$0$' is definitely not an element of the set of
+  natural numbers. The syntax for this puts a slash through the curvy 'e':
+  \[0\notin\N\]
+  The curvy 'e' with a slash stands for ``is not in.''
+
+  Here is an example of something that is ambiguous:
+  \[A=\mbox{the set of large numbers}\]
+  Can you see why this is not a well-formed set? Is $100\in A$? Is
+  $1,000,000\in A$? Note that the choice is subjective and hence ambiguous.
+
+\item Distinct
+
+  This means that each element in the set appears (i.e., is selected from the
+  universe) once and only once --- there are no duplicates or copies.
+
+\item Unordered
+
+  This means that the order of the elements in the set is not significant
+  (doesn't matter). This may seem odd, since you know that the natural numbers
+  do have a counting order (e.g., 2 comes after 1); however, this is not
+  inherent in the definition of a set.
+\end{enumerate}
+
+In the previous example, the set of natural numbers is its own universe. Now,
+lets make some smaller sets using the set of natural numbers as the universe.
+When the number of elements selected from the universe is small, we can use the
+\emph{roster} notation to list all of the elements. For example:
+\[A=\{1,2,4,7\}\]
+The set $A$ contains four elements. The elements are enclosed in curly-braces
+and are separated by commas. Note that this set is unambiguous:
+\[1\in A\hspace{4ex}2\in A\hspace{4ex}4\in A\hspace{4ex}7\in A\]
+But, for example:
+\[3\notin A\hspace{4ex}10\notin A\]
+Also note that each element only occurs once. So the set:
+\[B=\{1,2,4,7,1\}\]
+would be the same set as $A$, since the second, extra $1$ in $B$ is considered
+to be identical to the first $1$ in $B$. In fact, we would never represent a
+set this way, with duplicate elements.
+
+And finally note that the actual order of the elements of $A$ is unimportant.
+Thus:
+\[\{1,2,4,7\}\hspace{4ex}\{1,4,2,7\}\hspace{4ex}\{7,4,2,1\}\]
+are all valid syntactical representations of $A$. But, since we know that
+the natural numbers do have an ordering, we feel more comfortable using the
+first form.
+
+Now, let's look at a couple additional techniques that can be employed when
+using roster notation. As long as the number of elements in a set is small, we
+can use the explicit roster format:
+\[A=\{1,2,3,4,5,6,7,8,9,10\}=\mbox{the set of natural numbers from 1 to 10}\]
+But how would be represent the first 100 natural numbers? We can do it like
+this:
+\[B=\{1,2,3,4,5,\ldots,99,100\}\]
+Once again, we run into our friend the ellipsis. Once we establish a pattern,
+we use the ellipsis to represent the stuff in the middle. We end the set with
+one or more of the last elements after the ellipsis.
+
+When a set has a definite number of elements we say that it is \emph{finite}.
+So, for example, the set:
+\[A=\{2,4,6,8\}\]
+is finite because it has 4 elements. Likewise, the set:
+\[B=\{1,2,3,4,5,\ldots,50\}\]
+is finite because it has 50 elements. But sets need not be finite, they can
+be \emph{infinite} - i.e., have infinitely many elements. An example is $\N$,
+the set of natural numbers. Here is how $\N$ might be represented using roster
+notation:
+\[\N=\{1,2,3,4,5,\ldots\}\]
+Note that we establish the pattern, use the ellipsis, and leave off an ending
+value. This indicates that we are supposed to continue on to infinity. Remember
+that we do not write the following:
+\[\N=\{1,2,3,4,5,\ldots,\infty\}\hspace{4ex}\mbox{WRONG!}\]
+There is an addition set syntax that we will eventually need to know: the
+so-called ``set-builder'' notation. We won't need it until later, so we will
+defer learning about it until then.
+
+\subsection*{Questions}
+
+\begin{enumerate}
+\item Let $A=$ the set of natural numbers between $20$ and $25$, inclusive
+  (meaning include the endpoints).
+  \begin{enumerate}
+  \item Write the roster notation for the set $A$.
+
+    \vspace{0.5in}
+    
+  \item Fill in either $\in$ or $\notin$ as is appropriate:
+    
+    $22\hspace{2ex}A\hspace{8ex}-1\hspace{2ex}A\hspace{8ex}26\hspace{2ex}A
+    \hspace{8ex}20\hspace{2ex}A\hspace{8ex}10\hspace{2ex}A$
+  \end{enumerate}
+
+  \newpage
+
+\item Let $B=$ the set of even natural numbers between $20$ and $30$, exclusive
+  (meaning exclude the endpoints).
+  \begin{enumerate}
+  \item Write the roster notation for the set $B$.
+
+    \vspace{0.5in}
+    
+  \item Fill in either $\in$ or $\notin$ as is appropriate:
+    
+    $24\hspace{2ex}B\hspace{8ex}28\hspace{2ex}B\hspace{8ex}30\hspace{2ex}B
+    \hspace{8ex}18\hspace{2ex}B\hspace{8ex}0\hspace{2ex}B$
+  \end{enumerate}
+
+  \bigskip
+
+\item Let $C=$ the set natural numbers between $100$ and $500$, inclusive.
+  \begin{enumerate}
+  \item Write the roster notation for the set $A$ (hint: do not write all
+    $401$ numbers!).
+
+    \vspace{1in}
+    
+  \item Fill in either $\in$ or $\notin$ as is appropriate:
+    
+    $121\hspace{2ex}C\hspace{8ex}500\hspace{2ex}C\hspace{8ex}499\hspace{2ex}C
+    \hspace{8ex}99\hspace{2ex}C\hspace{8ex}400\hspace{2ex}C$
+  \end{enumerate}
+
+  \bigskip
+  
+\item Here are some other examples of infinite sets. Can you guess what they
+  are:
+  \begin{enumerate}
+  \item $E=\{2,4,6,8,\ldots\}$
+
+    \vspace{0.5in}
+    
+  \item $O=\{1,3,5,7,\ldots\}$
+
+    \vspace{0.5in}
+    
+  \item $P=\{2,3,5,7,11,13,17,\ldots\}$
+
+    \vspace{0.5in}
+  \end{enumerate}
+
+\item Let $D=$ the set of odd natural numbers greater than or equal to $100$.
+  \begin{enumerate}
+  \item Write the roster notation for the set $D$ (Hint: Use an ellipsis).
+
+    \vspace{0.5in}
+    
+  \item Fill in either $\in$ or $\notin$ as is appropriate:
+    
+    $109\hspace{2ex}D\hspace{8ex}100\hspace{2ex}D\hspace{8ex}200\hspace{2ex}D
+    \hspace{8ex}1,000,001\hspace{2ex}D\hspace{8ex}-101\hspace{2ex}D$
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

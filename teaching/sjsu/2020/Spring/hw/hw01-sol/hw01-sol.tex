@@ -1,0 +1,61 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage[table]{xcolor}
+\pagestyle{plain}
+\renewcommand{\implies}{\rightarrow}
+\renewcommand{\iff}{\leftrightarrow}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#1 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+\begin{enumerate}
+\item Let \(p\), \(q\), and \(r\)  be propositions and consider the compound proposition:
+  \[p\implies p\land\lnot q\iff q\lor r\]
+  Construct a truth table for this 3-variable proposition.  Be sure to show each intermediary result and then the
+  final result.  Be wary of operator precedence!
+
+  \bigskip
+
+  First, lets clarify the proper precedence using parentheses:
+  \[(p\implies(p\land\lnot q))\iff(q\lor r)\]
+
+  Now construct the truth table:
+  \[\begin{array}{ccc|c|c|c|c|c}
+  p & q & r & \lnot q & p\land\lnot q & q\lor r & p\implies(p\land\lnot q) &
+  (p\implies(p\land\lnot q))\iff(q\lor r) \\
+  \hline
+  F & F & F & T & F & F & T & F \\
+  F & F & T & T & F & T & T & T \\
+  \rowcolor{green!25!white}
+  F & T & F & F & F & T & T & T \\
+  F & T & T & F & F & T & T & T \\
+  T & F & F & T & T & F & T & F \\
+  T & F & T & T & T & T & T & T \\
+  T & T & F & F & F & T & F & F \\
+  T & T & T & F & F & T & F & F
+  \end{array}\]
+
+\item Consider the following propositions:
+  \begin{align*}
+    p &\coloneqq\sqrt{2}\ \text{is a rational number.} \\
+    q &\coloneqq0\ \text{is an even number.} \\
+    r &\coloneqq x^2=1\implies x=1
+  \end{align*}
+
+  Using your truth table from the first problem, indicate whether the compound proposition is true or false.  Be sure
+  to clearly indicate the row that gives you the proper answer.
+
+  \bigskip
+
+  These propositions correspond to the \(FTF\) row (row \(3\)), so the proposition is true.
+\end{enumerate}
+
+\end{document}

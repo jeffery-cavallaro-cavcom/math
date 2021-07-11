@@ -1,0 +1,50 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 02, 03, 60
+
+  \Large
+  Homework \#12 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+Using the trapezoidal rule, estimate the area under the curve \(f(x)=x^3\) from \(x=0\) to \(x=1\) using a partition
+size of \(n=10\).  Start by constructing a table of \(x_i\) and \(f(x_i)\) values and then perform the calculation
+from the values in the table.
+
+\begin{tabular}{c|c|c|c}
+  \(x_i\) & \(f(x_i)\) & multiplier & term \\
+  \hline
+  \(0\) & \(0\) & \(1\) & \(0\) \\
+  \(\frac{1}{10}\) & \(\frac{1}{1000}\) & \(2\) & \(\frac{2}{1000}\) \\
+  & & & \\
+  \(\frac{2}{10}\) & \(\frac{8}{1000}\) & \(2\) & \(\frac{16}{1000}\) \\
+  & & & \\
+  \(\frac{3}{10}\) & \(\frac{27}{1000}\) & \(2\) & \(\frac{54}{1000}\) \\
+  & & & \\
+  \(\frac{4}{10}\) & \(\frac{64}{1000}\) & \(2\) & \(\frac{128}{1000}\) \\
+  & & & \\
+  \(\frac{5}{10}\) & \(\frac{125}{1000}\) & \(2\) & \(\frac{250}{1000}\) \\
+  & & & \\
+  \(\frac{6}{10}\) & \(\frac{216}{1000}\) & \(2\) & \(\frac{432}{1000}\) \\
+  & & & \\
+  \(\frac{7}{10}\) & \(\frac{343}{1000}\) & \(2\) & \(\frac{686}{1000}\) \\
+  & & & \\
+  \(\frac{8}{10}\) & \(\frac{512}{1000}\) & \(2\) & \(\frac{1024}{1000}\) \\
+  & & & \\
+  \(\frac{9}{10}\) & \(\frac{729}{1000}\) & \(2\) & \(\frac{1458}{1000}\) \\
+  & & & \\
+  \(1\) & \(\frac{1000}{1000}\) & \(1\) & \(\frac{1000}{1000}\)
+\end{tabular}
+
+\[\int_0^{10}x^3dx\approx\frac{1-0}{2(10)}\left(\frac{5050}{1000}\right)=0.2525\]
+
+Note that the actual value is:
+\[\int_0^1x^3dx=\left[\frac{1}{4}x^4\right]_0^1=\frac{1}{4}=0.2500\]
+
+\end{document}

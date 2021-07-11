@@ -1,0 +1,43 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\e}{\epsilon}
+\renewcommand{\implies}{\rightarrow}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#4 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+One of the most important definitions in mathematics (calculus in particular) is that of the limit of a sequence.
+Consider the infinite sequence: \(1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\ldots\).  Such a sequence can be
+represented as follows:
+\[a_n=\frac{1}{n}, n\in\N\]
+Note that the elements of the sequence get arbitrarily close to \(0\) as \(n\to\infty\).  We call such a point the
+\emph{limit} of the sequence.
+
+The formal definition for ``\(L\) is the limit of a sequence \(a_n\)'' is as follows:
+\[\forall\,\e>0,\exists\,N\in\N,\forall\,n\in\N,(n>N\implies\abs{a_n-L}<\e)\]
+Negate this proposition to obtain the definition of ``\(L\) is NOT the limit of a sequence \(a_n\).''
+
+The following a step-by-step application of DeMorgan, but you could jump directly to the solution:
+
+\begin{gather*}
+\overline{\forall\,\e>0,\exists\,N\in\N,\forall\,n\in\N,(n>N\implies\abs{a_n-L}<\e})\equiv \\
+\exists\,\e>0,\overline{\exists\,N\in\N,\forall\,n\in\N,(n>N\implies\abs{a_n-L}<\e})\equiv \\
+\exists\,\e>0,\forall\,N\in\N,\overline{\forall\,n\in\N,(n>N\implies\abs{a_n-L}<\e})\equiv \\
+\exists\,\e>0,\forall\,N\in\N,\exists\,n\in\N,\overline{n>N\implies\abs{a_n-L}<\e}\equiv \\
+\exists\,\e>0,\forall\,N\in\N,\exists\,n\in\N,(n>N\ \text{and}\ \abs{a_n-L}\ge\e)
+\end{gather*}
+
+Remember that \(\overline{p\implies q}\equiv p\land\bar{q}\).  Also note that technically the parentheses are
+required since quantifiers have the highest precedence.
+
+\end{document}
+

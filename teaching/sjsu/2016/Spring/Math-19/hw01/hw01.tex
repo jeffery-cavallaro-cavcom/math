@@ -1,0 +1,111 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#1
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}
+\item Let:
+\begin{eqnarray*}
+P &\coloneqq& 0\ \mbox{is a positive number} \\
+Q &\coloneqq& 2\ge2 \\
+R &\coloneqq& \forall n,m\in\mathbb{N}, n+m\in\mathbb{N} \\
+\end{eqnarray*}
+Determine whether the following compound statement is true or false:
+
+\hspace{0.5in}P and Q and R or P and not Q and R or not P and Q and R
+
+Start by rewriting the statement with parentheses to show operation order,
+then substitute the truth value for each individual statement, and then
+show the stepwise evaluation to the final result.
+
+\item There is a theorem called DeMorgan's Theorem that helps us negate
+complex logical statements.
+\begin{enumerate}
+\item Consider the statement ``not (A and B)''. We know (A and B) is false
+whenever either A, B, or both are false, so not (A and B) = (not A) or (not B).
+Find a similar result for not (A or B).
+
+\item Remember that $\forall x,P(x)$ can be viewed as a big compound AND
+statement. Since it will be false whenever there exists an $x$ value for which
+$P(x)$ is false, we can conclude that: not $(\forall x,P(x)) = \exists x,
+(not\ P(x))$.  Find a similar result for not $(\exists x,P(x))$.
+\end{enumerate}
+
+\item Classify each of the listed numbers by putting an `X' in the appropriate
+columns (Hint: some numbers will be in more than one set).
+
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+ & $\mathbb{N}$ & $\mathbb{W}$ & $\mathbb{Z}$ & $\mathbb{Q}$ &
+    $\mathbb{R}-\mathbb{Q}$ & $\mathbb{R}$ \\
+\hline
+0 & & & & & & \\
+\hline
+$\frac{4}{2}$ & & & & & & \\
+\hline
+-3 & & & & & & \\
+\hline
+1.036 & & & & & & \\
+\hline
+$10.14\overline{23}$ & & & & & & \\
+\hline
+$\sqrt{2}$ & & & & & & \\
+\hline
+$-\pi$ & & & & & & \\
+\hline
+\end{tabular}
+
+\item Decimal to rational form conversion.
+\begin{enumerate}
+\item Convert $0.14\overline{23}$ to rational form.
+
+\item Show that $0.\overline{1} = \frac{1}{9}$. If this is so, then
+$\frac{2}{9}$ should equal $0.\overline{2}$,
+$\frac{3}{9}$ should equal $0.\overline{3}$,
+and so on until $\frac{8}{9}$ should equal $0.\overline{8}$. So, what does
+$0.\overline{9}$ equal? Show that this is so by converting
+$0.\overline{9}$ to rational form.
+\end{enumerate}
+
+\item Let:
+\begin{eqnarray*}
+A &=& \mbox{the set of all positive numbers} \\
+B &=& \{x\in\mathbb{R}|-3<x\le3\} \\
+\end{eqnarray*}
+Represent each set in interval notation and graph each set on separate real
+number lines.  Determine $A\cup B$, $A\cap B$, and $A-B$, showing the results
+in both interval notation and graph form.
+
+\item Solve by finding the LCM:
+\[\frac{3}{8}+\frac{2}{9}-\frac{1}{12}\]
+Show the prime factorization for each denominator and how you used the prime
+factorizations to determine the LCM.
+
+\item Simplify completely:
+\[\frac{\frac{5}{6}-\left(\frac{1}{2}+\frac{2}{3}\right)}
+       {\frac{1}{10}+\frac{3}{15}}\]
+
+\item Prove: $\forall a\in\mathbb{R}-\{0\}$, the multiplicative inverse
+$a^{-1}$ is unique.
+
+\item Prove: $\forall a,b\in\mathbb{R}, a(-b)=-(ab)$. You are only allowed to
+use the properties in the box on page 3 and properties 1 and 2 in the box on
+page 4. Make sure that your proof is syntactically complete, with a
+justification for each step.
+
+\item Prove: $\forall a,b\in\mathbb{R}, |a-b|=|b-a|$ using the properties up to
+and including those in the box at the top of page 9. Make sure that your proof
+is syntactically complete, with a justification for each step. Do \emph{not}
+just justify this based on the definition of distance.
+
+\end{enumerate}
+
+\end{document}

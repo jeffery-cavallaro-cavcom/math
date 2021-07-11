@@ -1,0 +1,168 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{polynom}
+\pagestyle{plain}
+\newcommand{\no}{\textcolor{red}{\times}}
+\newcommand{\yes}{\textcolor{green}{\checkmark}}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-13 Sections 01 and 02
+
+  \Large
+  Homework \#11 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+Consider the function:
+\[f(x)=x^3-4x^2-4x+16\]
+\begin{enumerate}
+\item Using the rational roots theorem, completely factor \(f(x)\).
+  \begin{gather*}
+    p=\pm1,\pm2,\pm4,\pm8,\pm16 \\
+    q=\pm1 \\
+    \\
+    c=\pm1,\pm2,\pm4,\pm8,\pm16 \\
+    \\
+    f(1)=1^3-4(1)^2-4(1)+16=1-4-4+16\ne0\qquad\no \\
+    f(-1)=(-1)^3-4(-1)^2-4(-1)+16=-1-4+4+16\ne0\qquad\no \\
+    f(2)=2^3-4(2)^2-4(2)+16=8-16-8+16=0\qquad\yes \\
+  \end{gather*}
+  \polylongdiv{x^3-4x^2-4x+16}{x-2}
+  \[f(x)=(x-2)(x^2-2x-8)=(x-2)(x+2)(x-4)\]
+\item What are the critical points of \(f(x)\)?
+
+  The critical numbers are \(x=\pm2,4\), so the critical points are \((\pm2,0)\) and \((4,0)\).
+
+\item What is the \(y\)-intercept of \(f(x)\)?
+  \[f(0)=0^3-4(0)^2-4(0)=16=0+0+0+16=16\]
+  Therefore, the \(y\)-intercept is \((0,16)\).
+  
+\item What are the critical points of \(f'(x)\)?
+  \[f'(x)=3x^2-8x-4\]
+  This does not factor nicely, so:
+  \begin{align*}
+    x &= \frac{8\pm\sqrt{(-8)^2-4(3)(-4)}}{2(3)} \\
+    &= \frac{8\pm\sqrt{64+48}}{6} \\
+    &= \frac{8\pm\sqrt{112}}{6} \\
+    &= \frac{8\pm4\sqrt{7}}{6} \\
+    &= \frac{4\pm2\sqrt{7}}{3} \\
+    &\approx -0.43,3.10
+  \end{align*}
+  \begin{gather*}
+    f\left(\frac{4-2\sqrt{7}}{3}\right)\approx16.90 \\
+    f\left(\frac{4+2\sqrt{7}}{3}\right)\approx-5.05
+  \end{gather*}
+  Therefore, the first derivative critical points are \((-0.43,16.90)\) and \((3.10,-5.05)\).
+
+\item Using the first derivative test, determine the relative extrema of \(f(x)\).
+
+  \begin{center}
+    \begin{tikzpicture}
+      \draw [<->] (-2,0) -- (6,0);
+      \node [closed point,red] (X) at (-0.43,0) {};
+      \node [below] at (X) {\(-0.43\)};
+      \node [closed point,red] (Y) at (3.10,0) {};
+      \node [below] at (Y) {\(3.10\)};
+      \node [above] at (-1.5,0) {\(\textcolor{blue}{+}\)};
+      \node [below] at (-1.5,0) {\(\textcolor{blue}{\nearrow}\)};
+      \node [above] at (1.5,0) {\(\textcolor{blue}{-}\)};
+      \node [below] at (1.5,0) {\(\textcolor{blue}{\searrow}\)};
+      \node [above] at (4.5,0) {\(\textcolor{blue}{+}\)};
+      \node [below] at (4.5,0) {\(\textcolor{blue}{\nearrow}\)};
+    \end{tikzpicture}
+
+    Using test points:
+    \begin{gather*}
+      f'(-1)>0 \\
+      f'(0)<0 \\
+      f'(4)>0
+    \end{gather*}
+  \end{center}
+
+  Therefore \((-0.43,16.90)\) is a relative maximum and \((3.10,-5.05)\) is a relative minimum.
+  
+\item Using the second derivative test, verify the relative extrema of \(f(x)\).
+  \[f''(x)=6x-8\]
+  So \(f''(-0.43)<0\), so the function is concave down, verifying that \((-0.43,16.90)\) is a relative maximum.
+  Likewise, \(f''(3.10)>0\), so the function is concave up, verifying that \((3.10,-5.05)\) is a relative minimum.
+  
+\item What are the critical points of \(f''(x)\)?
+  \begin{gather*}
+    x=\frac{8}{6}=\frac{4}{3}\approx1.33 \\
+    \\
+    f\left(\frac{4}{3}\right)\approx5.93
+  \end{gather*}
+  Therefore, the second derivative has one critical point at \((1.33,5.93)\).
+
+\item Using the second derivative, prove that the critical point of \(f''(x)\) is a point of inflection.
+  \begin{center}
+    \begin{tikzpicture}
+      \draw [<->] (0,0) -- (6,0);
+      \node [closed point,red] (X) at (3,0) {};
+      \node [below] at (X) {\(\frac{4}{3}\)};
+      \node [above] at (1.5,0) {\(\textcolor{blue}{-}\)};
+      \node [below] at (1.5,0) {\textcolor{blue}{CCD}};
+      \node [above] at (4.5,0) {\(\textcolor{blue}{+}\)};
+      \node [below] at (4.5,0) {\textcolor{blue}{CCU}};
+    \end{tikzpicture}
+  \end{center}
+
+  Using test points:
+  \begin{gather*}
+    f''(0)<0 \\
+    f''(2)>0
+  \end{gather*}
+  Therefore, the function is concave down to the left of the critical point and concave up to the right of the
+  critical point.  The change in concavity proves that the critical point is a point of inflection.
+
+\item What is the end behavior of \(f(x)\)?
+
+  Using the leading term test, the end behavior is like \(x^3\):
+
+  As \(x\to-\infty\), \(f(x)\to-\infty\).
+
+  As \(x\to+\infty\), \(f(x)\to+\infty\).
+
+\item Sketch \(f(x)\).  For full credit, all intercepts, extrema, and points of inflection must be labeled with
+  their coordinate values.
+
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[
+          axis lines=middle,
+          xmin=-5,
+          xmax=6,
+          ymin=-10,
+          ymax=20,
+          ticks=none,
+          xlabel={\(x\)},
+          ylabel={\(y\)},
+          x label style={at={(axis cs:6,0)},anchor=west},
+          y label style={at={(axis cs:0,20)},anchor=south},
+          clip=false
+        ]
+        \addplot [domain=-2.35:5,blue,smooth] {x^3-4*x^2-4*x+16};
+        \node [closed point,red] (X1) at (-2,0) {};
+        \node [below left] at (X1) {\(-2\)};
+        \node [closed point,red] (X2) at (2,0) {};
+        \node [below left] at (X2) {\(2\)};
+        \node [closed point,red] (X3) at (4,0) {};
+        \node [below right] at (X3) {\(4\)};
+        \node [closed point,red] (Y1) at (0,16) {};
+        \node [above right] at (Y1) {\(16\)};
+        \node [closed point,red] (E1) at (-0.43,16.90) {};
+        \node [above left] at (E1) {\((-0.43,16.90)\)};
+        \node [closed point,red] (E2) at (3.10,-5.05) {};
+        \node [below] at (E2) {\((3.10,-5.05)\)};
+        \node [closed point,red] (E3) at (1.33,5.93) {};
+        \node [right] at (E3) {\((1.33,5.93)\)};
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+
+\end{enumerate}
+
+\end{document}

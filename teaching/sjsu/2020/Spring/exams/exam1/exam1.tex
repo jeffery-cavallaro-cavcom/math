@@ -1,0 +1,175 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+\renewcommand{\implies}{\rightarrow}
+\renewcommand{\iff}{\leftrightarrow}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Exam \#1
+\end{center}
+
+\vspace{0.5in}
+
+Name: \rule{4in}{1pt}
+
+\vspace{0.5in}
+
+This exam is closed book and notes. You may use a calculator; however, no other electronics are allowed.  A
+cheatsheet with a table of logical equivalences is provided on the last page.  Show all work; there is no credit
+for guessed answers.
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0pt]
+\item Prove the following logical equivalence using a truth table.  Be sure to show all intermediate steps and the
+  final tautology.
+  \[p\iff q\equiv p\land q\lor \lnot p\land\lnot q\]
+
+  \newpage
+
+\item You are in the land of knights and knaves.  Remember that knights always tell the truth (i.e., make a true
+  statement) and knaves always lie (i.e., make a false statement).  You meet two men: \(A\) and \(B\).  \(A\) says,
+  ``If I am a knight then he is a knave.''  \(B\) says, ``He is a knave.''  Determine whether each person is
+  either a knight or a knave.  Be sure to explain why.
+
+  \vspace{3in}
+
+\item Prove using logical equivalences in a step by step fashion (i.e., do not skip steps) and justify each step:
+  \[(p\implies q)\lor(p\implies r)\equiv p\implies(q\lor r)\]
+  You are only allowed to use the equivalence of the implication and the rules stated in the cheatsheet on the
+  last page.
+
+  \newpage
+
+\item Consider the eight types of rules of inference that we studied:
+  \begin{enumerate}
+  \item Modus Ponens
+  \item Modus Tollens
+  \item Hypothetical Syllogism
+  \item Disjunctive Syllogism
+  \item Addition
+  \item Simplification
+  \item Conjunction
+  \item Resolution
+  \end{enumerate}
+
+  \vspace{0.5in}
+
+  Identify the rule of inference used in each of the following arguments:
+  \begin{itemize}
+  \item[\underbar{\qquad}] \(n\in\N\) or \(n<0\).  \(n\notin\N\) or \(n=1\).  Therefore \(n<0\) or \(n=1\).
+  \item[\underbar{\qquad}] If \(n\) is odd then \(n^2\) is odd.  \(n\) is odd.  Therefore \(n^2\) is odd.
+  \item[\underbar{\qquad}] \(n\in\N\) and \(n\in\Z\).  Therefore \(n\in\Z\).
+  \item[\underbar{\qquad}] \(a<x\) and \(x<b\).  Therefore \(a<x<b\).
+  \item[\underbar{\qquad}] If \(n<n^2\) then \(n\ne1\).  If \(n\ne1\) then \(n+5\ne6\).  Therefore if \(n<n^2\) then
+    \(n+5\ne 6\).
+  \item[\underbar{\qquad}] If \(n\) is even then \(n^2\) is even.  \(n^2\) is odd.  Therefore \(n\) is odd.
+  \item[\underbar{\qquad}] \(a\le b\).  \(a\ne b\).  Therefore \(a<b\).
+  \item[\underbar{\qquad}] \(a<b\).  Therefore \(a\le b\).
+  \end{itemize}
+
+  \newpage
+
+\item To say that a function \(f(x)\) is continuous at a point \(x=a\) means:
+  \[\forall\,\e>0,\exists\,\d>0,\forall\,x\in\R,\abs{x-a}<\d\implies\abs{f(x)-f(a)}<\e\]
+  State the definition that says a function \(f(x)\) is discontinuous (i.e., not continuous) at a point \(x=a\).
+
+  \vspace{1.5in}
+
+\item State the following definitions:
+  \begin{enumerate}
+  \item \(n\) is an even integer.
+
+    \vspace{1.5in}
+
+  \item \(n\) is an odd integer.
+  \end{enumerate}
+
+  \vspace{1.5in}
+
+\item State the definition for \(x\in\Q\).
+
+  \newpage
+
+\item Prove by direct proof:
+  \[\forall\,n,m\in\Z,(n,m\ \text{odd}\implies nm\ \text{odd})\]
+
+  \vspace{5in}
+
+\item Prove:
+  \[\forall\,n,m\in\Z,(nm\ \text{even}\implies n\ \text{even or}\ m\ \text{even})\]
+  
+  \newpage
+
+\item Prove:
+  \begin{quote}
+    The set of rational numbers is closed under multiplication.
+  \end{quote}
+\end{enumerate}
+
+\newpage
+
+Logical Equivalences:
+
+\begin{tabular}{|l|l|}
+  \hline
+  EQUIVALENCE & NAME \\
+  \hline
+  \(\begin{array}{l}
+  p\land T\equiv p \\
+  p\lor F\equiv p
+  \end{array}\) & Identity \\
+  \hline
+  \(\begin{array}{l}
+  p\lor T\equiv T \\
+  p\land F\equiv F
+  \end{array}\) & Domination \\
+  \hline
+  \(\begin{array}{l}
+  p\lor p\equiv p \\
+  p\land p\equiv p
+  \end{array}\) & Idempotent \\
+  \hline
+  \(\lnot(\lnot p)\equiv p\) & Double Negation \\
+  \hline
+  \(\begin{array}{l}
+  p\lor q\equiv q\lor p \\
+  p\land q\equiv q\land p \\
+  \end{array}\) & Commutative \\
+  \hline
+  \(\begin{array}{l}
+  (p\lor q)\lor r\equiv p\lor(q\lor r) \\
+  (p\land q)\land r\equiv p\land(q\land r) \\
+  \end{array}\) & Associative \\
+  \hline
+  \(\begin{array}{l}
+  p\lor(q\land r)\equiv(p\lor q)\land(p\lor r) \\
+  p\land(q\lor r)\equiv(p\land q)\lor(p\land r) \\
+  \end{array}\) & Distributive \\
+  \hline
+  \(\begin{array}{l}
+  \lnot(p\land q)\equiv\lnot p\lor\lnot q \\
+  \lnot(p\lor q)\equiv\lnot p\land\lnot q \\
+  \end{array}\) & DeMorgan \\
+  \hline
+  \(\begin{array}{l}
+  p\lor(p\land q)\equiv p \\
+  p\land(p\lor q)\equiv p \\
+  \end{array}\) & Absorption \\
+  \hline
+  \(\begin{array}{l}
+  p\lor\lnot p=T \\
+  p\land\lnot p=F \\
+  \end{array}\) & Negation \\
+  \hline
+\end{tabular}
+
+\end{document}

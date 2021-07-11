@@ -1,0 +1,72 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#8 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+Consider the logarithm function:
+\[y=-3\ln\left[-\frac{1}{2}(x+2)\right]-1\]
+\begin{enumerate}[label={\alph*)}]
+\item What is the final x-coordinate of the key point?
+
+  The horizontal transformation must bring the key point x-coordinate back to its original value of 1:
+  \begin{gather*}
+    -\frac{1}{2}(x+2)=1 \\
+    x+2=-2 \\
+    x=-4
+  \end{gather*}
+\item What is the final y-coordinate of the key point?
+
+  The original key point y-coordinate is 0.  So, the transformed value is:
+  \[-3(0)-1=-1\]
+  Therefore, the transformed key point is \((-4,-1)\).
+  
+\item What are the x-intercepts (if any)?
+  \begin{gather*}
+    0=-3\ln\left(-\frac{1}{2}(x+2)\right)-1 \\
+    -3\ln\left(-\frac{1}{2}(x+2)\right)=1 \\
+    \ln\left(-\frac{1}{2}(x+2)\right)=-\frac{1}{3} \\
+    -\frac{1}{2}(x+2)=e^{-\frac{1}{3}} \\
+    x+2=-2e^{-\frac{1}{3}} \\
+    x=-2-2e^{-\frac{1}{3}} \\
+    x=-2\left(1+e^{-\frac{1}{3}}\right) \\
+    x\approx-3.4
+  \end{gather*}
+\item What are the y-intercepts (if any)?
+  \begin{gather*}
+    y=-3\ln\left[-\frac{1}{2}(0+2)\right]-1 \\
+    y=-3\ln(-1)-1
+  \end{gather*}
+  But we cannot take the natural log of a negative number.  Thus, DNE.
+  
+\item Where is the vertical asymptote?
+
+  The vertical asymptote moves with the horizontal translations.  Thus:
+  \[x=-2\]
+\item Sketching the final graph.  Do not use tick marks --- relative positioning only.  The key point, all intercepts, and
+  the vertical asymptote must be clearly shown and labeled.
+
+  \begin{tikzpicture}
+    \draw [<->] (-8,0) -- (2,0);
+    \draw [<->] (0,-5) -- (0,5);
+    \draw [dashed] (-2,-5) -- (-2,5);
+    \node [draw,circle,fill,scale=0.5] (K) at (-4,-1) {};
+    \node [below right] at (K) {\((-4,-1)\)};
+    \node [draw,circle,fill,scale=0.5] (X) at (-3.4,0) {};
+    \node [below right] at (X) {\((-3.4,0)\)};
+    \node [below] at (-2,-5) {\(x=-2\)};
+    \draw [domain=-7.5:-2.26] plot ({\x},{-3*ln((-1/2)*(\x+2))-1});
+  \end{tikzpicture}
+\end{enumerate}
+
+\end{document}

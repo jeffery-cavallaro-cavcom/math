@@ -1,0 +1,46 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#11 Solutions
+\end{center}
+
+\subsection*{Problems}
+
+Prove (by induction): For all \(n\in\N\):
+\[21\left|\left(4^{n+1}+5^{2n-1}\right)\right.\]
+Make sure that your proof is well structured as specified in class.
+
+(Hint: Example 9)
+
+Proof by induction on \(n\).
+
+\begin{description}
+\item[Base Case:] \(n=1\)
+
+  \(4^{1+1}+5^{2(1)-1}=4^2+5^1=16+5=21\)
+
+  \(21|21\)
+
+\item[Inductive Hypothesis:] Assume that \(21\left|\left(4^{n+1}+5^{2n-1}\right)\right.\).
+
+\item[Inductive Step:] Consider \(n+1\).
+  \begin{align*}
+    4^{(n+1)+1}+5^{2(n+1)-1} &= 4\cdot4^{n+1}+5^{2n+1} \\
+    &= 4\cdot4^{n+1}+5^{(2n-1)+2} \\
+    &= 4\cdot4^{n+1}+5^2\cdot5^{2n-1} \\
+    &= 4\cdot4^{n+1}+25\cdot5^{2n-1} \\
+    &= 4\cdot4^{n+1}+4\cdot5^{2n-1}+21\cdot5^{2n-1} \\
+    &= 4(4^{n+1}+5^{2n-1})+21\cdot5^{2n-1} \\
+  \end{align*}
+  But \(21|4^{n+1}+5^{2n-1}\) (inductive hypothesis), so \(21|[4(4^{n+1}+5^{2n-1})]\).  Furthermore, \(21|21\cdot5^{2n-1}\).
+  Therefore \(21|[4(4^{n+1}+5^{2n-1})+21\cdot5^{2n-1}]\).
+\end{description}
+
+\end{document}

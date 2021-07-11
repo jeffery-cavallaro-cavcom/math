@@ -1,0 +1,104 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-08 Homework \#5 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\begin{itemize}
+\item Text book section 1.1, review 0.2
+\end{itemize}
+
+\underline{Problems}
+
+\begin{enumerate}
+\item At the beginning of January you open up a savings account with \$1000
+  that pays 3\% yearly interest compounded at the end of the month. You set up
+  an autodeposit of \$500 per month out of your paycheck that is deposited on
+  the first of each month, starting in February. In January, February, March,
+  and April you pay the following expenses:
+  
+  \begin{tabular}{|c|c|}
+    \hline
+    Jan & \$250 \\
+    \hline
+    Feb & \$750 \\
+    \hline
+    Mar & \$600 \\
+    \hline
+    Apr & \$200 \\
+    \hline
+  \end{tabular}
+  
+  What is your account balance on May 1, after the monthly deposit?
+
+  \bigskip
+
+  Note that there are 4 compounding periods. May does not count, because we
+  ask for the balance immediately after the autodeposit on the first of the
+  month; in other words, we don't wait until the end of month 5.
+
+  The resulting polynomial is as follows:
+  \[A(x)=750x^4-250x^3-100x^2+300x+500\]
+  Since the interest rate is $3\%$ or $0.03$ per year and the compounding
+  period is 1 month, meaning 12 compounding periods per year, the interest rate
+  per compounding period is give by:
+  \[\frac{r}{n}=\frac{0.03}{12}=0.0025\]
+  which is $0.25\%$. Thus, the compounding factor is given by:
+  \[x=1+\frac{r}{n}=1+0.0025=1.0025\]
+  Plugging this value into the polynomial results in the answer:
+  \[A(1.0025)=1205.90\]
+  Remember, this is money, so round to the nearest cent!
+  
+  So, your current balance on May 1 after the autodeposit is \$1205.90.
+
+  \bigskip
+
+\item Solve the following linear equation in a step-by-step fashion, justifying
+  each step with one of the 10 axioms, substitution, and/or left/right
+  cancellation:
+  \[3(x+2)=3\]
+
+  There are two possible ways to do this. The first way starts off with the
+  distributive rule. The second way starts by multiplying both sides by
+  $\frac{1}{3}$. Here is the first solution:
+
+  \begin{tabular}{ll}
+    $3x+6=3$ & Left Distributive (LD) \\
+    $(3x+6)-6=3-6$ & Well-defined Addition (WD) \\
+    $(3x+6)-6=-3$ & Substitution (SUB) \\
+    $3x+(6-6)=-3$ & Additive Associativity (AA) \\
+    $3x+0=-3$ & Additive Inverse (AI) \\
+    $3x=-3$ & Additive Identity (A0) \\
+    $\frac{1}{3}(3x)=\frac{1}{3}(-3)$ & Well-defined Multiplication (WD) \\
+    $\frac{1}{3}(3x)=-1$ & Substitution (SUB) \\
+    $\left(\frac{1}{3}\cdot3\right)x=-1$ & Multiplicative Associativity (MA) \\
+    $1x=-1$ & Multiplicative Inverse (M1) \\
+    $x=-1$ & Multiplicative Identity (MI) \\
+  \end{tabular}
+
+  Here is the second solution:
+  
+  \begin{tabular}{ll}
+    $\frac{1}{3}[3(x+2)]=\frac{1}{3}\cdot3$ & Well-defined Multiplication \\
+    $\frac{1}{3}[3(x+2)]=1$ & Multiplicative Inverse (MI) \\
+    $\left(\frac{1}{3}\cdot3\right)(x+2)=1$ &
+    Multiplicative Associativity (MA) \\
+    $1(x+2)=1$ & Multiplicative Inverse (MI) \\
+    $x+2=1$ & Multiplicative Identity (M1) \\
+    $(x+2)-2=1-2$ & Well-defined Addition (WD) \\
+    $(x+2)-2=-1$ & Substitution (SUB) \\
+    $x+(2-2)=-1$ & Additive Associativity (AA) \\
+    $x+0=-1$ & Additive Inverse (AI) \\
+    $x=-1$ & Additive Identity (A0) \\
+  \end{tabular}
+\end{enumerate}
+  
+\end{document}

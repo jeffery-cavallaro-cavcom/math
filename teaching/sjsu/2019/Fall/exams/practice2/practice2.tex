@@ -1,0 +1,91 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 02, 03, 60
+
+  \Large
+  Practice Exam \#2
+\end{center}
+
+\vspace{0.25in}
+
+This exam will be closed book and notes. You may use a scientific calculator; however, no other electronics are
+allowed.  You may also use the instructor-provided cheatsheet.  Show all work; there is no credit for guessed
+answers.  Simplify your answers unless told otherwise.  In particular, all answers should contain no negative or
+rational exponents.  All numerical answers should be in exact form unless you are specifically asked for a decimal
+value.
+
+\vspace{0.25in}
+
+\begin{enumerate}[left=0pt]
+
+\item You work for the corporate office of a fast food chain that is going to launch in California.  In the first
+  week of operation (\(t=0\)), the new restaurants served 10,000 customers.  By the fifth week (\(t=4\)) that
+  number has risen to 20,000.  Assuming that the growth is exponential and is expected to continue in the near
+  future, predict how many customers will be served in the tenth week (\(t=9\)).
+
+\item It's time for you to retire!  You have \$1,200,000 in your 401(k) that is earning about 6\% per year,
+  compounded monthly on the first day of each the month.  Since you are also collecting social security, you decide
+  that you only need to withdraw about \$5000 per month, which you will withdraw on the second day of each month,
+  starting in the first month.  What is your account balance on the third day of the fifth month?
+
+\item You are responsible for the environmental control systems at a silicon wafer manufacturing facility.  You
+  sample the temperature in the main fabrication lab every hour.  The temperature measurements, in degrees Celsius,
+  are expected to follow a normal distribution:
+  \[p(T)=\frac{1}{\sqrt{2\pi}}e^{-\frac{(T-25)^2}{2}}\]
+  \begin{enumerate}
+  \item What is the mean temperature in the lab?
+  \item What is the standard deviation of the temperature in the lab?
+  \item At what \(T\) value does the corresponding bell curve have its absolute maximum?
+  \item At what \(T\) values does the corresponding bell curve have its points of inflection?
+  \item What is the probability that a temperature measurement will be between \(24^{\circ}C\) and \(26^{\circ}C\)?
+  \end{enumerate}
+
+\item Consider the follow function of two variables:
+
+  \bigskip
+
+  \begin{center}
+    \scalebox{1.25}{\(\displaystyle f(x,y)=\ln\left[\frac{\sqrt{y^2+2}e^{(x^2+y^3+1)}}{4x^2(y^3-2)}\right]\)}
+  \end{center}
+  
+  \bigskip
+
+  Determine the following partials:
+  \begin{enumerate}[label={\alph*)}]
+  \item \(f_x\)
+  \item \(f_y\)
+  \item \(f_{xx}\)
+  \item \(f_{yx}\)
+  \end{enumerate}
+
+\item{\label{pd}} Use the second partial derivative test to find the the \((x,y,z)\) coordinates \emph{and} type of the
+  absolute extremum on the following surface:
+
+  \bigskip
+
+  \begin{center}
+    \scalebox{1.25}{\(\displaystyle z=5-x^2-2x-y^2+4y\)}
+  \end{center}
+
+  \bigskip
+
+\item Use the Lagrange multiplier technique to find the \((x,y,z)\) coordinates of the absolute minimum
+  point on the surface in problem \ref{pd} given the following constraint:
+
+  \bigskip
+
+  \begin{center}
+    \scalebox{1.25}{\(\displaystyle 2x-y+4=0\)}
+  \end{center}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,358 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-2in}
+\addtolength{\textheight}{-\footskip}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+
+\pagestyle{empty}
+
+\usepackage{amsfonts}
+
+\begin{document}
+
+\begin{center}
+\bfseries
+San Jos\'{e} State University \\
+Fall 2015 \\
+Math-8: College Algebra \\
+Section 03: MW noon--1:15pm \\
+Section 05: MW 4:30--5:45pm \\
+\bigskip
+Quiz \#5 Solutions
+\end{center}
+
+\bigskip
+
+1. Simplify:
+    $\frac{\left[3x\sqrt[5]{x^2+2x+1}\right]^3}{\sqrt{9x\sqrt[3]{x+1}}}$
+
+\bigskip
+
+The general procedure for simplifying an ugly thing like this is to:
+\begin{enumerate}
+\item{Convert all radicals to rational exponents.}
+\item{Simplify the numerator and denominator separately using the various
+exponent rules, mostly:
+\begin{itemize}
+\item{$a^ma^n=a^{m+n}$}
+\item{$(ab)^n=a^nb^n$}
+\item{$(a^m)^n=a^{mn}$}
+\end{itemize}
+Remember to apply exponents to all factors inside parentheses!
+}
+\item{Match up like bases in the numerator and denominator for cancellation
+using the $\frac{a^m}{a^n}=a^{m-n}$}
+\end{enumerate}
+
+So, let's start by getting rid of the ugly radicals:
+
+\[\frac{\left[3x(x^2+2x+1)^{\frac{1}{5}}\right]^3}
+{(9x(x+1)^{\frac{1}{3}})^{\frac{1}{2}}}\]
+
+The denominator is a bit tricky, since it contains a radical in a radical.
+Just be sure to do the inside one first and then the outside one and don't
+mix them.
+
+Next, we see that the $x^2+2x+1$ in the numerator can be factored, so we will
+do so:
+
+\[\frac{\left[3x((x+1)^2)^{\frac{1}{5}}\right]^3}
+{(9x(x+1)^{\frac{1}{3}})^{\frac{1}{2}}}\]
+
+Note that we are careful to keep the $\frac{1}{5}$ outside the factor. Now
+let's combine the $\frac{1}{5}$ and the $2$ using the $(a^m)^n=a^{mn}$ rule:
+
+\[\frac{\left[3x(x+1)^{\frac{2}{5}}\right]^3}{(9x(x+1)^{\frac{1}{3}})^{\frac{1}{2}}}\]
+
+Now it is time to apply the exponent in the numerator to \emph{all} of its
+factors using the $(ab)^n=a^nb^n$ rule:
+
+\[\frac{3^3x^3\left[(x+1)^{\frac{2}{5}}\right]^3}
+{(9x(x+1)^{\frac{1}{3}})^{\frac{1}{2}}}\]
+
+We will need to use the $(a^m)^n=a^{mn}$ rule again to combine the $\frac{2}{5}$
+and the $3$:
+
+\[\frac{3^3x^3(x+1)^{\frac{6}{5}}}{(9x(x+1)^{\frac{1}{3}})^{\frac{1}{2}}}\]
+
+Now, let's work on the denominator. Start by applying the $\frac{1}{2}$ to all
+of its factors:
+
+\[\frac{3^3x^3(x+1)^{\frac{6}{5}}}
+{9^{\frac{1}{2}}x^{\frac{1}{2}}\left[(x+1)^{\frac{1}{3}}\right]^{\frac{1}{2}}}\]
+
+Next, resolve the layered exponent:
+
+\[\frac{3^3x^3(x+1)^{\frac{6}{5}}}{3x^{\frac{1}{2}}(x+1)^{\frac{1}{6}}}\]
+
+Now, group the like bases:
+
+\[\left(\frac{3^3}{3^1}\right)
+\left(\frac{x^3}{x^{\frac{1}{2}}}\right)
+\left(\frac{(x+1)^{\frac{6}{5}}}{(x+1)^{\frac{1}{6}}}\right)\]
+
+Now, apply the $\frac{a^m}{a^n}=a^{m-n}$ rule:
+
+\[3^{3-1}x^{3-\frac{1}{2}}(x+1)^{\frac{6}{5}-\frac{1}{6}}\]
+
+Finally, do the fractional arithmetic to get the answer:
+
+\[3^2x^{\frac{5}{2}}(x+1)^{\frac{31}{30}}\]
+
+or
+
+\[9x^{\frac{5}{2}}(x+1)^{\frac{31}{30}}\]
+
+\bigskip
+
+2. Simplify: $\sqrt{28x}+\sqrt{63x}$
+
+\begin{eqnarray*}
+\sqrt{28x}+\sqrt{63x} &=& \sqrt{4\cdot7x}+\sqrt{9\cdot7x} \\
+                      &=& 2\sqrt{7x}+3\sqrt{7x} \\
+                      &=& (2+3)\sqrt{7x} \\
+                      &=& 5\sqrt{7x} \\
+\end{eqnarray*}
+
+\bigskip
+
+3. Put into general form and solve by completing the square:
+\[2x^2+11x-2=x(x+8)\]
+
+\bigskip
+
+General form means that we have a polynomial on the left with terms listed in
+order starting with highest (or lowest) degree term. In this case, we want it
+to look like $ax^2+bx+c=0$:
+
+\begin{eqnarray*}
+2x^2+11x-2 &=& x^2+8x \\
+x^2+3x-2 &=& 0 \\
+\end{eqnarray*}
+
+Move the constant to the other side:
+
+\[x^2+3x=2\]
+
+We now need to find something to add to both sides so that the left-hand side
+becomes a perfect square. We do this by taking the ``b'' coefficient (3),
+dividing it by 2 ($\frac{3}{2}$), squaring it ($frac{9}{4}$), then adding it to
+both sides:
+
+\[x^2+3x+\frac{9}{4}=2+\frac{9}{4}\]
+
+The left-hand side is now a perfect square, using the $\frac{b}{2}$ value that
+we calculated above:
+
+\[\left(x+\frac{3}{2}\right)^2=\frac{17}{4}\]
+
+Now, when we take the square root of both sides, we need to be careful since
+we are dealing with an even power --- we need the absolute value!:
+
+\[\left|x+\frac{3}{2}\right|=\frac{\sqrt{17}}{2}\]
+
+When we remove the absolute value, we need to take plus or minus so that we
+don't lose solutions:
+
+\[x+\frac{3}{2}=\pm\frac{\sqrt{17}}{2}\]
+
+We now solve for x:
+
+\[x=-\frac{3}{2}\pm\frac{\sqrt{17}}{2}=\frac{-3\pm\sqrt{17}}{2}\]
+
+Note the similarity of the solutions form to one that we would have received if
+we had used the quadratic formula here.
+
+\bigskip
+
+4. A person stands on top of a 100ft cliff and releases a rock.  How long does
+it take the rock to hit the ground if:
+
+\begin{description}
+\item{a.} The rock is simply dropped.
+\item{b.} The rock is thrown downward at 10 ft/s.
+\item{c.} the rock is thrown upward at 10 ft/s.
+\item{d.} What does the discarded solution in each case represent?
+\end{description}
+
+For this problem we need free-fall equation using English units:
+
+\[h=100+v_0t-16t^2\]
+
+Parts a, b, and c are different in their choice of $v_0$. In part a we simply
+drop the rock, so $v_0=0$, and we want to know when it hits the ground ($h=0$):
+
+\begin{eqnarray*}
+100-16t^2 &=& 0 \\
+16t^2 &=& 100 \\
+t^2 &=& \frac{100}{16} \\
+|t| &=& \frac{10}{4} \\
+t &=& \pm\frac{10}{4}=\pm2.5\ \mbox{seconds} \\
+\end{eqnarray*}
+
+We take the positive solution, so the answer is 2.5 seconds. But what about the
+negative solution? Imagine someone back in time standing on the ground and
+throwing a rock such that it stops when it reaches me and then starts falling
+at the same instant that I drop my rock.  Our two rocks would be
+indistinguishable. His rock would take 2.5 seconds to reach me, which accounts
+for the -2.5 seconds solution. So the total roundtrip for his rock would be
+$2.5+2.5=5.0$ seconds.
+
+\bigskip
+
+Now lets look at part b.  This time, I help gravity and throw my rock down
+instead of just releasing it. Thus, $v_0=-10$ and the full equations is:
+
+\[100-10t-16t^2=0\]
+
+Let's clean this up a bit to make using the quadratic equation a bit easier:
+
+\begin{eqnarray*}
+100-10t-16t^2 &=& 0 \\
+16t^2+10t-100 &=& 0 \\
+8t^2+5t-50 &=& 0 \\
+\end{eqnarray*}
+
+We are now ready to use the quadratic formula with $a=8$, $b=5$, and $c=-50$:
+
+\[\frac{-5\pm\sqrt{5^2-4(8)(-50)}}{2(8)}\]
+
+If you punch this into your calculator, you should get 2.2 seconds and
+-2.8 seconds, so 2.2 seconds is the answer.  But again, what about the negative
+solution? Once again, imagine the other guy on the ground tossing his rock up,
+but this time, he throws it hard enough so that it passes me, stops somewhere
+above me, and then starts to fall such that when it passes me on the way down,
+his rock's velocity matches how fast I throw my rock down. Once again, the
+two rocks are indistinguishable.  The -2.8 seconds is the time it took for
+his rock to go up, stop, and then pass me on the way down. Thus, the total
+round trip for his rock is $2.8+2.2=5.0$ seconds.
+
+\bigskip
+
+For part c I throw my rock up against gravity, so $v_0=+10$ and the full
+equation is:
+
+\[100+10t-16t^2=0\]
+
+I could clean this up and plug it into the quadratic formula as before, but
+note that the only thing that changes is the sign on the ``b'' value. So, the
+times in part b just switch - now my rock takes 2.8 seconds to rise, stop, and
+then fall to the ground.  His rock takes 2.2 seconds to reach me such that when
+it passes me, it has the same velocity as when I throw my rock up.  Thus, the
+path of my rock in part c is the exact reverse of his rock in part b and takes
+the same amount of time.
+
+\bigskip
+
+5. Simplify: $\frac{\left(\frac{x^2+6x+5}{x^2+3x+2}-\frac{x-2}{x-5}\right)}
+    {\frac{x^2+5x+6}{x-5}}$
+
+\bigskip
+
+Problems such as these are based on our rules for fractions:
+
+\begin{itemize}
+\item{$\frac{a}{c}+\frac{b}{c}=\frac{a+b}{c}$}
+\item{$\frac{a\cdot c}{b\cdot c}=\frac{a}{b}$}
+\item{$\frac{a}{b}\pm\frac{c}{d}=\frac{ad\pm bc}{bd}$}
+\item{$\frac{\frac{a}{b}}{\frac{c}{d}}=\frac{a}{b}\cdot\frac{d}{c}$}
+\end{itemize}
+
+Start by factoring the polynomials:
+
+\[\frac{\frac{(x+5)(x+1)}{(x+2)(x+1)}-\frac{x-2}{x-5}}
+{\frac{(x+2)(x+3)}{x-5}}\]
+
+Note that there is a (x+1) factor in both the numerator and denominator that
+cancel:
+
+\[\frac{\frac{x+5}{x+2}-\frac{x-2}{x-5}}{\frac{(x+2)(x+3)}{x-5}}\]
+
+Now, combine the numerator using the addition rule above:
+
+\[\frac{\frac{(x+5)(x-5)-(x+2)(x-2)}{(x-5)(x+2)}}{\frac{(x+2)(x+3)}{x-5}}\]
+
+Next, simplify the numerator a bit:
+
+\[\frac{\frac{(x^2-25)-(x^2-4)}{(x-5)(x+2)}}{\frac{(x+2)(x+3)}{x-5}}=
+\frac{\frac{-21}{(x-5)(x+2)}}{\frac{(x+2)(x+3)}{x-5}}\]
+
+Now, apply the division rule above:
+
+\[\frac{-21}{(x-5)(x+2)}\cdot\frac{x-5}{(x+2)(x+3)}\]
+
+Now use the multiple rule above:
+
+\[\frac{-21(x-5)}{(x-5)(x+2)(x+2)(x+3}\]
+
+Finally, we see that the (x-5) cancels and we can combine the (x+2)'s:
+
+\[\frac{-21}{(x+2)^2(x+3)}\]
+
+\bigskip
+
+6. Solve for x: $(x+1)^4=16$
+
+\bigskip
+
+The only trick here is to make sure that we realize that we have an even
+exponent, so we will need the absolute value:
+
+\begin{eqnarray*}
+(x+1)^4 &=& 16 \\
+\left[(x+1)^4\right]^{\frac{1}{4}} &=& (16)^{\frac{1}{4}} \\
+|x+1| &=& 2 \\
+x+1 &=& \pm2 \\
+x=1, -3 \\
+\end{eqnarray*}
+
+Note that if had not used the absolute value then we would loose the negative
+solution.
+
+\bigskip
+
+7. Solve for x: $4x^4+12x^2-3=0$
+
+Every time we see something of this form where the highest degree (4) is twice
+the lower degree (2), we can turn it into a quadratic in the lower degree:
+
+$4(x^2)^2+12(x^2)-3=0$
+
+We can then solve for $x^2$ using factoring, completing the square, or the
+quadratic formula.  Let's use the latter with $a=4$, $b=12$, and $c=-3$, but
+remember that this is for $x^2$!:
+
+\begin{eqnarray*}
+x^2 &=& \frac{-12\pm\sqrt{12^2-4(4)(-3)}}{2(4)} \\
+    &=& \frac{-12\pm\sqrt{144+48}}{8} \\
+    &=& \frac{-12\pm\sqrt{192}}{8} \\
+    &=& \frac{-12\pm8\sqrt{3}}{8} \\
+    &=& \frac{-3\pm2\sqrt{3}}{2} \\
+\end{eqnarray*}
+
+Before we run off and take the square root to find $x$, let's take a look at
+what we have so far.  Notice that one of the solutions for $x^2$ is negative,
+which is impossible, so we discard that solution first:
+
+\[x^2=\frac{-3+2\sqrt{3}}{2}\]
+
+Now, go ahead and solve for $x$, once again being careful to use the absolute
+value:
+
+\begin{eqnarray*}
+\left(x^2\right)^{\frac{1}{2}} &=&
+    \left(\frac{-3+2\sqrt{3}}{2}\right)^{\frac{1}{2}} \\
+|x| &=& \left(\frac{-3+2\sqrt{3}}{2}\right)^{\frac{1}{2}} \\
+x &=& \pm\left(\frac{-3+2\sqrt{3}}{2}\right)^{\frac{1}{2}} \\
+\end{eqnarray*}
+
+\end{document}

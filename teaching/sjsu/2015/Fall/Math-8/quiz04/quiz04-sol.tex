@@ -1,0 +1,134 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-2in}
+\addtolength{\textheight}{-\footskip}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+
+\pagestyle{empty}
+
+\usepackage{amsfonts}
+
+\begin{document}
+
+\begin{center}
+\bfseries
+San Jos\'{e} State University \\
+Fall 2015 \\
+Math-8: College Algebra \\
+Section 03: MW noon--1:15pm \\
+Section 05: MW 4:30--5:45pm \\
+\bigskip
+Quiz \#4
+\end{center}
+
+\bigskip
+
+1. Expand: $(5xy+2z)^2$
+
+\bigskip
+
+This is just a FOIL problem: $(a+b)^2=a^2+2ab+b^2$, with $a=5xy$ and $b=2z$. So
+doing the foil we get:
+
+\begin{eqnarray*}
+(5xy+2z)^2 &=& (5xy)^2+2(5xy)(2z)+(2z)^2 \\
+           &=& 5^2x^2y^2+20xyz+2^2z^2 \\
+           &=& 25x^2y^2+20xyz+4z^2 \\
+\end{eqnarray*}
+
+2. Put in general form: $(3x+2)(3x-2)-(2x+5)(x-1)$
+
+Note that the left-hand size is a difference of squares.  The right-hand side
+needs to be FOIL'd in the regular way. Be careful to keep the correct scope on
+the intervening minus sign!
+
+\begin{eqnarray*}
+(3x+2)(3x-2)-(2x+5)(x-1) &=& ((3x)^2-2^2)-(2x^2+3x-5) \\
+                         &=& 9x^2-4-2x^2-3x+5 \\
+                         &=& (9x^2-2x^2)-3x+(5-4) \\
+                         &=& 7x^2-3x+1 \\
+\end{eqnarray*}
+
+3. A box is 5 inches longer than it is wide and it is 5 inches deep. Find the
+\emph{length} of the box if the total volume is 250 cubic inches.
+
+\bigskip
+
+The way the problem is worded suggests that we make $w$=width be our variable.
+Since the length is 5 inches greater than the width, $l=w+5$.  The depth is
+given as $d=5$ inches.  Since the formula for the volume of a box is
+$width\times length\times depth$, and since the total volume is 250 cubic
+inches:
+
+\begin{eqnarray*}
+5w(w+5)=250 \\
+w(w+5)=50 \\
+w^2+5w=50 \\
+w^2+5w-50=0 \\
+(w+10)(w-5)=0 \\
+w=-10,5
+\end{eqnarray*}
+
+Since dimensions must be positive, we discard -10 and conclude that our width
+is 5 inches. But, the problem asked for the length:
+
+\[length=width+5=5+5=10\ \mbox{inches}\]
+
+4. You have a credit card with an 30\% per year interest rate that compounds
+monthly. Your first statement indicates that you made \$1000 in purchases, so
+you make a \$100 payment.  The second statement indicates that you made \$500 in
+new purchases, so you make another \$100 payment. The third statement says that
+you didn't make any new purchases, so you pay \$200.  What is your account
+balance after the last \$200 payment?
+
+\bigskip
+
+This problem involves the repeated application of the compound interest formula
+over a couple of compounding periods.  Instead of the original principle
+remaining the same, as in the previous problems, the principle now changes with
+various deposit and withdraw events.
+
+So here is how we determine the coefficients for the polynomial:
+
+\bigskip
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+Start of Month & Purchases & Payments & Net \\
+\hline
+1 & 1000 & 100 & 900 \\
+\hline
+2 & 500 & 100 & 400 \\
+\hline
+3 & 0 & 200 & -200 \\
+\hline
+\end{tabular}
+
+\bigskip
+
+Since the problem asks for the balance as soon as the last \$200 dollar payment
+is made, we don't wait another whole month. Thus, the problem lasts for only
+2 months, or 2 compounding periods.  So, we use the coefficients to build our
+polynomial:
+
+\[900x^2+400x-200\]
+
+where $x=1+\frac{0.30}{12}$. Plugging this into your calculator should yield
+the answer: \$1155.56.
+
+Note that each term in the polynomial is an instance of the compounded interest
+formula, telling how a deposit or withdrawal affects the balance. Positive
+values indicate an increase in the account value on which interest must be
+paid.  Negative values indicate a decrease in the account value and adjust the
+interest accordingly.
+
+\end{document}

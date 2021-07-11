@@ -1,0 +1,308 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\qe}{\overset{?}{=}}
+\allowdisplaybreaks
+\begin{document}
+\section*{Other Types of Equations}
+
+Previously we looked at linear, rational, and quadratic equations. We will now
+extend that list by looking at:
+\begin{enumerate}
+\item Polynomial equations
+\item More on rational equations
+\item Quadratic-like equations
+\item Absolute value equations
+\item Equations involving radicals/rational exponents
+\end{enumerate}
+
+\subsection*{Polynomial Equations}
+
+General form: $P(x)=0$, where $P(x)$ is a polynomial.
+
+We have already looked at linear (degree=1) and quadratic (degree=2). For
+degrees $\ge2$, the goal is to factor them so that we can apply the property of
+0 to find one solution for each factor.
+
+\begin{example}
+  $(x-1)(x+2)(x-3)(x+4)^2=0$
+  
+  $x=1,-2,3,-4,-4$
+
+  Note that if we expanded this, the leading term would be $x^4$. So the goal
+  is to factor a polynomial equation of degree $n$ into $n$ linear factors,
+  each providing a solution (some repeated). This is not always possible, so
+  the best that we can say is that the actual number of solutions is $\le n$.
+\end{example}
+
+More of this in chapter 3, but for now, we will focus on polynomials that we
+can easily factor:
+
+\begin{enumerate}
+\item Factoring out powers of $x$:
+  \begin{eqnarray*}
+    x^4-3x^3+2x^2 &=& 0 \\
+    x^2(x^2-3x+2) &=& 0 \\
+    x^2(x-1)(x-2) &=& 0 \\
+    x &=& 0,1,2 \\
+  \end{eqnarray*}
+
+\item Patterns like difference of squares:
+  \begin{eqnarray*}
+    x^4-1 &=& 0 \\
+    (x^2-1)(x^2+1) &=& 0 \\
+    (x+1)(x-1)(x^2+1) &=& 0 \\
+    x &=& \pm1
+  \end{eqnarray*}
+
+\item Grouping
+  \begin{eqnarray*}
+    x^3-x^2-x+1 &=& 0 \\
+    x^2(x-1)-(x-1) &=& 0 \\
+    (x-1)(x^2-1) &=& 0 \\
+    (x-1)(x-1)(x+1) &=& 0 \\
+    (x-1)^2(x+1) &=& 0 \\
+    x &=& \pm1 \\
+  \end{eqnarray*}
+\end{enumerate}
+
+\subsection*{More on Rational Functions}
+
+I want to highlight the trick of multiplying both sides by the common
+denominator as a short cut for eliminating the fractions. Note that since
+none of the factors in the common denominator can be 0, we can multiply without
+fear of 0; however, we need to make sure that all of our found solutions are
+in the domain.
+
+\begin{example}
+  \begin{eqnarray*}
+    \frac{1}{x^2-9}+\frac{2x}{x+3}-\frac{1}{2} &=& \frac{4}{x-3} \\
+    2+4x(x-3)-(x^2-9) &=& 8(x+3) \\
+    2+4x^2-12x-x^2+9 &=& 8x+24 \\
+    3x^2-20x-13 &=& 0 \\
+    x &=& \frac{20\pm\sqrt{(-20)^2-4(3)(-13)}}{2(3)} \\
+    &=& \frac{20\pm\sqrt{400+156}}{6} \\
+    &=& \frac{20\pm\sqrt{556}}{6} \\
+    &=& \frac{20\pm2\sqrt{139}}{6} \\
+    &=& \frac{10\pm\sqrt{139}}{3} \\
+  \end{eqnarray*}
+\end{example}
+
+\subsection*{Quadratic-like Equations}
+
+\begin{eqnarray*}
+  x^4-7x^2+12 &=& 0 \\
+  (x^2)^2-7(x^2)+12 &=& 0 \\
+  (x^2-3)(x^2-4) &=& 0 \\
+  (x-\sqrt{3})(x+\sqrt{3})(x-2)(x+2) &=& 0 \\
+  x &=& \pm\sqrt{3},\pm2 \\
+\end{eqnarray*}
+\begin{eqnarray*}
+  x^4-2x^2-2 &=& 0 \\
+  (x^2)^2-2(x^2)-2 &=& 0 \\
+  x^2 &=& \frac{2\pm\sqrt{2^2-4(1)(-2)}}{2(1)} \\
+  &=& \frac{2\pm\sqrt{4+8}}{2} \\
+  &=& \frac{2\pm\sqrt{12}}{2} \\
+  &=& \frac{2\pm2\sqrt{3}}{2} \\
+  x^2 &=& 1\pm\sqrt{3} \\
+  \abs{x} &=& [1\pm\sqrt{3}]^{\frac{1}{2}} \\
+  \abs{x} &=& [1+\sqrt{3}]^{\frac{1}{2}} \\
+  x &=& \pm[1+\sqrt{3}]^{\frac{1}{2}} \\
+  x &=& \pm\sqrt{1+\sqrt{3}} \\
+\end{eqnarray*}
+
+\subsection*{Absolute Value Equations}
+
+Remember:
+\[\abs{a}=c\implies a=\pm c\]
+
+If absolute value equations, always try to isolate the absolute value part on
+one side before doing plus/minus:
+
+\begin{eqnarray*}
+  2\abs{x+1}-1 &=& 0 \\
+  2\abs{x+1} &=& 1 \\
+  \abs{x+1} &=& \frac{1}{2} \\
+  x+1 &=& \pm\frac{1}{2} \\
+  x &=& -\frac{3}{2},-\frac{1}{2} \\
+\end{eqnarray*}
+
+Also remember:
+\[\abs{a}=\abs{c}\implies a\pm c\]
+
+But when the absolute value is a term in an expression, we need to be a bit
+more careful and unwind the absolute values one at a time:
+
+\[\abs{x+1}=\frac{\abs{x}-1}{2}\]
+\[x+1=\pm\left(\frac{\abs{x}-1}{2}\right)\]
+
+\begin{minipage}[t]{2.5in}
+  \begin{eqnarray*}
+    x+1 &=& \frac{\abs{x}-1}{2} \\
+    2x+2 &=& \abs{x}-1 \\
+    \abs{x} &=& 2x+3 \\
+    x &=& \pm(2x+3) \\
+  \end{eqnarray*}
+\end{minipage}
+\begin{minipage}[t]{2.5in}
+  \begin{eqnarray*}
+    x+1 &=& -\left(\frac{\abs{x}-1}{2}\right) \\
+    2x+2 &=& 1-\abs{x} \\
+    \abs{x} &=& -2x-1 \\
+    x &=& \pm(-2x-1) \\
+  \end{eqnarray*}
+\end{minipage}
+
+\begin{minipage}[t]{2.5in}
+  \begin{eqnarray*}
+    x &=& 2x+3 \\
+    x &=& -3
+  \end{eqnarray*}
+\end{minipage}
+\begin{minipage}[t]{2.5in}
+  \begin{eqnarray*}
+    x &=& -(2x+3) \\
+    x &=& -2x-3 \\
+    3x &=& -3 \\
+    x &=& -1 \\
+  \end{eqnarray*}
+\end{minipage}
+
+\begin{minipage}[t]{2.5in}
+  \begin{eqnarray*}
+    x &=& -2x-1 \\
+    3x &=& -1 \\
+    x &=& -\frac{1}{3} \\
+  \end{eqnarray*}
+\end{minipage}
+\begin{minipage}[t]{2.5in}
+  \begin{eqnarray*}
+    x &=& -(-2x-1) \\
+    x &=& 2x+1 \\
+    x &=& -1 \\
+  \end{eqnarray*}
+\end{minipage}
+
+So we have three candidate solutions: $x=-3,-1,-\frac{1}{3}$. Do they all
+work?
+\begin{eqnarray*}
+  \abs{-3+1} &\qe& \frac{\abs{-3}-1}{2} \\
+  \abs{-2} &\qe& \frac{3-1}{2} \\
+  2 &\qe& \frac{2}{2} \\
+  2 &\ne& 1 \\
+\end{eqnarray*}
+\begin{eqnarray*}
+  \abs{-1+1} &\qe& \frac{\abs{-1}-1}{2} \\
+  \abs{0} &\qe& \frac{1-1}{2} \\
+  0 &\qe& \frac{0}{2} \\
+  0 &=& 0 \\
+\end{eqnarray*}
+\begin{eqnarray*}
+  \abs{-\frac{1}{3}+1} &\qe& \frac{\abs{-\frac{1}{3}}-1}{2} \\
+  \abs{\frac{2}{3}} &\qe& \frac{\frac{1}{3}-1}{2} \\
+  \frac{2}{3} &\qe& \frac{-\frac{2}{3}}{2} \\
+  \frac{2}{3} &\ne& -\frac{1}{3} \\
+\end{eqnarray*}
+
+Thus, the only solution is $x=-1$, the others are extraneous.
+
+\subsection*{Radicals and Rational Exponents}
+
+When we have something like $(x+1)^{\frac{2}{3}}$ in an equation, we need to peel
+off the exponent somehow in order to get to the variable.
+
+Remember:
+\[(a^n)^{\frac{1}{n}}=\begin{cases}
+a, & a\ \mbox{n odd} \\
+\abs{a}, & a\ \mbox{n even} \\
+\end{cases}\]
+\[(a^{\frac{1}{n}})^n=\begin{cases}
+a, & a\ \mbox{n odd} \\
+a, & a\ \mbox{n even, since}\ a\ge0 \\
+\end{cases}\]
+
+But what about $a^{\frac{p}{q}}$?
+
+\begin{enumerate}
+  \item Let's make sure we remember what this means:
+
+    $a^{\frac{p}{q}}=(a^{\frac{1}{q}})^p=(a^p)^{\frac{1}{q}}=\sqrt[q]{a^p}$
+
+    $8^{\frac{2}{3}}=(8^{\frac{1}{3}})^2=2^2=4$ \\
+    $8^{\frac{2}{3}}=(8^2)^{\frac{1}{3}}=64^{\frac{1}{3}}=4$
+
+  \item Remember that we have to accept an equation how it is written.
+
+    So something like $x^{\frac{2}{6}}$ cannot be simplified to $x^{\frac{1}{3}}$
+    until after we have determined domain and start to evaluate.
+
+  \item We want to take the appropriate root to both sides of an equation in
+    order to unwrap the variables:
+
+    $x^{\frac{2}{3}}=4$ \\
+    $(x^{\frac{2}{3}})^{\frac{3}{2}}=4^{\frac{3}{2}}$ \\
+    $x=(4^{\frac{1}{2}})^3$ \\
+    $x=2^3$ \\
+    $x=8$
+\end{enumerate}
+
+\begin{description}
+\item case 1: $p,q$ odd
+
+  No problems, just evaluate:
+
+  $(x-1)^{\frac{3}{5}}=8$ \\
+  $x-1=8^{\frac{5}{3}}$ \\
+  $x-1=32$ \\
+  $x=33$
+
+\item case 2: $q$ even
+
+  Since we are taking an even root, we can assume that $a\ge0$:
+
+  $(x-1)^{\frac{3}{2}}=8$ \\
+  $x-1=8^{\frac{2}{3}}$ \\
+  $x-1=4$ \\
+  $x=5$
+
+  Be sure that the candidate solution is in the domain and is not extraneous:
+
+  $(x-1)^{\frac{3}{2}}=-8$ \\
+  $x-1=(-8)^{\frac{2}{3}}$ \\
+  $x-1=4$ \\
+  $x=5$
+
+  But this solution is extraneous, since the principle root is never $<0$.
+
+\item case 3: $p$ even
+
+  This is the absolute value case:
+
+  $(x-1)^{\frac{2}{3}}=4$ \\
+  $|x-1|=4^{\frac{3}{2}}$ \\
+  $x-1=\pm8$ \\
+  $x=-7,9$
+
+  If you forget to take the absolute value then you lose the $-7$ solution.
+
+  The following has no solution because a square is never negative:
+
+  $(x-1)^{\frac{2}{3}}=-4$ \\
+  $|x-1|=(-4)^{\frac{3}{2}}$
+
+  Also seen by not being able to take the square root of a negative value.
+  
+\end{description}
+
+And finally, don't forget the problems where we factor out a rational exponent,
+and be careful of domain considerations:
+
+\begin{eqnarray*}
+  x^{\frac{7}{2}}+5x^{\frac{5}{2}}-6x^{\frac{3}{2}} &=& 0 \\
+  x^{\frac{3}{2}}(x^2+5x-6) &=& 0 \\
+  x^{\frac{3}{2}}(x+6)(x-1) &=& 0 \\
+  x &=& 0,1,-6
+\end{eqnarray*}
+But note that $x=-6$ is extraneous, so $x=0,1$.
+
+\end{document}

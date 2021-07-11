@@ -1,0 +1,99 @@
+\documentclass[letterpaper]{article}
+
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-2in}
+\addtolength{\textheight}{-\footskip}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+\textbf{The Lowest Common Denominator Method}
+\end{center}
+
+\bigskip
+
+When we want to add or subtract two fractions with different denominators, we
+need to modify one or more of the fractions so that we have a common
+denominator.  We will then be able to use the rule:
+
+\[\frac{a}{c}\pm\frac{b}{c}=\frac{a\pm b}{c} \]
+
+We could just multiple the denominators by each other in order to achieve such
+a common denominator, but that typically leads to large, error-prone numbers---
+especially when there are more than two fractions in our expression. Instead,
+we want to pick the lowest common multiple (LCM) of all the denominators.
+
+Let's take the example problem:
+
+\[\frac{3}{10}+\frac{7}{12}\-\frac{3}{5}\]
+
+1. Perform a prime factorization of each denominator.
+
+\bigskip
+
+\begin{tabular}{l}
+$10=2\cdot5$ \\
+$12=2\cdot6=2\cdot2\cdot3=2^2\cdot3$ \\
+$5=5$ (already prime!) \\
+\end{tabular}
+
+\bigskip
+
+2. Take the highest power of each prime across all the factorizations.
+
+\bigskip
+
+From $2^1$, $2^2$ get $2^2$.
+
+From $3^1$ we get just $3$.
+
+From $5^1$ and $5^1$ we get $5$.
+
+\bigskip
+
+So the LCM of the denominators, i.e., the LCD, is $2^2\cdot3\cdot5=60$.
+
+\bigskip
+
+3. Multiply each fraction above and below the achieve the common denominator
+and then perform the operation.
+
+\begin{eqnarray*}
+\frac{3\cdot6}{10\cdot6}+\frac{7\cdot5}{12\cdot5}-
+    \frac{3\cdot12}{5\cdot12} &=&
+    \frac{18}{60}+\frac{35}{60}-\frac{36}{60} \\
+&=& \frac{18+35-26}{60} \\
+&=& \frac{27}{60} \\
+\end{eqnarray*}
+
+4. Use prime factorizations on the numerator and denominator to simply the
+result.
+
+\bigskip
+
+\begin{tabular}{l}
+$27=3\cdot9=3\cdot3\cdot3=3^3$ \\
+$60=2^2\cdot3\cdot5$.
+\end{tabular}
+
+\bigskip
+
+\begin{eqnarray*}
+\frac{27}{60} &=& \frac{3^3}{2^2\cdot3\cdot5} \\
+              &=& \frac{3^2}{2^2\cdot5} \\
+              &=& \frac{9}{4\cdot5} \\
+              &=& \frac{9}{20} \\
+\end{eqnarray*}
+
+\end{document}

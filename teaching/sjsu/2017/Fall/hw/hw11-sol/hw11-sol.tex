@@ -1,0 +1,283 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#11 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Problems}
+
+\begin{enumerate}
+\item You are designing a new spotlight with a parabolic reflector. The
+  diameter of the reflector is 2 feet and the height is 3 feet. How high above
+  the bottom of the dish should the lightbulb be placed.
+
+  Let's place a sketch of the spotlight on a coordinate system with the vertex
+  at the origin:
+
+  \begin{tikzpicture}
+    \draw (-3,0) -- (3,0);
+    \draw (0,-1) -- (0,4);
+    \draw [smooth,domain=-1:1] plot ({\x},{3*(\x)^2});
+    \draw (-1,3) -- (1,3);
+    \node [left] at (-1,3) {$(-1,3)$};
+    \node [right] at (1,3) {$(1,3)$};
+  \end{tikzpicture}
+
+  Based on the reflective nature of the parabola, the lightbulb should be
+  placed at the focus: $(0,p)$, so we need to find $p$:
+
+  $x^2=4py$ \\
+  $(1)^2=4p(3)$ \\
+  $1=12p$ \\
+  $p=\frac{1}{12}$
+
+  And so the lightbulb should be placed at $\frac{1}{12}$ of a foot, or at
+  the $1$ inch mark.
+
+\item The earth's orbit around the sun is elliptical with the sun at one of
+  the foci. The closest the earth gets to the sun is about 91 million miles.
+  The eccentricity of the earth's orbit is about 0.0167. What is the farthest
+  distance between the earth and the sun?
+
+  let's place the orbit of the earth on a coordinate system with the center at
+  the origin and the sun at one focus:
+
+  \begin{tikzpicture}
+    \draw (-4,0) -- (4,0);
+    \draw (0,-4) -- (0,4);
+    \draw [dashed] (0,0) ellipse (3 and 2);
+    \node [draw,circle] at (1,0) {$S$};
+    \node [draw,circle,scale=0.5] at (3,0) {};
+    \node [below right] at (3,0) {$e$};
+    \node [above] at (2,0) {$a-c$};
+    \node [above] at (-1,0) {$a+c$};
+  \end{tikzpicture}
+
+  Place the sun at the focus $(c,0)$. When the earth is at its perihelion
+  (closest point to sun) it is at the vertex $(a,0)$. Thus, the distance from
+  the sun to the earth is $a-c=91$ million miles. We want the distance at
+  aphelion (farthest point from sun), which is $a+c$. Since we know that the
+  eccentricity $e=\frac{c}{a}=0.0167$, we have two equations in two unknowns:
+  \begin{eqnarray*}
+    a-c &=& 91 \\
+    c &=& 0.0167a
+  \end{eqnarray*}
+  Using substitution to solve for $a$:
+  \begin{eqnarray*}
+    a-0.0167a &=& 91 \\
+    0.9833a &=& 91 \\
+    a &=& \frac{91}{0.9833}
+  \end{eqnarray*}
+  Don't jump right to the calculator yet; that introduces needless error.
+  Instead, keep things rational until the end. Now, solve for $c$:
+  \[c=0.0167a=\frac{0.0167}{0.9833}\cdot91\]
+  And finally, calculate $a+c$:
+  \[a+c=\frac{91}{0.9833}+\frac{0.0167}{0.9833}\cdot91=
+  \frac{91}{0.9833}(1+0.0167)=\frac{1.0167}{0.9833}\cdot91\approx94\]
+  So, the earth is at about $94$ million miles away from the sun at its
+  aphelion position.
+
+\item Consider the following parabola:
+  \[y^2-6y-12x+33=0\]
+  \begin{enumerate}
+  \item What is the vertex?
+    \begin{eqnarray*}
+      y^2-6y &=& 12x-33 \\
+      y^2-6y+9 &=& 12x-33+9 \\
+      (y-3)^2 &=& 12x-24 \\
+      (y-3)^2 &=& 12(x-2)
+    \end{eqnarray*}
+
+    $V(2,3)$
+    
+  \item What is the axis of symmetry?
+
+    $y=3$
+    
+  \item What is the focus?
+
+    $4p=12$ \\
+    $p=3$
+
+    This is a horizontal/open right parabola, so the focus is at:
+
+    $(2+p,3)=(2+3,3)=(5,3)$
+
+    $F(5,3)$
+    
+  \item What is the directrix?
+
+    $x=2-p=2-3=-1$
+
+    $x=-1$
+    
+  \item What is the focal diameter?
+
+    $\abs{4p}=12$
+    
+  \item Sketch the parabola, labeling all of the above items.
+
+    \begin{tikzpicture}
+      \draw (-2,0) -- (10,0);
+      \draw (0,-5) -- (0,10);
+      \draw [dashed] (-2,3) -- (10,3);
+      \draw [dashed] (-1,-5) -- (-1,10);
+      \node [below left] at (-1,0) {$-2$};
+      \node [below left] at (0,3) {$3$};
+      \node [draw,circle,fill,scale=0.5] (v) at (2,3) {};
+      \node [above left] at (v) {$(2,3)$};
+      \node [draw,circle,fill,scale=0.5] (f) at (5,3) {};
+      \node [above] at (f) {$(5,3)$};
+      \draw [smooth,domain=2:6] plot ({\x},{sqrt(12*(\x-2))+3});
+      \draw [smooth,domain=2:6] plot ({\x},{-sqrt(12*(\x-2))+3});
+   \end{tikzpicture}
+    
+  \end{enumerate}
+
+\item Consider the following ellipse:
+  \[4x^2+25y^2-50y-75=0\]
+  \begin{enumerate}
+  \item What is the center?
+    \begin{eqnarray*}
+      4x^2+25(y^2-2y) &=& 75 \\
+      4x^2+25(y^2-2y+1) &=& 75+25 \\
+      4x^2+25(y-1)^2 &=& 100 \\
+      \frac{x^2}{25}+\frac{(y-1)^2}{4} &=& 1
+    \end{eqnarray*}
+    $C(0,1)$
+    
+  \item What is the length of the major axis?
+
+    $a=5$
+
+    Length of major axis $=2a=2(5)=10$
+    
+  \item What is the length of the minor axis?
+
+    $b=2$
+    
+    Length of minor axis $=2b=2(2)=4$
+
+  \item What are the four vertices?
+
+    $(0+a,1)=(0+5,1)=(5,1)$ \\
+    $(0-a,1)=(0-5,1)=(-5,1)$ \\
+    $(0,1+b)=(0,1+2)=(0,3)$ \\
+    $(0,1-b)=(0,1-2)=(0,-1)$
+    
+  \item What are the two foci?
+
+    $c=\sqrt{a^2-b^2}=\sqrt{25-4}=\sqrt{21}$
+
+    The major axis is parallel to the $x$-axis, so the foci are also on the
+    $x$-axis:
+
+    $(0+c,1)=(0+\sqrt{21},1)=(\sqrt{21},1)$ \\
+    $(0-c,1)=(0-\sqrt{21},1)=(-\sqrt{21},1)$
+
+  \item What is the eccentricity?
+
+    $e=\frac{c}{a}=\frac{\sqrt{21}}{5}\approx0.92$
+    
+  \item Sketch the ellipse, labeling all of the above items.
+
+    \begin{tikzpicture}
+      \draw (-6,0) -- (6,0);
+      \draw (0,-5) -- (0,5);
+      \node [draw,circle,fill,scale=0.5] (c) at (0,1) {};
+      \node [above right] at (c) {$(0,1)$};
+      \draw (0,1) ellipse (5 and 2);
+      \draw [dashed] (-5,1) -- (5,1);
+      \node [draw,circle,fill,scale=0.5] (a1) at (5,1) {};
+      \node [right] at (a1) {$(5,1)$};
+      \node [draw,circle,fill,scale=0.5] (a2) at (-5,1) {};
+      \node [left] at (a2) {$(-5,1)$};
+      \node [draw,circle,fill,scale=0.5] (b1) at (0,3) {};
+      \node [above right] at (b1) {$(0,3)$};
+      \node [draw,circle,fill,scale=0.5] (b2) at (0,-1) {};
+      \node [below right] at (b2) {$(0,-1)$};
+      \node [draw,circle,fill,scale=0.5] (f1) at (4,1) {};
+      \node [above] at (f1) {$(\sqrt{21},1)$};
+      \node [draw,circle,fill,scale=0.5] (f2) at (-4,1) {};
+      \node [above] at (f2) {$(-\sqrt{21},1)$};
+    \end{tikzpicture}
+  \end{enumerate}
+\newpage
+\item Consider the following hyperbola:
+  \[36x^2+72x-4y^2+32y+116=0\]
+  \begin{enumerate}
+  \item What is the center?
+    \begin{eqnarray*}
+      36(x^2+2x)-4(y^2-8y) &=& -116 \\
+      36(x^2+2x+1)-4(y^2-8y+16) &=& -116+36-64 \\
+      36(x+1)^2-4(y-4)^2 &=& -144 \\
+      \frac{(y-4)^2}{36}-\frac{(x+1)^2}{4} &=& 1
+    \end{eqnarray*}
+    $C(-1,4)$
+    
+  \item What is the length of the horizontal axis?
+
+    $b=2$
+
+    Length of horizontal axis $=2b=2(2)=4$
+    
+  \item What is the length of the vertical axis?
+
+    $a=6$
+    
+    Length of vertical axis $=2a=2(6)=12$
+
+  \item What are the two vertices?
+
+    This is a vertically-oriented hyperbola, so the vertices (and foci) are
+    on the major axis parallel to the $y$-axis:
+
+    $(-1,4+a)=(-1,4+6)=(-1,10)$ \\
+    $(-1,4-a)=(-1,4-6)=(-1,-2)$
+
+  \item What are the two foci?
+
+    $c=\sqrt{a^2+b^2}=\sqrt{36+4}=\sqrt{40}=2\sqrt{10}\approx6.3$
+
+    $(-1,4+c)=(-1,4+2\sqrt{10})\approx(-1,10.3)$ \\
+    $(-1,4-c)=(-1,4-2\sqrt{10})\approx(-1,-2.3)$
+    
+  \item What are the two asymptotes?
+
+    $y-4=\pm\frac{a}{b}(x+1)=\pm\frac{6}{2}(x+1)=\pm3(x+1)$
+    
+  \item Sketch the hyperbola, labeling all of the above items.
+
+    \begin{tikzpicture}[scale=0.5]
+      \draw (-10,0) -- (10,0);
+      \draw (0,-10) -- (0,20);
+      \node [draw,circle,fill,scale=0.5] (c) at (-1,4) {};
+      \node [left] at (c) {$(-1,4)$};
+      \draw [dashed] (-3,-2) rectangle (1,10);
+      \draw [dashed,domain=-5.5:4.5] plot ({\x},{3*(\x+1)+4});
+      \draw [dashed,domain=-6.25:3.5] plot ({\x},{-3*(\x+1)+4});
+      \node [left] at (-3,-2) {$(-3,-2)$};
+      \node [left] at (-3,10) {$(-3,10)$};
+      \node [right] at (1,10) {$(1,10)$};
+      \node [right] at (1,-2) {$(1,-2)$};
+      \node [draw,circle,fill,scale=0.5] (v1) at (-1,10) {};
+      \node [above] at (v1) {$(-1,10)$};
+      \node [draw,circle,fill,scale=0.5] (v2) at (-1,-2) {};
+      \node [below] at (v2) {$(-1,-2)$};
+      \node [draw,circle,fill,scale=0.5] (f1) at (-1,12) {};
+      \node [above] at (f1) {$(-1,4+2\sqrt{10})$};
+      \node [draw,circle,fill,scale=0.5] (f2) at (-1,-4) {};
+      \node [below] at (f2) {$(-1,4-2\sqrt{10})$};
+      \draw [smooth,domain=-6.25:4.5] plot ({\x},{4+6*sqrt((\x+1)^2/4+1)});
+      \draw [smooth,domain=-5.5:3.5] plot ({\x},{4-6*sqrt((\x+1)^2/4+1)});
+    \end{tikzpicture}
+    
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

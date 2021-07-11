@@ -1,0 +1,189 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-2in}
+\addtolength{\textheight}{-\footskip}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+
+\pagestyle{empty}
+
+\usepackage{amsfonts}
+
+\begin{document}
+
+\begin{center}
+\bfseries
+San Jos\'{e} State University \\
+Fall 2015 \\
+Math-8: College Algebra \\
+Section 03: MW noon--1:15pm \\
+Section 05: MW 4:30--5:45pm \\
+\bigskip
+Quiz \#7
+\end{center}
+
+\bigskip
+
+Closed book and notes. No calculator allowed. All work must be shown for full
+credit.
+
+\bigskip
+
+1. The map of a town is laid out on a grid. The police station and the fire
+station are both located on Main Street, with the police station at the
+position (3, -7) and the fire station at the position (-2, 5).
+
+\bigskip
+
+a. How far is it between the two stations?
+
+\begin{eqnarray*}
+d &=& \sqrt{((x_2-x_1)^2+(y_2-y_1)^2} \\
+  &=& \sqrt{(3+2)^2+(-7-5)^2} \\
+  &=& \sqrt{5^2+(-12)^2} \\
+  &=& \sqrt{25+144} \\
+  &=& \sqrt{169} \\
+d &=& 13 \\
+\end{eqnarray*}
+
+b. City Hall is also located on Main Street, exactly halfway between the two
+stations. What is the postion of City Hall?
+
+\[\left(\frac{3-2}{2},\frac{-7+5}{2}\right)=
+    \left(\frac{1}{2},\frac{-2}{2}\right)=
+    \left(\frac{1}{2},-1\right)\]
+
+\newpage
+
+2. Water boils at $212^{\circ} F$ and $100^{\circ} C$. It freezes at $32^{\circ}F$
+and $0^{\circ}C$. Let $y$ be degrees Farenheit and $x$ be degrees Celsius.
+
+\bigskip
+
+a. Find an equation for converting from Celsius to Farenheit expressed in
+slope-intercept form.
+
+\bigskip
+
+We need to build a line from the points $(100,212)$ and $(0,32)$. First, we
+calculate the slope:
+
+\[m=\frac{212-32}{100-0}=\frac{180}{100}=\frac{9}{5}\]
+
+Next, we notice that the point $(0,32)$ gives us a $y$-intercept of 32. Thus,
+the equation of the line in slope-intercept form is:
+
+\[y=\frac{9}{5}x+32\]
+
+b. Express the equation in point-slope form using the boiling point.
+
+\bigskip
+
+Using the boiling point of $(100,212)$, we have:
+
+\[y-212=\frac{9}{5}(x-100)\]
+
+c. Express the equation in general form.
+
+Start with the slope-intercept form and do the algebra:
+
+\begin{eqnarray*}
+y &=& \frac{9}{5}x+32 \\
+\frac{9}{5}x-y+32 &=& 0 \\
+9x-5y+160 &=& 0 \\
+\end{eqnarray*}
+
+Note that multiplying by 5 in the last step is optional, but gets rid of the
+ugly fraction.
+
+\newpage
+
+3. Consider the equation $y=\frac{8}{x^2-2}$.
+
+\bigskip
+
+a. Determine any x-intercept(s).
+
+\[0=\frac{8}{x^2-2}\]
+
+Note that it is not possible to divide 8 by some number and get 0. Thus, there
+are no $x$-intercepts.
+
+\bigskip
+
+b. Determine any y-intercept(s).
+
+\[y=\frac{8}{0^2-2}=\frac{8}{0-2}=\frac{8}{-2}=-4\]
+
+Thus, there is a $y$-intercept at $(0,-4)$.
+
+\bigskip
+
+c. Determine any discontinuities.
+
+\bigskip
+
+Discontinuities occur when the denominator is 0. Thus:
+
+\begin{eqnarray*}
+x^2-2 &=& 0 \\
+x^2 &=& 2 \\
+x &=& \pm\sqrt{2} \\
+\end{eqnarray*}
+
+d. Determine any symmetries by plugging in (-x) and/or (-y) appropriately. Be
+sure to correctly name any discovered symmetry.
+
+\bigskip
+
+Check for y-axis symmetry:
+
+\begin{eqnarray*}
+y=\frac{8}{(-x)^2-2}
+y=\frac{8}{x^2-2}
+\end{eqnarray*}
+
+Yes. Now check for x-axis symmetry:
+
+\begin{eqnarray*}
+(-y)=\frac{8}{x^2-2}
+y=-\frac{8}{x^2-2}
+\end{eqnarray*}
+
+No.  Now check for origin symmetry:
+
+\begin{eqnarray*}
+(-y)=\frac{8}{(-x)^2-2}
+y=-\frac{8}{x^2-2}
+\end{eqnarray*}
+
+No.  So we only have y-axis symmetry.
+
+\bigskip
+
+e. Sketch the graph, showing all of the features found above.
+
+\bigskip
+
+In order to sketch this graph, we first plot the $y$-intercept and where the
+discontinuities occur. We must then determine how the graph behaves on each
+side of each discontinuity. Note that since there are no $x$-intercepts, the
+graph must stay negative between the two discontinuities, and can only possibly
+go positive across a discontinuity.
+
+\bigskip
+
+Start with the $x=+\sqrt{2}$ case. If we move a little to the right the value
+is positive. If we move a little to the right it is negative. This is mirrored
+at the other discontinuity due to y-axis symmetry. We also note that the graph
+has $y=0$ as an asymptote. The final graph is thus as follows:
+
+\end{document}

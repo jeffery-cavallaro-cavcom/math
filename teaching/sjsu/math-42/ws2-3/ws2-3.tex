@@ -1,0 +1,110 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usetikzlibrary{positioning}
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#11
+
+  \textbf{Functions}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Determine if each of the following is a function.  If so then identify the domain and range.  If not then
+  indicate why not.
+  \begin{enumerate}
+  \item \(\set{(1,a),(2,b),(3,a),(4,b)}\)
+
+    \bigskip
+
+  \item
+    \begin{tikzpicture}
+      \draw (0,0) ellipse (1 and 2);
+      \draw (4,0) ellipse (1 and 2);
+      \node (1) [closed point] at (0,1) {};
+      \node [left=1ex of 1] {\(1\)};
+      \node (2) [closed point] at (0,0) {};
+      \node [left=1ex of 2] {\(2\)};
+      \node (3) [closed point] at (0,-1) {};
+      \node [left=1ex of 3] {\(3\)};
+      \node (a) [closed point] at (4,0.5) {};
+      \node [right=1ex of a] {\(a\)};
+      \node (b) [closed point] at (4,-0.5) {};
+      \node [right=1ex of b] {\(b\)};
+      \draw (1) to (b);
+      \draw (2) to (a);
+    \end{tikzpicture}
+
+    \bigskip
+
+  \item \(f(x)=\sqrt{4-x^2}\)
+  \item \(f(x)=\frac{1}{x}\)
+
+    \bigskip
+
+  \item
+    \begin{tikzpicture}
+      \draw [<->] (-3,0) -- (3,0) node [right] {\(x\)};
+      \draw [<->] (0,-3) -- (0,3) node [above] {\(y\)};
+      \draw (0,0) circle [radius=1.5];
+      \node [below right] at (1.5,0) {\(2\)};
+    \end{tikzpicture}
+  \end{enumerate}
+
+\item Consider the function \(f:\R\to\R\) defined by \(f(x)=x^3\).
+  \begin{enumerate}
+  \item Prove that \(f(x)\) is injective (one-to-one) using a standard injection proof.
+  \item Prove that \(f(x)\) is surjective (onto) using a standard surjection proof.
+  \item Prove that \(f(x)\) is bijective.  (Hint: only one line is required).
+  \end{enumerate}
+
+\item Let \(g:A\to B\) and \(f:B\to C\).  Prove each of the following:
+  \begin{enumerate}
+  \item If \(f\) and \(g\) are injective then \(f\circ g\) is injective.
+  \item If \(f\) and \(g\) are surjective then \(f\circ g\) is surjective.
+  \item If \(f\circ g\) is surjective then \(f\) is surjective.
+  \item If \(f\circ g\) is injective then \(g\) is injective.
+  \end{enumerate}
+
+\item Let \(g:A\to B\) and \(f:B\to C\).  Use a function diagram to provide a counterexample to each of the
+  following false propositions:
+  \begin{enumerate}
+  \item If \(f\circ g\) is surjective then \(g\) is surjective.
+  \item If \(f\circ g\) is injective then \(f\) is injective.
+  \end{enumerate}
+
+\item Let \(f:A\to B\) and \(S,T\subseteq A\).  Prove that \(f(S\cup T)=f(S)\cup f(T)\).
+
+\item Let \(f:A\to B\) and \(S,T\subseteq A\):
+  \begin{enumerate}
+  \item Prove that \(f(S\cap T)\subseteq f(S)\cap f(T)\)
+  \item Which step in your proof is non-reversible, thus precluding equality, and why?
+  \item What is required of \(f\) so that equality holds and why?
+  \end{enumerate}
+
+\item Let \(f:A\to B\) and \(S,T\subseteq B\).  Prove each of the following:
+  \begin{enumerate}
+  \item \(f^{-1}(S\cup T)=f^{-1}(S)\cup f^{-1}(T)\)
+  \item \(f^{-1}(S\cap T)=f^{-1}(S)\cap f^{-1}(T)\)
+  \end{enumerate}
+
+\item Let \(f:A\to B\) and \(S\subset A\).  Draw a function diagram to demonstrate why \(f^{-1}(f(S))\supseteq S\).
+  What is required of \(f\) so that equality holds?
+
+\item Let \(f:A\to B\) and \(T\subset A\).  Draw a function diagram to demonstrate why \(f(f^{-1}(T))\subseteq T\).
+  What is required of \(f\) so that equality holds?
+
+\item Evaluate the following:
+  \begin{enumerate}
+  \item \(\floor{\pi}\)
+  \item \(\ceil{\pi}\)
+  \item \(\floor{-\pi}\)
+  \item \(\ceil{-\pi}\)
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,158 @@
+\documentclass[letterpaper, 12pt]{article}
+
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\footskip}{0.5in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-2in}
+\addtolength{\textheight}{-\footskip}
+
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+
+\pagestyle{empty}
+
+\usepackage{amsfonts}
+
+\begin{document}
+
+\begin{center}
+\bfseries
+San Jos\'{e} State University \\
+Fall 2015 \\
+Math-8: College Algebra \\
+Section 03: MW noon--1:15pm \\
+Section 05: MW 4:30--5:45pm \\
+\bigskip
+Quiz \#3 Solutions
+\end{center}
+
+\bigskip
+
+\newcommand{\answer}[1]{\textbf{\underline{#1}}}
+
+\underline{Helpful Formulas}
+
+\[A=P\left(1+rt\right)\hspace{1in}A=P\left(1+\frac{r}{n}\right)^{nt}\]
+
+\bigskip
+
+1. Use the lowest common denominator method to perform the following addition.
+For full credit, make sure that you find the LCD, perform the operation, and
+then simplify the result (if necessary) using prime factorization.
+
+\[\frac{5}{12}+\frac{7}{18}-\frac{11}{24}\]
+
+\bigskip
+
+We start by doing prime factorizations of the denominators:
+
+\bigskip
+
+$12=2^2\cdot3$
+
+$18=2\cdot3^2$
+
+$24=2^3\cdot3$
+
+\bigskip
+
+Next, we make a list of all the primes that occur in all the factorizations:
+2 and 3.  We then take the highest exponent occurring in any factorization for
+each prime: $2^3$ (from 24) and $3^2$ (from 18).  Finally, we multiply these
+together to find the LCD:
+
+\[LCD=2^3\cdot3^2=8\cdot9=72\]
+
+We now adjust our fractions to the new denominator and perform the operation:
+
+\begin{eqnarray*}
+\frac{5\cdot6}{12\cdot6}+\frac{7\cdot4}{18\cdot4}-\frac{11\cdot3}{24\cdot3} &=&
+\frac{30}{72}+\frac{28}{72}-\frac{33}{72} \\
+&=& \frac{30+28-33}{72} \\
+&=& \frac{25}{72} \\
+\end{eqnarray*}
+
+Finally, we check to see if we can reduce the answer.  Again, looking at the
+prime factorizations:
+
+\bigskip
+
+$25=5^2$
+
+$72=2^3\cdot3^2$
+
+\bigskip
+
+Since there are no common prime factors, the answer is irreducible.
+
+\bigskip
+
+2. For simple interest, interest is paid on the \answer{principal} only.  For
+compound interest, interest is paid on the \answer{principle} and
+\answer{interest}.
+
+3. Jack puts \$5,000 into a savings account that has a yearly interest rate of
+2\% and compounds monthly.  What is the value of the account after 10 years?
+
+Use the compound interest formula above with:
+
+\bigskip
+
+$P=\$5000$
+
+$r=2\%=0.02$
+
+$n=12$
+
+$t=10$
+
+\bigskip
+
+Note that for monthly compounding on a yearly interest rate of 2\%, $n=12$ for a
+monthly interest rate of $\frac{0.02}{12}$.
+
+\[A=\$5000\left(1+\frac{0.02}{12}\right)^{10\cdot12}=\$6106\]
+
+
+4. Solve for x.
+
+\[\frac{\left[5x\left(x+1\right)^2\right]^2}{x^2(x+1)^5}=-\frac{3}{x}\]
+
+We start by resolving the numerator.  For this, we use our rule:
+$(ab)^n=a^nb^n$.  Note that we have 3 factors in the numerator, so we want to
+make sure and apply the exponent to all three of them.  Note that for the last
+factor we use the rule $(a^m)^n=a^{mn}$:
+
+\[\frac{5^2x^2\left[\left(x+1\right)^2\right]^2}{x^2(x+1)^5}=-\frac{3}{x}\]
+
+\[\frac{5^2x^2\left(x+1\right)^4}{x^2(x+1)^5}=-\frac{3}{x}\]
+
+Now, we group the factors in the numerator and denominator so that we can use
+our rule $\frac{a^n}{a^m}=a^{n-m}$:
+
+\[25\left[\frac{x^2}{x^2}\right]\left[\frac{(x+1)^4}{(x+1)^5}\right]=
+-\frac{3}{x}\]
+
+Now, apply the rule:
+
+\begin{eqnarray*}
+25x^{2-2}(x+1)^{4-5} &=& -\frac{3}{x} \\
+25x^0(x+1)^{-1} &=& -\frac{3}{x} \\
+\frac{25(1)}{x+1} &=& -\frac{3}{x} \\
+\frac{25}{x+1} &=& -\frac{3}{x} \\
+\end{eqnarray*}
+
+Now, cross multiply and solve, being careful with the negative sign:
+
+\begin{eqnarray*}
+25x &=& -3(x+1) \\
+25x &=& -3x-3 \\
+28x &=& -3 \\
+x &=& -\frac{3}{28} \\
+\end{eqnarray*}
+
+\end{document}

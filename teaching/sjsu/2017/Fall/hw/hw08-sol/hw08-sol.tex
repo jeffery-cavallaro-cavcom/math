@@ -1,0 +1,253 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#8 Solutions
+\end{center}
+
+\underline{Problems}
+
+\begin{enumerate}
+\item You are a cost accountant at a firm that manufactures pencils. You
+  prepare next month's cost study for your boss as follows:
+
+  \begin{tabular}{|l|l|}
+    \hline
+    item & cost (\$) \\
+    \hline
+    wood (per pencil) & 0.05 \\
+    graphite (per pencil) & 0.02 \\
+    paint (per pencil) & 0.01 \\
+    rubber (per pencil) & 0.04 \\
+    metal (per pencil) & 0.03 \\
+    lease on plant & 10,000 \\
+    labor & 20,000 \\
+    depreciation & 10,000 \\
+    utilities & 5,000 \\
+    other plant costs & 7,500 \\
+    \hline
+  \end{tabular}
+
+  Your marketing department's research indicates that you can sell your pencils
+  to retailers at $25$ cents per pencil.
+  \begin{enumerate}
+  \item Construct a linear model for this situation.
+
+    Variable Costs$=0.05+0.02+0.01+0.04+0.03=0.15$
+
+    Fixed Costs$=10000+20000+10000+5000+7500=52500$
+
+    $P(n)=R(n)-C(n)=0.25n-(0.15n+52500)=0.10n-52500$
+    
+  \item How many pencils do you need to sell to break even?
+
+    $P(n)=0=0.10n-52500$ \\
+    $0.10n=52500$ \\
+    $n=525000$
+  \end{enumerate}
+
+\item Consider the function: $y=-\abs{x-2}+3$
+  \begin{enumerate}
+  \item List the starting standard function and the three transformation
+    steps in the order that they should be applied.
+    \begin{enumerate}
+    \item Start with $y=\abs{x}$
+    \item Translate right $2$
+    \item Reflect x-axis
+    \item Translate up 3
+    \end{enumerate}
+
+  \item What are the $x$-intercepts (if any)?
+
+    $0=-\abs{x-2}+3$ \\
+    $\abs{x-2}=3$ \\
+    $x-2=\pm3$ \\
+    $x=-1,5$
+
+    $(-1,0)$ and $(5,0)$
+    
+  \item What are the $y$-intercepts (if any)?
+
+    $y=-\abs{0-2}+3=-\abs{-2}+3=-2+3=1$
+
+    $(0,1)$
+
+  \item What are the local maxima (if any)?
+
+    There is one local maximum at the translated vertex: $(2,3)$
+
+  \item What are the local minima (if any)?
+
+    None.
+
+  \item What is the domain?
+
+    $\R$
+
+  \item What is the range?
+
+    $(-\infty,3]$
+
+  \item What is the axis of symmetry?
+
+    $x=2$
+
+  \item Sketch the graph of the function. Be sure to label all important
+    points.
+
+    \begin{tikzpicture}
+      \draw (-3,0) -- (7,0);
+      \draw (0,-4) -- (0,4);
+      \node [draw,circle,fill,scale=0.5] (x1) at (-1,0) {};
+      \node [above left] at (x1) {$(-1,0)$};
+      \node [draw,circle,fill,scale=0.5] (x2) at (5,0) {};
+      \node [above right] at (x2) {$(5,0)$};
+      \node [draw,circle,fill,scale=0.5] (y) at (0,1) {};
+      \node [right] at (y) {$(0,1)$};
+      \node [draw,circle,fill,scale=0.5] (v) at (2,3) {};
+      \node [above] at (v) {$(2,3)$};
+      \draw (-3,-2) to (v) to (7,-2);
+      \draw [dashed] (2,-4) -- (2,4);
+      \node [below right] at (2,0) {$2$};
+    \end{tikzpicture}
+    
+  \end{enumerate}
+
+\item Consider the function: $y=-\frac{1}{x+2}+1$
+  \begin{enumerate}
+  \item List the starting standard function and the three transformation
+    steps in the order that they should be applied.
+    \begin{enumerate}
+    \item Start with $y=\frac{1}{x}$
+    \item Translate right 2
+    \item Reflect x-axis
+    \item Translate up 1
+    \end{enumerate}
+
+  \item What is the equation of the horizontal asymptote?
+
+    $y=1$
+
+  \item What is the equation of the vertical asymptote?
+
+    $x=-2$
+
+  \item What is the end behavior as $x\to\infty$ - be very specific.
+
+    $f(x)\to1^-$
+
+  \item What is the end behavior as $x\to-\infty$ - be very specific.
+
+    $f(x)\to1^+$
+
+  \item What are the $x$-intercepts (if any)?
+
+    $0=-\frac{1}{x+2}+1$ \\
+    $\frac{1}{x+2}=1$ \\
+    $x+2=1$ \\
+    $x=-1$
+
+    $(-1,0)$
+    
+  \item What are the $y$-intercepts (if any)?
+
+    $y=-\frac{1}{0+2}+1=-\frac{1}{2}+1=-\frac{1}{2}$
+
+    $(0,-\frac{1}{2})$
+
+  \item What are the local maxima (if any)?
+
+    none.
+
+  \item What are the local minima (if any)?
+
+    none.
+
+  \item What is the domain?
+
+    $(-\infty,-2)\cup(-2,\infty)$
+    
+  \item What is the range?
+
+    $(-\infty,1)\cup(1,\infty)$
+
+  \item Sketch the graph of the function. Be sure to label all important
+    points.
+
+    \begin{tikzpicture}
+      \draw (-5,0) -- (5,0);
+      \draw (0,-5) -- (0,5);
+      \draw [dashed] (-5,1) -- (5,1);
+      \draw [dashed] (-2,-5) -- (-2,5);
+      \node [below right] at (-2,0) {$-2$};
+      \node [above right] at (0,1) {$1$};
+      \node [draw,circle,fill,scale=0.5] (x) at (-1,0) {};
+      \node [below right] at (x) {$(-1,0)$};
+      \node [draw,circle,fill,scale=0.5] (y) at (0,0.5) {};
+      \node [above left] at (y) {\scalebox{0.75}{$\left(0,\frac{1}{2}\right)$}};
+      \draw [smooth,domain=-5:-2.25] plot ({\x},{-1/(\x+2)+1});
+      \draw [smooth,domain=-1.835:5] plot ({\x},{-1/(\x+2)+1});
+    \end{tikzpicture}
+  \end{enumerate}
+
+\item Evaluate the difference quotient for the function: $f(x)=x^2+3x-1$.
+  \begin{eqnarray*}
+    \frac{f(x+h)-f(x)}{h} &=& \frac{[(x+h)^2+3(x+h)-1]-[x^2+3x-1]}{h} \\
+    &=& \frac{[x^2+2xh+h^2+3x+3h-1]-[x^2+3x-1]}{h} \\
+    &=& \frac{2xh+h^2+3h}{h} \\
+    &=& 2x+3+h
+  \end{eqnarray*}
+  
+\item Consider the following functions:
+
+  $f(x)=\sqrt{x}+1$
+
+  $g(x)=x^2$
+
+  $h(x)=2x-1$
+
+  Compute AND find the domain for the following functions:
+
+  \begin{enumerate}
+  \item $(g-h)(x)$
+
+    $(g-h)(x)=g(x)-h(x)=x^2-(2x-1)=x^2-2x+1=(x-1)^2$
+
+    Domain: $\R$
+
+  \item $(fg)(x)$
+
+    $(fg)(x)=f(x)g(x)=(\sqrt{x}+1)x^2$
+
+    Domain: $[0,\infty)$
+
+  \item $\left(\frac{g}{h}\right)(x)$
+      
+    $\left(\frac{g}{h}\right)(x)=\frac{g(x)}{h(x)}=\frac{x^2}{2x-1}$
+
+    Domain: $\left\{x\in\R\mid x\ne\frac{1}{2}\right\}=
+    \left(-\infty,\frac{1}{2}\right)\cup\left(\frac{1}{2},\infty\right)$
+    
+  \item $(f\circ g)(x)$
+
+    $(f\circ g)(x)= f(g(x))=f(x^2)=\sqrt{x^2}+1=\abs{x}+1$
+
+    Note that $g(x)$ guarantees that only nonnegative values are fed to $f(x)$.
+
+    Domain: $\R$
+    
+  \item $\left(\frac{f}{f}\right)(x)$
+
+    $\left(\frac{f}{f}\right)(x)=\frac{f(x)}{f(x)}=
+    \frac{\sqrt{x}+1}{\sqrt{x}+1}=1$
+
+    Note that even though the final result looks like it can take $\R$, we
+    must honor the domain of $f(x)$.
+
+    Domain: $[0,\infty)$
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

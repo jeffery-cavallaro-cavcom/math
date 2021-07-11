@@ -1,0 +1,34 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 02, 03, 60
+
+  \Large
+  Homework \#8 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+Consider the function:
+\[f(x)=\ln\left(\frac{3x^2e^{x^2}\sqrt{x^2+1}}{2\sqrt[3]{(x-1)^2}\sqrt{e^{2x+1}}}\right)\]
+Find \(f'(x)\).
+
+DO NOT try to use the quotient and product rules here.  It will take you FOREVER and you will probably make a
+mistake.  First, get rid of the radicals:
+\[f(x)=\ln\left(\frac{3x^2e^{x^2}(x^2+1)^{\frac{1}{2}}}{2(x-1)^{\frac{2}{3}}e^{\frac{2x+1}{2}}}\right)\]
+Now use log expansion and the e/ln inverse relationship:
+\begin{align*}
+  f(x) &= \ln(3)+\ln\left(x^2\right)+\ln\left(e^{x^2}\right)+\ln\left(x^2+1\right)^{\frac{1}{2}}-
+  \ln(2)-\ln(x-1)^{\frac{2}{3}}-\ln\left(e^{\frac{2x+1}{2}}\right) \\
+  &= \ln(3)+2\ln(x)+x^2+\frac{1}{2}\ln\left(x^2+1\right)-\ln(2)-\frac{2}{3}\ln(x-1)-\frac{2x+1}{2}
+\end{align*}
+Now differentiate:
+\begin{align*}
+  f'(x) &= 0+\frac{2}{x}+2x+\frac{2x}{2(x^2+1)}-0-\frac{2}{3(x-1)}-\frac{1}{2}(2) \\
+  &= \frac{2}{x}+2x+\frac{x}{x^2+1}-\frac{2}{3(x-1)}-1
+\end{align*}
+\end{document}

@@ -1,0 +1,215 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{centernot}
+\newcommand{\Rp}{\R^+}
+\pagestyle{plain}
+\begin{document}
+\section*{Inequalities}
+
+\begin{definition}
+  An inequality is two expressions separated by one of the four inequality
+  signs:
+
+  $e1 op e2$ where $op$ is one of $<,\le,\ge,>$
+\end{definition}
+
+Recall that we have two definitions of ``less than''. Definition 1 is
+graphical: $a<b$ means that $a$ occurs to the left of $b$ on the real number
+line:
+
+\bigskip
+
+\begin{tikzpicture}
+  \draw [<->] (-3,0) -- (3,0);
+  \draw [fill=black] (-1,0) circle [radius=0.05];
+  \draw [fill=black] (1,0) circle [radius=0.05];
+  \node [below] at (-1,0) {$a$};
+  \node [below] at (1,0) {$b$};
+\end{tikzpicture}
+
+This leads us to all the graphical and interval-style notation that we have
+already seen, which you can review on pp 126-7 in your textbook.
+
+The second definition is more analytical. We start by defining the set of
+positive real numbers:
+
+\begin{definition}
+  \[\Rp=\{x\in\R\mid x>0\}\]
+\end{definition}
+
+Note that this set is closed under addition and multiplication.
+
+\begin{definition}
+  To say that $a<b$ means $b-a\in\Rp$.
+\end{definition}
+
+As long as we are working on the \emph{same side} of an inequality then
+we can use all of our previous rules regarding the manipulation of expressions.
+But when we need to ``do something to both sides'', the rules are a little
+different.
+
+Recall the properties of equality:
+\begin{properties}
+  $\forall\,a,b,c\in\R$:
+  \begin{enumerate}
+  \item Reflexive: $a=a$
+  \item Symmetric: $a=b\implies b=a$
+  \item Transitive: $a=b$ and $b=c\implies a=c$
+  \end{enumerate}
+\end{properties}
+\newpage
+\begin{properties}
+  $\forall\,a,b,c,d\in\R$:
+  \begin{enumerate}
+  \item Not reflexive
+
+    Inequalities are not reflexive unless the ``or equals to'' part is
+    included:
+    
+    $a\not<a$ \\
+    $a\le a$
+
+  \item Not symmetric
+  
+    Inequalities are not symmetric:
+
+    $a<b\centernot\implies b<a$ \\
+    $a\le b\centernot\implies b\le a$, unless $a=b$ \\
+
+  \item Transitive
+
+    $a<b$ and $b<c\implies a<c$
+
+    This seems to make sense using the graphical definition. How can we show
+    this using the analytical definition:
+
+    Assume $a<b$ and $b<c$ \\
+    $b-a\in\Rp$ and $c-b\in\Rp$ (definition) \\
+    $(b-a)+(c-b)\in\Rp$ (closure) \\
+    $c-a\in\Rp$ (axioms) \\
+    $a<c$ (definition)
+
+    The rest of the properties can be proved in this way.
+
+  \item Addition of a constant
+
+    $a<b\implies a+c<b+c$
+
+    Thus, like equality, we can add the same thing to both sides.
+
+    Using the graphical approach, this seems reasonable: if we translate $a$ and
+    $b$ by the same amount then their relative positioning does not change.
+
+  \item Addition of inequalities
+
+    $a<b$ and $c<d\implies a+c<b+d$
+
+    Again, this sounds reasonable: if we translate $a$ by some value but
+    translate $b$ by even more, then the gap widens.
+
+    Danger: This does not work with subtraction!
+
+    $-5<0$ and $1<2$ but $1-(-5)=6\not<1-2=-1$
+
+  \item Multiplication by a constant
+
+    \begin{itemize}
+    \item $a<b$ and $c>0\implies ac<bc$
+    \item $a<b$ and $c<0\implies ac>bc$
+    \end{itemize}
+
+    As long as you multiply both sides by a positive number, the inequality
+    stays the same; however, if you multiply both sides by a negative number
+    then the inequality flips the other direction!
+
+    $1<2$ \\
+    $1(2)=2<4=2(2)$ \\
+    $1(-2)=-2>-4=2(-2)$
+  \end{enumerate}
+\end{properties}
+
+\subsection*{Linear Inequalities}
+
+Remember: the answer is going to be a subset of the real number line, not
+individual numbers!
+
+\begin{example}
+  $5x-1<2x+3$ \\
+  $3x<4$ \\
+  $x<\frac{4}{3}$ \\
+  $(-\infty,\frac{4}{3})$
+\end{example}
+
+\begin{example}
+  $1-5x\le2x+3$ \\
+  $-7x\le2$ \\
+  $x\ge-\frac{7}{2}$ \\
+  $[\frac{7}{2},\infty)$
+\end{example}
+
+\subsection*(Polynomial Inequalities)
+
+What do we do with something like:
+\[x^2-3x-4>0\]
+\begin{enumerate}
+\item Put in a form that compares against 0.
+\item Factor.
+  \[(x-4)(x+1)>0\]
+\item Identify the 0 points (like an equality) and graph them and mark them as
+  either included or excluded (depending on equality allowed):
+  \[x=-1,4\]
+\item Note that these expressions can only change sign by passing through
+  zero, so make a sign table with test points to see how the sign changes.
+
+  \begin{tabular}{cccc}
+    test & $x-4$ & $x+1$ & sign \\
+    -2 & $-$ & $-$ & $+$ \\
+    0 & $-$ & $+$ & $-$ \\
+    5 & $+$ & $+$ & $+$ \\
+  \end{tabular}
+
+\item Choose the intervals with the proper sign, in this case $+$:
+  \[(-\infty,-1)\cup (4,\infty)\]
+\end{enumerate}
+
+\begin{example}
+  $2(x+1)(2-x)(x+3)\ge0$
+
+  \begin{itemize}
+  \item Beware of turned-around factors:
+    \[-2(x+1)(x-2)(x+3)\ge0\]
+      
+  \item Divide out leading factors, especially negative ones! If negative
+    then remember to turn the sign around.
+    \[(x+1)(x-2)(x+3)\le0\]
+      
+  \item Solve:
+    \[(-\infty,-3]\cup[-1,2]\]
+
+  \item Beware of special conditions (p 141)
+
+  \item Note that only odd factors will change sign:
+    \[(x+4)(x-1)^2(x+2)^3\le0\]
+    \[[-4,-2]\]
+  \end{itemize}
+\end{example}
+  
+\subsection*{Rational Inequalities}
+
+Zeros vs poles/discontinuities.
+
+\begin{itemize}
+\item Can also change sign across a discontinuity.
+\[\frac{x^2-4x-5}{x^2-7x+10}\ge0\]
+
+\item Watch for holes caused by cancelled factors.
+  Answer: $(-\infty,-1]\cup[2,5)\cup(5,\infty)$
+
+\item Cannot cross multiply across an inequality!
+\item Discontinuity points are never included; however zeros will be if
+  equality is allowed.
+  \[\frac{x+6}{x+1}\le2\]
+  \[(-\infty,-1)\cup[4,\infty]\]
+\end{itemize}
+
+\end{document}

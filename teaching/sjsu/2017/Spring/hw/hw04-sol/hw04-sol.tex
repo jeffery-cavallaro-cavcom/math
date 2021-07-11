@@ -1,0 +1,150 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-1003b Homework \#4 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\bigskip
+
+\begin{itemize}
+\item Review pages 168-9 on set-builder and interval notations
+\item Sections 7.7, 9.1 (on sets), 8.1, 8.2
+\end{itemize}
+
+\bigskip
+
+\underline{Problems}
+
+\bigskip
+
+\begin{enumerate}
+\item It costs a farmer \$0.27 to farm each square foot of land. The farmer has
+  one field that is 2 hectares in size, and another that is 3 acres in size.
+  How much does it cost to farm all of the land? Use the following conversions:
+
+  1 hectare = 2.47 acres \\
+  640 acres = 1 square mile \\
+  1 mile = 5280 feet
+
+  We need the combined area of the two fields in square feet, so we use the
+  proper conversion factors. Note that the units cancel properly to leave us
+  with $ft^2$. Also note that we need to square the linear miles/feet conversion
+  factor in order to get area units:
+  \[\SI{2}{hectares}\left(\frac{\SI{2.47}{acres}}{\SI{1}{hectare}}\right)
+  \left(\frac{\SI{1}{mi^2}}{\SI{640}{acres}}\right)
+  \left(\frac{\SI{5280}{feet}}{\SI{1}{mile}}\right)^2=\SI{215186}{ft^2}\]
+  \[\SI{3}{acres}\left(\frac{\SI{1}{mi^2}}{\SI{640}{acres}}\right)
+  \left(\frac{\SI{5280}{feet}}{\SI{1}{mile}}\right)^2=\SI{130680}{ft^2}\]
+  Notice that any fractional square feet is meaningless because of the size of
+  the values, so we round to the nearest square foot. Now, calculate the cost
+  for the two fields:
+  \[\left(\SI{215186}{ft^2}+\SI{130680}{ft^2}\right)
+  \left(\frac{\$0.27}{\SI{1}{ft^2}}\right)=\$93,384\]
+  Again, we drop the cents as meaningless compared to the large dollar value.
+
+\item A biker starts out from home and rides for 4 miles before getting a
+  flat tire. He walks back home carrying his bike, which takes one hour
+  longer than the ride. The biker can ride nine miles per hour faster than he
+  can walk. How fast can he walk and how fast can he ride?
+
+  This problem is like Example 6 in the book that we worked on in class. If we
+  let $t_b$ be the riding time and $t_w$ be the walking time, then the basic
+  structure is:
+  \[t_w-t_b=\SI{1}{hour}\]
+  From $d=rt$, we get the necessary equation: $t=\frac{d}{r}$, so the equation
+  becomes:
+  \[\frac{d_w}{r_w}-\frac{d_b}{r_b}=\SI{1}{hour}\]
+  The distances are the same ($\SI{4}{miles}$), but we will need to express the
+  rates with a variable.  So let $r_w=x$ the walking rate. Since biking is
+  $\SI{9}{mph}$ faster, $r_b=r_w+9=x+9$. Everything is in miles and hours, so
+  the units are consistent and we can ignore them for now:
+  \[\frac{4}{x}-\frac{4}{x+9}=1\]
+  Multiplying through by the LCM of $x(x+9)$ we get:
+  \begin{eqnarray*}
+    4(x+9)-4x &=& x(x+9) \\
+    4x+36-4x &=& x^2+9x \\
+    x^2+9x-36 &=& 0 \\
+    (x+12)(x-3) &=& 0 \\
+    x &=& -12,3
+  \end{eqnarray*}
+  We take the positive value and state the final answer:
+
+  Walking rate $=\SI{3}{mph}$
+
+  Biking rate $=3+9=\SI{12}{mph}$
+
+  Notice how the negative solution gives us the other answer - as we mentioned
+  in class, this is common in these types of problems. In fact, if we had let
+  $x=r_b$ we would have gotten $x=-3,12$ as solutions!
+
+\item A parent tells his/her kids to wash the family car. Working alone, the
+  first kid can wash the car 10 minutes faster than the other kid, but working
+  together they can wash the car in 12 minutes. How long does it take for each
+  kid to wash the car working alone?
+
+  This is a shared work problem, so the basic structure is:
+  \[r_1+r_2=r_{1+2}\]
+  where each rate is in the form: job/min. Let $t$ minutes be the time for the
+  slower kid to wash the car. The faster kid's time is then $t-10$ minutes. The
+  rate equation is thus:
+  \[\frac{1}{t}+\frac{1}{t-10}=\frac{1}{12}\]
+  Multiplying by the LCM of $12t(t-10)$ we get:
+  \begin{eqnarray*}
+    12(t-10)+12x &=& x(x-10) \\
+    12t-120+12t &=& t^2-10t \\
+    t^2-34t+120 &=& 0 \\
+    (t-30)(t-4) &=& 0 \\
+    t &=& 4,30
+  \end{eqnarray*}
+  Note that the $\SI{4}{min}$ answer doesn't make any sense (can you see why?),
+  so we state the final answer:
+
+  Kid 1 time $=\SI{30}{min}$
+
+  Kid 2 time $=30-10=\SI{20}{min}$
+
+  Note that this time we didn't get a positive and negative answer --- you
+  cannot count on that always happening, but it is nice when it does!
+
+\item Let:
+  \[A=\{1,2,3,4\}\]
+  \[B=\{2,4,6\}\]
+  Determine the following sets:
+  \begin{enumerate}
+  \item $A\cup B$
+
+    For an element to be in the union, it can be in set $A$ \emph{or} set $B$
+    (or both). Remember that elements are distinct, so we select each element
+    at most once:
+    \[A\cup B=\{1,2,3,4,6\}\]
+      
+  \item $A\cap B$
+
+    For an element to be in the intersection, it must be in both $A$ \emph{and}
+    $B$:
+    \[A\cap B=\{2,4\}\]
+    
+  \item $A-B$
+
+    We start with the elements in $A$ and discard anything that is also in $B$.
+    Note that we ignore any additional elements in $B$ not in $A$:
+    \[A-B=\{1,3\}\]
+    
+  \item $A\times B$
+
+    There are $4$ elements in $A$ and $3$ in $B$, so the resulting cross
+    product should have $4\cdot3=12$ elements. Note that each element of the
+    cross-product set is an ordered pair:
+    \[A\times B=\{(1,2),(1,4),(1,6),(2,2),(2,4),(2,6),(3,2),(3,4),(3,6),
+    (4,2),(4.4),(4,6)\}\]
+  \end{enumerate}
+\end{enumerate}
+\end{document}

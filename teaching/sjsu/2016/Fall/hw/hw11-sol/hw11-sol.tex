@@ -1,0 +1,326 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-08 Homework \#11 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\begin{itemize}
+\item Text book section 2.4-2.7
+\end{itemize}
+
+\underline{Problems}
+
+Note that all sketches of graphs must have all found intercepts and
+discontinuities labeled. All domains and ranges must be expressed in
+interval notation. Remember, sketches do not have to be to scale!
+
+\begin{enumerate}
+\item Consider the following piecewise function:
+  \[f(x)=\begin{cases}
+  x, & (-4,0) \\
+  x^2, & (0,2) \\
+  \end{cases}\]
+  \begin{enumerate}
+  \item Sketch the graph for $f(x)$.
+
+    \begin{tikzpicture}[scale=0.5]
+      \draw [<->] (-12,0) -- (12,0);
+      \draw [<->] (0,-12) -- (0,12);
+      \draw [fill=black] (-4,-4) circle [radius=0.1]
+      node [below] {$(-4,-4)$};
+      \draw [fill=black] (0,0) circle [radius=0.1]
+      node [below right] {$(0,0)$};
+      \draw [fill=black] (2,4) circle [radius=0.1]
+      node [above] {$(2,4)$};
+      \draw (-4,-4) -- (0,0) parabola (2,4);
+    \end{tikzpicture}
+    
+  \item List the transformations for $g(x)=-2f(x-1)+3$ in the proper order.
+
+    \begin{enumerate}[label={\arabic*)}]
+    \item Start with $f(x)$
+    \item Translate right by 1
+    \item Scale by 2
+    \item Reflex across x-axis
+    \item Translate up 3
+    \end{enumerate}
+    
+  \item Sketch the graph for $g(x)$.
+
+    We start with $f(x)$ as above and then apply the first translation:
+    right by 1:
+    
+    \begin{tikzpicture}[scale=0.5]
+      \draw [<->] (-12,0) -- (12,0);
+      \draw [<->] (0,-12) -- (0,12);
+      \draw [fill=black] (-3,-4) circle [radius=0.1]
+      node [below] {$(-3,-4)$};
+      \draw [fill=black] (1,0) circle [radius=0.1]
+      node [below right] {$(1,0)$};
+      \draw [fill=black] (3,4) circle [radius=0.1]
+      node [above] {$(3,4)$};
+      \draw (-3,-4) -- (1,0) parabola (3,4);
+    \end{tikzpicture}
+
+    Next, we scale by 2. Note that this affects the y-coordinate only:
+    
+    \begin{tikzpicture}[scale=0.5]
+      \draw [<->] (-12,0) -- (12,0);
+      \draw [<->] (0,-12) -- (0,12);
+      \draw [fill=black] (-3,-8) circle [radius=0.1]
+      node [below] {$(-3,-8)$};
+      \draw [fill=black] (1,0) circle [radius=0.1]
+      node [below right] {$(1,0)$};
+      \draw [fill=black] (3,8) circle [radius=0.1]
+      node [above] {$(3,8)$};
+      \draw (-3,-8) -- (1,0) parabola (3,8);
+    \end{tikzpicture}
+
+    Now, reflect across the x-axis: all $y$ values become $-y$:
+
+    \begin{tikzpicture}[scale=0.5]
+      \draw [<->] (-12,0) -- (12,0);
+      \draw [<->] (0,-12) -- (0,12);
+      \draw [fill=black] (-3,8) circle [radius=0.1]
+      node [below] {$(-3,8)$};
+      \draw [fill=black] (1,0) circle [radius=0.1]
+      node [above right] {$(1,0)$};
+      \draw [fill=black] (3,-8) circle [radius=0.1]
+      node [above] {$(3,-8)$};
+      \draw (-3,8) -- (1,0) parabola (3,-8);
+    \end{tikzpicture}
+
+    Finally, translate up by 3 - this also only affects the y-coordinates:
+
+    \begin{tikzpicture}[scale=0.5]
+      \draw [<->] (-12,0) -- (12,0);
+      \draw [<->] (0,-12) -- (0,12);
+      \draw [fill=black] (-3,11) circle [radius=0.1]
+      node [below] {$(-3,11)$};
+      \draw [fill=black] (1,3) circle [radius=0.1]
+      node [above right] {$(1,3)$};
+      \draw [fill=black] (3,-5) circle [radius=0.1]
+      node [above] {$(3,-5)$};
+      \draw (-3,11) -- (1,3) parabola (3,-5);
+    \end{tikzpicture}
+
+  \item What are the $x$ and $y$ intercepts for $g(x)$ (if any)?
+
+    When determining the intercepts, we need to know on which part of the
+    piecewise graph they occur. This is evident from our sketch.
+
+    To find the y-intercept, which occurs on the linear part, set $x=0$:
+
+    $g(0)=-2f(0-1)+3=-2f(-1)+3=-2(-1)+3=2+3=5$
+
+    Thus, the y-intercept is (0,5).
+
+    To find the x-intercept, which occurs on the parabola, set $y=0$:
+
+    \begin{eqnarray*}
+      -2f(x-1)+3 &=& 0 \\
+      -2(x-1)^2+3 &=& 0 \\
+      2(x-1)^2 &=& 3 \\
+      (x-1)^2 &=& \frac{3}{2} \\
+      x-1 &=& \pm\sqrt{\frac{3}{2}} \\
+      x &=& 1\pm\sqrt{\frac{3}{2}} \\
+    \end{eqnarray*}
+
+    Note that we only need the positive one:
+    $\left(1+\sqrt{\frac{3}{2}},0\right)$
+
+    So the final sketch looks like this:
+    
+    \begin{tikzpicture}[scale=0.5]
+      \draw [<->] (-12,0) -- (12,0);
+      \draw [<->] (0,-12) -- (0,12);
+      \draw [fill=black] (-3,11) circle [radius=0.1]
+      node [below] {$(-3,11)$};
+      \draw [fill=black] (1,3) circle [radius=0.1]
+      node [above right] {$(1,3)$};
+      \draw [fill=black] (3,-5) circle [radius=0.1]
+      node [above] {$(3,-5)$};
+      \draw [fill=black] (0,5) circle [radius=0.1]
+      node [left] {$(0,5)$};
+      \draw [fill=black] ({1+sqrt(3/2)},0) circle [radius=0.1]
+      node [above right] {$(1+\sqrt{\frac{3}{2}},0)$};
+      \draw (-3,11) -- (1,3) parabola (3,-5);
+    \end{tikzpicture}
+
+  \item What are the domain and range of $g(x)$?
+
+    Domain: $[-3,3]$ \\
+    Range: $[-5,11]$
+  \end{enumerate}
+
+\item Consider the function:
+  \[h(x)=\sqrt{x+1}-3\]
+  \begin{enumerate}
+  \item Write $h(x)$ as a composition of two functions $f\circ g$, neither of
+    which is just $x$.
+
+    The two most straightforward answers would be:
+
+    $f(x)=\sqrt{x}-3$ and $g(x)=x+1$ or
+    
+    $f(x)=x-3$ and $g(x)=\sqrt{x+1}$
+    
+  \item Determine the $x$ and $y$ intercepts for $h(x)$ (if any).
+
+    For the y-intercept, set $x=0$:
+    \[y=\sqrt{0+1}-3=\sqrt{1}-3=1-3=-2\]
+    So the y-intercept is $(0,-2)$
+
+    For the x-intercept, set $y=0$:
+    \[0=\sqrt{x+1}-3\]
+    \[\sqrt{x+1}=3\]
+    \[x+1=9\]
+    \[x=8\]
+    So the x-intercept is $(8,0)$
+    
+  \item Sketch the graph for $h(x)$.
+
+    The transformations for this graph are:
+    \begin{enumerate}[label={\arabic*)}]
+    \item Start with $y=\sqrt{x}$
+    \item Translate left by 1
+    \item Translate down by 3
+    \end{enumerate}
+
+    This graph is fairly simple, so let's just transform the key point at
+    $(0,0)$ and rely on our found intercepts:
+    
+    \begin{tikzpicture}[scale=0.5]
+      \draw [<->] (-10,0) -- (10,0);
+      \draw [<->] (0,-10) -- (0,10);
+      \draw [fill=black] (-1,-3) circle [radius=0.1];
+      \draw [fill=black] (0,-2) circle [radius=0.1];
+      \draw [fill=black] (8,0) circle [radius=0.1];
+      \draw [domain=-1:10] plot({\x},{sqrt(\x+1)-3});
+      \node [below left] at (-1,-3) {$(-1,-3)$};
+      \node [above left] at (0,-2) {$(0,-2)$};
+      \node [above left] at (8,0) {$(8,0)$};
+    \end{tikzpicture}
+    
+  \item Determine the domain and range for $h(x)$.
+
+    Domain: $[-1,\infty)$ \\
+    Range: $[-3,\infty)$
+  \end{enumerate}
+
+\item Consider the function:
+  \[f(x)=\frac{1}{x-2} + 1\]
+  \begin{enumerate}
+  \item List the transformations, starting with one of the standard
+    functions.
+
+    \begin{enumerate}[label={\arabic*)}]
+    \item Start with $y=\frac{1}{x}$
+    \item Translate right 2
+    \item Translate up 1
+    \end{enumerate}
+
+  \item Determine the $x$ and $y$ intercepts for $f(x)$ (if any).
+    \[0=\frac{1}{x-2}+1\]
+    \[\frac{1}{x-2}=-1\]
+    \[-(x-2)=1\]
+    \[-x+2=1\]
+    \[x=1\]
+    So the x-intercept is at $(1,0)$
+    \[y=\frac{1}{0-2}+1=-\frac{1}{2}+1=\frac{1}{2}\]
+    So the y-intercept is at $\left(0,\frac{1}{2}\right)$
+    
+  \item Sketch the graph for $f(x)$.
+
+    The trick here is to determine how the asymptotes move. The vertical
+    asymptote moves with the horizontal translation from $x=0$ to $x=2$.
+    The horizontal asymptote at moves with the vertical translation from
+    $y=0$ to $y=1$:
+    
+    \begin{tikzpicture}
+      \draw [<->] (-5,0) -- (5,0);
+      \draw [<->] (0,-5) -- (0,5);
+      \draw [dashed] (2,5) -- (2,-5);
+      \draw [dashed] (-5,1) -- (5,1);
+      \draw [fill=black] (1,0) circle [radius=0.1];
+      \draw [fill=black] (0,0.5) circle [radius=0.1];
+      \node [below] at (1,0) {$(1,0)$};
+      \node [left] at (0,0.5) {$\left(0,\frac{1}{2}\right)$};
+      \node [below right] at (2,0) {$2$};
+      \node [above right] at (0,1) {$1$};
+      \draw [domain=-5:1.83] plot({\x},{1/(\x-2)+1});
+      \draw [domain=2.25:5] plot({\x},{1/(\x-2)+1});
+    \end{tikzpicture}
+
+  \item Determine the domain and range for $f(x)$.
+
+    Note that the domain has a hole at $x=2$ and the range has a hole at
+    $y=1$:
+    
+    Domain: $(-\infty,2)\cup(2,\infty)$ \\
+    Range: $(-\infty,1)\cup(1,\infty)$
+  \end{enumerate}
+
+\item Consider the following two functions:
+  \[f(x)=\sqrt{x}+1\]
+  \[g(x)=x^2\]
+  Determine the following and state the domain for each:
+  \begin{enumerate}
+  \item $f+g$
+
+    $(f+g)(x)=\sqrt{x}+1+x^2$
+
+    The domain cannot include negative values because of the square root:
+
+    Domain: $[0,\infty)$
+      
+  \item $fg$
+
+    $(fg)(x) = (\sqrt{x}+1)x^2$
+    
+    Once again, the domain cannot include negative values because of the
+    square root:
+
+    Domain: $[0,\infty)$
+
+  \item $\frac{f}{g}$
+
+    $\left(\frac{f}{g}\right)(x)=\frac{\sqrt{x}+1}{x^2}$
+
+    This time, the value 0 is excluded as well because of the denominator:
+    
+    Domain: $(0,\infty)$
+      
+  \item $\frac{f}{f}$
+
+    $\left(\frac{f}{f}\right)(x)=\frac{\sqrt{x}+1}{\sqrt{x}+1}=1$
+
+    Although the simplified function is constant and thus can accept all real
+    values, we still need to honor the domains of the original functions:
+
+    Domain: $[0,\infty)$
+
+  \item $f\circ g$
+      
+    $(f\circ g)(x)=f(g(x))=f(x^2)=\sqrt{x^2}+1=\abs{x}+1$
+
+    Even though the simplified function can take all real numbers, there may
+    be a problem with the original functions; however, in this case, the
+    limitation (no negatives) is in the outer function - the inner function
+    scrubs all negative values out of its range, which becomes the domain for
+    the second function. Thus, the second function will never see a negative
+    number:
+
+    Domain: $\R$
+  \end{enumerate}
+  
+\end{enumerate}
+\end{document}

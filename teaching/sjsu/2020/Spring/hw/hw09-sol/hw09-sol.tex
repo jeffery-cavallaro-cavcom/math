@@ -1,0 +1,46 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\son}{\sum_{k=1}^n}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#9 Solutions
+\end{center}
+
+\subsection*{Problems}
+
+Prove the following using the telescoping sum method discussed in class:
+\[\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}{6}\]
+
+\bigskip
+
+First, start with a telescoping sum:
+\begin{align*}
+  \son [(k+1)^3-k^3] &= (n+1)^3-1^3 \\
+  &= n^3+3n^2+3n+1-1 \\
+  &= n^3+3n^2+3n
+\end{align*}
+Next, evaluate the sum directly:
+\begin{align*}
+  \son [(k+1)^3-k^3] &= \son(k^3+3k^2+3k+1-k^3) \\
+  &= \son(3k^2+3k+1) \\
+  &= 3\son k^2+3\son k+\son 1 \\
+  &= 3\son k^2+3\left[\frac{n(n+1)}{2}\right]+n
+\end{align*}
+Finally, equate the two and do some algebra:
+\begin{gather*}
+  3\son k^2+3\left[\frac{n(n+1)}{2}\right]+n=n^3+3n^2+3n \\
+  3\son k^2=n^3+3n^2+3n-3\left[\frac{n(n+1)}{2}\right]-n \\
+  3\son k^2=n^3+3n^2+2n-\frac{3}{2}n^2-\frac{3}{2}n \\
+  3\son k^2=n^3+\frac{3}{2}n^2+\frac{1}{2}n \\
+  3\son k^2=\frac{1}{2}n(2n^2+3n+1) \\
+  3\son k^2=\frac{n(n+1)(2n+1)}{2} \\
+  \son k^2=\frac{n(n+1)(2n+1)}{6}
+\end{gather*}
+
+\end{document}

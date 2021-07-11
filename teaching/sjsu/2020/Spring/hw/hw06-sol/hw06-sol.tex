@@ -1,0 +1,96 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\P}{\mathcal{P}}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-42 Sections 01, 02, 05
+
+  \Large
+  Homework \#6 Solutions
+\end{center}
+
+\subsection*{Problems}
+
+Let:
+\begin{align*}
+  A &= \setb{n\in\Z}{0<n\le3} \\
+  B &= \setb{\sqrt{n}}{n\in\N\ \text{and}\ 1\le n\le 4}
+\end{align*}
+
+\begin{enumerate}[left=0in]
+\item Write \(A\) in roster form.
+  \[A=\set{1,2,3}\]
+\item Write \(B\) in roster form.
+  \[B=\set{1,\sqrt{2},\sqrt{3},2}\]
+\item Is \(A=B\)?  Why or why not?
+
+  \bigskip
+
+  No, because \(3\in A\) but \(3\notin B\).
+  
+  \bigskip
+
+\item Is \(A\subseteq B\)? Why or why not?
+
+  \bigskip
+
+  No, because \(3\in A\) but \(3\notin B\).
+
+  \bigskip
+
+\item Is \(B\subseteq A\)? Why or why not?
+
+  \bigskip
+
+  No, because \(\sqrt{2}\in B\) but \(\sqrt{2}\notin A\).
+
+  \bigskip
+
+\item Is \(A\subset B\)? Why or why not?
+
+  \bigskip
+
+  No, because \(3\in A\) but \(3\notin B\).
+
+  \bigskip
+
+\item Construct \(A\cup B\).
+  \[A\cup B=\set{1,2,3,\sqrt{2},\sqrt{3}}\]
+\item Construct \(B\cup A\).
+  \[B\cup A=A\cup B=\set{1,2,3,\sqrt{2},\sqrt{3}}\]
+\item Construct \(A\cap B\).
+  \[A\cap B=\set{1,2}\]
+\item Construct \(B\cap A\).
+  \[B\cap A=A\cap B=\set{1,2}\]
+\item Construct \(A-B\).
+  \[A-B=\set{3}\]
+\item Construct \(B-A\).
+  \[B-A=\set{\sqrt{2},\sqrt{3}}\]
+\item Construct \(A\times B\).
+  \begin{align*}
+    A\times B=\set{&(1,1),(1,\sqrt{2}),(1,\sqrt{3}),(1,2), \\
+    &(2,1),(2,\sqrt{2}),(2,\sqrt{3}),(2,2), \\
+        &(3,1),(3,\sqrt{2}),(3,\sqrt{3}),(3,2)}
+  \end{align*}
+\item Construct \(B\times A\).
+  \begin{align*}
+    B\times A=\set{&(1,1),(1,2),(1,3), \\
+      &(\sqrt{2},1),(\sqrt{2},2),(\sqrt{2},3), \\
+      &(\sqrt{3},1),(\sqrt{3},2),(\sqrt{3},3), \\
+      &(2,1),(2,2),(2,3)}
+  \end{align*}
+\item Construct \(\P(A)\).
+  \[\P(A)=\set{\emptyset,\set{1},\set{2},\set{3},\set{1,2},\set{1,3},\set{2,3},\set{1,2,3}}\]
+\item Construct \(\P(B)\).
+  \begin{align*}
+    \P(B)=\set{&\emptyset,\set{1},\set{\sqrt{2}},\set{\sqrt{3}},\set{2}, \\
+      &\set{1,\sqrt{2}},\set{1,\sqrt{3}},\set{1,2},\set{\sqrt{2},\sqrt{3}},\set{\sqrt{2},2},\set{\sqrt{3},2}, \\
+      &\set{1,\sqrt{2},\sqrt{3}},\set{1,\sqrt{2},2},\set{1,\sqrt{3},2},\set{\sqrt{2},\sqrt{3},2}, \\
+      &\set{1,\sqrt{2},\sqrt{3},2}}
+  \end{align*}
+\end{enumerate}
+
+\end{document}

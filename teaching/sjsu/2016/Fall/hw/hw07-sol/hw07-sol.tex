@@ -1,0 +1,199 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\pagestyle{plain}
+\newcommand{\qe}{\overset{?}{=}}
+\begin{document}
+
+\begin{center}
+\Large Math-08 Homework \#7 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\begin{itemize}
+\item Text book section 1.5
+\end{itemize}
+
+\underline{Problems}
+
+\begin{enumerate}
+\item Solve for $x$ (Hint: quadratic-like?)
+  \[x+2\sqrt{x}-15=0\]
+  \begin{eqnarray*}
+    (\sqrt{x})^2+2(\sqrt{x})-15 &=& 0 \\
+    (\sqrt{x}+5)(\sqrt{x}-3) &=& 0 \\
+  \end{eqnarray*}
+  \begin{minipage}[t]{2in}
+    $\sqrt{x}+5=0$ \\
+    $\sqrt{x}=-5$ \\
+    no solution
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    $\sqrt{x}-3=0$ \\
+    $\sqrt{x}=3$ \\
+    $x=9$
+  \end{minipage}
+
+  \bigskip
+
+  So $x=9$. As a sanity check, we see that we can indeed plug $9$ into the
+  original equation (it is in the domain) and see that it works.
+
+  \bigskip
+
+\item Solve for $x$ (Hint: there should be only two solutions, not four)
+  \[2\abs{2x+3}-6=3\abs{x}+1\]
+
+  Since one of the absolute values is a term in an expression, we need to do
+  some work. Start by isolating one of the absolute values and then taking the
+  plus/minus:
+  \[2\abs{2x+3}=3\abs{x}+7\]
+  \[\abs{2x+3}=\frac{3}{2}\abs{x}+\frac{7}{2}\]
+  \[2x+3=\pm\left(\frac{3}{2}\abs{x}+\frac{7}{2}\right)\]
+  
+  This results in two separate equations:
+  
+  \begin{minipage}[t]{2.5in}
+    \begin{eqnarray*}
+      2x+3 &=& \frac{3}{2}\abs{x}+\frac{7}{2} \\
+      \frac{3}{2}\abs{x} &=& 2x-\frac{1}{2} \\
+      \abs{x} &=& \frac{4}{3}x-\frac{1}{3} \\
+    \end{eqnarray*}
+  \end{minipage}
+  \begin{minipage}[t]{2.5in}
+    \begin{eqnarray*}
+      2x+3 &=& -\left(\frac{3}{2}\abs{x}+\frac{7}{2}\right) \\
+      2x+3 &=& -\frac{3}{2}\abs{x}-\frac{7}{2} \\
+      \frac{3}{2}\abs{x} &=& -2x-\frac{13}{2} \\
+      \abs{x} &=& -\frac{4}{3}x-\frac{13}{3} \\
+    \end{eqnarray*}
+  \end{minipage}
+
+  Each of these now gives rise to two equations. Start with the first:
+
+  \[x=\pm\left(\frac{4}{3}x-\frac{1}{3}\right)\]
+
+  \begin{minipage}[t]{2.5in}
+    \begin{eqnarray*}
+      x &=& \frac{4}{3}x-\frac{1}{3} \\
+      \frac{1}{3}x &=& \frac{1}{3} \\
+      x &=& 1
+    \end{eqnarray*}
+  \end{minipage}
+  \begin{minipage}[t]{2.5in}
+    \begin{eqnarray*}
+      x &=& -\left(\frac{4}{3}x-\frac{1}{3}\right) \\
+      x &=& -\frac{4}{3}x+\frac{1}{3} \\
+      \frac{7}{3}x &=& \frac{1}{3} \\
+      x &=& \frac{1}{7} \\
+    \end{eqnarray*}
+  \end{minipage}
+
+  And now the second:
+
+  \[x=\pm\left(-\frac{4}{3}x-\frac{13}{3}\right)\]
+
+  \begin{minipage}[t]{2.5in}
+    \begin{eqnarray*}
+      x &=& -\frac{4}{3}x-\frac{13}{3} \\
+      \frac{7}{3}x &=& -\frac{13}{3} \\
+      x &=& -\frac{13}{7} \\
+    \end{eqnarray*}
+  \end{minipage}
+  \begin{minipage}[t]{2.5in}
+    \begin{eqnarray*}
+      x &=& -\left(-\frac{4}{3}x-\frac{13}{3}\right) \\
+      x &=& \frac{4}{3}x+\frac{13}{3} \\
+      \frac{1}{3}x &=& -\frac{13}{3} \\
+      x &=& -13 \\
+    \end{eqnarray*}
+  \end{minipage}
+
+  So we have four candidates:
+  \[x=-13,-\frac{13}{7},\frac{1}{7},1\]
+
+  But absolute value equations are tricksy hobbits. We need to make sure that
+  our found candidates are actual solutions:
+  \begin{eqnarray*}
+    2\abs{2(-13)+3}-6 &\qe& 3\abs{-13}+1 \\
+    2\abs{-26+3}-6 &\qe& 3(13)+1 \\
+    2\abs{-23}-6 &\qe& 39+1 \\
+    2(23)-6 &\qe& 40 \\
+    46-6 &\qe& 40 \\
+    40 &=& 40 \\
+  \end{eqnarray*}
+  \begin{eqnarray*}
+    2\abs{2\left(-\frac{13}{7}\right)+3}-6 &\qe& 3\abs{-\frac{13}{7}}+1 \\
+    2\abs{-\frac{26}{7}+3}-6 &\qe& 3\left(\frac{13}{7}\right)+1 \\
+    2\abs{-\frac{5}{7}}-6 &\qe& \frac{39}{7}+1 \\
+    2\left(\frac{5}{7}\right)-6 &\qe& \frac{46}{7} \\
+    \frac{10}{7}-6 &\qe& \frac{46}{7} \\
+    -\frac{32}{7} &\ne& \frac{46}{7} \\
+  \end{eqnarray*}
+  \begin{eqnarray*}
+    2\abs{2\left(\frac{1}{7}\right)+3}-6 &\qe& 3\abs{\frac{1}{7}}+1 \\
+    2\abs{\frac{2}{7}+3}-6 &\qe& 3\left(\frac{1}{7}\right)+1 \\
+    2\abs{\frac{23}{7}}-6 &\qe& \frac{3}{7}+1 \\
+    2\left(\frac{23}{7}\right)-6 &\qe& \frac{10}{7} \\
+    \frac{46}{7}-6 &\qe& \frac{10}{7} \\
+    \frac{4}{7} &\ne& \frac{10}{7} \\
+  \end{eqnarray*}
+  \begin{eqnarray*}
+    2\abs{2(1)+3}-6 &\qe& 3\abs{1}+1 \\
+    2\abs{2+3}-6 &\qe& 3(1)+1 \\
+    2\abs{5}-6 &\qe& 3+1 \\
+    2(5)-6 &\qe& 4 \\
+    10-6 &\qe& 4 \\
+    4 &=& 4 \\
+  \end{eqnarray*}
+  So, out of the four candidates, only two of them work:
+  extraneous):
+  \[x=-13,1\]
+  The other two are extraneous.
+
+\item Solve for $x$
+  \begin{enumerate}
+  \item $(x+1)^{\frac{2}{3}}=9$
+    \[\abs{x+1}=9^{\frac{3}{2}}=27\]
+    \[x+1=\pm27\]
+    \[x=-28,26\]
+    
+  \item $(x+1)^{\frac{2}{3}}=-9$
+    \[\abs{x+1}=(-9)^{\frac{3}{2}}\]
+    no solution, since we cannot take the square root of a negative number.
+
+    \bigskip
+
+  \item $(x+1)^{\frac{3}{2}}=27$
+    \[x+1=27^{\frac{2}{3}}=9\]
+    \[x=8\]
+    
+  \item $(x+1)^{\frac{3}{2}}=-27$
+
+    no solution, since the principle value of a square root can never be
+    negative.
+  \end{enumerate}
+
+  \bigskip
+
+\item Consider $x^4-81=0$
+  \begin{enumerate}
+  \item Solve for $x$
+    \[(x^2+9)(x^2-9)=0\]
+    \[(x^2+9)(x+3)(x-3)=0\]
+    \[x=\pm3\]
+    
+  \item This is a degree-4 polynomial, so there is a maximum of four possible
+    solutions. You should have found only two. Why are there only two?
+
+    The $x^2+9$ factor is irreducible in $\R$. To see this, try to solve
+    $x^2+9=0$ using the quadratic equation - the discriminant is $<0$. This
+    wipes out two of the possible solutions.
+  \end{enumerate}
+  
+\end{enumerate}
+  
+\end{document}

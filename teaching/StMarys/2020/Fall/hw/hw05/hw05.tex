@@ -1,0 +1,53 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-13 Sections 01 and 02
+
+  \Large
+  Homework \#5
+
+  \large
+  \textbf{Due: Midnight 9/25}
+\end{center}
+
+Consider the following function:
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw [very thin, gray] (-5,-5) grid (5,5);
+    \draw [very thick] (-5,0) -- (5,0) node [right] {\(5\)};
+    \draw [very thick] (0,-5) -- (0,5) node [above] {\(5\)};
+    \node [left] at (-5,0) {\(-5\)};
+    \node [below] at (0,-5) {\(-5\)};
+    \node [closed point] (A) at (-4,0) {};
+    \node [closed point] (B) at (-2,4) {};
+    \node [open point] (C) at (0,0) {};
+    \node [closed point] (D) at (0,-2) {};
+    \node [open point] (E) at (4,0.7) {};
+    \node [closed point] (F) at (4,2) {};
+    \draw (A) to (B);
+    \draw (C) parabola (B);
+    \draw (D) parabola (1.9,5);
+    \draw (5,0.1) parabola (2.1,5);
+  \end{tikzpicture}
+\end{center}
+
+\bigskip
+
+Answer the following for the points at \(c=-4, -2, 0, 2, 4\):
+
+\begin{enumerate}[label={\alph*)}]
+  \item Determine \(\displaystyle\lim_{x\to c^-}f(x)\)
+  \item Determine \(\displaystyle\lim_{x\to c^+}f(x)\)
+  \item Determine \(\displaystyle\lim_{x\to c}f(x)\)
+  \item State whether or not the function is continuous at the point.  If not, then state why.
+\end{enumerate}
+
+\end{document}

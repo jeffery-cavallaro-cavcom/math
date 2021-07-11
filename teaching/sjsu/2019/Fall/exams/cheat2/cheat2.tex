@@ -1,0 +1,92 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\twocolumn
+\begin{document}
+
+\subsubsection*{Derivatives}
+
+\begin{gather*}
+  \frac{d}{dx}\left[c\right]=0 \\
+  \frac{d}{dx}\left[x^c\right]=cx^{c-1} \\
+  \frac{d}{dx}\left[cf(x)\right]=cf'(x) \\
+  \frac{d}{dx}\left[f(x)\pm g(x)\right]=f'(x)\pm g'(x) \\
+  \frac{d}{dx}\left[f(x)g(x)\right]=f(x)g'(x)+f'(x)g(x) \\
+  \frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x)f'(x)-g'(x)f(x)}{[g(x)]^2} \\
+  \frac{d}{dx}\left[f(u(x))\right]=f'(u)u'(x) \\
+  \frac{d}{dx}\left[\frac{1}{x}\right]=-\frac{1}{x^2} \\
+  \frac{d}{dx}\left[e^x\right]=e^x \\
+  \frac{d}{dx}\left[e^{u(x)}\right]=e^{u(x)}u'(x) \\
+  \frac{d}{dx}\left[a^x\right]=a^x\ln(a) \\
+  \frac{d}{dx}\left[a^{u(x)}\right]=a^{u(x)}u'(x)\ln(a) \\
+  \frac{d}{dx}\left[\ln(x)\right]=\frac{1}{x} \\
+  \frac{d}{dx}\left[\ln(u(x))\right]=\frac{u'(x)}{u(x)} \\
+  \frac{d}{dx}\left[\log_a(x)\right]=\frac{1}{\ln(a)}\cdot\frac{1}{x} \\
+  \frac{d}{dx}\left[\log_a(u(x))\right]=\frac{1}{\ln(a)}\cdot\frac{u'(x)}{u(x)}
+\end{gather*}
+
+\subsection*{Probability}
+
+\[p(x)=\frac{1}{\o\sqrt{2\pi}}e^{\frac{-(x-\m)^2}{2\o^2}}\]
+68--95--99.7 rule
+
+\subsubsection*{First/Second Derivative Tests}
+
+\begin{tabular}{|l|l|l|}
+  \hline
+  & \(<0\) & \(>0\) \\
+  \hline
+  \(f'(x)\) & decreasing & increasing \\
+  \hline
+  \(f''(x)\) & concave down & concave up \\
+  \hline
+\end{tabular}
+
+\subsubsection*{Second Partial Derivative Test}
+
+\[f_x=0\ \text{and}\ f_y=0\]
+\[d=f_{xx}f_{yy}-[f_{xy}]^2\]
+\begin{tabular}{c|c|c}
+  \(d\) & \(f_{xx}\) & result \\
+  \hline
+  \(>0\) & \(>0\) & relative minimum \\
+  \(>0\) & \(<0\) & relative maximum \\
+  \(<0\) & & saddle point \\
+  \(=0\) & & inconclusive
+\end{tabular}
+
+\subsubsection*{Lagrange Multiplier}
+
+\begin{gather*}
+f_x=\l g_x \\
+f_y=\l g_y \\
+\vdots \\
+g(x,y,\ldots)=0
+\end{gather*}
+
+\subsubsection*{Interest}
+
+\begin{tabular}{ll}
+  Compound Interest & \(A=P\left(1+\frac{r}{n}\right)^{nt}\) \\
+  Population Growth & \(P(t)=P(0)e^{rt}\) \\
+  Radioactive Decay & \(m(t)=m(0)e^{-\frac{t\ln(2)}{h_0}}\)
+\end{tabular}
+
+\subsubsection*{Logarithms}
+
+\begin{gather*}
+  \ln(1)=0 \\
+  \ln(e)=1 \\
+  e^{\ln(x)}=x \\
+  \ln(e^x)=x \\
+  e^x=e^y\iff x=y \\
+  \ln(x)=\ln(y)\iff x=y \\
+  \ln(xy)=\ln(x)+\ln(y) \\
+  \ln\left(\frac{x}{y}\right)=\ln(x)-\ln(y) \\
+  \ln\left(x^y\right)=y\ln(x)
+\end{gather*}
+
+\end{document}

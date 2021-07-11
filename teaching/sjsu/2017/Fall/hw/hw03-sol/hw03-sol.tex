@@ -1,0 +1,80 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#3 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Problems}
+
+\begin{enumerate}
+\item Simplify the following expression. Your answer should contain no
+  radicals and no negative exponents. You may assume that $a,b,c>0$.
+  \[\frac{a^2b^{-3}\sqrt{abc^3}}{\sqrt[3]{a^{-2}\sqrt{b^3c}}}\]
+  \begin{eqnarray*}
+    \frac{a^2b^{-3}\sqrt{abc^3}}{\sqrt[3]{a^{-2}\sqrt{b^3c}}} &=&
+    \frac{a^2b^{-3}a^{\frac{1}{2}}b^{\frac{1}{2}}c^{\frac{3}{2}}}
+         {(a^{-2}b^{\frac{3}{2}}c^{\frac{1}{2}})^{\frac{1}{3}}} \\
+         &=& \frac{a^{\frac{5}{2}}b^{-\frac{5}{2}}c^{\frac{3}{2}}}
+         {a^{-\frac{2}{3}}b^{\frac{1}{2}}c^{\frac{1}{6}}} \\
+         &=& a^{\frac{19}{6}}b^{-3}c^{\frac{4}{3}} \\
+         &=& \frac{a^{\frac{19}{6}}c^{\frac{4}{3}}}{b^3}
+  \end{eqnarray*}
+
+\item Determine whether each of the following statements is either correct,
+  incorrect, or misleading. Explain why incorrect and misleading statements are
+  incorrect or misleading.
+  \begin{enumerate}
+  \item $\sqrt{9}=\pm3$
+
+    This is incorrect. $\sqrt{9}$ asks for the principle (positive) root only.
+    Correct is: $\sqrt{9}=3$.
+      
+  \item $\left(x^{\frac{1}{2}}\right)^2=\abs{x}$
+
+    This is misleading. Since we have $x^{\frac{1}{2}}$, it is assumed that
+    $x\ge0$. Thus, the absolute value, although not hurting anything, is
+    not really needed.
+      
+  \item $\left(x^2\right)^{\frac{1}{2}}=x$
+
+    This is incorrect. The LHS is always positive; however, $x$ may be postive
+    or negative. Correct is: $\left(x^2\right)^{\frac{1}{2}}=\abs{x}$.
+    
+  \item $\left(x^3\right)^{\frac{1}{3}}=\abs{x}$
+
+    This is incorrect. Odd powers preserve negativity. Thus, the LHS can be
+    either positive or negative. Correct is: $\left(x^3\right)^{\frac{1}{3}}=x$.
+  \end{enumerate}
+
+\item Expand the following expression. Your answer should contain no radicals:
+  \[(xy^2-z\sqrt{y})^2\]
+  \begin{eqnarray*}
+    (xy^2-z\sqrt{y})^2 &=& (xy^2-y^{\frac{1}{2}}z)^2 \\
+    &=& (xy^2)^2-2(xy^2)(zy^{\frac{1}{2}})+(y^{\frac{1}{2}}z)^2 \\
+    &=& x^2y^4-2xy^{\frac{5}{2}}z+yz^2
+  \end{eqnarray*}
+
+\item Factor an $xy^2$ out of $x^2y-2$.
+  \[x^2y-2=xy^2\left(\frac{x^2y-2}{xy^2}\right)=
+  xy^2\left(\frac{x^2y}{xy^2}-\frac{2}{xy^2}\right)=
+  xy^2\left(\frac{x}{y}-\frac{2}{xy^2}\right)\]
+
+\item Simplify completely. Leave everything in factored form.
+  \[\frac{2}{x-3}+\frac{4x}{x+3}-\frac{6}{x^2-9}\]
+  \begin{eqnarray*}
+    \frac{2}{x-3}+\frac{4x}{x+3}-\frac{6}{x^2-9} &=&
+    \frac{2(x+3)+4x(x-3)-6}{(x+3)(x-3)} \\
+    &=& \frac{2x+6+4x^2-12x-6}{(x+3)(x-3)} \\
+    &=& \frac{4x^2-10x}{(x+3)(x-3)} \\
+    &=& \frac{2x(2x-5)}{(x+3)(x-3)}
+  \end{eqnarray*}
+  
+\end{enumerate}
+
+\end{document}

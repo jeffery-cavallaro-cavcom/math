@@ -1,0 +1,158 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-8 Exam \#4
+\end{center}
+
+\vspace{0.5in}
+
+Name: \rule{4in}{1pt}
+
+\vspace{0.5in}
+
+This is a take-home exam. It is due on Wednesday morning, 05 July, at 8:00am
+(start of class). It is open book and you may use your class notes, lab sheets,
+and a graphing calculator. No other printed material, electronics, or
+web-searching is allowed. You must do this exam by yourself, without any help
+from or discussion with anyone else. Show all work; there is no credit for
+guessed answers. All answers should be in exact values, unless you are
+specifically asked for an approximate value.
+
+\vspace{0.5in}
+
+\begin{enumerate}
+\item Let $f(x)=x^2$ and $g(x)=x^2(x-1)$. Evaluate each of the following,
+  simplify where appropriate, and state the domain of each simplified
+  expression:
+  \begin{enumerate}
+  \item $(f+g)(x)$
+
+    \vspace{2in}
+    
+  \item $(fg)(x)$
+
+    \newpage
+    
+  \item $\left(\frac{f}{g}\right)(x)$
+
+    \vspace{2in}
+    
+  \item $(f\circ g)(x)$
+
+    \vspace{2in}
+    
+  \item $(g\circ f)(x)$
+
+    \vspace{2in}
+    
+  \end{enumerate}
+
+\item Consider the following function:
+  \[h(x)=\sqrt{x-1}+(x-1)^2+2\]
+  Find an $f(x)$ and a $g(x)$ such that $h(x)=(f\circ g)(x)$. Neither of your
+  functions is allowed to be just $x$.
+
+  \newpage
+
+\item The freezing point of water is $0^{\circ}$C, which is $32^{\circ}$F. The
+  boiling point of water is $100^{\circ}$C, which is $212^{\circ}$F. Let $y=$
+  degrees Celsius and $x=$ degrees Fahrenheit:
+  \begin{enumerate}
+  \item Derive the linear function $y=f(x)$ to convert from Fahrenheit to
+    Celsius.
+
+    \vspace{2.5in}
+    
+  \item Derive the linear function $x=g(y)$ to convert from Celsius to
+    Fahrenheit.
+
+    \vspace{2.5in}
+    
+  \item Prove that $f$ and $g$ are inverse functions.
+  \end{enumerate}
+
+  \newpage
+
+\item Evaluate the difference quotient for $f(x)=x^3$. Your answer should be
+  simplified appropriately.
+
+  \newpage
+
+\item Consider the parabolic function:
+  \[y=-x^2+3x-5\]
+  \begin{enumerate}
+  \item Convert the general form to standard form by completing the square.
+
+    \vspace{3in}
+    
+  \item What are the coordinates of the vertex?
+
+    \vspace{1in}
+    
+  \item What are the $x$-intercepts (if any)?
+
+    \vspace{2in}
+
+  \item What are the $y$-intercepts (if any)?
+
+    \newpage
+
+  \item Sketch the graph. Make sure that you label all important points.
+  \end{enumerate}
+
+  \newpage
+
+\item Consider the following graph of some polynomial function whose equation
+  is unknown but is known to pass through the labeled points:
+
+  \begin{tikzpicture}[scale=5]
+    \draw [<->] (-1,0) -- (1,0);
+    \draw [<->] (0,-1) -- (0,1);
+    \draw [smooth,domain=-1:1] plot({\x},{(\x+1/2)*(\x+1/4)*(\x-1/2)});
+    \node [draw,circle,fill=black,scale=0.5] at (-1/2,0) {};
+    \node [below right] at (-1/2,0) {$(-1,0)$};
+    \node [draw,circle,fill=black,scale=0.5] at (3/4,5/16) {};
+    \node [below right] at (3/4,5/16) {$(2,3)$};
+  \end{tikzpicture}
+
+  \begin{enumerate}
+  \item What is the remainder when $f(x)$ is divided by $x-2$?
+
+    \vspace{1in}
+    
+  \item Explain why you know that $f(x)$ is divisible by $x+1$.
+
+    \newpage
+
+  \end{enumerate}
+
+\item Divide $x^4-2x^2+x-3$ by $x^2+1$ using long division and state the
+  answer in division-algorithm form.
+
+  \newpage
+
+\item Consider the polynomial function:
+  \[y=x^7-9x^5-4x^4+12x^3\]
+  Factor completely. For full credit you must show how you obtained candidate
+  roots, how you selected the actual roots, and then how you decomposed the
+  function into linear factors using long (or synthetic) division.
+
+  \newpage
+
+\item Sketch the graph for the function in (8). You must label all $x$ and $y$
+  intercepts and indicate the behavior at each zero using either a sign table
+  or a list of multiplicity decisions. Be sure to show the correct shape at
+  each zero.
+
+  \vspace{5in}
+
+\item Using a calculator, identify all minima and maxima on the graph in
+  (9). There are four of them.
+  
+\end{enumerate}
+
+\end{document}

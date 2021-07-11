@@ -1,0 +1,254 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#14
+
+  \textbf{Integer Representations and Algorithms}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Convert decimal \(1000\) to:
+  \begin{enumerate}
+  \item Binary
+  \item Base \(3\)
+  \item Octal
+  \item Hexadecimal
+  \end{enumerate}
+
+\item Convert to decimal:
+  \begin{enumerate}
+  \item \(101110110_2\)
+  \item \(12012021_3\)
+  \item \(17352_8\)
+  \item \(1CF3_{16}\)
+  \end{enumerate}
+
+\item Complete the following table:
+  
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    BINARY & OCTAL & DECIMAL & HEXADECIMAL \\
+    \hline
+    \hline
+    \(1011011110\) & & & \\
+    \hline
+    & \(175264\) & & \\
+    \hline
+    & & \(65536\) & \\
+    \hline
+    & & & F\(19\)A \\
+    \hline
+  \end{tabular}
+
+\item Is \(157834\) a valid octal number?  Why or why not?
+
+\item Complete the following addition and multiplication tables using the base suggested by the number of
+  digits---they will be helpful for the following exercise.
+
+  \bigskip
+
+  \(\begin{array}{|c||c|c|}
+  \hline
+  + & 0 & 1 \\
+  \hline
+  \hline
+  0 & & \\
+  \hline
+  1 & & \\
+  \hline
+  \end{array}\)
+  \qquad
+  \(\begin{array}{|c||c|c|}
+  \hline
+  \cdot & 0 & 1 \\
+  \hline
+  \hline
+  0 & & \\
+  \hline
+  1 & & \\
+  \hline
+  \end{array}\)
+
+  \bigskip
+
+  \(\begin{array}{|c||c|c|c|}
+  \hline
+  + & 0 & 1 & 2 \\
+  \hline
+  \hline
+  0 & & & \\
+  \hline
+  1 & & & \\
+  \hline
+  2 & & & \\
+  \hline
+  \end{array}\)
+  \qquad
+  \(\begin{array}{|c||c|c|c|}
+  \hline
+  \cdot & 0 & 1 & 2 \\
+  \hline
+  \hline
+  0 & & & \\
+  \hline
+  1 & & & \\
+  \hline
+  2 & & & \\
+  \hline
+  \end{array}\)
+
+  \bigskip
+
+  \(\begin{array}{|c||c|c|c|c|c|c|c|c|}
+  \hline
+  + & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  \hline
+  \hline
+  0 & & & & & & & & \\
+  \hline
+  1 & & & & & & & & \\
+  \hline
+  2 & & & & & & & & \\
+  \hline
+  3 & & & & & & & & \\
+  \hline
+  4 & & & & & & & & \\
+  \hline
+  5 & & & & & & & & \\
+  \hline
+  6 & & & & & & & & \\
+  \hline
+  7 & & & & & & & & \\
+  \hline
+  \end{array}\)
+  \qquad
+  \(\begin{array}{|c||c|c|c|c|c|c|c|c|}
+  \hline
+  \cdot & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+  \hline
+  \hline
+  0 & & & & & & & & \\
+  \hline
+  1 & & & & & & & & \\
+  \hline
+  2 & & & & & & & & \\
+  \hline
+  3 & & & & & & & & \\
+  \hline
+  4 & & & & & & & & \\
+  \hline
+  5 & & & & & & & & \\
+  \hline
+  6 & & & & & & & & \\
+  \hline
+  7 & & & & & & & & \\
+  \hline
+  \end{array}\)
+
+  \bigskip
+
+  \(\begin{array}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  + & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & A & B & C & D & E & F \\
+  \hline
+  \hline
+  0 & & & & & & & & & & & & & & & \\
+  \hline
+  1 & & & & & & & & & & & & & & & \\
+  \hline
+  2 & & & & & & & & & & & & & & & \\
+  \hline
+  3 & & & & & & & & & & & & & & & \\
+  \hline
+  4 & & & & & & & & & & & & & & & \\
+  \hline
+  5 & & & & & & & & & & & & & & & \\
+  \hline
+  6 & & & & & & & & & & & & & & & \\
+  \hline
+  7 & & & & & & & & & & & & & & & \\
+  \hline
+  8 & & & & & & & & & & & & & & & \\
+  \hline
+  9 & & & & & & & & & & & & & & & \\
+  \hline
+  A & & & & & & & & & & & & & & & \\
+  \hline
+  B & & & & & & & & & & & & & & & \\
+  \hline
+  C & & & & & & & & & & & & & & & \\
+  \hline
+  D & & & & & & & & & & & & & & & \\
+  \hline
+  E & & & & & & & & & & & & & & & \\
+  \hline
+  F & & & & & & & & & & & & & & & \\
+  \hline
+  \end{array}\)
+
+  \(\begin{array}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  \cdot & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & A & B & C & D & E & F \\
+  \hline
+  \hline
+  0 & & & & & & & & & & & & & & & \\
+  \hline
+  1 & & & & & & & & & & & & & & & \\
+  \hline
+  2 & & & & & & & & & & & & & & & \\
+  \hline
+  3 & & & & & & & & & & & & & & & \\
+  \hline
+  4 & & & & & & & & & & & & & & & \\
+  \hline
+  5 & & & & & & & & & & & & & & & \\
+  \hline
+  6 & & & & & & & & & & & & & & & \\
+  \hline
+  7 & & & & & & & & & & & & & & & \\
+  \hline
+  8 & & & & & & & & & & & & & & & \\
+  \hline
+  9 & & & & & & & & & & & & & & & \\
+  \hline
+  A & & & & & & & & & & & & & & & \\
+  \hline
+  B & & & & & & & & & & & & & & & \\
+  \hline
+  C & & & & & & & & & & & & & & & \\
+  \hline
+  D & & & & & & & & & & & & & & & \\
+  \hline
+  E & & & & & & & & & & & & & & & \\
+  \hline
+  F & & & & & & & & & & & & & & & \\
+  \hline
+  \end{array}\)
+
+\item Perform the following operations in the specified bases:
+  \begin{enumerate}
+  \item \(1101010111_2+100010110_2\)
+  \item \(1101010111_2\cdot10110_2\)
+  \item \(2210120_3+1102_3\)
+  \item \(2210120_3\cdot1102_3\)
+  \item \(17534_8+61234_8\)
+  \item \(17534_8\cdot6102_8\)
+  \item F\(10\)A\(3_{16}+1\)DC\(29_{16}\)
+  \item F\(10\)A\(3_{16}\cdot20\)C\(_{16}\)
+  \end{enumerate}
+
+\item Use fast exponentiation to calculate the following:
+  \begin{enumerate}
+  \item \(7^{100}\bmod321\)
+  \item \(13^{300}\bmod209\)
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

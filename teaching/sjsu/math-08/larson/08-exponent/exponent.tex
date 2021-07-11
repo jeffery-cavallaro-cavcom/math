@@ -1,0 +1,173 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+\section*{Exponential Expressions}
+
+\begin{definition}
+  An exponential expression is an expression of the form $a^b$, where $a$, the
+  \emph{base} and $b$, the exponent, are real expressions.
+\end{definition}
+
+How an exponential expression is interpreted depends on what type of real
+number $b$ is.
+
+\subsection*{$b\in\N$}
+
+\[a^1=a\]
+\[a^2=aa\]
+\[a^3=aaa\]
+\[a^n=aa\cdots a\ (n\ \mbox{times})\]
+
+\subsection*{$b\in\Z$}
+
+\subsubsection*{$b=0$}
+
+By definition:
+\[a\ne0\implies a^0=1\]
+
+\subsubsection*{$b<0$}
+
+\[a^{-1}=\frac{1}{a}\]
+\[a^{-2}=\frac{1}{a}\cdot\frac{1}{a}\]
+\[a^{-3}=\frac{1}{a}\cdot\frac{1}{a}\cdot\frac{1}{a}\]
+\[a^{-n}=\frac{1}{a}\cdot\frac{1}{a}\cdots\frac{1}{a}\ (n\ \mbox{times})\]
+
+\subsection*{$b\in\Q$}
+
+\begin{definition}
+  Let $n\in\N,n>1$ and $a\in\R$:
+  
+  $\sqrt[n]{a}$ is the number that when raised to the $n^{th}$ power equals $a$
+  \[b=\sqrt[n]{a}\iff a^n=b\]
+  When $n=2$ the $n$ is omitted.
+
+  The root sign is called a \emph{radical} and the expression inside the root
+  is called the \emph{radicand}.
+\end{definition}
+
+\begin{example}
+  \begin{minipage}[t]{3in}
+    $\sqrt{1}=1$ because $1^2=1$ \\
+    $\sqrt{4}=2$ because $2^2=4$ \\
+    $\sqrt{9}=3$ because $3^2=9$ \\
+    $\sqrt{16}=4$ because $4^2=16$
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    $\sqrt[3]{1}=1$ because $1^3=1$ \\
+    $\sqrt[3]{8}=2$ because $2^3=8$ \\
+    $\sqrt[3]{27}=3$ because $3^3=27$ \\
+    $\sqrt[3]{64}=4$ because $4^3=64$
+  \end{minipage}
+\end{example}
+
+When $n$ is odd, there aren't any limitations because you can always take the
+odd root of any real number:
+
+$\sqrt[3]{-1}=-1$ because $(-1)^3=1$ \\
+$\sqrt[3]{-8}=-2$ because $(-2)^3=8$ \\
+$\sqrt[3]{-27}=-3$ because $(-3)^3=27$ \\
+$\sqrt[3]{-64}=-4$ because $(-4)^3=64$
+
+Note the placement of the parentheses: $(-a)^n\ne-a^n$ because the exponent has
+higher precedence that the minus sign:
+
+$(-2)^2=4$ but $-2^2=-4$
+
+When $n$ is even, the radicand must be $\ge0$. For example, you cannot take
+the square root of a negative number because a number squared is always
+nonnegative:
+\[\sqrt{-1}\notin\R\]
+because $x^2=-1$ has no solutions in $\R$.
+
+When $n$ is even, $\sqrt[n]{a}$ refers to the \emph{principle} root, which is
+the nonnegative root. $-\sqrt[n]{a}$ refers to the negative root.
+
+\begin{example}
+  \[\sqrt{4}=2\]
+  \[-\sqrt{4}=-2\]
+\end{example}
+
+\begin{definition}
+  Let $p,q\in\Z$ such that $q>1$ and let $a\in\R$:
+  \[\sqrt[q]{a}=a^{\frac{1}{q}}\]
+  \[\sqrt[q]{a^p}=a^{\frac{p}{q}}\]
+\end{definition}
+
+\begin{example}
+  \[\sqrt{100}=100^{\frac{1}{2}}=10\]
+  \[\sqrt[3]{100}=\sqrt[3]{10^2}=10^{\frac{2}{3}}\]
+  \[\sqrt[3]{\frac{1}{100}}=\sqrt[3]{\frac{1}{10}\cdot\frac{1}{10}}=
+  \sqrt[3]{10^{-2}}=10^{-\frac{2}{3}}\]
+\end{example}
+
+\subsection*{$b\in\R$}
+
+What in the heck does something like $2^{\pi}$ mean?
+
+Using a calculator:
+\[2^{\pi}=8.82498\]
+
+Build a table of approximations using rational exponents that get arbitrarity
+close to the exact value of $2^{\pi}$:
+
+\begin{tabular}{c|c}
+  $\pi$ & $2^{\pi}$ \\
+  \hline
+  3 & 8.00000\\
+  3.1 & 8.57419 \\
+  3.14 & 8.81524 \\
+  3.141 & 8.82135 \\
+  3.1415 & 8.82441 \\
+  3.14159 & 8.82496 \\
+\end{tabular}
+
+\subsection*{Properties}
+
+\begin{properties}
+  $\forall\,a,b,c\in\R$ (not 0 when appropriate):
+  \begin{enumerate}
+  \item $a\ne0\implies a^0=1$
+  \item $a^{-1}=\frac{1}{a}$
+  \item $\left(\frac{a}{b}\right)^{-1}=\frac{b}{a}$
+  \item $a^{-b}=\left(a^{-1}\right)^b=\left(\frac{1}{a}\right)^b=\frac{1}{a^b}$
+  \item $a^{-b}=\left(a^b\right)^{-1}=\frac{1}{a^b}$
+  \item $a^ba^c=a^{b+c}$
+  \item $\frac{a^b}{a^c}=a^b\cdot\frac{1}{a^c}=a^ba^{-c}=a^{b-c}$
+  \item $(ab)^c=a^cb^c$
+  \item $\left(\frac{a}{b}\right)^c=\left(a\cdot\frac{1}{b}\right)^c=
+    a^c\left(\frac{1}{b}\right)^c=a^c\left(\frac{1}{b^c}\right)=
+    \frac{a^c}{b^c}$
+  \item $\left(\frac{a}{b}\right)^{-c}=
+    \left[\left(\frac{a}{b}\right)^{-1}\right]^c=
+    \left(\frac{b}{a}\right)^c=\frac{b^c}{a^c}$
+  \item $\left(a^b\right)^c=a^{bc}$
+  \end{enumerate}
+\end{properties}
+
+We need to be careful when rational exponents cancel:
+
+\begin{description}
+\item Case 1: $(a^{\frac{1}{n}})^n$, $n$ odd
+
+  No problems, sinced we can always take an odd root of any real number:
+  \[(a^{\frac{1}{n}})^n=a\]
+
+\item Case 2: $(a^{\frac{1}{n}})^n$, $n$ even
+
+  We can assume that $a\ge0$, since we cannot take an even root of a negative
+  number:
+  \[(a^{\frac{1}{n}})^n=a\]
+
+\item Case 3: $(a^n)^{\frac{1}{n}}$, $n$ odd
+
+  No problems with odd roots:
+  \[(a^n)^{\frac{1}{n}}=a\]
+
+\item Case 4: $(a^n)^{\frac{1}{n}}$, $n$ even
+
+  Always take the principle root:
+  \[(a^n)^{\frac{1}{n}}=\abs{a}\]
+\end{description}
+
+\end{document}

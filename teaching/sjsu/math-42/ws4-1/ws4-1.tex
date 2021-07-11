@@ -1,0 +1,94 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\DeclareMathOperator{\bdiv}{div}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#13
+
+  \textbf{Divisibility and Modular Arithmetic}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Determine whether the following propositions are true or false.  Use the division algorithm to prove your
+  answer.
+  \begin{enumerate}
+  \item \(2\mid10\)
+  \item \(-2\mid10\)
+  \item \(2\mid-10\)
+  \item \(-2\mid-10\)
+  \item \(5\mid5\)
+  \item \(10\mid2\)
+  \item \(2\mid11\)
+  \item \(17\mid51\)
+  \item \(11\mid126\)
+  \item \(5\mid0\)
+  \item \(0\mid5\)
+  \item \(0\mid0\)
+  \end{enumerate}
+
+\item You were told repeated in elementary school that you cannot divide by \(0\).  Using the number theory
+  definition of \emph{divides}, is it true that \(0\) does not divide anything?
+
+\item One of your friends claims that the uniqueness part of the division algorithm is not true.  As a supposed
+  counterexample, they provide you with the following two expansions of \(11\) with divisor \(5\):
+  \begin{gather*}
+    11=5*2+1 \\
+    11=5*1+6
+  \end{gather*}
+  What is wrong with their argument?
+
+\item Determine the division algorithm expansion of each the following using divisor \(13\).  For each, indicate
+  which value is \((n\bdiv 13)\) and which value is \((n\bmod 13)\).
+  \begin{enumerate}
+  \item \(117\)
+  \item \(-117\)
+  \item \(100\)
+  \item \(-100\)
+  \item \(0\)
+  \item \(13\)
+  \item \(-13\)
+  \item \(5\)
+  \item \(-5\)
+  \end{enumerate}
+
+\item There are two possible definitions for \(a\equiv b\pmod n\):
+  \begin{itemize}
+  \item \(n\mid(a-b)\)
+  \item \((a\bmod n)=(b\bmod n)\)
+  \end{itemize}
+  In this exercise we will prove that these definitions are equivalent:
+  \[(a\bmod n)=(b\bmod n)\iff n\mid(a-b)\]
+  Since this is an equivalence, we need to prove both directions.
+  \begin{enumerate}
+  \item First, prove the forward (easier) direction:
+    \[(a\bmod n)=(b\bmod n)\implies n\mid(a-b)\]
+    (Hint: write \(a\) and \(b\) as division algorithm expansions)
+  \item Next, prove the reverse direction:
+    \[n\mid(a-b)\implies (a\bmod n)=(b\bmod n)\]
+    This direction is a bit trickier.  Start by writing \(a\) and \(b\) as division algorithm expansions:
+    \begin{gather*}
+      a=q_1n+r_1 \\
+      b=q_2n+r_2
+    \end{gather*}
+    Next, subtract them: \(a-b\).  You can assume without loss of generality that \(r_1\ge r_2\).  So what do we
+    know about \(r_1\) and \(r_2\) and what does this mean for \(r_1-r_2\)?  Now, using the hypothesis
+    \(n\mid(a-b)\) and the uniqueness of the division algorithm, this should lead you to a conclusion about
+    \(r_1-r_2\).
+  \end{enumerate}
+
+\item Evaluate the following:
+  \begin{enumerate}
+  \item \(((1000\bmod39)+(500\bmod39))\bmod39\)
+  \item \(((-100\bmod23)+(100\bmod23))\bmod23\)
+  \item \((10^4\bmod21)^3\bmod25\)
+  \item \((-10^4\bmod21)^3\bmod25\)
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

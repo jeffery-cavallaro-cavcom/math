@@ -1,0 +1,94 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-1003b Homework \#5 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\bigskip
+
+\begin{itemize}
+\item Sections 8.1-8.4
+\end{itemize}
+
+\bigskip
+
+\underline{Problems}
+
+\bigskip
+
+\begin{enumerate}
+\item Let $f(x)=x^2+2x-5$. Evaluate:
+  \[\frac{f(x+h)-f(x)}{h}\]
+
+  Remember, to evaluate a function at a particular value, even if that value is
+  specified in terms of the same or other variables, simply replace each
+  occurrence of the variable in the original equation with the target value:
+  \[f(x+h)=(x+h)^2+2(x+h)-5=x^2+2xh+h^2+2x+2h-5\]
+  Now, putting it altogether (remember to use parentheses during substitution!):
+  \begin{eqnarray*}
+    \frac{f(x+h)-f(x)}{h} &=& \frac{(x^2+2xh+h^2+2x+2h-5)-(x^2+2x-5)}{h} \\
+    &=& \frac{2xh+h^2+2h}{h} \\
+    &=& 2x+h+2
+  \end{eqnarray*}
+  Notice that only terms with an $h$ were left in the numerator, to be canceled
+  by the denominator! This is a very important form, called the
+  \emph{difference quotient} form, in calculus. In fact, those of you who go on
+  to take calculus (and I sincerely hope that some of you do), will encounter
+  this form in the first week.
+
+\item Let $f(x)=2x+5$ and $g(x)=x^2$. For each of the following,
+  evaluate and state the domain.
+  \begin{enumerate}
+  \item $f+g$
+    
+    $(f+g)(x)=f(x)+g(x)=(2x+5)+(x^2)=x^2+2x+5$
+
+    Domain: $\R$
+    
+  \item $fg$
+
+    $(fg)(x)=f(x)g(x)=(2x+5)(x^2)=2x^3+5x^2$
+    
+    Domain: $\R$
+    
+  \item $\frac{f}{g}$
+
+    $\left(\frac{f}{g}\right)(x)=\frac{f(x)}{g(x)}=\frac{2x+5}{x^2}$
+
+    Since there is a possibility of a zero denominator, $x\ne0$. So, stating
+    domain in setbuilder and interval form:
+
+    Domain: $\{x\in\R\mid x\ne0\}=(-\infty,0)\cup(0,\infty)$
+    
+  \item $\frac{f}{f}$
+
+    $\left(\frac{f}{f}\right)(x)=\frac{f(x)}{f(x)}=\frac{2x+5}{2x+5}=1$
+
+    Since the result is a constant function, it looks like there are no
+    limitations on $x$; however, we need to honor the original form, where
+    $x\ne-\frac{5}{2}$:
+    
+    Domain: $\{x\in\R\mid x\ne-\frac{5}{2}\}=
+    (-\infty,-\frac{5}{2})\cup(-\frac{5}{2},\infty)$
+
+  \item $f\circ g$
+
+    Remember that the \emph{inner} function goes first:
+
+    $(f\circ g)(x)=f(g(x))=f(x^2)=2x^2+5$
+
+    Domain: $\R$
+
+    Make sure that you also understand the following:
+    
+    $(g\circ f)(x)=g(f(x))=g(2x+5)=(2x+5)^2$
+  \end{enumerate}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,103 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-08 Homework \#3 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\begin{itemize}
+\item Text book section 0.3 and 0.4.
+\end{itemize}
+
+\underline{Problems}
+
+\begin{enumerate}
+\item This problem investigates the meaning of $a^b$ when both $a$ and $b$ are
+  irrational.
+  \begin{enumerate}
+  \item Type $\pi^{\sqrt{2}}$ into your calculator and write down the answer
+    to five decimal places.
+    \[\pi^{\sqrt{2}}=5.04750\]
+    
+  \item Build a table like we have done in class to show how finer and finer
+    approximations of $\pi$ and $\sqrt{2}$ result in an answer that is
+    arbitrarily close to $\pi^{\sqrt{2}}$. The first column should be
+    approximations of $\pi$. The second column should be approximations of
+    $\sqrt{2}$. The third column should be a calculation based on your current
+    approximated values. Do this for up to five decimal places.
+
+    \begin{tabular}{cc|c}
+      $\pi$ & $\sqrt{2}$ & $\pi^{\sqrt{2}}$ \\
+      \hline
+      3 & 1 & 3.00000 \\
+      3.1 & 1.4 & 4.87423 \\
+      3.14 & 1.41 & 5.01962 \\
+      3.141 & 1.414 & 5.04492 \\
+      3.1415 & 1.4142 & 5.04721 \\
+      3.14159 & 1.41421 & 5.04747 \\
+    \end{tabular}
+    
+  \end{enumerate}
+
+\item Simplify:
+  \[\sqrt{75}-\sqrt{27}\]
+  \begin{eqnarray*}
+    \sqrt{75}-\sqrt{27} &=& \sqrt{25\cdot3}-\sqrt{9\cdot3} \\
+    &=& \sqrt{25}\sqrt{3}-\sqrt{9}\sqrt{3} \\
+    &=& 5\sqrt{3}-3\sqrt{3} \\
+    &=& (5-3)\sqrt{3} \\
+    &=& 2\sqrt{3} \\
+  \end{eqnarray*}
+
+\item Simplify:
+  \[\frac{\sqrt{\sqrt[3]{x+1}xy^2}}{(x+1)x^{-\frac{3}{2}}y^3}\]
+  Your answer should have no negative exponents each factor should appear
+  only once. Do not rationalize the denominator. Beware of even roots of
+  even powers!
+
+  The first step is to replace the radicals with fractional exponents. Since
+  we have nested radicals here, let's do the inner one first:
+  \[\frac{\sqrt{(x+1)^{\frac{1}{3}}xy^2}}{(x+1)x^{-\frac{3}{2}}y^3}\]
+
+  Now, let's do the outer one:
+  \[\frac{[(x+1)^{\frac{1}{3}}xy^2]^{\frac{1}{2}}}{(x+1)x^{-\frac{3}{2}}y^3}\]
+
+  We now need to apply the $\frac{1}{2}$ exponent to all factors in the square
+  brackets:
+  \[\frac{[(x+1)^{\frac{1}{3}}]^{\frac{1}{2}}x^{\frac{1}{2}}(y^2)^{\frac{1}{2}}}
+         {(x+1)x^{-\frac{3}{2}}y^3}\]
+
+  Now reduce by \emph{multiplying} the exponents. Note that alarm bells should
+  should go off for the $y$ term!:
+  \[\frac{(x+1)^{\frac{1}{3}\cdot\frac{1}{2}}x^{\frac{1}{2}}y^{2\cdot\frac{1}{2}}}
+         {(x+1)x^{-\frac{3}{2}}y^3}=
+  \frac{(x+1)^{\frac{1}{6}}x^{\frac{1}{2}}\abs{y}}{(x+1)x^{-\frac{3}{2}}y^3}\]
+
+  Now, combine terms with like bases by subtracting exponenets. Note that we
+  cannot combine the $\abs{y}$ in the numerator with the $y^3$ in the
+  denominator because the bases are different!:
+  \[\frac{(x+1)^{\frac{1}{6}-1}x^{\frac{1}{2}+\frac{3}{2}}\abs{y}}{y^3}=
+  \frac{(x+1)^{-\frac{5}{6}}x^2\abs{y}}{y^3}\]
+
+  Finally, we get rid of the negative exponent in the numerator by moving the
+  factor to the denominator:
+  \[\frac{x^2\abs{y}}{(x+1)^{\frac{5}{6}}y^3}\]
+
+\item On your calculator, store the value $1$ into the variable $x$ and the
+  value $-1$ into the variable $y$. Then type the original expression (not
+  your simplied one) from problem (3) into your calculator. Note that you will
+  need to type $(x+1)^{\frac{1}{3}}$ instead of $\sqrt[3]{x+1}$. Make sure that
+  you do this all in only 3 steps: 2 store operations and then the expression.
+  Turn in a screenshot showing all 3 steps. (Hint: the answer should be
+  $-0.56123\ldots$)
+
+  (See file on canvas)
+\end{enumerate}
+\end{document}

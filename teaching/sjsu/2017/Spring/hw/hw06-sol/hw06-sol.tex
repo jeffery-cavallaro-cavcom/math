@@ -1,0 +1,69 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\newcommand{\D}{\Delta}
+\begin{document}
+
+\begin{center}
+\Large Math-1003b Homework \#6 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\bigskip
+
+\begin{itemize}
+\item Section 8.5
+\end{itemize}
+
+\bigskip
+
+\underline{Problems}
+
+\bigskip
+
+The amount of heat energy ($Q$) needed to change the temperature of an
+object (without going through a phase change like melting or boiling) is jointly
+proportional to the mass of the object ($m$) and the \emph{change} in
+temperature ($\D T$).
+\begin{enumerate}
+\item Write an equation that models this physical phenomenon. Use $c$ for the
+  constant of proportionality.
+  \[Q=cm(\D T)\]
+  
+\item The MKS unit for heat energy is the Joule (J). The constant of
+  proportionality is specific to the substance being heated and is referred to
+  as the \emph{specific heat} of the substance. If $Q$ is measured in Joules
+  ($J$), $m$ is measured in grams ($g$), and temperature is measured in Kelvin
+  (K), what are the units of $c$?
+
+  In terms of units, we want:
+  \[J=\left(\frac{?}{?}\right)gK\]
+  So we want the grams and kelvin to cancel out, and joules to be introduced, so the
+  units for $c$ should be $\frac{J}{gK}$.
+  
+\item In the lab, it is found that $\SI{41790}{J}$ of heat energy raises the
+  temperature of $\SI{1}{L}$ of water by $\SI{10}{K}$. What is the specific heat
+  of water? ($\SI{1}{L}$ of water$=\SI{1000}{g}$)
+
+  Note that $\SI{1}{L}$ of water has a mass of $\SI{1000}{g}$, so:
+  \begin{eqnarray*}
+    \SI{41790}{J} &=& c(1000g)(10K) \\
+    c &=& \frac{\SI{41790}{J}}{(1000g)(10K)} \\
+    c &=& \SI{4.1790}{\frac{J}{gK}}
+  \end{eqnarray*}
+  
+\item How much energy (in Joules) is required to raise the temperature of
+  $\SI{5}{L}$ of water by $\SI{5}{K}$?
+
+  Since we now know $c$, we have an equation that we can use to calculate the needed
+  heat energy for different masses and temperature changes:
+  \[Q=4.1790m(\D T)\]
+  For $\SI{5}{L}=\SI{5000}{g}$ of water and a temperature change of $\SI{5}{K}$:
+  \[Q=4.1790(5000)(5)=\SI{104475}{J}\]
+\end{enumerate}
+
+\end{document}

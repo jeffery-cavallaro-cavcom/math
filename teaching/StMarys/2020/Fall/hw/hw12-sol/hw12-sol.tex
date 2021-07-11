@@ -1,0 +1,46 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-13 Sections 01 and 02
+
+  \Large
+  Homework \#12 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+A particle is moving with a velocity measured in meters per second given by the function:
+\[v(t)=\frac{t^2-3t+2}{\sqrt{t}}\]
+Where is the particle's position at \(t=\SI{4}{s}\) if the particle's position at \(t=\SI{1}{s}\) is \(\SI{5}{m}\)?
+
+First, modify \(v(t)\) by dividing by \(t^{\frac{1}{2}}\) so that it is easier to integrate:
+\[v(t)=t^{\frac{3}{2}}-3t^{\frac{1}{2}}+2t^{-\frac{1}{2}}\]
+Now, find the antiderivative, which is the position:
+\[s(t)=\frac{2}{5}t^{\frac{5}{2}}-3\left(\frac{2}{3}\right)t^{\frac{3}{2}}+2(2)t^{\frac{1}{2}}+C=
+\frac{2}{5}t^{\frac{5}{2}}-2t^{\frac{3}{2}}+4t^{\frac{1}{2}}+C\]
+Next, use the initial condition to resolve \(C\):
+\begin{gather*}
+  s(1)=\frac{2}{5}(1)^{\frac{5}{2}}-2(1)^{\frac{3}{2}}+4(1)^{\frac{1}{2}}+C=5 \\
+  \frac{2}{5}-2+4+C=5 \\
+  \frac{12}{5}+C=5 \\
+  C=5-\frac{12}{5}=\frac{13}{5}
+\end{gather*}
+And so the final function for the position is:
+\[s(t)=\frac{2}{5}t^{\frac{5}{2}}-2t^{\frac{3}{2}}+4t^{\frac{1}{2}}+\frac{13}{5}\]
+Finally, plug in \(4\) to determine the position after \SI{4}{s}:
+\begin{align*}
+  s(t) &= \frac{2}{5}(4)^{\frac{5}{2}}-2(4)^{\frac{3}{2}}+4(4)^{\frac{1}{2}}+\frac{13}{5} \\
+  &= \frac{2}{5}(32)-2(8)+4(2)+\frac{13}{5} \\
+  &= \frac{64}{5}-16+8+\frac{13}{5} \\
+  &= \frac{77}{5}-8 \\
+  &= \frac{37}{5} \\
+  &= 7.4
+\end{align*}
+Therefore, after \SI{4}{s}, the particle is at position \SI{7.4}{m}.
+
+\end{document}

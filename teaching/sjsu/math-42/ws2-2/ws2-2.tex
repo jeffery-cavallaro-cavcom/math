@@ -1,0 +1,107 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\newcommand{\U}{\mathcal{U}}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#10
+
+  \textbf{Set Operations}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item Let \(\U=\setb{n\in\N}{1\le n\le10}\) be the universe and defined the following sets in \(\U\):
+  \begin{gather*}
+    A=\set{1,2,4,7,9} \\
+    B=\set{2,3,4,10} \\
+    C=\set{5,8} \\
+  \end{gather*}
+  Construct the following sets using roster notation:
+  \begin{enumerate}
+  \item \(A\cup B\)
+  \item \(B\cup A\)
+  \item \(A\cap B\)
+  \item \(B\cap A\)
+  \item \(A-B\)
+  \item \(B-A\)
+  \item \(A\cup C\)
+  \item \(A\cap C\)
+  \item \(A-C\)
+  \item \(C-A\)
+  \item \(A\cup\emptyset\)
+  \item \(A\cap\emptyset\)
+  \item \(A-\emptyset\)
+  \item \(\emptyset-A\)
+  \item \(\bar{A}\)
+  \item \(\bar{B}\)
+  \item \(\bar{C}\)
+  \item \(\bar{\emptyset}\)
+  \end{enumerate}
+
+\item Consider the following sets:
+  \begin{gather*}
+    A=\setb{x\in\R}{x<-1} \\
+    B=\setb{x\in\R}{x\ge2} \\
+  \end{gather*}
+  Graph each of the following sets and express them using interval notation:
+  \begin{enumerate}
+  \item \(A\)
+  \item \(\bar{A}\)
+  \item \(B\)
+  \item \(\bar{B}\)
+  \item \(A\cup B\)
+  \item \(A\cap B\)
+  \item \(A-B\)
+  \item \(\bar{A}\cup\bar{B}\)
+  \item \(\bar{A}\cap\bar{B}\)
+  \item \(\bar{A}-\bar{B}\)
+  \item \(\overline{A\cup B}\)
+  \item \(\overline{A\cap B}\)
+  \item \(\overline{A-B}\)
+  \item \(\overline{\bar{A}\cup\bar{B}}\)
+  \item \(\overline{\bar{A}\cap\bar{B}}\)
+  \item \(\overline{\bar{A}-\bar{B}}\)
+  \end{enumerate}
+
+\item Prove the identity: \(A-B=A\cap\bar{B}\) using:
+  \begin{enumerate}
+  \item The definitions of the set operators and logic.  Remember, this is a set equality proof, so it is
+    bidirectional.  Instead of proving both directions, each of your proof steps should be an iff.
+  \item A Venn diagram.
+  \end{enumerate}
+
+\item Consider the set expression: \(\bar{A}\cup(\bar{B}\cap{C})\)
+  \begin{enumerate}
+  \item Show the selection region(s) on a Venn diagram.
+  \item Complement and simplify.
+  \item Show the selection region(s) of the complement on a Venn diagram.
+  \item Using your Venn diagrams, confirm that the complement is correct.
+  \end{enumerate}
+
+\item Prove the following using the set operation definitions and logic:
+  \begin{enumerate}
+  \item \(A\subseteq B\implies A\cup B=B\)
+  \item \(A\subseteq B\implies A\cap B=A\)
+  \end{enumerate}
+
+\item Let \(\set{A_k:k\in\N}\) be the family of sets where \(A_k=\left[-\frac{1}{k},\frac{1}{k}\right]\).
+  Determine each of the following sets:
+  \begin{enumerate}
+    \item \(\displaystyle\bigcup_{k\in\N}A_k\)
+    \item \(\displaystyle\bigcap_{k\in\N}A_k\)
+  \end{enumerate}
+
+\item DeMorgan works for finite and infinite generalized unions and intersections as well.  Let
+  \(\set{A_k:k\in I}\) be some general family of sets and prove the following using careful logical proofs:
+  \begin{enumerate}
+  \item \(\displaystyle\overline{\bigcup_{k\in I}A_k}=\bigcap_{k\in I}\overline{A_k}\)
+  \item \(\displaystyle\overline{\bigcap_{k\in I}A_k}=\bigcup_{k\in I}\overline{A_k}\)
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

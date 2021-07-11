@@ -1,0 +1,84 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\l}{\lambda}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 02, 03, 60
+
+  \Large
+  Homework \#9 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+You work for a large conglomerate of 100 associated companies.  In order to avoid antitrust issues with the DOJ,
+you need to divide the 100 companies into 4 different groups such that:
+\begin{enumerate}
+\item Companies within the same group cannot do business with each other.
+\item Companies in different groups can do business with each other.
+\end{enumerate}
+What organization of the 100 companies into the 4 groups maximimizes the number of business opportunities?
+
+\begin{enumerate}[label={\alph*)}]
+\item Start by labeling the groups \(X\), \(Y\), \(Z\), and \(W\).  Let \(x=\) the number of companies assigned to
+  group \(X\) and so on for the other groups.  Construct an equation in \(x\) for the number of business
+  opportunities for a company in group \(X\) --- i.e., how many companies can that company do business with?
+
+  Each company in \(X\) can do business with the other \(100-x\) companies.
+  
+\item Now build an equation in \(x\) for the total number of business opportunities for all companies in group
+  \(X\).
+
+  There are \(x\) companies, each of with can do business with \(100-x\) companies, for a total of \(x(100-x)\)
+  business opportunities for all of the companies in X.
+
+\item Do likewise for the remaining groups and construct a function \(f(x,y,z,w)\) that gives the total number of
+  business opportunities across all the groups.
+  \[f(x,y,z,w)=x(100-x)+y(100-y)+z(100-z)+w(100-w)\]
+  
+\item What is the constraint on \(x\), \(y\), \(z\), and \(w\)?
+  \[x+y+z+w=100\]
+
+\item Introduce a Lagrange multiplier \(\l\) and determine \(f_x=\l g_x\), where \(g\) is the function constructed
+  from the above constraint.
+  \[100-2x=\l\]
+
+\item Do likewise for \(f_y\), \(f_z\), and \(f_w\), and combine them with the constraint so that you have 5
+  equations in 5 unknowns.
+  \begin{gather*}
+    100-2x=\l \\
+    100-2y=\l \\
+    100-2z=\l \\
+    100-2w=\l \\
+    x+y+z+w=100
+  \end{gather*}
+
+\item Use substitution to determine a value for \(\l\).
+  \begin{gather*}
+    2x=100-\l \\
+    \\
+    x=50-\frac{\l}{2} \\
+    y=50-\frac{\l}{2} \\
+    z=50-\frac{\l}{2} \\
+    w=50-\frac{\l}{2} \\
+    \\
+    4\left(50-\frac{\l}{2}\right)=100 \\
+    50-\frac{\l}{2}=25 \\
+    \frac{\l}{2}=25 \\
+    \l=50
+  \end{gather*}
+
+\item Substitute the value for \(\l\) into the other equations to determine the optimal distribution of companies
+  into the 4 groups.
+  \begin{gather*}
+    x=50-\frac{50}{2}=50-25=25 \\
+    y=25 \\
+    z=25 \\
+    w=25
+  \end{gather*}
+\end{enumerate}
+
+\end{document}

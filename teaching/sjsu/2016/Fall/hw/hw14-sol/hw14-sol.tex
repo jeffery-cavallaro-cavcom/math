@@ -1,0 +1,167 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-08 Homework \#14 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\begin{itemize}
+\item Text book chapter 4
+\end{itemize}
+
+\underline{Problems}
+
+Make sure that all sketches have all important points and asymptotes
+clearly marked.
+
+\begin{enumerate}
+\item List the transformations, find all intercepts, and sketch:
+  \[y=-2e^{x+1}+5\]
+
+  Transformations:
+  \begin{enumerate}[label={\arabic*)}]
+  \item Start with $y=e^x$
+  \item Translate left 1
+  \item Scale by 2
+  \item Reflect across x-axis
+  \item Translate up 5
+  \end{enumerate}
+
+  y-intercept:
+  \[y=-2e^{0+1}+5=-2e+5\approx-0.44\]
+
+  x-intercept:
+  \begin{eqnarray*}
+    0 &=& -2e^{x+1}+5 \\
+    2e^{x+1} &=& 5 \\
+    e^{x+1} &=& \frac{5}{2} \\
+    x+1 &=& \ln{\frac{5}{2}} \\
+    x &=& -1+\ln{\frac{5}{2}} \\
+    x &\approx& -0.1
+  \end{eqnarray*}
+
+  \begin{tikzpicture}
+    \draw [<->] (-5,0) -- (5,0);
+    \draw [<->] (0,-5) -- (0,5);
+    \draw [dashed] (-5,3) -- (5,3);
+    \node [below right] at (0,3) {$5$};
+    \node [circle,fill,scale=0.5] (x) at ({4*(-1+ln(5/2))},0) {};
+    \node [circle,fill,scale=0.5] (y) at (0,{4*(-2*e+5)}) {};
+    \draw plot [smooth] coordinates{
+      (0.5,-5)
+      (y)
+      (x)
+      (-1,2.0)
+      (-2,2.9)
+      (-5,2.95)
+    };
+    \node [left] at (y) {$-1+\ln\frac{5}{2}$};
+    \node [above left] at (x) {$-2e+5$};
+  \end{tikzpicture}
+
+\item List the transformations, find all intercepts, and sketch:
+  \[y=3\ln(x-2)+1\]
+
+  Transformations:
+  \begin{enumerate}[label={\arabic*)}]
+  \item Start with $y=\ln{x}$
+  \item Translate right 2
+  \item Scale by 3
+  \item Translate up 1
+  \end{enumerate}
+
+  y-intercept: none
+
+  x-intercept:
+  \begin{eqnarray*}
+    0 &=& 3\ln(x-2)+1 \\
+    3\ln(x-2) &=& -1 \\
+    \ln(x-2) &=& -\frac{1}{3} \\
+    x-2 &=& e^{-\frac{1}{3}} \\
+    x &=& 2+e^{-\frac{1}{3}} \\
+    x &\approx& 2.7
+  \end{eqnarray*}
+
+  \begin{tikzpicture}
+    \draw [<->] (-5,0) -- (5,0);
+    \draw [<->] (0,-5) -- (0,5);
+    \draw [dashed] (1,-5) -- (1,5);
+    \node [below right] at (1,0) {$2$};
+    \node [circle,fill,scale=0.5] (x) at ({2+e^(-1/3)},0) {};
+    \node [below right] at (x) {$2+e^{-\frac{1}{3}}$};
+    \draw plot [smooth] coordinates{
+      (1.05,-5)
+      (1.5,-1.5)
+      (x)
+      (5,1)
+    };
+  \end{tikzpicture}
+
+\item Given:
+  \[\log_b{2}=0.6931\]
+  \[\log_b{3}=1.0986\]
+  \[\log_b{5}=1.6094\]
+  find $\log_b{\left(\frac{75}{4}\right)}$. You must use each one of the given
+  values, you are not allowed to determine the value of $b$, and you must show
+  exactly how you obtained the answer.
+
+  \begin{eqnarray*}
+    \log_b{\left(\frac{75}{4}\right)} &=&
+    \log_b{\left(\frac{3\cdot5^2}{2^2}\right)} \\
+    &=& \log_b{3}+\log_b{5^2}-\log_b{2^2} \\
+    &=& \log_b{3}+2\log_b{5}-2\log_b{2} \\
+    &=& 1.0986+2(1.6094)-2(0.6931) \\
+    &=& 2.9312
+  \end{eqnarray*}
+
+\item Consider the equation: $y=\log_a{x}$
+  \begin{enumerate}
+  \item Derive the change of base formula for some arbitrary base $b$.
+
+    \begin{eqnarray*}
+      y &=& \log_a{x} \\
+      a^y &=& x \\
+      \log_b{a^y} &=& \log_b{x} \\
+      y\log_b{a} &=& \log_b{x} \\
+      y &=& \frac{\log_b{x}}{\log_b{a}}
+    \end{eqnarray*}
+    
+  \item Use your formula with $b=e$ and your calculator to compute
+    $\log_7 100$.
+
+    \[\log_7 100=\frac{\ln{100}}{\ln{7}}=2.3666\]
+    You can check this by:
+    \[7^{2.3666}\approx100\]
+    
+  \item Assume that you made a mistake and used the common log key instead of
+    the natural log key in the above calculation. Would you get a different
+    answer? Why or why not?
+
+    You would get the same answer because the change-of-base formula is
+    independent of the base selected.
+  \end{enumerate}
+
+\item Researchers tend to prefer exponential (base $e$) equations. For example,
+  the normal equation for the radioactive decay of Carbon-14, which has a
+  half-life of 5730 years, would be:
+  \[A=A_0\cdot2^{-\frac{t}{5730}}\]
+  But the preferred exponential equations is:
+  \[A=A_oe^{-\frac{t}{a}}\]
+  Solve for $a$, rounding to the nearest integer value.
+
+  \begin{eqnarray*}
+    2^{-\frac{t}{5730}} &=& e^{-\frac{t}{a}} \\
+    \ln{2^{-\frac{t}{5730}}} &=& \ln{e^{-\frac{t}{a}}} \\
+    -\frac{t}{a} &=& -\frac{t}{5730}\ln{2} \\
+    \frac{1}{a} &=& \frac{1}{5730}\ln{2} \\
+    a &=& \frac{5730}{\ln{2}} \\
+    a &\approx& 8267
+  \end{eqnarray*}
+\end{enumerate}
+\end{document}

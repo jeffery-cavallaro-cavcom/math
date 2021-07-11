@@ -1,0 +1,184 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#2 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+Please read sections 1.1 through 1.5 and 1.7 and then do all concept problems
+in the posted sections on web\-assign.
+
+\underline{Problems}
+
+\begin{enumerate}
+\item Simplify completely. Your answer should have no negative exponents and
+please rationalize the denominator. Don't worry if the exponents get messy.
+\[\frac{\sqrt[4]{\sqrt{75}+\sqrt{27}}}{\sqrt{4\sqrt{20}\sqrt[3]{54}}}\]
+
+\bigskip
+
+This is really messy, so you need to take it step by step.  Let's work with the
+numerator first:
+\begin{eqnarray*}
+\sqrt[4]{\sqrt{75}+\sqrt{27}} &=& (\sqrt{75}+\sqrt{27})^{1/4} \\
+    &=& (\sqrt{25\cdot3}+\sqrt{9\cdot3})^{1/4} \\
+    &=& (5\sqrt{3}+3\sqrt{3})^{1/4} \\
+    &=& (8\sqrt{3})^{1/4} \\
+    &=& (2^33^{1/2})^{1/4} \\
+    &=& 2^{3/4}3^{1/8} \\
+\end{eqnarray*}
+and now the denominator:
+\begin{eqnarray*}
+\sqrt{4\sqrt{20}\sqrt[3]{54}} &=& (4\sqrt{20}\sqrt[3]{54})^{1/2} \\
+    &=& (2^2\sqrt{4\cdot5}\sqrt[3]{27\cdot2})^{1/2} \\
+    &=& (2^2\cdot2\sqrt{5}\cdot3\sqrt[3]{2})^{1/2} \\
+    &=& (2^3\sqrt{5}\cdot3\sqrt[3]{2})^{1/2} \\
+    &=& (2^3\cdot5^{1/2}\cdot3\cdot2^{1/3})^{1/2} \\
+    &=& (2^{10/3}3^15^{1/2})^{1/2} \\
+    &=& 2^{5/3}3^{1/2}5^{1/4} \\
+\end{eqnarray*}
+Finally, putting it all together and rationalizing:
+\begin{eqnarray*}
+\frac{\sqrt[4]{\sqrt{75}+\sqrt{27}}}{\sqrt{4\sqrt{20}\sqrt[3]{54}}} &=&
+    \frac{2^{3/4}3^{1/8}}{2^{5/3}3^{1/2}5^{1/4}} \\
+    &=& 2^{(3/4-5/3)}3^{(1/8-1/2)}5^{(0-1/4)} \\
+    &=& 2^{-11/12}3^{-3/8}5^{-1/4} \\
+    &=& \frac{1}{2^{11/12}3^{3/8}5^{1/4}} \\
+    &=& \left(\frac{1}{2^{11/12}3^{3/8}5^{1/4}}\right)
+        \left(\frac{2^{1/12}3^{5/8}5^{3/4}}{2^{1/12}3^{5/8}5^{3/4}}\right) \\
+    &=& \frac{2^{1/12}3^{5/8}5^{3/4}}{2\cdot3\cdot5} \\
+    &=& \frac{2^{1/12}3^{5/8}5^{3/4}}{30} \\
+\end{eqnarray*}
+
+\bigskip
+
+\item A student writes the following statements. Determine if each is either
+correct or incorrect (or misleading). Explain why incorrect statements are
+incorrect.
+\begin{enumerate}
+\item $\sqrt{9}=\pm3$
+
+Incorrect. $\sqrt{9}$ is asking for the principle root: $+3$.
+
+\item $\left(x^{\frac{1}{2}}\right)^2=\abs{x}$
+
+Misleading. $x^{1/2}$ implies that $x>=0$, so the absolute value is extraneous.
+
+\item $\left(x^2\right)^{\frac{1}{2}}=x$
+
+Very incorrect! $\left(x^2\right)^{\frac{1}{2}}$ is always $\ge0$, so we need
+$\abs{x}$ here, just in case $x<0$!
+
+\item $\left(x^3\right)^{\frac{1}{3}}=\abs{x}$
+
+Incorrect. We don't use the absolute value with odd roots. Plug in $x=-1$ and
+see why this is wrong.
+\end{enumerate}
+
+\bigskip
+
+\item Solve for $x$ by \emph{completing the square}.
+\[2x^2+4x-3=0\]
+\begin{eqnarray*}
+2x^2+4x-3 &=& 0 \\
+2x^2+4x &=& 3 \\
+x^2+2x &=& \frac{3}{2} \\
+x^2+2x+1 &=& \frac{3}{2}+1 \\
+(x+1)^2 &=& \frac{5}{2} \\
+x+1 &=& \pm\sqrt{\frac{5}{2}} \\
+x &=& -1\pm\sqrt{\frac{5}{2}} \\
+\end{eqnarray*}
+
+\bigskip
+
+\item A man stands atop a $256ft$ cliff with a  ball.
+\begin{enumerate}
+\item How long does it take for the ball to hit the ground if he simply
+releases the ball?
+
+\begin{eqnarray*}
+256+0t-16t^2 &=& 0 \\
+16(16-t^2) &=& 0 \\
+16-t^2 &=& 0 \\
+(4+t)(4-t) &=& 0 \\
+\end{eqnarray*}
+This yields two solutions: $t=\pm4$ seconds. We take the positive solution
+here: $t=4$ seconds.
+
+\bigskip
+
+\item How long does it take for the ball to hit the ground if he throws the
+ball up with a velocity of $16 ft/s$?
+
+\begin{eqnarray*}
+256+16t-16t^2 &=& 0 \\
+-16(t^2-t-16) &=& 0 \\
+t^2-t-16 &=& 0 \\
+\end{eqnarray*}
+\begin{eqnarray*}
+t &=& \frac{1\pm\sqrt{(-1)^2-4(1)(-16)}}{2(1)} \\
+    &=& \frac{1\pm\sqrt{1+64}}{2} \\
+    &=& \frac{1\pm\sqrt{65}}{2} \\
+\end{eqnarray*}
+
+This yields two solutions: $t\approx-3.5$ seconds and $t\approx4.5$ seconds.
+We take the positive solution here: $t\approx4.5$; however, we save the
+negative solution for later.
+
+\bigskip
+
+\item How long does it take for the ball to hit the ground if he throws the
+ball down with a velocity of $16 ft/s$? (Hint: no additional calculations are
+needed).
+
+\bigskip
+
+Note that in the previous problem the man threw the ball up at $+16 ft/s$. The
+ball is going to travel up, slow down due to gravity, eventually stop, and then
+start falling. When the ball passes the man again it must be going at
+$-16 ft/s$. Thus, the two problems are the same! Furthermore, the negative
+solution from the previous problem is the answer here: $t\approx3.5$ seconds.
+
+\bigskip
+
+\item Assume that a lady is standing on the ground below the cliff and throws
+a ball up so that it passed the man on the cliff at a velocity of $16 ft/s$.
+How long would it be before the ball hits the ground? (Hint: you already have
+all the information that you need).
+
+Once again, this is the \emph{same} problem. The roundtrip time is the sum of
+the previous two times: $t\approx3.5+4.5\approx8.0$ seconds.
+\end{enumerate}
+
+\bigskip
+
+\item Muri is a shopkeeper that specializes in pickled vegetables. She has
+determined over the years that the best brine (salt solution) for pickling
+vegetables is 2 kg of salt per liter of water (2 kg/L).  One day, she has her
+not-so-bright nephew helping her and he uses too much salt, resulting in
+a 5 kg/L solution.  If her nephew made up 10 liters of the too-salty solution,
+how much pure water must he add to it to get the ideal 2 kg/L solution? For
+full credit, show the mixture equation and the appropriate values for each
+concentration and volume value in the equation.
+\[c_1v_1+c_2v_2=c_3(v_1+v_2)\]
+$c_1=$ initial salt concentration $=5 kg/L$ \\
+$v_1=$ original water volume $=10 L$ \\
+$c_2=$ salt concentration of pure water $=0 kg/L$ \\
+$v_2=$ amount of water to be added $=x$ (unknown) \\
+$c_3=$ desired salt concentration $=2 kg/L$ \\
+\begin{eqnarray*}
+5(10)+0x &=& 2(10+x) \\
+50+0 &=& 20+2x \\
+2x &=& 30 \\
+x &=& 15 \\
+\end{eqnarray*}
+So, 15 L of pure water must be added to achieve the desired concentration.
+\end{enumerate}
+\end{document}

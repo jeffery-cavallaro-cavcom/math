@@ -1,0 +1,290 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \Large Math-1005a Homework \#6
+  
+  Exponents: Multiplying/Dividing Common Bases
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Problems}
+
+\begin{enumerate}
+\item An exponential expression is an expression of the form $a^b$ where $a$
+  is called the base and $b$ is called the exponent. We will begin our
+  examination of exponential expressions by assuming that the base and the
+  exponent are positive integers greater than 1. Recall that multiplication is
+  a shorthand for repeated addition. For example:
+  \[2\cdot3=2+2+2=6\]
+  Similarly, exponentiation is a shorthand for repeated multiplication:
+  \[2^3=2\cdot2\cdot2=8\]
+  Evaluate each of the following:
+  
+  \begin{tabular}{p{1.5in}p{1.5in}p{1.5in}}
+    $2^2=$ & $2^3=$ & $2^4=$ \\
+    \\
+    $3^2=$ & $3^3=$ & $3^4=$ \\
+    \\
+    $4^2=$ & $4^3=$ & $4^4=$ \\
+    \\
+    $5^2=$ & $5^3=$ & $5^4=$
+  \end{tabular}
+
+\item Now let's look at some of the cases where the either the exponent or base
+  are either 0 or 1:
+  \begin{itemize}
+  \item We will not consider the case where the base and the exponent are
+    both zero: $0^0$.
+
+  \item Any non-zero value $a$ to the zero power is always $1$: $a^0=1$.
+
+  \item Any value $a$ to the first power is just $a$ and we omit the $1$:
+    $a^1=a$.
+
+  \item Zero to any non-zero value $a$ is always zero: $0^a=0$.
+
+  \item One to any value $a$ is always one: $1^a=1$.
+  \end{itemize}
+
+  Evaluate the following exponential expressions: 
+
+  \begin{tabular}{p{1in}p{1in}p{1in}p{1in}}
+    $1^0=$ & $1^1=$ & $0^1=$ & $0^{100}$ \\
+    \\
+    $5^1=$ & $0^5=$ & $5^0=$ & $1^5$ \\
+    \\
+    $0^{15}=$ & $15^0=$ & $1^{15}=$ & $15^1$
+  \end{tabular}
+
+\item When the base in an exponential expression is negative, we still have
+  $a^0=1$ and $a^1=a$, but when the exponent is an integer greater than or
+  equal to $2$ then the sign of the result is dependent on whether the exponent
+  is even or odd.
+
+  Consider an example with an even power:
+  \[(−2)^4=(−2)(−2)(−2)(−2)=16\]
+  Since we are multiplying an even number of negative values the result is
+  positive value.
+
+  Now consider an example with an odd power:
+  \[(−2)^5=(−2)(−2)(−2)(−2)(−2)=−32\]
+  Since we are multiplying an odd number of negative values the result is
+  negative value.
+
+  The parentheses in the above are important! In general:
+  \[(-a)^n\ne-a^n\]
+  This is because the exponent on the RHS is more binding (i.e., has higher
+  precedence) than the minus sign. The expression on the LHS overrides this
+  precedence. For example:
+  \[(-2)^4=16\]
+  but:
+  \[-2^4=-(2^4)=-16\]
+  Evaluate the following expressions:
+  \begin{enumerate}
+  \item $(-3)^2=$
+  \item $(-3)^3=$
+  \item $(-3)^0=$
+  \item $(-3)^1=$
+  \item $-3^0=$
+  \item $-3^1=$
+  \item $-3^2=$
+  \item $-3^3=$
+  \end{enumerate}
+
+\item When we multiply exponential expressions with common bases, we add their
+  exponents:
+  \[a^na^m=a^{n+m}\]
+  You can think of this as:
+  \[(a\cdot a\cdot a\cdots a)(a\cdot a\cdot a\cdots a)\]
+  where the first parentheses contain $n$ $a$'s and the second parentheses
+  contain $m$ $a$'s for a total of $n+m$ $a$'s. For example:
+  \[2^2\cdot2^3=2^{2+3}=2^5=32\]
+  Note these special cases:
+  \begin{itemize}
+  \item $a^na^0=a^{n+0}=a^n$
+  \item $a^na=a^na^1=a^{n+1}$
+  \end{itemize}
+  If there is more than two factors with a common base then combine all their
+  exponents. For example:
+  \[2^2\cdot2^5\cdot2^3\cdot2^2=2^{2+5+3+2}=2^{12}\]
+
+  Simplify the following expressions. Leave your answers in exponent form:
+  \begin{enumerate}
+  \item $3^2\cdot3^3=$
+  \item $7^3\cdot7^5=$
+  \item $11\cdot11^5=$
+  \item $0^2\cdot0^3=$
+  \item $1^2\cdot1^3=$
+  \item $5^2\cdot5^4\cdot5^3=$
+  \item $13^{10}\cdot13^{10}\cdot13^5=$
+  \item $2^3\cdot2\cdot2^0\cdot2^2=$
+  \end{enumerate}
+
+\item Sometimes there are other factors between the factors with common bases.
+  For example:
+  \[2^2\cdot 3^2\cdot2^3\]
+  But remember, multiplication can be done in any order so we are free to
+  rearrange the factors and then combine exponents:
+  \[2^2\cdot 3^2\cdot2^3=2^2\cdot2^3\cdot3^2=2^{2+3}\cdot3^2=2^5\cdot3^2\]
+
+  Simplify the following expressions. Leave your answers in exponent form:
+  \begin{enumerate}
+  \item $5^3\cdot7^2\cdot5^2=$
+  \item $11^2\cdot13\cdot11^5=$
+  \item $3\cdot5^2\cdot3=$
+  \item $7^4\cdot17\cdot7^3$
+  \item $2^2\cdot3^2\cdot2^5\cdot3\cdot2\cdot5^3=$
+  \end{enumerate}
+
+\item The next exponent rule is as follows:
+  \[(a^n)^m=a^{nm}\]
+  In this case, we multiply the exponents. You can think of this as:
+  \[a^n\cdot a^n\cdot a^n\cdots a^n\]
+  a total of $n$ times, where each $a^n$ contains $n$ $a$'s, for a total of
+  $nm$ $a$'s. For example:
+  \[(2^3)^2=2^{3\cdot2}=2^6\]
+  Make sure that you can distinguish between these two rules:
+  \[a^na^m=a^{n+m}\]
+  \[(a^n)^m=a^{nm}\]
+  Mixing up these two rules results in lots of algebra errors!
+
+  Simplify the following expressions. Leave your answers in exponent form:
+  \begin{enumerate}
+  \item $(3^4)^2=$
+  \item $(5^2)^3=$
+  \item $(7^1)^2=$
+  \item $(2^0)^1=$
+  \item $(11^1)^0=$
+  \item $(10^0)^0=$
+  \item $(0^2)^3=$
+  \item $(1^2)^3=$
+  \end{enumerate}
+
+\item Now let's look at the exponent rules for different bases. The first rule
+  is as follows:
+  \[(ab)^n=a^nb^n\]
+  In other words, the exponent needs to be applied to \emph{every} factor
+  inside the parens. You can think of this as:
+  \[(ab)^n=(ab)(ab)(ab)\cdots(ab)\]
+  $n$ times. Then, since multiplication can be done in any order, we group all
+  $n$ $a$'a and all $n$ $b$'s:
+  \[(ab)^n=(a\cdot a\cdot a\cdots a)(b\cdot b\cdot b\cdots b)=a^nb^n\]
+  For example:
+  \[(2\cdot3)^2=2^2\cdot3^2\]
+  and:
+  \[(2\cdot3\cdot5)^2=2^2\cdot3^2\cdot5^2\]
+  Note that $(ab)^2$ is \emph{very} different from $(a+b)^2$. Many student mix
+  up this rule and try to say $(a+b)^2=a^2+b^2$; however, this is very wrong
+  --- you \emph{cannot} distribute an exponent across addition! But you can
+  distribute it across multiplication.
+
+  Simplify the following expressions. Leave your answers in exponent form:
+  \begin{enumerate}
+  \item $(5\cdot7)^2=$
+  \item $(5\cdot(-7))^2=$
+  \item $(3\cdot11)^5=$
+  \item $((-3)\cdot11)^5=$
+  \item $(11\cdot13)^0=$
+  \item $(2\cdot17)^1=$
+  \item $(5\cdot0)^2=$
+  \item $(11\cdot19\cdot2)^3=$
+  \item $(11\cdot(-19)\cdot2)^2=$
+  \item $(11\cdot(-19)\cdot2)^3=$
+  \end{enumerate}
+  
+\item Sometimes you might have two factors that look like they have the same
+  base, but one is negative and one is positive. If you remember that:
+  \[(-a)=(-1)a\]
+  then you can combine the previous rules to simplify. For example:
+  \[(-2)^2\cdot2^3=((-1)\cdot2)^2\cdot2^3=(-1)^2\cdot2^2\cdot2^3=
+  1\cdot2^{2+3}=2^5\]
+  and:
+  \[(-2)^3\cdot2^3=((-1)\cdot2)^3\cdot2^3=(-1)^3\cdot2^2\cdot2^3=
+  (-1)\cdot2^{2+3}=-2^5\]
+  Note that the evenness or oddness of the exponent will make a difference in
+  the final sign.
+
+  Simplify the following expressions. Leave your answers in exponent form:
+  \begin{enumerate}
+  \item $((-5)\cdot7)^5=$
+  \item $(5\cdot(-7))^5=$
+  \item $((-5)\cdot7)^4=$
+  \item $(5\cdot(-7))^4=$
+  \item $((-5)\cdot(-7))^3=$
+  \item $((-5)\cdot(-7))^2=$
+  \item $((-5)\cdot7)^0=$
+  \item $(5\cdot(-7))^1=$
+  \end{enumerate}
+
+\item Many problems require you to apply multiple rules, one at a time. One
+  common pattern that you should know how to handle is something like this:
+  \[(2\cdot3^2)^4\]
+  Note that one of the factors is an exponential expression itself. So the
+  exponent of $4$ needs to be applied to both $2$ and $3^2$ first:
+  \[(2\cdot3^2)^4=2^4\cdot(3^2)^4=2^4\cdot3^8\]
+  Simplify the following expressions. Leave your answers in exponent form:
+  \begin{enumerate}
+  \item $(2^2\cdot3\cdot5^3)^2=$
+  \item $(2^2\cdot(-3)\cdot5^3)^2=$
+  \item $(2^2\cdot(-3)\cdot5^3)^3=$
+  \item $(2^2\cdot7^3)^2(5^3\cdot7)^2=$
+  \item $((2^2\cdot(-11))^2((-2)\cdot5)^3)^3=$
+  \end{enumerate}
+
+\item The final two rules deal with division. The first rule is for a common
+  base:
+  \[\frac{a^n}{a^m}=a^{n-m}\]
+  For now, we will assume that $n\ge m$; we will deal with $n<m$ in the next
+  lesson. You can think of this a $n$ $a$'s in the numerator and $m$ $a$'s in
+  the denominator, so the $m$ $a$'s below will all cancel, leaving $n-m$ $a$'s
+  on top. For example:
+  \[\frac{a^3}{a^2}=a^{3-1}=a^1=a\]
+  Note that the technique of \emph{cancelling} factors in the numerator and
+  denominator are just a consequence of this above rule:
+  \[\frac{a^n}{a^n}=a^{n-n}=a^0=1\]
+  Simplify the following expressions. Leave your answers in exponent form:
+  \begin{enumerate}
+  \item $\frac{3^4}{3^2}=$
+  \item $\frac{5^3}{5^3}=$
+  \item $\frac{7^1}{5^1}=$
+  \item $\frac{2^2}{2^0}=$
+  \item $\frac{3^2}{3}=$
+  \item $\frac{11}{11}=$
+  \item $\frac{13}{13^0}=$
+  \item $\frac{(-3)^4}{3^2}=$
+  \item $\frac{(-3)^3}{3^2}=$
+  \item $\frac{5^9}{(-5)^5}=$
+  \end{enumerate}
+
+\item The next and final rule is for different bases:
+  \[\left(\frac{a}{b}\right)^n=\frac{a^n}{b^n}\]
+  Simplify the following expressions. Leave your answers in exponent form:
+  \begin{enumerate}
+    \item $\left(\frac{3}{2}\right)^3$
+    \item $\left(\frac{3^2}{2}\right)^3$
+    \item $\left(\frac{3^2}{2^4}\right)^3$
+    \item $\left(\frac{(-3)}{2^4}\right)^2$
+    \item $\left(\frac{(-3)}{2^4}\right)^3$
+  \end{enumerate}
+
+\item When composite numbers are involved, determine their prime
+  factorizations first --- this may result in some unexpected cancelling.
+
+  Simplify the following expression by putting everything in prime factored
+  form first. Leave your answers in exponent form:
+  \[\frac{81\cdot12}{2\cdot30}\]
+
+\item Simplify the following expression. Leave the answer in exponent form:
+  \[-4((-5)\cdot2^6)^2=\]
+
+\item Simplify the following expression. Leave the answer in exponent form:
+  \[\frac{2\cdot(-3)^2(-2)^3\cdot5}{2^2\cdot3}=\]
+
+\end{enumerate}
+
+\end{document}

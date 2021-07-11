@@ -1,0 +1,52 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#4 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+Your are the finance manager for a company that just had a great year.  Last year's income statement and this year's
+expectations indicate that the company has a surplus of cash.  You decide to invest \$100,000 of this cash in a 5 year CD that
+compounds monthly.  The total amount of the investment after the 5 years is given by:
+\[A(r)=100000\left(1+\frac{r}{12}\right)^{60}\]
+where \(r\) is the annual interest rate. Assuming that the interest rate is 3\% (\(r=0.03\)):
+\begin{enumerate}
+\item What is the total amount of the investment after 5 years?
+  \[A(0.03)=100000\left(1+\frac{0.03}{12}\right)^{60}=\$116161.68\]
+\item How fast is the amount growing with respect to \(r\), in dollars per percent?
+
+  Getting the correct units on this is tricky.  Here are two methods.  I prefer the second method.
+
+  \begin{enumerate}
+    \item Using the chain rule:
+      \begin{gather*}
+        A'(r)=100000\left[60\left(1+\frac{r}{12}\right)^{59}\right]\left(\frac{1}{12}\right)=
+        500000\left(1+\frac{r}{12}\right)^{59} \\
+        A'(0.03)=500000\left(1+\frac{0.03}{12}\right)^{59}=\$579359.99\ \text{per percent}/100=579359.99 \$100/percent
+      \end{gather*}
+      Note the weird units: \(\text{percent}/100\).  This is because the equation for \(A(r)\) needs \(r\) to be a
+      fractional number --- i.e., \(\text{percent}/100\).  To get rid of this weird unit, we need to divide the final
+      answer by 100:
+      \[A'(0.03)=\$5793.60/percent\]
+
+    \item The first method is a bit of a kludge.  A much better way is to adjust the original \(A(r)\) so that it
+      accepts whole percent values:
+      \[A(r)=100000\left(1+\frac{r/100}{12}\right)^{60}=100000\left(1+\frac{r}{1200}\right)^{60}\]
+      An now:
+      \begin{gather*}
+        A'(r)=100000\left[60\left(1+\frac{r}{1200}\right)^{59}\right]\left(\frac{1}{1200}\right)=
+        5000\left(1+\frac{r}{1200}\right)^{59} \\
+        A'(0.03)=5000\left(1+\frac{0.03}{1200}\right)^{59}=\$5793.60\ \text{per percent}
+      \end{gather*}
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,58 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\usepackage[thicklines]{cancel}
+\renewcommand{\CancelColor}{\color{red}}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-13 Sections 01 and 02
+
+  \Large
+  Homework \#6 Solutions
+\end{center}
+
+A ball is thrown upward off of a \SI{100}{ft} cliff at a velocity of \SI{64}{ft/s}.  The equation of motion for the
+ball is:
+\[H(t)=100+64t-16t^2\]
+\begin{enumerate}[left=0in]
+\item Using the \emph{definition of the derivative} (i.e., not the derivative formulas), determine \(H'(t)\).
+  \begin{align*}
+    H'(t) &= \lim_{h\to0}\frac{H(t+h)-H(t)}{h} \\
+    &= \lim_{h\to0}\frac{[100+64(t+h)-16(t+h)^2]-[100+64t-16t^2]}{h} \\
+    &= \lim_{h\to0}\frac{100+64t+64h-16(t^2+2th+h^2)-100-64t+16t^2}{h} \\
+    &= \lim_{h\to0}\frac{\cancel{100}+\cancel{64t}+64h-\cancel{16t^2}-32th-16h^2-\cancel{100}-
+      \cancel{64t}+\cancel{16t^2}}{h} \\
+    &= \lim_{h\to0}\frac{64h-32th-16h^2}{h} \\
+    &= \lim_{h\to0}(64-32t-16h) \\
+    &= 64-32t
+  \end{align*}
+\item How fast is the ball traveling and in which direction (up or down) after \SI{5}{sec}?
+
+  Since \(v(t)=H'(t)\):
+  \[v(5)=64-32(5)=64-160=-96\]
+  So the ball is traveling at \SI{96}{ft/s} is the down direction.
+\item What is the ball's height after \SI{5}{sec}?
+  \[H(t)=100+64(5)-16(5)^2=100+320-16(25)=420-400=20\]
+  So the ball has fallen to a height of \SI{20}{ft}.
+\item What is the equation of the tangent line to the curve at \(t=5\)?
+
+  Using \(m=-96\) and the point \((5,20)\):
+  \begin{gather*}
+    H-20=-96(t-5) \\
+    H=-96t+480+20 \\
+    H=-96t+500
+  \end{gather*}
+\item What is the equation of the normal line to the curve at \(t=5\)?
+
+  Using \(m=\frac{1}{96}\) and the point \((5,20)\):
+  \begin{gather*}
+    H-20=\frac{1}{96}(t-5) \\
+    H=\frac{1}{96}t-\frac{5}{96}+20 \\
+    H=\frac{1}{96}t+\frac{1915}{96}
+  \end{gather*}
+\end{enumerate}
+
+\end{document}

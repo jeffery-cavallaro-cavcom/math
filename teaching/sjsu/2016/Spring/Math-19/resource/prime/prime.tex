@@ -1,0 +1,96 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{amsfonts}
+
+\begin{document}
+
+\section*{Prime Factorization}
+
+In mathematics, the term ``divides'' when applied to integers means something
+very specific:
+\begin{definition}[Divides]
+To say that one integer $n$ \emph{divides} another integer $m$, denoted $n|m$,
+mean that $\exists k\in\mathbb{Z},m=kn$. In this case, $n$ is said to be a
+\emph{divisor} of $m$.
+\end{definition}
+In arithmetic terms, this means that $n$ divides $m$ evenly; there is no
+remainder. We will study this in depth later when we encounter the so-called
+\emph{division algorithm}.
+
+This concept of division gives rise to an important subset of the integers
+called the prime numbers:
+\begin{definition}[Prime]
+To say that an integer is a \emph{prime} number means that it has only two
+divisors: 1 and itself. Otherwise, it is called \emph{composite}.
+\end{definition}
+The first few prime numbers are: $2, 3, 5, 7, 11, 13, 17, 19, \ldots$.
+
+The prime numbers play a pivotal role in what is called the \emph{Fundamental
+Theorem of Arithmetic}:
+\begin{theorem}
+Every integer can be represented uniquely as a product of powers of primes.
+\end{theorem}
+For example, $120=2^3\cdot3\cdot5$ and this representation is unique.
+
+Prime factorization is useful when we want to add or subtract two
+fractions with different denominators; we need to modify one or more
+of the fractions so that we have a common denominator.  We will then
+be able to use the rule:
+
+\[\frac{a}{c}\pm\frac{b}{c}=\frac{a\pm b}{c} \]
+
+We could just multiple the denominators by each other in order to achieve such
+a common denominator, but that typically leads to large, error-prone numbers---
+especially when there are more than two fractions in our expression. Instead,
+we want to pick the lowest common multiple (LCM) of all the denominators.
+
+Consider the problem: $\frac{3}{10}+\frac{7}{12}-\frac{3}{5}$
+
+\begin{enumerate}
+\item Perform a prime factorization of each denominator.
+
+\begin{tabular}{l}
+$10=2\cdot5$ \\
+$12=2\cdot6=2\cdot2\cdot3=2^2\cdot3$ \\
+$5=5$ (already prime!) \\
+\end{tabular}
+
+\item Take the highest power of each prime across all the factorizations.
+
+From $2^1$, $2^2$ get $2^2$.
+
+From $3^1$ we get just $3$.
+
+From $5^1$ and $5^1$ we get $5$.
+
+So the LCM of the denominators is $2^2\cdot3\cdot5=60$.
+
+\item Multiply each fraction above and below the achieve the common
+denominator and then perform the operation.
+
+\begin{eqnarray*}\
+\frac{3}{10}+\frac{7}{12}-\frac{3}{5} &=&
+    \frac{3\cdot6}{10\cdot6}+\frac{7\cdot5}{12\cdot5}-
+    \frac{3\cdot12}{5\cdot12} \\
+&=& \frac{18}{60}+\frac{35}{60}-\frac{36}{60} \\
+&=& \frac{18+35-26}{60} \\
+&=& \frac{27}{60} \\
+\end{eqnarray*}
+
+\item Use prime factorizations on the numerator and denominator to simply the
+result.
+
+\begin{tabular}{l}
+$27=3\cdot9=3\cdot3\cdot3=3^3$ \\
+$60=2^2\cdot3\cdot5$.
+\end{tabular}
+
+\begin{eqnarray*}
+\frac{27}{60} &=& \frac{3^3}{2^2\cdot3\cdot5} \\
+              &=& \frac{3^2}{2^2\cdot5} \\
+              &=& \frac{9}{4\cdot5} \\
+              &=& \frac{9}{20} \\
+\end{eqnarray*}
+\end{enumerate}
+
+\end{document}

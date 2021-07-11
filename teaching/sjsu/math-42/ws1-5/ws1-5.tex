@@ -1,0 +1,93 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+
+\renewcommand{\implies}{\rightarrow}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+
+\begin{document}
+
+\begin{center}
+  \large Math-42 Worksheet \#5
+
+  \textbf{Nested Quantifiers}
+\end{center}
+
+\vspace{0.5in}
+
+\begin{enumerate}[left=0in,itemsep=0.5in]
+\item An important definition that you learn in calculus is the definition of the limit \(L\) of a function
+  \(f(x)\) at \(x=a\):
+  \[\forall\,\e>0,\exists\,\d>0,\forall\,x\in\R,\abs{x-a}<\d\implies\abs{f(x)-L}<\e\]
+  Negate this proposition to say that \(L\) is not the limit of \(f(x)\) at \(x=a\).
+
+\item There is a similar definition of continuity of a function:
+  \[(f(a)\ \text{exists})\land(\forall\,\e>0,\exists\,\d>0,\forall\,x\in\R,\abs{x-a}<\d\implies\abs{f(x)-f(a)}<\e)\]
+  Negate this proposition to say that \(f(x)\) is not continuous at \(x=a\).
+
+\item Rewrite each of the following real number axioms using quantified propositions.  For example, the
+  commutative property of addition states that two real numbers can be added in any order:
+  \[\forall\,a,b\in\R,a+b=b+a\]
+  \begin{enumerate}
+  \item Commutative multiplication: two real numbers can be multiplied in any order.
+  \item Associative addition: when adding three numbers, either the first two can be added first or the last two
+    can be added first.
+  \item Associative multiplication: when multiplying three numbers, either the first two can be multiplied first or
+    the last two can be multiplied first.
+  \item Additive identity: there exists \(0\in\R\) such that for any real number \(a\), \(a+0=a\).
+  \item Multiplicative identity: there exists \(1\in\R\) such that for any real number \(a\), \(a\cdot1=a\).
+  \item Additive inverse: for every real number \(a\) there exists a real number \(-a\) such that when added
+    together you get the additive identity.
+  \item Multiplicative inverse: for every real number \(a\), if \(a\ne0\) then there exists a real number \(a^{-1}\)
+    such that when multiplied together you get the multiplicative identity.
+  \item Distributive: for all real numbers \(a\), \(b\), and \(c\), \(a(b+c)=ab+ac\).
+  \end{enumerate}
+
+\item What is the difference between these two quantified propositions?:
+  \begin{gather*}
+    \exists\,0\in\R,\forall\,a\in\R,a+0=a \\
+    \forall\,a\in\R,\exists\,0\in\R,a+0=a
+  \end{gather*}
+
+\item Look at your definitions for the additive and multiplicative identities.  Convince yourself that these
+  definitions say nothing about \(0\) and \(1\) being unique identities---in other words, is it possible that there
+  exists some other \(z\in\R\) such that \(z\ne0\) and for all \(a\in\R, a+z=a\)?  Forget about what you think you
+  know and only pay attention to what the definitions say (hint: consider the use of the existential quantifier).
+  In fact, uniqueness is something that we must prove (and we will do so later).
+
+\item Likewise, do your definitions for the additive and multiplicative inverses say anything about uniqueness?
+
+\item You probably learned that there is a form of the existential quantifier that requires uniqueness: \(\exists!\).
+  We tend not to use this quantifier because it does not negate nicely.
+  \begin{enumerate}
+  \item What would be the negation of:
+    \[\exists!\,a\in\R,a^2=0\]
+  \item Instead, uniqueness is expressed using a conjection (and) that indicates both \emph{existence} and
+    \emph{uniqueness}.  First, write the proposition that says that there exists some real number \(a\) such that
+    \(a^2=0\).
+  \item Now, state the uniqueness of that \(a\) by saying that for any real number \(b\), if \(b^2=0\) then it
+    must be the case that \(a\) and \(b\) are the same (equal).
+  \item Put these two propositions together in a conjuction for a proposition equivalent to the one using the
+    unique existential quantitier.
+  \end{enumerate}
+
+\item Let \(K(x,y)\) be the predicate, ``\(x\) knows \(y\),'' where the domain of \(x\) and \(y\) is a particular
+  set of people \(P\).  Rewrite each of the following statements as quantified propositions.  Note that you will
+  need to understand the previous problem on uniqueness in order to rewrite a couple of these statements:
+  \begin{enumerate}
+  \item Everybody knows Jeff.
+  \item Everybody knows somebody.
+  \item There is somebody whom everybody knows.
+  \item Nobody knows everybody.
+  \item There is somebody whom Jeff does not know.
+  \item There is somebody whom no one knows.
+  \item There is exactly one person whom everybody knows.
+  \item There are exactly two people whom Jeff knows.
+  \item Everyone knows themselves.
+  \item There is someone who knows no one besides themselves.
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

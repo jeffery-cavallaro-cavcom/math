@@ -1,0 +1,73 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\usepackage{siunitx}
+\pagestyle{plain}
+\newcommand{\w}{\omega}
+\tikzset{dot node/.style={draw,circle,fill,inner sep=0pt,minimum size=5pt}}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-19 Section 1
+
+  \Large
+  Homework \#8 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+Sketch one complete cycle of each of the following graphs.  Be sure to identify all key points, amplitude, and
+vertical asymptotes (as is appropriate for each graph).
+\begin{enumerate}
+\item \(y=-5\sin(4\pi t+1)\)
+  \begin{gather*}
+    y=-5\sin\left[4\pi\left(t+\frac{1}{4\pi}\right)\right]
+    A=5\ \text{(with vertical reflection)} \\
+    \w=4\pi \\
+    P=\frac{2\pi}{4\pi}=\frac{1}{2} \\
+    b=\frac{1}{4\pi}\approx0.08\ \text{(left)} \\
+    \text{key points at}\ x=-0.080,0.045,0.170,0.295,0.420
+  \end{gather*}
+
+  \begin{tikzpicture}
+    \draw [help lines,<->] (-2,0) -- (5,0);
+    \draw [help lines,<->] (0,-6) -- (0,6);
+    \draw [help lines,dashed] (0,5) -- (5,5);
+    \node [left] at (0,5) {\(5\)};
+    \draw [help lines,dashed] (0,-5) -- (5,-5);
+    \node [left] at (0,-5) {\(-5\)};
+    \draw [domain=-0.8:4.2,smooth] plot (\x,{-5*sin(180*(4*pi*\x/10+1)/pi)});
+    \draw [help lines,dashed] (0.45,0) -- (0.45,-5);
+    \draw [help lines,dashed] (2.95,0) -- (2.95,5);
+    \node [above] at (-0.80,0) {\(-0.080\)};
+    \node [above] at (0.45,0) {\(0.045\)};
+    \node [below] at (1.70,0) {\(0.170\)};
+    \node [below] at (2.95,0) {\(0.295\)};
+    \node [below] at (4.20,0) {\(0.420\)};
+  \end{tikzpicture}
+
+  \bigskip
+  
+\item \(y=-5\tan(4\pi t+1)\)
+  \begin{gather*}
+    y=-5\tan\left[4\pi\left(t+\frac{1}{4\pi}\right)\right]
+    \w=4\pi \\
+    P=\frac{\pi}{4\pi}=\frac{1}{4} \\
+    b=\frac{1}{4\pi}\approx0.08\ \text{(left)} \\
+    VA: x=-0.205,0.045
+  \end{gather*}
+
+  \begin{tikzpicture}
+    \draw [help lines,<->] (-5,0) -- (2,0);
+    \draw [help lines,<->] (0,-5) -- (0,5);
+    \draw [help lines,dashed] (-2.05,-5) -- (-2.05,5);
+    \node [below left] at (-2.05,0) {\(-0.205\)};
+    \draw [help lines,dashed] (0.45,-5) -- (0.45,5);
+    \node [below right] at (0.45,0) {\(0.045\)};
+    \node [below] at (-0.80,0) {\(-0.080\)};
+    \draw [domain=-2.05:0.44,smooth] plot (\x,{-5*tan(180*(2*pi*(\x/10+1/(4*pi))/pi)});
+  \end{tikzpicture}
+\end{enumerate}
+
+\end{document}

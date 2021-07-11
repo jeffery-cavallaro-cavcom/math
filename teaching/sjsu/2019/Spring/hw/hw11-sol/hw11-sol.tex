@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\usepackage{siunitx}
+\renewcommand{\l}{\lambda}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#11 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+You work for the county tax collector's office.  You prepare a platmap that shows six lakefront properties in your
+county as follows:
+
+\bigskip
+
+\begin{tikzpicture}
+  \draw (0,0) -- (10,0);
+  \draw [domain=0:10] plot ({\x},{exp(0.1*\x)});
+  \pgfmathsetmacro{\a}{exp(0.2)};
+  \pgfmathsetmacro{\b}{exp(0.3)};
+  \pgfmathsetmacro{\c}{exp(0.6)};
+  \pgfmathsetmacro{\d}{exp(0.8)};
+  \pgfmathsetmacro{\e}{exp(0.9)};
+  \pgfmathsetmacro{\f}{exp(1)};
+  \draw [dashed] (0,0) -- (0,1);
+  \draw [dashed] (2,0) -- (2,\a);
+  \draw [dashed] (3,0) -- (3,\b);
+  \draw [dashed] (6,0) -- (6,\c);
+  \draw [dashed] (8,0) -- (8,\d);
+  \draw [dashed] (9,0) -- (9,\e);
+  \draw [dashed] (10,0) -- (10,\f);
+  \node [below] at (0,0) {0};
+  \node [below] at (2,0) {200};
+  \node [below] at (3,0) {300};
+  \node [below] at (6,0) {600};
+  \node [below] at (8,0) {800};
+  \node [below] at (9,0) {900};
+  \node [below] at (10,0) {1000};
+  \node [draw,circle] at (1,0.5) {A};
+  \node [draw,circle] at (2.5,0.5) {B};
+  \node [draw,circle] at (4.5,0.5) {C};
+  \node [draw,circle] at (7,0.5) {D};
+  \node [draw,circle] at (8.5,0.5) {E};
+  \node [draw,circle] at (9.5,0.5) {F};
+  \node at (4.5,2.5) {LAKE};
+\end{tikzpicture}
+
+\bigskip
+
+where the bottom boundary scale is in feet.  The lakeshore follows the equation:
+\[y=e^{\frac{x}{200}}\]
+for \(x\) and \(y\) in feet.
+
+The property tax assessment for these properties is to be \$2 per square foot.
+
+What is the property tax assessment for property C?
+
+First, find the area (in sq ft) under the curve:
+\[\int_{300}^{600}e^{\frac{x}{200}}dx\]
+We will solve this integral using substitution:
+\begin{gather*}
+  u=\frac{x}{200} \\
+  du=\frac{1}{200}dt
+\end{gather*}
+Next, compute the new limits:
+\begin{gather*}
+  u_1=\frac{x_1}{200}=\frac{300}{200}=\frac{3}{2} \\
+  u_2=\frac{x_2}{200}=\frac{600}{200}=3
+\end{gather*}
+Next, adjust for the constant:
+\[200\int_{300}^{600}\frac{1}{200}e^{\frac{x}{200}}dx\]
+Next, perform the substitution and evaluate the new integral:
+\[200\int_{\frac{3}{2}}^3e^udu=200\left.e^u\right|_{\frac{3}{2}}^3=200\left(e^3-e^{\frac{3}{2}}\right)=\SI{3120.77}{ft^2}\]
+Finally, multiply by the assessment per square foot to find the final answer:
+\[\SI{3120.77}{ft^2}\cdot\SI{2}{\$/ft^2}=\$6241.54\]
+Therefore, the property tax assessment on parcel C is \$6241.54.
+\end{document}

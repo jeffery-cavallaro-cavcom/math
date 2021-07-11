@@ -1,0 +1,114 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#7 Solutions
+\end{center}
+
+\subsection*{Reading}
+
+Read sections 10.1 and 10.2.
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item Sketch the graph \(y=-2\left(\frac{3}{2}-e^{3-x}\right)\) by:
+  \begin{enumerate}
+  \item Performing the necessary algebra so that the function is in the proper form (i.e., the transformations are in the
+    proper order).
+    \[y=2e^{-(x-3)}-3\]
+  \item Listing the transformations in the order that they are to be applied.
+    \begin{enumerate}[label={\arabic*)},start=0]
+    \item Basic graph: \(y=e^x\).
+    \item Right by 3.
+    \item Horizontal reflection.
+    \item Vertical scale by 2.
+    \item Down by 3.
+    \end{enumerate}
+  \item Marking the key point and horizontal asymptote.
+    \begin{enumerate}[label={\arabic*)},start=0]
+    \item \((0,1)\)
+    \item \((3,1)\)
+    \item \((3,1)\)
+    \item \((3,2)\)
+    \item \((3,-1)\)
+    \end{enumerate}
+    KP: \((3,-1)\) \\
+    HA: \(y=-3\)
+  \item Calculating and marking all existing intercepts.
+
+    \(x\)-intercept:
+    \begin{gather*}
+      0=2e^{-(x-3)}-3 \\
+      2e^{-(x-3)}=3 \\
+      e^{-(x-3)}=\frac{3}{2} \\
+      -(x-3)=\ln\left(\frac{3}{2}\right) \\
+      x-3=-\ln\left(\frac{3}{2}\right) \\
+      x=3-\ln\left(\frac{3}{2}\right) \\
+      x\approx2.6 \\
+      \\
+      (2.6,0)
+    \end{gather*}
+    \(x\)-intercept:
+    \begin{gather*}
+      y=2e^{-(0-3)}-3=2e^3-3=37.2 \\
+      \\
+      (0,37.2)
+    \end{gather*}
+  \item Sketching the final graph.
+
+    \begin{tikzpicture}
+      \draw [<->] (-5,0) to (5,0);
+      \draw [<->] (0,-5) to (0,5);
+      \draw [dashed] (-5,-1) to (5,-1);
+      \node (K) [draw,circle,fill,scale=0.5] at (2,-1/2) {};
+      \node (Y) [draw,circle,fill,scale=0.5] at (0,3) {};
+      \node (X) [draw,circle,fill,scale=0.5] at (1.4,0) {};
+      \draw [domain=-0.4:5] plot ({\x},{4*e^(-\x)-1});
+      \node at (X) [above right] {\((2.6,0)\)};
+      \node at (Y) [above right] {\((0,37.2)\)};
+      \node at (K) [right] {\((3,-1)\)};
+      \node [below] at (-1,-1) {\(y=-3\)};
+   \end{tikzpicture}
+  \end{enumerate}
+
+\item You open a new savings account on April 1 with an initial \$1000 at a local bank that pays 2\% interest, compounded
+  monthly on the last day of the month.  You file the necessary direct deposit paperwork at you job, where you get paid
+  monthly on the first of the month, so that \$500 will be auto-deposited into your new account each month, starting with
+  your May paycheck.  In June, you withdraw \$250 to pay for a new mobile phone.  In July, you withdraw \$750 to help pay
+  for your summer vacation.  There are no other transactions.  What is your account balance on August 2?
+
+  First, calculate the compounding factor:
+  \[x=1+\frac{r}{n}=1+\frac{0.02}{12}=1.001666667\]
+  Note that there are lots of decimal places here, so store this result into a storage register on your calculator.
+
+  Now, construct the transaction table:
+
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    month & deposit & withdrawal & net \\
+    \hline
+    Apr & 1000 & & 1000 \\
+    \hline
+    May & 500 & & 500 \\
+    \hline
+    Jun & 500 & 250 & 250 \\
+    \hline
+    Jul & 500 & 750 & -250 \\
+    \hline
+    Aug & 500 & & 500 \\
+    \hline
+  \end{tabular}
+
+  Next, note that the first deposit compounds over 4 months, so we build the compounding polynomial as follows:
+  \[1000x^4+500x^3+250x^2-250x+500=\$2009.60\]
+\end{enumerate}
+
+\end{document}

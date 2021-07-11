@@ -1,0 +1,67 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 9, 11, 12
+
+  \Large
+  Homework \#6
+\end{center}
+
+\subsection*{Problem}
+
+A triangle is inscribed inside a semi-circle of radius 2 as shown below:
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}[see node/.style={draw,circle,fill,inner sep=0pt,minimum size=5pt}]
+    \draw [<->] (-4,0) -- (4,0);
+    \draw [<->] (0,-1) -- (0,4);
+    \draw (3,0) arc (0:180:3);
+    \pgfmathsetmacro{\r}{3}
+    \pgfmathsetmacro{\x}{\r*cos(60)}
+    \pgfmathsetmacro{\y}{\r*sin(60)}
+    \node (X) [see node] at (\x,0) {};
+    \node (Y) [see node] at (\x,\y) {};
+    \draw (-3,0) -- (Y) -- (3,0);
+    \node [below] at (-3,0) {-2};
+    \node [below] at (3,0) {2};
+    \node [above right] at (0,3) {2};
+    \node [below right] at (0,0) {0};
+    \draw [dashed] (Y) -- (X);
+    \node [below] at (X) {\(x\)};
+    \node [above right] at (Y) {\(y=\sqrt{4-x^2}\)};
+  \end{tikzpicture}
+\end{center}
+
+\bigskip
+
+Find the maximum possible area of the inscribed triangle.  Be sure to prove why it is a maximum by either a plausible
+explanation or by using the first or second derivative test.
+
+The equation for a circle with center at the origin and radius 2 is given by:
+\[x^2+y^2=4\]
+Solving for \(y\) and taking the upper semicircle only:
+\[y=\sqrt{4-x^2}\]
+Recall that the area of a triangle is given by:
+\[A=\frac{1}{2}bh\]
+In this case, the base \(b\) is a constant value of 4.  The height \(h\) for a given \(x\) value is \(y(x)=\sqrt{4-x^2}\).
+Thus, the equation for the area of the triangle as a function of \(x\) is given by:
+\[A(x)=\frac{1}{2}(4)\sqrt{4-x^2}=2(4-x^2)^{\frac{1}{2}}\]
+where the domain for \(x\) is \([-2,2]\).
+
+We want to maximize the value of \(A(x)\) with respect to \(x\), so we determine the derivative:
+\[A'(x)=2\left[\frac{1}{2}(4-x^2)^{-\frac{1}{2}}(-2x)\right]=-\frac{2x}{\sqrt{4-x^2}}\]
+The first derivative has critical points at \(x=0\) (zero) and \(x=\pm2\) (poles).  Note that \(x=\pm2\) are both the
+endpoints and the zeros of the original function \(A(x)\).  Since \(A(x)\ge0\) these two points must be absolute minimums.
+Furthermore, since there is only one other critical point in the first derivative (\(x=0\)), it must be an absolute maximum.
+
+Therefore, the maximum area is:
+\[A(0)=2\sqrt{4-0^2}=2\cdot2=4\]
+
+\end{document}

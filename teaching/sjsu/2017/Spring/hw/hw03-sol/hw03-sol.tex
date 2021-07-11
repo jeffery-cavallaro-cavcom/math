@@ -1,0 +1,149 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-1003b Homework \#3 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+\bigskip
+
+\begin{itemize}
+\item Review sections 7.1 and 7.4.
+\item Sections 7.5, 7.6, and 7.7.
+\end{itemize}
+
+\bigskip
+
+\underline{Problems}
+
+\bigskip
+
+\begin{enumerate}
+\item Simplify:
+  \[\frac{x^2-\frac{2}{3}x-\frac{5}{4}}{9x^4-4x^2}\cdot(2x+5)^2\div
+  \frac{(3x-1)^3}{3x-2}\]
+
+  We want to start by getting rid of the rational coefficients in the first numerator.
+  We can do this by using the LCM (12):
+  \begin{eqnarray*}
+    x^2-\frac{2}{3}x-\frac{5}{4} &=&
+    \frac{12}{12}\left(x^2-\frac{2}{3}x-\frac{5}{4}\right) \\
+    &=& \frac{1}{12}\left[12\left(x^2-\frac{2}{3}x-\frac{5}{4}\right)\right] \\
+    &=& \frac{1}{12}(12x^2-8x-15) \\
+    &=& \frac{1}{12}(6x+5)(2x-3)
+  \end{eqnarray*}
+  Note that the last factoring step is tough because there are so many possibilities.
+  In this case, I think that the AC method (p441) gets you to an answer quicker.
+
+  Look at the first denomimator, we can factor out an $x^2$ and then factor the resulting
+  difference of squares:
+  \[9x^4-4x^2=x^2(9x^2-4)=x^2(3x+2)(3x-2)\]
+
+  Now, rewriting the problem with the factored first factor and resolving the division
+  sign (i.e., flip the last factor):
+  \[\frac{\frac{1}{12}(6x+5)(2x-3)}{x^2(3x+2)(3x-2)}\cdot\frac{(2x+5)^2}{1}\cdot
+  \frac{3x-2}{(3x-1)^3}\]
+
+  This is just a multiplication of fractions problem now, so multiply across:
+  \[\frac{\frac{1}{12}(6x+5)(2x-3)(2x+5)^2(3x-2)}{x^2(3x+2)(3x-2)(3x-1)^3}\]
+
+  And now cancel the $(3x-2)$:
+  \[\frac{\frac{1}{12}(6x+5)(2x-3)(2x+5)^2}{x^2(3x+2)(3x-1)^3}\]
+
+  We aren't quite done yet. We don't want to leave a fraction in the numerator. Note
+  that we can bring the factor of $\frac{1}{12}$ out front:
+  \[\frac{1}{12}\cdot\frac{(6x+5)(2x-3)(2x+5)^2}{x^2(3x+2)(3x-1)^3}\]
+
+  And then the 12 just moves to the denominator:
+  \[\frac{(6x+5)(2x-3)(2x+5)^2}{12x^2(3x+2)(3x-1)^3}\]
+
+\item Simplify:
+  \[\frac{\frac{5}{w^2-25}-\frac{3}{w+5}}{\frac{4}{w-5}}\]
+
+  First, factor the $w^2-25$ as a difference of squares:
+  \[\frac{\frac{5}{(w+5)(w-5)}-\frac{3}{w+5}}{\frac{4}{w-5}}\]
+
+  The goal is to get rid of the complexity.  Once again, we use the LCM to do this -
+  multiplying above and below gets rid of all the denominators:
+  \begin{eqnarray*}
+    \frac{(w+5)(w-5)}{(w+5)(w-5)}\cdot
+    \frac{\frac{5}{(w+5)(w-5)}-\frac{3}{w+5}}{\frac{4}{w-5}} &=&
+    \frac{(w+5)(w-5)\left[\frac{5}{(w+5)(w-5)}-\frac{3}{w+5}\right]}
+         {(w+5)(w-5)\left[\frac{4}{w-5}\right]} \\
+    &=& \frac{5-3(w-5)}{4(w+5)} \\
+    &=& \frac{5-3w+15}{4(w+5)} \\
+    &=& \frac{20-3w}{4(w+5)}
+  \end{eqnarray*}
+
+  Finally, we like out highest order terms to have a positive coefficient, so lets go
+  ahead and factor a (-1) out of the numerator:
+  \[\frac{-(3w-20)}{4(w+5)}\]
+  Now we can bring the minus sign out front for the final answer:
+  \[-\frac{3w-20}{4(w+5)}\]
+
+\item Solve for $a$:
+  \[\frac{6}{5a+10}-\frac{1}{a-5}=\frac{4}{a^2-3a-10}\]
+
+  Start by factoring where necessary:
+  \[\frac{6}{5(a+2)}-\frac{1}{a-5}=\frac{4}{(a-5)(a+2)}\]
+
+  Now multiply both sides by the LCM:
+  \begin{eqnarray*}
+    5(a-5)(a+2)\left[\frac{6}{5(a+2)}-\frac{1}{a-5}\right] &=&
+    5(a-5)(a+2)\left[\frac{4}{(a-5)(a+2)}\right] \\
+    6(a-5)-5(a+2) &=& 5(4) \\
+    6a-30-5a-10 &=& 20 \\
+    a-40 &=& 20 \\
+    a &=& 60
+  \end{eqnarray*}
+
+  Before you conclude that this is the final answer, make sure that plugging it into the
+  original equation doesn't result in an zero denominators.
+
+\item A building has a window that is higher than you can reach and you have a
+  short measuring tape that doesn't reach all of the way (i.e., you can't just
+  measure from the window to the ground). You do have a 20ft ladder. So, you
+  mark 5ft up the ladder and then lean it against the building so that the top
+  of the ladder is at the bottom of the window. You then measure from your 5ft
+  mark to the ground - it measures 4ft. How high up is the window? (Hint: draw
+  a picture, mark the distances, and look for triangles!)
+
+  First, note that all of the units are consistent - everything is in feet - so we can
+  ignore the units for now.
+
+  \begin{minipage}{3in}
+    \begin{tikzpicture}
+      \draw (0,0) -- (5,0) -- node [right] {$x$} (5,7) -- (0,0);
+      \node [circle,fill,scale=0.2] (p) at ({3/2},{21/10}) {};
+      \draw ({3/2},0) -- node [right] {$4$} (p);
+      \node [above left] at ({3/4},{21/20}) {$5$};
+      \node [above left] at ({5/2},{7/2}) {$20$};
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{3in}
+    Consider the inner and outer triangles. They share a common angle on the left and
+    both have a right angle (with the ground). Thus, since the sum of the interior angles
+    is fixed ($180^{\circ}$), their third angles must also be equal. You can also note
+    that the third angles are equal by seeing that the string and the building wall are
+    parallel and the ladder acts as a traversal - the two corresponding angles are thus
+    equal.
+  \end{minipage}
+
+  Since all the corresponding angles are equal, the triangles are similar. So, we can
+  build a proportionality equation with the sides. This can be dones several different
+  ways, but here is one:
+  \[\frac{4}{5}=\frac{x}{20}\]
+  We then solve for $x$:
+  \[5x=80\]
+  \[x=16\]
+  Finally, state the final answer with units:
+
+  The window height is $16$ feet.
+\end{enumerate}
+\end{document}

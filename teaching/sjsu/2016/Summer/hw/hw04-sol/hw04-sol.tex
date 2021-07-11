@@ -1,0 +1,238 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\usepackage{tikz}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+\Large Math-19 Homework \#4 Solutions
+\end{center}
+
+\vspace{0.5in}
+
+\underline{Reading}
+
+Please read sections 2.1 through 2.7 and do all concept problems in the posted
+sections on web\-assign.
+
+\underline{Problems}
+
+State all domains in interval notation!
+
+\begin{enumerate}
+\item Consider the function:
+\[y=-\sqrt[3]{x-5}+1\]
+\begin{enumerate}
+\item List the transformations, starting from a basic function.
+
+\bigskip
+
+\begin{enumerate}
+\item Start with the standard function $y=\sqrt[3]{x}$.
+\item Translate right by 5.
+\item Reflect across the x-axis.
+\item Translate up by 1.
+\end{enumerate}
+
+\bigskip
+
+\item Determine any x-intercepts.
+
+\begin{eqnarray*}
+-\sqrt[3]{x-5}+1 &=& 0 \\
+\sqrt[3]{x-5} &=& 1 \\
+(\sqrt[3]{x-5})^3 &=& 1^3 \\
+x-5 &=& 1 \\
+x &=& 6 \\
+\end{eqnarray*}
+So there is an x-intercept at $(6,0)$.
+
+\bigskip
+
+\item Determine any y-intercepts.
+\[-\sqrt[3]{0-5}+1=-\sqrt[3]{-5}+1=\sqrt[3]{5}+1\]
+So there is a y-intercept at $(0,\sqrt[3]{5}+1)$.
+
+\bigskip
+
+\item Sketch a graph of the function.
+
+\begin{enumerate}
+\item Start with the standard function $y=\sqrt[3]{x}$.
+
+\begin{tikzpicture}
+\draw [<->] (-3,0) -- (3,0);
+\draw [<->] (0,-3) -- (0,3);
+\draw [domain=0:3] plot (\x,{(\x)^(1/3)});
+\draw [domain=-3:0] plot (\x,{-(-\x)^(1/3)});
+\end{tikzpicture}
+
+\item Translate right by 5.
+
+\begin{tikzpicture}
+\draw [<->] (-3,0) -- (3,0);
+\draw [<->] (0,-3) -- (0,3);
+\draw [domain=1:3] plot (\x,{(\x-1)^(1/3)});
+\draw [domain=-3:1] plot (\x,{-(-(\x-1))^(1/3)});
+\node [below right] at (1,0) {5};
+\end{tikzpicture}
+
+\item Reflect across the x-axis.
+
+\begin{tikzpicture}
+\draw [<->] (-3,0) -- (3,0);
+\draw [<->] (0,-3) -- (0,3);
+\draw [domain=1:3] plot (\x,{-(\x-1)^(1/3)});
+\draw [domain=-3:1] plot (\x,{(-(\x-1))^(1/3)});
+\node [below right] at (1,0) {5};
+\end{tikzpicture}
+
+\item Translate up by 1.
+
+\begin{tikzpicture}
+\draw [<->] (-3,0) -- (3,0);
+\draw [<->] (0,-3) -- (0,3);
+\draw [domain=1:3] plot (\x,{-(\x-1)^(1/3)+0.5});
+\draw [domain=-3:1] plot (\x,{(-(\x-1))^(1/3)+0.5});
+\draw [dashed] (1,0) -- (1,0.5);
+\draw [dashed] (0,0.5) -- (1,0.5);
+\draw [fill=black] (1.1,0) circle [radius=0.05];
+\draw [fill=black] (0,1.5) circle [radius=0.05];
+\draw [fill=black] (1,0.5) circle [radius=0.05];
+\node [below] at (1,0) {5};
+\node [left] at (0,0.5) {1};
+\node [above left] at (0,1.5) {6};
+\node [above right] at (1,0) {$1+\sqrt[3]{5}$};
+\end{tikzpicture}
+\end{enumerate}
+
+\item Determine the domain of the function.
+
+\bigskip
+
+Domain: $\R$
+
+\bigskip
+
+\item Determine the range of the function.
+
+\bigskip
+
+Range: $\R$
+
+\bigskip
+
+\item On which intervals is the function increasing?
+
+\bigskip
+
+Increasing: none!
+
+\bigskip
+
+\item On which intervals is the function decreasing?
+
+\bigskip
+
+Decreasing: $\R$
+
+\bigskip
+
+\end{enumerate}
+
+\bigskip
+
+\item Let:
+\[f(x)=\sqrt{x}(x+1)\]
+\[g(x)=\sqrt{x}\]
+\begin{enumerate}
+\item Determine $f+g$ and state the domain.
+\[(f+g)(x)=\sqrt{x}(x+1)+\sqrt{x}=\sqrt{x}(x+2)\]
+Domain: $[0,\infty)$
+
+\bigskip
+
+\item Determine $fg$ and state the domain.
+\[(fg)(x)=\sqrt{x}(x+1)\sqrt{x}=x(x+1)\]
+Domain: $[0,\infty)$
+
+\bigskip
+
+\item Determine $\frac{f}{g}$ and state the domain.
+\[\left(\frac{f}{g}\right)(x)=\frac{\sqrt{x}(x+1)}{\sqrt{x}}=x+1\]
+Domain: $(0,\infty)$
+
+\bigskip
+
+\item Determine $\frac{f}{f}$ and state the domain.
+\[\left(\frac{f}{f}\right)(x)=1\]
+Domain: $(0,\infty)$
+
+\end{enumerate}
+
+\bigskip
+
+\item Let:
+\[h(x)=\sqrt[3]{\frac{x+1}{x-1}}-5\]
+Find a suitable $f(x)$ and $g(x)$ such that $h=f\circ g$. Remember, neither is
+allowed to be just $x$. Be careful to correctly determine which is the inner
+function and which is the outer function.
+
+\bigskip
+
+One possible solution is:
+\[f(x)=\sqrt[3]{x}-5\]
+\[g(x)=\frac{x+1}{x-1}\]
+
+This also works:
+\[f(x)=x-5\]
+\[g(x)=\sqrt[3]{\frac{x+1}{x-1}}\]
+
+A bit more complicated is:
+\[f(x)=\sqrt[3]{\frac{x}{x-1}}-5\]
+\[g(x)=x+1\]
+
+\bigskip
+
+\item Let:
+\[f(x)=\frac{1}{x}\]
+Compute the difference quotient $\frac{f(x+h)-f(x)}{h}$
+\begin{eqnarray*}
+\frac{f(x+h)-f(x)}{h} &=& \frac{\frac{1}{x+h}-\frac{1}{x}}{h} \\
+    &=& \frac{x-(x+h)}{x(x+h)}\cdot\frac{1}{h} \\
+    &=& \frac{-h}{x(x+h)}\cdot\frac{1}{h} \\
+    &=& -\frac{1}{x(x+h)} \\
+\end{eqnarray*}
+
+\item A certain chemical reaction proceeds at a linear pace with 4kg of product
+being produced every 30 seconds. At the start of the reaction there was already
+2kg of product existing.
+\begin{enumerate}
+\item Express the amount of product at time $t$ (starting at $t=0$) by a linear
+equation: $p(t)=At+B$.
+\[p(t)=\frac{4}{30}t+2=\frac{2}{15}t+2\]
+
+\item What does $A$ represent?
+
+\bigskip
+
+The constant rate of the creation of product.
+
+\bigskip
+
+\item What does $B$ represent?
+
+\bigskip
+
+The initial amount of product (at $t=0$).
+
+\bigskip
+
+\item How much product is there after 15 seconds?
+\[p(15)=\frac{2}{15}(15)+2=2+2=4\]
+After 15 seconds there will be 4kg of product.
+\end{enumerate}
+
+\end{enumerate}
+\end{document}

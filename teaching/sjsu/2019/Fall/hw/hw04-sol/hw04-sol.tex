@@ -1,0 +1,87 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{siunitx}
+\pagestyle{plain}
+\begin{document}
+
+\begin{center}
+  \large
+  Math-71 Sections 02, 03, 60
+
+  \Large
+  Homework \#4 Solutions
+\end{center}
+
+\subsection*{Problem}
+
+You are a leader for your local Girl Scout troop and it has fallen upon you to plan next year's cookie sales.  It
+has become common to adjust the price of a box of cookies to maximize profits based on the affluence of the
+community.  From past years, you know that when the price was \$5.00 per box about 10,000 boxes were sold.  When
+the price was raised to \$6.00 per box, only 7500 boxes were sold.  Assume that the demand function \(n(p)\) is
+linear.  The factory that makes the cookies reports that the fixed costs are \$10,000 and the variable costs are
+\$2.00 per box.
+\begin{enumerate}
+\item At what sales price will your troop maximize its profits?
+
+  We start with the demand function.  We are told to assume that the demand function is linear, and we are given
+  two points:
+  \begin{align*}
+    n(\$5) &= \SI{10000}{boxes} \\
+    n(\$6) &= \SI{7500}{boxes}
+  \end{align*}
+  This is sufficient information to construct a line:
+  \begin{gather*}
+    m=\frac{10000-7500}{5-6}=\SI{-2500}{boxes/\$} \\
+    n-10000=-2500(p-5) \\
+    n(p)=-2500p+22500
+  \end{gather*}
+  We can now construct the cost function.  We are given the fixed and variable costs, so:
+  \begin{align*}
+    C(p) &= 10000+2n(p) \\
+    &= 10000+2(-2500p+22500) \\
+    &= 10000-5000p+45000 \\
+    C(p) &= 55000-5000p
+  \end{align*}
+  Now, on to the revenue function:
+  \begin{align*}
+    R(p) &= p\cdot n(p) \\
+    &= p(-2500p+22500) \\
+    R(p) &= -2500p^2+22500p
+  \end{align*}
+  And finally, the profit function:
+  \begin{align*}
+    P(p) &= R(p)-C(p) \\
+    &= (-2500p^2+22500p)-(55000-5000p) \\
+    P(p) &= -2500p^2+27500p-55000
+  \end{align*}
+  
+  In order to optimize \(P(p)\) we need to differentiate:
+  \[P'(p)=-5000p+27500\]
+
+  To find all critical points we set this to 0:
+  \begin{gather*}
+    0=-5000p+27500 \\
+    5000p=27500 \\
+    p=\$5.50
+  \end{gather*}
+
+  We need to show that this is a maximum.  We know that this is the case because \(P(p)\) is an inverted parabola
+  with the max at the vertex, which will be the only critical point.  But, we can also use test points around
+  \(p=5.5\).  For \(p<5.5\) we have \(P'(p)>0\) meaning that \(P(p)\) is increasing.  For \(p>5.5\) we have
+  \(P'(p)<0\) meaning that \(P(p)\) is decreasing.  This, we have a maximum.
+
+  We can also use the second derivative test:
+  \[P''(p)=-5000<0\]
+  and so \(P''(5.5)<0\) meaning \(P(p)\) is concave down, and thus there is a maximum at \(p=5.5\).
+
+  Therefore, to maximize profits, boxes should be sold at \$5.50 per box.
+
+\item At that price, how many boxes is your troop projected to sell?
+  \[n(\$5.50)=-2500(5.50)+22500=\SI{8750}{boxes}\]
+
+\item What is the expected profit?
+  \[P(\$5.50)=-2500(5.50)^2+27500(5.50)-55000=\$20625\]
+
+\end{enumerate}
+
+\end{document}
