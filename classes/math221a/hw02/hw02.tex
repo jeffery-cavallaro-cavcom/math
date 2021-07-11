@@ -1,0 +1,600 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\newcommand{\p}{\phi}
+\renewcommand{\r}{\sim}
+\newcommand{\bas}[2]{\left<#1,#2\right>}
+\newcommand{\cycle}[1]{\left<#1\right>}
+\newcommand{\aut}[1]{\operatorname{Aut}{#1}}
+\renewcommand{\o}{\sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\iso}{\simeq}
+\newcommand{\zstar}[2]{\bas{\Z_{#1}^*}{#2}}
+\newcommand{\znx}{\Z_n^{\times}}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221a \\
+Homework \#2
+
+\bigskip
+
+\subsection*{1.2.1}
+
+Let $\p:G\to H$ be a homomorphism of groups.
+\begin{enumerate}[label=\alph*)]
+\item Prove: $\p(e_G)=e_H$
+
+  Assume $a\in G$
+
+  \begin{minipage}[t]{3in}
+    $\p(ae_G)=\p(a)$ \\
+    $\p(ae_G)=\p(a)\p(e_G)$ \\
+    $\p(a)\p(e_G)=\p(a)$
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    $\p(e_Ga)=\p(a)$ \\
+    $\p(e_Ga)=\p(e_G)\p(a)$ \\
+    $\p(e_G)\p(a)=\p(a)$
+  \end{minipage}
+
+  \bigskip
+  
+  Thus $\p(e_G)$ is a two-sided identity for $H$; however, the identity is
+  unique, \\
+  $\therefore\p(e_G)=e_H$.
+
+  \item Prove: $\p(a^{-1})=\p(a)^{-1}$
+
+  Assume $a\in G$
+
+  \begin{minipage}[t]{3in}
+    $\p(aa^{-1})=\p(e_G)=e_H$ \\
+    $\p(aa^{-1})=\p(a)\p(a^{-1})$ \\
+    $\p(a)\p(a^{-1})=e_H$
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    $\p(a^{-1}a)=\p(e_G)=e_H$ \\
+    $\p(a^{-1}a)=\p(a^{-1})\p(a)$ \\
+    $\p(a^{-1})\p(a)=e_H$
+  \end{minipage}
+
+  \bigskip
+  
+  Thus $\p(a^{-1})$ is a two-sided identity for $\p(a)$ in $H$; however,
+  inverses are unique, \\
+  $\therefore\p(a^{-1})=\p(a)^{-1}$.
+
+\item Let $G=H=\bas{\Z_2}{\cdot}$ and define $\p:G\to H$ by $\p(x)=0$. $G$
+  and $H$ are monoids with identity $1$ (0 has no inverse). Also:
+  
+  $\p(0x)=\p(0)=0=00=\p(0)\p(x)$ \\
+  $\p(x0)=\p(0)=0=00=\p(x)\p(0)$ \\
+  $\p(11)=\p(1)=0=00=\p(1)\p(1)$
+
+  and so $\p$ is a homomorphism. However, $\p(1)=0\ne1$.
+\end{enumerate}
+
+\subsection*{1.2.2}
+
+Let $G$ be a group and define $\p:G\to G$ by $\p(x)=x^{-1}$. \\
+Prove: $G$ is abelian iff $\p$ is an automorphism.
+
+\begin{description}
+\item $\implies$ Assume $G$ is abelian
+
+  Assume $\p(x)=\p(y)$ \\
+  $x^{-1}=y^{-1}$ \\
+  $x=y$ \\
+  $\therefore\p$ is an injection
+
+  Assume $y\in G$ \\
+  $y^{-1}\in G$ \\
+  Let $x=y^{-1}$ \\
+  $\p(x)=\p(y^{-1})=(y^{-1})^{-1}=y$ \\
+  $\therefore\p$ is a surjection and thus a bijection
+
+  Assume $x,y\in G$ \\
+  $\p(xy)=(xy)^{-1}=x^{-1}y^{-1}=\p(x)\p(y)$ \\
+  $\therefore\p$ is a homomorphism and thus an isomorphism
+
+  $\therefore \p$ is an automorphism
+  
+\item $\impliedby$ Assume $\p$ is an automorphism
+
+  Assume $x,y\in G$ \\
+  $\p$ is a homomorphism \\
+  $\p(xy)=\p(x)\p(y)=x^{-1}y^{-1}=(yx)^{-1}=\p(yx)$ \\
+  But $\p$ is a bijection and thus one-to-one, so $xy=yx$ \\
+  $\therefore G$ is abelian
+\end{description}
+
+\subsection*{1.2.5}
+
+Let $G$ be a group and $S\subseteq G$ such that $S\ne\emptyset$. Define a
+relation $\r$ on $G$ by:
+\[a\r b\iff ab^{-1}\in S\]
+Prove: $\r$ is an equivalence relation $\iff S\le G$.
+
+\begin{description}
+\item $\implies$ Assume $\r$ is an equivalence relation
+
+  $S$ is non-empty by assumption \\
+  Assume $a\in S$ \\
+  $ae^{-1}=ae=a\in S$ \\
+  So $S=\bar{e}$
+
+  Assume $a,b\in S$ \\
+  $a\r e$ and $b\r e$ \\
+  $e\r b$ (symmetry) \\
+  $a\r b$ (transitivity) \\
+  $ab^{-1}\in S$ \\
+  $\therefore$ by the yucky subgroup test, $S\le G$.
+  
+\item $\impliedby$ Assume $S\le G$
+
+  \begin{description}
+  \item R: Assume $a\in G$
+
+    $a^{-1}\in G$ \\
+    $e\in S$ \\
+    $aa^{-1}=e\in S$ \\
+    $\therefore a\r a$
+
+  \item S: Assume $a\r b$
+
+    $ab^{-1}\in S$ \\
+    $(ba^{-1})^{-1}\in S$ \\
+    But $S$ is a group, so $ba^{-1}\in S$ \\
+    $\therefore b\r a$
+
+  \item T: Assume $a\r b$ and $b\r c$
+
+    $ab^{-1}\in S$ and $bc^{-1}\in S$ \\
+    But $S$ is a group, so by closure, $(ab^{-1})(bc^{-1})\in S$ \\
+    $(ab^{-1})(bc^{-1})=a(b^{-1}b)c^{-1}=aec^{-1}=ac^{-1}\in S$ \\
+    $\therefore a\r c$
+  \end{description}
+  $\therefore\,\r$ is an equivalence relation.
+\end{description}
+
+\subsection*{1.2.6}
+
+Let $G$ be a group and let $S$ be a non-empty, finite, subset of $G$. \\
+Prove: $S\le G\iff S$ is closed under the induced operation of $G$.
+
+\begin{description}
+\item $\implies$ Assume $S\le G$
+
+  $S$ is a group under the induced operation of $G$ \\
+  $\therefore S$ is closed under that operation.
+
+\item $\impliedby$ Assume S is closed under the induced operation of $G$
+
+  $S$ is a finite, non-empty subset of $G$ and closed by assumption \\
+  $G$ is associative, and so $S$ is associative \\
+  Thus, $S$ is a semigroup \\
+  Assume $a,b,c\in S$ \\
+  Assume $ac=bc$ \\
+  $a,b,c\in G$ \\
+  $c^{-1}\in G$ \\
+  Thus, $a=b$, so right cancellation works \\
+  Likewise, assume $ca=cb$ \\
+  Thus, $a=b$, so left cancellation works \\
+  So by HW 1.1.15, $S$ is a group \\
+  $\therefore S\le G$
+\end{description}
+
+\subsection*{1.2.9}
+
+Let $\p:G\to H$ be a homomorphism of groups and let $A\le G$ and $B\le H$.
+
+\begin{enumerate}[label=\alph*)]
+\item Prove:
+  \begin{enumerate}[label=\arabic*)]
+  \item $\ker\p\le G$
+
+    $\ker\p=\{a\in G\mid\p(a)=e_H\}$
+
+    Assume $a,b\in\ker\p$ \\
+    $a,b\in G$ \\
+    $ab\in G$ \\
+    $\p(ab)=\p(a)\p(b)=e_He_H=e_H$ \\
+    So $ab\in\ker\p$ \\
+    $\therefore\ker\p$ is closed
+
+    $\ker\p\subseteq G$ \\
+    $G$ is associative \\
+    $\therefore\ker\p$ is associative
+
+    $\p(e_G)=e_H$ \\
+    $\therefore e_G\in\ker\p$
+
+    Assume $a\in\ker\p$ \\
+    $a\in G$ and $a^{-1}\in G$ \\
+    $\p(a^{-1})=\p(a)^{-1}=e_H^{-1}=e_H$ \\
+    $\therefore a^{-1}\in\ker\p$
+
+    $\therefore\ker\p\le G$
+
+  \item $\p^{-1}[B]\le G$
+    
+    $\p^{-1}[B]=\{a\in G\mid\p(a)\in B\}$
+
+    $B\le H$, so $e_H\in B$ \\
+    $\p(e_G)=e_H\in B$ \\
+    $\therefore e_G\in\p^{-1}[B]$ and $\p^{-1}[B]\ne\emptyset$
+
+    Assume $a,b\in\p^{-1}[B]$ \\
+    $\p(a)\in B$ and $\p(b)\in B$ and thus $\p(a)\p(b)\in B$\\
+    $a,b\in G$ and thus $ab\in G$ \\
+    $\p(ab)=\p(a)\p(b)\in B$ \\
+    So $ab\in\p^{-1}[B]$ \\
+    $\therefore\p^{-1}[B]$ is closed
+
+    $\p^{-1}[B]\subseteq G$ \\
+    $G$ is associative \\
+    $\therefore\p^{-1}[B]$ is associative
+\newpage
+    Assume $a\in\p^{-1}[B]$ \\
+    $\p(a)\in B$ \\
+    But $B$ is a group, so $\p(a)^{-1}\in B$ \\
+    $\p(a)^{-1}=\p(a^{-1})\in B$ \\
+    $\therefore a^{-1}\in\p^{-1}[B]$
+
+    $\therefore\p^{-1}[B]\le G$
+  \end{enumerate}
+
+\item Prove: $\p[A]\le H$
+
+  $\p[A]=\{\p(a)\mid a\in A\}$
+
+  $A\le G$, so $e_G\in A$ \\
+  $\p(e_G)=e_H$ \\
+  $\therefore e_H\in\p[A]$ and $\p[A]\ne\emptyset$
+  
+  Assume $a,b\in\p[A]$ \\
+  $\exists\,x,y\in A,\p(x)=a$ and $\p(y)=b$ \\
+  $xy\in A$ \\
+  $\p(xy)\in\p[A]$\\
+  $\p(xy)=\p(x)\p(y)=ab\in\p[A]$ \\
+  $\therefore\p[A]$ is closed
+
+  $\p[A]\subseteq H$ \\
+  $H$ is associative \\
+  $\therefore\p[A]$ is associative
+
+  Assume $a\in\p[A]$ \\
+  $\exists\,x\in A,\p(x)=a$ \\
+  $x^{-1}\in A$ \\
+  $\p(x^{-1})\in\p[A]$ \\
+  $\p(x^{-1})=\p(x)^{-1}=a^{-1}$ \\
+  $\therefore a^{-1}\in\p[A]$
+
+  $\therefore\p[A]\le H$
+\end{enumerate}
+
+\subsection*{1.2.10}
+
+Recall:
+
+\bigskip
+
+$\Z_2=\{0,1\}$
+
+\bigskip
+
+\begin{tabular}{c|cccc}
+  $\bigoplus$ & $(0,0)$ & $(0,1)$ & $(1,0)$ & $(1,1)$ \\
+  \hline
+  $(0,0)$ & $(0,0)$ & $(0,1)$ & $(1,0)$ & $(1,1)$ \\
+  $(0,1)$ & $(0,1)$ & $(0,0)$ & $(1,1)$ & $(1,0)$ \\
+  $(1,0)$ & $(1,0)$ & $(1,1)$ & $(0,0)$ & $(0,1)$ \\
+  $(1,1)$ & $(1,1)$ & $(1,0)$ & $(0,1)$ & $(0,0)$ \\
+\end{tabular}
+$\implies$
+\begin{tabular}{c|cccc}
+  $*$ & e & a & b & c \\
+  \hline
+  e & e & a & b & c \\
+  a & a & e & c & b \\
+  b & b & c & e & a \\
+  c & c & b & a & e \\
+\end{tabular}
+$\implies K_4$
+
+So, the possible subgroups are:
+
+$\{e\}$ \\
+$\{e,a\}$ \\
+$\{e,b\}$ \\
+$\{e,c\}$ \\
+$\{e,a,b,c\}$
+
+In order to be isomorphic to $\Z_4$, $K_4$ must be cyclic. However, $K_4$ has
+only trivial (order 1) and proper (order 2) cyclic subgroups, and so
+$K_4\not\iso\Z_4$.
+
+\subsection*{1.2.11}
+
+Let $G$ be group. Prove: $Z(G)$ is an abelian subgroup of $G$.
+
+$Z(G)=\{a\in G\mid \forall\,x\in G,ax=xa\}$
+
+$e\in G$ \\
+$\forall\,x\in G,ex=xe$ \\
+$\therefore e\in Z(G)$ and $Z(G)\ne\emptyset$
+
+Assume $a,b\in Z(G)$ \\
+$a,b\in G$ and so $ab\in G$ \\
+Assume $x\in G$ \\
+$(ab)x=axb=x(ab)$ \\
+$ab\in Z(G)$ \\
+$\therefore Z(G)$ is closed
+
+$Z(G)\subseteq G$ \\
+$G$ is associative \\
+$\therefore Z(G)$ is associative
+
+Assume $a\in Z(G)$ \\
+$a\in G$ and $a^{-1}\in G$ \\
+Assume $x\in G$ \\
+$a^{-1}x=(x^{-1}a)^{-1}=(ax^{-1})^{-1}=xa^{-1}$ \\
+$\therefore a^{-1}\in Z(G)$
+
+$\therefore Z(G)\le G$
+
+Assume $a,b\in Z(G)$ \\
+$a,b\in G$ \\
+By definition, $ab=ba$
+
+$\therefore Z(G)$ is abelian.
+
+\subsection*{1.2.13}
+
+Let $\p:G\to H$ be a homomorphism of groups and $G=\cycle{a}$. \\
+Prove: $\p$ is completely determined by $\p(a)$
+
+\begin{lemma}
+  Let $\p:G\to H$ be a homomorphism of groups:
+  \[\forall\,a\in G,\forall\,n\in\Z,\p(a^n)=\p(a)^n\]
+\end{lemma}
+
+\begin{theproof}
+  Assume $a\in G$ \\
+  Assume $n\in\Z$
+  
+  \begin{description}
+  \item Case 1: $n>0$
+
+    Proof by induction on $n$
+
+    \begin{description}
+    \item Base: $n=1$
+
+      $\p(a^1)=\p(a)=\p(a)^1$
+
+    \item Assume $\p(a^n)=\p(a)^n$
+
+    \item Consider $\p(a^{n+1})$
+
+      $\p(a^{n+1})=\p(a^na)=\p(a^n)\p(a)=\p(a)^n\p(a)=\p(a)^{n+1}$
+    \end{description}
+    
+  \item Case 2: $n=0$
+
+    $\p(a^0)=\p(e_G)=e_H=\p(a)^0$
+
+  \item Case 3: $n<0$
+
+    Let $m=-n>0$ \\
+    $\p(a^n)=\p(a^{-m})=\p((a^{-1})^m)=\p(a^{-1})^m=(\p(a)^{-1})^m=\p(a)^{-m}=
+    \p(a)^n$
+  \end{description}
+\end{theproof}
+
+\bigskip
+
+Now, assume $b\in H$ \\
+$\exists\,a^n\in G,\p(a^n)=\p(a)^n=b$ \\
+$\therefore\p$ is completely determined by $\p(a)$
+
+\subsection*{1.2.15}
+
+Let $G$ be a group and $\aut{G}$ be the set of all automorphisms of $G$.
+\begin{enumerate}[label=\alph*)]
+\item Prove: $\aut{G}$ is a group under composition.
+
+  Note that the identify function $i_G\in\aut{G}$ so $\aut{G}\ne\emptyset$.
+
+  Assume $\o,\t\in\aut(G)$ \\
+  $\o$ and $\t$ are bijections, so $\o\t$ is also a bijection \\
+  $\o$ and $\t$ are homomorphisms \\
+  Assume $x,y\in G$ \\
+  $xy\in G$ \\
+  $(\o\t)(xy)=\o[\t(xy)]=\o[\t(x)\t(y)]=\o[\t(x)]\o[\t(y)]=
+  [(\o\t)(x)][(\o\t)(y)]$ \\
+  So $\o\t$ is also a homomorphism, and thus an isomorphism, and thus an
+  automorphism \\
+  $\therefore\aut{G}$ is closed
+
+  Composition is associative
+
+  Assume $\o\in\aut{G}$ \\
+  $\o$ is a bijection, and so $\o^{-1}$ exists such that
+  $\o\o^{-1}=\o^{-1}\o=i_G$ \\
+  $\therefore\aut{G}$ has inverses
+
+  $\therefore\aut{G}$ is a group
+
+\item Prove:
+  \begin{enumerate}[label=\arabic*)]
+  \item $\aut{\Z}\iso\Z_2$
+
+    Since $\Z$ has two generators: $\pm1$, the possible automorphisms are
+    defined by: $\p_1(1)=1$ (identity) and $\p_{-1}(1)=-1$:
+    
+    $\p_1(n)=n$ \\
+    $\p_{-1}(n)=-n$ \\
+    $(\p_{-1}\p_{-1})(n)=-(-n)=n=\p_1(n)$
+
+    \begin{minipage}[t]{1.5in}
+      \begin{tabular}{c|cc}
+        $\circ$ & $\p_1$ & $\p_{-1}$ \\
+        \hline
+        $\p_1$ & $\p_1$ & $\p_{-1}$ \\
+        $\p_{-1}$ & $\p_{-1}$ & $\p_1$ \\
+      \end{tabular}
+    \end{minipage}
+    \begin{minipage}{0.4in}
+      $\iso$
+    \end{minipage}
+    \begin{minipage}[t]{1in}
+      \begin{tabular}{c|cc}
+        $+$ & 0 & 1 \\
+        \hline
+        0 & 0 & 1 \\
+        1 & 1 & 0 \\
+      \end{tabular}
+    \end{minipage}
+    \begin{minipage}{0.4in}
+      $=\Z_2$
+    \end{minipage}
+
+    \bigskip
+
+  \item $\aut{\Z_6}\iso\Z_2$
+
+    Since $\Z_6$ has two generators: $1,5$, the possible automorphisms are
+    defined by: $\p_1(1)=1$ (identity) and $\p_5(1)=5$:
+    
+    $\p_1(n)=n$ \\
+    $\p_5(n)=5n$ \\
+    $(\p_5\p_5)(n)=5(5n)=n=\p_1(n)$
+
+    \begin{minipage}[t]{1.5in}
+      \begin{tabular}{c|cc}
+        $\circ$ & $\p_1$ & $\p_5$ \\
+        \hline
+        $\p_1$ & $\p_1$ & $\p_5$ \\
+        $\p_5$ & $\p_5$ & $\p_1$ \\
+      \end{tabular}
+    \end{minipage}
+    \begin{minipage}{0.4in}
+      $\iso$
+    \end{minipage}
+    \begin{minipage}[t]{1in}
+      \begin{tabular}{c|cc}
+        $+$ & 0 & 1 \\
+        \hline
+        0 & 0 & 1 \\
+        1 & 1 & 0 \\
+      \end{tabular}
+    \end{minipage}
+    \begin{minipage}{0.4in}
+      $=\Z_2$
+    \end{minipage}
+
+    \bigskip
+
+  \item $\aut{Z_8}\iso\Z_2\oplus\Z_2$
+
+    Since $\Z_2\oplus\Z_2\iso K_4$, it is sufficient to show that
+    $\aut{Z_8}\iso K_4$.
+
+    Since $\Z_8$ has four generators: $1,3,5,7$, the possible automorphisms are
+    defined by: $\p_1(1)=1$ (identity), $\p_3(1)=3$, $\p_5(1)=5$, and
+    $\p_7(1)=7$:
+    
+    $\p_1(n)=n$ \\
+    $\p_3(n)=3n$ \\
+    $\p_5(n)=5n$ \\
+    $\p_7(n)=7n$
+
+    So $\aut{\Z_8}$ is a group of order 4, and thus must be isomorphic to
+    either $\Z_4$ or $K_4$. But:
+    
+    $(\p_1\p_1)(n)=n=\p_1(n)$ \\
+    $(\p_3\p_3)(n)=3(3n)=n=\p1(n)$ \\
+    $(\p_5\p_5)(n)=5(5n)=n=\p1(n)$ \\
+    $(\p_7\p_7)(n)=7(7n)=n=\p1(n)$
+
+    So each element in the group is its own inverse, indicating that
+    $\aut{\Z_8}\iso K_4$.
+
+    \bigskip
+
+  \item $\aut{Z_p}\iso\Z_{p-1}$, where $p$ is prime
+
+    Since $p$ is prime, all non-zero elements of $\Z_p$ are relatively prime
+    with $p$, and so $\Z_p$ has $p-1$ generators. Each generator corresponds
+    to an automorphism determined by $\o_k(1)=k$ where $1\le k\le p-1$:
+
+    $\o_k(n)=kn$
+
+    So $\aut{Z_p}$ is a group under composition of order $p-1$.
+
+    Let $\o_h,\o_k\in\aut{Z_p}$ \\
+    $(o_ho_k)(n)=h(kn)=(hk)n=\o_{hk}(n)$
+
+    Define $\p:\aut{Z_p}\to\zstar{p}{\cdot}$ by $\p(\o_k)=k$ \\
+    $\p$ is clearly bijective \\
+    Assume $\o_h,\o_k\in\aut{Z_p}$ \\
+    $\p(\o_h\o_k)=\p(\o_{hk})=hk=\p(\o_h)\p(\o_k)$ \\
+    So $p$ is a homomorphism and thus an isomorphism
+
+    So $\aut{Z_p}\iso\zstar{p}{\cdot}$; however, $\zstar{p}{\cdot}$ is cyclic
+    of order $p-1$ and is thus isomorphic to $\Z_{p-1}$.
+
+    $\therefore\aut{Z_p}\iso\Z_{p-1}$
+    
+  \end{enumerate}
+
+\item Describe $\aut{Z_n}$
+
+  Let $\znx=\{k\in\N\mid1\le k<n\ \mbox{and}\ (k,n)=1\}$.
+
+  Claim: $\bas{\znx}{\cdot}$ is a group:
+
+  $(1,n)=1$ and thus $1\in\znx$ and $\znx\ne\emptyset$
+
+  Assume $h,k\in\znx$ \\
+  $(h,n)=1$ and $(k,n)=1$ \\
+  ABC: $hk\notin\znx$ \\
+  $n\mid hk$ \\
+  But $n\nmid h$, so $n\mid k$ \\
+  Contradiction! \\
+  $\therefore hk\in\znx$ and $\znx$ is closed
+
+  Multiplication $\pmod n$ is associative
+
+  Assume $m\in\znx$ \\
+  $(m,n)=1$ \\
+  $\exists h,k\in\znx,hm+kn=1$ \\
+  But $kn=0$, so $hm=1$ \\
+  $h=m^{-1}\in\znx$ \\
+  (Hmm: we did this in class, but how do we know that $h,k\in\znx$?)
+
+  $\therefore\bas{\znx}{\cdot}$ is a group
+
+  Now, consider $\aut{Z_n}$. It will have $\p(n)$ generators, where $\p(n)$ is
+  the Euler totient function. Each generator is defined by $o_k(1)=k$, where
+  $1\le k<n$ and $(k,n)=1$, and so the $k$ are indeed the set $\znx$, which is
+  closed under multiplication.
+
+  $\o_k(n)=kn$
+
+  Assume $\o_h,\o_k\in\aut{Z_n}$ \\
+  $h,k\in\znx$ \\
+  $hk\in\znx$ \\
+  $(\o_h\o_k)(n)=h(kn)=(hk)n=\o_{hk}(n)$
+
+  Define $\p:\aut{Z_n}\to\znx$ by $\p(\o_k)=k$ \\
+  $\p$ is clearly bijective \\
+  $\p(\o_h\o_k)=\p(\o_{hk})=hk=\p(\o_h)\p(\o_k)$ \\
+  Thus $\p$ is a homomorphism, and thus an isomorphism
+
+  $\therefore\aut{Z_n}\iso\bas{\znx}{\cdot}$
+\end{enumerate}
+
+\end{document}

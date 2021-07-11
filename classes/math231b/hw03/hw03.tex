@@ -1,0 +1,266 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\renewcommand{\a}{\alpha}
+\newcommand{\e}{\epsilon}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\vb}{\vec{b}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\weak}{\overset{w}{\longrightarrow}}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\mc}{\mathcal{C}}
+\DeclareMathOperator{\spn}{Span}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 231b \\
+Homework \#3
+
+\subsection*{3.8.19}
+
+Assume $\vx_n\weak\vx$ and $\vy_n\weak\vy$ as $n\to\infty$ in a Hilbert space,
+and $\a_n\to\a$ in $\C$. Prove or give a counterexample:
+\begin{enumerate}[label=(\alph*)]
+\item $\vx_n+\vy_n\weak\vx+\vy$
+
+  TRUE
+
+  $\inner{\vx_n+\vy_n}{\vz}=\inner{\vx_n}{\vz}+\inner{\vy_n}{\vz}\to
+  \inner{\vx}{\vz}+\inner{\vy}{\vz}=\inner{\vx+\vy}{\vz}$
+
+  $\therefore\vx_n+\vy_n\weak\vx+\vy$
+
+\item $\a_n\vx_n\weak\a\vx$
+
+  TRUE
+
+  $\inner{\a_n\vx_n}{\vz}=\a_n\inner{\vx_n}{\vz}\to\a\inner{\vx}{\vz}=
+  \inner{\a\vx}{\vz}$
+
+  $\therefore\a_n\vx_n\weak\a\vx$
+
+\item $\inner{\vx_n}{\vy_n}\to\inner{\vx}{\vy}$
+
+  FALSE
+
+  If this were the case, then:
+  \[\inner{\vx_n}{\vx_n}\to\inner{\vx}{\vx}\]
+  which is the same (sans squared) as:
+  \[\norm{\vx_n}\to\norm{\vx}\]
+  However, see (d).
+
+\item $\norm{\vx_n}\to\norm{\vx}$
+
+  FALSE
+
+  Consider $(e_n)$ in $\ell^2$.
+
+  Claim $e_n\weak0$
+
+  Assume $y\in\ell^2$. \\
+  Assume $\e>0$. \\
+  $\exists\,N>0,n>N\implies\abs{y_n}<\e$ \\
+  Assume $n>N$:
+  \begin{eqnarray*}
+    \abs{\inner{e_n}{y}-\inner{0}{y}} &=& \abs{\inner{e_n}{y}} \\
+    &=& \abs{\sum_{k=1}^{\infty}e_{n,k}\conj{k_k}} \\
+    &=& \abs{\conj{y_k}} \\
+    &=& \abs{y_k} \\
+    &\le& \e
+  \end{eqnarray*}
+  $\therefore(e_n)\weak0$
+
+  But $\norm{e_n}=1$ and $\norm{0}=0$.
+
+  $\therefore\norm{e_n}\ne\norm{0}$
+
+\item $\left(\forall\,n\in\N,\vx_n=\vy_n\right)\implies\vx=\vy$
+
+  Thus, is the weak limit unique.
+
+  TRUE
+
+  Assume $\vz\in H$ such that $\vz\ne\vo$ and $\vz\not\perp(\vx-\vy)$.
+  \begin{eqnarray*}
+    \inner{\vx-\vy}{\vz} &=& \inner{(\vx-\vx_n)+(\vx_n-\vy)}{\vz} \\
+    &=& \inner{\vx-\vx_n}{\vz}+\inner{\vx_n-\vy}{\vz} \\
+    &\to& 0+0 \\
+    &=& 0
+  \end{eqnarray*}
+  And so $\vx-\vy=\vo$.
+
+  $\therefore\vx=\vy$
+\end{enumerate}
+
+\subsection*{3.8.20}
+
+Show that in a finite dimensional Hilbert space, weak convergence implies
+strong convergence.
+
+Assume $H$ is a Hilbert space over a field $\F$. \\
+Assume $(\vx_n)$ is a sequence in $H$ such that $\vx_n\weak\vx\in H$. \\
+Assume $B=\{\vb_1,\ldots,\vb_N\}$ is a basis for $H$. \\
+AWLOG: $B$ is an orthonormal basis (otherwise, use Graham-Schmitt). \\
+$\forall\,n\in\N,\exists\,x_{n,k}\in\F$ such that
+$\vx_n=\sum_{k=1}^nx_{n,k}\vb_k$. \\
+$\exists\,x_k\in\F$ such that $\vx=\sum_{k=1}^Nx_k\vb_k$. \\
+Assume $\vz\in H$. \\
+$\exists\,z_k\in\F$ such that $\vz=\sum_{k=1}^Nz_k\vb_k$. \\
+Since $\vx_n\weak\vx$:
+\begin{eqnarray*}
+  \inner{\vx_n-\vx}{\vz} &=&
+  \inner{\sum_{k=1}^Nx_{n,k}\vb_k-\sum_{k=1}^Nx_k\vb_k}{\sum_{k=1}^Nz_k\vb_k} \\
+  &=& \inner{\sum_{k=1}^N(x_{n,k}-x_k)\vb_k}{\sum_{k=1}^Nz_k\vb_k} \\
+  &=& \sum_{k=1}^N(x_{n,k}-x_k)\conj{z_k} \\
+  &\to& 0
+\end{eqnarray*}
+But this is for any $\vz\in E$, and so it must be the case that
+$x_{n,k}-x_n\to0$.
+
+So $\vx_n$ converges to $\vx$ component-wise. \\
+It has already been shown that $\norm{\cdot}_{\infty}$ with respect to a
+particular basis is a proper norm. \\
+Now, since all norms are equivalent in a finite dimensional vector space:
+\[\norm{\vx_n-\vx}_{\infty}=\sup_{k\in\N}\abs{x_{n,k}-x_k}\to0\]
+$\therefore\vx_n\to\vx$
+
+\subsection*{3.8.23}
+
+In the inner product space $\mc[-\pi,\pi]$, show that the following sequence of
+functions are orthogonal.
+
+Note: $\forall\,n\in\Z,\sin(n\pi)=0$.
+
+\begin{enumerate}
+\item $x_k(t)=\sin{kt}$ for $k\in\N$
+
+  \begin{description}
+  \item Case 1: $j=k$
+    \begin{eqnarray*}
+      \inner{\sin(kt)}{\sin(kt)} &=& \int_{-\pi}^{\pi}\sin^2(kt)dt \\
+      &=& \frac{1}{2}\int_{-\pi}^{\pi}[1-\cos(2kt)]dt \\
+      &=& \frac{1}{2}\left[t-\frac{1}{2k}\sin(2kt)\right]_{-\pi}^{\pi} \\
+      &=& \frac{1}{2}[\pi-(-\pi)] \\
+      &=& \frac{1}{2}(2\pi) \\
+      &=& \pi
+    \end{eqnarray*}
+    
+  \item Case 2: $j\ne k$
+    \begin{eqnarray*}
+      \inner{\sin(jt)}{\sin(kt)} &=& \int_{-\pi}^{\pi}\sin(jt)\sin(kt)dt \\
+      &=& \frac{1}{2}\int_{-\pi}^{\pi}[\cos(j-k)t-\cos(j+k)t]dt \\
+      &=& \frac{1}{2}\left[\frac{1}{j-k}\sin(j-k)t-\frac{1}{j+k}\sin(j+k)t
+        \right]_{-\pi}^{\pi} \\
+      &=& 0
+    \end{eqnarray*}
+  \end{description}
+
+  $\therefore\sin(jt)\perp\sin(kt)$ for $j\ne k$.
+  
+\item $y_n(t)=\cos{nt}$ for $n\in\N$
+
+  \begin{description}
+  \item Case 1: $n=m$
+    \begin{eqnarray*}
+      \inner{\cos(nt)}{\cos(nt)} &=& \int_{-\pi}^{\pi}\cos^2(nt)dt \\
+      &=& \frac{1}{2}\int_{-\pi}^{\pi}[1+\cos(2nt)]dt \\
+      &=& \frac{1}{2}\left[t+\frac{1}{2n}\sin(2nt)\right]_{-\pi}^{\pi} \\
+      &=& \frac{1}{2}[\pi-(-\pi)] \\
+      &=& \frac{1}{2}(2\pi) \\
+      &=& \pi
+    \end{eqnarray*}
+
+  \item Case 2: $n\ne m$
+    \begin{eqnarray*}
+      \inner{\cos(nt)}{\cos(mt)} &=& \int_{-\pi}^{\pi}\cos(nt)\cos(mt)dt \\
+      &=& \frac{1}{2}\int_{-\pi}^{\pi}[\cos(n-m)t+\cos(n+m)t]dt \\
+      &=& \frac{1}{2}\left[\frac{1}{n-m}\sin(n-m)t+\frac{1}{n+m}\sin(n+m)t
+        \right]_{-\pi}^{\pi} \\
+      &=& 0
+    \end{eqnarray*}
+  \end{description}
+  
+  $\therefore\cos(nt)\perp\cos(mt)$ for $n\ne m$.
+\end{enumerate}
+
+\subsection*{3.8.34}
+
+Find $a,b,c\in\C$ which minimizes the value of the integral:
+\[\int_{-1}^1\abs{x^3-a-bx-cx^2}^2dx\]
+
+This is equivalent to minimizing the distance $\norm{x^3-(cx^2+bx+a)}_{L_2}$,
+which is the distance between $x^3$ and the space spanned by $\{x^2,x,1\}$.
+We need to be careful because this basis is not orthogonal in $L_2$.
+
+Let $S=\spn\{x^2,x,1\}$. The problem can be viewed as follows:
+
+\begin{tikzpicture}
+  \draw (0,0) -- (5,0) -- (6,2) -- (1,2) -- cycle;
+  \node [above right] at (1/2,0) {$S$};
+  \node [draw,circle,fill,scale=0.5] (z) at (2,1) {};
+  \node [below] at (z) {$0$};
+  \node (x) at (4,3) {};
+  \draw [->] (z) to node [above left] {$x^3$} (x);
+  \draw [dashed] (4,1) to node [right] {$d$} (x);
+\end{tikzpicture}
+
+In order to minimize the distance $d$, the vector $x^3-cx^2-bx-a$ must be
+orthogonal to $S$, and in particular, orthogonal to each of the basis vectors
+for $S$:
+
+\begin{eqnarray*}
+  \inner{x^3-cx^2-bx-a}{1} &=& \inner{x^3}{1}-c\inner{x^2}{1}-b\inner{x}{1}-
+  a\inner{1}{1} \\
+  &=& \int_{-1}^1x^3dx-c\int_{-1}^1x^2dx-b\int_{-1}^1xdx-a\int_{-1}^1dx \\
+  &=& 0-\frac{2}{3}c-0-2a \\
+  &=& -\frac{2}{3}c-2a \\
+  &=& 0
+\end{eqnarray*}
+
+\begin{eqnarray*}
+  \inner{x^3-cx^2-bx-a}{x} &=& \inner{x^3}{x}-c\inner{x^2}{x}-b\inner{x}{x}-
+  a\inner{1}{x} \\
+  &=& \int_{-1}^1x^4dx-c\int_{-1}^1x^3dx-b\int_{-1}^1x^2dx-a\int_{-1}^1xdx \\
+  &=& \frac{2}{5}-0-\frac{2}{3}b-0 \\
+  &=& \frac{2}{5}-\frac{2}{3}b \\
+  &=& 0
+\end{eqnarray*}
+
+\begin{eqnarray*}
+  \inner{x^3-cx^2-bx-a}{x^2} &=& \inner{x^3}{x^2}-c\inner{x^2}{x^2}-
+  b\inner{x}{x^2}-a\inner{1}{x^2} \\
+  &=& \int_{-1}^1x^5dx-c\int_{-1}^1x^4dx-b\int_{-1}^1x^3dx-a\int_{-1}^1x^2dx \\
+  &=& 0-\frac{2}{5}c-0-\frac{2}{3}a \\
+  &=& -\frac{2}{5}c-\frac{2}{3}a \\
+  &=& 0
+\end{eqnarray*}
+
+This results in $3$ equations in $3$ unknowns:
+\begin{eqnarray*}
+  2a+\frac{2}{3}c &=& 0 \\
+  \frac{2}{3}b-\frac{2}{5} &=& 0 \\
+  \frac{2}{3}a+\frac{2}{5}c &=& 0
+\end{eqnarray*}
+
+or:
+
+\begin{eqnarray*}
+  3a+c &=& 0 \\
+  b &=& \frac{3}{5} \\
+  5a+3c &=& 0
+\end{eqnarray*}
+
+which has the single solution:
+\begin{eqnarray*}
+  a &=& 0 \\
+  b &=& \frac{3}{5} \\
+  c &=& 0
+\end{eqnarray*}
+
+\end{document}
+p

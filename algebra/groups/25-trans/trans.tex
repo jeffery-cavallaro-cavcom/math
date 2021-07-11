@@ -1,0 +1,59 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\sigma}
+\begin{document}
+\section*{Transpositions}
+
+\begin{definition}
+  A \emph{transposition} is a cycle of length $2$.
+\end{definition}
+
+\begin{theorem}
+  Every permutation $\o$ of a finite set $A$ with at least $2$ elements can be
+  written as a product of transpositions.
+\end{theorem}
+
+\begin{theproof}
+  Since each $\o$ of $A$ can be expressed as a product of disjoint cycles,
+  AWLOG that $\o$ contains one cycle \\
+  The case $n=2$ is trivial, so assume $n>2$
+
+  Proof by induction on the length of the cycle $n$
+
+  \begin{description}
+  \item Base Case: $n=3$ \\
+    $(x_1x_2x_3)=(x_1x_2)(x_2x_3)$
+  \item Assume $(x_1x_2x_3\ldots x_n)=(x_1x_2)(x_2x_3)\ldots(x_{n-1}x_n)$
+  \item $(x_1x_2x_3\ldots x_nx_{n+1})=(x_1x_2x_3\ldots x_{n-1}x_n)(x_nx_{n+1})=
+    (x_1x_2)(x_2x_3)\ldots(x_{n-1}x_n)(x_nx_{n+1})$
+  \end{description}
+\end{theproof}
+
+\begin{example}
+  $(12345678)=(12)(23)(34)(45)(56)(67)(78)$ \\
+  $(12345678)=(18)(17)(16)(15)(14)(13)(12)$
+\end{example}
+
+\begin{corollary}
+  An $n$-cycle can be represented using $n-1$ transpositions.
+\end{corollary}
+
+\begin{definition}
+  A permutation $\o$ on a set $A$ that can be expressed as an even number of
+  transpositions is called \emph{even}. Otherwise, it is called \emph{odd}.
+\end{definition}
+
+\begin{theorem}
+  The evenness or oddness of a permutation is well-defined.
+\end{theorem}
+
+\begin{theproof}
+  Assumed $\o\in S_n$ is expressed as a composition of transpositions \\
+  Associate $\o$ with its corresponding permutation matrix \\
+  The determinant of the matrix is either $1$ or $-1$, depending on the either
+  an odd ($-1$) or even (1) number of transpositions \\
+  Therefore the evenness or oddness is well-defined.
+\end{theproof}
+
+\end{document}

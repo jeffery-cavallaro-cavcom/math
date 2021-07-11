@@ -1,0 +1,56 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\ve}{\vec{e}}
+\begin{document}
+\section*{Inner Product Induced Norm}
+
+\begin{definition}[Inner Product Induced Norm]
+  Let $V$ be a vector space equipped with inner product $\inner{\cdot}{\cdot}$
+  and norm $\norm{\cdot}$. To say that the norm is an
+  \emph{inner product-induced norm} means:
+  \[\norm{\vx}=\inner{\vx}{\vx}^{\frac{1}{2}}\]
+\end{definition}
+
+\begin{example}
+  The $\ell_2$ norm is an inner product-induced norm because:
+  \[\norm{\vx}_2=\left(\sum_{k=1}^n\abs{x_k}^2\right)^{\frac{1}{2}}=
+  (\vx^{\,*}\vx)^{\frac{1}{2}}=\inner{\vx}{\vx}^{\frac{1}{2}}\]
+\end{example}
+
+\begin{theorem}
+  A norm is inner product-induced iff it satisfies the parallelogram identity:
+  \[\norm{\vx+\vy}^2+\norm{\vx-\vy}^2=2(\norm{\vx}^2+\norm{\vy}^2)\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item Assume $\norm{\cdot}$ is inner product-induced
+    \begin{eqnarray*}
+      \norm{\vx+\vy}^2+\norm{\vx-\vy} &=&
+      \inner{\vx+\vy}{\vx+\vy}+\inner{\vx-\vy}{\vx-\vy} \\
+      &=& \inner{\vx}{\vx}+\inner{\vx}{\vy}+\inner{\vy}{\vx}+\inner{\vy}{\vy}+
+      \inner{\vx}{\vx}-\inner{\vx}{\vy}-\inner{\vy}{\vx}+\inner{\vy}{\vy} \\
+      &=& 2\inner{\vx}{\vx}+2\inner{\vy}{\vy} \\
+      &=& 2(\inner{\vx}{\vx}+\inner{\vy}{\vy}) \\
+      &=& 2(\norm{\vx}^2+\norm{\vy}^2) \\
+    \end{eqnarray*}
+  \end{description}
+\end{theproof}
+
+Note that the $\ell_1$ normal fails the parallelogram identity and thus is not
+inner product-induced:
+
+Let $\vx=\ve_1$ and $\vy=\ve_2$:
+\[\norm{\ve_1+\ve_2}_1=
+\norm{\begin{bmatrix} 1 \\ 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}}^2+
+\norm{\begin{bmatrix} 1 \\ -1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}}^2=
+2^2+2^2=4+4=8\]
+\[2(\norm{\ve_1}_1^2+\norm{\ve_2}_1^2)=2(1^2+1^2)=2(1+1)=2(2)=4\]
+
+\end{document}

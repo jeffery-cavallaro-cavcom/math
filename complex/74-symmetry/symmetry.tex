@@ -1,0 +1,134 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\conj}[1]{\overline{#1}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\G}{\Gamma}
+\DeclareMathOperator{\im}{Im}
+\begin{document}
+\section*{Symmetry}
+
+\begin{definition}
+  To say $z$ and $z^*$ are symmetric with respect to a circle $C$ means there
+  exists a LFT $=s(z)$ that maps $C$ onto the real number line and:
+  \[\conj{s(z)}=s(z^*)\]
+\end{definition}
+
+\begin{minipage}[t]{3.5in}
+  \begin{tikzpicture}
+    \draw [<->] (-3,0) -- (3,0);
+    \draw [<->] (0,-3) -- (0,3);
+    \node [circle,fill,scale=0.5] (a) at (1,1) {};
+    \node [below] at (a) {$a$};
+    \draw (a) circle [radius=1.5];
+    \draw [dashed] (a) -- node [below] {$R$} (2.5,1);
+    \node [circle,fill,scale=0.5] (z) at (1.5,1.5) {};
+    \node [circle,fill,scale=0.5] (zs) at (3,3) {};
+    \draw (a) -- (z) node [above left] {$z$} --
+    (zs) node [above right] {$z^*$};
+    \draw [->] (3.5,1.5) -- node [above] {$s(z)$} (5.5,1.5);
+  \end{tikzpicture}
+\end{minipage}
+\begin{minipage}[t]{3in}
+  \begin{tikzpicture}
+    \draw [<->] (-3,0) -- (3,0);
+    \draw [<->] (0,-3) -- (0,3);
+    \node [circle,fill,scale=0.5] (sz) at (2,1) {};
+    \node [circle,fill,scale=0.5] (szs) at (2,-1) {};
+    \draw [dashed] (0,0) -- (sz) node [above right] {$s(z)$};
+    \draw [dashed] (0,0) -- (szs) node [below right] {$\conj{s(z)}=s(z^*)$};
+    \draw [dashed] (sz) -- (szs);
+  \end{tikzpicture}
+\end{minipage}
+
+\begin{theorem}
+  Let $z$ and $z^*$ be symmetric with respect to circle $\abs{z-a}=R$:
+  \[z^*=\frac{R^2}{\conj{z-a}}+a\]
+  \[(z^*-a)(\conj{z}-\conj{a})=R^2\]
+\end{theorem}
+
+Note that when $a=0$, we get the familiar $z^*=\frac{R^2}{\conj{z}}$.
+
+\begin{lemma}
+  $\conj{(z_1,z_2,z_3,z_4)}=(\conj{z_1},\conj{z_2},\conj{z_3},\conj{z_4})$
+\end{lemma}
+\newpage
+\begin{theproof}
+  \listbreak
+  \begin{eqnarray*}
+    \conj{(z_1,z_2,z_3,z_4)} &=&
+    \conj{\left[\frac{(z_1-z_3)(z_2-z_4)}{(z_1-z_4)(z_2-z_3)}\right]} \\
+    &=& \frac{\conj{(z_1-z_3)(z_2-z_4)}}{\conj{(z_1-z_4)(z_2-z_3)}} \\
+    &=& \frac{\conj{(z_1-z_3)}\,\conj{(z_2-z_4)}}
+         {\conj{(z_1-z_4)}\,\conj{(z_2-z_3)}} \\
+    &=& \frac{(\conj{z_1}-\conj{z_3})(\conj{z_2}-\conj{z_4})}
+         {(\conj{z_1}-\conj{z_4})(\conj{z_2}-\conj{z_3})} \\
+    &=& (\conj{z_1},\conj{z_2},\conj{z_3},\conj{z_4})
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{theorem}
+  Let $z_1,z_2,z_3$ be on a circle $C$: \\
+  $z$ and $z^*$ are symmetric wrt $C$ iff
+  \[\conj{(z,z_1,z_2,z_3)}=(z^*,z_1,z_2,z_3)\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+    \item $\implies$ Assume $z$ and $z^*$ are symmetric wrt $C$
+
+      Let $s(z)$ be a LFT from $C$ onto the real number line
+      \begin{eqnarray*}
+        \conj{(z,z_1,z_2,z_3)} &=& \conj{(s(z),s(z_1),s(z_2),s(z_3))} \\
+        &=& (\conj{s(z)},\conj{s(z_1)},\conj{s(z_2)},\conj{s(z_3)}) \\
+        &=& (s(z^*),s(z_1),s(z_2),s(z_3)) \\
+      \end{eqnarray*}
+      Now, apply the inverse relation $s^{-1}(z)$:
+      \[\conj{(z,z_1,z_2,z_3)}=(z^*,z_1,z_2,z_3)\]
+
+    \item $\impliedby$ Assume $\conj{(z,z_1,z_2,z_3)}=(z^*,z_1,z_2,z_3)$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $z$ and $z^*$ be symmetric wrt a circle $C$ and let $s\in\S$: \\
+  $s(z)$ and $s(z^*)$ are symmetric wrt some circle $\G$:
+  \[\conj{(s(z),s(z_1),s(z_2),s(z_3))}=(s(z^*),s(z_1),s(z_2),s(z_3))\]
+  Thus, a LFT preserves symmetry.
+\end{theorem}
+\newpage
+\begin{theproof}
+  Assume $z$ and $z^*$ are symmetric wrt circle $C$
+  \begin{eqnarray*}
+    \conj{(s(z),s(z_1),s(z_2),s(z_3))} &=& \conj{(z,z_1,z_2,z_3)} \\
+    &=& (z^*,z_1,z_2,z_3) \\
+    &=& (s(z^*),s(z_1),s(z_2),s(z_3))
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{example}
+  Use symmetry to construct a conformal mapping from $\abs{z}<1$ to
+  $\im(w)>0$.
+
+  Find a suitable LFT:
+  \begin{eqnarray*}
+    0 &\to& i \\
+    \infty &\to& -i \\
+    1 &\to& 2 \\
+    z &\to& w
+  \end{eqnarray*}
+  \begin{eqnarray*}
+    (0,\infty,1,z) &=& (i,-i,2,w) \\
+    \frac{(0-1)(\infty-z)}{(0-z)(\infty-1)} &=&
+    \frac{(i-2)(-i-w)}{(i-w)(-i-2)} \\
+    \frac{1}{z} &=& \frac{(i-2)(i+w)}{(i+2)(i-w)} \\
+    z(i-2)(i+w) &=& (i+2)(i-w) \\
+    -z+izw-i2z-2zw &=& -1-iw+i2-2w \\
+    w(iz-2z+i+2) &=& z+i2z-1+i2 \\
+    w((-2+i)z+(i+2)) &=& (1+2i)z+(-1+2i) \\
+    w &=& \frac{(1+2i)z+(-1+2i)}{(-2+i)z+(i+2)}
+  \end{eqnarray*}
+\end{example}
+
+\end{document}

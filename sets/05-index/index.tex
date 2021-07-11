@@ -1,0 +1,72 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\theoremstyle{mathitem}
+\newtheorem*{operations}{Operations}
+\begin{document}
+\section*{Index Sets}
+\begin{definition}
+Let $I$ be a set. The collection of sets given by:
+\[\{A_i\mid i\in I\}\]
+is called an indexed family of sets and $I$ is called an index set.
+
+Note that $I$ may be infinite.
+\end{definition}
+\begin{operations}
+\listbreak
+\begin{enumerate}
+\item Union
+\[\bigcup_{i\in I}A_i=\{a\mid\exists i\in I,a\in A_i\}\]
+\item Intersection
+\[\bigcap_{i\in I}A_i=\{a\mid\forall i\in I,a\in A_i\}\]
+\end{enumerate}
+\end{operations}
+\begin{example}
+\[\mbox{Let}\ I=Z^{+}\ \mbox{and}\ S_i=[0,i]=\{x\in\R\mid0\le x\le i\}\]
+\begin{figure}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw (-1,0) -- (3,0);
+\draw [fill=black] (0,0) circle [radius=0.1];
+\draw [fill=black] (1.5,0) circle [radius=0.1];
+\node [below] at (0,0) {0};
+\node [below] at (1.5,0) {i};
+\draw [ultra thick] (0,0) -- (1.5,0);
+\end{tikzpicture}
+\end{figure}
+\[S=\bigcup_{i\in I}S_i=[0,\infty)=\{x\in\R\mid x\ge0\}\]
+\begin{figure}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw (-1,0) -- (3,0);
+\draw [fill=black] (0,0) circle [radius=0.1];
+\node [below] at (0,0) {0};
+\draw [ultra thick,->] (0,0) -- (3,0);
+\end{tikzpicture}
+\end{figure}
+\[T=\bigcap_{i\in I}S_i=[0,1]=\{x\in\R\mid0\le x\le1\}\]
+\begin{figure}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw (-1,0) -- (3,0);
+\draw [fill=black] (0,0) circle [radius=0.1];
+\draw [fill=black] (1,0) circle [radius=0.1];
+\node [below] at (0,0) {0};
+\node [below] at (1,0) {1};
+\draw [ultra thick] (0,0) -- (1,0);
+\end{tikzpicture}
+\end{figure}
+\newpage
+\[S-T=(1,\infty)=\{x\in\R\mid x>1\}\]
+\begin{figure}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw (-1,0) -- (3,0);
+\draw (1,0) circle [radius=0.1];
+\node [below] at (1,0) {1};
+\draw [ultra thick,->] (1,0) -- (3,0);
+\end{tikzpicture}
+\end{figure}
+\end{example}
+\end{document}

@@ -1,0 +1,182 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+\usepackage{array}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Euler's Formula}
+\begin{theorem}
+\listbreak
+\[e^{i\o}=\cos\o+i\sin\o\]
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{eqnarray*}
+\cos\o &=& \sum_{n=0}^{\infty}(-1)^n\frac{\o^{2n}}{(2n)!} \\
+    &=& \sum_{n=0}^{\infty}i^{2n}\frac{\o^{2n}}{(2n)!} \\
+\sin\o &=& \sum_{n=0}^{\infty}(-1)^n\frac{\o^{2n+1}}{(2n+1)!} \\
+    &=& \sum_{n=0}^{\infty}i^{2n}\frac{\o^{2n+1}}{(2n+1)!} \\
+i\sin\o &=& \sum_{n=0}^{\infty}i^{2n+1}\frac{\o^{2n+1}}{(2n+1)!} \\
+\cos\o+i\sin\o &=& \sum_{n=0}^{\infty}\frac{(i\o)^n}{n!} \\
+    &=& e^{i\o} \\
+\end{eqnarray*}
+\end{theproof}
+
+\bigskip
+
+\begin{example}[Unit Circle]
+\begin{tabular}{m{2.5in} m{3in}}
+\begin{tikzpicture}
+\draw [<->] (-3,0) -- (3,0);
+\draw [<->] (0,-3) -- (0,3);
+\draw [
+    decoration={markings, mark=between positions 0.125 and 0.875 step 0.25
+        with {\arrow[line width=0.0125in]{Straight Barb}}},
+    postaction={decorate}
+] (0,0) circle [radius=1.5];
+\draw [fill=black] (1.5,0) circle [radius=0.075];
+\draw [fill=black] (0,1.5) circle [radius=0.075];
+\draw [fill=black] (-1.5,0) circle [radius=0.075];
+\draw [fill=black] (0,-1.5) circle [radius=0.075];
+\node [below right] at (1.5,0) {$e^{i0}$};
+\node [above right] at (0,1.5) {$e^{i\frac{\pi}{2}}$};
+\node [above left] at (-1.5,0) {$e^{i\pi}$};
+\node [below left] at (0,-1.5) {$e^{i\frac{3\pi}{2}}$};
+\end{tikzpicture} &
+$\begin{array}{l}
+e^{i0}=\cos0+i\sin0=1+0i=1 \\
+e^{i\frac{\pi}{2}}=\cos\frac{\pi}{2}+i\sin\frac{\pi}{2}=0+1i=i \\
+e^{i\pi}=\cos\pi+i\sin\pi=-1+0i=-1 \\
+e^{i\frac{3\pi}{2}}=\cos\frac{3\pi}{2}+i\sin\frac{3\pi}{2}=0-1i=-i \\
+\end{array}$ \\
+\end{tabular}
+\end{example}
+\newpage
+\begin{definition}
+The so-called \emph{Existence of God} equation is given by:
+\[e^{i\pi}+1=0\]
+\end{definition}
+
+\begin{corollary}
+\[e^{-i\o}=\cos\o-i\sin\o=\frac{1}{e^{i\o}}=\conj{e^{i\o}}\]
+\end{corollary}
+
+\begin{theproof}
+\[e^{-i\o}=e^{i(-\o)}=\cos{(-\o)}+i\sin{(-\o)}=\cos\o-i\sin\o\]
+\begin{eqnarray*}
+e^{-i\o} &=& \cos\o-i\sin\o \\
+    &=& \frac{(\cos\o-i\sin\o)(\cos\o+i\sin\o)}{\cos\o+i\sin\o} \\
+    &=& \frac{\cos^2\o+\sin^2\o}{e^{i\o}} \\
+    &=& \frac{1}{e^{i\o}} \\
+\end{eqnarray*}
+\[e^{-i\o}=\cos\o-i\sin\o=\conj{\cos\o+i\sin\o}=\conj{e^{i\o}}\]
+\end{theproof}
+
+\begin{theorem}
+\listbreak
+\begin{enumerate}
+\item $e^{i\o_1}e^{i\o_2}=e^{i(\o_1+\o_2)}$
+\item $\frac{e^{i\o_1}}{e^{i\o_2}}=e^{i(\o_1-\o_2)}$
+\item $\left(e^{i\o}\right)^n=e^{in\o},n\in\Z$
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item
+\begin{eqnarray*}
+e^{i\o_1}e^{i\o_2} &=& (\cos\o_1+i\sin\o_1)(\cos\o_2+i\sin\o_2) \\
+    &=& \cos\o_1\cos\o_2-\sin\o_1\sin\o_2
+        +i(\sin\o_1\cos\o_2+\cos\o_1\sin\o_2) \\
+    &=& \cos(\o_1+\o_2)+i\sin(\o_1+\o_2) \\
+    &=& e^{i(\o_1+\o_2)} \\
+\end{eqnarray*}
+
+\item
+\[\frac{e^{i\o_1}}{e^{i\o_2}}=e^{i\o_1}e^{-i\o_2}=e^{i(\o_1-\o_2)}\]
+
+\item
+Assume $n\in\Z$.
+\begin{description}
+\item {case 1:} $n\ge0$
+
+Base: $n=0$
+\[\left(e^{i\o}\right)^0=1\]
+
+Assume $\left(e^{i\o}\right)^n=e^{in\o}$
+\[\left(e^{i\o}\right)^{n+1}=e^{i\o}\left(e^{i\o}\right)^n=e^{i\o}e^{in\o}
+    =e^{i(n+1)\o}\]
+
+\item {case 2:} $n<0$
+\[\left(e^{i\o}\right)^n=\left(e^{i\o}\right)^{(-1)(-n)}=\left(e^{-i\o}\right)^{-n}=
+    e^{-i(-n)\o}=e^{in\o}\]
+\end{description}
+\end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+Let $z=x+iy$:
+\begin{enumerate}
+\item $\abs{e^{i\o}}=1$
+\item $\abs{e^z}=e^x$
+\item $\abs{e^{iz}}=e^{-y}$
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item $\abs{e^{i\o}}=\abs{\cos\o+i\sin\o}=\cos^2\o+\sin^2\o=1$
+\item $\abs{e^z}=\abs{e^{x+iy}}=\abs{e^xe^{iy}}=\abs{e^x}\abs{e^{iy}}=e^x\cdot1
+    =e^x$
+\item $\abs{e^{iz}}=\abs{e^{i(x+iy)}}=\abs{e^{-y+ix}}=\abs{e^{-y}e^{ix}}=
+    \abs{e^{-y}}\abs{e^{ix}}=e^{-y}\cdot1=e^{-y}$
+\end{enumerate}
+\end{theproof}
+\newpage
+\begin{theorem}
+\listbreak
+\begin{enumerate}
+\item $\cos\o=\frac{e^{i\o}+e^{-i\o}}{2}=\cosh(i\o)$
+\item $\sin\o=\frac{e^{i\o}-e^{-i\o}}{2i}=-i\sinh(i\o)$
+\item $\cos(i\o)=\cosh\o$
+\item $\sin(i\o)=i\sinh\o$
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{eqnarray*}
+e^{i\o} &=& \cos\o+i\sin\o \\
+e^{-i\o} &=& \cos(-\o)+i\sin(-\o)=\cos\o-i\sin\o \\
+\end{eqnarray*}
+\begin{enumerate}
+\item
+\begin{eqnarray*}
+2cos\o &=& e^{i\o}+e^{-i\o} \\
+cos\o &=& \frac{e^{i\o}+e^{-i\o}}{2} \\
+cos\o &=& \cosh(i\o) \\
+\end{eqnarray*}
+
+\item
+\begin{eqnarray*}
+2isin\o &=& e^{i\o}-e^{-i\o} \\
+sin\o &=& \frac{e^{i\o}-e^{-i\o}}{2i} \\
+sin\o &=& \frac{1}{i}\sinh(i\o) \\
+sin\o &=& -i\sinh(i\o) \\
+\end{eqnarray*}
+
+\item
+\[\cos(i\o)=\cosh(i^2\o)=\cosh(-\o)=\cosh\o\]
+
+\item
+\[\sin(i\o)=-i\sinh(i^2\o)=-i\sinh(-\o)=i\sinh\o\]
+\end{enumerate}
+\end{theproof}
+\end{document}

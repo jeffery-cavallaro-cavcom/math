@@ -1,0 +1,283 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\newcommand{\p}{\phi}
+\begin{document}
+\section*{Subgroups}
+
+\begin{definition}
+  To say that a set $H$ is a \emph{subgroup} of a group $G$, denoted $H\le G$,
+  means:
+  \begin{enumerate}
+  \item{$H\subseteq G$}
+  \item{$H$ is a group using the induced operation of $G$}
+  \end{enumerate}
+  When $H=G$, $H$ is called the \emph{improper} subgroup of $G$.
+  
+  When $H\subset G$, $H$ is called a \emph{proper} subgroup of $G$, denoted
+  $H<G$.
+\end{definition}
+
+\begin{example}
+  \begin{minipage}[t]{3in}
+    \listbreak 
+    \[Z_4=\{0,1,2,3\}\]
+  
+    \begin{tabular}{c|cccc}
+      $+$ & 0 & 1 & 2 & 3 \\
+      \hline
+      0 & 0 & 1 & 2 & 3 \\
+      1 & 1 & 2 & 3 & 0 \\
+      2 & 2 & 3 & 0 & 1 \\
+      3 & 3 & 0 & 1 & 2 \\
+    \end{tabular}
+
+    \[\begin{array}{l}
+    \{0\} \\
+    \{0,2\} \\
+    \{0,1,2,3\} \\
+    \end{array}\]
+
+    One proper, non-trivial subgroup
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \listbreak
+    \[V=D_4=\{e,a,b,c\}\]
+  
+    \begin{tabular}{c|cccc}
+      $*$ & e & a & b & c \\
+      \hline
+      e & e & a & b & c \\
+      a & a & e & c & b \\
+      b & b & c & e & a \\
+      c & c & b & a & e \\
+    \end{tabular}
+
+    \[\begin{array}{l}
+    \{e\} \\
+    \{e,a\} \\
+    \{e,b\} \\
+    \{e,c\} \\
+    \{e,a,b,c\} \\
+    \end{array}\]
+
+    Three proper, non-trivial subgroup
+  \end{minipage}
+
+  \bigskip
+
+  \begin{minipage}{3in}
+    \setlength{\leftskip}{0.75in}
+    \begin{tikzpicture}
+      \node at (0,0) {$\{0\}$};
+      \draw (0,0.5) -- (0,1.5);
+      \node at (0,2) {$\{0,2\}$};
+      \draw (0,2.5) -- (0,3.5);
+      \node at (0,4) {$\Z_4$};
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{tikzpicture}
+      \node at (0,0) {$\{e\}$};
+      \draw (0,0.5) -- (-2,1.5);
+      \draw (0,0.5) -- (0,1.5);
+      \draw (0,0.5) -- (2,1.5);
+      \node at (-2,2) {$\{e,a\}$};
+      \node at (0,2) {$\{e,b\}$};
+      \node at (2,2) {$\{e,c\}$};
+      \node at (0,4) {$D_4$};
+      \draw (-2,2.5) -- (0,3.5);
+      \draw (0,2.5) -- (0,3.5);
+      \draw (2,2.5) -- (0,3.5);
+    \end{tikzpicture}
+  \end{minipage}
+\end{example}
+
+\begin{theorem}
+  Let $G$ be a group:
+  \[\{e\}\le G\]
+\end{theorem}
+
+\begin{theproof}
+  $\{e\}\subseteq G$
+  
+  $(ee)e=ee=e$ \\
+  $e(ee)=ee=e$ \\
+  $\therefore \{e\}$ is associative.
+
+  $e\in\{e\}$ \\
+  $\therefore \{e\}$ has identity.
+
+  $ee=ee=e$ \\
+  $\therefore \{e\}$ has inverses.
+
+  $\therefore \{e\}\le G$
+\end{theproof}
+
+\begin{definition}
+  $\{e\}\subseteq G$ is called the \emph{trivial} subgroup of $G$. All other
+  subgroups are referred to as \emph{non-trivial}.
+\end{definition}
+
+\begin{theorem}
+  Let $G$ be a group and $H\subseteq G$. $H\le G$ iff the following three
+  properties hold:
+  \begin{enumerate}
+  \item{$H$ is closed under the induced operation of $G$}
+  \item{$e\in H$}
+  \item{$\forall\,a\in H,a^{-1}\in H$}
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item{$\implies$} Assume $H\le G$.
+
+    $H$ is a group, so it is closed under the induced operation and
+    $\forall\,a\in H,a^{-1}\in H$. Also, by closure, $aa^{-1}=e\in H$.
+
+    $\therefore$ the three properties hold.
+    
+  \item{$\impliedby$} Assume the three properties hold.
+
+    Assume $a,b,c\in H$. \\
+    By closure, $(ab)c\in H$ and $a(bc)\in H$. \\
+    $a,b,c\in G$ \\
+    $(ab)c=a(bc)$ in $G$, so this must also hold in $H$. \\
+    $\therefore H$ is associative.
+
+    $e\in H$, and since $e$ is the identity for $G$, it must also be the
+    identity for $H$.
+
+    $\forall\,a\in H,a^{-1}\in H$.
+
+    $\therefore H\le G$.
+  \end{description}
+\end{theproof}
+\newpage
+\begin{example}
+  $G=\Z_4=\{0,1,2,3\}$
+  
+  $H=\{0,2\}$
+
+  \bigskip
+
+  \begin{tabular}{c|cc}
+    $+_4$ & 0 & 2 \\
+    \hline
+    0 & 0 & 2 \\
+    2 & 2 & 0 \\
+  \end{tabular}
+
+  \bigskip
+
+  $H\ \mbox{is closed}$
+  
+  $0=e\in H$
+  
+  $0^{-1}=0\in H$
+  
+  $2^{-1}=2\in H$
+  
+  $\therefore H\le G$
+\end{example}
+
+\begin{theorem}[Subgroup Test]
+  Let $G$ be a group and $H\ne\emptyset,H\subseteq G$
+  \[H\le G\iff \forall\,a,b\in H,ab^{-1}\in H\ \ (b^{-1}\in G)\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item{$\implies$ Assume $H\le G$}
+
+    Assume $a,b\in H$ \\
+    Since $H$ is a group, $b^{-1}\in H$ \\
+    But $H\subseteq G$, so $b^{-1}\in G$ \\
+    By closure, $ab^{-1}\in H$
+    
+  \item{$\impliedby$ Assume
+    $\forall\,a,b\in H,ab^{-1}\in H\ \ (b^{-1}\in G)$}
+
+    $H\ne\emptyset$ \\
+    Assume $a,b\in H$
+
+    $b=(b^{-1})^{-1}\in H$ \\
+    But $H\subseteq G$, so $b=(b^{-1})^{-1}\in G$ \\
+    By assumption, $a(b^{-1})^{-1}\in H$ \\
+    $ab\in H$ \\
+    $\therefore H$ is closed under the induced operation of G.
+
+    Since $H\subseteq G,a\in G$ \\
+    But since $G$ is a group, $a^{-1}\in G$ \\
+    By assumption, $aa^{-1}\in H$ \\
+    $\therefore e\in H$
+
+    $e\in H$ and $a^{-1}\in G$ \\
+    So by assumption, $ea^{-1}\in H$ \\
+    $\therefore a^{-1}\in H$
+  \end{description}
+\end{theproof}
+
+\begin{example}
+  Let $G=GL(n,\R)$ and $H=\{A\in G\mid \det(A)=1\}$ \\
+  Prove: $H<G$
+
+  Assume $A,B\in H$ \\
+  Clearly, $H\subset G$ \\
+  So, $B\in G$ \\
+  $\det(B)=1\ne0$, so $B$ is invertible \\
+  $B^{-1}\in G$ \\
+  $\det(AB^{-1})=\frac{\det(A)}{\det(B)}=\frac{1}{1}=1$ \\
+  $AB^{-1}\in H$ \\
+  $\therefore H<G$
+\end{example}
+
+\begin{theorem}
+  Let $G$ and $G'$ be groups and $\p:G\to G'$ be an isomorphism:
+  \[H\le G\implies \p[H]\le G'\]
+  Isomorphisms map subgroups to subgroups.
+\end{theorem}
+
+\begin{theproof}
+  Assume $H\le G$ \\
+  Assume $x,y\in\p[H]$ \\
+  $\exists\,a,b\in H,\p(a)=x$ and $\p(b)=y$ \\
+  $\p[H]\subseteq G'$ \\
+  So, $y\in G'$ \\
+  But $G'$ is a group, so $y^{-1}\in G'$ \\
+  $\p$ is a homomorphism \\
+  $xy^{-1}=\p(a)\p(b)^{-1}=\p(a)\p(b^{-1})=\p(ab^{-1})$ \\
+  $H$ is a group, so $b^{-1}\in H$ \\
+  By closure, $ab^{-1}\in H$ \\
+  $\p$ is well-defined, so $\p(ab^{-1})\in \p[H]$ \\
+  $xy^{-1}\in\p[H]$ \\
+  $\therefore$ by the subgroup test, $\p[H]\le G'$
+\end{theproof}
+
+\begin{corollary}
+  Let $G\simeq G'$:
+  \[\forall\,H\le G,\exists\,H'\le G',H\simeq H'\]
+\end{corollary}
+\newpage
+\begin{theorem}
+  Let $G$ be a group:
+  \[H,K\le G\implies H\cap K\le G\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $H,K\le G$ \\
+  Assume $a,b\in H\cap K$ \\
+  $a,b\in H$ and $a,b\in K$ \\
+  But $H$ and $K$ are groups, so $b^{-1}\in H$ and $b^{-1}\in K$ \\
+  $H\cap K\subseteq H,K\subseteq G$ \\
+  So $b^{-1}\in G$ \\
+  $ab^{-1}\in H$ and $ab^{-1}\in K$ \\
+  $ab^{-1}\in H\cap K$ \\
+  $\therefore$ by the subgroup test, $H\cap K\le G$
+\end{theproof}
+
+\end{document}

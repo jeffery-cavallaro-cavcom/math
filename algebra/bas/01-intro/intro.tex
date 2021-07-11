@@ -1,0 +1,113 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\newcommand{\z}{\zeta}
+\begin{document}
+\section*{Abstract Algebra}
+Abstract algebra is concerned with the structure imposed upon sets by one or
+more binary operators, and which such sets have the same structure.
+
+\begin{definition}
+  Let $c\in\R, c>0$:
+  \[\R_c=[0,c)=\{x\in\R\mid0\le x<c\}\]
+\end{definition}
+
+\begin{definition}
+  Let $a,b\in\R_c$. Addition of $a$ and $b$ modulo $c$, denoted $a+_c b$, is
+  given by:
+  \[a+_c b=\begin{cases}
+  a+b, & a+b\in\R_c \\
+  a+b-c, & a+b\notin\R_c \\
+  \end{cases}\]
+\end{definition}
+
+\begin{example}
+  $\R_1=[0,1)$:
+  \[0.5+_10.25=0.75\]
+  \[0.5+_10.5=1-1=0\]
+  \[0.5+_10.75=1.25-1=0.25\]
+\end{example}
+
+The angular arithmetic in polar and complex exponential forms usually takes
+place in $\R_{2\pi}$, although other intervals such as $(-\pi,\pi]$ are
+sometimes used.
+
+Let $U$ be the locus of points on the unit circle:
+\[U=\{z\in\C\mid\abs{z}=1\]
+
+$U$ has the following properties:
+\begin{enumerate}
+\item $U$ is \emph{closed} under multiplication:
+  \[\forall\,z_1,z_2\in U, z_1z_2\in U\]
+  Let $z_1=e^{i\o_1}$ and $z_2=e^{i\o_2}$:
+  \[z_1z_2=e^{i\o_1}e^{i\o_2}=e^{i(\o_1+_{2\pi}\,\o_2)}\in U\]
+
+\item There exists a unique element $e^{i0}=1\in U$ such that
+  \[\forall\,z\in U,1z=z1=z\]
+  Such an element is called the identity element.
+
+\item There exists a bijection $\phi:U\to\R_{2\pi}$ defined by:
+  \[\phi(z)=\phi(e^{i\o})=\o\in\R_{2\pi}\]
+
+\item The bijection $\phi$ is also a \emph{homomorphism}:
+  \[\phi(z_1z_2)=\phi\left(e^{i(\o_1+_{2\pi}\,\o_2)}\right)=\o_1+_{2\pi}\,\o_2=
+  \phi(z_1)+_{2\pi}\,\phi(z_2)\]
+
+\item The equation $z\cdot z\cdot z\cdot z=1$ in $U$ has four solutions:
+  $1,-1,i,-i$. Thus, the equation: $x+_{2\pi}\,x+_{2\pi}\,x+_{2\pi}\,x=0$ in
+  $\R_{2\pi}$ has four corresponding solutions:
+  $0,\frac{\pi}{2},\pi,\frac{3\pi}{2}$.
+\end{enumerate}
+
+A bijection that is also a homomorphism is called an \emph{isomorphism}.
+Isomorphisms indicate that two sets have the same structure, although the names
+of the elements may be different.
+
+\begin{definition}
+  \listbreak
+  \[\Z_n=\{m\in\Z\mid0\le m<n\}=\{0,1,2,\ldots,n-1\}\]
+\end{definition}
+
+\begin{definition}
+  The $n^{th}$ roots of unity, denoted $U_n$, are given by:
+  \[U_n=\{z\in\C\mid z^n=1\}\]
+
+  The $k^{th}$ root, denoted $\z^k$, is given by:
+  \[\z^k=e^{i\frac{2\pi k}{n}}\]
+\end{definition}
+
+Note that $U_n\subset U$, where the members of $U_n$ start at $(1,0)$ and are
+equally spaced by $\frac{2\pi}{n}$. This results in a total of $n-1$ unique
+roots, corresponding to $0\le k<n$.
+
+Similarly, $U_n$ has the following properties:
+\begin{enumerate}
+\item $U_n$ is closed under multiplication:
+  \[\forall\,\z^h,\z^k\in U_n, \z^h\z^k\in U_n\]
+  Let $\z^h=e^{i\frac{2\pi h}{n}}$ and $\z^k=e^{i\frac{2\pi k}{n}}$:
+  \[\z^h\z^k=e^{i\frac{2\pi h}{n}}e^{i\frac{2\pi k}{n}}=
+      e^{i\left[\frac{2\pi(h+_n\,k)}{n}\right]}\in U_n\]
+
+\item There exists a unique element $\z^0=e^{i0}=1\in U_n$ such that
+  \[\forall\,\z^k\in U_n,\z^0\z^k=\z^k\z^0=\z^k\]
+  Such an element is called the identity element.
+
+\item There exists a bijection $\phi:U_n\to\Z_n$ defined by:
+  \[\phi(\z^k)=\phi(e^{i\frac{2\pi k}{n}})=k\]
+
+\item The bijection $\phi$ is also a \emph{homomorphism}:
+  \[\phi(\z^h\z^k)=\phi\left(e^{i\left[\frac{2\pi(h+_n\,k)}{n}\right]}\right)=
+  h+_n\,k=\phi(h)+_n\,\phi(k)\]
+\end{enumerate}
+
+\begin{example}
+  Find all solutions to the equation:
+  \[x+_8\,x+_8\,x+_8\,x+_8\,x+_8\,x+_8\,x+_8\,x=0\]
+
+  Since $\Z_8$ is isomorphic to $U_8$, consider the equation:
+  \[z\cdot z\cdot z\cdot z\cdot z\cdot z\cdot z\cdot z=z^8=1\]
+  The solutions to this equation are the $8^{th}$ roots of unity, which
+  correspond to the eight solutions: $0,1,2,3,4,5,6,7$ in $\Z_8$.
+\end{example}
+\end{document}

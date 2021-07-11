@@ -1,0 +1,349 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\l}{\lambda}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\renewcommand{\o}{\sigma}
+\renewcommand{\l}{\lambda}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\m}{\mu}
+\newcommand{\diag}[2]{\begin{bmatrix} #1 & & 0 \\ & \ddots & \\ 0 & & #2 \end{bmatrix}}
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\tr}{tr}
+\allowdisplaybreaks
+\begin{document}
+Cavallaro, Jeffery \\
+Math 229 \\
+Homework \#2
+
+\bigskip
+
+\subsection*{2.1.2}
+
+Let $U\in M_n$ be unitary and let $\l$ be a given eigenvalue of $U$.
+\begin{enumerate}[label={\alph*)}]
+\item Show: $\abs{\l}=1$
+
+  There exists eigenvector $\vx\ne0$ associated with $\l$ such that:
+  \[U\vx=\l\vx\]
+  Since $U$ preserves length and because $\|\vx\|\ne0$:
+  \begin{eqnarray*}
+    \|U\vx\| &=& \|\l\vx\| \\
+    \|\vx\| &=& \abs{\l}\|\vx\| \\
+    \abs{\l} &=& 1
+  \end{eqnarray*}
+
+\item Prove: $\vx$ is a right eigenvector of $U$ associated with $\l$ iff
+  $\vx$ is a left eigenvector of $U$ associated with $\l$.
+  \begin{eqnarray*}
+    U\vx=\l\vx &\iff& \vx=U^*\l\vx \\
+    &\iff& \overline{\l}\vx=\abs{\l}^2U^*\vx=U^*\vx \\
+    &\iff& \vx^{\,*}U=\l\vx^{\,*}
+  \end{eqnarray*}
+\end{enumerate}
+
+\subsection*{2.3.6}
+
+Let $A,B\in M_n$ be given and suppose $A$ and $B$ are simultaneously similar to
+upper triangular matrices - there exists nonsingular $S\in M_n$ such that:
+\[SAS^{-1}=T_1\in UT(n)\]
+\[SBS^{-1}=T_2\in UT(n)\]
+Show that every eigenvalue of $AB-BA$ must be 0.
+
+\begin{lemma}
+  Let $A,B\in UT(n)$:
+  \begin{enumerate}
+  \item $AB\in UT(n)$
+  \item $(AB)_{ii}=A_{ii}B_{ii}$
+  \end{enumerate}
+\end{lemma}
+
+\begin{theproof}
+  $(AB)_{ij}=\sum_{k=0}^nA_{ik}B_{kj}$
+
+  Assume $i>j$ \\
+  if $k<i$ then $A_{ik}=0$ \\
+  if $k>i$ then $k>j$ and $B_{kj}=0$ \\
+  Therefore, $(AB)_{ij}=0$ and $AB\in UT(n)$
+
+  Now, assume $i=j$ \\
+  $(AB)_{ii}=\sum_{k=0}^nA_{ik}B_{ki}$ \\
+  if $k<i$ then $A_{ik}=0$ \\
+  if $k>i$ then $B_{ki}=0$ \\
+  Therefore, $(AB)_{ii}=A_{ii}B_{ii}$
+\end{theproof}
+
+Now back to original proof:
+
+$A=S^{-1}T_1S$ and $B=S^{-1}T_2S$ \\
+$AB=(S^{-1}T_1S)(S^{-1}T_2S)=S^{-1}T_1T_2S$ \\
+$BA=(S^{-1}T_2S)(S^{-1}T_1S)=S^{-1}T_2T_1S$ \\
+$AB-BA=S^{-1}T_1T_2S-S^{-1}T_2T_1S=S^{-1}(T_1T_2-T_2T_1)S$
+
+But $T_1T_2-T_2T_1\in UT(n)$, and is thus a Schur triangularization of
+$AB-BA$. Furthermore:
+\[(T_1T_2-T_2T_1)_{ii}=(T_1)_{ii}(T_2)_{ii}-(T_2)_{ii}(T_1)_{ii}=0\]
+Thus, the Schur triangularization of $AB-BA$ has all zeros on its diagonal
+
+Therefore, all of the eigenvalues of $AB-BA$ are $0$.
+
+\subsection*{2.4.13}
+
+Let $A\in M_n$ and $B\in M_m$. Prove: $\forall\,C\in M_{n,m}$ there exists a unique
+solution $X\in M_{n,m}$ to the equation $AX-XB=C$ iff $\o(A)\cap\o(B)=\emptyset$.
+Moreover, if $C=0$ then $X=0$.
+
+Consider the linear transformations $T_1,T_2:M_{n,m}\to M_{n,m}$ defined by:
+\begin{eqnarray*}
+  T_1(X) &=& AX \\
+  T_2(X) &=& XB
+\end{eqnarray*}
+Let $T=T_1-T_2$ be the linear transformation corresponding to $AX-XB$.
+
+\begin{description}
+\item $\implies$ Assume $AX-XB=C$, and hence $T(X)=C$, has a unique solution for every
+  $C\in M_{n,m}$
+
+  Thus $T$ is both one-to-one (unique solution) and onto (all $C\in M_{n,m}$), and so
+  $T$ is a bijection. This means that $T$ is invertible and by the IMT, $0\notin\o(T)$.
+
+  Let $\vx$ be an eigenvector of $A\ (T_1)$ with respect to eigenvalue $\l$ and let $\vy$
+  be a left eigenvector of $B\ (T_2)$ with respect to eigenvalue $\m$. Also, let $X=xy^*$:
+  
+  \begin{eqnarray*}
+    T(X) &=& T(xy^*) \\
+    &=& (T_1-T_2)(xy^*) \\
+    &=& T_1(xy^*)-T_2(xy^*) \\
+    &=& Axy^*-xy^*B \\
+    &=& \l xy^*-x\m y^* \\
+    &=& \l xy^*-\m xy^* \\
+    &=& (\l-\m)xy^* \\
+    &=& (\l-\m)X
+  \end{eqnarray*}
+  And so all of the eigenvalues of $T$ are differences of eigenvalues of $T_1$ and $T_2$.
+  But $0\notin\o(T)\implies\l\ne\m$.
+
+  $\therefore\o(A)\cap\o(B)=\emptyset$.
+  
+\item $\impliedby$ Assume $\o(A)\cap\o(B)=\emptyset$
+  
+  Assume $X\in M_{n,m}$ \\
+  $(T_1T_2)(X)=T_1(T_2(X))=T_1(XB)=AXB$ \\
+  $(T_2T_1)(X)=T_2(T_1(X))=T_2(AX)=AXB$ \\
+  Thus, $T_1$ and $T_2$ commute, and so $\o(T)\subseteq\o(T_1)-\o(T_2)$. \\
+  In other words all eigenvalues of $T$ can be computed as differences of the
+  eigenvalues of $T_1$ and $T_2$.
+
+  Now, $\l\in\o(T_1)$ iff there exists $X\in M_{m,n}$ such that $X\ne0$ and
+  $T_1(X)=\l X$. But this is true iff $AX=\l X$, which means that for every non-zero
+  column of $X$, $\vx_i\in\Eig_A(\l)$. Thus, $\Sp(A)=\Sp(T_1)$, and by similar argument,
+  $\Sp(B)=\Sp(T_2)$.
+
+  Since $A$ and $B$, and hence $T_1$ and $T_2$, have no eigenvalues in common,
+  $0\notin\o(T)$ and thus, by the IMT, $T$ is invertible, and thus a bijection - both
+  one-to-one and onto.
+
+  Therefore, $T(X)=C$, and hence the equation $AX-XB=C$, has a unique solution
+  (one-to-one) for every $C\in M_{n,m}$ (onto). Moreover, since $T$ is one-to-one the
+  null space is trivial and therefore $AX-XB=0\implies X=0$.
+\end{description}
+
+\subsection*{2.5.6}
+
+Let $A\in M_n$. Prove: $A$ is normal iff $A$ commutes with some normal matrix with
+distinct eigenvalues.
+
+\begin{description}
+\item $\implies$ Assume $A$ is normal
+
+  \newcommand{\mm}{\diag{1}{n}}
+  \newcommand{\mn}{\diag{\l_1}{\l_n}}
+
+  $A$ is unitary diagonalizable, so let $A=U\mn U^*$ for some unitary $U$.
+
+  Let $B=U\mm U^*$
+
+  Note that $B$ is diagonalizable, and hence normal, and has distinct eigenvalues
+  $\{1,\ldots,n\}$.
+  \begin{eqnarray*}
+    AB &=& U\mn U^*U\mm U^* \\
+    &=& U\mn\mm U^* \\
+    &=& U\mm\mn U^* \\
+    &=& U\mm U^*U\mn U^* \\
+    &=& BA
+  \end{eqnarray*}
+
+\item $\impliedby$ Assume $A$ commutes with some normal matrix with distinct eigenvalues.
+
+  \begin{lemma}
+    Let $A,B\in UT(n)$ such that $B$ is diagonal with distinct eigenvalues:
+    \[AB=BA\implies A\ \mbox{is diagonal}\]
+  \end{lemma}
+
+  \begin{theproof}
+    Assume $AB=BA$
+
+    Proof by induction on $n$:
+
+    \begin{description}
+    \item Base Case: $n=1$
+
+      Nothing to prove.
+
+    \item Assume $A\in UT(n-1)$ is diagonal.
+
+    \item Consider $A\in UT(n)$
+
+      Let $A=\left[\begin{array}{c|c} S & \vx \\ \hline 0 & a \end{array}\right]$, where
+      $S\in UT(n-1)$, $\vx\in\C^{n-1}$ and $a\in\C$.
+
+      Let $B=\left[\begin{array}{c|c} D & 0 \\ \hline 0 & \l_n \end{array}\right]$, where
+      $D=\begin{bmatrix} \l_1 & & 0 \\ & \ddots & \\ 0 & & \l_{n-1} \end{bmatrix}$ and
+      the $\l_k$ are distinct.
+
+      $AB=\left[\begin{array}{c|c} SD & \l_n\vx \\ \hline 0 & \l_na \end{array}\right]$
+      and
+      $BA=\left[\begin{array}{c|c} DS & \l_1\vx \\ \hline 0 & \l_na \end{array}\right]$
+
+      The upper-left quadrant tells us that $SD=DS$, so by the inductive assumption, we
+      can conclude that $S$ is diagonal.
+
+      Moreover, the upper-right quadrant tells us that $\l_1\vx=\l_n\vx$, and since the
+      $\l_1\ne\l_n$, it must be the case that $\vx=0$.
+
+      Therefore, $A$ is diagonal.
+
+      Now, back to the original question. Let $B$ be the normal matrix with distinct
+      eigenvalues with which $A$ commutes. Since $A$ and $B$ commute, they are
+      simultaneously triangularizable, so let:
+
+      $A=UTU^*$ and $B=UDU^*$ for $T,D\in UT(n)$ and $D$ diagonal.
+      \begin{eqnarray*}
+        AB &=& BA \\
+        UTU^*UDU^* &=& UDU^*UTU^* \\
+        UTDU^* &=& UDTU^* \\
+        TD=DT
+      \end{eqnarray*}
+      And so by the lemma, $T$ is also diagonal, and so $A$ is unitary diagonalizable.
+
+      Therefore $A$ is normal.
+    \end{description}
+  \end{theproof}
+  
+\end{description}
+
+\subsection*{2.6.15}
+
+Let $A=[a_{ij}]\in M_n$ have eigenvalues $\l_1,\ldots,\l_n$ ordered so that
+$\abs{\l_1}\ge\cdots\ge\abs{\l_n}$ and singular values $\o_1,\ldots,\o_n$ ordered so
+that $\o_1\ge\ldots\ge\o_n\ge0$.
+\begin{enumerate}[label={\alph*)}]
+\item Prove:
+  \[\sum_{i,j=1}^n\abs{a_{ij}}^2=\tr(A^*A)=\sum_{k=1}^n\o_k^2\]
+  $A=[a_{ij}]$ \\
+  $A^*=[\conj{a_{ji}}]$ \\
+  $(A^*A)_{ij}=\sum_{k=1}^n(A^*)_{ik}A_{kj}=\sum_{k=1}^n\conj{a_{ki}}a_{kj}$ \\
+  $(A^*A)_{ii}=\sum_{k=1}^n\conj{a_{ki}}a_{ki}=\sum_{k=1}^n\abs{a_{ki}}^2$ \\
+  $\therefore\tr(A^*A)=\sum_{i=1}^n\sum_{k=1}^n\abs{a_{ki}}^2=
+  \sum_{i,j=1}^n\abs{a_{ij}}^2$
+
+  \newcommand{\me}{\diag{\o_1}{\o_n}}
+  \newcommand{\mes}{\diag{\o_1^2}{\o_n^2}}
+
+  Let the SVD for $A$ be:
+  \[A=U\me V\]
+  for some unitary matrices $U$ and $V$
+  \begin{eqnarray*}
+    \tr(A^*A) &=& \tr\left(\left(U\me V\right)^*\left(U\me V\right)\right) \\
+    &=& \tr\left(V^*\me^*U^*U\me V\right) \\
+    &=& \tr\left(V^*\me\me V\right) \\
+    &=& \tr\left(V^*\mes V\right) \\
+    &=& \tr\left(VV^*\mes\right) \\
+    &=& \tr\left(\mes\right) \\
+    &=& \sum_{k=1}^n\o_k^2
+  \end{eqnarray*}
+
+\item Prove: $\sum_{k=1}^n\abs{\l_1}^2\le\sum_{k=1}^n\o_k^2$ with equality iff
+  $A$ is normal.
+
+  \newcommand{\ml}{\begin{bmatrix}
+      \l_1 & & t_{ij} \\ & \ddots & \\ 0 & & \l_n
+  \end{bmatrix}}
+
+  By Schur triangularization, there existslet $A=U\ml U^*$ for some unitary $U$, and so:
+  \[\tr(A^*A)=\sum_{1\le i,j\le n}\abs{a_{ij}}^2=
+  \sum_{k=1}^n\abs{\l_k}^k+\sum_{i<j}\abs{t_{ij}}^2\]
+  But from the last problem:
+  \[tr(A^*A)=\sum_{k=1}^n\o_k^2\]
+  and so:
+  \[\sum_{k=1}^n\abs{\l_k}^k+\sum_{i<j}\abs{t_{ij}}^2=\sum_{k=1}^n\o_k^2\]
+  But $\sum_{i<j}\abs{t_{ij}}^2\ge0$, with equality only when $A$ is normal and thus
+  unitary diagonalizable
+
+  Therefore $\sum_{k=1}^n\abs{\l_k}^k\le\sum_{k=1}^n\o_k^2$ with equality only when $A$
+  is normal.
+
+\item Prove: $\o_k=\abs{\l_k}\iff A$ is normal.
+
+  \begin{description}
+  \item $\implies$ Assume $\o_k=\abs{\l_k}$
+
+    $A=U\diag{\o_1}{\o_n}V$ for some unitary $U$ and $V$:
+    \begin{eqnarray*}
+      A^*A &=& \left(U\diag{\o_1}{\o_n}V\right)^*U\diag{\o_1}{\o_n}V \\
+      &=& V^*\diag{\o_1}{\o_n}^*U^*U\diag{\o_1}{\o_n}V \\
+      &=& V^*\diag{\o_1}{\o_n}\diag{\o_1}{\o_n}V \\
+      &=& V^*\diag{\o_1^2}{\o_n^2}V \\
+      &=& V^*\diag{\abs{\l_1}^2}{\abs{\l_n}^2}V \\
+      &=& V^*\diag{\conj{\l_1}}{\conj{\l_n}}\diag{\l_1}{\l_n}V \\
+      &=& V^*\diag{\conj{\l_1}}{\conj{\l_n}}VV^*\diag{\l_1}{\l_n}V \\
+      &=& \left(V\diag{\l_1}{\l_n}V\right)^*V^*\diag{\l_1}{\l_n}V \\
+    \end{eqnarray*}
+    And so $A=V^*\diag{\l_1}{\l_n}V$ and hence is unitary diagonalizable.
+
+    Therefore $A$ is normal.
+
+  \item $\impliedby$ Assume $A$ is normal.
+
+    $A=U\diag{\l_1}{\l_n}$ for some unitary $U$.
+    
+    $A^*A=U\diag{\abs{\l_1}^2}{\abs{\l_n}^2}U^*$
+
+    But also, $A=V\diag{\o_1}{\o_n}W$ for some unitary $V$ and $W$.
+
+    $A^*A=W^*\diag{\o_1^2}{\o_n^2}W^*$
+
+    But diagonalizations are unique up to permutation, and since the $\l_k$ and $\o_k$
+    are properly ordered, it must be the case that $U=W^*$ and $\abs{\l_k}^2=\o_k^2$.
+
+    $\therefore\o_k=\abs{\l_k}$
+  \end{description}
+
+\item Prove: $\abs{a_{ii}}=\o_i\implies A$ is diagonal.
+
+  Assume $\abs{a_{ii}}=\o_i$
+  \[tr(A^*A)=\sum_{1\le i,j\le n}\abs{a_{ij}}^2=
+  \sum_{i=1}^n\abs{a_{ii}}^2+\sum_{i\ne j}\abs{a_{ij}}^2\]
+  But also:
+  \[tr(A^*A)=\sum_{i=1}^n\o_i^2\]
+  And so:
+  \begin{eqnarray*}
+    \sum_{i=1}^n\abs{a_{ii}}^2+\sum_{i\ne j}\abs{a_{ij}}^2 &=& \sum_{i=1}^n\o_i^2 \\
+    \sum_{i=1}^n\o_i^2+\sum_{i\ne j}\abs{a_{ij}}^2 &=& \sum_{i=1}^n\o_i^2 \\
+    \sum_{i\ne j}\abs{a_{ij}}^2 &=& 0
+  \end{eqnarray*}
+  And thus $a_{ij}=0$ for $i\ne j$.
+
+  Therefore, $A$ is diagonal.
+
+\item Prove: $A$ is normal and $\abs{a_{ii}}=\abs{\l_i}\implies A$ is diagonal.
+
+  Assume $A$ is normal and $\abs{a_{ii}}=\abs{\l_i}$ \\
+  Since $A$ is normal, $\abs{\l_i}=\o_k$ and so $\abs{a_{ii}}=\o_i$
+
+  Therefore $A$ is diagonal.
+\end{enumerate}
+
+\end{document}

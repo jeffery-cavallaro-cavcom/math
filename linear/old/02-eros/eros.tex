@@ -1,0 +1,267 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{arydshln}
+\pagestyle{empty}
+\begin{document}
+\section*{Elementary Row Operations}
+
+\begin{definition}
+  A \emph{matrix} is a rectangular collection of objects organized into
+  \emph{rows} and \emph{columns}. Matrices are determined by the type of their
+  objects and their size: an $m\times n$ matrix has $m$ rows and $n$ columns.
+  When the objects are from $\R$ or $\C$ then matrices are useful for
+  representing and solving SOLEs.
+\end{definition}
+
+\begin{example}
+  \begin{minipage}{1in}
+    $2x-y=4$ \\
+    $x+2y=8$
+  \end{minipage}
+  \begin{minipage}{0.5in}
+    \begin{center}
+      $\implies$
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{0.75in}
+    \begin{center}
+      $\begin{bmatrix}
+        2 & -1 \\
+        1 & 2
+      \end{bmatrix}$
+
+      \bigskip
+
+      Coefficient \\
+      Matrix
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{0.5in}
+    \begin{center}
+      $\implies$
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{1in}
+    \begin{center}
+      $\begin{bmatrix}[cc:c]
+        2 & -1 & 4 \\
+        1 & 2 & 8
+      \end{bmatrix}$
+
+      \bigskip
+
+      Augmented \\
+      Matrix
+    \end{center}
+  \end{minipage}
+\end{example}
+
+An $m\times n$ augmented matrix represents a SOLE with $m$ equations and
+$n-1$ unknowns.
+
+\begin{definition}
+The following are called the \emph{elementary row operations} (EROs):
+\begin{enumerate}
+\item Interchange: $R_i\leftrightarrow R_j$
+\item Scaling: $cR_i\rightarrow R_i$ $(c\ne0)$
+\item Replacement: $cR_i+R_j\rightarrow R_j$
+\end{enumerate}
+\end{definition}
+
+EROs are reversible and do not change the solution set of an SOLE:
+\begin{enumerate}
+\item $R_j\leftrightarrow R_i$
+\item $\frac{1}{c}(cR_i)\rightarrow R_i$
+\item $(-cR_i)+(cR_i+R_j)\rightarrow R_j$
+\end{enumerate}
+
+\begin{definition}
+  To say that two matrices (SOLEs) are row equivalent means that there exists
+  a sequence of EROs that transform one matrix into the other.
+
+  Thus, row equivalent matrices (SOLEs) have the same solution set.
+\end{definition}
+
+\begin{example}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $2x+y=4$ \\
+    $-x+2y=3$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[cc:c]
+      2 & 1 & 4 \\
+      -1 & 2 & 3
+    \end{bmatrix}$
+  \end{minipage}
+\newpage
+  $\frac{1}{2}R_1\rightarrow R_1$
+
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $x+\frac{1}{2}y=2$ \\
+    $-x+2y=3$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[cc:c]
+      1 & \frac{1}{2} & 2 \\
+      -1 & 2 & 3
+    \end{bmatrix}$
+  \end{minipage}
+
+  \bigskip
+
+  $(1)R_1+R_2\rightarrow R_2$
+
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $x+\frac{1}{2}y=2$ \\
+    $\frac{5}{2}y=5$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[cc:c]
+      1 & \frac{1}{2} & 2 \\
+      0 & \frac{5}{2} & 5
+    \end{bmatrix}$
+  \end{minipage}
+
+  \bigskip
+
+  $\frac{2}{5}R_2\rightarrow R_2$
+
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $x+\frac{1}{2}y=2$ \\
+    $y=2$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[cc:c]
+      1 & \frac{1}{2} & 2 \\
+      0 & 1 & 2
+    \end{bmatrix}$
+  \end{minipage}
+
+  \bigskip
+  
+  $-\frac{1}{2}R_2+R_1\rightarrow R_1$
+
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $x=1$ \\
+    $y=2$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[cc:c]
+      1 & 0 & 1 \\
+      0 & 1 & 2
+    \end{bmatrix}$
+  \end{minipage}
+
+  Consistent with one (unique) solution: $(1,2)$
+
+  Check:
+  \[2(1)+2=2-2=4\checkmark\]
+  \[-1+2(2)=-1+4=3\checkmark\]
+\end{example}
+
+\begin{example}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $x_2-4x_3=8$ \\
+    $2x_1-3x_2+2x_3=1$ \\
+    $5x_1-8x_2+7x_3=1$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[ccc:c]
+      0 & 1 &-4 & 8 \\
+      2 & -3 & 2 & 1 \\
+      5 & -8 & 7 & 1
+    \end{bmatrix}$
+  \end{minipage}
+
+  \bigskip
+
+  $R_1\leftrightarrow R_3$
+
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $5x_1-8x_2+7x_3=1$ \\
+    $2x_1-3x_2+2x_3=1$ \\
+    $x_2-4x_3=8$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[ccc:c]
+      5 & -8 & 7 & 1 \\
+      2 & -3 & 2 & 1 \\
+      0 & 1 &-4 & 8
+    \end{bmatrix}$
+  \end{minipage}
+
+  \bigskip
+
+  $-2R_2+R_1\rightarrow R_1$
+
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $x_1-2x_2+3x_3=-1$ \\
+    $2x_1-3x_2+2x_3=1$ \\
+    $x_2-4x_3=8$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[ccc:c]
+      1 & -2 & 3 & -1 \\
+      2 & -3 & 2 & 1 \\
+      0 & 1 &-4 & 8
+    \end{bmatrix}$
+  \end{minipage}
+
+  \bigskip
+
+  $-2R_1+R_2\rightarrow R_2$
+
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $x_1-2x_2+3x_3=-1$ \\
+    $x_2-4x_3=3$ \\
+    $x_2-4x_3=8$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[ccc:c]
+      1 & -2 & 3 & -1 \\
+      0 & 1 & -4 & 3 \\
+      0 & 1 & -4 & 8
+    \end{bmatrix}$
+  \end{minipage}
+
+  \bigskip
+
+  $-R_2+R_3\rightarrow R_3$
+
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $x_1-2x_2+3x_3=-1$ \\
+    $x_2-4x_3=3$ \\
+    $0=5$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{bmatrix}[ccc:c]
+      1 & -2 & 3 & -1 \\
+      0 & 1 & -4 & 3 \\
+      0 & 0 & 0 & 5
+    \end{bmatrix}$
+  \end{minipage}
+
+  Inconsistent, because $0\ne5$
+\end{example}
+
+\end{document}

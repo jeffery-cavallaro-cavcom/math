@@ -1,0 +1,44 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\E}{\emptyset}
+\renewcommand{\P}{\mathcal{P}}
+\begin{document}
+\section*{Operations}
+\begin{enumerate}
+\item Union
+\[A\cup B=\{x\mid x\in A\ \mbox{or}\ x\in B\}\]
+\item Intersection
+\[A\cap B=\{x\mid x\in A\ \mbox{and}\ x\in B\}\]
+\item Difference
+\[A-B=\{x\mid x\in A\ \mbox{and}\ x\notin B\}\]
+\item Cartesian Product
+\[A\times B=\{(a,b)\mid a\in A\ \mbox{and}\ b\in B\}\]
+\item Power Set
+\[\P(A)=\{X\mid X\subseteq A\}\]
+\item Cardinality
+\[\abs{A}=\mbox{the (possibly infinite) number of elements in $A$}\]
+\end{enumerate}
+\begin{example}
+\begin{tabular}{cc}
+$A=\{1,2,3\}$ & $B=\{3,4\}$ \\
+\end{tabular}
+
+\begin{tabular}{ll}
+$A\cup B=\{1,2,3,4\}$ & $\abs{A\cup B}=4$ \\
+$A\cap B=\{3\}$ & $\abs{A\cap B}=4$ \\
+$A-B=\{1,2\}$ & $\abs{A-B}=2$ \\
+$A\times B=\{(1,3),(1,4),(2,3),(2,4),(3,3),(3,4)\}$ &
+    $\abs{A\times B}=\abs{A}\abs{B}=3\cdot2=6$ \\
+$\P(A)=\{\E,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}\}$ &
+    $\abs{\P(A)}=2^{\abs{A}}=2^3=8$ \\
+\end{tabular}
+\end{example}
+\begin{theorem}
+For all sets $A$ and $B$:
+\begin{enumerate}
+\item $\abs{A\times B}=\abs{A}\abs{B}$
+\item $\abs{\P(A)}=2^{\abs{A}}$
+\end{enumerate}
+\end{theorem}
+\end{document}

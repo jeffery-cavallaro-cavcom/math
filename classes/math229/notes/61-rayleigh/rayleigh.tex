@@ -1,0 +1,95 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\vu}{\vec{u}}
+\renewcommand{\ss}{S-\{\vz\}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\newcommand{\rr}{\frac{\vxct A\vx}{\vxct\vx}}
+\newcommand{\conj}[1]{\overline{#1}}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\Sp}{Sp}
+\begin{document}
+\section*{Rayleigh-Ritz Quotient}
+
+\begin{definition}
+  Let $A\in M_n$ be Hermitian and assume $\vx\ne\vz$. The
+  \emph{Rayleigh-Ritz Quotient} is given by:
+  \[\rr\]
+\end{definition}
+
+Q: What is the maximum (or minimum) value of the RR quotient over a specific
+subspace $\ss$?
+
+\begin{lemma}[Key Lemma]
+  Let $A\in M_n$ be Hermitian with eigenvalues $\l_1\le\cdots\le\l_n$ and
+  orthonormal eigenvectors $\{\vu_1,\ldots,\vu_n\}$ and let
+  $S=\spn\{\vu_{i_1},\ldots,\vu_{i_m}\}$ where $i_1\le\cdots\le i_m$.
+  $\forall\,\vx\in\ss$:
+  \[\l_{i_1}\le\rr\le\l_{i_m}\]
+\end{lemma}
+
+\begin{theproof}
+  Assume $\vx\in\ss$ \\
+  $\vx=\sum_{k=1}^m\a_k\vu_{i_k}$ \\
+  $\vxct\vx=\sum_{k=1}^m\abs{\a_k}^2$, since the $\vu_{i_k}$ are orthonormal \\
+  Likewise:
+  \begin{eqnarray*}
+    \vxct A\vx &=&
+    \left(\sum_{k=1}^n\conj{\a_k\vu_{i_k}}\right)
+    \left(A\sum_{k=1}^n\a_k\vu_{i_k}\right) \\
+    &=& \left(\sum_{k=1}^n\conj{\a_k\vu_{i_k}}\right)
+    \left(\sum_{k=1}^n\a_kA\vu_{i_k}\right) \\
+    &=& \left(\sum_{k=1}^n\conj{\a_k\vu_{i_k}}\right)
+    \left(\sum_{k=1}^n\a_k\l_{i_k}\vu_{i_k}\right) \\
+    &=& \sum_{k=1}^m\l_{i_k}\abs{\a_k}^2
+  \end{eqnarray*}
+  And so:
+  \[\rr=\frac{\sum_{k=1}^m\l_{i_k}\abs{\a_k}^2}{\sum_{k=1}^m\abs{\a_k}^2}\]
+  Therefore:
+  \[\l_{i_1}\le\rr\le\l_{i_m}\]
+\end{theproof}
+\newpage
+\begin{lemma}
+  Let $A\in M_n$ be Hermitian with $\Sp(A)=\{\l_1,\ldots,\l_n\}$.
+  $\forall\vx\in\C^n$ such that $\vx\ne\vz$:
+  \[\l_i=\rr\iff\vx\in\Eig_A(\l_i)\]
+\end{lemma}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $\l_i=\rr$
+    \begin{eqnarray*}
+      \vxct A\vx &=& \l_i\vxct\vx \\
+      \vxct A\vx &=& \vxct\l_i\vx \\
+      A\vx &=& \l_i\vx
+    \end{eqnarray*}
+    Therefore, since $\vx\ne\vz$, $\vx\in\Eig_A(\l_i)$
+
+  \item $\impliedby$ Assume $\vx\in\Eig_A(\l_i)$
+    \[\rr=\frac{\vxct\l_i\vx}{\vxct\vx}=\l_i\frac{\vxct\vx}{\vxct\vx}=\l_i\]
+  \end{description}
+\end{theproof}
+
+\begin{corollary}
+  Let $A\in M_n$ be Hermitian with eigenvalues $\l_1\le\cdots\le\l_n$ and
+  orthonormal eigenvectors $\{\vu_1,\ldots,\vu_n\}$ and let
+  $S=\spn\{\vu_{i_1},\ldots,\vu_{i_m}\}$ where $i_1\le\cdots\le i_m$:
+  \[\l_{i_1}=\min_{\vx\in\ss}\rr\]
+  and:
+  \[\l_{i_m}=\max_{\vx\in\ss}\rr\]
+\end{corollary}
+
+\begin{theproof}
+  From the key lemma:
+  \[\l_{i_1}\le\rr\le\l_{i_m}\]
+  From the subsequent lemma, equality occurs at $\vx=\vu_{i_1}$ and
+  $\vx=\vu_{i_m}$
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,158 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\dz}[1]{\operatorname{\frac{d}{dz}}\left[#1\right]}
+\newcommand{\e}{\epsilon}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\newcommand{\Dz}{\D z}
+\newcommand{\limz}{\lim_{z\to z_0}}
+\newcommand{\limdz}{\lim_{\D z\to0}}
+\newcommand{\limw}{\lim_{w\to w_0}}
+\newcommand{\p}{\phi}
+\begin{document}
+\section*{Derivative Laws}
+
+\begin{lemma}
+  $f(z)$ continuous at $z_0\implies \limdz{f(z_0+\Dz)}=f(z_0)$
+\end{lemma}
+
+\begin{theproof}
+  Assume $f(z)$ is continuous at $z_0$:
+  \[\limdz{f(z_0+\Dz)}=\limz{f(z_0+(z-z_0))}=\limz{f(z)}=f(z_0)\]
+\end{theproof}
+
+\begin{theorem}
+  Assume $f(z)$ and $g(z)$ be differentiable (and thus continuous):
+  \begin{enumerate}
+  \item $\dz{c}=0$
+
+  \item $\dz{z}=1$
+
+  \item $\dz{f(z)+g(z)}=f'(z)+g'(z)$
+
+  \item $\dz{f(z)g(z)}=f'(z)g(z)+f(z)f'(z)$
+
+  \item $g(z)\ne0\implies
+    \dz{\frac{f(z)}{g(z)}}=\frac{f'(z)g(z)-f(z)g'(z)}{g(z)^2}$
+
+  \item $\dz{cf(z)}=cf'(z)$
+
+  \item $\forall\,n\in\Z,(n>0\ \mbox{or}\ z\ne0)\implies\dz{z^n}=nz^{n-1}$
+
+  \item $\dz{g(f(z))}=g'[f(z)]f'(z)$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item
+    \[\limdz{\frac{c-c}{\Dz}}=\limdz\frac{0}{\Dz}=\limdz0=0\]
+
+  \item
+    \[\limdz{\frac{(z+\Dz)-z}{\Dz}}=\limdz\frac{\Dz}{\Dz}=\limdz1=1\]
+
+  \item
+    \[\limdz{\frac{[f(z+\Dz)+g(z+\Dz)]-[f(z)+g(z)]}{\Dz}}\]
+    \[=\limdz{\frac{[f(z+\Dz)-f(z)]+[g(z+\Dz)-g(z)]}{\Dz}}\]
+    \[=\limdz{\left[\frac{f(z+\Dz)-f(z)}{\Dz}+\frac{g(z+\Dz)-g(z)}{\Dz}
+        \right]}\]
+    \[=f'(z)+g'(z)\]
+
+  \item
+    \[\limdz{\frac{f(z+\Dz)g(z+\Dz)-f(z)g(z)}{\Dz}}\]
+    \[=\limdz{\frac{f(z+\Dz)g(z+\Dz)-f(z)g(z+\Dz)+f(z)g(z+\Dz)-
+        f(z)g(z)}{\Dz}}\]
+    \[=\limdz{\frac{[f(z+\Dz)-f(z)]g(z+\Dz)+f(z)[g(z+\Dz)-g(z)]}{\Dz}}\]
+    \[=\limdz{\left[\frac{f(z+\Dz)-f(z)}{\Dz}g(z+\Dz)+
+        f(z)\frac{g(z+\Dz)-g(z)}{\Dz}\right]}\]
+    \[=f'(z)g(z)+f(z)g'(z)\]
+
+  \item
+    \[\limdz{\frac{\frac{f(z+\Dz)}{g(z+\Dz)}-\frac{f(z)}{g(z)}}{\Dz}}\]
+    \[=\limdz{\frac{f(z+\Dz)g(z)-f(z)g(z+\Dz)}{g(z+\Dz)g(z)\Dz}}\]
+    \[=\limdz{\frac{f(z+\Dz)g(z)-f(z)g(z)+f(z)g(z)-f(z)g(z+\Dz)}
+      {g(z+\Dz)g(z)\Dz}}\]
+    \[=\limdz{\frac{[f(z+\Dz)-f(z)]g(z)-f(z)[g(z+\Dz)-g(z)]}{g(z+\Dz)g(z)\Dz}}\]
+    \[=\limdz{\frac{\frac{f(z+\Dz)-f(z)}{\Dz}g(z)-
+        f(z)\frac{g(z+\Dz)-g(z)}{\Dz}}{g(z+\Dz)g(z)}}\]
+    \[=\frac{f'(z)g(z)-f(z)g'(z)}{g(z)^2}\]
+
+  \item
+    \[\dz{cf(z)}=\dz{c}f(z)+c\dz{f(z)}=0+cf'(z)=cf'(z)\]
+
+  \item Assume $n\in\Z$
+
+    Assume $n>0$ or $z\ne0$
+
+    \begin{description}
+    \item Case 1: $n>0$
+
+      Proof by induction on $n$:
+
+      \begin{description}
+      \item Base: $z=1$
+
+        $\dz{z^1}=\dz{z}=1$ \\
+        $1z^{1-1}=z^0=1$
+
+      \item Assume $\dz{z^n}=nz^{n-1}$
+
+      \item Consider $\dz{z^{n+1}}$
+        \begin{eqnarray*}
+          \dz{z^{n+1}} &=& \dz{z^nz} \\
+          &=& \dz{z^n}z+z^n\dz{z} \\
+          &=& nz^{n-1}z+z^n(1) \\
+          &=& nz^n+z^n \\
+          &=& (n+1)z^n \\
+          &=& (n+1)z^{(n+1)-1} \\
+          \end{eqnarray*}
+      \end{description}
+      
+    \item Case 2: $n=0$
+
+      $\dz{z^0}=\dz{1}=0$ \\
+      Since $n\not>0$, $z\ne0$ \\
+      $0z^{0-1}=0z^{-1}=\frac{0}{z}=0$
+      
+    \item Case 3: $n<0$
+
+      Let $m=-n>0$ \\
+      $\dz{z^n}=\dz{z^{-m}}=\dz{\frac{1}{z^m}}=\frac{z^m(0)-(1)mz^{m-1}}{z^{2m}}
+      =-mz^{-m-1}=nz^{n-1}$
+    \end{description}
+
+  \item Assume $f(z)$ is differentiable at $z_0$
+
+    Let $w_0=f(z_0)$ \\
+    Assume $g(z)$ is differentiable at $w_0$ \\
+    Define the following function at $w_0$ and in some neighborhood
+    $\abs{w-w_0}<\e$:
+    \[\p(w)=\begin{cases}
+    0, & w=w_0 \\
+    \frac{g(w)-g(w_0)}{w-w_0}-g'(w_0), & \abs{w-w_0}<\e \\
+    \end{cases}\]
+    $\limw{\p(w)}=0=\p(w_0)$ \\
+    Thus, $\p$ is continuous at $w_0$ \\
+    $g(w)-g(w_0)=[g'(w_o)+\p(w)](w-w_0)$ \\
+    $f$ is continuous at $z_0$ \\
+    $\exists\,\d>0,0<\abs{z-z_0}<\d\implies\abs{w-w_0}<\e$ \\
+    \newpage
+    Assume $0<\abs{z-z_0}<\d$ \\
+    \[g[f(z)]-g[f(z_0)]=[g'(f(z_0))+\p(f(z))](f(z)-f(z_0))\]
+    \[\frac{g[f(z)]-g[f(z_0)]}{z-z_0}=[g'(f(z_0))+\p(f(z))]
+    \frac{f(z)-f(z_0)}{z-z_0}\]
+    Since $\p$ is continuous at $w_0$ and $f$ is continuous at $z_0$,
+    $\p[f(z)]$ is continuous at $z_0$ and:
+    \[\limz{\p[f(z)]}=\p[f(z_0)]=\p(w_0)=0\]
+    \begin{eqnarray*}
+      \dz{g(f(z))} &=& \limz{\frac{g[f(z)]-g[f(z_0)]}{z-z_0}} \\
+      &=& \limz{[g'(f(z_0))+\p(f(z))]\frac{f(z)-f(z_0)}{z-z_0}} \\
+      &=& [g'(f(z_0))+0]f'(z_0) \\
+      &=& g'[f(z_0)]f'(z_0) \\
+    \end{eqnarray*}
+  \end{enumerate}
+\end{theproof}
+
+\end{document}

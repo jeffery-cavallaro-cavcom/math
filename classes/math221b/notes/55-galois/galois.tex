@@ -1,0 +1,161 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\newcommand{\p}{\varphi}
+\newcommand{\s}{\psi}
+\newcommand{\rest}[2]{\left.#1\right|_{#2}}
+\newcommand{\n}{\trianglelefteq}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\id}{id}
+\begin{document}
+\section*{Fundamental Theorem of Galois Theory}
+
+\begin{theorem}
+  Let $K/F$ be a field extension. There exists an inclusion-reversing
+  bijection between all closed intermediate fields in $K/F$ and all closed
+  subgroups of $\Aut(K/F)$.
+\end{theorem}
+
+$\begin{array}{ccc}
+  K & \mapsto & \id \\
+  | & & \rotatebox[origin=c]{-90}{$\le$} \\
+  L & \mapsto & G(L) \\
+  | & & \rotatebox[origin=c]{-90}{$\le$} \\
+  E & \mapsto & G(E) \\
+  | & & \rotatebox[origin=c]{-90}{$\le$} \\
+  F & \mapsto & G(F)
+\end{array}$
+
+\begin{theproof}
+  Consider the bijection given by:
+  \[L\mapsto G(L)\]
+  By the previous theorem behind the above diagram it is clear that this
+  inclusion-reversing and G(L) is closed.
+
+  Consider the inverse:
+  \[H\mapsto F(H)\]
+  By the previous theorem, $F(H)$ is also closed.
+
+  Assume $L$ is closed. By composition:
+  \[L\mapsto G(L) \mapsto F(G(L))=L\]
+  Assume $H$ is closed. By composition:
+  \[H\mapsto F(H)\mapsto G(F(H))=H\]
+\end{theproof}
+
+Note that if there is an intermediate field $L$ that is not closed then
+$F(G(L))\supset L$ and the composition chain:
+\[L\mapsto G(L)\mapsto F(G(L))\mapsto E\subset L\]
+is broken.
+
+\begin{theorem}
+  Let $F\subseteq E\subseteq L\subseteq K$ be an inclusion of fields such that
+  $[L:E]<\infty$:
+  \[[G(E):G(L)]\le[L:E]\]
+\end{theorem}
+
+\begin{theproof}
+  Proof by induction on $n=[L:E]$
+
+  \begin{description}
+  \item Base Case: $n=1$
+
+    $L=E$ and $[G(E):G(L)]=[L:E]=1$
+
+  \item Assume $[G(E):G(L)]\le[L:E]$ for extension of degree $<n$
+
+  \item Assume $[L:E]=n$
+
+    \begin{description}
+    \item Case 1: There exists a proper extension $M$ such that
+      $E\subset M\subset L$
+
+      $[G(E):G(L)]=[G(E):G(M)][G(M):G(L)]\le[E:M][M:L]=[E:L]$
+
+    \item Case 2: No such $M$ exists
+
+      Assume $\a\in L\setminus E$ \\
+      $L=E(\a)$ \\
+      Since $L/E$ is finite, $\a$ is algebraic \\
+      Hence, $[L:E]=[E(\a):E]=\deg(m_{\a,E}(x))=n$ \\
+
+      Assume $\p,\s\in G(E)$
+      \begin{eqnarray*}
+        \p G(L)=\s G(L) &\iff& \p\s^{-1}\in G(L) \\
+        &\iff& \rest{\p\s^{-1}}{L}=\id_L \\
+        &\iff& (\p\s^{-1})(\a)=\a \\
+        &\iff& \p(\a)=\s(\a)
+      \end{eqnarray*}
+      But $\p$ and $\s$ permute the roots of $m_{\a,E}(x)$, so $[G(E):G(L)]$ is
+      the number of distinct roots of $m_{\a,E}(x)$ which equals $n$
+    \end{description}
+
+    $\therefore[G(E):G(L)]=[L:E]$
+  \end{description}
+\end{theproof}
+
+Similarly:
+
+\begin{theorem}
+  Let $K/F$ be an extension of fields and $G=\Aut(K/F)$ with subgroups
+  $1\le J\le H\le G$ such that $[H:J]<\infty$:
+  \[[F(J):F(H)]\le[H:J]\]
+\end{theorem}
+
+\begin{theorem}
+  Let $F\subseteq E\subseteq L\subseteq L$ be an inclusion of fields such that
+  $E$ is closed and $[L:E]<\infty$:
+  \[L\ \mbox{is closed and}\ [G(E):G(L)]=[L:E]\]
+\end{theorem}
+
+\newpage
+
+\begin{theproof}
+  Since $E$ is closed:
+  \[[L:E]=[L:F(G(E))]\le[F(G(L)):F(G(E))]\le[G(E):G(L)]\le[L:E]\]
+  Therefore $L=F(G(L))$ and so $L$ is closed, and $[G(E):G(L)]=[L:E]$.
+\end{theproof}
+
+Similarly:
+
+\begin{theorem}
+  Let $K/F$ be an extension of fields and $G=\Aut(K/F)$ with subgroups
+  $1\le J\le H\le G$ such that $J$ is closed and $[H:J]<\infty$:
+  \[H\ \mbox{is closed and}\ [F(J):F(H)]=[H:J]\]
+\end{theorem}
+
+\begin{theorem}
+  Let $F\subseteq L\subseteq K$ be an inclusion of groups such that $L$ is
+  stable:
+  \[G/G(L)\cong G(L/F)\]
+\end{theorem}
+
+\begin{theproof}
+  Consider the homomorphism from $G$ to $G(L/F)$ given by:
+  \[\p\mapsto\rest{\p}{L}\]
+  which is well-defined because $L$ is stable \\
+  The kernel of this homomorphism is $G(L)$ \\
+  Thus, by the FIT, $G/G(L)$ is isomorphic to some subgroup of $G(L/F)$ \\
+  \[\abs{G/G(L)}=[G:G(L)]=[L:F]=\abs{G(L/F)}\]
+  Thus, since the extensions are finite, the homomorphism is an isomorphism
+
+  $\therefore G/G(L)\cong G(L/F)$
+\end{theproof}
+
+\begin{notation}
+  When $K/F$ is Galois then $G=\Aut(K/F)=\Gal(K/F)$
+\end{notation}
+
+\begin{theorem}[Fundamental Theorem of Galois Theory]
+  Let $K/F$ be a Galois extension with $G=\Gal(K/F)$:
+  \begin{enumerate}
+  \item There exists a bijection between intermediate field $L$ and subgroups
+    of $G$.
+  \item For $F\subseteq E\subseteq L\subseteq K$, $[L:E]=[G(E),G(L)]$.
+  \item For $1\le J\le H\le G$, $[H:J]=[F(J):F(H)]$
+  \item $H\n G\iff L=F(H)$, in which case $G/G(L)\cong G(L/F)$.
+  \end{enumerate}
+\end{theorem}
+
+\end{document}

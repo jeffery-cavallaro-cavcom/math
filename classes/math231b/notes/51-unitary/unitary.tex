@@ -1,0 +1,92 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\mr}{\mathcal{R}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Unitary Operators}
+
+\begin{definition}[Unitary]
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$. To say that $T$ is a
+  \emph{unitary} operator means:
+  \[T^*T=TT^*=I\]
+\end{definition}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$:
+
+  \qquad$T$ is unitary $\iff T$ is invertible and $T^{-1}=T^*$.
+\end{theorem}
+
+\begin{theproof}
+  $T$ is unitary $\iff T^*T=TT^*=I\iff T$ is invertible and $T^{-1}=T^*$.
+\end{theproof}
+
+\begin{properties}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$ such that $T$ is unitary:
+  \begin{enumerate}
+  \item $\mr(T)=H$
+  \item $T$ is isometric.
+  \item $T$ is a Hilbert space isomorphism on $H$.
+  \end{enumerate}
+  In fact, $T$ unitary $\implies T$ isometric; however, $T$ isometric and onto
+  $\implies T$ unitary.
+\end{properties}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$ such that $T$ is unitary:
+
+  \qquad$T^{-1}$ and $T^*$ are unitary.
+\end{theorem}
+
+\begin{theproof}
+  Since $T^{-1}=T^*$, it is sufficient to show that $T^*$ is unitary.
+
+  $(T^*)^*T^*=TT^*=I$ and $T^*(T^*)^*=T^*T=I$
+
+  Therefore $T^*$, and hence $T^{-1}$, are unitary.
+\end{theproof}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $H=\ell^2(\Z)$ (bi-infinite)
+
+    $\ell^2(Z)=\left\{(z_n)_{n\in\Z}\middle|\sum_{-\infty}^{\infty}\abs{z_n}<\infty
+    \right\}$
+
+    $\inner{x,y}=\sum_{-\infty}^{\infty}x_n\conj{y_n}$
+
+    Let $S$ be shift right by one position: $S(x_n)=(x_{n-1})$
+
+    $\inner{Sx,y}=\sum_{-\infty}^{\infty}x_{n-1}\conj{y_n}=
+    \sum_{-\infty}^{\infty}x_n\conj{y_{n+1}}=\inner{x,S^*y}$
+
+    So $S^*(y_n)=(y_{n+1})$, or a left shift by one position.
+
+    $SS^*=S^*S=I$ and therefore $S$ is unitary.
+
+  \item $H=L^2[0,1]$ and $(Tf)(t)=f(1-t)$
+    \begin{eqnarray*}
+      \norm{Tf}^2 &=& \int_0^1\abs{(Tf)(t)}^2dt \\
+      &=& \int_0^1\abs{f(1-t)}^2dt \\
+      &=& \int_1^0\abs{f(s)}^2(-ds) \\
+      &=& \int_0^1\abs{f(s)}ds \\
+      &=& \norm{f}
+    \end{eqnarray*}
+    Therefore $T$ is isometric.
+
+    Now, assume $g\in H$. \\
+    Let $f\in H$ such that $f(t)=g(1-t)$. \\
+    $(Tf)(t)=(Tg)(1-t)=g(1-(1-t))=g(t)$
+
+    Therefore $T$ is onto.
+
+    Therefore $T$ is unitary.
+  \end{enumerate}
+\end{examples}
+
+\end{document}

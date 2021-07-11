@@ -1,0 +1,152 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\weak}{\overset{w}{\longrightarrow}}
+\newcommand{\mk}{\mathcal{K}}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\mr}{\mathcal{R}}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+\allowdisplaybreaks
+\begin{document}
+Cavallaro, Jeffery \\
+Math 231b \\
+Homework \#7
+
+\subsection*{4.12.48}
+
+Show that the projection onto a closed subspace $F$ of a Hilbert space $H$ is
+a compact operator if and only if $F$ is finite-dimensional.
+
+Since $F$ is closed, $F$ is also Hilbert (and separable).
+\begin{description}
+\item $\implies$ Assume $P_F$ is compact.
+
+  ABC: $F$ is infinite-dimensional. \\
+  Assume $(\ve_n)$ is a complete orthonormal sequence in $F$. \\
+  $\norm{\ve_k}=1$ for all $k\in\N$ and so $(\ve_n)$ is a bounded sequence in
+  $H$. \\
+  Since $(\ve_n)$ is also a sequence in $F$, $P_F\ve_k=\ve_k$ for all
+  $k\in\N$. \\
+  But $(P_F\ve_n)=(\ve_n)$ has no convergent subsequence. \\
+  CONTRADICTION!
+
+  Therefore $F$ is finite-dimensional.
+
+\item $\impliedby$ Assume $F$ is finite-dimensional.
+
+  $P_F$ is onto $F$ and so $\mr(P_F)=F$. \\
+  So $P_F$ is a finite rank operator on a Hilbert space.
+
+  Therefore, $P_F$ is compact.
+\end{description}
+
+\subsection*{4.12.49}
+
+Show that the operator $T:\ell^2\to\ell^2$ defined by $T(x_n)=(2^{-n}x_n)$
+is compact.
+
+Assume $(x_n)$ is a bounded sequence in $\ell^2$. \\
+$\exists\,M>0$ such that
+$\norm{(x_n)}^2=\sum_{k=1}^{\infty}\abs{x_{n,k}}^2\le M<\infty$. \\
+Now, since $\frac{1}{2^k}<1$ for all $k\in\N$:
+\[\norm{T(x_n)}^2=\sum_{k=1}^{\infty}\abs{2^{-k}x_{n,k}}^2<
+\sum_{k=1}^{\infty}\abs{1\cdot x_{n,k}}^2=
+\sum_{k=1}^{\infty}\abs{x_{n,k}}^2=\norm{x_n}^2\le M\]
+Thus $(T(x_n))$ is also a bounded sequence in $\ell^2$. \\
+
+Let $T_N(x_n)$ be defined by:
+\[T_N(x_n)_k=\begin{cases}
+T(x_n)_k, & 1\le k\le N \\
+0, & otherwise
+\end{cases}\]
+Thus, $T_n$ applies $T$ and then sets all but the first $N$ terms to $0$. \\
+Note that if $T(x_n)\in\ell^2$ then certainly $T_n(x_n)\in\ell^2$. \\
+Furthermore, note that $T_n(x_n)$ is a finite rank operator.
+\begin{eqnarray*}
+  \norm{(T_N-T)(x)}^2 &=& \sum_{k=N+1}^{\infty}\abs{2^{-k}x_{n,k}}^2 \\
+  &=& \sum_{k=N+1}^{\infty}\abs{2^{-2k}}\abs{x_{n,k}}^2 \\
+  &\le& \sum_{k=N+1}^{\infty}\abs{2^{-2k}}\norm{(x_n)}^2 \\
+  &=& M\sum_{k=N+1}^{\infty}2^{-2k} \\
+  &<& M\sum_{k=N+1}^{\infty}2^{-k} \\
+  &=& M\sum_{k=0}^{\infty}2^{-(k+N+1)} \\
+  &=& M\sum_{k=0}^{\infty}2^{-(N+1)}2^{-k} \\
+  &=& \frac{M}{2^{N+1}}\sum_{k=0}^{\infty}2^{-k} \\
+  &=& \frac{M}{2^{N+1}}(2) \\
+  &=& \frac{M}{2^N} \\
+  &\to& 0
+\end{eqnarray*}
+And so $T_n\to T$ as $N\to\infty$. \\
+But $T_n\in\mk(H)$, which is closed.
+
+Therefore $T\in\mk(H)$ and thus $T$ is compact.
+
+\subsection*{4.12.50}
+
+Show that a self-adjoint operator $T$ is compact if and only if there exists a
+sequence of finite-dimensional operators strongly convergent to $T$.
+
+Assume $H$ is a Hilbert space. \\
+Assume $T$ is a self-adjoint operator on $H$.
+\begin{description}
+\item $\implies$ Assume $T$ is compact.
+
+  By the spectral theorem for compact, self-adjoint operators:
+  \[T=\sum_{n=1}^{\infty}\l_nP_n\]
+  where the $\l_n$ are distinct, non-zero eigenvalues of $T$ and each $P_n$
+  is the projection operator onto a corresponding orthonormal eigenvector
+  for $\l_n$.
+  Furthermore, $\l_n\to0$. \\
+  Let $(\ve_n)$ be the corresponding orthonormal eigenvector sequence. \\
+  Assume $\vx\in H$:
+  \[T\vx=\sum_{n=1}^{\infty}\l_n\inner{\vx,\ve_n}\ve_n\]
+  Now, define the sequence of finite-rank (and hence compact) operators
+  $(T_n\vx)$ where:
+  \[T_n\vx=\sum_{k=1}^n\l_n\inner{\vx,\ve_n}\ve_n\]
+  Since the $\ve_k$ are orthonormal we can apply Parseval:
+  \begin{eqnarray*}
+    \norm{(T_n-T)\vx}^2 &=&
+    \norm{\sum_{k=n+1}^{\infty}\l_k\inner{\vx,\ve_k}\ve_k}^2 \\
+    &=& \sum_{k=n+1}^{\infty}\abs{\l_k\inner{\vx,\ve_k}}^2 \\
+    &=& \sum_{k=n+1}^{\infty}\abs{\l_k}^2\abs{\inner{\vx,\ve_k}}^2 \\
+    &\le& \sum_{k=n+1}^{\infty}\abs{\l_k}^2\norm{\vx}^2\norm{\ve_k}^2 \\
+    &=& \sum_{k=n+1}^{\infty}\abs{\l_k}^2\norm{\vx}^2\norm{\ve_k}^2 \\
+    &=& \norm{\vx}^2\sum_{k=n+1}^{\infty}\abs{\l_k}^2 \\
+    &\to& 0
+  \end{eqnarray*}
+  $\therefore T_n\to T$.
+
+\item $\impliedby$ Assume $T_n\to T$ where $T_n$ is finite dimensional.
+
+  $T_n$ is finite-dimensional $\implies T_n$ is compact. \\
+  Furthermore, $\mk(H)$ is a closed subspace of $\mb(H)$.
+
+  Therefore $T\in\mk(H)$ and thus $T$ is compact.
+\end{description}
+
+\subsection*{4.12.51}
+
+Show that the space of all eigenvectors corresponding to a nonzero eigenvalue
+of a compact operator is finite-dimensional.
+
+Assume $A$ is a compact operator on a Hilbert space $H$. \\
+Assume $\l$ is an eigenvalue of $A$ such that $\l\ne0$. \\
+ABC: $E_{\l}$ is infinite-dimensional. \\
+Since $E_{\l}=\ker(A-\l I)$, $E_{\l}$ is a closed subspace of $H$ and is thus
+also Hilbert (and separable). \\ 
+So there exists a complete orthonormal sequence $(\vx_n)$ in $E_{\l}$. \\
+Since $A$ is compact it maps orthonormal sequences to sequences that
+converge to $0$. \\
+And so $A\vx_n\to0$. \\
+Thus $A\vx_n=\l\vx_n\to0$. \\
+But $\l\ne0$ and so $\vx_n\to0$. \\
+CONTRADICTION!
+
+Therefore $E_{\l}$ is finite-dimensional.
+
+\end{document}

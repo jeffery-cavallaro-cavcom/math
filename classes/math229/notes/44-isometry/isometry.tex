@@ -1,0 +1,89 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\hy}{\hat{y}}
+\newcommand{\ve}{\vec{e}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\newcommand{\ig}{G_{\norm{\cdot}}}
+\begin{document}
+\section*{Isometry Group of a Vector Norm}
+
+\begin{definition}[Isometry Group]
+  Given a vector norm $\norm{\cdot}$ on $\C^n$, the \emph{isometry} group
+  associated with the norm, denoted $\ig$, is given by:
+  \[\ig=\{A\in M_n\mid\forall\,\vx\in\C^n,\norm{A\vx}=\norm{\vx}\}\]
+\end{definition}
+
+Note that $\ig\ne\emptyset$ because $0\in\ig$.
+
+\begin{lemma}
+  Let $A\in\ig$ and $\l\in\o(A)$:
+  \[\abs{\l}=1\]
+\end{lemma}
+
+\begin{theproof}
+  $\norm{A\vx}=\norm{\l\vx}=\abs{\l}\norm{\vx}$
+
+  $\therefore\abs{\l}=1$
+\end{theproof}
+
+\begin{theorem}
+  $\ig\le GL(n)$
+\end{theorem}
+
+\begin{theproof}
+  Assume $A\in\ig$ \\
+  $\l\in\o(A)\implies\abs{\l}=1$ \\
+  So all $\l\ne0$ \\
+  Thus $A$ is invertible \\
+  $A\in GL(n)$
+
+  $\therefore\ig\subseteq GL(n)$
+
+  Assume $B\in\ig$ \\
+  Assume $x\in\C^n$ \\
+  $B\vx\in\C^n$ \\
+  $\norm{AB\vx}=\norm{A(B\vx)}=\norm{B\vx}=\norm{\vx}$
+
+  Therefore $\ig$ is closed under the operation (composition).
+
+  Since $A$ is invertible, $A^{-1}$ exists \\
+  $A^{-1}\vx\in\C^n$ \\
+  $\norm{A^{-1}\vx}=\norm{A(A^{-1}\vx)}=\norm{(AA^{-1})\vx}=\norm{I_n\vx}=
+  \norm{\vx}$ \\
+  $A^{-1}\in\ig$
+
+  Therefore $\ig$ is closed under inverses.
+
+  $\therefore\ig\le GL(n)$.
+\end{theproof}
+
+\begin{theorem}
+  Let $\ig$ be the unitary group. There exists $\a\in\R$ such that $\a>0$ and:
+  \[\forall\,\vx\in\C^n,\norm{\vx}=\a\norm{\vx}_2\]
+  In other words, for all $\vx\in\C^n$, the norm is a positive scalar multiple
+  of the $\ell_2$ norm.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in\C^n$ \\
+  Consider the unit vector $\hy_1=\frac{\vx}{\norm{\vx}_2}$ \\
+  Using G-S, construct $n-1$ additional orthogonal unit vectors
+  $\{\hy_2,\ldots,\hy_n\}$ \\
+  Form the matrix:
+  \[U=\begin{bmatrix} \hy_1 & \hy_2 & \ldots & \hy_n \end{bmatrix}\]
+  Since the columns of $U$ are orthonormal, $U$ is a unitary matrix \\
+  Now, since the norm is unitary invariant:
+  \[\norm{\ve_1}=\norm{U\ve_1}=\norm{\hy_1}=\norm{\frac{\vx}{\norm{\vx}_2}}=
+  \frac{1}{\norm{\vx}_2}\norm{\vx}\]
+  Thus, $\norm{\vx}=\norm{\vx}_2\norm{\ve_1}$ \\
+  But $\norm{\ve_1}>0$, so let $\a=\norm{\ve_1}$
+    
+  $\therefore\norm{\vx}=\a\norm{\vx}_2$
+\end{theproof}
+
+\end{document}

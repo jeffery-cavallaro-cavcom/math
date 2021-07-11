@@ -1,0 +1,239 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+\renewcommand{\u}{\mu}
+\renewcommand{\P}{\Phi}
+\renewcommand{\c}{\mathcal{C}}
+\renewcommand{\b}{\mathcal{B}}
+\newcommand{\F}{\mathbb{F}}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\begin{document}
+\section*{Bounded Linear Maps}
+
+\begin{definition}[Bounded]
+  Let $L:E_1\to E_2$ be a linear map of normed spaces. To say that $L$ is
+  \emph{bounded} means $\exists M>0$ such that $\forall\vx\in E_1$:
+  \[\norm{L\vx}\le M\norm{\vx}\]
+\end{definition}
+
+\begin{theorem}
+  Let $L$ be a linear map on a normed, finite dimensional space $E$:
+
+  \qquad$L$ is bounded.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\dim E=n<\infty$. \\
+  Assume ${\ve_1,\ldots,\ve_n}$ is an orthonormal basis for $E$. \\
+  Assume $\vx\in E_1$.
+  \[\norm{L\vx}=\norm{L\sum_{k=1}^nx_k\ve_k}=\norm{\sum_{k=1}^nx_kL\ve_k}\le
+  \sum_{k=1}^n\abs{x_k}\norm{L\ve_k}\le
+  \max_{1\le k\le n}\abs{x_i}\sum_{k=1}^n\norm{L\ve_k}\]
+\end{theproof}
+Let $M=\sum_{k=1}^n\norm{L\ve_k}<\infty$. \\
+Also note that $\max_{1\le k\le n}\abs{x_i}\le\norm{\vx}$. \\
+And so $\norm{L\vx}\le M\norm{\vx}$.
+
+Therefore $L$ is bounded.
+
+\begin{theorem}
+  Let $L:E_1\to E_2$ be a linear map of normed spaces:
+
+  \qquad$L$ is bounded iff $L$ is bounded on the unit sphere.
+\end{theorem}
+
+\begin{theproof}
+  $\vx\in E_1\iff\frac{\vx}{\norm{\vx}}\in S_1(\vo,1)$
+
+  \begin{tabular}{lcl}
+    $L$ is bounded & $\iff$ &
+    $\exists\,M>0,\forall\,\vx\in E_1,\norm{L\vx}<M\norm{\vx}$ \\
+    & $\iff$ &
+    $\frac{1}{\norm{\vx}}\norm{L\vx}<\frac{1}{\norm{\vx}}M\norm{\vx}$ \\
+    & $\iff$ & $\norm{L\frac{\vx}{\norm{\vx}}}<M$
+  \end{tabular}
+\end{theproof}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $f_a:\R^N\to\R$ where $a\in\R^N$ and
+    $f_a(x)=a\cdot x=\sum_{k=1}^Na_kx_k$.
+    \begin{eqnarray*}
+      f_a(\a x+\b y) &=& f_a\left(\sum_{k=1}^N(\a x_k+\b x_k\right) \\
+      &=& \sum_{k=1}^Na_k(\a x_k+\b y_k) \\
+      &=& \a\sum_{k=1}^Na_k x_k+\b\sum_{k=1}^Na_k y_k \\
+      &=& \a f_a(x)+\b f_a(y)
+    \end{eqnarray*}
+    Therefore, $f_a$ is linear.
+
+    Assume $x\in\R^N$:
+    \[\abs{f_a(x)}=\abs{a\cdot x}\le\norm{a}\norm{x}=M\norm{x}\]
+    with $M=\norm{a}$.
+
+  \item $\P:\c[0,1]\to\R$ where $\P(f)=\int_0^1f(t)dt$
+
+    $\P$ is linear due to linearity of the integral.
+
+    Assume $f\in\c[0,1]$:
+    \[\abs{\P(f)}=\abs{\int_0^1f(t)dt}\le\int_0^1\abs{f(t)}dt\le
+    \int_0^1\max_{t\in[0,1]}\abs{f(t)}dt=\int_0^1\norm{f}dt=\norm{f}\]
+    with $M=1$.
+
+  \item Differentiation is an unbounded linear map.
+
+    Let $D:\c^1[-1,1]\to\c[-1,1]$ where $D(f)=f'$.
+
+    $D$ is linear due to linearity of differentiation.
+
+    WTS: $\forall\,M>0,\exists f\in\c^1[-1,1],\norm{Df}>M\norm{f}$
+
+    Let $f_n=\sin(nx)$ for $n\ge2$. \\
+    $f_n'(x)=n\cos(nx)$ \\
+    $\norm{D(f_n)}=\max_{x\in[-1,1]}\abs{n\cos(nx)}=n$ which occurs at $x=0$. \\
+    $\norm{f_n}=\max_{x\in[-1,1]}\abs{\sin(nx)}=1$ which occurs at
+    $x\in\frac{\pi}{2n}$.
+
+    Assume $M>0$. \\
+    Let $n=\ceil{M}+1$. \\
+    Let $f=\sin(nx)$. \\
+    $\norm{D(f)}=n>M$.
+
+    Therefore, $D$ is unbounded.
+  \end{enumerate}
+\end{examples}
+
+\begin{notation}
+  Let $E_1$ and $E_2$ be normed spaces:
+  
+  \qquad$\b(E_1,E_2)=\{T:E_1\to E_2\mid T$ is linear and bounded$\}$
+\end{notation}
+
+\begin{definition}
+  Let $E_1$ and $E_2$ be normed spaces and $T\in\b(E_1,E_2)$:
+  \[\norm{T}=\sup_{\norm{\vx}=1}\norm{T\vx}\]
+  This is a measure of the distortion of the unit sphere by $T$.
+\end{definition}
+
+\begin{theorem}
+  Let $E_1$ and $E_2$ be normed spaces and $T\in\b(E_1,E_2)$:
+
+  \qquad$M=\norm{T}$ is the tightest bound.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in E_1$.
+  
+  $\norm{T}=\sup_{x\in E_1-\{\vo\}}\norm{T\frac{\vx}{\norm{\vx}}}$
+
+  And so:
+
+  $\norm{T}\norm{\vx}=\sup_{x\in E_1-\{\vo\}}\norm{T\vx}$
+
+  Thus:
+
+  $\norm{T\vx}\le\norm{T}\norm{\vx}$ with equality at $\vx=\vo$ and
+  $M=\norm{T}$.
+\end{theproof}
+
+\begin{theorem}
+  Let $E_1$ and $E_2$ be normed spaces over a field $\F$:
+
+  \qquad$\b(E_1,E_2)$ is a normed space.
+\end{theorem}
+
+\begin{theproof}
+  Assume $A,B\in\b(E_1,E_2)$, $\l\in\F$, and $\vx\in E_1$:
+  \begin{eqnarray*}
+    \norm{(\l A+\u B)(\vx)} &=& \abs{\l}\norm{A\vx}+\abs{\u}\norm{B\vx} \\
+    &\le& \abs{\l}M_A\norm{\vx}+\abs{\u}M_B\norm{\vx} \\
+    &\le& (\abs{\l}M_A+\abs{\u}M_B)\norm{\vx}
+  \end{eqnarray*}
+  Let $M=(\abs{\l}M_A+\abs{\u}M_B)>0$. \\
+  $\norm{(\l A+\u B)(\vx)}\le M\norm{\vx}$. \\
+  Thus $\l A+\u B$ is bounded and so $\l A+\u B\in\b(E_1,E_2)$.
+
+  Therefore, $\b(E_1,E_2)$ is a vector space.
+
+  Assume $L\in\b(E_1,E_2)$.
+
+  $\norm{L}=0\iff\sup_{\norm{\vx}=1}\norm{L\vx}=0\iff L\vx=0\iff L=0$
+
+  $\norm{\l L}=\sup_{\norm{\vx}=1}\norm{\l L\vx}=
+  \abs{\l}\sup_{\norm{\vx}=1}\norm{L\vx}=\abs{\l}\norm{L}$
+
+  Assume $L_1,L_2\in \b(E_1,E_2)$.
+  \begin{eqnarray*}
+    \norm{L_1+L_2} &=& \sup_{\norm{\vx}=1}\norm{(L_1+L_2)\vx} \\
+    &=& \sup_{\norm{\vx}=1}\norm{L_1\vx+L_2\vx} \\
+    &\le& \sup_{\norm{\vx}=1}(\norm{L_1\vx}+\norm{L_2\vx}) \\
+    &\le& \sup_{\norm{\vx}=1}(\norm{L_1}\norm{\vx}+\norm{L_2}\norm\vx) \\
+    &=& \norm{L_1}+\norm{L_2}
+  \end{eqnarray*}
+  Thus, $\norm{L}$ is a proper norm on $B(E_1,E_2)$.
+  
+  Therefore $\b(E_1,E_2)$ is a normed space.
+\end{theproof}
+
+\begin{theorem}
+  Let $E_1$ and $E_2$ be normed spaces over a field $\F$:
+
+  \qquad $E_2$ is Banach $\implies\b(E_1,E_2)$ is Banach.
+\end{theorem}
+
+\begin{theproof}
+  Assume $(L_n)$ is a Cauchy sequence in $\b(E_1,E_2)$. \\
+  Assume $\vx\in E_1$:
+  \[\norm{L_n\vx-L_m\vx}=\norm{(L_n-L_m)\vx}\le\norm{L_n-L_m}\norm{\vx}\to0\]
+  Therefore, $(L_n\vx)$ is Cauchy in $E_2$. \\
+  But $E_2$ is Banach (complete), and so $\exists\,L\vx\in E_2$ such that
+  $L_n\vx\to L\vx$.
+
+  Assume $\vx,\vy\in E_1$ and $\a,\b\in\F$:
+  \begin{eqnarray*}
+    L(\a\vx+\b\vy) &=& \lim_{n\to\infty}L_n(\a\vx+\b\vy) \\
+    &=& \lim_{n\to\infty}(\a L_n\vx+\b L_n\vy) \\
+    &=& \a\lim_{n\to\infty}L_n\vx+\b\lim_{n\to\infty}L_n\vy \\
+    &=& \a L_n\vx+\b L_n\vy
+  \end{eqnarray*}
+  Therefore $L$ linear.
+
+  Now, since all Cauchy sequences are bounded, $\exists\,M>0$ such that
+  $\norm{L_n}\le M$:
+  \[\norm{L\vx}=\norm{\lim_{n\to\infty}L_n\vx}=\lim_{n\to\infty}\norm{L_n\vx}
+  \le\lim_{n\to\infty}\norm{L_n}\norm{\vx}\le M\norm{\vx}\]
+  Therefore, $L$ is linear and bounded and thus $L\in B(E_1,B_2)$.
+
+  Assume $\e>0$. \\
+  $\exists\,N>0,m,n>N\implies\norm{L_n-L_m}<\e$ \\
+  Assume $\vx\in E_1$ such that $\norm{\vx}=1$. \\
+  Assume $m,n>N$:
+
+  $\norm{L_n\vx-L_m\vx}=\norm{(L_n-L_m)\vx}\le\norm{L_n-L_m}\norm{\vx}=
+  \norm{L_n-L_m}<\e$
+  
+  Now, let $m\to\infty$:
+  
+  $\norm{L_n\vx-L\vx}=\norm{(L_n-L)\vx}\le\norm{L_n-L}\norm{\vx}=
+  \norm{L_n-L}<\e$
+
+  Therefore $L_n\to L\in\b(E_1,E_2)$ and so $\b(E_1,E_2)$ is complete (Banach).
+\end{theproof}
+
+\begin{definition}[Dual Space]
+  Let $E$ be a normed space. The \emph{dual space} for $E$, denoted $E'$ or
+  $E^*$, is given by:
+  \[E'=\b(E,\C)\]
+  Note that $E'$ is always Banach because $\C$ is Banach.
+\end{definition}
+
+\end{document}

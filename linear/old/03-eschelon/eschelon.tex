@@ -1,0 +1,99 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Eschelon Forms}
+
+\begin{definition}
+  A \emph{non-zero row (column)} in a matrix is a row (column) that contains at least one
+  non-zero entry.
+
+  The \emph{leading entry} of a non-zero row is the leftmost non-zero entry.
+\end{definition}
+
+\begin{definition}
+  A matrix is said to be in \emph{row eschelon form} (REF) when it has the following
+  three properties:
+  \begin{enumerate}
+  \item All non-zero rows precede all zero rows.
+  \item Each leading entry of a non-zero row occurs in a column to the right of the
+    leading entries for all preceding rows.
+  \item All entries in a column below a leading entry are zero.
+  \end{enumerate}
+
+  A matrix is said to be in \emph{reduced row eschelon form} (RREF) when it is in row
+  eschelon form and has the following two additional properties:
+  \begin{enumerate}
+  \item The leading entry in each non-zero row equals $1$.
+  \item Each leading entry is the only non-zero entry in its column.
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  \begin{minipage}[t]{2in}
+    \begin{center}
+      $\begin{bmatrix}
+        2 & 0 & 4 & -2 \\
+        0 & 1 & 4 & 5 \\
+        0 & 0 & 0 & -3 \\
+      \end{bmatrix}$
+
+      \bigskip
+
+      row eschelon \\
+      form
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \begin{center}
+      $\begin{bmatrix}
+        1 & 0 & 0 & 4 \\
+        0 & 1 & 1 & 3 \\
+        0 & 0 & 1 & -1 \\
+        0 & 0 & 0 & 1
+      \end{bmatrix}$
+
+      \bigskip
+
+      row eschelon \\
+      form
+    \end{center}
+  \end{minipage}
+
+  \begin{minipage}[t]{2in}
+    \begin{center}
+      $\begin{bmatrix}
+        -1 & 4 & 8 & 2 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0
+      \end{bmatrix}$
+
+      \bigskip
+
+      not in \\
+      row eschelon \\
+      form
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \begin{center}
+      $\begin{bmatrix}
+        1 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 2 \\
+        0 & 0 & 1 & 3
+      \end{bmatrix}$
+
+      \bigskip
+
+      reduced \\
+      row eschelon \\
+      form
+    \end{center}
+  \end{minipage}
+\end{example}
+
+\begin{theorem}
+  Each matrix is row equivalent to exactly one reduced row eschelon form.
+\end{theorem}
+
+\end{document}

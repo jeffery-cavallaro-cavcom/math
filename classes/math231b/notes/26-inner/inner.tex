@@ -1,0 +1,161 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vo}{\vec{0}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\O}{\Omega}
+\newcommand{\mc}{\mathcal{C}}
+\begin{document}
+\section*{Inner Product}
+
+\begin{definition}[Inner Product]
+  Let $E$ be a vector space over a field $\F$. An \emph{inner product} on $E$
+  is a mapping $\inner{\cdot}{\cdot}:E\times E\to\C$ such that the following
+  axioms are satisfied $\forall\,\vx,\vy,\vz\in E$ and $\forall\,\a,\b\in\F$:
+  \begin{enumerate}
+  \item $\inner{\vx}{\vx}\ge0$
+  \item $\inner{\vx}{\vx}=0\iff\vx=\vo$
+  \item $\inner{\vx}{\vy}=\conj{\inner{\vy}{\vx}}$
+  \item $\inner{\a\vx+\b\vy}{\vz}=\a\inner{\vx}{\vz}+\b\inner{\vy}{\vz}$
+  \end{enumerate}
+  A vector space equipped with such an inner product is called an
+  \emph{inner product space} or a \emph{pre-Hilbert space}.
+\end{definition}
+
+\begin{properties}
+  Let $E$ be a vector space over a field $\F$. $\forall\,\vx,\vy,\vz\in E$ and
+  $\forall\,\a,\b\in\F$:
+  \begin{enumerate}
+  \item $\inner{\vx}{\vx}\in\R$
+  \item $\inner{\vo}{\vy}=\inner{\vx}{\vo}=0$
+  \item $\inner{\vx}{\a\vy+\b\vz}=
+    \conj{\a}\inner{\vx}{\vy}+\conj{\b}\inner{\vx}{\vz}$
+  \end{enumerate}
+\end{properties}
+
+\begin{theproof}
+  Assume $\vx,\vy,\vz\in E$ and $\a,\b\in\F$.
+  \begin{enumerate}
+  \item
+
+    $\inner{\vx}{\vx}=\conj{\inner{\vx}{\vx}}$.
+
+    $\therefore\inner{\vx}{\vx}\in\R$
+
+  \item
+
+    $\inner{\vo}{\vy}=\inner{0\cdot\vo}{\vy}=0\inner{\vo}{\vy}=0$
+
+    $\inner{\vx}{\vo}=\inner{\vx}{0\cdot\vo}=\conj{0}\inner{\vx}{\vo}=
+    0\inner{\vx}{\vo}=0$
+    
+  \item
+
+    \begin{eqnarray*}
+    \inner{\vx}{\a\vy+\b\vz} &=& \conj{\inner{\a\vy+\b\vz}{\vx}} \\
+    &=& \conj{\a\inner{\vy}{\vx}+\b\inner{\vz}{\vx}} \\
+    &=& \conj{\a\inner{\vy}{\vx}}+\conj{\b\inner{\vz}{\vx}} \\
+    &=& \conj{\a}\,\conj{\inner{\vy}{\vx}}+\conj{\b}\,\conj{\inner{\vz}{\vx}} \\
+    &=& \conj{\a}\inner{\vx}{\vy}+\conj{\b}\inner{\vx}{\vz}
+  \end{eqnarray*}
+  \end{enumerate}
+\end{theproof}
+
+$\inner{\vx}{\vy}=\conj{\inner{\vy}{\vx}}$ is referred to as \emph{Hermitian}
+symmetry.
+
+The inner product is \emph{sesquilinear}, as opposed to \emph{bilinear}.
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $E=C^N$ and $\inner{x}{y}=\sum_{k=1}^Nx_k\conj{y_k}$
+
+    $\inner{x}{x}=\sum_{k=1}^Nx_k\conj{x_k}=\sum_{k=1}^N\abs{x_k}^2\ge0$
+
+    with equality iff $x=0$.
+
+    $\inner{x}{y}=\sum_{k=1}^Nx_k\conj{y_k}=
+    \conj{\sum_{k=1}^N\conj{x_k}y_k}=\conj{\sum_{k=1}^Ny_k\conj{x_k}}=
+    \conj{\inner{y}{x}}$
+
+    $\inner{\a x+\b y}{z}=\sum_{k=1}^N(\a x+\b y)\conj{z}=
+    \a\sum_{k=1}^Nx\conj{z}+\b\sum_{k=1}^Ny\conj{z}=
+    \a\inner{x}{z}+\b\inner{y}{z}$
+
+  \item $E=\ell^2$ and $\inner{(x_n)}{(y_n)}=\sum_{k=1}^{\infty}x_k\conj{y_k}$
+
+    Recall: $\ell^2=\left\{(x_n)\middle|\sum_{k=1}^n\abs{x_n}^2<\infty\right\}$.
+
+    Note that $(y_n)\in\ell^2\iff(\conj{y_n})\in\ell^2$:
+    \[\sum_{k=1}^{\infty}\abs{y}^2=\sum_{k=1}^{\infty}\abs{\conj{y}}^2<\infty\]
+
+    By H\"{o}lder's inequality with $p=q=2$:
+    \[\sum_{k=1}^{\infty}\abs{x_k\conj{y_k}}\le
+    \left(\sum_{k=1}^{\infty}\abs{x_k}^2\right)^2
+    \left(\sum_{k=1}^{\infty}\abs{\conj{y_k}}^2\right)^2=
+    \left(\sum_{k=1}^{\infty}\abs{x_k}^2\right)^2
+    \left(\sum_{k=1}^{\infty}\abs{y_k}^2\right)^2<\infty\]
+
+    So the inner product sum converges absolutely, and $\ell^2$ is Banach,
+    thus the inner product sum converges.
+
+    $\inner{(x_n)}{(x_n)}=
+    \sum_{k=1}^{\infty}x_k\conj{x_k}=\sum_{k=1}^{\infty}\abs{x_k}^2\ge0$
+
+    with equality iff $(x_n)=(0)$.
+
+    $\inner{x}{y}=\sum_{k=1}^{\infty}x_k\conj{y_k}=
+    \conj{\sum_{k=1}^{\infty}\conj{x_k}y_k}=
+    \conj{\sum_{k=1}^{\infty}y_k\conj{x_k}}=\conj{\inner{y}{x}}$
+
+    is allowed since the inner product sum converges.
+
+    $\inner{\a x+\b y}{z}=\sum_{k=1}^{\infty}(\a x+\b y)\conj{z}=
+    \a\sum_{k=1}^{\infty}x\conj{z}+\b\sum_{k=1}^{\infty}y\conj{z}=
+    \a\inner{x}{z}+\b\inner{y}{z}$
+
+    is allowed since the inner product sum converges.
+
+  \item $E=\mc[a,b]$ and $\inner{f}{g}=\int_a^bf\bar{g}$.
+
+    Note that the integral converges because $f$ and $g$ (and $\bar{g}$) are
+    continuous over a closed interval, and so $f\bar{g}$, a product of
+    continuous functions, is also continuous over a closed interval.
+
+    $\inner{f}{f}=\int_a^bf\bar{f}=\int_a^b\abs{f}^2\ge0$
+
+    with equality when $f\equiv0$.
+
+    $\inner{f}{g}=\int_a^nf\bar{g}=\conj{\int_a^b\bar{f}g}=
+    \conj{\int_a^bg\bar{f}}=\conj{\inner{g}{f}}$
+
+    $\inner{\a f+\b g}{h}=\int_a^b(\a f+\b g)\bar{h}=
+    \a\int_a^bf\bar{h}+\b\int_a^bg\bar{h}=\a\inner{f}{h}+\b\inner{g}{h}$
+
+  \item $E=L_2(\O)$ and $\inner{f}{g}=\int_{\O}f\bar{g}$
+
+    Note that the integral converges because $f$ and $g$ (and $\bar{g}$) are
+    square integrable, and so $f\bar{g}$, a product of square integrable
+    functions, is also square integrable.
+
+    $\inner{f}{f}=\int_{\O}f\bar{f}=\int_{\O}\abs{f}^2\ge0$
+
+    with equality when $f\equiv0$ (ae).
+
+    $\inner{f}{g}=\int_{\O}f\bar{g}=\conj{\int_{\O}\bar{f}g}=
+    \conj{\int_{\O}g\bar{f}}=\conj{\inner{g}{f}}$
+
+    $\inner{\a f+\b g}{h}=\int_{\O}(\a f+\b g)\bar{h}=
+    \a\int_{\O}f\bar{h}+\b\int_{\O}g\bar{h}=\a\inner{f}{h}+\b\inner{g}{h}$
+  \end{enumerate}
+\end{examples}
+
+\end{document}

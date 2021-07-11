@@ -1,0 +1,169 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\vz}{\vec{0}}
+\renewcommand{\l}{\lambda}
+\newcommand{\conj}[1]{\overline{#1}}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Sp}{Sp}
+\begin{document}
+\section*{Normal Matrices}
+
+\begin{definition}
+  Let $A\in M_n$. To say that $A$ is \emph{normal} means:
+  \[AA^*=A^*A\]
+\end{definition}
+
+Examples:
+\begin{enumerate}
+\item Unitary ($UU^*=I$)
+\item Hermitian ($H^*=H$)
+\item Skew-Hermitian ($H^*=-H$)
+\item Positive Definite ($\forall\vx\in\C^n-\{\vx\},x^*Ax>0$)
+\item Positive Semidefinite ($\forall\vx\in\C^n,x^*Ax\ge0$)
+\end{enumerate}
+
+\begin{lemma}
+  Let $T\in UT(n)$:
+  \[T\ \mbox{normal}\implies T\ \mbox{diagonal}\]
+\end{lemma}
+
+\begin{theproof}
+  Proof by induction on $n$
+
+  \begin{description}
+  \item Base Case: $n=1$
+
+    $T=\begin{bmatrix}\l\end{bmatrix}$ is diagonal.
+
+  \item Assume that $T\in UT(n-1)$ normal $\implies T$ diagonal.
+
+  \item Assume $T\in UT(n)$ is normal
+
+    Let $T=\left[\begin{array}{c|c}
+        S & \vx \\
+        \hline
+        0 & a
+      \end{array}\right]$ where $S\in UT(n-1)$, $\vx\in\C^{n-1}$, and $a\in\C$
+
+    Now, since $T$ is normal:
+    \begin{eqnarray*}
+      TT^* &=& T^*T \\
+      \left[\begin{array}{c|c} S & \vx \\ \hline 0 & a \end{array}\right]
+      \left[\begin{array}{c|c} S^* & 0 \\ \hline \vxct & \bar{a} \end{array}
+        \right]
+      &=&
+      \left[\begin{array}{c|c} S^* & 0 \\ \hline \vxct & \bar{a} \end{array}
+        \right]
+      \left[\begin{array}{c|c} S & \vx \\ \hline 0 & a \end{array}\right] \\
+      \left[\begin{array}{c|c} SS^*+\vx\vxct & \bar{a}\vx \\ \hline
+          a\vxct & \abs{a}^2 \end{array}\right] &=&
+      \left[\begin{array}{c|c} S^*S & S^*\vx \\ \hline
+        \vxct S & \vxct\vx+\abs{a}^2 \end{array}\right]
+    \end{eqnarray*}
+    From the lower right quadrant we get:
+    \[\abs{a}^2=\vxct\vx+\abs{a}^2\]
+    And so $\vxct\vx=0$, and thus $\vx=0$:
+    \[T=\left[\begin{array}{c|c} S & 0 \\ \hline 0 & a \end{array}\right]\]
+    Now, from the upper left quadrant we get:
+    \[SS^*+\vx\vxct=S^*S\]
+    and so $SS^*=S^*S$, indicating that $S$ is normal. Thus, by the inductive
+    assumption, $S$ is also diagonal.
+
+    Therefore, $T$ is diagonal.
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $A\in M_n$. TFAE:
+  \begin{enumerate}
+  \item $A$ is normal ($AA^*=A^*A$)
+  \item $A$ is unitary diagonalizable ($A=UDU^*$)
+  \item $\tr(A^*A)=\sum_{k=1}^n\abs{\l_k}^2$, where $\l_k\in\Sp(A)$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $1\implies2$: Assume $A$ is normal
+
+    There exists unitary $U$ such that $A=UTU^*$ for some $T\in UT(n)$
+    (Schur) \\
+    $T=U^*AU$ \\
+    Now, using the fact that $A$ is normal:
+    \begin{eqnarray*}
+      AA^* &=& A^*A \\
+      U^*AUU^*A^*U &=& U^*A^*UU^*AU \\
+      (U^*AU)(U^*AU)^* &=& (UAU^*)^*(U^*AU) \\
+      TT^* &=& T^*T
+    \end{eqnarray*}
+    $T$ is triangular and normal and thus, by the above lemma, $T$ is diagonal
+
+    Therefore $A$ is unitary diagonalizable.
+
+  \item $2\implies1$: Assume $A$ is unitary diagonalizable
+
+    $A=UDU^*$ for some diagonal matrix $D$
+    \begin{eqnarray*}
+      AA^* &=& (UDU^*)(UDU^*)^* \\
+      &=& UDU^*UD^*U^* \\
+      &=& UDD^*U^* \\
+      &=& UD^*DU^* \\
+      &=& UD^*U^*UDU^* \\
+      &=& (UDU^*)^*(UDU^*) \\
+      &=& A^*A
+    \end{eqnarray*}
+    Therefore $A$ is normal.
+
+  \item $2\implies3$: Assume $A$ is unitary diagonalizable
+
+    \newcommand{\md}{\begin{bmatrix}
+        \l_1 & & 0 \\ & \ddots & \\ 0 & & \l_n
+    \end{bmatrix}}
+
+    \newcommand{\mdct}{\begin{bmatrix}
+        \conj{\l_1} & & 0 \\ & \ddots & \\ 0 & & \conj{\l_n}
+    \end{bmatrix}}
+
+    \newcommand{\mdn}{\begin{bmatrix}
+        \abs{\l_1}^2 & & 0 \\ & \ddots & \\ 0 & & \abs{\l_n}^2
+    \end{bmatrix}}
+    
+    There exists unitary $U$ such that:
+    \[A=U\md U^*\]
+    \begin{eqnarray*}
+      \tr(A^*A) &=&
+      \tr\left(\left(U\md U^*\right)^*\left(U\md U^*\right)\right) \\
+      &=& \tr\left(U\md^*U^*U\md U^*\right) \\
+      &=& \tr\left(U\mdct\md U^*\right) \\
+      &=& \tr\left(U^*U\mdct\md\right) \\
+      &=& \tr\left(\mdct\md\right) \\
+      &=& \tr\left(\mdn\right) \\
+      &=& \sum_{k=1}^n\abs{\l_k}^2
+    \end{eqnarray*}
+
+  \item $3\implies2$: Assume $\tr(A^*A)=\sum_{k=1}^n\abs{\l_k}^2$
+
+    There exists unitary $U$ and $T\in UT(n)$ such that:
+    \[A=UTU^*\]
+    such that $T=\begin{bmatrix} \l_1 & & t_{ij} \\ & \ddots & \\ 0 & & \l_n
+    \end{bmatrix}$
+    \begin{eqnarray*}
+      \tr(A^*A) &=& \tr((UTU^*)^*(UTU^*)) \\
+      &=& \tr(UT^*U^*UTU^*) \\
+      &=& \tr(UT^*TU^*) \\
+      &=& \tr(U^*UT^*T) \\
+      &=& \tr(T^*T) \\
+      \sum_{k=1}^n\abs{\l_k}^2 &=&
+      \sum_{k=1}^n\abs{\l_k}^2+\sum_{i<j}\abs{t_{ij}}^2
+    \end{eqnarray*}
+    So $\sum\abs{t_{ij}}^2=0$ and thus $t_{ij}=0$
+
+    Therefore, $T$ is diagonal and $A$ is unitary diagonalizable.
+  \end{description}
+\end{theproof}
+
+\end{document}

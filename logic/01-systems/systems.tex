@@ -1,0 +1,90 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\begin{document}
+\section*{Mathematical Systems}
+
+Question: Does mathematics represent some absolute truth about the universe?
+
+It seems to.  We use mathematics to solve problems in science, technology, business, medicine, and practically every
+area of life.  But to answer this question properly we need to define what is meant by a
+\emph{mathematical system}.
+
+\begin{definition}[Mathematical System]
+  A \emph{mathematical system} is composed of a set of objects, a set of \emph{definitions} that describe the
+  nature of the objects, a set of inherent operations (\emph{axioms}) that can be performed on the objects, and new
+  true propositions about the objects that are proved with logical \emph{arguments} using the definitions, axioms,
+  and previously proved propositions (\emph{theorems}).
+\end{definition}
+
+\bigskip
+
+\begin{center}
+  \begin{tikzpicture}[
+      block node/.style={draw,rectangle,minimum width=1in,minimum height=0.5in},
+      node distance=0.75in
+    ]
+    \node (o) [draw,circle,minimum size=0.5in] at (0,0) {objects};
+    \node (a) [block node,right=of o] {axioms};
+    \node (d) [block node,above=of a] {definitions};
+    \node (t) [block node,below=of a] {theorems};
+    \node (A) [block node,right=of a] {argument};
+    \node (p) [block node,above=of A] {proposition};
+    \draw (o) -- (d.south west);
+    \draw (o) -- (a.west);
+    \draw (o) -- (t.north west);
+    \draw [->] (d.south east) -- (A.north west);
+    \draw [->] (a.east) -- (A.west);
+    \draw [->] (t.north east) -- (A.south west);
+    \draw [->] (p) -- (A);
+    \draw [->] (A) |- (t);
+  \end{tikzpicture}
+\end{center}
+
+\bigskip
+
+So a mathematical system expresses relative truth based on the selected definitions and axioms.  Thus, we attempt
+to construct the definitions and axioms to reflect perceived reality.
+
+\begin{example}[The Real Number System]
+  The real number system is constructed as follows:
+  \begin{enumerate}
+    \item Specify the objects (real numbers) by definitions for natural numbers, zero, integers,
+      rational numbers, and irrational numbers.
+    \item Add a definition for the notion of equality.
+    \item Add definitions for the binary operations of addition and multiplication.
+    \item Add axioms for precedence rules (multiplication before addition).
+    \item Add the so-called \emph{field} axioms:
+
+      For all real numbers \(a\), \(b\), and \(c\):
+      \begin{description}
+      \item[Additive Commutativity:] \(a+b=b+a\)
+      \item[Multiplicative Commutativity:] \(ab=ba\)
+      \item[Additive Associativity:] \((a+b)+c=a+(b+c)\)
+      \item[Multiplicative Associativity:] \((ab)c=a(bc)\)
+      \item[Additive Identity:] There exists a real number \(0\) such that for every real number \(a\):
+        \[0+a=a\]
+      \item[Multiplicative Identity:] There exists a real number \(1\) such that for every real number \(a\):
+        \[1a=a\]
+      \item[Additive Inverse:] For every real number \(a\) there exists a real number \(-a\) such that
+        \[a+(-a)=0\]
+      \item[Multiplicative Inverse:] For every non-zero real number \(a\) there exists a real number \(\frac{1}{a}\)
+        such that:
+        \[a\left(\frac{1}{a}\right)=1\]
+      \item[Distributivity:] \(a(b+c)=ab+ac\)
+      \end{description}
+    \item Extend the system with theorems.  For example, consider the proposition: \((b+c)a=ba+ca\):
+
+      \begin{tabular}{ll}
+        \((b+c)a=a(b+c)\) & Multiplicative Commutativity \\
+        \((b+c)a=ab+ac\) & Distributivity \\
+        \((b+c)a=ba+ca\) & Multiplicative Commutativity \\
+      \end{tabular}
+  \end{enumerate}
+\end{example}
+
+Arguments are made using \(Boolean\) logic, which is itself a mathematical system.  An argument starts with the
+statement of a \emph{theorem} and is accepted as either true or false based on a \emph{proof}.
+
+\end{document}

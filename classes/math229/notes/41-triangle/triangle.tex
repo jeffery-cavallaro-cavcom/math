@@ -1,0 +1,91 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\begin{document}
+\section*{Triangle Inequality}
+
+For $\ell_1$:
+\begin{eqnarray*}
+  \norm{\vx+\vy}_1 &=& \sum_{k=1}^n\abs{x_i+y_i} \\
+  &\le& \sum_{k=1}^n(\abs{x_i}+\abs{y_i}) \\
+  &=& \sum_{k=1}^n\abs{x_i}+\sum_{k=1}^n\abs{y_i}) \\
+  &=& \norm{\vx}_1+\norm{\vy}_1
+\end{eqnarray*}
+
+For $\ell_{\infty}$:
+\begin{eqnarray*}
+  \norm{\vx+\vy}_{\infty} &=& \max_{1\le k\le n}\abs{x_i+y_i} \\
+  &\le& \max_{1\le k\le n}(\abs{x_i}+\abs{y_i}) \\
+  &\le& \max_{1\le k\le n}\abs{x_i}+\max_{1\le k\le n}\abs{y_i}) \\
+  &=& \norm{\vx}_{\infty}+\norm{\vy}_{\infty}
+\end{eqnarray*}
+
+For $\ell_2$:
+
+\begin{lemma}
+  Let $a,b\in\C$:
+  \[2\abs{a}\abs{b}\le\abs{a}^2+\abs{b}^2\]
+\end{lemma}
+
+\begin{theproof}
+  $(\abs{a}-\abs{b})^2\ge 0$ \\
+  $\abs{a}^2-2\abs{a}\abs{b}+\abs{b}^2\ge 0$
+  
+  $\therefore 2\abs{a}\abs{b}\le\abs{a}^2+\abs{b}^2$
+\end{theproof}
+
+\begin{theorem}[Cauchy-Schwarz]
+  Let $\vx,\vy\in\C^n$:
+  \[\sum_{k=1}^nx_ky_k\le\abs{\sum_{k=1}^nx_ky_k}\le\sum_{k=1}^n\abs{x_ky_k}\le
+  \left(\sum_{k=1}^n\abs{x_k}^2\right)^{\frac{1}{2}}
+  \left(\sum_{k=1}^n\abs{y_k}^2\right)^{\frac{1}{2}}\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{eqnarray*}
+    \left(\sum_{k=1}^n\abs{x_k}\abs{y_k}\right)^2 &=&
+    \sum_{k=1}^n\abs{x_k}^2\abs{y_k}^2+
+    2\sum_{i<j}\abs{x_i}\abs{y_i}\abs{x_j}\abs{y_j} \\
+    &=& \sum_{k=1}^n\abs{x_k}^2\abs{y_k}^2+
+    2\sum_{i<j}(\abs{x_i}\abs{y_j})(\abs{y_i}\abs{x_j}) \\
+    &\le& \sum_{k=1}^n\abs{x_k}^2\abs{y_k}^2+
+    \sum_{i<j}(\abs{x_i}^2\abs{y_j}^2+\abs{y_i}^2\abs{x_j}^2) \\
+    &=& \sum_{1\le i,j\le n}\abs{x_i}^2\abs{y_j}^2 \\
+    &=& \left(\sum_{k=1}^n\abs{x_k}^2\right)
+    \left(\sum_{k=1}^n\abs{y_k}^2\right) \\
+    \therefore \sum_{k=1}^n\abs{x_ky_k} &\le&
+    \left(\sum_{k=1}^n\abs{x_k}^2\right)^{\frac{1}{2}}
+    \left(\sum_{k=1}^n\abs{y_k}^2\right)^{\frac{1}{2}}
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{theorem}
+  Let $\vx,\vy\in\C^n$:
+  \[\norm{\vx+\vy}_2\le\norm{\vx}_2+\norm{\vy}_2\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{eqnarray*}
+    \sum_{k=1}^n\abs{x_k+y_k}^2 &=& \sum_{k=1}^n\abs{x_k^2+2x_ky_k+y_k^2} \\
+    &\le& \sum_{k=1}^n(\abs{x_k}^2+\abs{2x_ky_k}+\abs{y_k}^2) \\
+    &=& \sum_{k=1}^n\abs{x_k}^2+2\sum_{k=1}^n\abs{x_ky_k}+
+    \sum_{k=1}^n\abs{y_k}^2 \\
+    &\le& \sum_{k=1}^n\abs{x_k}^2+
+    2\left(\sum_{k=1}^n\abs{x_k}^2\right)^{\frac{1}{2}}
+    \left(\sum_{k=1}^n\abs{y_k}^2\right)^{\frac{1}{2}}+
+    \sum_{k=1}^n\abs{y_k}^2 \\
+    &=&\left[\left(\sum_{k=1}^n\abs{x_k}^2\right)^{\frac{1}{2}}+
+      \left(\sum_{k=1}^n\abs{y_k}^2\right)^{\frac{1}{2}}\right]^2 \\
+    \left(\sum_{k=1}^n\abs{x_k+y_k}^2\right)^{\frac{1}{2}} &=&
+    \left(\sum_{k=1}^n\abs{x_k}^2\right)^{\frac{1}{2}}+
+    \left(\sum_{k=1}^n\abs{y_k}^2\right)^{\frac{1}{2}} \\
+    \therefore \norm{\vx+\vy}_2 &\le& \norm{\vx}_2+\norm{\vy}_2
+  \end{eqnarray*}
+\end{theproof}
+
+\end{document}

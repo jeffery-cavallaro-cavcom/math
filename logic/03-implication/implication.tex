@@ -1,0 +1,164 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\implies}{\rightarrow}
+\renewcommand{\iff}{\leftrightarrow}
+\newcommand{\lxor}{\oplus}
+\begin{document}
+\section*{Implication}
+
+A mathematical system is extended by collecting a set of facts called \emph{preconditions} and showing that if the
+preconditions hold (are true) then some other fact must also be true.  This is called \emph{implication}.  This is
+expressed using an if-then construct.
+
+\begin{examples}
+  If \(x=2\) then \(x^2=4\).
+
+  If \(x\) is an even number then \(x^2\) is an even number.
+\end{examples}
+
+\begin{definition}[Implication]
+  Let \(p\) and \(q\) be propositions.  The \emph{conditional} statement: ``if \(p\) then \(q\),'' also called
+  \emph{implication} and denoted by \(p\implies q\), is the proposition that is false when \(p\) is true and
+  \(q\) is false and true otherwise.  \(p\) is called the \emph{hypothesis} or \emph{antecedent} and \(q\) is
+  called the \emph{conclusion} or \emph{consequence}.
+
+  \begin{center}
+    \begin{tabular}{|cc|c|}
+      \hline
+      \(p\) & \(q\) & \(p\implies q\) \\
+      \hline
+      \(F\) & \(F\) & \(T\) \\
+      \hline
+      \(F\) & \(T\) & \(T\) \\
+      \hline
+      \(T\) & \(F\) & \(F\) \\
+      \hline
+      \(T\) & \(T\) & \(T\) \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  Note that \(p\implies q=\lnot p\lor q=\bar{p}+q\).
+\end{definition}
+
+Implications can be stated in multiple ways:
+\begin{itemize}
+\item If \(p\) then \(q\).
+\item \(p\) implies \(q\).
+\item \(p\) is sufficient for \(q\).
+\item \(p\) only if \(q\).
+\item \(q\) is necessary for \(p\).
+\item \(q\) when \(p\).
+\item \(q\) unless \(\lnot p\).
+\end{itemize}
+
+\begin{example}
+  If \(x=2\) then \(x^2=4\).
+
+  If \(x^2=4\) then we cannot conclude that \(x=2\) because \(x=\pm2\).
+\end{example}
+
+If the hypothesis is false, then the truth value of the consequence doesn't matter.
+
+\begin{example}
+  If you are in this class then you are under 7 feet tall.
+
+  If the hypothesis is false, meaning a person is not in this class, then that person may or may not be 7 feet
+  tall.
+\end{example}
+
+Note that conditionals in logic are different from if statements in computer languages, which act as guards to
+blocks of statements.
+
+\begin{definition}[Implication Forms]
+  Let \(p\) and \(q\) be propositions:
+  \begin{itemize}
+  \item Implication: \(p\implies q\)
+  \item Inverse: \(\lnot p\implies \lnot q\)
+  \item Converse: \(q\implies p\)
+  \item Contrapositive \(\lnot q\implies \lnot p\)
+  \end{itemize}
+\end{definition}
+
+From the truth tables: the implication is equal to the contrapositive and the inverse is equal to the converse.
+
+\begin{minipage}{2in}
+  \centering
+  \begin{tabular}{cc|c}
+    \(p\) & \(q\) & \(\lnot p\implies \lnot q\) \\
+    \hline
+    \(F\) & \(F\) & \(T\) \\
+    \(F\) & \(T\) & \(F\) \\
+    \(T\) & \(F\) & \(T\) \\
+    \(T\) & \(T\) & \(T\) \\
+  \end{tabular}
+\end{minipage}
+\begin{minipage}{2in}
+  \centering
+  \begin{tabular}{cc|c}
+    \(p\) & \(q\) & \(q\implies p\) \\
+    \hline
+    \(F\) & \(F\) & \(T\) \\
+    \(F\) & \(T\) & \(F\) \\
+    \(T\) & \(F\) & \(T\) \\
+    \(T\) & \(T\) & \(T\) \\
+  \end{tabular}
+\end{minipage}
+\begin{minipage}{2in}
+  \centering
+  \begin{tabular}{cc|c}
+    \(p\) & \(q\) & \(\lnot q\implies \lnot p\) \\
+    \hline
+    \(F\) & \(F\) & \(T\) \\
+    \(F\) & \(T\) & \(T\) \\
+    \(T\) & \(F\) & \(F\) \\
+    \(T\) & \(T\) & \(T\) \\
+  \end{tabular}
+\end{minipage}
+
+Conditionals are unidirectional.  A bidirectional implication is an equivalence.
+
+\begin{definition}[Equivalence]
+  Let \(p\) and \(q\) be propositions.  The \emph{biconditional} statement: ``\(p\) if and only if \(q\),'' also
+  called \emph{equivalence} and denoted by \(p\iff q\) or \(p\ \text{iff}\ q\), is the proposition that is true
+  when \(p\) and \(q\) have the same truth value and false otherwise.
+
+  \begin{center}
+    \begin{tabular}{|cc|c|}
+      \hline
+      \(p\) & \(q\) & \(p\iff q\) \\
+      \hline
+      \(F\) & \(F\) & \(T\) \\
+      \hline
+      \(F\) & \(T\) & \(F\) \\
+      \hline
+      \(T\) & \(F\) & \(F\) \\
+      \hline
+      \(T\) & \(T\) & \(T\) \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  Note that \(p\iff q=(p\implies q)\land(q\implies p)=\lnot(p\lxor q)\).
+\end{definition}
+
+The complete preference table is as follows:
+
+\begin{center}
+  \begin{tabular}{|c|}
+    \hline
+    \(\lnot\) \\
+    \hline
+    \(\land\) \\
+    \hline
+    \(\lor\) \\
+    \hline
+    \(\implies\) \\
+    \hline
+    \(\iff\),\(\lxor\) \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\end{document}

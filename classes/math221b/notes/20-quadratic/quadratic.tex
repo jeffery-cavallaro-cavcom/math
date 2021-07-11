@@ -1,0 +1,54 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\sd}{\sqrt{d}}
+\newcommand{\Qd}{\Q(\sd)}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\begin{document}
+\section*{Quadratic Number Fields}
+
+\begin{definition}[Squarefree]
+  To say that and integer $d\ne1$ is \emph{squarefree} means no prime $p$
+  exists such that $p^2\mid d$.
+\end{definition}
+
+\begin{definition}[Quadratic Number Field]
+  Let $d\ne1$ be a squarefree integer. The \emph{quadratic number field}
+  associated to $d$ is given by:
+  \[\Qd=\{r+s\sd\mid r,s\in\Q\}\]
+
+  Note that since $d$ is squarefree it is irrational.
+
+  When $d>0$ then $\Qd$ is said to be real.
+  
+  When $d<0$ then $\Qd$ is said to be imaginary.
+\end{definition}
+
+Note that $\Qd=\Q[\sqrt{d}]$.
+
+\begin{theorem}
+  $\Qd$ is a field.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\a,\b\in\Qd$ \\
+  Let $\a=r+s\sd$ and $\b=u+v\sd$ for $r,s,u,v\in\Q$
+
+  $\a+\b=(r+s\sd)+(u+v\sd)=(r+u)+(s+v)\sd\in\Qd$
+
+  $\a\b=(r+s\sd)(u+v\sd)=(ru+svd)+(rv+su)\sd\in\Qd$
+
+  So, $\Qd$ is closed under the operations and is thus a subring of $\C$, and
+  thus an integral domain.
+
+  Now, assume $\a\ne0$ \\
+  $\frac{1}{\a}=\frac{1}{r+s\sd}=\frac{r-s\sd}{r^2-ds^2}=
+  \frac{r}{r^2-ds^2}-\frac{s}{r^2-ds^2}\sd\in\Qd$
+  
+  So, $\Qd$ is closed under inverses
+
+  Therefore $\Qd$ is a field.
+\end{theproof}
+
+\end{document}

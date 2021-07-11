@@ -1,0 +1,155 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\md}{\mathcal{D}}
+\newcommand{\mr}{\mathcal{R}}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\mc}{\mathcal{C}}
+\begin{document}
+\section*{Linear Operators on Hilbert Spaces}
+
+Recall for a linear operator $L$ on a Hilbert space $H$:
+\begin{enumerate}
+\item $L:\md(L)\to\mr(L)$ where $\md(L)$ and $\mr(L)$ are subspaces of $H$.
+\item $\norm{L}=\sup_{\norm{\vx}=1}\norm{L\vx}$
+\item For $L$ bounded: $\forall\,\vx\in\md(L),\norm{L\vx}\le M\norm{\vx}$
+\item $\norm{L\vx}\le\norm{L}\norm{\vx}$
+\item $L$ is bounded iff $L$ is continuous.
+\end{enumerate}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item All finite dimensional Hilbert spaces are isomorphic to $\C^N$, so
+    let $H=\C^N$ and let $A:\C^N\to\C^N$ be linear.
+
+    Consider the standard basis: $e=\{\ve_1,\ldots,\ve_N\}$.
+
+    Assume $\vx\in H$. \\
+    Since $\vx=\sum_{k=1}^Nx_k\ve_k=\inner{\vx,\ve_k}\ve_k$, define the notation:
+    \[[\vx]_e=\begin{bmatrix} x_1 \\ \vdots \\ x_N \end{bmatrix}\]
+    \begin{eqnarray*}
+      A\vx &=& \sum_{i=1}^N\inner{A\vx,\ve_i}\ve_i \\
+      &=& \sum_{i=1}^N\inner{A\sum_{j=1}^Nx_j\ve_j,\ve_i}\ve_i \\
+      &=& \sum_{i=1}^N\sum_{j=1}^Nx_j\inner{A\ve_j,\ve_i}\ve_i \\
+      &=& \sum_{i=1}^N\sum_{j=1}^Na_{ij}x_j\ve_i
+    \end{eqnarray*}
+    where $a_{ij}=\inner{A\ve_j,\ve_i}$.
+    Let $[A]_e=[a_{ij}]$:
+    \[[A\vx]_e=[A]_e[\vx]_e\]
+    Thus, $A$ is represented by matrix multiplication.
+
+  \item The Differential operator: $Df=f'$
+
+    This was previously shown to be unbounded.
+
+  \item Fredholm (Integral) Operator
+
+    Define $T:L^2[a,b]\to L^2[a,b]$ as:
+    \[(Tf)(s)=\int_a^bK(s,t)f(t)dt\]
+    where $K\in L^2(Q=[a,b]\times[a,b])$ and:
+    \[\iint_QK(s,t)ds dt<\infty\]
+
+    This is clearly linear, but is it bounded?
+    \begin{eqnarray*}
+      \norm{Tf}_{L^2[a,b]}^2 &=& \int_a^b\abs{\int_a^bK(s,t)f(t)dt}^2ds \\
+      &=& \int_a^b\abs{\int_a^bK_s(t)f(t)dt}^2ds \\
+      &=& \int_a^b\abs{\int_a^bK_s(t)f(t)dt}^2ds \\
+      &=& \int_a^b\abs{\inner{K_s,f}}^2ds \\
+      &\le& \int_a^b\norm{K_s}_{L^2[a,b]}^2\norm{f}_{L^2[a,b]}^2ds \\
+      &=& \norm{f}_{L^2[a,b]}^2\int_a^b\norm{K_s}_{L^2[a,b]}^2ds \\
+      &=& \norm{f}_{L^2[a,b]}^2\int_a^b\left(\int_a^b\abs{K(s,t)}^2dt\right)ds \\
+      &=& \norm{f}_{L^2[a,b]}^2\int_a^b\left(\int_a^b\abs{K(s,t)}^2ds\right)dt \\
+      &=& \norm{f}_{L^2[a,b]}^2\int_Q\abs{K(s,t)}^2ds dt \\
+      &=& \norm{f}_{L^2[a,b]}^2\norm{K}_{L^2(Q)}^2
+    \end{eqnarray*}
+
+    $\therefore\norm{T}\le\norm{K}$ and thus $T$ is bounded.
+
+  \item Multiplication Operators
+
+    Define $M:L^2[a,b]\to L^2[a,b]$. \\
+    Fix a function $f_0\in\mc[a,b]$ such that:
+    \[(Mf)(t)=f_o(t)f(t)\]
+    This is clearly linear, but is it bounded?
+    \begin{eqnarray*}
+      \norm{Mf}_{L_2} &=& \int_a^b\abs{(Mf)(t)}^2dt \\
+      &=& \int_a^b\abs{(f_of)(t)}^2dt \\
+      &=& \int_a^b\abs{f_o(t)}^2\abs{f(t)}^2dt \\
+      &\le& \max_{t\in[a,b]}\abs{f_o(t)}^2\int_a^b\abs{f(t)}^2dt \\
+      &=& \max_{t\in[a,b]}\abs{f_o(t)}^2\norm{f}
+    \end{eqnarray*}
+    Therefore $M$ is bounded.
+  \end{enumerate}
+\end{examples}
+
+\begin{notation}
+  Let $H$ be a Hilbert space. The Banach space of linear and bounded operators
+  on $H$ is denoted by $\mb(H)$.
+\end{notation}
+
+Multiplication within $\mb(H)$ is composition:
+\[\forall\,A,B\in\mb(H),(AB)\vx=(A\circ B)\vx=A(B\vx)\]
+
+Composition in $\mb(H)$ is generally not commutative:
+\begin{examples}
+\item $H=\C^2$
+
+  $A=\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}\qquad
+  B=\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}$
+
+  $AB=\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}\qquad
+  BA=\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$
+
+  $\therefore AB\ne BA$.
+
+\item $H=\mc^1[a,b]$
+
+  $(Af)(x)=x f(x)\qquad(Bf)(x)=f'(x)$
+
+  $(AB)f(x)=A(f'(x))=xf'(x)\qquad(BA)f(x)=B(xf(x))=f(x)+xf'(x)$
+
+  $\therefore AB\ne BA$.
+\end{examples}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and $A,B\in\mb(H)$:
+  \[\norm{AB}\le\norm{A}\norm{B}\]
+  Thus, the product of two bounded operators is bounded.
+\end{theorem}
+
+\begin{theproof}
+  $\norm{(AB)x}=\norm{A(Bx)}\le\norm{A}\norm{Bx}\le\norm{A}\norm{B}\norm{x}$
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be an infinite dimensional and separable Hilbert space and let
+  $A\in\mb(H)$. $A$ can be represented by matrix multiplication with an
+  infinite matrix.
+\end{theorem}
+
+\begin{theproof}
+  There exists a countable orthonormal basis for $H$. \\
+  Let the basis be $e=\{\ve_n\mid n\in\N\}$. \\
+  Assume $\vx\in H$. \\
+  $\vx=\sum_{n=0}^{\infty}x_n\ve_n$ \\
+  Let $[\vx]_e=(x_1,x_2,\ldots)^T$.
+  \begin{eqnarray*}
+    A\vx &=& \sum_{i=1}^{\infty}\inner{A\vx,\ve_i}\ve_i \\
+    &=& \sum_{i=1}^{\infty}\inner{A\sum_{j=1}^{\infty}x_j\ve_j,\ve_i}\ve_i \\
+    &=& \lim_{N\to\infty}\sum_{i=1}^N\inner{A\sum_{j=1}^Nx_j\ve_j,\ve_i}\ve_i \\
+    &=& \lim_{N\to\infty}\sum_{i=1}^N\sum_{j=1}^Nx_j\inner{A\ve_j,\ve_i}\ve_i \\
+    &=& \lim_{N\to\infty}\sum_{i=1}^N\sum_{j=1}^Na_{ij}x_j\ve_i \\
+    &=& \sum_{i=1}^{\infty}\sum_{j=1}^{\infty}a_{ij}x_j\ve_i
+  \end{eqnarray*}
+  where $a_{ij}=\inner{A\ve_j,\ve_i}$.
+  Let $[A]_e=[a_{ij}]$:
+  \[[A\vx]_e=[A]_e[\vx]_e\]
+  Thus, $A$ is represented by multiplication by an infinite matrix.
+\end{theproof}
+
+\end{document}

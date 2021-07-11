@@ -1,0 +1,28 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vo}{\vec{0}}
+\begin{document}
+\section*{Eigenvalues of Positive Operators}
+
+\begin{theorem}
+  Let $A$ be a positive operator on a Hilbert space $H$:
+
+  \qquad$\l$ is an eigenvalue of $A\implies\l\ge0$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\l$ is an eigenvalue of $A$. \\
+  $\exists\,\vx\in H$ such that $\vx\ne\vo$.
+  $A\ge0\implies\inner{A\vx,\vx}\ge0$
+  
+  $\inner{A\vx,\vx}=\inner{\l\vx,\vx}=\l\norm{\vx}\ge0$
+
+  $\therefore\l\ge0$
+\end{theproof}
+
+\end{document}

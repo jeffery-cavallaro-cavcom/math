@@ -1,0 +1,142 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\sigma}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vz}{\vec{z}}
+\DeclareMathOperator{\Eig}{Eig}
+\begin{document}
+\section*{Commute Conditions}
+
+\begin{definition}[Simultaneously Triangularizable]
+  Let $A,B\in M_n$. To say that $A$ and $B$ are simultaneously triangularizable means
+  there exists unitary matrix $U$ such that:
+  \[U^*AU=T_A\ \mbox{and} \ U^*BU=T_B\]
+  where $T_A,T_B\in UT(n)$.
+\end{definition}
+
+\begin{theorem}
+  Let $A,B\in M_n$:
+
+  $AB=BA\implies A$ and $B$ are simultaneously triangularizable.
+\end{theorem}
+
+\begin{definition}
+  Let $S,T\subseteq\C$:
+  \[S-T=\{s-t\mid s\in S\ \mbox{and}\ t\in T\}\]
+\end{definition}
+
+\begin{theorem}
+  Let $A,B\in M_n$:
+  \[AB=BA\implies \o(A-B)\subseteq\o(A)-\o(B)\]
+\end{theorem}
+
+\begin{example}
+  \newcommand{\ea}{\begin{bmatrix} 3 & 1 \\ -2 & 0 \end{bmatrix}}
+  \newcommand{\eb}{\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}}
+
+  Thus, $\o(A-B)\not\subseteq\o(A)-\o(B)\implies AB\ne BA$
+
+  $A=\ea$ and $B=\eb$
+
+  $\o(A)=\{1,2\}$ and $\o(B)={0,1}$
+
+  $\o(A)-\o(B)=\{1-0,1-1,2-0,2-1\}=\{0,1,1,2\}=\{0,1,2\}$
+
+  $A-B=\begin{bmatrix} 2 & 1 \\ -2 & 0 \end{bmatrix}$
+
+  $p_{A-B}(t)=\det\begin{bmatrix} t-2 & 1 \\ -2 & t \end{bmatrix}=t(t-2)+2=t^2-2t+2$
+
+  $\o(A-B)=\{1\pm2i\}\not\subseteq\{0,1,2\}=\o(A)-\o(B)$
+
+  So $A$ and $B$ do not commute:
+
+  $\ea\eb=\begin{bmatrix} 3 & 0 \\ -2 & 0 \end{bmatrix}$
+  
+  $\eb\ea=\begin{bmatrix} 3 & 1 \\ 0 & 0 \end{bmatrix}$
+
+  $AB\ne BA$
+\end{example}
+
+\begin{theproof}
+  Assume $AB=BA$ \\
+  $A$ and $B$ are simultaneously triangularizable \\
+  Let $U$ be the necessary unitary matrix \\
+  $U^*(A-B)U=U^*AU-U^*BU=T_A-T_B$ \\
+  So $\o(A-B)$ is from the diagonal entries of $T_A-T_B$, which is a subset of all
+  possible differences, represented by $\o(A)-\o(B)$
+
+  $\therefore\o(A-B)\subseteq\o(A)-\o(B)$
+\end{theproof}
+
+\begin{theorem}
+  Let $A,B\in M_n$:
+
+  $AB=BA\implies A$ and $B$ have a common eigenvector.
+\end{theorem}
+
+\begin{theproof}
+  Let $\l\in\o(A)$ with eigenvector $\vx$ \\
+  $A\vx=\l\vx$ \\
+  Consider $B\vx$
+  \begin{description}
+  \item Case 1: $B\vx=0$
+
+    $\vx\in\Eig_B(0)$
+
+    Therefore $\vx$ is a common eigenvector.
+
+  \item Case 2: $B\vx\ne0$
+
+    $A(B\vx)=BA\vx=B(\l\vx)=\l(B\vx)$ \\
+    So $B\vx\in\Eig_A(\l)$ \\
+    Thus $\{B\vx\mid\vx\in\Eig_A(\l)\}\subseteq\Eig_A(\l)$ \\
+    Let $\{\vx_1,\ldots,\vx_r\}$ be a basis for $\Eig_A(\l)$ \\
+    Extend the set to a basis for $\C^n: \{\vx_1,\ldots,\vx_r,\vx_{r+1},\ldots,\vx_n\}$ \\
+    AWLOG that this is an orthonormal basis (otherwise use Gram-Schmidt) \\
+    Let $U=\begin{bmatrix} \vx_1 & \cdots & \vx_r & \vx_{r+1} & \ldots & \vx_n
+    \end{bmatrix}$, thus a unitary matrix
+    \[BU=\begin{bmatrix} B\vx_1 & \cdots & B\vx_r & B\vx_{r+1} & \cdots & B\vx_n
+    \end{bmatrix}\]
+    But note that:
+    \[B\vx_k\in\begin{cases}
+    \Eig_A(\l) & 1\le k\le r \\
+    \C^n & r+1\le k\le n
+    \end{cases}\]
+    and so:
+    \begin{eqnarray*}
+      BU &=&
+      \begin{bmatrix} \vx_1 & \cdots & \vx_r & \vx_{r+1} & \ldots & \vx_n\end{bmatrix}
+        \begin{bmatrix}
+          k_{1,1} & k_{1,2} & \cdots & k_{1,r} & k_{1,r+1} & \cdots & k_{1,n} \\
+          k_{2,1} & k_{2,2} & \cdots & k_{2,r} & k_{2,r+1} & \cdots & k_{2,n} \\
+          & & \vdots & & & \vdots & \\
+          k_{r,1} & k_{r,2} & \cdots & k_{r,r} & k_{r,r+1} & \cdots & k_{r,n} \\
+          0 & 0 & \cdots & 0 & k_{r+1,r+1} & \cdots & k_{r+1,n} \\
+          & & \vdots & & & \vdots & \\
+          0 & 0 & \cdots & 0 & k_{n,r+1} & \cdots & k_{n,n}
+        \end{bmatrix} \\
+        &=& U\begin{bmatrix} C_{11} & C_{12} \\ 0 & C_{22} \end{bmatrix}
+    \end{eqnarray*}
+    where $C_{11},C_{12}\in M_r$ and $C_{22}\in M_{n-(r+1)}$\\
+    Select an eigenvector $\vz$ of $C_{11}$ with respect to eigenvalue $\m$ \\
+    $C_{11}\vz=\m\vz$ \\
+    Consider $U\begin{bmatrix} \vz \\ 0 \end{bmatrix}$ \\
+    $U\begin{bmatrix} \vz \\ 0 \end{bmatrix}$ is a linear combination of
+    $\{\vx_1,\ldots,\vx_r\}$ and is thus in $\Eig_A(\l)$ \\
+    But also:
+    \begin{eqnarray*}
+      B\left(U\begin{bmatrix} \vz \\ 0 \end{bmatrix}\right) &=&
+      U\begin{bmatrix} C_{11} & C_{12} \\ 0 & C_{22} \end{bmatrix}
+      \begin{bmatrix} \vz \\ 0 \end{bmatrix} \\
+      &=& U\begin{bmatrix} C_{11}\vz \\ 0 \end{bmatrix} \\
+      &=& U\begin{bmatrix} \m\vz \\ 0 \end{bmatrix} \\
+      &=& \m\left(U\begin{bmatrix} \vz \\ 0 \end{bmatrix}\right) \\
+    \end{eqnarray*}
+    Therefore $U\begin{bmatrix} \vz \\ 0 \end{bmatrix}\in\Eig_B(\m)$
+  \end{description}
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,135 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\newcommand{\G}{\mathscr{G}}
+\begin{document}
+
+\section*{Components}
+
+\begin{definition}[Component]
+  Let \(G\) be a graph and let \(\G\) be the set of all connected subgraphs of \(G\).  To say that a graph \(H\in\G\)
+  is a \emph{component} of a \(G\) means that \(H\) is not a subgraph of any other connected subgraph of \(G\):
+  \[\forall\,F\in\G-\set{H},H\not\subset F\]
+  The number of distinct components in \(G\) is denoted by:
+  \[k=k(G)\]
+  For a connected graph: \(k(G)=1\).
+\end{definition}
+
+\begin{notation}[Union]
+  Let \(G\) be a graph and let \(\G=\set{G_i:1\le i\le k}\) for some \(k\in\N\) be a set of subgraphs of \(G\) such
+  that each vertex and each edge in \(G\) is present in exactly one \(G_i\):
+  \[G=\bigcup_{1\le i\le k}G_i\]
+  Note that the components of a graph are suitable choices for the \(G_i\).
+\end{notation}
+
+\begin{lemma}
+  Let \(G\) be a graph and let \(G_i\) be a component of \(G\):
+  \begin{quote}
+    \(G_i\) is an induced subgraph of \(G\).
+  \end{quote}
+\end{lemma}
+
+\begin{proof}
+  By definition, \(G_i\) is a maximal connected subgraph of \(G\).
+
+  ABC: \(G_i\) is not an induced subgraph of \(G\).
+
+  Thus, \(G_i\) is missing some edges that when added would result in a connected induced subgraph \(H\) of \(G\).
+  But then \(G_i\subset H\), contradicting the maximality of \(G_i\).
+
+  \(\therefore G_i\) is an induced subgraph of \(G\).
+\end{proof}
+
+\begin{theorem}
+  Let \(G\) be a graph and define a relation \(\sim\) on \(V(G)\) as follows:
+  \[\forall\,u,v\in V(G),u\sim v\iff u\ \text{and}\ v\ \text{are connected}\]
+  \(\sim\) is an equivalence relation.
+\end{theorem}
+
+\begin{proof}
+  Assume \(u,v,w\in V(G)\):
+  \begin{description}
+  \item{R:} \(u\) is connected to \(u\) by the trivial path \((u)\).
+
+    \(\therefore u\sim u\)
+
+  \item{S:} Assume \(u\sim v\):
+
+    There exists a \(u-v\) path in \(G\). \\
+    And so, going in reverse order, there exists a \(v-u\) path in \(G\).
+
+    \(\therefore v\sim u\)
+    
+  \item{T:} Assume \(u\sim v\) and \(v\sim w\):
+
+    There exists a \(u-v\) path and a \(v-w\) path in \(G\). \\
+    So there exists a \(u-w\) walk in \(G\). \\
+    And thus there must exist a \(u-w\) path in \(G\).
+
+    \(\therefore u\sim w\)
+  \end{description}
+\end{proof}
+
+\begin{theorem}
+  Let \(G\) be a graph and let \(G_i\) be a subgraph of \(G\).  TFAE:
+  \begin{enumerate}
+  \item \(G_i\) is a component of \(G\).
+  \item \(G_i\) is induced by an equivalence class of the connectedness relation.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume \(G_i\) is a component of \(G\).
+
+    So \(G_i\) is a maximal connected induced subgraph of \(G\).
+
+    ABC: \(V(G_i)\) is not an equivalence class of the connectedness relation.
+
+    Thus, \(V(G_i)\) must be a proper subset of some equivalence class \(V_i\) and \(G[V_i]\) is an connected
+    induced subgraph of \(G\) such that \(G_i\subset G[V_i]\), contradicting the maximality of \(G_i\).
+
+    \(\therefore G_i\) is induced by an equivalence class of the connectedness relation.
+
+  \item[\(\impliedby\)] Assume \(G_i\) is induced by an equivalence class of the connectedness
+    relation.
+
+    By definition, \(G_i\) is a connected subgraph of \(G\).
+
+    ABC: \(G_i\) is not maximal.
+
+    Thus, \(G_i\) is a proper subgraph of some connected subgraph \(H\) of \(G\) and \(V(G_i)\subset V(H)\),
+    contradicting the definition of \(V(G_i)\) as an equivalence class.
+
+    \(\therefore G_i\) is a component of \(G\).
+  \end{description}
+\end{proof}
+
+\begin{corollary}
+  Let \(G\) be a graph with \(k\) components.  Each vertex and each edge in \(G\) belong to exactly one component
+  of \(G\).
+\end{corollary}
+
+\begin{proof}
+  Each \(v\in V(G)\) is in exactly one equivalence class and hence in exactly one component.  Furthermore, the
+  endpoints of each edge are also in the same equivalence class and thus must exist in the same component, forcing
+  the edge into that component as well.
+\end{proof}
+
+\begin{corollary}
+  Let \(G\) be a graph with \(k\) components and let \(u,v\in V(G)\) such that \(u\in G_i\) and \(v\in G_j\) for
+  \(1\le i,j\le k\):
+  \[i\ne j\implies uv\notin E(G)\]
+\end{corollary}
+
+\begin{proof}
+  Assume \(uv\in E(G)\).
+
+  This means that \(u\) and \(v\) are connected and thus must be in the same component.
+
+  \(\therefore i=j\)
+\end{proof}
+
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\sigma}
+\newcommand{\m}{\mu}
+\begin{document}
+\section*{Cycles}
+
+\begin{definition}
+  To say that $\o\in S_n$ is a \emph{cycle} means that it has at most one
+  orbit that contains more than one element.
+
+  The \emph{length} of a cycle is the number of elements in the cycle.
+
+  To say that two cycles are \emph{disjoint} means that they contain no common
+  elements.
+\end{definition}
+
+\begin{theorem}
+  Every permutation $\o$ of a finite set is a product of disjoint cycles.
+\end{theorem}
+
+\begin{theproof}
+  Let $B_1,B_2,\ldots,B_r$ be the orbits of $\o$ \\
+  The $B_k$ are equivalence classes and are thus disjoint \\
+  Let $\mu_k(x)=\begin{cases}
+  \o(x), & x\in B_k \\
+  x, & x\notin B_k \\
+  \end{cases}$ \\
+  $\o=\prod_{k=1}^r\mu_k$ \\
+  But the $\mu_k$ are disjoint cycles \\
+  $\therefore \o$ is a product of disjoint cycles.
+\end{theproof}
+
+\begin{corollary}
+  Composition of disjoint cycles is commutative.
+\end{corollary}
+
+\begin{theorem}
+  The order of a cycle of length $n$ is $n$.
+\end{theorem}
+
+\begin{corollary}
+  The order of a permutation is the least common multiple of the orders of its
+  disjoint cycles.
+\end{corollary}
+
+\begin{theorem}
+  Let $\o$ be a cycle represented by $(i_1 i_2 \ldots i_{n-1} i_n)$. The inverse
+  of $\o$ is given by:
+  \[\o^{-1}=(i_n i_{n-1} \ldots i_2 i_1)\]
+\end{theorem}
+
+\end{document}

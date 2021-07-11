@@ -1,0 +1,142 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\newcommand{\SC}{\mathcal{C}}
+\newcommand{\lp}{\ell^{\,p}}
+\newcommand{\normp}[2]{\sum_{n=1}^{\infty}\abs{#1}^{#2}}
+\newcommand{\norm}[2]{\left(\normp{#1}{#2}\right)^{\frac{1}{#2}}}
+\begin{document}
+\section*{Sequences}
+
+Note that $R^n$ and $C^n$ can be viewed as function spaces where:
+\[R^n=\left\{f:\{1,\ldots,n\}\to\R\right\}\]
+\[C^n=\left\{f:\{1,\ldots,n\}\to\C\right\}\]
+As $n\to\infty$ we get the vector space of all real/complex sequences with
+component-wise vector addition and scalar multiplication:
+\[(x_1,x_2,\ldots)+(y_1,y_2,\ldots)=(x_1+y_1,x_2+y_2,\ldots)\]
+\[\l(x_1,x_2,\ldots)=(\l x_1,\l x_2,\ldots)\]
+
+\begin{notation}
+  $(x_n)$ is the sequence whose $n^{th}$ term is $x_n$.
+
+  $\{x_n\mid n\in\N\}$ is the set of all elements in the sequence $(x_n)$.
+\end{notation}
+
+Let $\SC$ be the set of all complex sequences in $\C$. The following are
+subspaces of $\SC$:
+\begin{itemize}
+\item Bounded sequences in $\SC$.
+\item Converging sequences in $\SC$.
+\item Sequences in $\SC$ whose partial sums corresponding series converge.
+\end{itemize}
+
+\begin{definition}[$\lp$]
+  Let $p\in\N$:
+  \[\lp=\left\{(z_n)_{n\in\N}\middle|\sum_{n=1}^{\infty}\abs{z_n}^p<\infty
+  \right\}\]
+\end{definition}
+
+\begin{definition}[Convex Function]
+  Let $f(x)$ be a real function defined on an open interval $I$. To say that
+  $f$ is \emph{convex} (or \emph{concave up}) on $I$ means
+  $\forall\,s,t\in I$ and $\forall\,\l\in\R$:
+  \[f\left((1-\l)s+\l t\right)\le(1-\l)f(s)+\l t\]
+\end{definition}
+
+\begin{theorem}[Young's Inequality]
+  Let $a,b,p,q\in\R$ such that $a,b>0$, $1\le p,q<\infty$, and
+  $\frac{1}{p}+\frac{1}{q}=1$:
+  \[ab\le\frac{a^p}{p}+\frac{b^q}{q}\]
+\end{theorem}
+
+\begin{theproof}
+  Let $a=e^{\frac{s}{p}}$ and $b=e^{\frac{t}{q}}$ for some $s,t\in\R$. \\
+  \[ab=e^{\frac{s}{p}}e^{\frac{t}{q}}=e^{\frac{s}{p}+\frac{t}{q}}\]
+  But $f(x)=e^x$ is convex (concave up) everywhere and so:
+  \[ab\le\frac{1}{p}e^s+\frac{1}{q}e^t=\frac{a^p}{p}+\frac{b^q}{q}\]
+\end{theproof}
+
+\begin{theorem}[H\"{o}lder's Inequality]
+  Let $p,q\in\R$ such that $1\le p,q<\infty$ and $\frac{1}{p}+\frac{1}{q}=1$,
+  and let $(x_n),(y_n)\in\lp$:
+  \[\sum_{n=1}^{\infty}\abs{x_ny_n}\le\norm{x_n}{p}\norm{y_n}{q}\]
+\end{theorem}
+
+\begin{theproof}
+  Let $A=\norm{x_n}{p}$ and $B=\norm{y_n}{q}$. \\
+  Since $(x_n),(y_n)\in\lp, 0\le A,B<\infty$. \\
+  If either sequence is the zero sequence then trivial, so assume both are
+  non-zero. \\
+  Let $a=\frac{\abs{x_n}}{A}$ and $b=\frac{\abs{y_n}}{B}$. \\
+  Since $A,B>0$, and hence $a,b>0$, so applying Young:
+  \[ab=\frac{\abs{x_ny_n}}{AB}\le
+  \frac{1}{p}\left(\frac{\abs{x_n}}{A}\right)^p +
+  \frac{1}{q}\left(\frac{\abs{y_n}}{B}\right)^q\]
+  Summing both sides:
+  \[\frac{1}{AB}\sum_{n=1}^{\infty}\abs{x_ny_n}\le
+  \frac{1}{pA^p}\sum_{n=1}^{\infty}\abs{x_n}^p+
+  \frac{1}{qB^q}\sum_{n=1}^{\infty}\abs{y_n}^q=
+  \frac{1}{pA^p}A^p+\frac{1}{qB^q}B^q=\frac{1}{p}+\frac{1}{q}=1\]
+  Therefore:
+  \[\sum_{n=1}^{\infty}\abs{x_ny_n}\le AB=\norm{x_n}{p}\norm{y_n}{q}\]
+\end{theproof}
+
+\begin{theorem}[Minkowski's Inequality]
+  Let $p\in\R$ such that $1\le p<\infty$ and let $(x_n),(y_n)\in\lp$:
+  \[\norm{x_n+y_n}{p}\le\norm{x_n}{p}+\norm{y_n}{p}\]
+\end{theorem}
+
+\newpage
+
+\begin{theproof}
+  For $p=1$, Minkowski reduces to the triangle inequality (trivial), so AWLOG
+  $p>1$. \\
+  \begin{eqnarray*}
+    \normp{x_n+y_n}{p} &=& \sum_{n=1}^{\infty}\abs{x_n+y_n}\abs{x_n+y_n}^{p-1} \\
+    &\le& \sum_{n=1}^{\infty}
+    \left(\abs{x_n}+\abs{y_n}\right)\abs{x_n+y_n}^{p-1} \\
+    &=& \sum_{n=1}^{\infty}\abs{x_n}\abs{x_n+y_n}^{p-1}+
+    \sum_{n=1}^{\infty}\abs{y_n}\abs{x_n+y_n}^{p-1} \\
+  \end{eqnarray*}
+  Since $p>1$, $\exists\,q>1,\frac{1}{p}+\frac{1}{q}=1$, so applying H\"{o}lder:
+  \[\normp{x_n+y_n}{p}\le
+  \norm{x_n}{p}
+  \left(\sum_{n=1}^{\infty}\abs{x_n+y_n}^{(p-1)q}\right)^{\frac{1}{q}}+
+  \norm{y_n}{p}
+  \left(\sum_{n=1}^{\infty}\abs{x_n+y_n}^{(p-1)q}\right)^{\frac{1}{q}}\]
+  But $(p-1)q=1$, and so:
+  \[\normp{x_n+y_n}{p}\le\left(\norm{x_n}{p}+\norm{y_n}{p}\right)
+  \left(\sum_{n=1}^{\infty}\abs{x_n+y_n}^p\right)^{\frac{1}{q}}\]
+  Finally, dividing both sides by
+  $\left(\sum_{n=1}^{\infty}\abs{x_n+y_n}^p\right)^{\frac{1}{q}}$ and noting that
+  $1-\frac{1}{q}=\frac{1}{p}$:
+  \[\norm{x_n+y_n}{p}\le\norm{x_n}{p}+\norm{y_n}{p}\]
+\end{theproof}
+
+\begin{theorem}
+  Let $\SC$ be the vector space consisting of all complex sequences.
+
+  \qquad$\lp$ is a subspace of $\SC$.
+\end{theorem}
+
+\begin{theproof}
+  Clearly, $\lp\subset\SC$.
+
+  Assume $(x_n)\in\lp$ and $\l\in\C$.
+  \[\norm{\l x_n}{p}=\abs{\l}^{\frac{1}{p}}\norm{x_n}{p}<\infty\]
+  $(\l x_n)\in\lp$
+  
+  $\therefore\lp$ is closed under scalar multiplication.
+
+  Assume $(y_n)\in\lp$. \\
+  By Minkowski:
+  \[\norm{x_n+y_n}{p}\le\norm{x_n}{p}+\norm{y_n}{p}<\infty\]
+  $(x_n + y_n)\in\lp$
+
+  $\therefore\lp$ is closed under vector addition.
+
+  $\therefore\lp$ is a subspace of $\SC$.
+\end{theproof}
+
+\end{document}

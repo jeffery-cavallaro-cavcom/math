@@ -1,0 +1,114 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\obj}{obj}
+\DeclareMathOperator{\mor}{mor}
+\renewcommand{\i}{\iota}
+\begin{document}
+\section*{Category Theory}
+
+\begin{definition}[Category]
+  A \emph{category} $C$ is a mathematical structure consisting of two
+  \emph{classes}:
+  \begin{enumerate}
+  \item $\obj(C)=$ class of \emph{objects} of $C$
+  \item $\mor(C)=$ class of \emph{morphisms} of $C$
+  \end{enumerate}
+  Objects are typically denoted by $A,B,C,\ldots$
+
+  Morphisms are disjoint sets, one per each pair of objects, denoted
+  $\mor(A,B)$ for objects $A,B\in\obj(C)$. An element $f\in\mor(A,B)$,
+  denoted $f:A\to B$ is called a morphism from $A$ to $B$ and is used to
+  define structure between the objects.
+\end{definition}
+
+\begin{definition}[Composition]
+  Let $C$ be a category and $A,B,C\in\obj(C)$. There exists a function:
+  \[\mor(B,C)\times\mor(A,B)\to\mor(A,C)\]
+  defined by $(g,f)\mapsto g\circ f$, where $g\circ f$ is called the
+  \emph{composite} of $f$ and $g$ and is subject to the following two axioms:
+  \begin{enumerate}
+  \item \emph{Associativity}: $\forall\,f:A\to B,g:B\to C,h:C\to D$:
+    \[h\circ(g\circ f)=(h\circ g)\circ f\]
+  \item \emph{identity}: $\forall\,B\in\obj(C),\exists\,\i_B:B\to B$ such that:
+    \begin{itemize}
+    \item $\forall\,f:A\to B,\i_B\circ f=f$
+    \item $\forall\,g:B\to C,g\circ \i_B=g$
+    \end{itemize}
+  \end{enumerate}
+\end{definition}
+
+Note that $\mor(A,A)\ne\emptyset$ because at least $i_A\in\mor(A,A)$.
+
+\begin{definition}[Equivalence]
+  Let $C$ be a category, $A,B\in\obj(C)$, and $f:A\to B$. To say that $f$ is an
+  \emph{equivalence} means $\exists\,g:B\to A$ such that:
+  \begin{itemize}
+  \item $g\circ f=\i_A$
+  \item $f\circ g=\i_B$
+  \end{itemize}
+  In this case, $A$ and $B$ are said to be \emph{equivalent}.
+\end{definition}
+
+\begin{example}
+  Let $\mathcal{G}=$ category of groups, where $A=\obj(\mathcal{G})$ is a
+  group, and $\mor(A,B)$ is the (possibly empty) set of homomorphisms from
+  $A$ to $B$.
+\end{example}
+
+\begin{definition}[Product]
+  Let $C$ be a category and $\mathcal{S}=\{A_i\mid i\in I\}$ be a family of
+  objects in $\obj(C)$. A \emph{product} of $\mathcal{S}$, denoted
+  $\prod_{i\in I}A_i$, is an object $P\in\obj(C)$ together with a family of
+  morphisms $\{\pi_i:P\to A_i\mid i\in I\}$ such that $\forall\,B\in\obj(C)$
+  and family of morphisms $\{\phi_i:B\to A_i\mid i\in I\}$ there exists a
+  unique morphism $\phi:B\to P$ such that
+  $\forall\,i\in I,\pi_i\circ\phi=\phi_i$.
+\end{definition}
+
+\begin{figure}[h]
+  \setlength{\leftskip}{1in}
+  \begin{tikzpicture}[->]
+    \node (P) at (0,2) {$P$};
+    \node (B) at (4,2) {$B$};
+    \node (Ai) at (2,4) {$A_i$};
+    \node (Aj) at (2,0) {$A_j$};
+    \draw [->] (P) edge node [above left] {$\pi_i$} (Ai);
+    \draw [->] (P) edge node [below left] {$\pi_j$} (Aj);
+    \draw [->] (B) edge node [above right] {$\phi_i$} (Ai);
+    \draw [->] (B) edge node [below right] {$\phi_j$} (Aj);
+    \draw [->] (B) edge node [above] {$\phi$} (P);
+  \end{tikzpicture}
+\end{figure}
+
+For the category of groups, define $\pi_i:G\to G_i$ by projection.
+
+\begin{theorem}
+  Let $\{A_i\mid i\in I\}$ be a family of objects in a category $C$. If
+  $\{A_i\mid i\in I\}$ has a product then that product is unique (up to
+  equivalence).
+\end{theorem}
+
+\begin{theproof}
+  Assume $\{A_i\mid i\in I\}$ has a product \\
+  Let $(P,\{\pi_i\})$ and $(Q,\{\phi_i\})$ be two such products \\
+  $\exists\,\phi:Q\to P,\pi_i\phi=\phi_i$ \\
+  $\exists\,\pi:P\to Q,\phi_i\pi=\pi_i$ \\
+  $\phi_i(\pi\phi)=\phi$, so $\pi\phi=\i_Q$ \\
+  $\pi_i(\phi\pi)=\pi_i$, so $\phi\pi=\i_P$ \\
+  $\therefore P$ and $Q$ are equivalent.
+\end{theproof}
+
+\begin{definition}[Coproduct]
+  Let $C$ be a category and $\mathcal{S}=\{A_i\mid i\in I\}$ be a family of
+  objects in $\obj(C)$. A \emph{coproduct} of $\mathcal{S}$ is an object
+  $P\in\obj(C)$ together with a family of morphisms
+  $\{\pi_i:P\to A_i\mid i\in I\}$ such that $\forall\,B\in\obj(C)$
+  and family of morphisms $\{\phi_i:B\to A_i\mid i\in I\}$ there exists a
+  unique morphism $\pi:P\to B$ such that
+  $\forall\,i\in I,\phi_i\circ\pi=\pi_i$.
+\end{definition}
+
+In other words, a cofactor is a factor in the opposite direction.
+
+\end{document}

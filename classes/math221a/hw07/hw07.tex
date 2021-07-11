@@ -1,0 +1,90 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\DeclareMathOperator{\Aut}{Aut}
+\newcommand{\p}{\phi}
+\renewcommand{\i}{\iota}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221a \\
+Homework \#7
+
+\bigskip
+
+\subsection*{Exercise 1}
+
+Given groups $H$ and $K$ and homomorphism $\p:K\to\Aut(H)$, prove that
+$H\rtimes K$ is a group.
+
+Assume $(h_1,k_1),(h_2,k_2)\in H\rtimes K$ and consider the binary operation:
+\[(h_1,k_1)(h_2,k_2)=(h_1\p(k_1)(h_2),k_1k_2)\]
+The binary operations for the groups $H$ and $K$ are well-defined and closed \\
+$\p$ is well-defined \\
+$\p(k_1)$ is an automorphism of $H$ \\
+$\p(k_1)(h_2)\in H$ \\
+$h_1\p(k_1)(h_2)\in H$ \\
+$k_1k_2\in K$ \\
+So $(h_1\p(k_1)(h_2),k_1k_2)\in H\rtimes K$ \\
+Therefore the binary operation is well-defined and closed.
+
+Assume $(h_1,k_1),(h_2,k_2),(h_3,k_3)\in H\rtimes K$
+\begin{eqnarray*}
+  [(h_1,k_1)(h_2,k_2)](h_3,k_3) &=& (h_1\p(k_1)(h_2),k_1k_2)(h_3,k_3) \\
+  &=& (h_1\p(k_1)(h_2)\p(k_1k_2)(h_3),(k_1k_2)k_3) \\
+  &=& (h_1\p(k_1)(h_2)\p(k_1)(\p(k_2)(h_3)),k_1(k_2k_3)) \\
+  &=& (h_1\p(k_1)(h_2\p(k_2)(h_3)),k_1(k_2k_3)) \\
+  &=& (h_1,k_1)(h_2\p(k_2)(h_3),k_2k_3) \\
+  &=& (h_1,k_1)[(h_2,k_2)(h_3,k_3)]
+\end{eqnarray*}
+Therefore the operation is associative.
+
+Consider $(e_H,e_K)\in H\rtimes K$ \\
+Assume $(h,k)\in H\rtimes K$ \\
+$\p(k)$ is an isomorphism, so $\p(k)(e_H)=e_H$ \\
+$\p$ is a homomorphism, so $\p(e_K)=\i_H$
+
+$(h,k)(e_H,e_K)=(h\p(k)(e_H),ke_K)=(he_H,k)=(h,k)$
+
+$(e_H,e_K)(h,k)=(e_H\p(e_K)(h),e_Kk)=(\p(e_k)(h),k)=(\i_H(h),k)=(h,k)$
+
+Therefore $(e_H,e_K)$ is the identity element for $H\rtimes K$.
+
+Assume $(h,k)\in H\rtimes K$ \\
+$h^{-1}\in H$ \\
+$k^{-1}\in K$ \\
+$\p(k^{-1})\in\Aut(H)$ \\
+$\p(k^{-1})(h^{-1})\in H$ \\
+$(\p(k^{-1})(h^{-1}),k^{-1})\in H\rtimes K$
+
+Consider $(\p(k^{-1})(h^{-1}),k^{-1})$:
+\begin{eqnarray*}
+  (h,k)(\p(k^{-1})(h^{-1}),k^{-1}) &=&
+  (h\p(k)(\p(k^{-1})(h^{-1})),kk^{-1}) \\
+  &=& (h\p(kk^{-1})(h^{-1}),e_K) \\
+  &=& (h\p(e_K)(h^{-1}),e_K) \\
+  &=& (h\i_H(h^{-1}),e_K) \\
+  &=& (hh^{-1},e_K) \\
+  &=& (e_H,e_K)
+\end{eqnarray*}
+\begin{eqnarray*}
+  (\p(k^{-1})(h^{-1}),k^{-1})(h,k) &=&
+  (\p(k^{-1})(h^{-1})\p(k^{-1})(h),k^{-1}k) \\
+  &=& (\p(k^{-1})(h^{-1}h),e_K) \\
+  &=& (\p(k^{-1})(e_H),e_K) \\
+  &=& (e_H,e_K)
+\end{eqnarray*}
+Therefore $H\rtimes K$ is closed under inverses.
+
+Therefore $H\rtimes K$ is a group.
+
+\subsection*{Exercise 2}
+
+Let $\p:K\to\Aut(H)$ be the trivial homomorphism. Prove $H\rtimes K$ is the
+same as $H\times K$.
+
+Assume $(h_1,k_1),(h_2,k_2)\in H\rtimes K$ \\
+$(h_1,k_1)(h_2,k_2)=(h_1\p(k_1)(h_2),k_1k_2)=(h_1\i_H(h_2),k_1k_2)=
+(h_1h_2,k_1k_2)$
+
+Therefore $H\rtimes K$ is the same as $H\times K$.
+\end{document}

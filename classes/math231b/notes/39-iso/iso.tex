@@ -1,0 +1,91 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Isomorphisms}
+
+\begin{definition}[Isomorphism]
+  Let $H_1$ and $H_2$ be inner product (or Hilbert) spaces. To say that $H_1$
+  is \emph{isomorphic} to $H_2$ means there exists a mapping $T:H_1\to H_2$,
+  called an inner product (or Hilbert) space isomorphism, such that:
+  \begin{itemize}
+  \item $T$ is a bijection.
+  \item $\forall\,\vx,\vy\in H_1,\inner{T\vx,T\vy}=\inner{\vx,\vy}$.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  Every finite dimensional inner product (and hence Hilbert) space $H$ is
+  isomorphic to $\C^N$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\dim H=N$. \\
+  Assume $\{\vx_1,\ldots,\vx_N\}$ is an orthonormal basis for $H$. \\
+  Let $T:H\to\C^N$ be defined by:
+  \[T\vx=T\left(\sum_{k=1}^N\a_k\vx_k\right)=\sum_{k=1}^N\a_ke_k=y\]
+  Clearly $T$ is bijective.
+  
+  Assume $\vx,\vy\in H$. \\
+  $\exists\,\a,\b\in\C$ such that $\vx=\sum_{k=1}^N\a_k\vx_k$ and
+  $\vy=\sum_{k=1}^N\b_k\vx_k$. \\
+  $\inner{T\vx,T\vy}=\inner{\sum_{k=1}^N\a_ke_k,\sum_{j=1}^N\b_je_j}=
+  \sum_{k=1}^N\a_k\conj{\b_k}$ \\
+  Similarly:
+  $\inner{\vx,\vy}=\inner{\sum_{k=1}^N\a_k\vx_k,\sum_{j=1}^N\b_j\vx_j}=
+  \sum_{k=1}^N\a_k\conj{\b_k}$
+
+  $\therefore\inner{T\vx,T\vy}=\inner{\vx,\vy}$
+
+  $\therefore T$ is an isomorphism and thus $H\sim\C^N$.
+\end{theproof}
+
+\begin{theorem}
+  Every infinite dimensional separable Hilbert space is isomorphic to $\ell^2$.
+\end{theorem}
+
+\begin{theproof}
+  Since $H$ is separable, $H$ contains a complete orthonormal sequence
+  $(\vx_n)$. \\
+  Assume $\vx=\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n\in H$. \\
+  Define $T:H\to\ell^2$ by $T\vx=(\inner{\vx,\vx_n})$, which
+  converges (Bessel). \\
+
+  $T$ is linear due to the linearity of the inner product.
+
+  Assume $T\vx=0$. \\
+  So $\forall\,n\in\N,\inner{\vx,\vx_n}=0$. \\
+  Thus $\vx=\vo$, and so the kernel of linear $T=\{\vo\}$.
+
+  Therefore $T$ is injective.
+
+  Assume $(\a_n)\in\ell^2$. \\
+  Let $\vx=\sum_{n=1}^{\infty}\a_n\vx_n$, which converges since
+  $(\a_n)\in\ell^2$. \\
+  But $(\vx_n)$ is complete, so $\a_n=\inner{\vx,\vx_n}$. \\
+  And so $T\vx=(\a_n)$.
+
+  Therefore $T$ is surjective.
+
+  Therefore $T$ is a bijection.
+
+  Finally, assume $\vx,\vy\in H$:
+  \begin{eqnarray*}
+    \inner{T\vx,T\vy} &=& \inner{(\inner{\vx,\vx_n}),(\inner{\vy,\vx_n})} \\
+    &=& \sum_{n=1}^{\infty}\inner{\vx,\vx_n}\conj{\inner{\vy,\vx_n}} \\
+    &=& \inner{\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n,
+      \sum_{m=1}^{\infty}\inner{\vy,\vx_m}\vx_m} \\
+    &=& \inner{\vx,\vy}
+  \end{eqnarray*}
+
+  Therefore $T$ is an isomorphism and thus $H\sim\ell^2$.
+\end{theproof}
+
+\end{document}

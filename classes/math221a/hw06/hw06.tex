@@ -1,0 +1,173 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221a \\
+Homework \#6
+
+\bigskip
+
+\subsection*{2.2.1}
+
+Prove: A finite abelian group $G$ that is not cyclic contains a subgroup which
+is isomorphic to $\Z_p\times\Z_p$ for some prime $p$.
+
+Let $\abs{G}=n$ \\
+In order for finite abelian group $G$ to not be cyclic:
+\begin{enumerate}
+\item $n\ge4$
+\item $n$ is not prime
+\end{enumerate}
+So, by Corollary II.2.4, $G$ contains a subgroup of order $p^rq^s$ where
+$p$ and $q$ are primes \\
+But if all $p$ and $q$ are distinct then $G\simeq\bigoplus_{k=1}^m\Z_{{p_k}^{r_k}}$,
+which would make $G$ cyclic and thus a contradiction \\
+Thus, $G$ must contain a subgroup isomorphic to $\Z_{p^r}\oplus\Z_{p^s}$ \\
+But both $\Z_{p^r}$ and $\Z_{p^s}$ contain subgroups isomorphic to $\Z_p$ \\
+So $\Z_{p^r}\oplus\Z_{p^s}$ contains a subgroup isomorphic to $\Z_p\oplus\Z_p$
+
+Therefore, $G$ contains a subgroup isomorphic to $\Z_p\oplus\Z_p$.
+
+\subsection*{2.2.12}
+
+\begin{enumerate}[label={\alph*)}]
+\item What are the invariant factors and elementary divisors of:
+  \begin{enumerate}[label={\roman*)}]
+  \item $\Z_2\oplus\Z_9\oplus\Z_{35}$
+
+    $2=2$ \\
+    $9=3^2$ \\
+    $35=5\cdot7$
+
+    \begin{tabular}{c}
+      $2$ \\
+      $3^2$ \\
+      $5$ \\
+      $7$
+    \end{tabular}
+
+    $2\cdot3^2\cdot5\cdot7=630$
+
+    Invariant factors: $630$ \\
+    Elementary divisors: $2,3^2,5,7$
+
+  \item $\Z_{26}\oplus\Z_{42}\oplus\Z_{49}\oplus\Z_{200}\oplus\Z_{1000}$
+
+    $26=2\cdot13$ \\
+    $42=2\cdot3\cdot7$ \\
+    $49=7^2$ \\
+    $200=2^3\cdot5^2$ \\
+    $1000=2^3\cdot5^3$
+
+    \begin{tabular}{cccc}
+      $2$ & $2$ & $2^3$ & $2^3$ \\
+      & & & $3$ \\
+      & & $5^2$ & $5^3$ \\
+      & & $7$ & $7^2$ \\
+      & & & $13$ \\
+    \end{tabular}
+
+    $2$ \\
+    $2$ \\
+    $2^3\cdot5^2\cdot7=1400$ \\
+    $2^3\cdot3\cdot5^3\cdot7^2\cdot13=191100$
+
+    Invariant factors: $2,2,1400,1911000$ \\
+    Elementary divisors: $2,2,2^3,2^3,3,5^2,5^3,7,7^2,13$
+  \end{enumerate}
+
+\item Determine up to isomorphism all abelian groups of the following orders:
+  \begin{enumerate}[label={\roman*)}]
+  \item $64=2^6$
+    \[\begin{array}{l}
+    \Z_{64} \\
+    \Z_{32}\oplus\Z_2 \\
+    \Z_{16}\oplus\Z_{4} \\
+    \Z_{16}\oplus\Z_{2}\oplus\Z_{2} \\
+    \Z_8\oplus\Z_8 \\
+    \Z_8\oplus\Z_4\oplus\Z_2 \\
+    \Z_8\oplus\Z_2\oplus\Z_2\oplus\Z_2 \\
+    \Z_4\oplus\Z_4\oplus\Z_4 \\
+    \Z_4\oplus\Z_4\oplus\Z_2\oplus\Z_2 \\
+    \Z_4\oplus\Z_2\oplus\Z_2\oplus\Z_2\oplus\Z_2 \\
+    \Z_2\oplus\Z_2\oplus\Z_2\oplus\Z_2\oplus\Z_2\oplus\Z_2 \\
+    \end{array}\]
+
+  \item $96=2^5\cdot3$
+    \[\begin{array}{l}
+    \Z_{96} \\
+    \Z_{32}\oplus\Z_3 \\
+    \Z_{16}\oplus\Z_2\oplus\Z_3 \\
+    \Z_8\oplus\Z_4\oplus\Z_3 \\
+    \Z_8\oplus\Z_2\oplus\Z_2\oplus\Z_3 \\
+    \Z_4\oplus\Z_4\oplus\Z_2\oplus\Z_3 \\
+    \Z_4\oplus\Z_2\oplus\Z_2\oplus\Z_2\oplus\Z_3 \\
+    \Z_2\oplus\Z_2\oplus\Z_2\oplus\Z_2\oplus\Z_2\oplus\Z_3 \\
+    \end{array}\]
+  \end{enumerate}
+
+\item Determine all abelian groups of order $n$ for $n\le20$
+  \[\begin{array}{llllll}
+  1=1 & \{0\}\\
+  2=2 & \Z_2 \\
+  3=3 & \Z_3 \\
+  4=2^2 & \Z_4 & \Z_2\oplus\Z_2 \\
+  5=5 & \Z_5 \\
+  6=2\cdot3 & \Z_6 & \Z_3\oplus\Z_2 \\
+  7=7 & \Z_7 \\
+  8=2^3 & \Z_8 & \Z_4\oplus\Z_2 & \Z_2\oplus\Z_2\oplus\Z_2 \\
+  9=3^2 & \Z_9 & \Z_3\oplus\Z_3 \\
+  10=2\cdot5 & \Z_{10} & \Z_5\oplus\Z_2 \\
+  11=11 & \Z_{11} \\
+  12=2^2\cdot3 & \Z_{12} & \Z_3\oplus\Z_4 & \Z_3\oplus\Z_2\oplus\Z_2 \\
+  13=13 & \Z_{13} \\
+  14=2\cdot7 & \Z_{14} & \Z_7\oplus\Z_2 \\
+  15=3\cdot5 & \Z_{15} & \Z_5\oplus\Z_3 \\
+  16=2^4 & \Z_{16} & \Z_8\oplus\Z_2 & \Z_4\oplus\Z_4 & \Z_4\oplus\Z_2\oplus\Z_2 &
+  \Z_2\oplus\Z_2\oplus\Z_2\oplus\Z_2 \\
+  17=17 & \Z_{17} \\
+  18=2\cdot3^2 & \Z_{18} & \Z_2\oplus\Z_9 & \Z_2\oplus\Z_3\oplus\Z_3 \\
+  19=19 & \Z_{19} \\
+  20=2^2\cdot5 & \Z_{20} & \Z_5\oplus\Z_4 & \Z_5\oplus\Z_2\oplus\Z_2
+  \end{array}\]
+\end{enumerate}
+
+\subsection*{2.2.13}
+
+Show that the invariant factors of $\Z_m\oplus\Z_n$ are:
+\begin{enumerate}[label={\alph*)}]
+\item $mn$ if $(m,n)=1$
+
+  Assume $(m,n)=1$ \\
+  $m$ and $n$ have no common prime factors \\
+  Let $m=\prod{p_i^{r_i}}$ and $n=\prod{q_j^{s_j}}$ where $p_i\ne q_j$ \\
+  So no combinations of factors of $p_i$ and $q_j$ will result in a product
+  that divides another product
+
+  Therefore, the only invariant factor is $mn$
+  
+\item $(m,n)$ and $[m,n]$ if $(m,n)>1$
+
+  Assume $(m,n)=d>1$ \\
+  Let $m=m'd$ and $n=n'd$ \\
+  Let $d=\prod{p_i^{a_i}}$, $m'=\prod{q_j^{b_j}}$, and $n'=\prod{r_k^{c_k}}$
+  where $q_j\ne r_k$ \\
+  Arranging the elementary factors:
+  \[\begin{array}{cc}
+  p_1^{a_1} & p_1^{a_1} \\
+  p_2^{a_2} & p_2^{a_2} \\
+  \vdots & \vdots \\
+  & q_1^{b_1} \\
+  & q_2^{b_2} \\
+  & \vdots \\
+  & r_1^{c_1} \\
+  & r_2^{c_2} \\
+  & \vdots
+  \end{array}\]
+
+  Therefore, there are two invariants, $(m,n)$ and $[m,n]$.
+\end{enumerate}
+
+\end{document}

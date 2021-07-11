@@ -1,0 +1,136 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\begin{document}
+\section*{Minimum Polynomial}
+
+\begin{definition}[Algebraic]
+  Let $K/F$ be a field extension and $\a\in K$. To say that $a$ is \emph{algebraic} over
+  $F$ means that $\exists\,f(x)\in F[x]$ such that $f(x)\not\equiv0$ and $f(\a)=0$.
+
+  To say that $K/F$ is algebraic means $\forall\,\a\in K,\a$ is algebraic.
+\end{definition}
+
+\begin{definition}[Minimum Polynomial]
+  Let $K/F$ be a field extension and $\a\in K$ be algebraic over $F$. The
+  $\emph{minimal polynomial}$ of $\a$ over $F$, denoted $m_{\a}(x)$ or $m_{\a,F}(x)$, is a
+  monic polynomial $f(x)\in F[x]$ of minimal degree such that $f(\a)=0$.
+\end{definition}
+
+\begin{theorem}
+  Let $K/F$ be a field extension and $\a\in K$ be algebraic over $F$:
+  \begin{enumerate}
+  \item $m_{\a,F}(x)$ exists in $F[x]$.
+  \item $m_{\a,F}(x)$ is irreducible in $F[x]$.
+  \item $m_{\a,F}(x)$ is unique in $F[x]$.
+  \item $\forall\,f(x)\in F[x],f(\a)=0\implies m_{\a,F}(x)\mid f(x)$ in $F[x]$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Since $\a$ is algebraic over $F$, and by the well-ordering principle, $m_{\a,f}(x)$
+  must exist.
+
+  ABC: $m_{\a,F}(x)$ is not irreducible in $F[x]$ \\
+  $\exists\,g(x),h(x)\in F(x)$ such that $g(x)$ and $h(x)$ are not units in $F[x]$ and
+  $m_{\a,F}(x)=g(x)h(x)$ \\
+  But then $\deg(g(x)),\deg(h(x))<\deg(m_{\a,F}(x))$ \\
+  Also $g(\a)=0$ or $h(\a)=0$, violating the minimality of $m_{\a,F}(x)$ - contradiction.
+
+  Therefore $m_{\a,F}(x)$ is irreducible in $F[x]$.
+
+  Assume $f(x)\in F[x]$ such that $f(\a)=0$ \\
+  By the division algorithm: $f(x)=q(x)m_{\a,F}(x)+r(x)$ and
+  $\deg(r(x))<\deg(m_{\a,F}(x))$ \\
+  $f(\a)=q(\a)m_{\a,F}(\a)+r(\a)=q(\a)\cdot0+r(\a)=0+r(\a)=r(\a)=0$ \\
+  So by the minimality of $m_{\a,F}(x)$ it must be the case that $r(x)=0$
+
+  Therefore $m_{\a,F}(x)\mid f(x)$ in $F[x]$.
+
+  Assume $f(x)$ is also a minimal polynomial \\
+  $f(x)\mid m_{\a,F}(a)$ and $m_{\a,F}(a)\mid f(x)$ \\
+  So $m_{\a,F}(x)$ and $f(x)$ are associates \\
+  But $m_{\a,F}(x)$ and $f(x)$ are monic and so $m_{\a,F}(x)=f(x)$
+
+  Therefore $m_{\a,F}(x)$ is unique in $F[x]$.
+\end{theproof}
+
+\begin{theorem}
+  Let $K/F$ be a field extension:
+
+  $[K:F]=n$ is finite $\implies K/F$ is algebraic.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\a\in K$ \\
+  Consider $\{1,\a,\a^2,\ldots,\a^n\}$ \\
+  This set has $n+1$ vectors and thus the set must be $F$-linearly dependent \\
+  So there exists coefficients $c_k\in F$ not all zero such that:
+  \[\sum_{k=0}^nc_k\a^k=0\]
+  Let $f(x)=\sum_{k=0}^nc_kx^k\in F[x]$ \\
+  $f(\a)=0$ \\
+  So $\a$ is algebraic over $F$
+  
+  Therefore $K/F$ is algebraic.
+\end{theproof}
+
+Thus, all simple extensions by an algebraic $\a$ are algebraic.
+
+\begin{theorem}
+  Let $\a$ be algebraic over $F$:
+  \[F(\a)=F[\a]\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item Assume $\frac{f(\a)}{g(\a)}\in F(\a)$ where $f(x),g(x)\in F[x]$ and $g(\a)\ne0$
+
+    There exists irreducible $m_{\a,F}(x)\in F[x]$ \\
+    So the GCD of $m_{\a,F}(x)$ and $g(x)$ is $1$ \\
+    But $F[x]$ is a PID and so $h(x)g(x)+w(x)m_{\a,F}(x)=1$ for some
+    $h(x),w(x)\in F[x]$ \\
+    $h(\a)g(\a)+w(\a)m_{\a,F}(\a)=h(\a)g(\a)+w(\a)\cdot0=h(\a)g(\a)=1$ \\
+    $h(\a)=\frac{1}{g(\a)}$ \\
+    $\frac{f(\a)}{g(\a)}=f(\a)h(\a)\in F[\a]$
+
+  \item Assume $f(\a)\in F[\a]$
+
+    $f(a)=\sum_{k=0}^nc_k\a^k\in F(a)$
+  \end{description}
+\end{theproof}
+\newpage
+\begin{theorem}
+  Let $K/F$ be a field extension and $\a\in K$ be algebraic over $F$ with minimal
+  polynomial $m_{\a,F}(x)$ such that $\deg(m_{\a,F}(x))=n$:
+  \begin{enumerate}
+  \item $[F(\a):F]=n$
+  \item $\{1,\a,\a^2,\ldots,\a^{n-1}\}$ is an $F$-basis for $F(a)$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  ABC: $\{1,\a,\a^2,\ldots,\a^{n-1}\}$ is linearly dependent \\
+  So there exists $c_k\in F$ not all zero such that:
+  \[\sum_{k=0}^{n-1}c_k\a^k=0\]
+  Let $f(x)=\sum_{k=0}^{n-1}c_kx^k$ \\
+  $\deg(f(x))=n-1$ and $f(\a)=0$, thus violating the minimality of $m_{\a,F}(x)$
+
+  Therefore $\{1,\a,\a^2,\ldots,\a^{n-1}\}$ is linearly independent.
+
+  Assume $\b\in F(\a)$ \\
+  $\b\in F[\a]$ \\
+  $\b=f(\a)$ for some $f(x)\in F[x]$ \\
+  $f(x)=q(x)m_{\a,F}(x)+r(x)$ where $\deg(r(x))<n$ \\
+  $f(\a)=q(\a)m_{\a,F}(\a)+r(\a)=q(\a)\cdot0+r(\a)=0+r(\a)=r(\a)$ \\
+  Thus $\b=\sum_{k=0}^mc_k\a^k$ for some $m<n$
+
+  Therefore $\{1,\a,\a^2,\ldots,\a^{n-1}\}$ spans $F(\a)$
+
+  Therefore $\{1,\a,\a^2,\ldots,\a^{n-1}\}$ is an $F$-basis for $F(a)$ and
+  $[F(\a):F]=n$.
+\end{theproof}
+
+\end{document}

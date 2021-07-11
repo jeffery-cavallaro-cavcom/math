@@ -1,0 +1,98 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Systems of Linear Equations}
+
+\begin{definition}
+  A \emph{linear equation} in $n$ variables $\{x_1,x_2,\ldots,x_n\}$ is an
+  equation of the form:
+  \[a_1x_1+a_2x_2+\cdots+a_nx_n=\sum_{k=1}^na_kx_k=b\]
+  where the $a_k$ and $b\in\R$ or $\C$ and are called \emph{coefficients}.
+
+  A \emph{system} of linear equations (SOLE) is a set of $m$ equations in the
+  same $n$ variables.
+\end{definition}
+
+\begin{definition}
+  A \emph{solution} of a SOLE in $n$ variables is a tuple
+  $(s_1,s_2,\ldots,s_n)$ that makes each equation in the system a true
+  statement when $x_k$ is replaced by $s_k$.
+
+  The \emph{solution set} of a SOLE is the set of all possible solutions of the
+  SOLE.
+
+  To say that two SOLEs are \emph{equivalent} means that they have the same
+  solution set.
+\end{definition}
+
+\begin{example}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{array}{l}
+      2x+y=4 \\
+      -x+2y=3 \\
+      \hline
+      x=2y-3 \\
+      2(2y-3)+y=4 \\
+      5y=10 \\
+      y=2 \\
+      x=2(2)-3=1
+    \end{array}$
+
+    \bigskip
+
+    $(1,2)$ is a unique solution
+    
+    \bigskip
+
+    Two lines that intersect \\
+    at a single point
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $\begin{array}{l}
+      x+2y=4 \\
+      -x-2y=-4 \\
+      \hline
+      y=2-\frac{1}{2}x
+    \end{array}$
+
+    \bigskip
+
+    $(x,2-\frac{1}{2}x)$
+
+    Infinite solutions
+
+    \bigskip
+
+    Two coinciding lines
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \vspace{0pt}
+    $x+2y=4$ \\
+    $x+2y=10$
+
+    \bigskip
+
+    No solutions
+
+    Two parallel lines
+  \end{minipage}
+\end{example}
+
+\begin{theorem}
+  A SOLE has exactly one of the following possible solution sets:
+  \begin{enumerate}
+  \item No solution
+  \item Exactly one solution
+  \item Infinitely many solutions
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+  To say that a SOLE is \emph{consistent} means that it has at least one
+  solution. Otherwise, the system is \emph{inconsistent}.
+\end{definition}
+
+\end{document}

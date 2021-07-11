@@ -1,0 +1,183 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vo}{\vec{0}}
+\begin{document}
+\section*{Vector Spaces}
+
+\begin{definition}[Vector Space]
+  Let $\F$ be a field (usually either $\R$ or $\C$) called \emph{scalars} and
+  let $E$ be a set of objects called \emph{vectors} that is equipped with two
+  binary operators:
+
+  \begin{figure}[h]
+    \setlength{\leftskip}{0.5in}
+    \begin{tabular}{lrl}
+      Vector Addition: & $+:E\times E\to E$ & where
+      $(\vx,\vy)\mapsto \vx+\vy$ \\
+      Scalar Multiplication: & $\cdot\,:\F\times E\to E$ & where
+      $(\a,\vx)\mapsto \a\vx$
+    \end{tabular}
+  \end{figure}
+
+  To say that $E$ is a \emph{vector space} (over $\F$) means that the following
+  axioms hold $\forall\,\vx,\vy\in E$ and $\forall\,\a,\b\in\F$:
+  \begin{enumerate}
+  \item $(E,+)$ is an abelian group
+    \begin{enumerate}
+    \item Closure
+    \item Commutative
+    \item Associative
+    \item $\exists\,\vz,\vx+\vz=\vy$
+    \end{enumerate}
+
+  \item Left Distributive: $\a(\vx+\vy)=\a\vx+\a\vy$
+
+  \item Right Distributive: $(\a+\b)\vx=\a\vx+\b\vx$
+
+  \item Associative Multiplication: $\a(\b\vx)=(\a\b)\vx$
+
+  \item Multiplicative Identity: $1\vx=\vx$
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}[Additive Identity]
+  Let $E$ be a vector space over a scalar field $\F$:
+  \[\exists\,\vo\in E,\forall\,\vx\in E,\vx+\vo=\vx\]
+  Moreover, $\vo$ is unique.
+
+  This $\vo$ is called the \emph{additive identity} for $E$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in E$. \\
+  Since $(E,+)$ is an abelian group, $\exists\,\vo\in E,\vx+\vo=\vx$. \\
+  Assume $\vy\in E$. \\
+  $\exists\,\vz\in E,\vx+\vz=\vy$ \\
+  $\vy+\vo=(\vx+\vz)+\vo=\vx+(\vz+\vo)=\vx+(\vo+\vz)=(\vx+\vo)+\vz=
+  \vx+\vz=\vy$
+
+  Now, assume $\vo,\vo\,'\in E$ are both additive identities. \\
+  $\vo+\vo\,'=\vo$ \\
+  $\vo+\vo\,'=\vo\,'+\vo=\vo\,'$ \\
+  $\therefore\vo=\vo\,'$
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a vector space over a scalar field $\F$:
+  \[\forall\,\vx,\vy\in E,\exists!\,\vz\in E,\vx+\vz=\vy\]
+  (i.e., the $\vz$ is unique)
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vy\in E$. \\
+  Since $E$ is an abelian group, $\exists\,\vz\in E, \vx+\vz=\vy$. \\
+  Assume $\exists\,\vz\,'\in E, \vx+\vz\,'=\vy$. \\
+  $\exists\,\vu\in E,\vz\,'+\vu=\vz$ \\
+  $\vy=\vx+\vz=\vx+(\vz\,'+\vu)=(\vx+\vz\,')+\vu=\vy+\vu$ \\
+  Thus $\vu$ is the unique additive identity and: \\
+  $\therefore\vz=\vz\,'+\vu=\vz\,'+\vo=\vz\,'$
+\end{theproof}
+
+\begin{theorem}[Additive Inverses]
+  Let $E$ be a vector space over a scalar field $\F$: \\
+  \[\forall\,\vx\in E,\exists(-\vx)\in E,\vx+(-\vx)=\vz\]
+  Moreover, $(-\vx)$ is unique.
+
+  $(-\vx)$ is called the \emph{additive inverse} for $\vx$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in E$. \\
+  Since $E$ is an abelian group, $\exists\,(-\vx)\in E,\vx+(-\vx)=\vo$. \\
+  By previous theorem, $(-\vx)$ is unique.
+\end{theproof}
+
+\begin{notation}
+$\vx+(-\vy)=\vx-\vy$
+\end{notation}
+
+\begin{theorem}[Vector Space Properties]
+  Let $E$ be a vector space over a scalar field $\F$.
+  $\forall\,\vx\in E$ and $\forall\,\l\in\F$:
+  \begin{enumerate}
+  \item $\vo=-\vo$
+  \item $0\vx=\vo$
+  \item $\l\vo=\vo$
+  \item $0-\vx=-\vx$
+  \item $(-1)x=-x$
+  \item $\l\vx=0\implies\l=0$ or $\vx=\vo$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item
+    $-\vo=-\vo+\vo=\vo+(-\vo)=\vo$
+
+  \item
+    $0\vx=(0+0)\vx=0\vx+0\vx$ \\
+    Thus $0\vx$ is the unique additive identity, and: \\
+    $\therefore0\vx=\vo$
+
+  \item
+    $\l\vo=\l(\vo+\vo)=\l\vo+\l\vo$ \\
+    Thus $\l\vo$ is the unique additive identity, and: \\
+    $\therefore\l\vo=\vo$
+
+  \item
+    $0-\vx=0+(-\vx)=(-\vx)+\vo=(-\vx)$
+
+  \item
+    $\vx+(-1)\vx=1\vx+(-1)\vx=[1+(-1)]\vx=0\vx=\vo$ \\
+    This $(-1)\vx$ is the unique additive inverse for $\vx$, and: \\
+    $\therefore(-1)\vx=(-\vx)$
+
+  \item Assume $\l\vx=\vo$. \\
+    Trivial if $\vx=0$, so AWLOG $\vx\ne0$ \\
+    ABC: $\l\ne0$
+    \begin{eqnarray*}
+      \l\vx &=& \vo \\
+      \frac{1}{\l}(\l\vx) &=& \frac{1}{\l}\cdot\vo \\
+      (\frac{1}{\l}\cdot\l)\vx &=& \vo \\
+      1\vx &=& \vo \\
+      \vx &=& \vo
+    \end{eqnarray*}
+    CONTRADICTION! \\
+    $\therefore\l=0$
+  \end{enumerate}
+\end{theproof}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $E=\{\vo\}$ is called the trivial vector space.
+
+  \item $E=\R^n$ with $\F=\R$ equipped with component-wise addition and scalar
+    multiplication.
+  
+  \item $E=\C^n$ with $\F=\R$ or $\F=\C$ equipped with component-wise addition
+    and scalar multiplication.
+
+  \item Let $E$ be a vector space over a field $F$ and let $X$ be a non-empty
+    set. The set of functions:
+    \[\mathcal{F}=\{f:X\to E\}\]
+    equipped with the standard operations:
+    \[(f+g)(x)=f(x)+g(x)\]
+    \[(\l f)(x)=\l f(x)\]
+    is a vector space.
+  \end{enumerate}
+\end{examples}
+
+\end{document}

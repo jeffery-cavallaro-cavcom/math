@@ -1,0 +1,116 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{stmaryrd}
+\pagestyle{empty}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\hs}{\hspace{2ex}}
+\newcommand{\w}{\omega}
+\begin{document}
+\section*{Rings}
+
+\begin{definition}[Ring]
+  A \emph{ring} $R$ is a non-empty set equipped with the binary operations of
+  addition ($+$) and multiplication ($\cdot$) such that:
+  \begin{enumerate}
+  \item $R$ is an additive abelian group.
+  \item Multiplication is associative.
+  \item The distributive laws hold. $\forall\,r,s,t\in R$:
+    \begin{description}
+    \item Left: $r(s+t)=rs+rt$
+    \item Right: $(s+t)r=sr+tr$
+    \end{description}
+  \end{enumerate}
+
+  A ring with \emph{unity} is a ring with multiplicative identity element
+  $1\in\R$ such that $\forall\,r\in R$:
+  \[1r=r1=r\]
+  We normally assert that $1\ne0$ in order to exclude $R=\{0\}$.
+
+  A commutative ring is a ring with commutative multiplication.
+\end{definition}
+
+\begin{example}
+  \listbreak
+  \begin{enumerate}
+  \item $\Z$, $\Q$, $\R$, $\C$
+  \item $R[x]$\hs(formal polynomial ring)
+  \item $R[x,y]$\hs(algebraically independent, commuting variables)
+  \item $R\llbracket x\rrbracket$\hs(formal power series ring)
+  \item $M_n(R)$
+  \item $\Z/n\Z$
+  \item $\Z\times\Z$
+  \item $\Z[i]=\{a+bi\mid a,b\in\Z\}$\hs(Gaussian Integers)
+  \item $\Z[\w]=\{a+b\frac{-1+\sqrt{3}}{2}\mid a,b\in\Z\}$\hs(Eisenstein Integers)
+  \end{enumerate}
+\end{example}
+
+\begin{definition}[Quaternion Group]
+  The \emph{quaternion group}, denoted by $Q_8$, is given by:
+  \[Q_8=\{\pm1,\pm i,\pm j,\pm k\}\]
+  where $i^2=j^2=k^2=ijk=(-1)$
+\end{definition}
+
+Note that $ij=k$ and $ji=-k$, so $Q_8$ is not commutative.
+
+\begin{definition}[Hamilton Ring of Quaternions]
+  The \emph{Hamilton Ring of Quaternions}, denoted by $\H$, is given by:
+  \[\H=\{a+ib+cj+dk\mid a,b,c,d\in\R\}\]
+  Note that $\Z\subset\Q\subset\R\subset\C\subset\H$.
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a ring. $\forall\,r\in R$:
+  \[0r=r0=0\]
+\end{theorem}
+
+\begin{theproof}
+  $0r=(0+0)r=0r+0r$ \\
+  $0r=0r+0$ \\
+  $0r+0r=0r+0$
+
+  $\therefore 0r=0$
+
+  $r0=r(0+0)=r0+r0$ \\
+  $r0=r0+0$ \\
+  $r0+r0=r0+0$
+
+  $\therefore r0=0$
+\end{theproof}
+
+\begin{definition}[Subring]
+  To say that $S$ is a \emph{subring} of a ring $R$, denoted $S\le R$, means
+  that $S\subseteq R$ and $S$ is also a ring using the same operations as $R$.
+\end{definition}
+
+\begin{theorem}[Subring Test]
+  Let $R$ be a ring and $S$ a non-empty subset of $R$.
+  $S\le R\iff\forall\,x,y\in S$:
+  \begin{enumerate}
+  \item $x+(-y)\in S$
+  \item $xy\in S$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Assume $x,y\in S$
+  \begin{description}
+  \item $\implies$ Assume $S\le R$
+
+    $S$ is a ring, so $-y\in S$ \\
+    By additive closure: $x+(-y)\in S$ \\
+    By multiplicative closure: $xy\in S$
+\newpage
+  \item $\impliedby$ Assume that the two closure conditions hold
+
+    Since $x+(-y)\in S$, by the subgroup test, $S$ is an additive subgroup of
+    $R$. Moreover, $S$ inherits additive commutativity from $R$, so $S$ is an
+    additive abelian subgroup of $R$.
+
+    Since $xy\in S$, $S$ is closed under multiplication. Moreover, $S$ inherits
+    multiplicative associativity and the distributive laws from $R$.
+
+    $\therefore S\le R$
+  \end{description}
+\end{theproof}
+
+\end{document}

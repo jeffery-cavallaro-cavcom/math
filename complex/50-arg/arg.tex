@@ -1,0 +1,51 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\g}{\gamma}
+\begin{document}
+\section*{Argument Principle}
+
+\begin{theorem}
+  Let $f(z)$ be analytic on $\overline{D}$ with boundary $\g$. The number of
+  zeros of $f(z)$ in $D$ is given by:
+  \[N=\frac{1}{2\pi i}\int_{\g}\frac{f'(z)}{f(z)}dz\]
+\end{theorem}
+
+\begin{theproof}
+  $\overline{D}$ is a compact set, so the number of zeros is finite \\
+  Let $f(z)=\left[\prod_{k=1}^N(z-z_k)\right]g(z)$, where $g(z)\ne0$ in $D$ \\
+  $\log{f(z)}=\sum_{k=1}^N\log{(z-z_k)}+\log{g(z)}$ \\
+  Now differentiate wrt $z$: \\
+  $\frac{f'(z)}{f(z)}=\sum_{k=1}^N\frac{1}{z-z_k}+\frac{g'(z)}{g(z)}$ \\
+  Now, multiply by $\frac{1}{2\pi i}$ and integrate on $\g$: \\
+  $\frac{1}{2\pi i}\int_{\g}\frac{f'(z)}{f(z)}dz=
+  \sum_{k=1}^N\frac{1}{2\pi i}\int_{\g}\frac{1}{z-z_k}dz+
+  \frac{1}{2\pi i}\int_{\g}\frac{g'(z)}{g(z)}dz$ \\
+  But $\frac{g'(z)}{g(z)}$ is analytic in $D$: \\
+  $\frac{1}{2\pi i}\int_{\g}\frac{f'(z)}{f(z)}dz=\sum_{k=1}^N(1)+0$ \\
+  $\therefore N=\frac{1}{2\pi i}\int_{\g}\frac{f'(z)}{f(z)}dz$
+\end{theproof}
+
+\begin{theorem}[Newton]
+  Let $f(z)=\sum_{k=0}^na_kz^k$:
+  \[\sum_{k=0}^na_k=-\frac{a_{n-1}}{a_n}\]
+\end{theorem}
+
+\begin{theorem}
+  Let $f(z)=\sum_{k=0}^na_kz^k$ and let $\g$ enclose all of the zeros of
+  $f(z)$:
+  \[\frac{1}{2\pi i}\int_{\g}z\frac{f'(z)}{f(z)}=-\frac{a_{n-1}}{a_n}\]
+\end{theorem}
+
+\begin{theproof}
+  $f(z)=a_n\prod_{k=1}^n(z-z_k)$ \\
+  $\log{f(z)}=\log{a_n}+\sum_{k=0}^n\log{(z-z_k)}$ \\
+  Now differentiate wrt $z$: \\
+  $\frac{f'(z)}{f(z)}=0+\sum_{k=0}^n\frac{1}{z-z_k}$ \\
+  Now, multiply by $\frac{1}{2\pi i}z$ and integrate on $\g$: \\
+  $\frac{1}{2\pi i}\int_{\g}z\frac{f'(z)}{f(z)}dz=
+  \sum_{k=0}^n\frac{1}{2\pi i}\int_{\g}\frac{z}{z-z_k}dz=
+  \sum_{k=0}^nz_k=-\frac{a_{n-1}}{a_n}$
+\end{theproof}
+
+\end{document}

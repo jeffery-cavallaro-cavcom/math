@@ -1,0 +1,75 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\im}{im}
+\begin{document}
+\section*{Ring Homomorphisms}
+
+\begin{definition}[Ring Homomorphism]
+  Let $R$ and $S$ be rings. A \emph{ring homomorphism} from $R$ to $S$ is a function
+  $\phi:R\to S$ such that $\forall\,x,y\in R$:
+  \begin{eqnarray*}
+    \phi(x+y) &=& \phi(x)+\phi(y) \\
+    \phi(xy) &=& \phi(x)\phi(y)
+  \end{eqnarray*}
+  In other words, $\phi$ is a group homomorphism that preserves multiplication.
+\end{definition}
+
+\begin{definition}[Kernel]
+  Let $\phi:R\to S$ be homomorphism of rings. The \emph{kernel} of $\phi$, denoted
+  $\ker(\phi)$, is given by:
+  \[\ker(\phi)=\{r\in R\mid\phi(r)=0_S\}\]
+\end{definition}
+
+\begin{theorem}
+  Let $\phi:R\to S$ be homomorphism of rings:
+  \[\ker(R)\le R\]
+\end{theorem}
+
+\begin{theproof}
+  By group theory we know $\phi(0_R)=0_S$ \\
+  Thus, $0\in\ker(R)$ and $\ker(R)\ne\emptyset$
+
+  Assume $x,y\in\ker(R)$
+
+  $\phi(x-y)=\phi(x)-\phi(y)=0-0=0$ \\
+  $x-y\in\ker(R)$
+
+  $\phi(xy)=\phi(x)\phi(y)=0\cdot0=0$ \\
+  $xy\in\ker(R)$
+
+  Therefore, by the subring test, $\ker(R)\le R$.
+\end{theproof}
+
+\begin{definition}[Kernel]
+  Let $\phi:R\to S$ be homomorphism of rings. The \emph{image} of $\phi$, denoted
+  $\im(\phi)$ or $\phi[R]$, is given by:
+  \[\im(\phi)=\{\phi(r)\mid r\in R\}\]
+\end{definition}
+
+\begin{theorem}
+  Let $\phi:R\to S$ be homomorphism of rings:
+  \[\im(R)\le S\]
+\end{theorem}
+\newpage
+\begin{theproof}
+  By group theory we know $\phi(0_R)=0_S$ \\
+  Thus, $0_S\in\im(R)$ and $\im(R)\ne\emptyset$
+
+  Assume $u,v\in\im(R)$
+  $\exists\,x,y\in R$ such that $\phi(x)=u$ and $\phi(y)=v$
+
+  $u-v=\phi(x)-\phi(y)=\phi(x-y)\in S$ \\
+  But by closure, $x-y\in R$
+
+  $\therefore u-v\in\im(R)$
+
+  $uv=\phi(x)\phi(y)=\phi(xy)\in S$ \\
+  But by closure, $xy\in R$
+
+  $\therefore uv\in\im(R)$
+
+  Therefore, by the subring test, $\im(R)\le S$.
+\end{theproof}
+
+\end{document}

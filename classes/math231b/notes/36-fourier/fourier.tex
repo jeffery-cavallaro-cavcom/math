@@ -1,0 +1,114 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\renewcommand{\a}{\alpha}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Fourier Coefficients}
+
+\begin{definition}[Fourier Expansion]
+  Let $E$ be an inner product space and let $(\vx_n)$ be an orthonormal
+  sequence in $E$. $\forall\,\vx\in E$, the expansion:
+  \[x\sim\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n\]
+  is called the \emph{Fourier expansion} of $\vx$ with respect to $(\vx_n)$ and
+  the $\inner{\vx,\vx_n}$ are called the
+  \emph{generalized Fourier coefficients} of the expansion.
+\end{definition}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space over $\C$ and let $(\vx_n)$ be an orthonormal
+  sequence in $H$:
+
+  \qquad$\sum_{n=1}^{\infty}\a_n\vx_n$ converges $\iff(\a_n)$ is a sequence in
+  $\ell^2$.
+\end{theorem}
+
+\begin{theproof}
+  Let $S_n=\sum_{k=1}^n\a_k\vx_k$ and $s_n=\sum_{k=1}^n\abs{\a_k}^2$.
+  
+  AWLOG: $n<m$.
+
+  $\norm{S_m-S_n}^2=\norm{\sum_{k=n+1}^mS_k}^2=\norm{\sum_{k=n+1}^m\a_k\vx_k}^2=
+  \sum_{k=n+1}^m\norm{\a_k\vx_k}^2=\sum_{k=n+1}^m\abs{\a_k}^2=\abs{s_m-s_n}$
+
+  Thus, $(S_n)$ is Cauchy iff $(s_n)$ is Cauchy.
+
+  \begin{tabular}{lcl}
+    $\sum_{n=1}^{\infty}\a_n\vx_n$ converges & $\iff$ & $(S_n)$ converges \\
+    & $\iff$ & $(S_n)$ is Cauchy (since $H$ is Hilbert) \\
+    & $\iff$ & $(s_n)$ is Cauchy \\
+    & $\iff$ & $(s_n)$ converges \\
+    & $\iff$ & $(\a_n)$ is in $\ell^2$.
+  \end{tabular}
+\end{theproof}
+
+\begin{corollary}
+  Let $H$ be a Hilbert space and $(\vx_n)$ be an orthonormal sequence in $H$.
+  $\forall\,\vx\in E$:
+
+  \qquad$\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n$ converges.
+\end{corollary}
+
+\newpage
+
+\begin{theproof}
+  $(\inner{\vx,\vx_n})$ is a sequence in $\ell^2$.
+
+  Therefore $\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n$ converges.
+\end{theproof}
+
+\begin{definition}[Complete]
+  Let $E$ be an inner product space and let $(\vx_n)$ be an orthonormal
+  sequence in $E$. To say that $(\vx_n)$ is complete means $\forall\,\vx\in E$:
+  \[\vx=\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n\]
+\end{definition}
+
+If $H$ is a Hilbert space and $(\vx_n)$ is an orthonormal sequence in $H$ such
+$\forall\,\vx\in E$, the Fourier expansion for $\vx$ converges, but not
+necessarily to $\vx$.
+
+Let $H=L^2[-\pi,\pi]$ and $\inner{f,g}=\int_{-\pi}^{\pi}f\conj{g}$.
+
+Let $f_n(t)=\frac{1}{\sqrt{\pi}}\sin{nt}$
+
+\begin{eqnarray*}
+  \inner{f_n,f_m} &=&
+  \inner{\frac{1}{\sqrt{\pi}}\sin(nt),\frac{1}{\sqrt{\pi}}\sin(mt)} \\
+  &=& \frac{1}{\pi}\int_{-\pi}^{\pi}\sin(nt)\sin(mt)dt \\
+  &=& \frac{1}{2\pi}\int_{-\pi}^{\pi}[\cos(n-m)t-\cos(n+m)t]dt \\
+  &=& \frac{1}{2\pi}\left[\frac{1}{n-m}\sin(n-m)t-\frac{1}{n+m}\sin(n+m)t
+    \right]_{-\pi}^{\pi} \\
+  &=& 0
+\end{eqnarray*}
+
+\begin{eqnarray*}
+  \inner{f_n,f_n} &=&
+  \inner{\frac{1}{\sqrt{\pi}}\sin(nt)}{\frac{1}{\sqrt{\pi}}\sin(nt)} \\
+  &=& \frac{1}{\pi}\int_{-\pi}^{\pi}\sin^2(nt)dt \\
+  &=& \frac{1}{2\pi}\int_{-\pi}^{\pi}[1-\cos(2nt)]dt \\
+  &=& \frac{1}{2\pi}\left[t-\frac{1}{2n}\sin(2nt)\right]_{-\pi}^{\pi} \\
+  &=& \frac{1}{2\pi}[\pi-(-\pi)] \\
+  &=& \frac{1}{2\pi}(2\pi) \\
+  &=& 1
+\end{eqnarray*}
+
+Thus, $(f_n)$ is an orthonormal sequence in $L^2[-\pi,\pi]$.
+
+Now, let $f(t)=\cos{t}$.
+\begin{eqnarray*}
+  \inner{f,f_n} &=& \inner{\cos{t},\frac{1}{\sqrt{\pi}}\sin(nt)} \\
+  &=& \frac{1}{\sqrt{\pi}}\int_{-\pi}^{\pi}\cos(t)\sin(nt)dt \\
+  &=& \frac{1}{2\sqrt{\pi}}\int_{-\pi}^{\pi}[\sin(1+n)t-\sin(1-n)t]dt \\
+  &=& \frac{1}{2\sqrt{\pi}}\left[-\frac{1}{1+n}\cos(1+n)t+
+    \frac{1}{1-n}\cos(1-n)t\right]_{-\pi}^{\pi} \\
+  &=& 0
+\end{eqnarray*}
+
+Thus, all of the Fourier coefficients, and therefore:
+
+$\sum_{n=1}^{\infty}\inner{f,f_n}f_n=0\ne\cos{t}$
+
+\end{document}

@@ -1,0 +1,312 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vyct}{\vy^{\,*}}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vect}{\ve^{\,*}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\bx}{\bar{x}}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Eig}{Eig}
+\begin{document}
+\section*{Positive Definite Matrices}
+
+\begin{definition}[Positive Definite]
+  To say that $A\in M_n$ is \emph{positive definite} means
+  $\forall\,\vx\in\C^n-\{\vz\}$:
+  \[\vxct A\vx>0\]
+  Note that $A$ positive definite $\implies A$ Hermitian.
+\end{definition}
+
+\begin{example}
+  $A=\begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$\hspace{4ex}
+  $\vx=\begin{bmatrix} x_1 \\ x_2 \end{bmatrix}$
+  \begin{eqnarray*}
+    \begin{bmatrix} \bx_1 & \bx_2 \end{bmatrix}
+    \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}
+    \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} &=&
+    \begin{bmatrix} 2\bx_1+\bx_2 & \bx_1+2\bx_2 \end{bmatrix}
+    \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} \\
+    &=& x_1(2\bx_1+\bx_2)+x_2(\bx_1+2\bx_2) \\
+    &=& 2\abs{x_1}^2+x_1\bx_2+\bx_1x_2+2\abs{x_2}^2 \\
+    &=& 2\abs{x_1}^2+2\Real(x_1\bx_2)+2\abs{x_2}^2 \\
+    &=& 2(\abs{x_1}^2+\Real(x_1\bx_2)+\abs{x_2}^2) \\
+    &=& 2(\abs{x_1}^2-2\abs{x_1\bx_2}+\abs{x_2}^2+
+    2\abs{x_1\bx_2}+\Real(x_1\bx_2)) \\
+    &=& 2[(\abs{x_1}-\abs{x_2})^2+2\abs{x_1\bx_2}+\Real(x_1\bx_2)] \\
+    &\ge& 0
+  \end{eqnarray*}
+  With equality only at $x_1=x_2=0$, or $\vx=0$.
+\end{example}
+
+\begin{properties}[Positive Definite]
+  \listbreak
+  \begin{enumerate}
+  \item $A\in M_n$ positive definite $\implies \Sp(A)\subseteq(0,\infty)$
+
+    Assume $A$ is positive definite \\
+    Assume $\vx\in\C^n$ such that $\vx\ne\vz$ \\
+    $\vxct A\vx>0$ \\
+    Let $\vx\in\Eig_A(\l)$ such that $\vx$ is a unit vector \\
+    $\vxct A\vx=\vxct\l\vx=\l\vxct\vx=\l>0$
+
+  \item $A\in M_n$ positive definite $\implies a_{ii}>0$
+
+    Assume $A$ is positive definite \\
+    $\vect_i A\ve_i=a_{ii}>0$
+
+  \item $A\in M_n$ positive definite $\implies \forall\,S\in GL(n),S^*AS$
+    positive definite
+
+    Assume $A$ is positive definite \\
+    Assume $\vx\in\C^n$ such that $\vx\ne\vz$ \\
+    $\vxct(S^*AS)\vx=(\vxct S^*)A(S\vx)=(S\vx)^*A(S\vx)=\vyct A\vy>0$
+
+    $\therefore S^*AS$ is positive definite.
+
+  \item $A\in M_n$ positive definite $\implies$ any principle submatrix B of
+    $A$ is positive definite
+
+    Assume $A$ is positive definite \\
+    AWLOG: $B$ is a leading principle submatrix, otherwise permute and note
+    property (3) \\
+    Assume $\vx\in\C^k$ for $1\le k\le n$
+    
+    $\begin{bmatrix} \vxct & 0 \end{bmatrix}
+    \left[\begin{array}{c|c} B & * \\ \hline * & * \end{array}\right]
+    \begin{bmatrix} \vx \\ 0 \end{bmatrix}=\vxct B\vx>0$
+
+    $\therefore B$ is positive definite.
+  \end{enumerate}
+\end{properties}
+
+\begin{theorem}
+  Let $A\in M_n$. $A$ positive definite $\iff A$ Hermitian and
+  $\Sp(A)\subseteq(0,\infty)$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $A$ is positive definite
+
+    $A$ is also Hermitian \\
+    By property (1), $\forall\,\l\in\Sp(A),\l>0$
+
+  \item $\impliedby$ Assume $A$ is Hermitian and $\Sp(A)\subseteq(0,\infty)$
+
+    Assume $\l\in\Sp(A)$ \\
+    Let $\vx$ be a unit eigenvector associated with $\l$ \\
+    $\vx\ne 0$ \\
+    $\vxct A\vx=\vxct\l\vx=\l\vxct\vx=\l>0$
+
+    $\therefore A$ is positive definite.
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $A\in M_n$. $A$ positive definite $\iff \exists\,C\in GL(n),A=C^*C$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $A$ is positive definite
+
+    $A$ is Hermitian and is thus unitary diagonalizable:
+    
+    $A=U\begin{bmatrix}
+    \l_1 & & 0 \\
+    & \ddots & \\
+    0 & & \l_n
+    \end{bmatrix}U^*=U\begin{bmatrix}
+    \sqrt{\l_1} & & 0 \\
+    & \ddots & \\
+    0 & & \sqrt{\l_n}
+    \end{bmatrix}U^*U\begin{bmatrix}
+    \sqrt{\l_1} & & 0 \\
+    & \ddots & \\
+    0 & & \sqrt{\l_n}\end{bmatrix}U^*$
+
+    Let $C=U\begin{bmatrix}
+    \sqrt{\l_1} & & 0 \\
+    & \ddots & \\
+    0 & & \sqrt{\l_n}
+    \end{bmatrix}U^*=C^*$
+
+    Note that since $\l_k>0$, $C$ is invertible
+
+    $\therefore A=C^*C$
+
+  \item $\impliedby$ Assume $\exists\,C\in GL(n),A=C^*C$
+
+    Assume $\vx\in\C^n$ such that $\vx\ne\vz$ \\
+    $\vxct A\vx=\vxct C^*C\vx=(C\vx)^*(C\vx)=\|C\vx\|_2^2>0$
+
+    Therefore $A$ is positive definite.
+  \end{description}
+\end{theproof}
+
+\newcommand{\ema}{\begin{bmatrix}
+    1 & 1 & 1 \\
+    1 & 2 & 3 \\
+    1 & 3 & 6
+  \end{bmatrix}
+}
+\newcommand{\emb}{\begin{bmatrix}
+    1 & 1 & 1 \\
+    0 & 1 & 2 \\
+    0 & 0 & 1
+  \end{bmatrix}
+}
+
+\begin{example}
+  $A=\ema\implies
+  \begin{bmatrix} 1 & 1 & 1 \\ 0 & 1 & 2 \\ 0 & 2 & 5 \end{bmatrix}
+  \implies\emb$
+
+  Use rowops to convert to eschelon form:
+  \begin{enumerate}
+  \item $-R_1+R_2$
+  \item $-R_1+R_3$
+  \item $-2R_2+R_3$
+  \end{enumerate}
+
+  $E_3E_2E_1\ema=\emb$
+
+  $\ema=(E_3E_2E_1)^{-1}\emb=E_1^{-1}E_2^{-1}E_3^{-1}\emb$
+
+  $E_1=\begin{bmatrix}
+  1 & 0 & 0 \\
+  -1 & 1 & 0 \\
+  0 & 0 & 1 \\
+  \end{bmatrix}$\hspace{4ex}
+  $E_1^{-1}=\begin{bmatrix}
+  1 & 0 & 0 \\
+  1 & 1 & 0 \\
+  0 & 0 & 1 \\
+  \end{bmatrix}$
+
+  $E_2=\begin{bmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  -1 & 0 & 1 \\
+  \end{bmatrix}$\hspace{4ex}
+  $E_2^{-1}=\begin{bmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  1 & 0 & 1 \\
+  \end{bmatrix}$
+
+  $E_3=\begin{bmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  0 & -2 & 1 \\
+  \end{bmatrix}$\hspace{4ex}
+  $E_3^{-1}=\begin{bmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  0 & 2 & 1 \\
+  \end{bmatrix}$
+
+  $E_1^{-1}E_2^{-1}E_3^{-1}=
+  \begin{bmatrix}
+  1 & 0 & 0 \\
+  1 & 1 & 0 \\
+  0 & 0 & 1 \\
+  \end{bmatrix}
+  \begin{bmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  1 & 0 & 1 \\
+  \end{bmatrix}
+  \begin{bmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  0 & 2 & 1 \\
+  \end{bmatrix}=
+  \begin{bmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & 0 \\
+    1 & 0 & 1
+  \end{bmatrix}
+  \begin{bmatrix}
+  1 & 0 & 0 \\
+  0 & 1 & 0 \\
+  0 & 2 & 1 \\
+  \end{bmatrix}=
+  \begin{bmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & 0 \\
+    1 & 2 & 1
+  \end{bmatrix}$
+
+  $\ema=\begin{bmatrix}
+    1 & 0 & 0 \\
+    1 & 1 & 0 \\
+    1 & 2 & 1
+  \end{bmatrix}\emb=C^*C$
+
+  $\therefore C=\emb$
+\end{example}
+
+\begin{theorem}
+  Let $A\in M_n$. $A$ positive definite $\iff A$ Hermitian and
+  $\det A_k>0$ for all $1\le k\le n$, where $A_k$ is the $k\times k$ leading
+  principle submatrix of $A$.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $A$ is positive definite
+
+    $A$ is Hermitian \\
+    Assume $1\le k\le n$ \\
+    $A_k$ is positive definite \\
+    Assume $\l\in\o(A_k)$ \\
+    $\l>0$ \\
+    $\det A_k=\prod_{i=1}^k\l_i(A_k)>0$
+
+  \item $\impliedby$ Assume $A$ is Hermitian and $\det A_k>0,1\le k\le n$
+
+    Proof by induction on $n$
+
+    \begin{description}
+    \item Base Case: n=1
+
+      $A=\begin{bmatrix} \l \end{bmatrix}$ with $\l>0$
+
+      Therefore, $A$ is positive definite.
+
+    \item Assume $A$ is positive definite for $A\in M_{n-1}$
+
+    \item Consider $A\in M_n$ and let $A=\left[\begin{array}{c|c}
+      B & * \\
+      \hline
+      * & *
+      \end{array}\right]$ where $B=A_{n-1}$
+
+      Since $A$ is Hermitian, $B$ is also Hermitian \\
+      Assume $1\le k\le n-1$ \\
+      $\det B_k=\det A_k>0$ \\
+      So by the inductive assumption, $B$ is positive definite \\
+      Thus $\o(B)\subseteq(0,\infty)$ \\
+      But by the interlacing theorem, $\l_k(B)\le \l_{k+1}(A)$, so $\l_k(A)>0$
+      for $2\le k\le n$ \\
+      But $\det A=\det A_n=\prod_{k=1}^n\l_k(A)>0$ \\
+      Thus, since $\l_2,\ldots\l_n>0$ it must be the case that $\l_1>0$ \\
+      And so $\o(A)\subseteq(0,\infty)$
+
+      Therefore $A$ is positive definite.
+    \end{description}
+  \end{description}
+\end{theproof}
+
+\end{document}

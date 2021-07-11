@@ -1,0 +1,66 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\mnorm}[1]{\left\lvert\left\lvert\left\lvert#1
+  \right\rvert\right\rvert\right\rvert}
+\DeclareMathOperator{\tr}{tr}
+\begin{document}
+\section*{Matrix Norm}
+
+\begin{definition}
+  To say that $\mnorm{\cdot}:M_n\to\R$ is a \emph{matrix norm} means that it
+  satisfies the following five properties $\forall\,A,B\in M_n$ and
+  $\forall\,c\in\C^n$:
+  \begin{enumerate}
+  \item Nonnegativity: $\mnorm{A}\ge0$
+  \item Positivity: $\mnorm{A}=0\iff A=0$
+  \item Homogeneity: $\mnorm{cA}=\abs{c}\mnorm{A}$
+  \item Subadditivity: $\mnorm{A+B}\le\mnorm{A}+\mnorm{B}$
+  \item Submultiplicativity: $\mnorm{AB}\le\mnorm{A}\mnorm{B}$
+  \end{enumerate}
+\end{definition}
+
+Some matrix norms are just extensions of the vector norms by placing the
+matrix columns end-to-end to form a giant vector. These norms can still use
+the double-bar notation. Since these norms already satisfy the first four norm
+properties, only submultiplicativity needs to be checked.
+
+\begin{enumerate}
+\item $\ell_1$ Matrix Norm
+  \[\norm{A}_1=\sum_{i,j=1}^n\abs{a_{ij}}\]
+  \begin{eqnarray*}
+    \norm{AB}_1 &=& \sum_{i=1}^n\sum_{j=1}^n\abs{(AB)_{ij}} \\
+    &=& \sum_{i=1}^n\sum_{j=1}^n\abs{\sum_{k=1}^na_{ik}b_{kj}} \\
+    &\le& \sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n\abs{a_{ik}b_{kj}} \\
+    &\le& \sum_{i=1}^n\sum_{j=1}^n\left(\sum_{k=1}^n\abs{a_{ik}}\right)
+    \left(\sum_{k=1}^n\abs{b_{kj}}\right) \\
+    &=& \left(\sum_{i=1}^n\sum_{k=1}^n\abs{a_{ik}}\right)
+    \left(\sum_{j=1}^n\sum_{k=1}^n\abs{b_{kj}}\right) \\
+    &=& \norm{A}_1\norm{B}_1
+  \end{eqnarray*}
+\newpage
+\item $\ell_2$ (Frobenius) Matrix Norm
+  \[\norm{A}_2=\sqrt{\sum_{i,j=1}^n\abs{a_{ij}}^2}=\sqrt{\tr(A^*A)}\]
+  \begin{eqnarray*}
+    \norm{AB}_2^2 &=& \sum_{i=1}^n\sum_{j=1}^n\abs{(AB)_{ij}}^2 \\
+    &=& \sum_{i=1}^n\sum_{j=1}^n\abs{\sum_{k=1}^na_{ik}b_{kj}}^2 \\
+    &\le& \sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n\abs{a_{ik}}^2\abs{b_{kj}}^2 \\
+    &\le& \sum_{i=1}^n\sum_{j=1}^n\left(\sum_{k=1}^n\abs{a_{ik}}^2\right)
+    \left(\sum_{k=1}^n\abs{b_{kj}}^2\right) \\
+    &=& \left(\sum_{i=1}^n\sum_{k=1}^n\abs{a_{ik}}^2\right)
+    \left(\sum_{j=1}^n\sum_{k=1}^n\abs{a_{kj}}^2\right) \\
+    &=& \norm{A}_2\norm{B}_2
+  \end{eqnarray*}
+
+\item $\ell_{\infty}$ Matrix Norm
+  \[\norm{A}_{\infty}=\max_{1\le i,j\le n}\abs{a_{ij}}\]
+  This is NOT a matrix norm. Consider the following counterexample:
+  \[A=B=J_3=\begin{bmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix}\]
+  $\norm{A}_{\infty}=\norm{B}_{\infty}=1$, so
+  $\norm{A}_{\infty}\norm{B}_{\infty}=1\cdot1=1$
+  \[AB=\begin{bmatrix} 3 & 3 & 3 \\ 3 & 3 & 3 \\ 3 & 3 & 3 \end{bmatrix}\]
+  $\norm{AB}_{\infty}=3\ne1$
+\end{enumerate}
+
+\end{document}

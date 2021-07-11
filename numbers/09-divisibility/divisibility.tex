@@ -1,0 +1,65 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Divisibility}
+
+Division of integers is problematic because it involves an apparent jump to
+rational numbers. In order to avoid this, division of integers is defined in
+terms of multiplication:
+
+\begin{definition}
+  Let $n,m\in\Z,n\ne0$. To say that $n$ \emph{divides} $m$, denoted $n\mid m$,
+  means:
+  \[\exists\,k\in\Z,m=kn\]
+  The integer $n$ is called a \emph{divisor} or \emph{factor} of $m$ and $m$ is
+  called a \emph{multiple} of $n$.
+\end{definition}
+
+\begin{theorem}
+  \listbreak
+  \[\forall\,a,b\in\Z^+,a\mid b\implies a\le b\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in\Z^+$ \\
+  Assume $a\mid b$ \\
+  $\exists\,k\in\Z^+,b=ka$ \\
+  ABC: $a>b$ \\
+  $a>ka$ \\
+  CONTRADICTION! \\
+  $\therefore a\le b$
+\end{theproof}
+
+\begin{theorem}
+  Divisibility is transitive:
+  \[\forall,a,b,c\in\Z,a\mid b\ \mbox{and}\ b\mid c\implies a\mid c\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b,c\in\Z$ \\
+  Assume $a\mid b$ and $b\mid c$ \\
+  $\exists\,h,k,b=ha$ and $c=kb$ \\
+  $c=k(ha)=(kh)a$ \\
+  But, by closure, $kh\in\Z$ \\
+  $\therefore a\mid c$
+\end{theproof}
+\newpage
+\begin{theorem}
+$\forall\,a,b,c\in\Z,c\mid a$ and $c\mid b\implies\forall\,m,n\in\Z,
+    c\mid(ma+nb)$
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b,c\in\Z$ \\
+  Assume $c\mid a$ and $c\mid b$ \\
+  $\exists\,h,k\in\Z,a=hc$ and $b=kc$ \\
+  Assume $m,n\in\Z$ \\
+  $ma=m(hc)=(mh)c$ \\
+  $nb=n(kc)=(nk)c$ \\
+  $ma+nb=(mh)c+(nk)c=(mh+nk)c$ \\
+  But, by closure, $mh+nk\in\Z$ \\
+  $\therefore c\mid ma+nb$
+\end{theproof}
+
+\end{document}

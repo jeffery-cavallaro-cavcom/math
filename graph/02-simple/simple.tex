@@ -1,0 +1,117 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\begin{document}
+
+\section*{Simple Graphs}
+
+\begin{definition}[Simple Graph]
+  A \emph{simple} graph \(G=(V,E,\ldots)\) is a graph with a non-empty and finite set of vertices \(V(G)\) and a
+  possibly empty and finite set of edges \(E(G)\) such that each edge is represented by a two-element subset of
+  \(V(G)\):
+  \[E(G)\subseteq\ps_2(V(G))\]
+\end{definition}
+
+In particular, a simple graph is never the null graph, has no loops, and has no multiple edges.
+
+\begin{examples}
+  \begin{minipage}[t]{2.5in}
+    \(V=V(G)=\set*{1,2,3,4}\) \\
+    \(E=E(G)=\set[\big]{\set{1,2},\set{2,3}}\)
+    
+    \bigskip
+
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleVnodes{\(1\),\(2\),\(3\),\(4\)}{(0,0)}{1.75cm}{90}{}
+        \draw (1) -- (2) -- (3);
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+  \hspace{0.5in}
+  \begin{minipage}[t]{3in}
+    \(V=\set{a,b,c,d,e}\) \\
+    \(E=\set[\big]{\set{a,b},\set{a,c},\set{a,d},\set{a,e},\set{b,e},\set{c,d}}\)
+      
+    \bigskip
+      
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{2cm}{90}{}
+        \draw (1) -- (2) -- (5) -- (1);
+        \draw (1) -- (3) -- (4) -- (1);
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+\end{examples}
+
+\begin{notation}
+  The edge \(\set{u,v}\) is usually represented by just \(uv\).
+\end{notation}
+
+\begin{definition}[Isolated Vertex]
+  Let \(G\) be a simple graph and let \(u\in V(G)\).  To say that \(v\) is an \emph{isolated} vertex means that
+  it is not an endpoint for any edge in \(E(G)\):
+  \[\forall\,e\in E(G),v\notin e\]
+\end{definition}
+
+In the above example, vertex \(4\) is an isolated vertex.
+
+\begin{definition}[Adjacent Vertices]
+  Let \(G\) be a simple graph and let \(u,v\in V(G)\).  To say that \(u\) and \(v\) are \emph{adjacent} vertices
+  (\emph{neighbors}) means that they are the endpoints of some edge \(e\in E(G)\):
+  \[\exists\,e\in E(G),e=uv\]
+  The edge \(e\) is said to \emph{join} \(u\) and \(v\).  Furthermore, the edge \(e\) is said to be \emph{incident}
+  to \(u\) and \(v\).
+\end{definition}
+
+\begin{definition}[Adjacent Edges]
+  Let \(G\) be a simple graph and let \(e,f\in E(G)\).  To say that \(e\) and \(f\) are \emph{adjacent} edges means
+  that they share an endpoint:
+  \[\exists\,v\in V(G),e\cap f=\set{v}\]
+  or
+  \[\abs{e\cap f}=1\]
+\end{definition}
+
+\begin{example}
+  Let \(G\) be a simple graph; \(u,v,w\in V(G)\); and \(e,f\in E(G)\) such that \(e=uv\) and \(f=vw\):
+
+  \begin{minipage}{2.5in}
+    \vspace{0in}
+    \begin{tikzpicture}
+      \draw (0,0) ellipse [x radius=3,y radius=2];
+      \node [labeled node] (V) at (0,-0.75) {v};
+      \node [labeled node] (U) at (-1.5,0.5) {u};
+      \node [labeled node] (W) at (1.5,0.5) {w};
+      \draw (U) to node [auto,swap] {e} (V) to node [auto,swap] {f} (W);
+      \node at (-1.5,-1.25) {G};
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    \begin{itemize}
+    \item \(u\) and \(v\) are adjacent vertices (neighbors).
+    \item \(u\) and \(v\) are joined by \(e\).
+    \item \(u\) and \(e\) are incident.
+    \item \(e\) and \(f\) are adjacent edges.
+    \end{itemize}
+  \end{minipage}
+\end{example}
+
+\begin{definition}[Equality]
+  To say that two simple graphs \(G\) and \(H\) are \emph{equal}, denoted by \(G=H\), means that \(V(G)=V(H)\) and
+  \(E(G)=E(H)\).
+\end{definition}
+
+\begin{theorem}
+  Let \(G\) be a simple graph of order \(n\) and size \(m\):
+  \[ m\le\frac{n(n-1)}{2} \]
+\end{theorem}
+
+\begin{proof}
+  Since the graph is simple, each pair of distinct vertices has at most one edge joining them, and so the maximum
+  number of possible edges is \(\binom{n}{2}\).  Hence:
+  \[m\le\binom{n}{2}=\frac{n!}{2!(n-2)!}=\frac{n(n-1)}{2}\]
+\end{proof}
+
+\end{document}

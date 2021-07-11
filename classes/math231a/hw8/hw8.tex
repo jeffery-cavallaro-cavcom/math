@@ -1,0 +1,214 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\newcommand{\hilb}{\mathcal{H}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ltwoz}{\ell^2(\Z)}
+\begin{document}
+\allowdisplaybreaks
+Cavallaro, Jeffery \\
+Math 231a \\
+Homework \#8
+
+\bigskip
+
+\begin{description}
+\item{4-1.} Let $\hilb$ be a vector space over $\C$ equipped with
+an inner product $\inner{\cdot\,}{\cdot}$.
+
+Prove: Cauchy-Schwarz
+
+\begin{lemma}
+The inner product is conjugate-linear in its second argument.
+\end{lemma}
+
+\begin{theproof}
+Assume $f,g\in\hilb$ and $\lambda\in\C$.
+\[\inner{f}{\lambda g}=\Conj{\inner{\lambda g}{f}}=
+    \Conj{\lambda\inner{g}{f}}=
+    \conj{\lambda}\,\Conj{\inner{g}{f}}=
+    \conj{\lambda}\,\inner{f}{g}\]
+\end{theproof}
+
+\begin{theproof}
+Assume $f,g\in\hilb$ and $\lambda\in\C$.
+\begin{eqnarray*}
+\inner{f+\lambda g}{f+\lambda g} &=& \inner{f}{f}+\inner{f}{\lambda g}+
+    \inner{\lambda g}{f}+\inner{\lambda g}{\lambda g} \\
+    &=& \norm{f}^2+\conj{\lambda}\inner{f}{g}+\lambda\inner{g}{f}+
+    \lambda\conj{\lambda}\norm{g}^2 \\
+    &=& \norm{f}^2+\conj{\lambda}\inner{f}{g}+\lambda\inner{g}{f}+
+    \abs{\lambda}^2\norm{g}^2 \\
+    &\ge& 0 \\
+\end{eqnarray*}
+Now, let $\lambda=-\frac{\inner{f}{g}}{\norm{g}^2}\in\C$:
+\begin{eqnarray*}
+0 &\le& \norm{f}^2-\frac{\Conj{\inner{f}{g}}}{\norm{g}^2}\inner{f}{g}-
+    \frac{\inner{f}{g}}{\norm{g}^2}\inner{g}{f}+
+    \frac{\abs{\inner{f}{g}}^2}{\norm{g}^4}\norm{g}^2 \\
+  &=& \norm{f}^2-\frac{\Conj{\inner{f}{g}}}{\norm{g}^2}\inner{f}{g}-
+    \frac{\inner{f}{g}}{\norm{g}^2}\Conj{\inner{f}{g}}+
+    \frac{\abs{\inner{f}{g}}^2}{\norm{g}^2} \\
+  &=& \norm{f}^2-\frac{\abs{\inner{f}{g}}^2}{\norm{g}^2}-
+    \frac{\abs{\inner{f}{g}}^2}{\norm{g}^2}+
+    \frac{\abs{\inner{f}{g}}^2}{\norm{g}^2} \\
+  &=& \norm{f}^2-\frac{\abs{\inner{f}{g}}^2}{\norm{g}^2} \\
+\end{eqnarray*}
+and then:
+\begin{eqnarray*}
+\norm{f}^2-\frac{\abs{\inner{f}{g}}^2}{\norm{g}^2} &\ge& 0 \\
+\norm{f}^2\norm{g}^2-\abs{\inner{f}{g}}^2 &\ge& 0 \\
+\norm{f}^2\norm{g}^2 &\ge& \abs{\inner{f}{g}}^2
+\end{eqnarray*}
+\[\therefore \abs{\inner{f}{g}}\le\norm{f}\norm{g}\]
+\end{theproof}
+
+Prove: The triangle inequality
+
+\begin{theproof}
+Assume $f,g\in\hilb$
+\begin{eqnarray*}
+\norm{f+g}^2 &=& \inner{f+g}{f+g} \\
+    &=& \inner{f}{f}+\inner{f}{g}+\inner{g}{f}+\inner{g}{g} \\
+    &=& \norm{f}^2+\inner{f}{g}+\inner{g}{f}+\norm{g}^2 \\
+    &\le& \norm{f}^2+\norm{f}\norm{g}+\norm{g}\norm{f}+\norm{g}^2 \\
+    &=& \norm{f}^2+2\norm{f}\norm{g}+\norm{g}^2 \\
+    &=& \left(\norm{f}+\norm{g}\right)^2 \\
+\end{eqnarray*}
+\[\therefore \norm{f+g}\le\norm{f}+\norm{g}\]
+\end{theproof}
+
+\item{4-2.} Prove: $\forall f,g\in\hilb,
+    \abs{\inner{f}{g}}=\norm{f}\norm{g}$ and
+    $g\ne0\implies f=cg$ for some scalar $c$.
+
+\begin{lemma}
+$f\perp g\implies\forall c\in\C,f\perp cg$
+\end{lemma}
+
+\begin{theproof}
+Assume $f\perp g$ \\
+$\inner{f}{g}=0$ \\
+$\inner{f}{cg}=\conj{c}\inner{f}{g}=\conj{c}\cdot0=0$ \\
+$\therefore f\perp cg$
+\end{theproof}
+
+\begin{theproof}
+Assume $f,g\in\hilb$ such that $g\ne0$ and
+    $\abs{\inner{f}{g}}=\norm{f}\norm{g}$ \\
+Let $h=f-\frac{\inner{f}{g}}{\norm{g}^2}g$ \\
+\begin{eqnarray*}
+\inner{h}{g} &=& \inner{f-\frac{\inner{f}{g}}{\norm{g}^2}g}{g} \\
+    &=& \inner{f}{g}-\frac{\inner{f}{g}}{\norm{g}^2}\inner{g}{g} \\
+    &=& \inner{f}{g}-\frac{\inner{f}{g}}{\norm{g}^2}\norm{g}^2 \\
+    &=& \inner{f}{g}-\inner{f}{g} \\
+    &=& 0 \\
+\end{eqnarray*}
+So $h\perp g$, and thus $h\perp\frac{\inner{f}{g}}{\norm{g}^2}g$
+\begin{eqnarray*}
+f &=& h+\frac{\inner{f}{g}}{\norm{g}^2}g\\
+\norm{f}^2 &=& \norm{h+\frac{\inner{f}{g}}{\norm{g}^2}g}^2 \\
+    &=& \norm{h}^2+\norm{\frac{\inner{f}{g}}{\norm{g}^2}g}^2 \\
+    &=& \norm{h}^2+\frac{\abs{\inner{f}{g}}^2}{\norm{g}^4}\norm{g}^2 \\
+    &=& \norm{h}^2+\frac{\abs{\inner{f}{g}}^2}{\norm{g}^2} \\
+\norm{f}^2 &=& \norm{h}^2+\norm{f}^2 \\
+\norm{h}^2 &=& 0 \\
+\end{eqnarray*}
+Thus $h=0$. \\
+Letting $c=\frac{\inner{f}{g}}{\norm{g}^2}$ we get the result:
+$0=f-cg$ \\
+$\therefore f=cg$
+\end{theproof}
+
+\item{8-4:} Prove: $\ltwoz$ is complete and separable.
+
+Assume $(u_n)_{n=1}^{\infty}$ is Cauchy in $\norm{\cdot}$, where
+$u_n=(\ldots, u_{n,-2}, u_{n,-1}, u_{n,0}, u_{n,1}, u_{n,2}, \ldots)$.
+
+\begin{description}
+\item {Claim 1: $\forall k\in\Z, (u_{n,k})$ is Cauchy in $\abs{\cdot}$}
+\begin{theproof}
+ABC: $\exists k,(u_{n,k})$ is not Cauchy in $\abs{\cdot}$ \\
+$\exists\epsilon_0>0,\forall N\in\N,\exists n,m>N,\abs{u_{n,k}-u_{m,k}}\ge
+    \epsilon_0$ \\
+Assume $0<\epsilon<\epsilon_0^2$ \\
+Assume $N\in\N$, thus selecting an $n,m>N$. \\
+$\norm{u_n-u_m}<\epsilon$ \\
+
+However:
+\begin{eqnarray*}
+\norm{u_n-u_m} &=& \sum_{j=-\infty}^{\infty}\abs{u_{n,j}-u_{m,j}}^2 \\
+    &=& \abs{u_{n,k}-u_{m,k}}^2+\sum_{j\ne k}\abs{u_{n,j}-u_{m,j}}^2 \\
+    &\ge& \epsilon_0^2+\sum_{j\ne k}\abs{u_{n,j}-u_{m,j}}^2 \\
+    &\ge& \epsilon+\sum_{j\ne k}\abs{u_{n,j}-u_{m,j}}^2 \\
+    &\ge& \epsilon \\
+\end{eqnarray*}
+
+Contradiction!
+
+$\therefore\forall k\in\Z, (u_{n,k})$ is Cauchy in $\abs{\cdot}$
+\end{theproof}
+And since $\C$ is complete, \\
+$\forall k\in\Z,u_{n,k}\to u_k\in\C$ as $n\to\infty$, meaning \\
+$u_n\to u$ where $u=(\ldots, u_{-2}, u_{-1}, u_0, u_1, u_2, \ldots)$ \\
+
+\item{Claim 2: $u\in\ltwoz$}
+\begin{theproof}
+Assume $\epsilon>0$ \\
+$\exists N,\forall k,n>N\implies\abs{u_k-u_{n,k}}<\frac{\epsilon}{2N+1}$ \\
+Assume $n>N$ \\
+\begin{eqnarray*}
+\sum_{k=-N}^{N}\abs{u_k}^2 &=& \sum_{k=-N}^{N}\abs{u_k-u_{n,k}+u_{n,k}}^2 \\
+    &\le& \sum_{k=-N}^{N}\abs{u_k-u_{n,k}}+\sum_{k=-N}^{N}\abs{u_{n,k}}^2 \\
+\end{eqnarray*}
+But $u_n\in\ltwoz$, so $\sum_{k=-N}^{N}\abs{u_{n,k}}^2\le
+    \sum_{k=-\infty}^{\infty}\abs{u_{n,k}}^2=M<\infty$. So:
+\begin{eqnarray*}
+\sum_{k=-N}^{N}\abs{u_k}^2 &\le& \sum_{k=-N}^{N}\abs{u_k-u_{n,k}}+M \\
+    &=& \sum_{k=-N}^{N}\frac{\epsilon}{2N+1}+M \\
+    &=& \sum_{k=-N}^{N}\frac{\epsilon}{2N+1}+M \\
+    &=& (2N+1)\left(\frac{\epsilon}{2N+1}\right)+M \\
+    &=& \epsilon+M \\
+    &<& \infty \\
+\end{eqnarray*}
+
+Thus, letting $k\to\infty, \sum_{k=-\infty}^{\infty}\abs{u_k}^2<\infty$. \\
+$\therefore u\in\ltwoz$.
+\end{theproof}
+
+\item{Claim 3: $u_n\to u$ in $\norm{\cdot}$}
+\begin{theproof}
+Assume $\epsilon>0$ \\
+$\exists N, n,m>N\implies\norm{u_n-u_m}\le\epsilon$ \\
+As $m\to\infty, u_m\to u$ and so: \\
+$\norm{u_n-u}\le\epsilon$ \\
+$\therefore u_n\to u$ in $\norm{\cdot}$
+\end{theproof}
+
+\item{Claim 4: $\ltwoz$ is separable}.
+
+Define $e_i\in\ltwoz$ such that $e_{ij}=\delta_{ij}$. \\
+Note that $e_i\in\ltwoz$ because
+$\norm{e_i}=\sum_{k=-\infty}^{\infty}\abs{e_{i,k}}^2=1$. \\
+Clearly, $\bigcup_ie_i$ is a countable subset of $\ltwoz$. \\
+Assume $u$ is a linear combination of some finite subset of $\bigcup_ie_i$. \\
+Let $N\in\N$ such that $\forall \abs{k}\ge N,u_k=0$.
+\[\sum_{k=-\infty}^{\infty}\abs{u_k}^2\le\sum_{k=-N}^{N}\abs{u_k}^2<\infty\]
+since it is a finite sum. \\
+So $u\in\ltwoz$. \\
+Assume $\epsilon>0$ \\
+Let $v=u+\frac{\epsilon}{2}e_N$. \\
+Since $\ltwoz$ is a vector space, $v\in\ltwoz$ as well, and:
+\[\norm{u-v}=\norm{\frac{\epsilon}{2}e_N}=\frac{\epsilon}{2}\norm{e_N}=
+    \frac{\epsilon}{2}\cdot1=\frac{\epsilon}{2}<\epsilon\]
+$\therefore \bigcup_ie_i$ is dense in $\ltwoz$ and thus $\ltwoz$ is separable.
+\end{description}
+\end{description}
+\end{document}

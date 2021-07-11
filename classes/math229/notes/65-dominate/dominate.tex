@@ -1,0 +1,79 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\tr}{tr}
+\begin{document}
+\section*{Dominating Inequalities}
+
+\begin{example}
+  Is there a matrix $A\in M_4$ such that $\Sp(A)=\{-6,-6,-6,12\}$ with
+  diagonal entries $\{6,6,6,-12\}$?
+
+  No, because $\tr(A)$ must equal the sum of the diagonals and the sum on the
+  eigenvalues, but $-6\ne 6$.
+\end{example}
+
+\begin{example}
+  Is there a matrix $A\in M_4$ such that $\Sp(A)=\{2,5,5,10\}$ with
+  diagonal entries $\{3,3,5,11\}$?
+
+  Here, the trace test works out because $22=22$; however, recall that
+  $\l_1\le a_{ii}\le\l_n$, and $11>10$, so no.
+\end{example}
+
+\begin{theorem}
+  Let $A\in M_n$ be Hermitian with eigenvalues $\l_1\le\cdots\le\l_n$ and
+  diagonal entries $d_1\le\cdots\le d_n$, which can be in any desired order on
+  the diagonal. $\forall\,m$ such that $1\le m\le n$:
+  \[\sum_{k=1}^m\l_k\le\sum_{k=1}^md_k\]
+  with guaranteed equality at $m=n$ by the trace test.
+  
+  The $\{\l_k\}$ are said to be \emph{majorized} or \emph{dominated} by the
+  $\{d_k\}$.
+\end{theorem}
+
+\begin{theproof}
+  Proof by induction on $n$
+
+  \begin{description}
+  \item Base Case: $A\in M_1$
+
+    $\l_1=d_1$
+
+  \item Assume the $\{d_k\}$ dominate the $\{\l_k\}$ for $A\in M_{n-1}$
+
+  \item Consider $A\in M_n$
+
+    Use permutation matrices to sort the diagonal entries from low to high \\
+    Note that the eigenvalues do not change
+
+    Let $A=\left[\begin{array}{ccc|c}
+        d_1 & & * & \\
+        & \ddots & & * \\
+        * & & d_{n-1} & \\
+        \hline
+        & * & & d_n
+      \end{array}\right]$
+
+    Let $B=A_{n-1}=\begin{bmatrix}
+        d_1 & & * \\
+        & \ddots & \\
+        * & & d_{n-1} \\
+    \end{bmatrix}$
+
+    Let $\Sp(B)=\{\mu_1,\ldots,\mu_{n-1}\}$
+
+    By the inductive assumption, the $\{d_k\}$ dominate the $\{\mu_k\}$ \\
+    By the interlacing theorem: $l_k\le\mu_k$ for $1\le k\le n-1$ \\
+    Thus, the $\{d_k\}$ dominate the $\{\l_k\}$ for $1\le k\le n-1$ \\
+    By the trace theorem, equality happens at $k=n$
+
+    Therefore, $\forall\,m$ such that $1\le m\le n$:
+    \[\sum_{k=1}^m\l_k\le\sum_{k=1}^md_k\]
+    with guaranteed equality at $m=n$ by the trace test.
+  \end{description}
+\end{theproof}
+
+\end{document}

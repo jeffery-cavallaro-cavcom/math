@@ -1,0 +1,75 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Center}
+
+\begin{definition}
+  Let $G$ be a group:
+  \begin{enumerate}
+  \item Let $a\in G$. $G_a$ is the subset of $G$ consisting of all elements in
+    $G$ that commute with $a$:
+    \[G_a=\{g\in G\mid ga=ag\}\]
+
+  \item Let $S\subseteq G,S\ne\emptyset$. $G_S$ is the subset of $G$ consisting
+    of all elements in $G$ that commute with all elements in $S$:
+    \[G_S=\{g\in G\mid\forall\,s\in S,gs=sg\}\]
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  Let $G$ be a group and $a\in G$:
+  \[G_a\le G\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $x,y\in G_a$ \\
+  $G_a\subseteq G$, so $x,y\in G$ \\
+  $G$ is a group, so $y^{-1}\in G$ \\
+  Assume $g\in G$ \\
+  $xgy=gxy=gyx=ygx$ \\
+  $y^{-1}xgy=y^{-1}ygx$ \\
+  $xy^{-1}gy=gx$ \\
+  $xy^{-1}gyy^{-1}=gxy^{-1}$ \\
+  $xy^{-1}g=gxy^{-1}$ \\
+  $xy^{-1}\in G_a$ \\
+  $\therefore$ by the subgroup test, $G_a\le G$.
+\end{theproof}
+
+\begin{theorem}
+  Let $G$ be a group and $S\subseteq G,S\ne\emptyset$:
+  \[G_S\le G\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $x,y\in G_S$ \\
+  $G_S\subseteq G$, so $x,y\in G$ \\
+  $G$ is a group, so $y^{-1}\in G$ \\
+  Assume $s\in S$ \\
+  $xsy=sxy=syx=ysx$ \\
+  $y^{-1}xsy=y^{-1}ysx$ \\
+  $xy^{-1}sy=sx$ \\
+  $xy^{-1}syy^{-1}=sxy^{-1}$ \\
+  $xy^{-1}s=sxy^{-1}$ \\
+  $xy^{-1}\in G_S$ \\
+  $\therefore$ by the subgroup test, $G_S\le G$.
+\end{theproof}
+
+\begin{definition}
+  The \emph{center} of a group $G$, denoted $Z(G)$, is the subgroup of G
+  whose elements commute with all elements in $G$:
+  \[Z(G)=G_G\]
+\end{definition}
+
+\begin{theorem}
+  Let $G$ be a group. $Z(G)$ is abelian.
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in Z(G)$ \\
+  $Z(G)\subseteq G$, so $a,b\in G$ \\
+  $ab=ba$ \\
+  $\therefore Z(G)$ is abelian.
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,59 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\adj}{adj}
+\begin{document}
+\section*{Upper Triangular Matrices}
+
+\begin{definition}[Upper Triangular Matrix]
+  To say that a matrix $A$ is \emph{upper triangular} means:
+  \[i>j\implies a_{ij}=0\]
+  In particular, a diagonal matrix is upper triangular.
+
+  The set of all $n\times n$ upper triangular matrices is denoted by $UT(n)$.
+\end{definition}
+
+\begin{properties}[Upper Triangular]
+  Let $A,B\in UT(n)$:
+  \begin{enumerate}
+  \item $cA\in UT(n)$
+  \item $A+B\in UT(n)$
+  \item $AB\in UT(n)$
+  \item $\adj(A)\in UT(n)$
+  \item $A$ invertible$\implies A^{-1}\in UT(n)$
+  \end{enumerate}
+\end{properties}
+
+\begin{theorem}
+  Let $T\in UT(n)$ such that $T$ has distinct diagonal entries and $AT=TA$:
+  \[A\in UT(n)\]
+\end{theorem}
+
+\begin{theproof}
+  Proof by induction on $n$.
+  \begin{description}
+  \item Base case: $n=1$
+
+    $1\times1$ matrices are by definition UT, so nothing to prove.
+
+  \item Assume true for $n-1$
+
+  \item Let $A=\begin{bmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{bmatrix}$, where
+    $A_{11}\in M_{n-1}$ and let
+    $T=\begin{bmatrix} T_{11} & T_{12} \\ 0 & T_{22} \end{bmatrix}$, where
+    $T_{11}\in UT(n-1)$ and $T_{11}$ and $T_{22}$ have distinct diagonal entries.
+    \begin{eqnarray*}
+      AT &=& TA \\
+      \begin{bmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{bmatrix}
+      \begin{bmatrix} T_{11} & T_{12} \\ 0 & T_{22} \end{bmatrix} &=&
+      \begin{bmatrix} T_{11} & T_{12} \\ 0 & T_{22} \end{bmatrix} 
+      \begin{bmatrix} A_{11} & A_{12} \\ A_{21} & A_{22} \end{bmatrix} \\
+      \begin{bmatrix} * & * \\ A_{21}T_{11} & * \end{bmatrix} &=&
+      \begin{bmatrix} * & * \\ A_{21}T_{22} & * \end{bmatrix} \\
+      A_{21}T_{11} &=& T_{22}A_{21} \\
+    \end{eqnarray*}
+
+  \end{description}
+\end{theproof}
+
+\end{document}

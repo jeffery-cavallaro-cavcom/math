@@ -1,0 +1,88 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\D}{\Delta}
+\newcommand{\Dx}{\D x}
+\newcommand{\Dy}{\D y}
+\newcommand{\Dz}{\D z}
+\newcommand{\limDx}{\lim_{\Dx\to 0}}
+\newcommand{\limDy}{\lim_{i\Dy\to 0}}
+\newcommand{\limDz}{\lim_{\Dz\to 0}}
+\newcommand{\limDxy}{\lim_{(\Dx,\Dy)\to (0,0)}}
+\begin{document}
+\section*{Cauchy-Riemann Equations}
+
+\begin{theorem}
+  Let $f(z)=u(x,y)+iv(x,y)$ be differentiable on a domain $D$. The first
+  partial derivatives ($u_x,u_y,v_x,v_y$) exist in $D$ and satisfy the
+  Cauchy-Rieman equations:
+  \[u_x=v_y\ \mbox{and}\ u_y=-v_x\]
+  so that:
+  \[f'(z)=u_x+iv_x=v_y-iu_y\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $z\in D$
+  \[f'(z)=\limDz{\frac{f(z+\Dz)-f(z)}{\Dz}}\]
+  \[=\limDxy{\frac{[u(x+\Dx,y+\Dy)+iv(x+\Dx,y+\Dy)]-
+      [u(x,y)+iv(x,y)}{\Dx+i\Dy}}\]
+  \[=\limDxy{\left[\frac{u(x+\Dx,y+\Dy)-u(x,y)}{\Dx+i\Dy}+
+      i\frac{v(x+\Dx,y+\Dy)-v(x,y)}{\Dx+i\Dy}\right]}\]
+  
+  Consider the path along the $x$-axis: $(\Dx,0)\to(0,0)$:
+  \[f'(z)=\limDx{\left[\frac{u(x+\Dx,y)-u(x,y)}{\Dx}+
+      i\frac{v(x+\Dx,y)-v(x,y)}{\Dx}\right]}\]
+  \[=\limDx{\frac{u(x+\Dx,y)-u(x,y)}{\Dx}}+
+  i\limDx{\frac{v(x+\Dx,y)-v(x,y)}{\Dx}}\]
+  \[=u_x+iv_x\]
+  
+  Now, consider the path along the $y$-axis: $(0,i\Dy)\to(0,0)$:
+  \[f'(z)=\limDy{\left[\frac{u(x,y+\Dy)-u(x,y)}{i\Dy}+
+      i\frac{v(x,y+\Dy)-v(x,y)}{i\Dy}\right]}\]
+  \[=\limDy{\left[\frac{v(x,y+\Dy)-v(x,y)}{\Dy}-
+      i\frac{u(x,y+\Dy)-u(x,y)}{\Dy}\right]}\]
+  \[=\limDy{\frac{v(x,y+\Dy)-v(x,y)}{\Dy}}-
+  i\limDy{\frac{u(x,y+\Dy)-u(x,y)}{\Dy}}\]
+  \[=v_y-iu_y\]
+
+  Thus, in order for the limit to exist:
+  \[f'(z)=u_x+iv_x=v_y-iu_y\]
+  $\therefore u_x=u_y$ and $v_x=-u_y$
+\end{theproof}
+
+\begin{corollary}
+  Let $f(z)=u(x,y)+iv(x,y)$ be differentiable on a domain $D$:
+  \[f'(z)=f_x=-if_y\]
+\end{corollary}
+
+\begin{theproof}
+  The CR equations hold in $D$ \\
+  $f'(z)=u_x+iv_x=f_x$ \\
+  $f'(z)=v_y-iu_y=-i(u_y+iv_y)=-if_y$
+\end{theproof}
+
+\begin{example}
+  $f(z)=z^2=(x^2-y^2)+i2xy$ \\
+  $f'(z)=2z$ \\
+  \begin{minipage}[t]{2in}
+    \begin{eqnarray*}
+      u &=& x^2-y^2 \\
+      u_x &=& 2x \\
+      u_y &=& -2y \\
+    \end{eqnarray*}
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    \begin{eqnarray*}
+      v &=& 2xy \\
+      v_x &=& 2y \\
+      v_y &=& 2x \\
+    \end{eqnarray*}
+  \end{minipage}
+
+  $u_x=v_y=2x$ and $v_x=-u_y=2y$
+
+  $f'(z)=f_x=2x+i2y=2(x+iy)=2z$ \\
+  $f'(z)=-if_y=-i(-2y+i2x)=2x+i2y=2(x+iy)=2z$
+\end{example}
+
+\end{document}

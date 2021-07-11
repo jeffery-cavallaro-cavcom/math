@@ -1,0 +1,337 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\DeclareMathOperator{\Aut}{Aut}
+\newcommand{\vp}{\varphi}
+\renewcommand{\a}{\alpha}
+\renewcommand{\i}{\iota}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\d}{\delta}
+\renewcommand{\o}{\theta}
+\newcommand{\n}{\trianglelefteq}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\id}{id}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221b \\
+Homework \#7
+
+\bigskip
+
+\begin{enumerate}
+\item Suppose we have an extension of fields $F\subseteq E\subseteq L\subseteq K$ and
+  let $G=\Aut(K/F)$ with subgroups $I\le J\le H\le G$.
+  \begin{enumerate}
+  \item Show that $G=\Aut(K/F)$ is actually a group under composition of functions.
+
+    Assume $\vp_1,\vp_2\in G$ and $\a\in F$. \\
+    By definition, $\vp_1$ and $\vp_2$ fix $F$, so $\vp_1(\a)=\a$ and $\vp_2(\a)=\a$.
+    \[(\vp_1\vp_2)(\a)=\vp_1(\vp_2(\a))=\vp_1(\a)=\a\]
+    Thus, $\vp_1\vp_2$ fixes $F$ and so $\vp_1\vp_2\in G$.
+
+    Therefore $G$ is closed under the operation.
+
+    Function composition is associative.
+
+    Assume $\vp\in G$ and $\a\in F$:
+    \[\i_K(\a)=\a\]
+    Thus $i_K$ fixes $F$ and so $\i_K\in G$. But also:
+    \[\i_k\vp=\vp\i_k=\vp\]
+    Therefore $G$ has identity $\i_K$.
+
+    Assume $\vp\in G$ and $\a\in F$. \\
+    By definition, $\vp$ fixes $F$, so $\vp(\a)=\a$. \\
+    But $\vp$ is bijective, so $\vp^{-1}$ exists and:
+    \[\vp^{-1}(\a)=\vp^{-1}(\vp(\a))=(\vp^{-1}\vp)(\a)=\i_K(\a)=\a\]
+    Thus, $\vp^{-1}$ fixes $F$ and so $\vp^{-1}\in G$.
+
+    Therefore $G$ is closed under inverses.
+
+    Therefore $G$ is a group under the operation of function composition.
+
+  \item Show that $G(L)$ is actually a subgroup of $G$.
+
+    Assume $\a\in L$.
+    \[\i_L(\a)=\a\]
+    Thus $\i_L$ fixes $L$ and so $\i_L\in G(L)$.
+
+    $\therefore G(L)\ne\emptyset$
+
+    Assume $\vp\in G(L)$ and $\a\in F$. \\
+    But since $F\subseteq L$ we have $\a\in L$ also and since $\vp$ fixes $L$:
+    \[\vp(\a)=\a\]
+    Thus, $\vp$ fixes $F$ and so $\vp\in G$.
+
+    $\therefore G(L)\subseteq G$
+
+    Assume $\vp_1,\vp_2\in G(L)$ and assume $\a\in L$. \\
+    By definition, $\vp_1$ and $\vp_2$ fix $L$, so $\vp_1(\a)=\a$ and
+    $\vp_2(\a)=\a$. \\
+    Also, $\vp_2$ is bijective so $\vp_2^{-1}$ exists.
+    \begin{eqnarray*}
+      (\vp_1\vp_2^{-1})(\a) &=& \vp_1(\vp_2^{-1}(\a)) \\
+      &=& \vp_1(\vp_2^{-1}(\vp_2(\a))) \\
+      &=& \vp_1((\vp_2^{-1}\vp_2)(\a))) \\
+      &=& \vp_1(\i_L(\a)) \\
+      &=& \vp_1(\a) \\
+      &=& \a
+    \end{eqnarray*}
+    Thus $\vp_1\vp^{-1}$ fixes $L$ and so $\vp_1\vp^{-1}\in G(L)$.
+
+    Therefore, by the subgroup test, $G(L)\le G(F)$.
+
+  \item Prove the inclusions $G(L)\le G(E)$ and $F(H)\subseteq F(J)$
+
+    From the previous problem we already know that $G(L),G(E)\le G$, and so it
+    suffices to show inclusion:
+
+    Assume $\vp\in G(L)$
+
+    $\forall\,\a\in L,\vp(\a)=\a$ \\
+    Since $E\subseteq L$, $\forall\,\a\in E,\vp(\a)=\a$ \\
+    $\vp\in G(E)$
+    
+    $\therefore G(L)\le G(E)$
+
+    Assume $\a\in F(H)$
+
+    $\forall\,\vp\in H,\vp(\a)=\a$ \\
+    Since $J\subseteq H$, $\forall\,\vp\in J,\vp(\a)=\a$ \\
+    So $\a\in F(J)$
+
+    $\therefore F(H)\subseteq F(J)$
+
+  \item Prove the inclusions $H\le G(F(H))$ and $L\subseteq F(G(L))$
+
+    From the previous problem we already know that $H,G(F(H))\le G$, and so it
+    suffices to show inclusion:
+
+    Assume $\vp\in H$. \\
+    By definition, $\vp$ fixes everything in $F(H)$. \\
+    So, by definition, $\vp\in G(F(H))$.
+
+    $\therefore H\le G(F(H))$
+
+    Now, assume $\a\in L$. \\
+    By definition, $\a$ is fixed by everything in $G(L)$. \\
+    So, by definition, $\a\in F(G(L))$.
+
+    $\therefore L\subseteq F(G(L))$
+
+  \item Prove that $G(L)$ and $F(H)$ are closed.
+
+    From (d), we already know that $G(L)\subseteq G(F(G(L)))$.
+    
+    Assume $\vp\in G(F(G(L)))$. \\
+    $\vp$ fixes everything in $F(G(L))$. \\
+    But also from (d), $L\subseteq F(G(L))$. \\
+    So $\vp$ fixes everything in $L$. \\
+    Thus, by definition, $\vp\in G(L)$.
+    
+    $\therefore G(L)=G(F(G(L)))$ and so $G(L)$ is closed.
+
+    From (d), we already know that $F(H)\subseteq F(G(F(H)))$.
+
+    Assume $\a\in F(G(F(H)))$. \\
+    $\a$ is fixed by everything in $G(F(H))$. \\
+    But also from (d), $H\subseteq G(F(H))$. \\
+    So $\a$ is fixed by everything in $H$. \\
+    Thus, by definition, $\a\in F(H)$.
+
+    $\therefore F(H)=F(G(F(H)))$ and so $F(H)$ is closed.
+  \end{enumerate}
+
+\item Suppose we have an extension of fields $F\subseteq L\subseteq K$ and let
+  $G=\Aut(K/F)$ with subgroups $1\le H\le G$:
+  \begin{enumerate}
+  \item Show that $L$ is stable $\implies G(L)\n G$
+    
+    Assume $L$ is stable.
+
+    Assume $\vp\in G(L)$. \\
+    Assume $\a\in L$. \\
+    $\vp$ fixes $L$ and so $\vp(\a)=\a$.
+
+    Now, assume $\psi\in G$. \\
+    Since $\psi$ is bijective and $L$ is stable, $\exists\,\b\in L$ such that
+    $\psi(\b)=\a$ and $\psi^{-1}(\a)=\b$. \\
+    Also, since $\b\in L$, $\vp$ also fixes $\b$ and so $\vp(\b)=\b$
+
+    $(\psi\vp\psi^{-1})(\a)=\psi(\vp(\psi^{-1}(\a)))=\psi(\vp(\b))=\psi(\b)=\a$ \\
+    Thus, $\psi\vp\psi^{-1}\in G(L)$.
+
+    $\therefore G(L)\n G$.
+
+  \item Show that $H\n G\implies F(H)$ is stable.
+    
+    Assume $H\n G$.
+
+    Assume $\vp\in H$. \\
+    Assume $\psi\in G$. \\
+    Since $H\n G$, we have $\psi^{-1}\vp\psi\in H$.
+
+    Now, assume $\a\in F(H)$ \\
+    $\a$ is fixed by $H$ and $\psi^{-1}\vp\psi\in H$, so $(\psi^{-1}\vp\psi)(\a)=\a$. \\
+    $(\vp\psi)(\a)=\psi(\a)$ \\
+    $\vp(\psi(\a))=\psi(\a)$ \\
+    So $\psi(\a)$ is fixed by $\vp$ and thus $\psi(\a)\in F(H)$.
+
+    Therefore $F(H)$ is stable.
+  \end{enumerate}
+
+\item Suppose $K/\Q$ is a quadratic extension ($[K:\Q]=2$):
+  \begin{enumerate}
+  \item Show that $K=\Q(\sqrt{d})$ for some squarefree integer $d\ne1$.
+  \item Show that $K/\Q$ is Galois with $\Gal(K/Q)\cong\Z/2\Z$.
+  \end{enumerate}
+
+  Assume $\a\in K$ such that $[\Q(\a):\Q]=2$. The minimum polynomial is given by:
+  \[m_{\a,\Q}(x)=x^2+bx+c\]
+  for some $b,c\in\Q$. The roots for this polynomial are found as follows:
+  \[x=\frac{-b\pm\sqrt{b^2-4c}}{2}\]
+  If $\sqrt{b^2-4c}\in\Q$ then $[K:\Q]=1$, so assume not. \\
+  Let $b=\frac{p}{q}$ and $c=\frac{h}{k}$ where $p,q,h,k\in\Z$ and $q,k\ne0$:
+  \begin{eqnarray*}
+    x &=& \frac{-\frac{p}{q}\pm\sqrt{\left(\frac{p}{q}\right)^2-\frac{4h}{k}}}{2} \\
+    &=& -\frac{p}{2q}\pm\frac{1}{2}\sqrt{\frac{p^2k-4qh}{q^2k}} \\
+    &=& -\frac{p}{2q}\pm\frac{1}{2q^2k}\sqrt{q^2k(p^2k-4qh)}
+  \end{eqnarray*}
+  Note that $q^2k(p^2k-4qh)\in\Z$, so factor out any perfect square part, calling it
+  $n^2$, and whatever squarefree integer is left call it $d$:
+  \[x=-\frac{p}{2q}\pm\frac{1}{2q^2k}\sqrt{n^2d}=
+  -\frac{p}{2q}\pm\frac{n}{2q^2k}\sqrt{d}\]
+  Now let $r=-\frac{p}{2q}\in\Q$ and $s=\frac{n}{2q^2k}\in\Q$:
+  \[x=r\pm s\sqrt{d}\]
+  And so $K=\Q(\sqrt{d})$
+
+  Now assume $\vp\in G(\Q)$ \\
+  Since $\vp$ is a ring homomorphism that fixes $\Q$:
+  \[\vp(x)=\phi(r\pm s\sqrt{d})=\phi(r)\pm\phi(s\sqrt{d})=r\pm\phi(s)\phi(\sqrt{d})=
+  r\pm s\phi(\sqrt{d})\]
+  And so $\vp$ is completely determined by what it does to $\sqrt{d}$.
+  
+  Thus, there are only two $\Q$-automorphisms:
+  \begin{enumerate}
+  \item $\id$
+  \item $\sqrt{d}\mapsto -\sqrt{d}$
+  \end{enumerate}
+  In other words, the identity and a two-cycle.
+
+  Therefore, $\Aut(\Q(\sqrt{d})/\Q)\cong \Z/2\Z$
+
+  Also note that since $\vp$ only moves $r+s\sqrt{d}$ where $s\ne 0$:
+  \[F(G(\Q))=\Q\]
+  Therefore $Q(\sqrt{d})/\Q$ is Galois.
+
+  \newcommand{\sstwo}{\sqrt{2+\sqrt{2}}}
+  \newcommand{\ssmtwo}{\sqrt{2-\sqrt{2}}}
+
+\item Show that $\Q(\sstwo)$ is Galois over $\Q$ with Galois group
+  $\Gal(\sstwo/\Q)=\Z/4\Z$.
+
+  We can determine the minimum polynomial as follows:
+  \begin{eqnarray*}
+    x &=& \sstwo \\
+    x^2 &=& 2+\sqrt{2} \\
+    x^2-2 &=& \sqrt{2} \\
+    x^4-4x^2+4 &=& 2 \\
+    x^4-4x^2+2 &=& 0
+  \end{eqnarray*}
+  Let $f(x)=x^4-4x^2+2$. By Eisenstein ($p=2$), $f(x)$ is irreducible over $\Q$ and is
+  thus the minimum polynomial for $\Q(\sstwo)$. Now, using the quadratic formula twice,
+  we get the four roots for $f(x)$:
+
+  $r_1=\sstwo$ \\
+  $r_2=-\sstwo$ \\
+  $r_3=\ssmtwo$ \\
+  $r_4=-\ssmtwo$
+
+  Note that:
+  \[\left(\sstwo\right)^2=2+\sqrt{2}\]
+  and so $\sqrt{2}=-2+\left(\sstwo\right)^2\in\Q(\sstwo)$.
+  
+  Furthermore, note that:
+  \[r_1r_3=\left(\sstwo\right)\left(\ssmtwo\right)=\sqrt{2}\]
+  Thus:
+  \[\ssmtwo=\frac{\sqrt{2}}{\sstwo}\in\Q(\sstwo)\]
+  This means that all four of the roots are in $\Q(\sstwo)$ and thus $\Q(\sstwo)$ is the
+  splitting field for $f(x)$ over $\Q$.
+
+  Therefore $K/F$ is a Galois extension.
+
+  $f(x)$ is already depressed with $p=-4$, $q=0$, and $r=2$. Thus, the resolvant is:
+  \[h(x)=x^3+8x^2+8x=x(x^2+8x+8)\]
+  with roots $0$ and $-4\pm2\sqrt{2}$. We are only concerned about the non-rational
+  part so:
+
+  $\o_1=0=(r_1+r_2)(r_3+r_3)\in\Q$ \\
+  $\o_2=\sqrt{2}=(r_1+r_3)(r_2+r_4)\notin\Q$ \\
+  $\o_2=-\sqrt{2}=(r_1+r_4)(r_2+r_3)\notin\Q$
+
+  So $\Gal(K/F)$ fixes $\o_1$ and thus $\Gal(K/F)\le D_8$. Since the dimension of the
+  extension is $4$ it cannot be all of $D_8$ and so it is either $\Z/4\Z$ or $V$. But
+  there are $4$ distinct roots so we know that $\Gal(K/F)$ has a 4 cycle, as well as a
+  two cycle for conjugation of the roots, so the non-cyclic $V$ is out. Therefore,
+  $\Gal(K/F)\cong\Z/4\Z$.
+
+\item Suppose that $K$ is the splitting field over $\Q$ of a cubic $f(x)\in\Q[x]$ such
+  that $\Gal(K/\Q)\cong\Z/3\Z$. Prove that all the roots of $f(x)$ are real.
+
+  We have the following extension:
+
+  \begin{tikzpicture}
+    \node (a) at (0,0) {$\Q$};
+    \node (b) at (0,2) {$K$};
+    \draw (a) to node [right] {$3$} (b);
+  \end{tikzpicture}
+
+  Since $\Z/3\Z$ has no proper subgroups, there are no intermediate fields. Now, ABC
+  that $f(x)$ has two complex conjugate roots. This would require a subgroup of
+  $\Gal(K/\Q)$ of order two to cover conjugation of the complex roots, and thus an
+  intermediate field of dimension 2, which is impossible because $2\nmid 3$.
+
+  Thus, all of the roots of $f(x)$ must be real.
+
+\item Find the Galois group for the splitting field of $x^4+2$ over $\Q$.
+
+  By Eisenstein ($p=2$), $x^4+2$ is irreducible over $\Q$. It is also already depressed
+  with $p=q=0$ and $r=2$. Thus, the corresponding resolvant cubic is:
+  \[x^3-8x=x(x^2-8)\]
+  which has the following roots:
+
+  $\o_1=0=(r_1+r_2)(r_3+r_3)\in\Q$ \\
+  $\o_2=\sqrt{8}=(r_1+r_3)(r_2+r_4)\notin\Q$ \\
+  $\o_2=-\sqrt{8}=(r_1+r_4)(r_2+r_3)\notin\Q$
+
+  So $\Gal(K/F)$ fixes $\o_1$ and thus $\Gal(K/F)\le D_8$
+
+  Consider $(34)\in D_8$:
+
+  $(34)\o_2=(r_1+r_4)(r_2+r_3)=\o_3$ \\
+  $(34)\o_3=(r_1+r_3)(r_2+r_4)=\o_2$
+
+  Thus, $(34)\in\Gal(K/F)$.
+
+  Now, consider $(1324)\in\Gal(K/F)$:
+
+  $(1324)\o_2=(r_3+r_2)(r_4+r_1)=\o_3$ \\
+  $(1324)\o_3=(r_3+r_1)(r_4+r_2)=\o_2$
+
+  Thus $(1324)\in\Gal(K/F)$.
+
+  Therefore, $\Gal(K/F)=\left<(34),(1324)\right>=D_8$.
+
+\item Suppose $K$ is an extension of $\Q$ such that $[K:\Q]=4$ and assume there are no
+  proper non-trivial intermediate fields $L$ with $\Q\subset L\subset K$. Show that
+  $K/Q$ is not Galois.
+
+  The lack of proper intermediate fields for a quartic indicates a missing field
+  extension of dimension 2, corresponding to a missing Galois group of order 2 such as
+  conjugation of complex roots. This occurs when the complex roots are not included in
+  the field extension - i.e, the extension is $\Q(\sqrt[4]{d})$ and not the full
+  $\Q(\sqrt[4]{d},i)$. Thus $K$ is not a splitting field for the minimum polynomial of
+  the extension, and therefore the extension is not Galois.
+\end{enumerate}
+
+\end{document}

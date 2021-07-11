@@ -1,0 +1,88 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\newcommand{\cycle}[1]{\left<#1\right>}
+\newcommand{\p}{\phi}
+\begin{document}
+\section*{Infinite Cyclic Group Structure}
+
+\begin{definition}
+  Let $n\in\Z$:
+  \[nZ=\cycle{n}=\{nm\mid m\in\Z\}\]
+\end{definition}
+
+\begin{theorem}
+  \listbreak
+  \[\forall\,n\in\Z,n\Z\le\Z\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $n\in Z$ \\
+  Assume $a,b\in n\Z$ \\
+  $\exists\,h,k\in\Z,a=nh$ and $b=nk$ \\
+  $n\Z\subseteq\Z$, so $b=nk\in\Z$ \\
+  But $\Z$ is a group, so $-b=-nk\in\Z$ \\
+  $a-b=nh-nk=n(h-k)$ \\
+  But $h-k\in\Z$ \\
+  $a-b\in n\Z$ \\
+  $\therefore$ by the subgroup test, $n\Z\le\Z$.
+\end{theproof}
+
+\begin{corollary}
+  $\forall\,n\in\Z,n\Z$ is the smallest subgroup of $\Z$ containing $n$.
+\end{corollary}
+
+\begin{corollary}
+  $n\Z$ are the only subgroups of $\Z$:
+  \[H\le G\iff\exists\,n\in\Z,H=n\Z\]
+\end{corollary}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+    \begin{minipage}[t]{2.5in}
+    \item $\implies$ Assume $H\le G$
+      
+      $H$ is cyclic \\
+      $\exists\,n\in\Z,H=\cycle{n}$ \\
+      $\therefore H=n\Z$
+    \end{minipage}
+    \begin{minipage}[t]{2.5in}
+    \item $\impliedby$ Assume $\exists\,n\in\Z,H=n\Z$
+
+      But $n\Z\le\Z$ \\
+      $\therefore H\le\Z$
+    \end{minipage}
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $G$ be infinite cyclic. All subgroups of $G$ must be isomorphic to
+  some $n\Z$:
+  \[H\le G\iff H\subseteq G\ \mbox{and}\ \exists\,n\in\Z,H\simeq n\Z\]
+\end{theorem}
+\newpage
+\begin{theproof}
+  \listbreak
+  \begin{description}
+    \item $\implies$ Assume $H\le G$
+      
+      $H\subseteq G$ \\
+      $G\simeq\Z$ \\
+      $\exists\,\phi:G\to\Z,\p$ is an isomorphism \\
+      $H\simeq\p[H]\le\Z$ \\
+      $\exists\,n\in\Z,\p[H]=n\Z$ \\
+      $\therefore\exists\,n\in\Z,H\simeq n\Z$
+
+    \item $\impliedby$ Assume $H\subseteq G$ and $\exists\,n\in\Z,H\simeq n\Z$
+
+      $\Z\simeq G$ \\
+      $\exists\,\phi:\Z\to G,\p$ is an isomorphism \\
+      $n\Z\le\Z$ \\
+      $H=\p[n\Z]\le\p[\Z]=G$ \\
+      $\therefore H\le G$
+  \end{description}
+\end{theproof}
+
+\end{document}

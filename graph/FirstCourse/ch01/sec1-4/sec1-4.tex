@@ -1,0 +1,172 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\begin{document}
+\section*{1.4: Multigraphs and Digraphs}
+
+\begin{enumerate}[start=29]
+\item Let \(S=\set{2,3,4,7,11,13}\).
+  \begin{enumerate}
+    \item Construct the multigraph \(M\) whose vertex set is \(S\) and where \(ij\) is an edge for distinct
+      elements \(i\) and \(j\) in \(S\) whenever \(i+j\) and \(ij\) is an edge whenever \(\abs{i-j}\in S\).  In
+      other words, \(i\) and \(j\) are joined by two edges if both \(i+j\in S\) and \(\abs{i-j}\in S\).
+
+      \bigskip
+
+      \begin{center}
+        \begin{tikzpicture}[every node/.style={labeled node}]
+          \cycleVnodes{\(2\),\(3\),\(4\),\(7\),\(11\),\(13\)}{(0,0)}{1in}{90}{};
+          \draw (1) edge (3) edge (5) edge (6);
+          \draw (2) edge (3) edge (4);
+          \draw (3) edge (4) edge [out=240,in=0] (4) edge (5);
+          \draw (4) edge (5);
+          \draw (5) edge (6);
+        \end{tikzpicture}
+      \end{center}
+
+    \item How are the problem and solution in (a) affected if we remove the word ``distinct.''
+
+      This allows for loop edges, so add a loop on vertex \(2\).
+
+      \bigskip
+
+      \begin{center}
+        \begin{tikzpicture}[every node/.style={labeled node}]
+          \cycleVnodes{\(2\),\(3\),\(4\),\(7\),\(11\),\(13\)}{(0,0)}{1in}{90}{};
+          \draw (1) edge (3) edge (5) edge (6);
+          \draw (2) edge (3) edge (4);
+          \draw (3) edge (4) edge [out=240,in=0] (4) edge (5);
+          \draw (4) edge (5);
+          \draw (5) edge (6);
+          \draw (1) edge [out=45,in=135,min distance=1in] (1);
+        \end{tikzpicture}
+      \end{center}
+  \end{enumerate}
+
+  \bigskip
+
+\item Consider the twelve configurations \(c_i,1\le i\le12\), in Figure 1.38.  Draw the digraph \(D\), where
+  \(V(D)=\set{c_1,c_2,\ldots,c_{12}}\) and where \((c_i,c_j)\) is a directed edge of \(D\) if it is possible to obtain
+  \(c_j\) by rotating the configuration \(c_i\) either \(90^{\circ}\) or \(180^{\circ}\) clockwise about the midpoint of
+  the checkerboard.
+  
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}[every node/.style={labeled node,minimum size=1cm},>=directed]
+      \cycleVnodes{
+        \(c_1\),\(c_2\),\(c_3\),\(c_4\),\(c_5\),\(c_6\),\(c_7\),\(c_8\),\(c_9\),\(c_{10}\),\(c_{11}\),\(c_{12}\)
+      }{(0,0)}{2in}{90}{c};
+      \draw [->] (c1) edge (c4) edge [bend right=20] (c7);
+      \draw [->] (c2) edge (c5) edge [bend right=20] (c9);
+      \draw [->] (c3) edge (c6) edge [bend right=20] (c8);
+      \draw [->] (c4) edge (c7) edge [bend right=20] (c10);
+      \draw [->] (c5) edge (c9) edge [bend right=20] (c12);
+      \draw [->] (c6) edge (c8) edge [bend right=20] (c11);
+      \draw [->] (c7) edge (c10) edge [bend right=20] (c1);
+      \draw [->] (c8) edge (c11) edge [bend right=20] (c3);
+      \draw [->] (c9) edge (c12) edge [bend right=20] (c2);
+      \draw [->] (c10) edge (c1) edge [bend right=20] (c4);
+      \draw [->] (c11) edge (c3) edge [bend right=20] (c6);
+      \draw [->] (c12) edge (c2) edge [bend right=20] (c5);
+    \end{tikzpicture}
+  \end{center}
+
+  \bigskip
+
+\item Using the twelve configurations in Figure 1.38, define a transformation different from the one described in
+  Exercise 1.30 which can be modeled by a digraph but not by a graph.
+
+  First, move any coin in the upper row to the right (if possible), and then move the leftmost coin in the lower
+  row up (if possible).
+  
+  \bigskip
+
+  \begin{center}
+    \begin{tikzpicture}[every node/.style={labeled node,minimum size=1cm},>=directed]
+      \cycleVnodes{
+        \(c_1\),\(c_2\),\(c_3\),\(c_4\),\(c_5\),\(c_6\),\(c_7\),\(c_8\),\(c_9\),\(c_{10}\),\(c_{11}\),\(c_{12}\)
+      }{(0,0)}{2in}{90}{c};
+      \draw [->] (c1) edge (c3);
+      \draw [->] (c2) edge (c5);
+      \draw [->] (c3) edge [out=30,in=330,min distance=1in] (c3);
+      \draw [->] (c4) edge (c5);
+      \draw [->] (c5) edge [out=30,in=330,min distance=1in] (c5);
+      \draw [->] (c6) edge (c7);
+      \draw [->] (c7) edge (c9);
+      \draw [->] (c8) edge (c11);
+      \draw [->] (c9) edge [out=150,in=210,min distance=1in] (c9);
+      \draw [->] (c10) edge (c11);
+      \draw [->] (c11) edge [out=150,in=210,min distance=1in] (c11);
+      \draw [->] (c12) edge (c1);
+    \end{tikzpicture}
+  \end{center}
+
+  \bigskip
+
+\item Let \(S\) and \(A\) be two finite nonempty sets of integers.  Define a digraph \(D\) with \(V(D)=A\), where
+  \((x,y)\) is an arc of \(D\) if \(x\ne y\) and \(y-x\in S\).
+  \begin{enumerate}
+  \item Draw the digraph \(D\) for \(A=\set{0,1,2,3,4}\) and \(S=\set{-2,1,2,4}\).
+
+    \bigskip
+
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node,minimum size=1cm},>=directed]
+        \cycleVnodes{\(0\),\(1\),\(2\),\(3\),\(4\)}{(0,0)}{1.5in}{90}{n};
+        \draw [->] (n1) edge (n2) edge [bend right=10] (n3) edge (n5);
+        \draw [->] (n2) edge (n3) edge [bend right=10] (n4);
+        \draw [->] (n3) edge [bend right=10] (n1) edge (n4) edge [bend right=10] (n5);
+        \draw [->] (n4) edge [bend right=10] (n2) edge (n5);
+        \draw [->] (n5) edge [bend right=10] (n3);
+      \end{tikzpicture}
+    \end{center}
+
+    \bigskip
+
+  \item What can be said about \(D\) if \(A\) and \(S\) consist only of odd integers?
+
+    \(D\) will be empty because the difference of two odds is always even.
+
+  \item How can the question in (b) be generalized?
+
+    \(D\) will be empty whenever \(S\) is all odd integers and \(A\) is either all odd or all even integers.
+
+  \item If \(\abs{A}=\abs{S}=5\), how large can the size of \(D\) be?
+
+    \(m=14\)
+
+    For example: \(A=\set{0,1,2,3,4}\) and \(S=\set{-1,1,2,3,4}\).
+
+    \bigskip
+
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node,minimum size=1cm},>=directed]
+        \cycleVnodes{\(0\),\(1\),\(2\),\(3\),\(4\)}{(0,0)}{2in}{90}{n};
+        \draw [->] (n1) edge [bend right=10] (n2) edge (n3) edge (n4) edge (n5);
+        \draw [->] (n2) edge [bend right=10] (n1) edge [bend right=10] (n3) edge (n4) edge (n5);
+        \draw [->] (n3) edge [bend right=10] (n2) edge [bend right=10] (n4) edge (n5);
+        \draw [->] (n4) edge [bend right=10] (n3) edge [bend right=10] (n5);
+        \draw [->] (n5) edge [bend right=10] (n4);
+      \end{tikzpicture}
+    \end{center}
+  \end{enumerate}
+
+  \bigskip
+
+\item A digraph \(D\) has vertex set \(\set{-3,3,6,12}\) and \((i,j)\in D\) if \(i\ne j\) and \(i\mid j\), that is,
+  \(j\) is a multiple of \(i\).  Draw the digraph \(D\).
+    \bigskip
+
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node,minimum size=1cm},>=directed]
+        \cycleVnodes{\(-3\),\(3\),\(6\),\(12\)}{(0,0)}{2in}{90}{n};
+        \draw [->] (n1) edge [bend right=10] (n2) edge (n3) edge (n4);
+        \draw [->] (n2) edge [bend right=10] (n1) edge (n3) edge (n4);
+        \draw [->] (n3) edge (n4);
+      \end{tikzpicture}
+    \end{center}
+\end{enumerate}
+
+\end{document}

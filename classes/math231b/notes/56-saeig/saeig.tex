@@ -1,0 +1,84 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\newcommand{\p}{\rho}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\mb}{\mathcal{B}}
+\begin{document}
+\section*{Eigenvalues of Self-adjoint Operators}
+
+\begin{theorem}
+  Let $A$ be a self-adjoint operator on a Hilbert space $H$:
+
+  \qquad All of the eigenvalues for $A$ are real.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\l$ is an eigenvalue of $A$. \\
+  $\exists\,\vx\ne\vo$ such that $A\vx=\l\vx$.
+
+  $\inner{A\vx,\vx}=\inner{\l\vx,\vx}=\l\norm{\vx}^2$
+
+  $\inner{\vx,A\vx}=\inner{\vx,\l\vx}=\conj{\l}\norm{\vx}^2$
+
+  But $A$ is self-adjoint, and so $\inner{A\vx,\vx}=\inner{\vx,A\vx}$. \\
+  $\l\norm{\vx}^2=\conj{\l}\norm{\vx}^2$ \\
+  $\l=\conj{\l}$
+
+  $\therefore\l\in\R$.
+\end{theproof}
+
+\begin{theorem}
+  Let $A$ be a bounded self-adjoint operator on a Hilbert space $H$:
+  \[r(A)=\norm{A}\]
+\end{theorem}
+
+\begin{theproof}
+  It is already shown that $r(A)\le\norm{A}$, so it suffices to show that
+  $\exists\,\l\in\o(A)$ such that $\abs{\l}=\norm{A}$.
+
+  It is already shown that $\norm{A}=\sup_{\norm{\vx}=1}\abs{\inner{A\vx,\vx}}$
+  and $\inner{A\vx,\vx}\in\R$. \\
+  Thus, there exists a sequence $(\vx_n)$ in $H$ such that $\norm{\vx_n}=1$
+  and $\abs{\inner{A\vx_n,\vx_n}}\to\norm{A}$.
+
+  Assume $\inner{A\vx,\vx}\to\l$ where $\abs{\l}=\norm{A}$. \\
+  Since $A=A^*$ and $\l\in\R$:
+  \begin{eqnarray*}
+    \norm{A\vx_n-\l\vx_n} &=& \inner{A\vx_n-\l\vx_n,A\vx_n-\l\vx_n} \\
+    &=& \inner{A\vx_n,A\vx_n}-\inner{A\vx_n,\l\vx_n}-\inner{\l\vx_n,A\vx_n}
+    +\inner{\l\vx_n,\l\vx_n} \\
+    &=& \norm{A\vx_n}^2+\l^2\norm{vx_n}^2-\l\inner{A\vx_n,\vx_n}-
+    \l\inner{A\vx_n,\vx_n} \\
+    &=& \norm{A\vx_n}^2+\l^2-2\l\inner{A\vx_n,\vx_n} \\
+    &\le& \norm{A}^2\norm{\vx_n}^2+\norm{A}^2-2\l\inner{A\vx_n,\vx_n} \\
+    &\le& \norm{A}^2+\norm{A}^2-2\l\inner{A\vx_n,\vx_n} \\
+    &\le& 2\norm{A}^2-2\l\inner{A\vx_n,\vx_n} \\
+    &\to& 2\norm{A}^2-2\l^2 \\
+    &=& 2\norm{A}^2-2\norm{A}^2 \\
+    &=& 0
+  \end{eqnarray*}
+  Thus, $A\vx_n\to\l\vx_n$.
+
+  ABC: $\l\in\p(A)$. \\  
+  $\norm{A}\le\abs{\l}$ \\
+  $A\in\mb(H)$ and $\norm{A}\le\abs{\l}\implies A_{\l}=(A-\l I)^{-1}\in\mb(H)$.
+
+  $1=\norm{\vx}=\norm{I\vx}=\norm{(A-\l I)^{-1}(A-\l I)\vx}\le
+  \norm{(A-\l I)^{-1}}\norm{(A-\l I)\vx}\to0$
+
+  CONTRADICTION!
+
+  Thus, $\l\notin\p(A)$ and so $\l\in\o(A)$ and $\abs{\l}=\norm{A}$.
+
+  $\therefore r(A)=\sup_{\norm{\vx}=1}\{\abs{\l}\mid\l\in\o(A)\}=\abs{\l}=
+  \norm{A}$.
+\end{theproof}
+
+\end{document}

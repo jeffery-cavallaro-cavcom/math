@@ -1,0 +1,30 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\newcommand{\F}{\mathbb{F}}
+\begin{document}
+\section*{Direct Products}
+
+\begin{definition}[Direct (Cartesian) Product]
+  Let $E_1,E_2,\ldots E_n$ be an ordered collection of vector spaces. The
+  \emph{direct (Cartesian) product} of these spaces is given by:
+  \[\prod_{k=1}^nE_k=E_1\times E_2\times\cdots\times E_n=
+  \{(x_k)\mid x_k\in E_k\}=\{(x_1,x_2,\ldots,x_n)\mid x_k\in E_k\}\]
+\end{definition}
+
+This definition can be extended to allow for a countable number of vector
+spaces:
+\[\prod_{k=1}^{\infty}E_k=E_1\times E_2\times\cdots=\{(x_k)\mid x_k\in E_k\}=
+\{(x_1,x_2,\ldots)\mid x_k\in E_k\}\]
+
+And this definition can be further extended to allow for an uncountable number
+of vector spaces via the use of functions. Let ${E_j\mid j\in J}$ be an
+indexed family of vector spaces:
+\[\prod_{j\in J}E_j=\{x:J\to\bigcup_{j\in J}E_j\mid x(j)\in E_j\}\]
+Thus, direct products of vector spaces on the same field $\F$ are vector spaces
+using the standard function operations:
+\[(x+y)(j)=x(j)+_j y(j)\]
+\[(\l x)(j)=\l x(j)\]
+
+\end{document}

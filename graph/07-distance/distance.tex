@@ -1,0 +1,113 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\usepackage{adjustbox}
+\pagestyle{empty}
+\begin{document}
+
+\section*{Distance}
+
+\begin{definition}[Distance]
+  Let \(G\) be a graph and let \(u,v\in V(G)\) such that \(u\) and \(v\) are connected:
+  \begin{itemize}
+  \item The \emph{distance} between \(u\) and \(v\), denoted by \(d_G(u,v)\) or \(d(u,v)\), is the length of the
+    shortest \(u-v\) path:
+    \[d_G(u,v)=d(u,v)=\min\setb{\abs{P}}{P\ \text{is a}\ u-v\ \text{path in}\ G}\]
+  \item To say that a \(u-v\) path \(P\) in \(G\) is \emph{geodesic} means that:
+    \[\abs{P}=d_G(u,v)\]
+  \item The \emph{diameter} of \(G\) is the greatest distance between any two vertices in \(G\):
+    \[\diam(G)=\max\setb{d_G(u,v)}{u,v\in V(G)}\]
+  \end{itemize}
+\end{definition}
+
+For a graph \(G\) or order \(n\):
+\begin{itemize}
+\item \(d_G(u,v)=0 \iff u=v\)
+\item \(d_G(u,v)=1 \iff uv\in E(G)\)
+\item \(0\le d(u,v)<n\)
+\end{itemize}
+
+\begin{example}
+  \begin{minipage}{4in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{0.75in}{90}{}
+        \draw (1) edge (2) edge (4) edge (5);
+        \draw (2) edge (4) edge (5);
+        \draw (3) edge (4);
+      \end{tikzpicture}
+      
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \(\diam(G)=3\)
+
+    \bigskip
+
+    \(*=\) geodesic
+  \end{minipage}
+
+  \bigskip
+
+  \begin{adjustbox}{width=\textwidth}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+      \(a-b\) & \(a-c\) & \(a-d\) & \(a-e\) &\(b-c\) & \(b-d\) & \(b-e\) & \(c-d\) & \(c-e\) & \(d-e\) \\
+      \hline
+      \((a,b)^*\) & \((a,b,d,c)\) & \((a,b,d)\) & \((a,b,e)\) & \((b,a,d,c)\) & \((b,a,d)\) & \((b,a,e)\) &
+      \((c,d)^*\) &
+      \((c,d,a,b,e)\) & \((d,a,b,e)\) \\
+      \((a,d,b)\) & \((a,d,c)^*\) & \((a,d)^*\) & \((a,d,b,e)\) & \((b,d,c)^*\) & \((b,d)^*\) & \((b,d,a,e)\) & &
+      \((c,d,a,e)^*\) & \((d,a,e)^*\) \\
+      \((a,e,b)\) & \((a,e,b,d,c)\) & \((a,e,b,d)\) & \((a,e)^*\) & \((b,e,a,d,c)\) & \((b,e,a,d)\) & \((b,e)^*\) & &
+      \((c,d,b,a,e)\) & \((d,b,a,e)\) \\
+      & & & & & & & & \((c,d,b,e)^*\) & \((d,b,e)^*\) \\
+      \hline
+      \(d=1\) & \(d=2\) & \(d=1\) & \(d=1\) & \(d=2\) & \(d=1\) & \(d=1\) & \(d=1\) & \(d=3\) & \(d=2\) \\
+    \end{tabular}
+  \end{adjustbox}
+\end{example}
+
+\bigskip
+
+\begin{theorem}
+  Let \(G\) be a graph with \(u,v\in V(G)\) and let \(P=(u=v_0,v_1,\ldots,v_k=v)\) be a \(u-v\) geodesic in \(G\).
+  For all \(i\) such that \(0\le i\le k\):
+  \[d(u,v_i)=i\]
+\end{theorem}
+
+\begin{proof}
+  Assume \(0\le i\le k\).
+
+  Since \((u=v_0,v_1,\ldots,v_i)\) is a \(u-v_i\) path of length \(i\) in \(G\), it must be that case that
+  \(d(u,v_i)\le i\).
+
+  ABC: There exists a shorter \(u-v_i\) path in \(G\): \((u=w_0,w_1,\ldots,w_{\ell}=v_i)\) for \(\ell<i\).
+
+  Let \(W=(u=w_0,w_1,\ldots,w_{\ell}=v_i,\ldots v_k=v)\).  \(W\) is a \(u-v\) walk in \(G\) of length:
+  \[\ell+(k-i)=k-(i-\ell)<k\]
+  So there exists a \(u-v\) path in \(G\) of length \(<k\), contradicting the minimality of \(P\).
+
+  \(\therefore d(u,v_i)=i\)
+\end{proof}
+
+\begin{theorem}
+  Let \(G\) be a graph with \(u,v\in V(G)\) such that \(d(u,v)=\diam(G)\).  \(\forall\,w\in V(G),w\ne u,v\):
+  \begin{quote}
+    \(v\) appears in no \(u-w\) geodesic in \(G\).
+  \end{quote}
+\end{theorem}
+
+\begin{proof}
+  Assume \(w\in V(G),w\ne u,v\) and \(P\) is a \(u-w\) geodesic in \(G\).
+
+  ABC: \(v\) is contained in \(P\).
+
+  Then \(P=(u,\ldots,v,\ldots,w)\) and the \(u-v\) subpath must be geodesic.  But \(u,v\ne w\), and so
+  \(d(u,w)>d(u,v)\), contradicting the maximality of \(d(u,v)\).
+
+  \(\therefore v\) cannot appear in any \(u-w\) geodesic in \(G\).
+\end{proof}
+
+\end{document}
+

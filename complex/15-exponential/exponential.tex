@@ -1,0 +1,171 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+\usepackage{array}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\renewcommand{\O}{\Theta}
+\newcommand{\Arg}[1]{\mathrm{Arg}\,#1}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Exponential Form}
+\begin{figure}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw [<->] (-3,0) -- (3,0);
+\draw [<->] (0,-3) -- (0,3);
+\draw [fill=black] (1.5,2) circle [radius=0.05];
+\draw [->] (0,0) -- (1.5,2);
+\draw [dashed] (1.5,0) -- (1.5,2);
+\draw [dashed] (0,2) -- (1.5,2);
+\node [right] at (1.5,2) {$z=x+iy$};
+\node [below] at (0.75,0) {$x$};
+\node [right] at (1.5,1) {$y$};
+\node at (0.4,0.25) {$\o$};
+\node at (0.6,1.1) {$r$};
+\node [below right] at (5,2) {$\begin{array}{l}
+    r=\sqrt{x^2+y^2}=\abs{z}\ne0 \\
+\\
+    x=r\cos{\o}=\abs{z}\cos{\o} \\
+\\
+    y=r\sin{\o}=\abs{z}\sin{\o} \\
+\\
+    \tan\o = \frac{y}{x} \\
+\end{array}$};
+\end{tikzpicture}
+\end{figure}
+Note that the calculation for $\o$ depends on quadrant.
+
+\begin{definition}
+Let $z\in\C$. The polar and exponential forms for $z$ are given by:
+\[z=x+iy=r\cos\o+ir\sin\o=r(\cos\o+isin\o)=\abs{z}(\cos\o+isin\o)=
+    \abs{z}e^{i\o}\]
+\end{definition}
+
+\begin{definition}
+Let $z=\abs{z}e^{i\o}$. $\o$ is called the \emph{argument} of $z$. The set of
+all coterminal angles of $\o$, denoted $\arg{z}$, is given by:
+\[\arg{z}=\{\o+2\pi n\mid n\in\Z\}\]
+For convenience, this can be shortened to:
+\[\arg{z}=\o+2\pi n\]
+with the understanding that $\arg{z}$ is actually a set and $n\in\Z$.
+
+The \emph{principle value} of $\arg{z}$, denoted $\Arg{z}$, is the value
+$\O\in\arg{z}$ such that:
+\[\O\in(-\pi,\pi]\]
+Thus:
+\[\arg{z}=\Arg{z}+2\pi n\]
+\end{definition}
+
+\begin{example}
+Let $z=-1-i\sqrt{3}$.
+\[\abs{z}=\sqrt{1^2+(\sqrt{3})^2}=\sqrt{1+3}=\sqrt{4}=2\]
+\[\o=\arctan{\left(\frac{-\sqrt{3}}{-1}\right)}=\arctan{\sqrt{3}}=
+    \frac{4\pi}{3}\]
+\[\O=\frac{4\pi}{3}-2\pi=-\frac{2\pi}{3}\]
+\[\arg{z}=\left\{-\frac{2\pi}{3}+2\pi n\mid n\in\Z\right\}\]
+\[z=e^{-\frac{2\pi}{3}+2\pi n}=e^{\frac{2\pi}{3}(3n-1)}\]
+\end{example}
+
+\begin{theorem}
+\[\arg{\conj{z}}=-\arg{z}=\arg{\frac{1}{z}}\]
+\end{theorem}
+
+This first part is obvious from the following diagram:
+
+\begin{figure}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw [<->] (-3,0) -- (3,0);
+\draw [<->] (0,-3) -- (0,3);
+\draw [fill=black] (1.5,2) circle [radius=0.05];
+\draw [fill=black] (1.5,-2) circle [radius=0.05];
+\draw [dashed] (0,0) -- (1.5,2);
+\draw [dashed] (0,0) -- (1.5,-2);
+\draw [dashed] (1.5,2) -- (1.5,-2);
+\node [right] at (1.5,2) {$z$};
+\node [right] at (1.5,-2) {$\conj{z}$};
+\node at (0.5,0.3) {$\o$};
+\node at (0.6,-0.3) {$-\o$};
+\end{tikzpicture}
+\end{figure}
+
+\begin{theproof}
+Let $z=\abs{z}e^{i\o}$ \\
+$\conj{z}=\abs{\conj{z}}e^{-i\o}=\abs{z}e^{-i\o}$ \\
+$\Arg{z}=-\Arg{\conj{z}}$ \\
+$\Arg{\conj{z}}+2\pi n=-\Arg{z}+2\pi n$ \\
+$\therefore \arg{\conj{z}}=-\arg{z}$ \\
+
+$\frac{1}{z}=\frac{1}{\abs{z}e^{i\o}}=\frac{1}{\abs{z}}e^{-i\o}$ \\
+$\Arg{\frac{1}{z}}=-\Arg{z}=\Arg{\conj{z}}$ \\
+$\Arg{\frac{1}{z}}+2\pi n=\Arg{\conj{z}}+2\pi n$ \\
+$\therefore \arg{\frac{1}{z}}=\arg{\conj{z}}$ \\
+\end{theproof}
+
+\begin{theorem}
+Let $z_1=\abs{z_1}e^{i\o_1}$ and $z_2=\abs{z_2}e^{i\o_2}$:
+\begin{enumerate}
+\item $\arg{(z_1z_2)}=\o_1+\o_2+2\pi n$
+\item $\arg{\left(\frac{z_1}{z_2}\right)}=\o_1-\o_2+2\pi n$
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item $\arg{(z_1z_2)}=\arg{\left(\abs{z_1}e^{i\o_1}\abs{z_2}e^{i\o_2}\right)}=
+    \arg{\left(\abs{z_1}\abs{z_2}e^{i(\o_1+\o_2)}\right)}=
+    \o_1+\o_2+2\pi n$
+
+\item $\arg{\left(\frac{z_1}{z_2}\right)}=
+    \arg{\left(\frac{\abs{z_1}e^{i\o_1}}{\abs{z_2}e^{i\o_2}}\right)}=
+    \arg{\left(\frac{\abs{z_1}}{\abs{z_2}}e^{i(\o_1-\o_2)}\right)}=
+    \o_1-\o_2+2\pi n$
+\end{enumerate}
+\end{theproof}
+
+\begin{example}
+Let $z_1=i$ and $z_2=-1+i$
+
+$z_1=e^{i\frac{\pi}{2}}$ and $z_2=\sqrt{2}e^{i\frac{3\pi}{4}}$
+
+$\o_1+\o_2=\frac{\pi}{2}+\frac{3\pi}{4}=\frac{5\pi}{4}$
+
+$\Arg{(z_1z_2)}=\frac{5\pi}{4}-2\pi=-\frac{3\pi}{4}$
+
+$\arg{(z_1z_2)}=-\frac{3\pi}{4}+2\pi n$
+\end{example}
+
+\begin{theorem}
+  Let $z=e^{i\o}$:
+  \[z^k+\frac{1}{z^k}=2\cos{k\o}\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \[z^k+\frac{1}{z^k}=e^{ik\o}+e^{-ik\o}=2\cos{k\o}\]
+\end{theproof}
+
+Note that $z=z_0+Re^{i\o}$ is the circle with center $z_0$ and radius $R$:
+
+\begin{tikzpicture}
+\draw [<->] (-3,0) -- (3,0);
+\draw [<->] (0,-3) -- (0,3);
+\draw [fill=black] (1,0.5) circle [radius=0.05];
+\draw [fill=black] (1.75,1.8) circle [radius=0.05];
+\draw (1,0.5) circle [radius=1.5];
+\draw (1,0.5) circle [radius=1.5];
+\draw [->] (0,0) -- (1,0.5);
+\draw [->] (1,0.5) -- (1.75,1.8);
+\draw [->] (0,0) -- (1.75,1.8);
+\draw [dashed] (1,0.5) -- (3,0.5);
+\node [below] at (1,0.5) {$z_0$};
+\node [above right] at (1.75,1.8) {$z$};
+\node at (1.3,0.7) {$\o$};
+\node at (1.6,1.0) {$R$};
+\node at (5,1) {$z=z_o+Re^{i\o}$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,126 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\rnk}{rank}
+\DeclareMathOperator{\Sp}{Sp}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 229 \\
+Homework \#6
+
+\bigskip
+
+\subsection*{7.1.1}
+
+Let $A=[a_{ij}]\in M_n$ be positive semidefinite. Why is $a_{ii}a_{jj}\ge\abs{a_{ij}}^2$
+for all distinct $i,j\in[n]$? If $A$ is positive definite, why is
+$a_{ii}a_{jj}>\abs{a_{ij}}^2$? If there is a pair of distinct indices $i,j$ such that
+$a_{ii}a_{jj}=\abs{a_{ij}}^2$, why is $A$ singular.
+
+Assume $i,j\in[n]$ and AWLOG $i\le j$. Consider the $\{i,j\}$ principal submatrix for
+$A$:
+\[A_{ij}=\begin{bmatrix} a_{ii} & a_{ij} \\ a_{ji} & a_{jj} \end{bmatrix}\]
+Note that $A_{ij}$ is also positive semidefinite and so $\det A_{ij}\ge0$. Hence:
+\[a_{ii}a_{jj}-a_{ij}a_{ji}\ge0\]
+But $A$ is also Hermitian, so $a_{ij}=\overline{a_{ji}}$, and so:
+\[a_{ii}a_{jj}-\abs{a_{ij}}^2\ge0\]
+and finally:
+\[a_{ii}a_{jj}\ge\abs{a_{ij}}^2\]
+
+For the positive definite case, use the same proof, only replace `$\ge$' with '$>$'.
+
+Now assume $a_{ii}a_{jj}=\abs{a_{ij}}^2$. Thus, there exists a $2\times2$ principle
+submatrix with a zero determinant. Use permutation matrices to make this submatrix
+a leading principle submatrix (which does not affect the eigenvalues), and call it
+$A_2$. Since $\det A_2=0$, we know that $0\in\o(A_2)$. Since $A_2$ is also positive
+semidefinite, $\o(A_2)\subseteq[0,\infty)$ and thus we can conclude that $\l_1(A_2)=0$.
+
+Now, using interlacing, it is the case that $0\le\l_1(A_3)\le\l_1(A_2)$ and so
+$\l_1(A_3)=0$. This can be continued all the way to $A_n$ and thus $A$ has a 0
+eigenvector.  Therefore, by the IMT, $A$ is singular.
+
+\newpage
+
+\subsection*{7.1.2}
+
+Let $A$ be a positive semidefinite matrix. Prove:
+
+$A$ has a zero entry on its main diagonal $\iff$ the corresponding entire row and
+column are zero.
+
+\begin{description}
+\item $\implies$ Assume $a_{ii}=0$
+
+  By the previous problem, for all $1\le j\le n$:
+  \[a_{ii}a_{jj}=0\ge\abs{a_{ij}}^2\]
+  And thus $a_{ij}=0$ for all $1\le j\le n$. But $A$ is Hermitian, so
+  $a_{ij}=\conj{a_{ji}}=0$ and so $a_{ji}=0$ for all $1\le j\le n$. Therefore, the
+  corresponding row and column are all zeros.
+
+\item $\impliedby$ Assume for given $i$ and all $1\le j\le n$ that $a_{ij}=a_{ji}=0$
+
+  Then clearly $a_{ii}=0$.
+\end{description}
+
+\subsection*{7.2.6}
+
+Let $A\in M_n$ for $n\ge2$ be Hermitian and let $B\in M_{n-1}$ be a leading principal
+submatrix of $A$. Prove: $B$ is positive semidefinite and $\rnk(B)=\rnk(A) \implies A$
+is positive semidefinite.
+
+Assume $B$ is positive semidefinite and $\rnk(B)=\rnk(A)$.
+
+Since the ranks are equal but $\dim(A)=\dim(B)+1$, $A$ has one more zero singular
+value than $B$. Since $B$ is positive semidefinite, and thus, Hermitian, and thus
+normal, $s_k=\abs{\l_k(B)}$ and so $a_A(0)=a_B(0)+1$.
+
+Now, by applying the interlacing theorem, we note that:
+\[\l_1(A)\le\l_1(B)\le\l_2(A)\le\l_2(B)\le\cdots\le\l_{n-1}(B)\le\l_n(A)\]
+However, since $B$ is positive semidefinite, all of the $\l_k(B)\ge0$, and thus
+all of the $\l_k(A)\ge0$ for $2\le k\le n$. And, sinc e $\Sp(A)$ has an additional $0$,
+we can conclude $\l_1=0$
+
+Thus $A$ is Hermitian and $\Sp(A)\subseteq[0,\infty)$ and therefore $A$ is positive
+semidefinite.
+
+\subsection*{7.3.3}
+
+Let $A=M_n$. Prove: $A$ has a zero singular value $\iff A$ has a zero eigenvector.
+
+$A$ has a zero singular value $\iff\det(A)=0\iff A$ has a
+zero eigenvector.
+
+Alternately, consider the proof done in class. Let $S$ be the set of singular
+matrices and use the operator norm to measure distance. Given a matrix $A$, the
+distance between $A$ and $S$ is given by the smallest singular value. Thus, the
+smallest singular values is zero $\iff$ $A\in S\iff A$ is singular $\iff A$ has a
+zero eigenvalue.
+
+\subsection*{7.4.13}
+
+Let $\norm{\cdot}$ be a self-adjoint norm and let $H_n$ be the set of all $n\times n$
+Hermitian matrices. Prove that the distance from a matrix $A$ to $H_n$ is given by:
+\[d(A)=\frac{1}{2}\norm{A-A^*}\]
+
+Assume $H\in H_n$:
+\[\norm{A-H}=\frac{1}{2}\norm{A-H}+\frac{1}{2}\norm{A-H}=
+\frac{1}{2}\norm{A-H}+\frac{1}{2}\norm{H-A}\]
+But $\norm{\cdot}$ is self-adjoint by assumption, so:
+\[\norm{A-H}=\frac{1}{2}\norm{A-H}+\frac{1}{2}\norm{(H-A)^*}=
+\frac{1}{2}\norm{A-H}+\frac{1}{2}\norm{H^*-A^*}\]
+But $H$ is Hermitian, so:
+\[\norm{A-H}=\frac{1}{2}\norm{A-H}+\frac{1}{2}\norm{H-A^*}\]
+Now, apply the triangle inequality:
+\[\norm{A-H}\ge\norm{\frac{1}{2}(A-H)+\frac{1}{2}(H-A^*)}=\frac{1}{2}\norm{A-A^*}\]
+So $d(A)\ge\frac{1}{2}\norm{A-A^*}$.
+
+Now, consider $A+A^*$ and note that:
+\[(A+A^*)^*=A^*+(A^*)^*=A^*+A=A+A^*\]
+So $A+A^*$ is Hermitian, and so is $\frac{1}{2}(A+A^*)$, so let $H=\frac{1}{2}(A+A^*)$:
+\[\norm{A-\frac{1}{2}(A+A^*)}=\norm{\frac{1}{2}(A-A^*)}=\frac{1}{2}\norm{A-A^*}\]
+$\therefore d(A)=\frac{1}{2}\norm{A-A^*}$
+\end{document}

@@ -1,0 +1,147 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Cayley-Hamilton}
+
+\begin{theorem}[Cayley-Hamilton]
+  Let $A\in M_n$ and $p_A(t)$ be its characteristic polynomial:
+  \[p_A(A)=A^n+a_{n-1}A^{n-1}+\cdots+a_1A+a_0I=0\]
+\end{theorem}
+
+\begin{example}
+  \newcommand{\A}{\begin{bmatrix} 3 & 1 \\ -2 & 0 \end{bmatrix}}
+  $A=\A$
+
+  $p_A(t)=t^2-3t+2$
+
+  $\A^2-3\A+2I=\begin{bmatrix} 7 & 3 \\ -6 & -2 \end{bmatrix} +
+  \begin{bmatrix} -9 & -3 \\ 6 & 0 \end{bmatrix} +
+  \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}=
+  \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$
+\end{example}
+
+\begin{lemma}
+  Let $S_1,\ldots,S_m\in UT(n)$ such that $(S_k)_{kk}=0$:
+  \[\prod_{k=1}^nS_k=0\]
+\end{lemma}
+
+\begin{example}
+  $\begin{bmatrix} 0 & 4 & 5 \\ 0 & 1 & 6 \\ 0 & 0 & 2 \end{bmatrix}
+  \begin{bmatrix} 3 & 7 & 8 \\ 0 & 0 & 9 \\ 0 & 0 & 4 \end{bmatrix}
+  \begin{bmatrix} 1 & 9 & 4 \\ 0 & -1 & 3 \\ 0 & 0 & 0 \end{bmatrix}=
+  \begin{bmatrix} 0 & 0 & 46 \\ 0 & 0 & 33 \\ 0 & 0 & 8 \end{bmatrix}
+  \begin{bmatrix} 1 & 9 & 4 \\ 0 & -1 & 3 \\ 0 & 0 & 0 \end{bmatrix}=
+  \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0\end{bmatrix}$
+\end{example}
+
+\begin{theproof}
+  Proof by induction on $n$:
+  \begin{description}
+  \item Base Case: $n=1$:
+
+    $S_1=\begin{bmatrix} 0 \end{bmatrix}$\hspace{2ex} (done).
+
+  \item Assume true for $n-1$
+
+  \item Consider $S_1,\ldots,S_n$
+
+    Let $T_1,\ldots,T_n$ be the corresponding leading principal $(n-1)x(n-1)$
+    matrices:
+    \begin{eqnarray*}
+    \prod_{k=1}^nS_k &=&
+    \left[\begin{array}{@{}ccc|c@{}}
+        & & & \\
+        & T_1 & & * \\
+        & & & \\
+        \hline
+        & 0 & & *
+      \end{array}\right]
+    \left[\begin{array}{@{}ccc|c@{}}
+        & & & \\
+        & T_2 & & * \\
+        & & & \\
+        \hline
+        & 0 & & *
+      \end{array}\right]
+    \cdots
+    \left[\begin{array}{@{}ccc|c@{}}
+        & & & \\
+        & T_{n-1} & & * \\
+        & & & \\
+        \hline
+        & 0 & & *
+      \end{array}\right]
+    \left[\begin{array}{@{}ccc|c@{}}
+        & & & \\
+        & T_n & & * \\
+        & & & \\
+        \hline
+        & 0 & & 0
+      \end{array}\right] \\
+    &=& \left[\begin{array}{@{}ccc|c@{}}
+        & & & \\
+        & \prod_{k=1}^{n-1}T_k & & * \\
+        & & & \\
+        \hline
+        & 0 & & *
+      \end{array}\right]
+    \left[\begin{array}{@{}ccc|c@{}}
+        & & & \\
+        & T_n & & * \\
+        & & & \\
+        \hline
+        & 0 & & 0
+      \end{array}\right] \\
+    &=& \left[\begin{array}{@{}ccc|c@{}}
+        & & & \\
+        & 0 & & * \\
+        & & & \\
+        \hline
+        & 0 & & *
+      \end{array}\right]
+    \left[\begin{array}{@{}ccc|c@{}}
+        & & & \\
+        & T_n & & * \\
+        & & & \\
+        \hline
+        & 0 & & 0
+      \end{array}\right]\hspace{2ex}\mbox{by inductive assumption} \\
+    &=& \left[\begin{array}{@{}ccc|c@{}}
+        & & & \\
+        & 0 & & 0 \\
+        & & & \\
+        \hline
+        & 0 & & 0
+      \end{array}\right]
+    \end{eqnarray*}
+  \end{description}
+\end{theproof}
+
+\begin{theproof}[Cayley-Hamilton]
+  By Schur Triangularization, $\exists\,T\in UT(n)$ such that:
+  \[A=UTU^*\]
+  for some unitary matrix $U$
+  
+  Let $T=\begin{bmatrix} t_{11} & & * \\ & \ddots & \\ 0 & & t_{nn}
+  \end{bmatrix}$
+  
+  Now, since characteristic polynomials for similar matrices are the same:
+  \[p_A(t)=p_T(t)=\prod_{k=1}^n(t-t_{kk})\]
+  \[p_A(A)=p_A(UTU^*)=Up_A(T)U*=U\left[\prod_{k=1}^n(T-t_{kk}I_n)\right]U^*=0
+  \hspace{2ex}\mbox{(by lemma)}\]
+\end{theproof}
+
+A consequence of Cayley-Hamilton is that given any $A\in M_n$ and any
+$k\in\Z^+$, $A^k$ is a polynomial of $A$ of degree atmost $n-1$.
+\newpage
+For example:
+
+$A=\begin{bmatrix} 3 & 1 \\ -2 & 0 \end{bmatrix}$
+
+$p_A(t)=t^2-3t+2$
+
+$p_A(A)=A^2-3A+2I=0$ so $A^2=3A-2I$
+
+$A^3=3A^2-2A=3(3A-2I)-2A=7A-6I$
+\end{document}

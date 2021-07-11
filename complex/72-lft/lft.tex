@@ -1,0 +1,75 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\p}{\phi}
+\begin{document}
+\section*{Linear Fractional Transformations}
+
+\begin{definition}
+  A \emph{linear fractional transformation}, also known as a \emph{mobius} or
+  \emph{bilinear} transformation, if a function of the form:
+  \[w=f(z)=\frac{az+b}{cz+d}\]
+  where:
+  \[\begin{vmatrix} a & b \\ c & d \end{vmatrix}=ad-bc\ne0\]
+\end{definition}
+
+\begin{theorem}
+  Let $f(z)=\frac{az+b}{cz+d}$ be a LFT on a domain $D$:
+  \[ad-bc=0\implies f(z)\ \mbox{is constant in}\ D\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $ad-bc=0$ \\
+  Assume $z_1,z_2\in D$ \\
+  \begin{eqnarray*}
+    f(z_1)-f(z_2) &=& \frac{az_1+b}{cz_1+d}-\frac{az_2+b}{cz_2+d} \\
+    &=& \frac{(az_1+b)(cz_2+d)-(az_2+b)(cz_1+d)}{(cz_1+d)(cz_2+d)} \\
+    &=& \frac{acz_1z_2+adz_1+bcz_2+bd-acz_1z_2-adz_2-bcz_1-bd}
+    {(cz_1+d)(cz_2+d)} \\
+    &=& \frac{(ad-bc)z_1-(ad-bc)z_2}{(cz_1+d)(cz_2+d)} \\
+    &=& 0
+  \end{eqnarray*}
+  So, $\forall\,z_1,z_2\in D,f(z_1)=f(z_2)$
+
+  $\therefore f(z)$ is constant on $D$.
+\end{theproof}
+
+\begin{theorem}
+  Let $\S$ be the binary algebraic structure of all LFT's under composition
+  and let $\p:\S\to M_2(\C)$ be defined by
+  $\p(s)=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$. $\p$ is an
+  isomorphism.
+\end{theorem}
+\newpage
+\begin{theproof}
+  Assume $s_1,s_2\in\S$
+  \begin{eqnarray*}
+    (s_1\circ s_2)(z) &=& \frac{a_1\left(\frac{a_2z+b}{c_2z+d}\right)+b_1}
+    {c_1\left(\frac{a_2z+b}{c_2z+d}\right)+d_1} \\
+    &=& \frac{a_1(a_2z+b_2)+b_1(c_2z+d_2)}{c_1(a_2z+b_2)+d_1(c_2z+d_2)} \\
+    &=& \frac{(a_1a_2+b_1c_2)z+(a_1b_2+b_1d_2)}
+    {(c_1a_2+d_1c_2)z+(c_1b_2+d_1d_2)} \\
+    &\in& \S
+  \end{eqnarray*}
+  $\therefore\p$ is well-defined and closed.
+
+  Clearly, $\p$ is bijective.
+
+  $\p(s_1\circ s_2)=\begin{bmatrix}
+  a_1a_2+b_1c_2 & a_1b_2+b_1d_2 \\
+  c_1a_2+d_1c_2 & c_1b_2+d_1d_2 \\
+  \end{bmatrix}=
+  \begin{bmatrix}
+    a_1 & b_1 \\ c_1 & d_1
+  \end{bmatrix}
+  \begin{bmatrix}
+    a_2 & b_2 \\ c_2 & d_2
+  \end{bmatrix}=\p(s_1)\p(s_2)$
+  
+  $\therefore\p$ is a homomorphism.
+
+  $\therefore\p$ is an isomorphism.
+\end{theproof}
+
+\end{document}

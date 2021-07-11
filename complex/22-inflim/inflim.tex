@@ -1,0 +1,142 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ecp}{\C_{\infty}}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\newcommand{\limz}{\lim_{z\to z_0}}
+\newcommand{\limi}{\lim_{z\to\infty}}
+\newcommand{\limo}{\lim_{z\to0}}
+\begin{document}
+\section*{Limits at Infinity}
+
+\begin{definition}
+  The \emph{extended complex plane}, denoted $\ecp$, is given by:
+  \[\ecp=\C\cup\{\infty\}\]
+\end{definition}
+
+Consider the unit sphere with the complex plane passing through the equator,
+thus intersecting along the unit circle. For each point $z\in\C$, a line through
+$z$ and the north pole $N$ defines a single point of intersection on the
+surface of the upper hemisphere of the sphere. Note that all points in the
+interior of the unit circle ($0\le\abs{z}<1$) correspond to $N$. All boundary
+points ($\abs{z}=1$) correspond to themselves. All points in the exterior
+($\abs{z}>1$) and close to the boundary correspond to points near the equator.
+As $\abs{z}$ increases, $P$ moves arbitrarily close to $N$. Thus, there is a
+correspondence between $N$ and $\infty$.
+
+\bigskip
+
+\begin{tikzpicture}
+  \draw (0,0) circle [radius=2];
+  \draw [dashed] (0,0) ellipse (2 and 1);
+  \draw [fill=black] (0,0) circle [radius=0.05];
+  \draw [fill=black] (0,2) circle [radius=0.05];
+  \node [below left] at (0,0) {$0$};
+  \node [above] at (0,2) {$N$};
+  \draw [dashed] (-5,-2.5) -- (3,-2.5) -- (6,3) -- (-2,3) -- cycle;
+  \draw [fill=black] (2,-2) circle [radius=0.05];
+  \node [right] at (2,-2) {$z$};
+  \draw [dashed] (2,-2) -- (0,2);
+  \draw [fill=black] (1,0) circle [radius=0.05];
+  \node [right] at (1,0) {$P$};
+  \node at (4,1.5) {$\C$};
+\end{tikzpicture}
+
+\bigskip
+
+Such a sphere is referred to as a \emph{Riemann sphere}.
+
+\begin{definition}
+  For all small $\e>0$, $\abs{z}>\frac{1}{\e}$ is referred to as a
+  neighborhood of infinity.
+\end{definition}
+
+In other words, $\abs{z}$ small is closer to $0$ and $\abs{z}$ large is
+closed to $\infty$.
+
+\begin{definition}
+  To say that:
+  \[\limz{f(z)}=\infty\]
+  means:
+  \[\forall\,\e>0,\exists\,\d>0,0<\abs{z-z_0}<\d\implies
+  \abs{f(z)}>\frac{1}{\e}\]
+\end{definition}
+
+\begin{theorem}
+  \listbreak
+  \[\limz{f(z)}=0\iff\limz{\frac{1}{f(z)}}=\infty\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\e>0$
+  \begin{eqnarray*}
+    \limz{f(z)}=0 &\iff& \exists\,\d>0,0<\abs{z-z_0}<\d\implies\abs{f(z)}<\e \\
+    &\iff& \exists\,\d>0,0<\abs{z-z_0}<\d\implies
+    \abs{\frac{1}{f(z)}}>\frac{1}{\e} \\
+    &\iff& \limz{\frac{1}{f(z)}}=\infty \\
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{corollary}
+  \listbreak
+  \[\limz{f(z)}=\infty\iff\limz{\frac{1}{f(z)}}=0\]
+\end{corollary}
+
+\begin{theproof}
+  \[\limz{\frac{1}{f(z)}}=0\iff\limz{\frac{1}{\frac{1}{f(z)}}}=\infty\iff
+  \limz{f(z)}=\infty\]
+\end{theproof}
+
+\begin{definition}
+  To say that:
+  \[\limi{f(z)}=w_0\]
+  means:
+  \[\forall\,\e>0,\exists\,\d>0,\abs{z}>\d\implies\abs{f(z)-w_0}<\e\]
+\end{definition}
+
+\begin{theorem}
+  \listbreak
+  \[\limi{f(z)}=w_0\iff\limo{f\left(\frac{1}{z}\right)}=w_0\]
+\end{theorem}
+\newpage
+\begin{theproof}
+  Assume $\e>0$
+  \begin{eqnarray*}
+    \limi{f(z)}=w_0 &\iff&
+    \exists\,\d>0,\abs{z}>\d\implies\abs{f(z)-w_0}<\e \\
+    &\iff& \exists\,\d>0,0<\abs{\frac{1}{z}}<\d\implies\abs{f(z)-w_0}<\e \\
+    &\iff& \exists\,\d>0,0<\abs{z}<\d\implies
+    \abs{f\left(\frac{1}{z}\right)-w_0}<\e \\
+    &\iff& \limo{f\left(\frac{1}{z}\right)}=w_0 \\
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{definition}
+  To say that:
+  \[\limi{f(z)}=\infty\]
+  means:
+  \[\forall\,\e>0,\exists\,\d>0,\abs{z}>\d\implies\abs{f(z)}>\frac{1}{\e}\]
+\end{definition}
+
+\begin{theorem}
+  \listbreak
+  \[\limi{f(z)}=\infty\iff\limo{\frac{1}{f\left(\frac{1}{z}\right)}}=0\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\e>0$
+  \begin{eqnarray*}
+    \limi{f(z)}=\infty &\iff&
+    \exists\,\d>0,\abs{z}>\d\implies\abs{f(z)}>\frac{1}{\e} \\
+    &\iff& \exists\,\d>0,0<\abs{\frac{1}{z}}<\d\implies
+    \abs{f(z)}>\frac{1}{\e} \\
+    &\iff& \exists\,\d>0,0<\abs{z}<\d\implies
+    \abs{f\left(\frac{1}{z}\right)}>\frac{1}{\e} \\
+    &\iff& \exists\,\d>0,0<\abs{z}<\d\implies
+    \abs{\frac{1}{f\left(\frac{1}{z}\right)}}<\e \\
+    &\iff& \limo{\frac{1}{f\left(\frac{1}{z}\right)}}=0 \\
+  \end{eqnarray*}
+\end{theproof}
+
+\end{document}

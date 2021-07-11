@@ -1,0 +1,149 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\vzp}{\vec{0'}}
+\begin{document}
+\section*{Subspaces}
+  
+\begin{definition}[Subspace]
+  Let $V$ be a vector space over a field $\F$ and let $S\subseteq V$. To say
+  that $S$ is a \emph{subspace} of $V$ means that $S$ is also a vector space
+  over the same field $\F$ using the same operations of vector addition and
+  scalar multiplication as $V$.
+
+  $\{\vz\}$ is called the \emph{zero subspace} and is a subspace of all
+  vector spaces.
+  
+  The zero subspace and $V$ are called the \emph{trivial} subspaces of $V$. All
+  other subspaces of $V$ are called \emph{non-trivial}.
+
+  To say that $S$ is a \emph{proper} subspace of $V$ means that $S$ is a
+  subspace of $V$ but $S\ne V$.
+\end{definition}
+
+\begin{theorem}[Subspace Test]
+  Let $V$ be a vector space over a field $\F$.
+
+  $S\subseteq V$ is a subspace of $V$ iff:
+  \begin{enumerate}
+  \item $\vz\in S$
+  \item $S$ is closed under vector addition.
+  \item $S$ is closed under scalar multiplication.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $S$ is a subspace of $V$
+
+    By definition, the closure properties hold and there exists additive
+    identity $\vzp\in S$ \\
+    Assume $\vx\in S$ \\
+    $\vx+\vzp=\vx$ \\
+    But $\vx\in V$ as well, so $\vx+\vz=\vx$ \\
+    $\vx+\vzp=\vx+\vz$ \\
+    Thus, $\vzp=\vz$, and so $\vz\in S$
+
+    Therefore, the three properties hold.
+
+  \item $\impliedby$ Assume the three properties hold
+
+    Note that $S$ inherits all of the vector space axioms from $V$ with the
+    exceptions of closure, additive identity, and additive inverses. Closure and
+    identity are supplied by the assumed properties.
+
+    For inverses, assume $x\in S$ \\
+    By closure, $(-1)x=(-x)\in S$
+
+    Therefore, all ten axioms hold, and $S$ is a subspace of $V$.
+  \end{description}
+\end{theproof}
+
+\newpage
+
+\begin{example}
+  \listbreak
+  \begin{enumerate}
+  \item Let $\F_n[x]$ denote all polynomials of degree $\le n$ using scalars
+    and coefficients from $\F$. This is a subspace of $\F[x]$.
+
+  \item Let $C(\R)$ denote all continuous functions $f:\R\to\R$. This is a
+    subspace of $\mathcal{F}(\R,\R)$.
+  \end{enumerate}
+
+  But note that polynomials of degree exactly $n$ is not a subspace since it
+  does not include the zero polynomial and closure fails. For example:
+  $(x^3+x^2)$ and $(-x^3+x^2)$ are both degree 3 polynomials; however:
+  \[(x^3+x^2)+(-x^3+x^2)=2x^2\]
+  which is only degree 2.
+\end{example}
+
+\begin{theorem}
+  Let $V$ be a vector space over a field $\F$ and let $\{S_i\mid i\in I\}$ be a
+  family of subspaces of $V$:
+  \[S=\bigcap_{i\in I}S_i\]
+  is a subspace of $V$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $i\in I$
+
+  $S_i$ is a subspace of $V$, so $\vz\in S_i$
+
+  $\therefore \vz\in S$
+
+  Assume $\vx,\vy\in S$ \\
+  $\vx,\vy\in S_i$ \\
+  So by closure, $\vx+\vy\in S_i$ \\
+  Thus $\vx+\vy\in S$
+
+  Therefore $S$ is closed under vector addition.
+
+  Assume $c\in\F$ \\
+  By closure, $c\vx\in S_i$ \\
+  Thus $c\vx\in S$
+
+  Therefore $S$ is closed under scalar multiplication.
+
+  Therefore, by the subspace test, $S$ is a subspace of $V$.
+\end{theproof}
+
+\begin{theorem}
+  Let $V$ be a vector space and let $U$ and $W$ be two subspaces of $V$:
+  \[U+W=\{\vu+\vw\mid\vu\in U\ \mbox{and}\ \vw\in W\}\]
+  is a subspace of $V$.
+\end{theorem}
+
+\begin{theproof}
+  Since $U$ and $W$ are subspaces of $V$, $\vz\in U$ and $\vz\in W$
+
+  Therefore, $\vz=\vz+\vz\in U+W$
+
+  Assume $\vx,\vy\in U+V$ \\
+  There exists $\vu_x\in U$ and $\vw_x\in W$ such that $\vx=\vu_x+\vw_x$ \\
+  Also, there exists $\vu_y\in U$ and $\vw_y\in W$ such that
+  $\vy=\vu_y+\vw_y$ \\
+  $\vx+\vy=(\vu_x+\vw_x)+(\vu_y+\vw_y)=(\vu_x+\vu_y)+(\vw_x+\vw_y)$ \\
+  But by closure $\vu_x+\vu_y\in U$ and $\vw_x+\vw_y\in W$ \\
+  Thus, $\vx+\vy\in U+W$
+
+  Therefore $U+W$ is closed under vector addition.
+
+  Assume $c\in\F$ \\
+  $c\vx=c(\vu_x+\vw_x)=c\vu_x+c\vw_x$ \\
+  But by closure, $c\vu_x\in U$ and $c\vw_x\in W$ \\
+  Thus, $c\vx\in U+W$
+
+  Therefore $U+W$ is closed under scalar multiplication.
+
+  Therefore, by the subspace test, $U+W$ is a subspace of $V$.
+\end{theproof}
+
+\end{document}

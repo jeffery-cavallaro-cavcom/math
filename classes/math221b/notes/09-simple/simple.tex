@@ -1,0 +1,71 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ide}{\trianglelefteq}
+\begin{document}
+\section*{Simple Rings}
+
+\begin{definition}[Simple]
+  Let $R$ be a ring. To say that $R$ is \emph{simple} means that $R$ contains
+  no proper, non-trivial ideals.
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a ring with $1\ne0$ and $I\ide R$:
+  \[I=R\iff\exists\,r\in I,r\ \mbox{is a unit in}\ R\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+
+  \begin{description}
+  \item $\implies$ Assume $I=R$
+
+    $1\in R$ and $I=R$, so $1\in I$ \\
+    $1\cdot1=1$ \\
+    So $1$ is a unit in $R$ \\
+    Let $r=1$
+
+    $\therefore\exists\,r\in I,r$ is a unit in $R$.
+
+  \item $\impliedby$ Assume $\exists\,r\in I,r$ is a unit in $R$
+
+    $\exists\,s\in R,rs=sr=1$ \\
+    But $I\ide R$ so $1\in I$ \\
+    Assume $a\in R$ \\
+    $1a=a\in I$ \\
+    So $R\subseteq I$ \\
+    But clearly, $I\subseteq R$
+
+    $\therefore I=R$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $R$ be a commutative ring with $1\ne 0$:
+  \[R\ \mbox{is simple}\iff R\ \mbox{is a field}\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $R$ is simple
+
+    Assume $a\in R,a\ne 0$ \\
+    Since $R$ is simple, $(a)=R$, and in particular, $1\in(a)$ \\
+    So $1=ba$ for some $b\in R$, and thus $a$ is a unit in $R$
+
+    Therefore $R$ is a field.
+\newpage    
+  \item $\impliedby$ Assume $R$ is a field
+    
+    Assume $I\ide R$ such that $I$ is not the zero ideal \\
+    There exists $u\in I,u\ne 0$ \\
+    But $R$ is a field, so $u$ is a unit in $R$ \\
+    So $I=R$ and thus $R$ has no proper, non-trivial ideals
+
+    Therefore $R$ is simple.
+  \end{description}
+\end{theproof}
+
+\end{document}

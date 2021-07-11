@@ -1,0 +1,168 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\newcommand{\limz}{\lim_{z\to z_0}}
+\newcommand{\limxy}{\lim_{(x,y)\to(x_0,y_0)}}
+\begin{document}
+\section*{Limit Laws}
+
+All limit laws in $\R$ are accepted as fact.
+
+\begin{theorem}
+  Let: \\
+  $f(z)=f(x+iy)=u(x,y)+iv(x,y)$ \\
+  $z_0=x_0+iy_0$ \\
+  $w_0=u_0+iv+0$ \\
+  \[\limz{f(z)}=w_0\iff
+  \limxy{u(x,y)}=u_0\ \mbox{and}\ \limxy{(x,y)}=v_0\]
+\end{theorem}
+
+\begin{theproof}
+  $\abs{z-z_0}=\abs{(x+iy)-(x_0+iy_0)}=\abs{(x-x0)+i(y-y_0)}=
+  \sqrt{(x-x_0)^2+(y-y_0)^2}$
+  \begin{description}
+  \item $\implies$ Assume $\limz{f(z)}=w_0$
+
+    Assume $\e>0$ \\
+    $\exists\,\d>0,0<\abs{z-z_0}<\d\implies\abs{f(z)-w_0}<\e$
+
+    Assume $0<\sqrt{(x-x_0)^2+(y-y_0)^2}<\d$ \\
+    Thus $0<\abs{z-z_0}<\d$, and so, by assumption: $\abs{f(z)-w_0}<\e$ \\
+    $\abs{f(z)-w_0}=\abs{(u+iv)-(u_0+iv_0)}=\abs{(u-u_0)+i(v-v_0)}<\e$ \\
+    $\abs{u-u_0}\le\abs{(u-u_0)+i(v-v_0)}<\e$ and \\
+    $\abs{v-v_0}\le\abs{(u-u_0)+i(v-v_0)}<\e$
+
+    $\therefore \limxy{u(x,y)}=u_0\ \mbox{and}\ \limxy{v(x,y)}=v_0$
+
+  \item $\impliedby$ Assume $\limxy{u(x,y)}=u_0\ \mbox{and}\ \limxy{v(x,y)}=v_0$
+
+    Assume $\e>0$ \\
+    $\exists\,\d_1>0,0<\sqrt{(x-x_0)^2+(y-y_0)^2}<\d_1\implies
+    \abs{u-u_0}<\frac{\e}{2}$ and \\
+    $\exists\,\d_2>0,0<\sqrt{(x-x_0)^2+(y-y_0)^2}<\d_2\implies
+    \abs{v-v_0}<\frac{\e}{2}$ \\
+
+    Let $\d=\min\{\d_1,\d_2\}$ \\
+    Assume $0<\abs{z-z_0}<\d$ \\
+    Thus $0<\sqrt{(x-x_0)^2+(y-y_0)^2}<\d$, and so, by assumption: \\
+    $\abs{u-u_0}<\frac{\e}{2}$ and $\abs{v-v_0}<\frac{\e}{2}$ \\
+    \begin{eqnarray*}
+      \abs{f(z)-w_0} &=& \abs{(u+iv)-(u_0+iv_0)} \\
+      &=& \abs{(u-u_0)-i(v-v_0)} \\
+      &\le& \abs{u-u_0}+\abs{v-v_0} \\
+      &<& \frac{\e}{2}+\frac{\e}{2} \\
+      &=& \e \\
+    \end{eqnarray*}
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  \listbreak
+  \begin{enumerate}
+  \item $\forall\,c\in\C,\limz{c}=c$
+  \item $\limz{z}=z_0$
+  \item $\limz{f(z)}=w_0\implies\limz{\abs{f(z)}}=\abs{w_0}$
+  \item $\limz{f(z)}=w_0\implies\limz{[-f(z)]}=-w_0$
+  \item $\limz{f(z)}=w_0$ and $\limz{g(z)}=w_1\implies
+    \limz{[f(z)+g(z)]}=w_0+w_1$
+  \item $\limz{f(z)}=w_0$ and $\limz{g(z)}=w_1\implies
+    \limz{[f(z)-g(z)]}=w_0-w_1$
+  \item $\limz{f(z)}=w_0$ and $\limz{g(z)}=w_1\implies
+    \limz{[f(z)g(z)]}=w_0w_1$
+  \item $\limz{f(z)}=w_0$ and $w_0\ne0\implies
+    \limz{\frac{1}{f(z)}}=\frac{1}{w_0}$
+  \item $\limz{f(z)}=w_0$ and $\limz{g(z)}=w_1$ and $w_1\ne0\implies
+    \limz{\frac{f(z)}{g(z)}}=\frac{w_0}{w_1}$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $c\in\C$
+
+    Assume $\e>0$ \\
+    Assume $\d>0$ \\
+    Assume $0<\abs{z-z_0}<\d$ \\
+    $\abs{c-c}=\abs{0}=0<\e$
+
+  \item Assume $\e>0$
+
+    Let $\d=\e$ \\
+    Assume $0<\abs{z-z_0}<\d$ \\
+    $\abs{z-z_0}<\d=\e$
+
+  \item Assume $\limz{f(z)}=w_0$
+
+    Assume $\e>0$ \\
+    $\exists\,\d>0,0<\abs{z-z_0}<\d\implies\abs{f(z)-w_0}<\e$ \\
+    $\abs{\abs{f(z)}-\abs{w_0}}=\abs{\abs{f(z)}-\abs{-w_0}}\le
+    \abs{f(z)+(-w_0)}=\abs{f(z)-w_0}<\e$
+\newpage
+  \item Assume $\limz{f(z)}=w_0$
+
+    Assume $\e>0$ \\
+    $\exists\,\d>0,0<\abs{z-z_0}<\d\implies\abs{f(z)-w_0}<\e$ \\
+    Assume $0<\abs{z-z_0}<\d$ \\
+    $\abs{-f(z)-(-w_0)}=\abs{w_0-f(z)}=\abs{f(z)-w_0}<\e$
+    
+  \item Assume $\limz{f(z)}=w_0$ and $\limz{g(z)}=w_1$
+    \begin{eqnarray*}
+      w_0+w_1 &=& (u_0+iv_0)+(u_1+iv_1) \\
+      &=& (u_0+u_1)+i(v_0+v_1) \\
+      &=& \limxy{(u_f+u_g)}+i\limxy{(v_f+v_g)} \\
+      &=& \limz{[(u_f+u_g)+i(v_f+v_g)]} \\
+      &=& \limz{[(u_f+iv_f)+(u_g+iv_g)]} \\
+      &=& \limz{[f(z)+g(z)]} \\
+    \end{eqnarray*}
+    
+  \item Assume $\limz{f(z)}=w_0$ and $\limz{g(z)}=w_1$
+
+    $\limz{[f(z)-g(z)]}=\limz{[f(z)+(-g(z))]}=w_0+(-w_1)=w_0-w_1$
+
+  \item Assume $\limz{f(z)}=w_0$ and $\limz{g(z)}=w_1$
+    \begin{eqnarray*}
+      w_0w_1 &=& (u_0+iv_0)(u_1+iv_1) \\
+      &=& (u_0u_1-v_0v_1)+i(u_0v_1+v_0u_1) \\
+      &=& \limxy{(u_fu_g-v_fv_g)}+i\limxy{(u_fv_g-v_fu_g)} \\
+      &=& \limz{[(u_fu_g-v_fv_g)+i(u_fv_g-v_fu_g)]} \\
+      &=& \limz{[(u_f+iv_f)(u_g+iv_g)]} \\
+      &=& \limz{[f(z)g(z)]} \\
+    \end{eqnarray*}
+
+  \item Assume $\limz{f(z)}=w_0$ and $w_0\ne0$
+    \begin{eqnarray*}
+      \frac{1}{w_0} &=& \frac{1}{u_0+iv_0} \\
+      &=& \frac{u_0}{u_0^2+v_0^2}-\frac{v_0}{u_0^2+v_0^2} \\
+      &=& \limxy{\left(\frac{u}{u^2+v^2}\right)}-
+      i\limxy{\left(\frac{v}{u^2+v^2}\right)} \\
+      &=& \limz{\frac{u}{u^2+v^2}-i\frac{v}{u^2+v^2}} \\
+      &=& \limz{\frac{1}{f(z)}} \\
+    \end{eqnarray*}
+
+  \item Assume $\limz{f(z)}=w_0$ and $\limz{g(z)}=w_1$
+    \begin{eqnarray*}
+      \limz{\frac{f(z)}{g(z)}} &=&
+      \limz{\left[f(z)\cdot\frac{1}{g(z)}\right]} \\
+      &=& w_0\left(\frac{1}{w_1}\right) \\
+      &=& \frac{w_0}{w_1} \\
+    \end{eqnarray*}
+  \end{enumerate}
+\end{theproof}
+
+Using simple induction proofs:
+
+\begin{theorem}
+  \listbreak
+  \begin{enumerate}
+    \item $\limz{f_k(z)}=w_k\implies\limz{\sum_{k=1}^n{f_k(z)}}=\sum_{k=1}^n{w_k}$
+    \item $\limz{f_k(z)}=w_k\implies\limz{\prod_{k=1}^n{f_k(z)}}=
+      \prod_{k=1}^n{w_k}$
+    \item $\forall\,n\in\Z,\limz{z^n}=z_0^n$
+    \item $P(z)=\sum_{k=0}^n{c_kz^k}\implies\limz{P(z)}=\sum_{k=0}^n{c_kz_0^k}$
+  \end{enumerate}
+\end{theorem}
+
+\end{document}

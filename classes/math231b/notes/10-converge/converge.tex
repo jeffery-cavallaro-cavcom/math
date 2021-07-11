@@ -1,0 +1,93 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\begin{document}
+\section*{Convergence}
+
+\begin{definition}[Convergence]
+  Let $(E,\norm{\cdot})$ be a normed space. To say that a sequence $(\vx_n)$ of
+  elements in $E$ converges to some $\vx\in E$ means:
+  \[\forall\e>0,\exists\,N(\e)>0,n>N\implies\norm{\vx_n-\vx}<\e\]
+\end{definition}
+
+\begin{notation}
+  Any of the following can be used to indicate convergence:
+  \begin{itemize}
+  \item $\lim{\vx_n}=\vx$
+  \item $\norm{\vx_n-\vx}\to0$
+  \item $\vx_n\to\vx$
+  \item $d(\vx_n,\vx)\to0$
+  \end{itemize}
+\end{notation}
+
+\begin{theorem}[Properties]
+  Let $(E,\norm{\cdot})$ be a normed space:
+  \begin{enumerate}
+  \item $(\vx_n)$ converges $\implies$ the limit is unique.
+  \item $\vx_n\to\vx$ and $\l_n\to\l\implies\l_n\vx_n\to\l\vx$.
+  \item $\vx_n\to\vx$ and $\vy_n\to\vy\implies(\vx_n+\vy_n)\to(\vx+\vy)$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $\vx_n\to\vx$ and $\vx_n\to\vy$.
+
+    $\forall\,\e_1>0,\exists\,N_1>0,n>N_1\implies\norm{\vx_n-\vx}<\e_1$ \\
+    $\forall\,\e_2>0,\exists\,N_2>0,n>N_2\implies\norm{\vx_n-\vy}<\e_2$ \\
+    Assume $\e>0$. \\
+    Let $\e_1,\e_2=\frac{\e}{2}$. \\
+    Let $N=\max\{N_1,N_2\}$. \\
+    Assume $n>N$. \\
+    \[\norm{\vx-\vy}=\norm{\vx-\vx_n+\vx_n+\vy}\le
+    \norm{\vx-\vx_n}+\norm{\vy-\vx_n}<\frac{\e}{2}+\frac{\e}{2}=\e\]
+
+    $\therefore\vx=\vy$
+
+  \item Assume $\vx_n\to\vx$ and $\l_n\to\l$.
+
+    $\forall\,\e_1>0,\exists\,N_1>0,n>N_1\implies\norm{\vx_n-\vx}<\e_1$ \\
+    $\forall\,\e_2>0,\exists\,N_2>0,n>N_2\implies\abs{\l_n-\l}<\e_2$ \\
+    So $\exists\,N_3>0,n>N_3\implies\abs{\l_n-\l}<1$. \\
+    Assume $\e>0$. \\
+    Let $N=\max\{N_1,N_2,N_3\}$. \\
+    Assume $n>N$. \\
+    $\abs{\l_n}=\abs{\l_n-\l+\l}\le\abs{\l_n-\l}+\abs{\l}<1+\abs{\l}$ \\
+    Let $\e_1=\frac{\e}{2(1+\abs{\l})}$ and
+    $\e_2=\frac{\e}{2\norm{\vx}}$.
+    \begin{eqnarray*}
+      \norm{\l_n\vx_n-\l\vx} &=& \norm{\l_n\vx_n-\l_n\vx+\l_n\vx-\l\vx} \\
+      &\le& \norm{\l_n\vx_n-\l_n\vx}+\norm{\l_n\vx-\l\vx} \\
+      &=& \norm{\l_n(\vx_n-\vx)}+\norm{(\l_n-\l)\vx} \\
+      &=& \abs{\l_n}\norm{\vx_n-\vx}+\abs{\l_n-\l}\norm{\vx} \\
+      &<& (1+\abs{\l})\frac{\e}{2(1+\abs{\l})}+\frac{\e}{2\norm{\vx}}\norm{x} \\
+      &=& \frac{\e}{2}+\frac{\e}{2} \\
+      &=& \e
+    \end{eqnarray*}
+    $\therefore\l_n\vx_n\to\l\vx$
+
+  \item Assume $\vx_n\to\vx$ and $\vy_n\to\vy$
+
+    $\forall\,\e_1>0,\exists\,N_1>0,n>N_1\implies\norm{\vx_n-\vx}<\e_1$ \\
+    $\forall\,\e_2>0,\exists\,N_2>0,n>N_2\implies\norm{\vy_n-\vy}<\e_2$ \\
+    Assume $\e>0$. \\
+    Let $\e_1,\e_2=\frac{\e}{2}$. \\
+    Let $N=\max\{N_1,N_2\}$. \\
+    Assume $n>N$.
+    \begin{eqnarray*}
+      \norm{(\vx_n+\vy_n)-(\vx+\vy)} &=& \norm{(\vx_n-\vx)+(\vy_n+\vy)} \\
+      &\le& \norm{\vx_n-\vx}+\norm{\vy_n+\vy} \\
+      &<& \frac{\e}{2}+\frac{\e}{2} \\
+      &=& \e
+    \end{eqnarray*}
+    $\therefore(\vx_n+\vy_n)\to(\vx+\vy)$
+  \end{enumerate}
+\end{theproof}
+
+\end{document}

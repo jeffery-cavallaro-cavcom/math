@@ -1,0 +1,53 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\Rd}{\mathbb{R}^d}
+\newcommand{\LtwoRd}{L^2(\mathbb{R}^d)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\begin{document}
+
+\section*{Cauchy-Schwarz}
+
+\begin{theorem}
+$\forall f,g\in L^2, \abs{\inner{f}{g}}\le\norm{f}\norm{g}$
+\end{theorem}
+
+\begin{theproof}
+Assume $f,g\in L^2$
+
+\begin{description}
+\item{case 1: $\norm{f}=0$ or $\norm{g}=0$}
+
+$f=0\;\;a.e.$ or $g=0\;\;a.e.$ \\
+$f\conj{g}=0\;\;a.e.$ \\
+$\abs{\inner{f}{g}}=\abs{\int f\conj{g}}=0$ \\
+$\norm{f}\norm{g}=0$ \\
+$\therefore \abs{\inner{f}{g}}=\norm{f}\norm{g}$
+
+\item{case 2: $\norm{f}=\norm{g}=1$}
+
+$\abs{\inner{f}{g}}=\abs{\int f\conj{g}}\le\int\abs{f\conj{g}}\le
+    \frac{1}{2}\left(\int\abs{f}^2+\int\abs{g}^2\right)=
+    \frac{1}{2}\left(\norm{f}^2+\norm{g}^2\right)=
+    \frac{1}{2}(1+1)=1$ \\
+$\norm{f}\norm{g}=1\cdot1=1$ \\
+$\therefore \abs{\inner{f}{g}}=\norm{f}\norm{g}$
+
+\item{case 3: otherwise}
+
+Let $\hat{f}=\frac{f}{\norm{f}}$ and $\hat{g}=\frac{g}{\norm{g}}$ \\
+$\norm{\hat{f}}=\norm{\hat{g}}=1$ \\
+$\abs{\inner{\hat{f}}{\hat{g}}}=
+    \abs{\inner{\frac{f}{\norm{f}}}{\frac{g}{\norm{g}}}}=
+    \frac{1}{\norm{f}\norm{g}}\abs{\inner{f}{g}}\le1$ \\
+$\therefore \abs{\inner{f}{g}}\le\norm{f}\norm{g}$
+\end{description}
+
+$\therefore \abs{\inner{f}{g}}\le\norm{f}\norm{g}$
+\end{theproof}
+
+\end{document}

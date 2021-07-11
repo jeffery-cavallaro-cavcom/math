@@ -1,0 +1,272 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\p}{\phi}
+\newcommand{\xprod}[1]{\prod_{i\in I}#1_i}
+\renewcommand{\fam}[1]{\{#1_i\mid i\in I\}}
+\newcommand{\n}{\triangleleft}
+\begin{document}
+\section*{Direct Product}
+
+\begin{definition}
+  Let $G$ and $H$ be groups and define the binary operation on $G\times H$ by:
+  \[(g_1,h_1)(g_2,h_2)=(g_1g_2,h_1h_2)\]
+  The binary algebraic structure $G\times H$ is called the
+  \emph{direct product} of $G$ and $H$.
+\end{definition}
+
+\begin{theorem}
+  Let $G$ and $H$ be groups. The direct product $G\times H$ is a group.
+\end{theorem}
+
+\begin{theproof}
+  Assume $(g_1,h_1),(g_2,h_2),(g_3,h_3)\in G\times H$ \\
+  \begin{eqnarray*}
+    [(g_1,h_1)(g_2,h_2)](g_3,h_3) &=& (g_1g_2,h_1h_2)(g_3h_3) \\
+    &=& ((g_1g_2)g_3,(h_1h_2)h_3) \\
+    &=& (g_1(g_2g_3),h_1(h_2h_3)) \\
+    &=& (g_1,h_1)(g_2g_3,h_2h_3) \\
+    &=& (g_1,h_1)[(g_2,h_2)(g_3h_3)]
+  \end{eqnarray*}
+  $\therefore G\times H$ is associative under the operation.
+
+  $(e_G,e_H)\in G\times H$ \\
+  Assume $(g,h)\in G\times H$ \\
+  $(g,h)(e_G,e_H)=(ge_G,he_H)=(g,h)$ \\
+  $(e_G,e_H)(g,h)=(e_Gg,e_Hh)=(g,h)$ \\
+  $\therefore G\times H$ has identity $(e_G,e_H)$.
+
+  Assume $(g,h)\in G\times H$ \\
+  $(g^{-1},h^{-1})\in G\times H$ \\
+  $(g,h)(g^{-1},h^{-1})=(gg^{-1},hh^{-1})=(e_G,e_H)$ \\
+  $(g^{-1},h^{-1})(g,h)=(g^{-1}g,h^{-1}h)=(e_G,e_H)$ \\
+  $\therefore G\times H$ is closed under inverses.
+
+  $\therefore G\times H$ is a group.
+\end{theproof}
+
+This definition can be expanded to multiple groups:
+
+\begin{definition}
+  Let $G_1,\ldots G_n$ be a finite collection of groups and define the binary
+  operation on $G_1\times\cdots\times G_n$ as component-wise multiplication.
+  The binary algebraic structure of $G_1\times\cdots\times G_n$, denoted
+  $\prod_{k=1}^nG_k$, is called the \emph{direct product} of the $G_k$.
+
+  When the groups in question are additive/abelian, then the binary algebraic
+  structure is called a \emph{direct sum} and is defined by:
+  \[\bigoplus_{k=1}^nG_i=G_1\oplus\cdots\oplus G_n\]
+\end{definition}
+
+\begin{theorem}
+  Let $G_1,\ldots,G_n$ be a collection of groups. The direct product
+  $\prod_{k=1}^nG_k$ is a group.
+\end{theorem}
+
+\begin{theproof}
+  Assume $g,h,i\in\prod_{k=1}^nG_k$ \\
+  Assume $1\le k\le n$ \\
+  $g_k,h_k,i_k\in G_k$ \\
+  $(g_kh_k)i_k=g_k(h_ki_k)$ \\
+  $\therefore \prod_{k=1}^nG_k$ is associative under the operation.
+
+  $e_k\in G_k$ \\
+  $g_ke_k=e_kg_k=g_k$ \\
+  $\therefore \prod_{k=1}^nG_k$ has identity $(e_1,\ldots,e_n)$.
+
+  $g_k^{-1}\in G_k$ \\
+  $g_kg_k^{-1}=g_k^{-1}g_k=e_k$ \\
+  $\therefore \prod_{k=1}^nG_k$ is closed under inverses.
+
+  $\therefore \prod_{k=1}^nG_k$ is a group.
+\end{theproof}
+
+When the number of groups is infinite (countable or not):
+
+\begin{definition}
+  Let $\{G_i\mid i\in I\}$ be a family of groups and define:
+  \[\xprod{G}=\{g:I\to \bigcup_{i\in I}G_i\mid g(i)=g_i\in G_i\}\]
+  and define the binary operation on $\xprod{G}$ by:
+  \[(gh)(i)=g(i)h(i)\]
+  The binary algebraic structure $\xprod{G}$ is called the
+  \emph{direct product} of $\{G_i\mid i\in I\}$.
+\end{definition}
+
+\begin{theorem}
+  Let $\{G_i\mid i\in I\}$ be a family of groups. The direct product
+  $\xprod{G}$ is a group.
+\end{theorem}
+\newpage
+\begin{theproof}
+  Assume $g,h\in\xprod{G}$ \\
+  $(gh)(i)=g(i)h(i)=g_ih_i$ \\
+  But $g_i,h_i\in G_i$ \\
+  So $(gh)(i)=g_ih_i\in G_i$ \\
+  so $gh\in\xprod{G}$ \\
+  $\therefore\xprod{G}$ is closed under the operation.
+
+  Assume $g,h,k\in\xprod{G}$ \\
+  Assume $i\in I$ \\
+  $[(gh)k](i)=[(gh)(i)]k(i)=[g(i)h(i)]k(i)=g(i)[h(i)k(i)]=g(i)[(hk)(i)]=
+  [g(hk)](i)$ \\
+  $\therefore\xprod{G}$ is associative under the operation.
+
+  $e_i\in G_i$ \\
+  $\exists\,e\in\xprod{G},e(i)=e_i$ \\
+  $(ge)(i)=g(i)e(i)=g_ie_i=g_i=g(i)$ \\
+  $(ee)(i)=e(i)g(i)=e_ig_i=g_i=g(i)$ \\
+  $\therefore\xprod{G}$ has identity $e$.
+
+  $g(i)=g_i\in G_i$ \\
+  $g_i^{-1}\in G_i$ \\
+  $\exists\,g^{-1}\in\xprod{G},g^{-1}(i)=g_i^{-1}$ \\
+  $(gg^{-1})(i)=g(i)g^{-1}(i)=g_ig_i^{-1}=e_i=e(i)$ \\
+  $(g^{-1}g)(i)=g^{-1}(i)g(i)=g_i^{-1}g_i=e_i=e(i)$ \\
+  $\therefore\xprod{G}$ is closed under inverses.
+
+  $\therefore\xprod{G}$ is a group.
+\end{theproof}
+
+\begin{definition}
+  Let $\xprod{G}$ be a direct product of groups and $\forall\,k\in I$
+  define the map $\pi_k:\xprod{G}\to G_k$ by:
+  \[\pi_k(g)=g(k)\]
+  The $\pi_k$ are called the \emph{canonical projections} of the direct
+  product.
+\end{definition}
+
+\begin{theorem}
+  Let $\xprod{G}$ be a direct product of groups and $\pi_k$ be the
+  canonical projections for the direct product. $\pi_k$ is an onto
+  homomorphism.
+\end{theorem}
+
+\begin{theproof}
+  Assume $g,h\in\xprod{G}$ \\
+  Assume $k\in I$ \\
+  $\pi_k(gh)=(gh)(k)=g(k)h(k)=\pi_k(g)\pi_k(h)$ \\
+  $\therefore\pi_k$ is a homomorphism.
+\newpage
+  Assume $g_k\in G_k$ \\
+  $\exists\,g\in\xprod{G},g(k)=g_k$ \\
+  $\pi_k(g)=g(k)=g_k$ \\
+  $\therefore\pi_k$ is a onto.
+\end{theproof}
+
+\begin{theorem}
+  Let $\{\p_i:G_i\to H_i\mid i\in I\}$ be a family of a group homomorphisms
+  and let $\p=\prod_{i\in I}\p_i$ be the map $\p:\xprod{G}\to\xprod{H}$
+  defined by $\p(g)=\prod_{i\in I}\p_i(g(i))$.
+  \begin{enumerate}
+  \item $\p$ is a homomorphism of groups
+  \item $\ker(\p)=\prod_{i\in I}\ker(\p_i)$
+  \item $\p\left[\xprod{G}\right]=\prod_{i\in I}\p_i[G_i]$
+  \item $\p$ is one-to-one iff all of the $\p_i$ are one-to-one
+  \item $\p$ is onto iff all of the $\p_i$ are onto
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $a,b\in\xprod{G}$
+    \begin{eqnarray*}
+      \p(ab) &=& \prod_{i\in I}\p_i((ab)(i)) \\
+      &=& \prod_{i\in I}\p_i(a(i)b(i)) \\
+      &=& \prod_{i\in I}\p_i(a(i))\p_i(b(i)) \\
+      &=& \prod_{i\in I}\p_i(a(i))\prod_{i\in I}\p_i(b(i)) \\
+      &=& \p(a)\p(b) \\
+    \end{eqnarray*}
+    $\therefore\p$ is a homomorphism.
+
+  \item Let $e\in\xprod{H},\forall\,i\in I,e(i)=e_H$ \\
+    $e$ is the identity element for $\xprod{H}$
+    \begin{eqnarray*}
+      a\in\ker(\p) &\iff& \p(a)=e \\
+      &\iff& \forall\,i\in I,\p(a(i))=e(i)=e_H \\
+      &\iff& \forall\,i\in I,a(i)\in\ker(\p_i) \\
+      &\iff& a\in\prod_{i\in I}\ker(\p_i) \\
+    \end{eqnarray*}
+
+  \item \begin{eqnarray*}
+    b\in\p\left[\xprod{G}\right] &\iff& \exists\,a\in\xprod{G},\p(a)=b \\
+    &\iff& \forall\,i\in I,\p_i(a(i))=b(i) \\
+    &\iff&\forall\,i\in I,b(i)\in\p_i[G_i] \\
+    &\iff& b\in\prod_{i\in I}\p_i[G_i] \\
+  \end{eqnarray*}
+
+  \item \begin{eqnarray*}
+    \p\ \mbox{is one-to-one} &\iff& \p(a)=\p(b)\implies a=b \\
+    &\iff& \forall\,i\in I,\p_i(a(i))=\p_i(b(i))\implies a(i)=b(i) \\
+    &\iff& \forall\,i\in I,\p_i\ \mbox{is one-to-one} \\
+  \end{eqnarray*}
+
+  \item \begin{eqnarray*}
+    \p\ \mbox{is onto} &\iff&
+    b\in\xprod{H}\implies\exists\,a\in\xprod{G},\p(a)=b \\
+    &\iff& \forall\,i\in I,b(i)\in H_i\implies\exists\,a(i)\in G_i,
+    \p(a(i))=b(i) \\
+    &\iff& \forall\,i\in I,\p_i\ \mbox{is onto} \\
+  \end{eqnarray*}
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+  Let $\fam{G}$ and $\fam{N}$ be families of groups such that
+  $\forall\,i\in I,N_i\n G_i$:
+  \[\xprod{N}\n\xprod{G}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $n\in\xprod{N}$ \\
+  Assume $g\in\xprod{G}$ \\
+  Assume $i\in I$ \\
+  $n(i)\in N_i$ \\
+  $g(i)\in G_i$ \\
+  $N_i\n G_i$ \\
+  $g(i)(n(i))g^{-1}(i)\in N_i$ \\
+  $gng^{-1}\in\xprod{N}$ \\
+  $\therefore\xprod{N}\n\xprod{G}$
+\end{theproof}
+\newpage
+\begin{theorem}
+  Let $\fam{G}$ and $\fam{N}$ be families of groups such that
+  $\forall\,i\in I,N_i\n G_i$:
+  \[\xprod{G}/\xprod{N}\simeq\prod_{x\in I}G_i/N_i\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $i\in I$ \\
+  Let $\pi_i:G_i\to G_i/N_i$ be the (onto) canonical homomorphism \\
+  $\ker(\pi_i)=N_i$ \\
+  Let $\pi:\xprod{G}\to\prod_{i\in I}G_i/N_i$ be defined by
+  $\pi(g)=\prod_{i\in I}\pi_i(g(i)$
+  
+  By the previous theorem:
+  \begin{enumerate}
+  \item $\pi$ is a (onto) homomorphism
+  \item $\ker(\pi)=\prod_{i\in I}\ker(\pi_i)=\xprod{N}$
+  \end{enumerate}
+
+  Thus, we have the following setup per the FIT:
+
+  \bigskip
+
+  \begin{tikzpicture}
+    \node (1) at (0,3) {$\xprod{G}$};
+    \node (2) at (5,3) {$\prod_{i\in I}G_i/N_i$};
+    \node (3) at (0,0) {$\xprod{G}/\xprod{N}$};
+    \draw (1) [->] edge node [above] {$\pi$} (2);
+    \draw (1) [->] edge (3);
+    \draw (3) [->] edge node [below] {$\phi$} (2);
+  \end{tikzpicture}
+
+  \bigskip
+
+  Thus, there exists an isomorphism
+  $\phi:\xprod{G}/\xprod{N}\to\prod_{i\in I}G_i/N_i$
+
+  $\therefore\xprod{G}/\xprod{N}\simeq\prod_{i\in I}G_i/N_i$.
+\end{theproof}
+
+\end{document}

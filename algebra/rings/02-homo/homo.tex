@@ -1,0 +1,52 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ring}[1]{\left<#1,+,\cdot\right>}
+\newcommand{\group}[2]{\left<#1,#2\right>}
+\begin{document}
+\section*{Ring Homomorphisms}
+
+\begin{definition}
+  Let $R$ and $R'$ be rings. To say that $\phi:R\to R'$ is a
+  \emph{ring homomorphism} means $\forall\,a,b\in R$:
+  \begin{enumerate}
+  \item $\phi(a+b)=\phi(a)+\phi(b)$
+  \item $\phi(ab)=\phi(a)\phi(b)$
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  Let $F$ be the set of real-values functions and let $\phi:F\to\R$ be defined
+  by $\phi_a(f)=f(a)$. $\phi_a$ is a ring homomorphism, referred to as the
+  \emph{evaluation homomorphism}.
+\end{theorem}
+
+\begin{theproof}
+  Assume $f,g\in F$ \\
+  Assume $a\in\R$
+
+  $\phi_a(f+g)=(f+g)(a)=f(a)+g(a)=\phi_a(f)+\phi_a(g)$
+
+  $\phi_a(fg)=(fg)(a)=f(a)g(a)=\phi_a(f)\phi_a(g)$
+\end{theproof}
+
+\begin{theorem}
+  Let $\phi:\Z\to\Z_n$ be defined by $\phi(a)=a\bmod n$. $\phi$ is a ring
+  homomorphism.
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in\Z$ \\
+  $a=nq_1+r_1$ \\
+  $b=nq_2+r_2$
+
+  $\phi(a)=r_1$ \\
+  $\phi(b)=r_2$
+
+  $\phi(a+b)=\phi(n(q_1+q_2)+(r_1+r_2))=0+(r_1+r_2)\bmod n=\phi(a)+\phi(b)$
+
+  $\phi(ab)=\phi(n^2q_1q_2+nq_1r_2+nq_2r_1+r_1r_2)=0+0+0+r_1r_2\bmod n=
+  \phi(a)\phi(b)$
+\end{theproof}
+
+\end{document}

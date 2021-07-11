@@ -1,0 +1,129 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\begin{document}
+\section*{Banach Fixed Point Theorem}
+
+\begin{definition}[Fixed Point]
+  To say that $x$ is a \emph{fixed point} of a function $f$ means:
+  \[f(x)=x\]
+\end{definition}
+
+Note that any equation can be written in terms of a fixed point problem:
+\begin{eqnarray*}
+  f(x) &=& y \\
+  f(x)-y &=& 0 \\
+  f(x)-y+x &=& x \\
+  F(x) &=& x
+\end{eqnarray*}
+where $F(x)=f(x)-y+x$.
+
+\begin{example}
+  Let $y'(t)=f(t,y)$ and $y(t_0)=y_0$. This initial value problem has the
+  unique solution:
+  \[y(t)=y_0+\int_{t_0}^tf(s,y(s))ds\]
+  So $y=T(y)$.
+\end{example}
+
+\begin{definition}[Contraction Mapping]
+  Let $E$ be a normed space and $A\subseteq E$. To say that a mapping
+  $T:A\to E$ is a \emph{contraction mapping} means $\exists\,\l\in(0,1)$ such
+  that $\forall\,\vx,\vy\in A$:
+  \[\norm{T\vx)-T\vy}\le\l\norm{\vx-\vy}\]
+\end{definition}
+
+\begin{example}
+  Let $f:\R\to\R$. By the MVT:
+  \[\abs{f(x)-f(y)}=\abs{f'(c)(x-y)}\]
+  for some $c\in(x,y)$.
+
+  Assume $\abs{f'(x)}\le\l<1$
+
+  Then $f$ is a contraction mapping.
+\end{example}
+
+\begin{theorem}[Banach Fixed Point Theorem]
+  Let $E$ be a Banach space and let $X$ be a closed subset of $E$:
+
+  \qquad$T:X\to X$ is a contraction mapping $\implies T$ has a fixed point
+  $Tx_*=x_*$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $T$ is a contraction mapping. \\
+  So $\exists\l\in(0,1),\forall\,\vx,\vy\in X,\norm{T\vx-T\vy}\le
+  \l\norm{\vx-\vy}$. \\
+  Assume $x_0\in X$. \\
+  Let $x_n=T^n(x_0)$ for $n\ge1$: \\
+  \[\norm{\vx_{n+1}-\vx_n}=\norm{T(T^n\vx_0)-T(T^{n-1}\vx_0)}\le
+  \l\norm{T^n\vx_0-T^{n-1}\vx_0)}=\l\norm{\vx_n-\vx_{n-1}}\]
+  And so:
+  \[\norm{\vx_{n+1}-\vx_n}\le\l^n\norm{\vx_1-\vx_0}\]
+  AWLOG: $n<m$
+  \begin{eqnarray*}
+    \norm{\vx_m-\vx_n} &=& \norm{\sum_{k=n+1}^m(\vx_k-\vx_{k-1})} \\
+    &\le& \sum_{k=n+1}^m\norm{\vx_k-\vx_{k-1}} \\
+    &\le& \sum_{k=n+1}^m\l^{k-1}\norm{\vx_1-\vx_0} \\
+    &=& \norm{\vx_1-\vx_0}\sum_{k=n}^{m-1}\l^k \\
+    &\le& \norm{\vx_1-\vx_0}\sum_{k=n}^{\infty}\l^k \\
+    &=& \frac{\l^n}{1-\l}\norm{\vx_1-\vx_0} \\
+    &\to& 0
+  \end{eqnarray*}
+  Thus, $\vx_n$ is Cauchy. \\
+  Moreover, by assumption, $E$ is Banach (complete), and so $\exists\vx_*\in E$
+  such that $\vx_n\to\vx_*$. \\
+  But, by assumption, $X$ is closed, and thus $\vx_*\in X$. \\
+
+  Now, show that $\vx_*$ is a fixed point:
+  \begin{eqnarray*}
+    \norm{T\vx_*-\vx_*} &=& \norm{(T\vx_*-\vx_n)+(\vx_n-\vx_*)} \\
+    &\le& \norm{T\vx_*-\vx_n}+\norm{\vx_n-\vx_*} \\
+    &=& \norm{T\vx_*-T\vx_{n-1}}+\norm{\vx_n-\vx_*} \\
+    &\le& \l\norm{\vx_*-\vx_{n-1}}+\norm{\vx_n-\vx_*} \\
+    &\to& 0
+  \end{eqnarray*}
+  But $\norm{T\vx_*-\vx_*}=0\iff T\vx_*-\vx_*=\vo$.
+  
+  $\therefore T\vx_*=\vx_*$, in other words, $\vx_*$ is a fixed point of $T$.
+
+  Now assume that there exists another fixed point $\vy_*$. \\
+  \[\norm{\vy_*-\vx_*}=\norm{T\vy_*-T\vx_*}\le\l\norm{\vy_*-\vx_*}\]
+  But $\l\in(0,1)$ and so $\l\ne0$. \\
+  And so $\norm{\vy_*-\vx_*}=0$. \\
+  But $\norm{\vy_*-\vx_*}=0\iff\vy_*-\vx_*=\vo$.
+
+  $\therefore\vy_*=\vx_*$, and so the fixed point is unique.
+\end{theproof}
+
+Note that $\norm{T\vx-T\vy}<\norm{\vx-\vy}$ does not guarantee a fixed point.
+
+Consider $E=\R$, $X=[0,\infty)$, and $T(x)=x+e^{-x}$. \\
+By the MVT: $\abs{T(x)-T(y)}=\abs{T'(c)(x-y)}$ for some $c\in(x,y)$. \\
+$T'(x)=1-e^{-x}<1$ for $x\in[0,\infty)$. \\
+So $\abs{T(x)-T(y)}<\abs{x-y}$. \\
+However, does $T(x)=x$?
+\begin{eqnarray*}
+  x &=& x+e^{-x} \\
+  e^{-x} &=& 0
+\end{eqnarray*}
+No solution. So there is no fixed point.
+
+\begin{theorem}
+  Let $E$ be a normed space, $X\subseteq E$, and let $T:X\to E$ be a linear
+  mapping:
+
+  \qquad$T$ is a contraction mapping iff $\norm{T}<1$.
+\end{theorem}
+
+\begin{theproof}
+  $\norm{T\vx-T\vy}=\norm{T(\vx-\vy)}\le\norm{T}\norm{\vx-\vy}$
+
+  Therefore $T$ is a contraction mapping iff $\norm{T}<1$.
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,99 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\newcommand{\vp}{\varphi}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Aut}{Aut}
+\begin{document}
+\section*{Closure}
+
+\begin{definition}[Closure]
+  Let $F\subseteq L\subseteq K$ be an inclusion of fields and let $H\le G(L)$:
+  \begin{itemize}
+  \item The \emph{closure} of $L$ is $F(G(L))$.
+  \item The \emph{closure} of $H$ is $G(F(H))$.
+  \end{itemize}
+
+  To say that $L$ and $G$ are called $\emph{closed}$ means:
+  \begin{itemize}
+  \item $F(G(L))=L$
+  \item $G(F(H))=H$
+  \end{itemize}
+
+  Thus, $K/F$ is closed iff $K/F$ is Galois.
+\end{definition}
+
+\begin{theorem}
+  Let $F\subseteq E\subseteq L\subseteq K$ be an inclusion of fields and
+  subgroups $\{\id\}=I\le J\le H\le G=\Aut(K/F)$:
+  \begin{enumerate}
+  \item $G(L)\le G(E)$
+  \item $F(H)\subseteq F(J)$
+  \item $H\le G(F(H))$
+  \item $L\subseteq F(G(L))$
+  \item $G(L)$ is closed
+  \item $F(H)$ is closed
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $\vp\in G(L)$
+
+    Since it has already been proven that $G(L),G(E)\le G$, it suffices to show inclusion:
+
+    $\forall\,\a\in L,\vp(\a)=\a$ \\
+    Since $E\subseteq L$, $\forall\,\a\in E,\vp(\a)=\a$ \\
+    $\vp\in G(E)$
+    
+    $\therefore G(L)\le G(E)$
+
+  \item Assume $\a\in F(H)$
+
+    $\forall\,\vp\in H,\vp(\a)=\a$ \\
+    Since $J\subseteq H$, $\forall\,\vp\in J,\vp(\a)=\a$ \\
+    So $\a\in F(J)$
+
+    $\therefore F(H)\subseteq F(J)$
+
+  \item Assume $\vp\in H$
+
+    Since it has already been proven that $H,G(F(H))\le G$, it suffices to show inclusion.
+    
+    By definition, $\vp$ fixes everything in $F(H)$ \\
+    So, by definition, $\vp\in G(F(H))$.
+
+    $\therefore H\le G(F(H))$
+
+  \item Assume $\a\in L$
+
+    By definition, $\a$ is fixed by everything in $G(L)$ \\
+    So, by definition, $\a\in F(G(L))$.
+
+    $\therefore L\subseteq F(G(L))$
+
+  \item It has already been proven that $G(L)\subseteq G(F(G(L)))$
+
+    Assume $\vp\in G(F(G(L)))$ \\
+    $\vp$ fixes everything in $F(G(L))$ \\
+    $L\subseteq F(G(L))$ \\
+    So $\vp$ fixes everything in $L$ \\
+    Thus, $\vp\in G(L)$
+    
+    $\therefore G(L)=G(F(G(L)))$ and so $G(L)$ is closed.
+
+  \item It has already been proven that $F(H)\subseteq F(G(F(H)))$
+
+    Assume $\a\in F(G(F(H)))$ \\
+    $\a$ is fixed by everything in $G(F(H))$ \\
+    $H\subseteq G(F(H))$ \\
+    So $\a$ is fixed by everything in $H$ \\
+    Thus, $\a\in F(H)$
+
+    $\therefore F(H)=F(G(F(H)))$.
+  \end{enumerate}
+\end{theproof}
+
+\end{document}

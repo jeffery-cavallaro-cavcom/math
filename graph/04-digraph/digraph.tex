@@ -1,0 +1,116 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\newcommand{\E}{\mathscr{E}}
+\pagestyle{empty}
+\begin{document}
+
+\section*{Directed Graphs}
+
+\begin{definition}[Directed Graph]
+  A \emph{directed graph} (\emph{digraph}) \(D=(V,E,\ldots)\) is a graph with a non-empty and finite set of
+  vertices \(V(D)\) and a possibly empty and finite set of \emph{directed edges} \(E(D)\) such that each directed
+  edge is represented by an ordered pair of vertices from \(V(D)\):
+  \[E(D)\subseteq V(D)\times V(D)\]
+\end{definition}
+
+\begin{example}
+  Digraphs are often portrayed visually using filled or labeled circles for the vertices and directed lines from
+  the first endpoint in the ordered pair to the second endpoint in the ordered pair.
+
+  \begin{minipage}[t]{2.6in}
+    \vspace{0cm}
+    \begin{tikzpicture}[node distance=2,>=directed]
+      \node (E) [coordinate] at (0,0) {\(e\)};
+      \begin{scope}[every node/.style=labeled node]
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+      \end{scope}
+      \draw (A) edge [->] (B);
+      \draw (B) edge [->] (C);
+      \draw (C) edge [->] (D);
+      \draw (A) edge [->] [bend right] (D);
+      \draw (D) edge [->] [bend right] (A);
+      \draw (C) edge [out=345,in=285,min distance=2cm,->] (C);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}[t]{3.7in}
+    \vspace{0.5in}
+    \(V=V(D)=\set{a,b,c,d}\)
+
+    \(E=E(D)=\set{(a,b),(a,d),(b,c),(c,d),(d,a),(c,c)}\)
+  \end{minipage}
+\end{example}
+
+\begin{notation}
+  The directed edge \((u,v)\) is usually represented by just \(uv\).
+\end{notation}
+
+Note that directed multigraphs (multidigraphs) are also possible by adding an endpoint function:
+\[\E:E(D)\to V(D)\times V(D)\]
+to the digraph tuple.
+
+\begin{definition}[Adjacent Vertices]
+  Let \(D\) be a digraph such that \(u,v\in V(D)\) and \(e=uv\in E(D)\):
+  \begin{itemize}
+    \item \(u\) is said to be \emph{adjacent to} \(v\).
+    \item \(v\) is said to be \emph{adjacent from} \(u\).
+  \end{itemize}
+  The directed edge \(e\) is said to be \emph{incident} to \(u\) and \(v\).
+\end{definition}
+
+\begin{definition}[Orientation]
+  Let \(D\) be a digraph.  To say that \(D\) is an \emph{oriented} graph means that \(D\) has no loops and each
+  pair of vertices in \(D\) has at most one directed edge between them:
+  \[\forall\,u,v\in V(D),uv\in E(D)\implies vu\notin E(D)\]
+  Furthermore, \(D\) is said to be an \emph{orientation} for the underlying simple graph.
+\end{definition}
+
+\begin{example}
+  \(D\) is an oriented digraph and is an orientation of the simple graph \(G\):
+
+  \bigskip
+
+  \begin{minipage}[t]{3in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node},node distance=2cm,>=directed]
+        \node (D) at (0,0) {\(d\)};
+        \node (A) [above=of D] {\(a\)};
+        \node (B) [right=of A] {\(b\)};
+        \node (C) [right=of D] {\(c\)};
+        \draw [->] (A) edge (B);
+        \draw [->] (A) edge (C);
+        \draw [->] (A) edge (D);
+        \draw [->] (C) edge (B);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(D\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node},node distance=2cm,>=directed]
+        \node (D) at (0,0) {\(d\)};
+        \node (A) [above=of D] {\(a\)};
+        \node (B) [right=of A] {\(b\)};
+        \node (C) [right=of D] {\(c\)};
+        \draw (A) edge (B);
+        \draw (A) edge (C);
+        \draw (A) edge (D);
+        \draw (C) edge (B);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+\end{example}
+
+Note that the digraph in the first example is not an oriented digraph because \(cc\in E(D)\) and \(ad,da\in E(D)\).
+
+\end{document}

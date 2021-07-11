@@ -1,0 +1,144 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\theta}
+\newcommand{\F}{\mathbb{F}}
+\DeclareMathOperator{\spn}{Span}
+\begin{document}
+\section*{Orthogonal}
+
+\begin{definition}[Orthogonal]
+  Let $E$ be an inner product space and let $\vx,\vy\in E$. To say that $\vx$
+  is \emph{orthogonal} to $\vy$, denoted $\vx\perp\vy$, means:
+  \[\inner{\vx}{\vy}=0\]
+\end{definition}
+
+\begin{properties}
+  Let $E$ be an inner product space. $\forall\,\vx,\vy\in E$:
+  \begin{enumerate}
+  \item $\vx\perp\vo$
+  \item $\vx\perp\vy\iff\vy\perp\vx$
+  \end{enumerate}
+\end{properties}
+
+\begin{theproof}
+  Assume $\vx,\vy\in E$:
+  \begin{enumerate}
+  \item $\inner{\vx}{\vo}=0$
+
+  \item
+    \begin{description}
+    \item Assume $\vx\perp\vy$
+
+      $\inner{\vx}{\vy}=0$ \\
+      $\inner{\vy}{\vx}=\conj{\inner{\vx}{\vy}}=\conj{0}=0$
+
+      $\therefore\vy\perp\vx$
+      
+    \item Assume $\vy\perp\vx$
+
+      $\inner{\vy}{\vx}=0$ \\
+      $\inner{\vx}{\vy}=\conj{\inner{\vy}{\vx}}=\conj{0}=0$
+
+      $\therefore\vx\perp\vy$
+    \end{description}
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}[Pythagorean]
+  Let $E$ be an inner product space and $\vx,\vy\in E$:
+  \[\vx\perp\vy\implies\norm{\vx+\vy}^2=\norm{\vx}^2+\norm{\vy}^2\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\perp\vy$.
+
+  Also $\vy\perp\vx$ and so $\inner{\vx}{\vy}=\inner{\vy}{\vx}=0$.
+    
+  $\norm{\vx+\vy}^2=\inner{\vx+\vy}{\vx+\vy}=
+  \inner{\vx}{\vx}+\inner{\vx}{\vy}+\inner{\vy}{\vx}+\inner{\vy}{\vy}=
+  \norm{\vx}^2+0+0+\norm{\vy}^2$
+
+  $\therefore\norm{\vx+\vy}^2=\norm{\vx}^2+\norm{\vy}^2$
+\end{theproof}
+
+\begin{definition}[Mutually Orthogonal]
+  Let $E$ be an inner product space and let $S=\{\vx_1,\ldots,\vx_n\}$ be a
+  non-empty subset of $E$. To say that $S$ is a \emph{mutually orthogonal} set
+  means:
+  \[\forall\,i\ne j,\vx_i\perp\vx_j\]
+\end{definition}
+
+\begin{lemma}
+  Let $E$ be an inner product space over a field $\F$ and let
+  $S=\{\vx_1,\ldots,\vx_n\}$ be a mutually orthogonal subset of $E$.
+  $\forall\,1\le r\le n$:
+  \[S'=\{\vx,\vx_{r+1},\ldots,\vx_n\}\]
+  where $\vx\in\spn\{\vx_1,\ldots,\vx_r\}$ is also a mutually orthogonal set.
+\end{lemma}
+
+\begin{theproof}
+  Assume $1\le r\le n$. \\
+  Assume $\vx\in\spn\{\vx_1,\ldots,\vx_r\}$. \\
+  $\exists\,\l_k\in\F$ such that $\vx=\sum_{k=1}^r\l_k\vx_k$.
+
+  Assume $r+1\le j\le n$.
+
+  $\inner{\vx}{\vx_j}=\inner{\sum_{k=1}^r\l_k\vx_k}{\vx_j}=
+  \l_k\sum_{k=1}^r\inner{\vx_k}{\vx_j}=\l_k\sum_{k=1}^r0=0$
+
+  Thus, $\vx$ is orthogonal to all the $\vx_j\mid r+1\le j\le n$. \\
+  Furthermore, all the $\vx_j$ are orthogonal.
+
+  Therefore $S'$ is a mutually orthogonal set.
+\end{theproof}
+
+\begin{corollary}
+  Let $E$ be an inner product space and let $\{\vx_1,\ldots,\vx_n\}$ be a
+  non-empty, mutually orthogonal subset of $E$:
+  \[\norm{\sum_{k=1}^n\vx_k}^2=\sum_{k=1}^n\norm{\vx_k}^2\]
+\end{corollary}
+
+\begin{theproof}
+  By induction on $n$:
+  \begin{description}
+  \item Base case: $n=1$
+
+    Trivial.
+
+  \item Assume for mutually orthogonal set $\{\vx_1,\ldots,\vx_n\}\subset E$:
+    \[\norm{\sum_{k=1}^n\vx_k}^2=\sum_{k=1}^n\norm{\vx_k}^2\]
+
+  \item Consider the mutually orthogonal set
+    $\{\vx_1,\ldots,\vx_n,\vx_{n+1}\}\subset E$:
+
+    $\norm{\sum_{k=1}^{n+1}\vx_k}^2=\norm{\sum_{k=1}^n\vx_k+\vx_{n+1}}^2=
+    \norm{\sum_{k=1}^n\vx_k}^2+\norm{\vx_{n+1}}^2=
+    \sum_{k=1}^n\norm{\vx_k}^2+\norm{\vx_{n+1}}^2=
+    \sum_{k=1}^{n+1}\norm{\vx_k}^2$
+  \end{description}
+\end{theproof}
+
+\bigskip
+
+\begin{definition}[Euclidean]
+  A \emph{Euclidean} space is a finite-dimensional real inner product space.
+  In other words, $\inner{\cdot}{\cdot}\in\R$.
+\end{definition}
+
+Applying the Cauchy-Schwarz inequality to a Euclidean space:
+\[\abs{\inner{\vx}{\vy}}\le\norm{\vx}\norm{\vy}\]
+For $\vx,\vy\ne\vo$:
+\[\frac{\abs{\inner{\vx}{\vy}}}{\norm{\vx}\norm{\vy}}\le1\]
+\[-1\le\frac{\inner{\vx}{\vy}}{\norm{\vx}\norm{\vy}}\le1\]
+So let $\cos\o=\frac{\inner{\vx}{\vy}}{\norm{\vx}\norm{\vy}}$:
+\[\inner{\vx}{\vy}=\norm{\vx}\norm{\vy}\cos\o\]
+
+\end{document}

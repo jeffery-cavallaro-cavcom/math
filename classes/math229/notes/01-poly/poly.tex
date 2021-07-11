@@ -1,0 +1,67 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Polynomials}
+
+For matrices, any field will work (e.g., $\Q$, $\R$, $\C$, any finite
+field); however, the default scalar field for this class will be $\C$.
+
+Give $z=a+ib\in\C$, there are two important operations:
+\begin{enumerate}
+\item Conjugation: $\conj{z}=a-ib$
+\item Modulus: $\abs{z}=\sqrt{a^2+b^2}=\sqrt{z\conj{z}}$
+\end{enumerate}
+
+An alternate representation using Euler's formula:
+\[z=\abs{z}e^{i\theta}=\abs{z}(\cos{\theta}+i\sin{\theta})\]
+
+\begin{definition}
+  A \emph{polynomial} in a complex variable $z$ is of the form:
+  \[p(z)=\sum_{k=0}^na_kz^k,\hspace{4ex}a_k\in\C, a_n\ne0\]
+  The \emph{degree} of $p(z)=n$.
+
+  To say that $p(z)$ is \emph{monic} means $a_n=1$.
+\end{definition}
+
+\begin{definition}
+  To say that $z_0$ is a \emph{zero} of the polynomial $p(z)$ means:
+  \[p(z_0)=0\]
+\end{definition}
+
+\begin{theorem}[Fundamental Theorem of Algebra]
+  Every non-constant polynomial has at least one zero.
+\end{theorem}
+
+\begin{corollary}
+  A monic polynomial of degree $n\ge1$ has exactly $n$ zeros, including multiplicity:
+  \[p(z)=\sum_{k=0}^na_kz^k=\prod_{k=1}^n(z-\lambda_k)\]
+\end{corollary}
+
+\begin{theorem}
+  Let $p(z)=\sum_{k=0}^na_kz^k$ be a polynomial of degree $n\ge1$:
+  \[a_{n-k}=(-1)^k\sum_{\mathcal{P}_k[n]}\prod_{i=1}^k\lambda_i\]
+  where $\mathcal{P}_k[n]$ are all $k$ subsets of $\{1,2,\ldots,n\}$.
+
+  In particular:
+  \begin{eqnarray*}
+    a_{n-1} &=& -\sum_{k=1}^n\lambda_k \\
+    a_0 &=& (-1)^n\prod_{k=1}^n\lambda_k
+  \end{eqnarray*}
+\end{theorem}
+
+\begin{corollary}
+  Let $p(z)$ be a polynomial with real coefficients:
+  \[p(z_0)=0\implies p(\conj{z_0})=0\]
+  In other words, all complex zeros must occur in conjugate pairs.
+\end{corollary}
+
+\begin{theproof}
+  Assume $p(z_0)=0$ \\
+  $\conj{p(z_0)}=\conj{0}=0$
+
+  $\therefore p(\conj{z_0})=0$
+\end{theproof}
+
+\end{document}

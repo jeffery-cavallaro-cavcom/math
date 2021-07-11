@@ -1,0 +1,158 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\allowdisplaybreaks
+\begin{document}
+\section*{Modulus}
+\begin{definition}
+Let $z=x+iy\in\C$. The \emph{modulus} of $z$ is given by:
+\[\abs{z}=\sqrt{x^2+y^2}\]
+\end{definition}
+
+\begin{figure*}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw [<->] (-1,0) -- (4,0);
+\draw [<->] (0,-1) -- (0,4);
+\node [right] at (4,0) {Re};
+\node [above] at (0,4) {Im};
+\draw [fill=black] (3,2) circle [radius=0.1];
+\draw [dashed] (0,2) -- (3,2);
+\draw [dashed] (3,0) -- (3,2);
+\node [below] at (3,0) {$x$};
+\node [left] at (0,2) {$y$};
+\node [above right] at (3,2) {$z=(x,y)$};
+\draw (0,0) -- (3,2);
+\node [above left,rotate=30] at (1.75,1.1) {$\abs{z}$};
+\node at (8,2) {$\abs{z}=\sqrt{x^2+y^2}\ge0$};
+\end{tikzpicture}
+\end{figure*}
+
+Note that $\abs{z}$ measures the distance from $z$ to the origin. Thus, if
+$\abs{z_1}<\abs{z_2}$ then $z_1$ is closer to the origin than $z_2$.
+
+\begin{theorem}
+$\forall z\in\C$:
+\begin{enumerate}
+\item{$\abs{Re(z)}\le\abs{z}$}
+\item{$\abs{Im(z)}\le\abs{z}$}
+\item{$\abs{z}\le\abs{Re(z)}+\abs{Im(z)}$}
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Assume $z=x+iy\in\C$ \\
+  $x=Re(z)$ \\
+  $y=Im(z)$
+  
+  $\abs{z}^2=x^2+y^2=\abs{x}^2+\abs{y}^2=[Re(z)]^2+[Im(z)]^2$
+
+  $\abs{z}^2\le\abs{Re(z)}^2$ \\
+  $\therefore\abs{Re(z)}\le\abs{z}$
+
+  $\abs{z}^2\le\abs{Im(z)}^2$ \\
+  $\therefore\abs{Im(z)}\le\abs{z}$
+
+  $\abs{z}=\abs{x+iy}\le\abs{x}+\abs{iy}=\abs{x}+\abs{i}\abs{y}=
+  \abs{x}+1\cdot\abs{y}=\abs{x}+\abs{y}$ \\
+  $\therefore\abs{z}\le\abs{Re(z)}+\abs{Im(z)}$
+\end{theproof}
+
+\begin{properties}
+\listbreak
+\begin{enumerate}
+\item{$\abs{-z}=\abs{z}$}
+\item{$\abs{\conj{z}}=\abs{z}$}
+\item{$z\conj{z}=\abs{z}^2$}
+\item{$\abs{z_1z_2}=\abs{z_1}\abs{z_2}$}
+\item{$\abs{\frac{1}{z}}=\frac{1}{\abs{z}}$}
+\item{$\abs{\frac{z_1}{z_2}}=\frac{\abs{z_1}}{\abs{z_2}}$}
+\end{enumerate}
+\end{properties}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item $\abs{-z}=\abs{-x-iy}=\sqrt{(-x)^2+(-y)^2}=\sqrt{x^2+y^2}=\abs{z}$
+
+\item $\abs{\conj{z}}=\abs{x-iy}=\sqrt{x^2+(-y)^2}=\sqrt{x^2+y^2}=\abs{z}$
+
+\item $z\conj{z}=(x+iy)(x-iy)=x^2-i^2y^2=x^2-(-1)y^2=x^2+y^2=\abs{z}^2$
+
+\item{$\abs{z_1z_2}^2=(z_1z_2)\Conj{(z_1z_2)}=z_1z_2\conj{z_1}\conj{z_2}=
+    (z_1\conj{z_1})(z_2\conj{z_2})=\abs{z_1}^2\abs{z_2}^2$} \\
+$\therefore \abs{z_1z_2}=\abs{z_1}\abs{z_2}$
+
+\item{$\abs{\frac{1}{z}}^2=
+    \left(\frac{1}{z}\right)\Conj{\left(\frac{1}{z}\right)}=
+    \left(\frac{1}{z}\right)\left(\frac{1}{\conj{z}}\right)=
+    \frac{1}{z\conj{z}}=\frac{1}{\abs{z}^2}$} \\
+$\therefore \abs{\frac{1}{z}}=\frac{1}{\abs{z}}$
+
+\item{$\abs{\frac{z_1}{z_2}}=\abs{z_1\frac{1}{z_2}}=\abs{z_1}\abs{\frac{1}{z_2}}=
+    \abs{z_1}\frac{1}{\abs{z_2}}=\frac{\abs{z_1}}{\abs{z_2}}$}
+\end{enumerate}
+\end{theproof}
+
+\begin{example}
+\begin{eqnarray*}
+\abs{\frac{i(1-i)^3}{(\sqrt{2}+2i)^4}} &=&
+    \abs{\frac{i(1-3i-3+i)}{4+16\sqrt{2}i-48-32\sqrt{2}i+16}} \\
+    &=& \abs{\frac{i(-2-2i)}{-28-16\sqrt{2}i}} \\
+    &=& \abs{\frac{i(1+i)}{14+8\sqrt{2}i}} \\
+    &=& \abs{\frac{-1+i}{14+8\sqrt{2}i}} \\
+    &=& \abs{\left(\frac{-1+i}{14+8\sqrt{2}i}\right)
+        \left(\frac{14-8\sqrt{2}i}{14-8\sqrt{2}i}\right)} \\
+    &=& \abs{\frac{(-1+i)(14-8\sqrt{2}i}{196+128}} \\
+    &=& \abs{\frac{-14+8\sqrt{2}+i(14+8\sqrt{2})}{324}} \\
+    &=& \abs{\frac{-7+4\sqrt{2}+i(7+4\sqrt{2})}{162}} \\
+    &=& \frac{1}{162}\sqrt{(-7+4\sqrt{2})^2+(7+4\sqrt{2})^2} \\
+    &=& \frac{1}{162}\sqrt{(49+32-56\sqrt{2})+(49+32+56\sqrt{2})} \\
+    &=& \frac{1}{162}\sqrt{162} \\
+    &=& \frac{9\sqrt{2}}{162} \\
+    &=& \frac{\sqrt{2}}{18} \\
+\end{eqnarray*}
+\end{example}
+
+\begin{theorem}
+$\forall n\in\N$:
+\[\abs{z^n}=\abs{z}^n\]
+\end{theorem}
+
+\begin{theproof}
+(by induction)
+\begin{description}
+\item{Base Case: $n=1$} \\
+\[\abs{z^1}=\abs{z}=\abs{z}^1\]
+
+\item Assume $\abs{z^n}=\abs{z}^n$
+
+\item Consider $\abs{z^{n+1}}$:
+\[\abs{z^{n+1}}=\abs{z^nz}=\abs{z^n}\abs{z}=\abs{z}^n\abs{z}=\abs{z}^{n+1}\]
+\end{description}
+\end{theproof}
+
+\begin{theorem}
+$\forall z,a\in C$:
+\[\abs{z+a}^2=\abs{z}^2+\abs{a}^2+2Re(\conj{a}z)\]
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{eqnarray*}
+\abs{z+a}^2 &=& (z+a)\Conj{(z+a)} \\
+    &=& (z+a)(\conj{z}+\conj{a}) \\
+    &=& z\conj{z}+a\conj{a}+z\conj{a}+\conj{z}a \\
+    &=& \abs{z}^2+\abs{a}^2+z\conj{a}+\Conj{z\conj{a}} \\
+    &=& \abs{z}^2+\abs{a}^2+2Re(\conj{a}z) \\
+\end{eqnarray*}
+\end{theproof}
+
+\begin{corollary}
+$\forall z\in\C, a\in\R$:
+\[\abs{z+a}^2=\abs{z}^2+a^2+2aRe(z)\]
+\end{corollary}
+\end{document}

@@ -1,0 +1,160 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\ve}{\vec{e}}
+\begin{document}
+\section*{Unitary Matrices}
+
+\begin{definition}[Unitary]
+  Let $U\in M_n$. To say that $U$ is \emph{unitary} means:
+  \[UU^*=U^*U=I_n\]
+\end{definition}
+
+\begin{example}[Unitary Matrices]
+  \listbreak
+  \begin{enumerate}
+  \item Diagonal matrices of the form:
+    \[\begin{bmatrix} e^{i\o_1} & & 0 \\
+    & \ddots & \\
+    0 & & e^{i\o_n}\end{bmatrix}\]
+
+  \item Diagonal signed matrices where $\o=0,\pi$:
+    \[\begin{bmatrix} \pm1 & & 0 \\
+    & \ddots & \\
+    0 & & \pm1 \end{bmatrix}\]
+
+  \item Permutation matrices
+
+  \item Products of unitary matrices
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}
+  Let $U_n$ be the set of all $n\times n$ unitary matrices:
+
+  $U_n$ is a group.
+\end{theorem}
+
+\begin{theproof}
+  Clearly, $I_n\in U_n$ and thus $U_n\ne\emptyset$ \\
+  Assume $U\in U_n$ \\
+  By definition, $U$ is invertible with $U^{-1}=U^*$ and so
+  $U_n\subset GL(n)$ \\
+  Assume $V\in U_n$ \\
+  $(UV^*)(UV^*)^*=UV^*VU^*=UI_nU^*=UU^*=I_n$ \\
+  Thus, $UV^*\in U_n$
+
+  Therefore, by the subgroup test, $U_n\le GL(n)$.
+\end{theproof}
+
+\begin{theorem}
+  Let $U\in U_n$:
+  \[\det(U)=\pm1\]
+\end{theorem}
+
+\begin{theproof}
+  $UU^*=I_n$ \\
+  $\det(UU^*)=\det(I_n)=1$ \\
+  $\det(U)\det(U^*)=1$ \\
+  But $\det(U^*)=\overline{\det(U^T)}=\overline{\det(U)}$ \\
+  $\det(U)\det(U^*)=\det(U)\overline{\det(U)}=\abs{\det(U)}^2=1$
+
+  $\therefore\det(U)=\pm1$
+\end{theproof}
+
+\begin{theorem}
+  Let $U\in M_n$. TFAE:
+  \begin{enumerate}
+  \item $U$ is unitary
+
+  \item The columns of $U$ form an orthonormal basis for $U_n$
+
+  \item $U$ preserves inner product:
+    \[\inner{\vx}{\vy}=\inner{U\vx}{U\vy}\]
+    
+  \item $U$ preserves length:
+    \[\|U\vx\|=\|x\|\]
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $1\to 3$: Assume $U$ is unitary
+    
+    $\inner{U\vx}{U\vy}=(U\vy)^*(U\vx)=\vy^{\,*}U^*U\vx=\vy^{\,*}I_n\vx=
+    \vy^{\,*}\vx=\inner{\vx}{\vy}$
+
+  \item $3\to 4$: Assume $U$ preserves inner product
+
+    $\|U\vx\|^2=\inner{U\vx}{U\vx}=\inner{\vx}{\vx}=\|\vx\|^2$ \\
+    $\therefore\|Ux\|=\|x\|$
+
+  \item $4\to 2$: Assume $U$ preserves length
+
+    WTS: $\inner{\vu_i}{\vu_j}=
+    \begin{cases} 1, & i=j \\ 0, & i\ne j\end{cases}$
+
+    Consider $\ve_i$, the columns of $I_n$ \\
+    The $\ve_i$ are an orthonormal basis for $\C^n$ \\
+    $\|\ve_i\|=\|U\ve_i\|=\|\vu_i\|=1$
+    
+    $\inner{\vu_i}{\vu_i}=\|\vu_i\|^2=1^2=1$
+
+    Now consider $\ve_i$ and $\ve_j$ where $i\ne j$
+
+    $\|ve_i+\ve_j\|^2=\|U(ve_i+\ve_j)\|^2=\|U\ve_i+U\ve_j\|^2=
+    \|\vu_i+\vu_j\|^2$ \\
+    $\inner{\ve_i+\ve_j}{\ve_i+\ve_j}=\inner{\vu_i+\vu_j}{\vu_i+\vu_j}$ \\
+    $\inner{\ve_i}{\ve_i}+\inner{\ve_i}{\ve_j}+\inner{\ve_j}{\ve_i}+
+    \inner{\ve_j}{\ve_j}=
+    \inner{\vu_i}{\vu_i}+\inner{\vu_i}{\vu_j}+\inner{\vu_j}{\vu_i}+
+    \inner{\vu_j}{\vu_j}$ \\
+    $1+0+0+1=1+\inner{\vu_i}{\vu_j}+\inner{\vu_j}{\vu_i}+1$
+
+    $\inner{\vu_i}{\vu_j}+\inner{\vu_j}{\vu_i}=0$
+
+    $\|ve_i+i\ve_j\|^2=\|U(ve_i+i\ve_j)\|^2=\|U\ve_i+iU\ve_j\|^2=
+    \|\vu_i+i\vu_j\|^2$ \\
+    $\inner{\ve_i+i\ve_j}{\ve_i+i\ve_j}=
+    \inner{\vu_i+i\vu_j}{\vu_i+i\vu_j}$ \\
+    $\inner{\ve_i}{\ve_i}+\inner{\ve_i}{i\ve_j}+\inner{i\ve_j}{\ve_i}+
+    \inner{i\ve_j}{i\ve_j}=
+    \inner{\vu_i}{\vu_i}+\inner{\vu_i}{i\vu_j}+\inner{i\vu_j}{\vu_i}+
+    \inner{i\vu_j}{i\vu_j}$ \\
+    $\inner{\ve_i}{\ve_i}-i\inner{\ve_i}{\ve_j}+i\inner{\ve_j}{\ve_i}+
+    \abs{i}^2\inner{i\ve_j}{i\ve_j}=
+    \inner{\vu_i}{\vu_i}-i\inner{\vu_i}{\vu_j}+i\inner{\vu_j}{\vu_i}+
+    \abs{i}^2\inner{\vu_j}{\vu_j}$ \\
+    $1-0+0+1=1-i\inner{\vu_i}{\vu_j}+i\inner{\vu_j}{\vu_i}+1$ \\
+    $-i\inner{\vu_i}{\vu_j}+i\inner{\vu_j}{\vu_i}=0$
+
+    $-\inner{\vu_i}{\vu_j}+\inner{\vu_j}{\vu_i}=0$
+
+    Sum and difference $=0$
+
+    $\therefore\inner{\vu_i}{\vu_j}=\inner{\vu_j}{\vu_i}=0$
+
+  \item $2\to 1$: Assume the columns of $U$ form an orthonormal basis for
+    $\C^n$
+
+    $(U^*U)_{ij}=\inner{\vu_i}{\vu_j}=
+    \begin{cases} 1, & i=j \\ 0, & i\ne j \end{cases}$
+
+    $U^*U=I_n$
+
+    $(U^*U)^*=I_n^*=I_n$
+
+    $U^*U=I_n$
+
+    Therefore $U$ is unitary.
+    
+  \end{description}
+\end{theproof}
+
+\end{document}

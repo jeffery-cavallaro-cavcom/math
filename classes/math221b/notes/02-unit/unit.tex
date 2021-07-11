@@ -1,0 +1,75 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\x}{\times}
+\newcommand{\w}{\omega}
+\newcommand{\Rx}{R^{\x}}
+\begin{document}
+\section*{Units}
+
+\begin{definition}[Unit]
+  Let $R$ be a ring with $1\ne0$. To say that $r\in R$ is a \emph{unit} in $R$ means that
+  $\exists\,s\in R$ such that:
+  \[rs=sr=1\]
+  In other words, $r$ has a multiplicative inverse.
+
+  The set of all units in $R$ is denoted by $\Rx$.
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a ring with $1\ne0$. $\Rx$ is a multiplicative group.
+\end{theorem}
+
+\begin{theproof}
+  Clearly, $\Rx\subseteq R$ \\
+  $1\cdot1=1$, so $1\in\Rx$ and $\Rx\ne\emptyset$ \\
+  Assume $r,s\in\Rx$ \\
+  $(rs)(s^{-1}r^{-1})=r(ss^{-1})r^{-1}=r1r^{-1}=rr^{-1}=1$ \\
+  $(s^{-1}r^{-1})(rs)=s^{-1}(r^{-1}r)s=s^{-1}1s=s^{-1}s=1$ \\
+  Thus, $rs\in\Rx$ and moreover, $(rs)^{-1}=s^{-1}r^{-1}$
+
+  Therefore, by the subgroup test, $\Rx$ is a group.
+\end{theproof}
+
+\begin{example}
+  \listbreak
+  \begin{enumerate}
+  \item $\Z^{\x}=\{\pm1\}$
+
+    $mn=1$ \\
+    $\abs{mn}=\abs{m}\abs{n}=\abs{1}=1$ \\
+    $\abs{m}=\frac{1}{\abs{n}}\le1$ \\
+    But $\abs{m}\ge1$ \\
+    $\therefore \abs{m}=1$, or $m=\{\pm1\}$
+
+  \item $\Z[i]^{\x}=\{\pm1,\pm i\}$
+
+    $\frac{1}{a+bi}=\frac{a-bi}{a^2+b^2}$ \\
+    So $a^2+b^2=1$ \\
+    Note that $a,b\le1$ \\
+    When $a=0$, $b=\pm1$ \\
+    When $a=\pm1$, $b=0$ \\
+    $\therefore \Z[i]^{\x}=\{\pm1,\pm i\}$
+\newpage
+  \item $\Z[\w]^{\x}=\{\pm1,\pm\w,\pm\w^2\}$
+
+    $\w=\frac{-1+\sqrt{3}}{2}=e^{\frac{2\pm i}{3}}$ \\
+    $\w^3=1$ \\
+    $1\cdot1=1$ \\
+    $\w\cdot\w^2=1$ \\
+    $\Z[\w]=\{\pm1,\pm\w,\pm\w^2\}$
+
+  \item $(\Z/n\Z)^{\x}=\{a+n\Z\mid a\in\Z, (a,n)=1\}$
+    \begin{eqnarray*}
+      a+n\Z\in(Z/n\Z)^{\x} &\iff& \exists\,b+n\Z\in(Z/n\Z)^{\x},(a+nZ)(b+nZ)=1+nZ \\
+      &\iff& ab+n\Z=1+n\Z \\
+      &\iff& ab\equiv1\pmod n \\
+      &\iff& \exists\,k\in\Z,ab-1=kn \\
+      &\iff& ab+n(-k)=1\ \mbox{has solutions} \\
+      &\iff& (a,n)=1\hspace{2ex}(\mbox{B\'ezout})
+    \end{eqnarray*}
+    
+  \end{enumerate}
+\end{example}
+
+\end{document}

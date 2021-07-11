@@ -1,0 +1,245 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%            TITLE:                             
+%%%
+%%%            DATE:
+%%%
+%%%            AUTHOR(S):
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,letterpaper,reqno]{amsart}                       
+
+
+%%%%%%%%%%%      PACKAGES      %%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage{amsrefs}
+% \usepackage[alphabetic,author-year,sorted]{amsrefs}
+\usepackage{amscd}
+
+\usepackage[colorlinks=true]{hyperref}
+%\hypersetup{urlcolor=blue, citecolor=red}
+
+%\usepackage[varg]{pxfonts}   % Nice fonts! The pxfonts package must 
+                             % be loaded AFTER amssymb, amsmath etc
+
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+\usepackage{psfrag}
+\usepackage[dvips]{epsfig}
+\usepackage{epsfig}
+\usepackage[all]{xy}         % Commutative diagrams
+
+
+%-------------       SPACING      -------------------%
+
+%\setlength{\textwidth}{6.5in}                    % Change to 1-inch margins.
+%\setlength{\textheight}{9in}
+%\setlength{\evensidemargin}{0in}
+%\setlength{\oddsidemargin}{0in}
+%\setlength{\topmargin}{+.4in}
+
+\setlength{\oddsidemargin}{0.in}                 % Alternative formatting
+\setlength{\evensidemargin}{0.in}
+\setlength{\textwidth}{6.46in}
+\setlength{\textheight}{8.4in}
+
+%\usepackage[margin=2.5cm]{geometry}
+
+% \sloppy
+
+
+%%%%%%%%%%%    THEOREM STYLES      %%%%%%%%%%%%%%%
+
+\swapnumbers 
+
+\theoremstyle{plain}                              % Italicized                
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem*{conj}{Conjecture}
+\newtheorem*{mainthm}{Main Theorem}               % Or Theorem A, etc.
+
+\theoremstyle{definition}                         % Non-italicized
+\newtheorem{example}[thm]{Example}
+\newtheorem*{remark}{Remark} 
+
+\theoremstyle{remark}                             % Non-italicized &
+\newtheorem*{rem}{Remark}                         % non-bold heading
+\newtheorem{case}{Case}
+\newtheorem*{note}{Note}
+
+\numberwithin{equation}{section}
+
+\renewcommand{\baselinestretch}{1.09}
+
+
+%%%%%%%%%%%      PAGE STYLE    %%%%%%%%%%%%%%%%
+
+% \pagestyle{empty}
+% \pagestyle{plain}
+% \pagestyle{headings}
+
+%%%%%%%%%%%      COMMANDS      %%%%%%%%%%%%%%%%
+
+\newcommand{\R}{\mathbb{R}}                     % Reals
+\newcommand{\Z}{\mathbb{Z}}                     % Integers
+\newcommand{\C}{\mathbb{C}}                     % Complex numbers
+\newcommand{\N}{\mathbb{N}}                     % Natural numbers
+
+\newcommand{\ms}[1]{\mathscr{#1}}               % Script
+
+\newcommand{\too}{\longrightarrow}
+
+\newcommand{\vect}[1]{\mathbf{#1}}              % Vectors
+
+\newcommand{\noi}{\noindent} 
+
+\newcommand{\veps}{\varepsilon}        
+
+\newcommand{\del}{\partial}
+         
+
+
+%%%%%%%%%%%    OPERATORS     %%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\rank}{rank}
+
+\DeclareMathOperator{\codim}{codim}
+
+\DeclareMathOperator{\vol}{vol}
+
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}       % Norm 
+
+\providecommand{\abs}[1]{\left\lvert#1\right\rvert}        % Absolute value
+
+
+
+\newcommand{\aperta}{\setlength{\itemsep}{-1pt}} % This shrinks enumerate 
+                   % and itemize. see Lamport, p. 185
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%           DOCUMENT BODY      %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title[short title]{Title}
+
+\author{Your name here}
+
+\address{Department of Mathematics, San Jos\'e State University, San
+  Jos\'e, CA 95192-0103}
+
+\email{your email address here}
+
+\thanks{\textsc{Math 231A: Real Analysis I}}
+
+\date{\today}
+
+\begin{abstract}
+  Write a short abstract here.
+\end{abstract}
+
+\maketitle
+
+
+\section{Introduction}       \label{sec:intro}
+
+Introduce the topic here, talk about the motivation, intuitive
+understanding of whatever you are writing about, give some basic
+examples, etc. For instance:
+
+\textsf{Ergodic theory} is a branch of mathematics that studies
+statistical behavior of orbits of a dynamical system, that is, a map
+$T : X \to X$, where $X$ is a space equipped with some probability
+measure $\mu$ and $T$ is a transformation which preserves $\mu$:
+%
+\begin{displaymath}
+  \mu(T^{-1}(E)) = \mu(E),
+\end{displaymath}
+%
+for all measurable sets $E$ in $X$. We call $\mu$ a probability
+measure if $\mu(X) = 1$. 
+
+\section{Basic concepts}
+
+Define things, introduce the notation and terminology, describe
+examples (in more detail than in Section \ref{sec:intro}. For instance:
+
+\begin{defn}
+  A map $T : X \to X$ is called \textsf{ergodic} with respect to a
+  measure $\mu$ on $X$ if $T$ preserves $\mu$ (in the sense described
+  above) and every $T$-invariant measurable set $E$ has either measure
+  zero or measure one. That is,
+%
+  \begin{displaymath}
+    T^{-1}(E) = E \quad \Rightarrow \quad \mu(E) \in \{ 0, 1 \}.
+  \end{displaymath}
+
+\end{defn}
+
+Our main reference is \cite{walters}.
+
+
+\section{Main results}      \label{sec:properties}
+
+Talk about the most important properties of your subject, state the
+main results of the field, etc. For instance:
+
+\begin{thm}[Birkhoff's Ergodic Theorem]
+%
+  Suppose that $T : X \to X$ is ergodic with respect to $\mu$ and let
+  $f : X \to \R$ be an integrable function. Then for $\mu$-a.e. $x \in
+  X$, 
+%
+  \begin{displaymath}
+    \lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} f(T^ix) = \int_X f \: d\mu.
+  \end{displaymath}
+%
+\end{thm}
+
+This can be summarized as: \textit{the time averages of $f$ converge to the
+space average of $f$.}
+%  
+
+
+
+\section{Applications}     \label{sec:applications}
+
+Write about some applications, if any. For instance:
+
+Ergodic theory is closely related to physics, where $f$ is called an
+observable. Birkhoff's Ergodic Theorem allows one to compute the space
+average of an observable $f$ by taking sufficiently many measurements
+and averaging them.
+
+
+%%%%%%% old reference style %%%%%%%
+
+\bibliographystyle{amsplain} 
+\bibliography{ref}    
+
+
+%%%%%%%   amsrefs  %%%%%%%
+
+%\begin{bibdiv}
+%\begin{biblist}
+
+% \bibselect{master}                           % Use master.ltb file         
+
+%\end{biblist}
+%\end{bibdiv}
+
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

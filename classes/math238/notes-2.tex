@@ -1,0 +1,80 @@
+\documentclass[letterpaper,12pt,fleqn,twocolumn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\g}{\gamma}
+\newcommand{\D}{\Delta}
+\newcommand{\conj}[1]{\overline{#1}}
+\DeclareMathOperator{\Res}{Res}
+\begin{document}
+\textbf{Zeros}
+
+$f^{(n)}(a)=0\implies f(z)=0$ \\
+$\abs{f^{(n)}(a)}\le\frac{Mn!}{r^n}$ \\
+$f(z)$ entire/bounded $\implies f(z)$ constant (Liouville) \\
+$f(z)=g(z)$ in $E$ and AP $z_0$ then $f(z)=g(z)$ in $D$ \\
+$f(z)$ compact then finite zeros
+
+\textbf{Newton}
+
+$\sum_{k=0}^na_k=-\frac{a_{n-1}}{a_n}$
+
+\textbf{Cauchy}
+
+$\abs{z}=1+\max\{\abs{a_k}\mid0\le k\le n\}$
+
+\textbf{Argument Principle}
+
+$N=\frac{1}{2\pi i}\int_{\g}\frac{f'(z)}{f(z)}dz$
+
+$\frac{1}{2\pi i}\int_{\g}z\frac{f'(z)}{f(z)}dz=-\frac{a_{n-1}}{a_n}$
+
+\textbf{Rouche's Theorem}
+
+$f(x),g(x)$ analytic \\
+$\abs{g}<\abs{f}$ on $\g$ \\
+Zeros of $f+g=$ zeros of $f$ in $\g$
+
+$\abs{f-g}<\abs{f}$ on $\g$ \\
+Zeros of $f=$ zeros of $g$ in $\g$
+
+\textbf{Enestrome Theorem}
+
+$0<a_{k-1}<a_k<a_n$ \\
+Zeros of $p(x)$ inside $\abs{z}=1$
+
+\textbf{Extended Plane}
+
+$\int_Cf(z)dz=2\pi i\sum_{k=1}^n\Res[f,z_k]=-2\pi i\Res[f,\infty]$ \\
+$\Res[f,\infty]=$-coeff of $w$ in $f(\frac{1}{w})$
+
+\textbf{Schwarz's Lemma}
+
+$\abs{f(z)}\le\abs{z}\frac{M}{R}$ \\
+$\abs{f'(0)}\le\frac{M}{R}$ \\
+Equality at $f(z)=cz\frac{M}{R},\abs{c}=1$
+
+\textbf{Conformal Mappings}
+
+Regular=CD and $f'(z)\ne0$ \\
+$J=\abs{f'(z)}^2$ \\
+$f(z)$ analytic iff conformal
+
+\textbf{Cross Ratio}
+
+$(z_1,z_2,z_3,z_4)=\frac{(z_1-z_3)(z_2-z_4)}{(z_1-z_4)(z_2-z_3)}$ \\
+$\D=ad-bc$ \\
+$s(z_1)-s(z_2)=\frac{\D(z_1-z_2)}{(cz_1+d))(cz_2+d)}$ \\
+$(z_1,z_2,z_3,z_4)=(w_1,w_2,w_3,w_4)$ \\
+$z\ne-\frac{d}{c}\implies s(z)$ conformal \\
+$(z_1,z_2,z_3,z_4)\in\R\iff z_1,z_2,z_3,z_4$ on circle \\
+LFT maps circle (or line) to circle (or line) \\
+$\conj(z_1,z_2,z_3,z_4)=(\conj(z_1),\conj(z_2),\conj(z_3),\conj(z_4))$
+
+\textbf{Symmetry}
+
+$z^*=\frac{R^2}{\conj(z-a)}+a$ \\
+$(z^*-a)(\conj(z)-\conj(a))=R^2$ \\
+$\conj(z,z_1,z_2,z_3)=(z^*,z_1,z_2,z_3)$ \\
+$\conj(s(z),s(z_1),s(z_2),s(z_3))=(s(z^*),s(z_1),s(z_2),s(z_3))$
+
+\end{document}

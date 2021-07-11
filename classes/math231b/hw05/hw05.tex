@@ -1,0 +1,174 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\p}{\varphi}
+\renewcommand{\P}{\Phi}
+\renewcommand{\l}{\lambda}
+\newcommand{\mb}{\mathcal{B}}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 231b \\
+Homework \#5
+
+\subsection*{4.12.2}
+
+If $A$ is an operator on a complex Hilbert space $H$ such that $A\vx\perp\vx$
+for every $\vx\in H$, show $A\equiv0$.
+
+By assumption: $\forall\,\vx\in H,\inner{A\vx,\vx}=0$.
+
+Let $\p(\vx,\vy)=\inner{A\vx,\vy}$ be a bilinear functional on $H$ with
+quadratic form:
+\[\P(\vx)=\p(\vx,\vx)=\inner{A\vx,\vx}=0\]
+Applying the polarization identity $\forall\,\vx,\vy\in H$:
+\[4\p(\vx,\vy)=\P(\vx+\vy)-\P(\vx-\vy)+i\P(\vx+i\vy)-i\P(\vx-i\vy)\]
+But by closure: $\vx+\vy,\vx-\vy,\vx+i\vy,\vx-i\vy\in H$. \\
+And so $\P(\vx+\vy)=\P(\vx-\vy)=\P(\vx+i\vy)=\P(\vx-i\vy)=0$
+
+Thus $\forall\,\vx,\vy\in H$ it must be the case that:
+\[4\p(\vx,\vy)=4\inner{A\vx,\vy}=0\]
+or $\inner{A\vx,\vy}=0$.
+
+But this only holds $\forall\,\vy\in H$ if $A\vx=0$. \\
+But this only holds $\forall\,\vx\in H$ if $A\equiv0$.
+
+$\therefore A\equiv0$.
+
+\subsection*{4.12.3}
+
+Give an example of a bounded operator $A$ such that $\norm{A^2}\ne\norm{A}^2$.
+
+Let $E=\R^2$ and let $A(u)=A(x,y)=(y,0)$.
+Note that this corresponds to the matrix:
+\[[A]_e=\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}\]
+$A$ is clearly bounded (triangle inequality) and linear (matrix).
+
+$\norm{A}=\sup_{\norm{u}=1}\norm{Au}=\sup_{\norm{u}=1}\abs{y}=1$ and so
+$\norm{A}^2=1$
+
+But $A^2=0$ and so $\norm{A^2}=0$
+
+$\therefore\norm{A^2}\ne\norm{A}^2$
+
+Let $E=\R$ and let $A(x)=x+1$.
+
+$\norm{A}=\sup_{\abs{x}=1}\abs{A(x)}=\sup_{\abs{x}=1}\abs{x+1}=1$
+
+$\norm{A}^2=1^2=1$
+
+\subsection*{4.12.6}
+
+Let $(\ve_n)$ be a complete orthonormal sequence in a Hilbert space $H$ and let
+$(\l_n)$ be a sequence of scalars.
+\begin{enumerate}[label=(\alph*)]
+\item Show that there exists a unique (linear) operator $T$ on $H$ such that
+  $T\ve_n=\l_n\ve_n$.
+
+  Note that $H$ is either finite dimensional or separable infinite dimensional,
+  and so all (linear) operators on $H$ can be represented by (infinite) matrix
+  multiplication.
+
+  Assume $S\ve_n=T\ve_n=\l_n\ve_n$.
+
+  $S\ve_n-T\ve_n=(S-T)\ve_n=
+  \sum_{i=1}^{\infty}\sum_{j=1}^{\infty}(s_{ij}-t_{ij})e_{n,j}\ve_i=\vo$
+
+  But $\norm{\ve_n}=1$ and thus $\ve_n\ne\vo$. \\
+  And so $s_{ij}-t_{ij}=0$, and thus $s_{ij}=t_{ij}$.
+
+  $\therefore S=T$.
+
+\item Show that $T$ is bounded iff $(\l_n)$ is bounded.
+
+  Since $\norm{\ve_n}=1$:
+  \[\norm{T\ve_n}=\norm{\l_n\ve_n}=\abs{\l_n}\norm{\ve_n}=\abs{\l_n}\]
+  \begin{description}
+  \item $\implies$ Assume $T$ is bounded.
+
+    $\exists\,M>0$ such that $\norm{T\ve_n}=\abs{\l_n}\le M\norm{\ve_n}=M$
+
+    Therefore $(\l_n)$ is bounded.
+
+  \item $\impliedby$ Assume $(\l_n)$ is bounded.
+
+    $\exists\,M>0$ such that $\abs{\l_n}\le M$. \\
+    $\norm{T\ve_n}=\abs{\l_n}\le M=M\norm{\ve_n}$.
+
+    Therefore $T$ is bounded.
+  \end{description}
+
+\item For a bounded sequence $(\l_n)$, find the norm of $T$.
+
+  Since $(\l_n)$ is bounded, $\abs{\l_n}$ has a supremum. \\
+  Let $\l=\sup\abs{\l_n}$
+  
+  Claim: $\norm{T}=\l$
+
+  Since $T\in\mb(H)$:
+
+  $\norm{T\ve_n}\le\norm{T}\norm{\ve_n}=\norm{T}\cdot1=\norm{T}$ \\
+  $\norm{T}\ge\norm{T\ve_n}=\norm{\l_n\ve_n}=\abs{\l_n}\norm{\ve_n}=
+  \abs{\l_n}\cdot1=\abs{\l_n}$
+
+  $\therefore\norm{T}\ge\l$
+
+  Furthermore:
+  \begin{eqnarray*}
+    \norm{T} &=& \sup_{\norm{\vx}=1}\norm{T\vx} \\
+    &=& \sup_{\norm{\vx}=1}\norm{T\sum_{k=1}^{\infty}x_k\ve_k} \\
+    &=& \sup_{\norm{\vx}=1}\norm{\sum_{k=1}^{\infty}x_kT\ve_k} \\
+    &=& \sup_{\norm{\vx}=1}\norm{\sum_{k=1}^{\infty}x_k\l_k\ve_k} \\
+    &\le& \sup_{\norm{\vx}=1}\norm{\sum_{k=1}^{\infty}\abs{\l_kx_k}\ve_k} \\
+    &=& \sup_{\norm{\vx}=1}\norm{\sum_{k=1}^{\infty}\abs{\l_k}\abs{x_k}\ve_k} \\
+    &\le& \sup_{\norm{\vx}=1}\norm{\sum_{k=1}^{\infty}\l\abs{x_k}\ve_k} \\
+    &=& \l\sup_{\norm{\vx}=1}\norm{\sum_{k=1}^{\infty}\abs{x_k}\ve_k}
+  \end{eqnarray*}
+  But note that:
+  \begin{eqnarray*}
+    \norm{\sum_{k=1}^{\infty}x_k\ve_k}^2 &=&
+    \inner{\sum_{k=1}^{\infty}x_k\ve_k,\sum_{k=1}^{\infty}x_k\ve_k} \\
+    &=& \sum_{k=1}^{\infty}\abs{x_k}^2 \\
+    &=& \inner{\sum_{k=1}^{\infty}\abs{x_k}\ve_k,\sum_{k=1}^{\infty}\abs{x_k}\ve_k} \\
+    &=& \norm{\sum_{k=1}^{\infty}\abs{x_k}\ve_k}^2
+  \end{eqnarray*}
+  So taking the absolute value of the components does not change the norm.
+
+  Hence:
+  \[\norm{T}\le\l\sup_{\norm{\vx}=1}\norm{\sum_{k=1}^{\infty}\abs{x_k}\ve_k}=
+  \l\sup_{\norm{\vx}=1}\norm{\vx}=\l\cdot1=\l\]
+
+  $\therefore\norm{T}=\l$
+\end{enumerate}
+
+\subsection*{4.12.8}
+
+Let $T:\R^2\to\R^2$ be defined by $T(x,y)=(x+3y,2x+y)$. Show that $T^*\ne T$.
+
+From matrix theory, we know that:
+\[[T]_e=\begin{bmatrix} 1 & 3 \\ 2 & 1 \end{bmatrix}\]
+And since $T^*$ is just the conjugate transpose, and in this case, just the
+transpose of $T$:
+\[[T^*]_e=\begin{bmatrix} 1 & 2 \\ 3 & 1 \end{bmatrix}\]
+And thus $T\ne T^*$.
+
+Using the definition of the transpose, we have:
+\[\inner{Tu,v}=\inner{u,T^*v}\]
+So let $u=(x_1,y_1)$ and $v=(x_2,y_2)$:
+\begin{eqnarray*}
+  \inner{Tu,v} &=& \inner{(x_1+3y_1,2x_1+y_1),(x_2,y_2)} \\
+  &=& x_2(x_1+3y_1)+y_2(2x_1+y_1) \\
+  &=& x_1x_2+3y_1x_2+2x_1y_2+y_1y_2 \\
+  &=& x_1(x_2+2y_2)+y_1(3x_2+y_2) \\
+  &=& \inner{(x_1,y_1),(x_2+2y_2,3x_2+y_2)} \\
+  &=& \inner{u,T^*v}
+\end{eqnarray*}
+And so $T^*(x,y)=(x+2y,3x+y)$ (as expected) and therefore $T\ne T^*$.
+
+\end{document}

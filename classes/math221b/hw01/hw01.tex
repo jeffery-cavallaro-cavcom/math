@@ -1,0 +1,272 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\DeclareMathOperator{\End}{End}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221b \\
+Homework \#1
+
+\bigskip
+
+\begin{enumerate}
+\item Let $A$ be an abelian group. Prove that $\End(A)$ is a ring with pointwise
+  addition and composition as multiplication.
+
+  Assume $\phi,\mu,\gamma\in\End(A)$ \\
+  $\phi$, $\mu$, and $\gamma$ are functions on $A$ \\
+  Assume $a\in A$
+
+  $\phi(a)\in A$ \\
+  $\mu(a)\in A$ \\
+  But $A$ is a group, so by closure: \\
+  $(\phi+\mu)(a)=\phi(a)+\mu(a)\in A$
+
+  $\therefore\End(A)$ is closed under addition.
+
+  $(\phi\mu)(a)=\phi(\mu(a))\in A$
+
+  $\therefore\End(A)$ is closed under multiplication (composition).
+
+  $A$ is a group and is thus associative under addition:
+  \begin{eqnarray*}
+    ((\phi+\mu)+\gamma)(a) &=& (\phi+\mu)(a)+\gamma)(a) \\
+    &=& (\phi(a)+\mu(a))+\gamma(a) \\
+    &=& \phi(a)+(\mu(a)+\gamma(a)) \\
+    &=& \phi(a)+(\mu+\gamma)(a) \\
+    &=& (\phi+(\mu+\gamma))(a)
+  \end{eqnarray*}
+  $\therefore\End(A)$ is associative under addition.
+
+  And likewise for multiplication (composition):
+  \begin{eqnarray*}
+    ((\phi\mu)\gamma)(a) &=& (\phi\mu)(\gamma(a)) \\
+    &=& \phi(\mu(\gamma(a))) \\
+    &=& \phi((\mu\gamma)(a)) \\
+    &=& (\phi(\mu\gamma))(a)
+  \end{eqnarray*}
+  $\therefore\End(A)$ is associative under multiplication (composition).
+
+  $A$ is a group, so $0\in A$ is a two-sided additive identity for $A$ \\
+  Let $0_A$ be the zero (trivial) endomorphism \\
+  $0_A\in\End(A)$ \\
+  $(\phi+0_A)(a)=\phi(a)+0_A(a)=\phi(a)+0=\phi(a)$ \\
+  $(0_A+\phi)(a)=0_A(a)+\phi(a)=0+\phi(a)=\phi(a)$
+
+  Therefore $0_A$ is a two-sided additive identity for $\End(A)$.
+
+  Let $\phi'=-\phi$ \\
+  Since $A$ is a group it is closed under additive inverses, so: \\
+  $\phi'(a)=-\phi(a)\in A$ \\
+  Assume $b\in A$ \\
+  $\phi'(a+b)=-\phi(a+b)=-(\phi(a)+\phi(b))=-\phi(a)+(-\phi(b))=\phi'(a)+\phi'(b)$ \\
+  $\phi'$ is a homomorphism, and hence an endomorphism \\
+  $\phi'\in\End(A)$ \\
+  $(\phi'+\phi)(a)=\phi'(a)+\phi(a)=-\phi(a)+\phi(a)=0=0_A(a)$ \\
+  $(\phi+\phi')(a)=\phi(a)+\phi'(a)=\phi(a)+(-\phi(a))=0=0_A(a)$ \\
+  So $\phi'$ is a two-sided additive inverse for $\phi$
+
+  $\therefore\End(A)$ is closed under additive inverses.
+
+  $\therefore\End(A)$ is a group.
+
+  $A$ is an abelian (commutative) group: \\
+  \[(\phi+\mu)(a)=\phi(a)+\mu(a)=\mu(a)+\phi(a)=(\mu+\phi)(a)\]
+
+  $\therefore\End(A)$ is an abelian group.
+
+  $\phi$ is a group homomorphism, so:
+  \begin{eqnarray*}
+    (\phi(\mu+\gamma))(a) &=& \phi((\mu+\gamma)(a)) \\
+    &=& \phi(\mu(a)+\gamma(a)) \\
+    &=& \phi(\mu(a))+\phi(\gamma(a)) \\
+    &=& (\phi\mu)(a)+(\phi\gamma)(a) \\
+    &=& (\phi\mu+\phi\gamma)(a)
+  \end{eqnarray*}
+  $\therefore$ left distributivity holds.
+
+  Likewise:
+  \begin{eqnarray*}
+    ((\mu+\gamma)\phi)(a) &=& (\mu+\gamma)(\phi(a)) \\
+    &=& \mu(\phi(a))+\gamma(\phi(a)) \\
+    &=& (\mu\phi)(a)+(\gamma\phi)(a) \\
+    &=& (\mu\phi+\gamma\phi)(a)
+  \end{eqnarray*}
+  $\therefore$ right distributivity holds.
+
+  So $\End(A)$ is an additive abelian group, is associative under multiplication
+  (composition), and the distributive properties hold
+
+  $\therefore\End(A)$ is a ring.
+\newpage
+  \newcommand{\Rx}{R^{\times}}
+
+\item
+  \begin{enumerate}
+  \item Let $R$ be a ring with $1\ne 0$. Prove: $\Rx$ is a group.
+
+    $R$ is ring and thus is associative under multiplication \\
+    $\Rx\subset R$
+    
+    $\therefore \Rx$ inherits multiplicative associativity.
+
+    $1\in R$ \\
+    $1\cdot1=1$ \\
+    $1$ is a unit \\
+    $1\in \Rx$
+    
+    $\therefore \Rx\ne\emptyset$
+
+    Assume $r,s\in \Rx$ \\
+    By construction: $r^{-1},s^{-1}\in \Rx$ \\
+    $r,s,r^{-1},s^{-1}\in R$ \\
+    By closure, $rs,s^{-1}r^{-1}\in R$ \\
+    $1$ is a two-sided identity for $R$ \\
+    $(rs)(s^{-1}r^{-1})=r(ss^{-1})r^{-1}=r1r^{-1}=rr^{-1}=1$ \\
+    $(s^{-1}r^{-1})(rs)=s^{-1}(r^{-1}r)s=s^{-1}1s=s^{-1}s=1$ \\
+    So $s^{-1}r^{-1}$ is a two-sided multiplicative inverse for $rs$ in $R$ \\
+    $rs$ is a unit \\
+    $rs\in \Rx$
+
+    $\therefore \Rx$ is closed under multiplication.
+
+    $r1=1r=r$ \\
+    $\therefore 1$ is a two-sided identity for $\Rx$.
+
+    By construction, $\Rx$ is closed under multiplicative inverses.
+
+    $\therefore \Rx$ is a multiplicative group.
+
+    \newcommand{\M}{M_2(\Z)}
+    \newcommand{\Mx}{\M^{\times}}
+    \newcommand{\MA}{\{A\in\M\mid\det(A)=\pm1\}}
+
+    \item Prove: $\Mx=\MA$
+
+      It is known that $\Z$ is a commutative ring with unity $1$ \\
+      It is also known that $\M$ is a ring with unity $I_2$
+      
+      Assume $B\in\M$ \\
+      Let $B=\begin{bmatrix}a & b \\ c & d\end{bmatrix}$, $a,b,c,d\in\Z$ \\
+      $\det(B)=ad-bc\in\Z$ (closure)
+
+      \begin{description}
+      \item $\implies$ Assume $B\in\Mx$
+
+        By construction, $B$ is a unit \\
+        So $B$ is invertible and $B^{-1}\in\Mx$ \\
+        $BB^{-1}=I_2$ \\
+        $\det(BB^{-1})=\det(I_2)=1$ \\
+        $\det(B)\det(B^{-1})=1$ \\
+        Thus, $\det(B)$ and $\det(B^{-1})$ must be units in $\Z$ \\
+        But $\Z^{\times}=\{\pm1\}$ \\
+        So $\det(B)=\pm1$
+
+        $\therefore B\in\MA$
+
+      \item $\impliedby$ Assume $B\in\MA$
+
+        $\det(B)=ad-bc=\pm1\ne0$ \\
+        So $B$ is invertible and $B^{-1}$ exists \\
+        $B^{-1}=\frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a\end{bmatrix}$ \\
+        But $ad-bc=\pm1$ and $a,(-b),(-c),d\in\Z$, so $B^{-1}\in\M$ \\
+        So $B$ and $B^{-1}$ are multiplicative inverses in $\M$ \\
+        $B$ is a unit in $\M$
+        
+        $\therefore B\in\Mx$
+      \end{description}
+
+      $\therefore\Mx=\MA$
+
+      \newcommand{\ZnZ}{\Z/n\Z}
+      \newcommand{\ZnZx}{(\ZnZ)^{\times}}
+      \newcommand{\anZ}{\{a+n\Z\mid(a,n)=1\}}
+
+    \item Prove: $\forall\,n\in\Z^+,\ZnZx=\anZ$
+
+      Assume $n\in\Z^+$
+
+      It is known that $\ZnZx$ is ring with unity $1+nZ$
+      \begin{eqnarray*}
+        a+n\Z\in\ZnZx &\iff& \exists\,b+n\Z\in\ZnZx,(a+n\Z)(b+n\Z)=ab+n\Z=1+n\Z \\
+        &\iff& ab\equiv1\pmod{n} \\
+        &\iff& \exists\,k\in\Z,ab-1=kn \\
+        &\iff& ba+(-k)n=1\ \mbox{has solutions in}\ \Z \\
+        &\iff& (a,n)=1\hspace{0.25in}\mbox{(B\'{e}zout)} \\
+        &\iff& a+n\Z\in\anZ
+      \end{eqnarray*}
+
+      \newcommand{\EZ}{\Z[i]}
+      \newcommand{\EZx}{\EZ^{\times}}
+      \newcommand{\U}{\{\pm1,\pm i\}}
+
+    \item Prove: $\EZx=\U$
+
+      It is known that $\Z$ is a ring with unity $1$ \\
+      It is also known that $\EZ$ is a ring with unity $1+i0=1$ \\
+      $\EZ=\{a+ib\in\C\mid a,b\in\Z\}$ \\
+      $\abs{a+ib}^2=a^2+b^2\in\Z$ (closure)
+
+      \begin{description}
+      \item $\implies$ Assume $z\in\EZx$
+
+        $\exists z'\in\EZx,zz'=1$ \\
+        $\abs{zz'}=1$ \\
+        $\abs{zz'}^2=1$ \\
+        $\abs{z}^2\abs{z'}^2=1$ \\
+        But $\abs{z}^2,\abs{z'}^2\in\Z$ \\
+        So $\abs{z}^2$ and $\abs{z'}^2$ are units in $\Z$ \\
+        But both are $\ge0$ \\
+        So $\abs{z}^2=\abs{z'}^2=1$ \\
+        But $\abs{z}\in\R$ and $\abs{z}\ge0$ \\
+        So $\abs{z}=1$, the unit circle \\
+        But the only lattice points on the unit circle are $\U$
+
+        $\therefore z\in\U$
+
+      \item $\impliedby$ Assume $a+ib\in\U$
+
+        $1=1+i0\in\EZ$ \\
+        $1\cdot1=1$
+        
+        $-1=-1+i0\in\EZ$ \\
+        $(-1)\cdot(-1)=1$
+
+        $i=0+i1\in\EZ$ \\
+        $-i=0+i(-1)\in\EZ$ \\
+        $i\cdot(-i)=1$
+
+        $\therefore\U\subseteq\EZx$
+      \end{description}
+
+      $\therefore\EZx=\U$
+  \end{enumerate}
+
+\item Prove: Every finite integral domain is a field.
+
+  Assume $F$ is a finite integral domain \\
+  $F$ is a commutative ring with unity $1\ne0$
+
+  Assume $a\in F,a\ne0$ \\
+  Let $L_a:F\to F$ be defined by $L_a(x)=ax$
+
+  Assume $L_a(x)=L_a(y)$ \\
+  $ax=ay$ \\
+  But $F$ is an integral domain, so the cancellation laws hold \\
+  $x=y$ \\
+  $\therefore L_a$ is one-to-one.
+
+  But $F$ is finite, so $L_a$ is also onto \\
+  $\therefore L_a$ is a bijection on $F$.
+
+  $1\in F$ \\
+  $\exists\,x\in F,L_a(x)=1$ \\
+  $ax=1$ \\
+  But $F$ is cummutative so $xa=1$ \\
+  So $x$ is a multiplicative inverse for $a$ \\
+  Thus every non-zero element of $F$ has a multiplicative inverse
+
+  $\therefore F$ is a field.
+\end{enumerate}
+
+\end{document}

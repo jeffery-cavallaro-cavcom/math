@@ -1,0 +1,63 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\p}{\phi}
+\begin{document}
+\section*{Inverse Properties}
+
+It has already been show that inverses are unique.
+
+\begin{theorem}
+  Let $G$ be a group with identity element $e$.
+  \[e^{-1}=e\]
+\end{theorem}
+
+\begin{theproof}
+  $ee=e$ \\
+  But inverses are unique, \\
+  $\therefore e^{-1}=e$
+\end{theproof}
+
+\begin{theorem}
+  Let $G$ be a group with identity element $e$.
+  \[\forall\,a,b\in G,(ab)^{-1}=b^{-1}a^{-1}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in G$ \\
+  $a^{-1},b^{-1}\in G$ \\
+  $ab$ and $b^{-1}a^{-1}\in G$ \\
+  $(ab)(b^{-1}a^{-1})=a(bb^{-1})a^{-1}=aea^{-1}=aa^{-1}=e$ \\
+  But inverses are unique, \\
+  $\therefore (ab)^{-1}=b^{-1}a^{-1}$
+\end{theproof}
+
+\begin{theorem}
+  Let $G$ be a group with identity element $e$.
+  \[\forall\,a\in G,\left(a^{-1}\right)^{-1}=a\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in G$ \\
+  $a^{-1}$ and $\left(a^{-1}\right)^{-1}\in G$ \\
+  $a^{-1}\left(a^{-1}\right)^{-1}=\left(a^{-1}a\right)^{-1}=e^{-1}=e$ \\
+  But inverses are unique, \\
+  $\therefore \left(a^{-1}\right)^{-1}=a$
+\end{theproof}
+
+\begin{theorem}
+  Let $G,H$ be groups and let $\p:G\to H$ be an isomorphism.
+  \[\forall\,a\in G,\p(a^{-1})=\p(a)^{-1}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in G$ \\
+  $a^{-1}\in G$ \\
+  $\p(aa^{-1})=\p(a)\p(a^{-1})$ \\
+  $\p(aa^{-1})=\p(e)$ \\
+  $\p(a)\p(a^{-1})=\p(e)$ \\
+  But $\p(e)$ is an identity for $H$ and inverses are unique, \\
+  $\therefore \p(a^{-1})=\p(a)^{-1}$
+\end{theproof}
+
+\end{document}

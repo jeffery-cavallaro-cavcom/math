@@ -1,0 +1,137 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\newcommand{\p}{\phi}
+\renewcommand{\t}{\psi}
+\newcommand{\w}{\omega}
+\newcommand{\ihb}{i\hbar}
+\newcommand{\Hh}{\hat{H}}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\et}[1]{\inner{#1}_{\t}}
+\newcommand{\txs}{\abs{\t(x)}^2}
+\DeclareMathOperator{\tr}{tr}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 231b \\
+Homework \#8
+
+\subsection*{3.2}
+
+Suppose $A$ and $B$ are operators on a finite-dimensional Hilbert space and
+suppose that $AB-BA=cI$ for some constant $c$. Show that $c=0$.
+
+Let $\dim H=n$. \\
+So $\tr(AB-BA)=\tr(cI)=nc$. \\
+
+$(AB)_{ij}=\sum_{k=1}^na_{ik}b_{kj}$
+
+$(BA)_{ij}=\sum_{k=1}^nb_{ik}a_{kj}$
+
+$(AB-BA)_{ij}=\sum_{k=1}^n(a_{ik}b_{kj}-b_{ik}a_{kj})$
+
+\begin{eqnarray*}
+  \tr(AB-BA) &=& \sum_{i=1}^n(AB-BA)_{ii} \\
+  &=& \sum_{i=1}^n\sum_{k=1}^n(a_{ik}b_{ki}-b_{ik}a_{ki}) \\
+  &=& \sum_{i=1}^n\sum_{k=1}^na_{ik}b_{ki}-\sum_{i=1}^n\sum_{k=1}^nb_{ik}a_{ki} \\
+  &=& \sum_{i=1}^n\sum_{k=1}^na_{ki}b_{ik}-\sum_{i=1}^n\sum_{k=1}^nb_{ik}a_{ki} \\
+  &=& \sum_{i=1}^n\sum_{k=1}^na_{ki}b_{ik}-\sum_{i=1}^n\sum_{k=1}^na_{ki}b_{ik} \\
+  &=& 0
+\end{eqnarray*}
+But $I\ne0$.
+
+$\therefore c=0$
+
+\subsection*{3.3}
+
+If $A$ is a bounded operator on a Hilbert space $H$, then there exists a unique
+bounded operator $A^*$ on $H$ satisfying $\inner{A\p,\t}=\inner{\p,A^*\t}$ for
+all $\p$ and $\t$ in $H$. The operator $A^*$ is called the \emph{adjoint} of
+$A$, and $A$ is called \emph{self-adjoint} if $A^*=A$.
+\begin{enumerate}[label=(\alph*)]
+\item Show that for any bounded operator $A$ and constant $c\in\C$, we have
+  $(cA)*=\conj{c}A^*$, where $\conj{c}$ is the complex conjugate of $c$.
+
+  Note: $\inner{\p,A\t}=\inner{\p,Bt}\implies A=B$
+  
+  Assume $\p,\t\in H$.
+  \begin{eqnarray*}
+    \inner{\p,(cA)^*\t} &=& \inner{(cA)\p,\t} \\
+    &=& \inner{A(c\p),\t} \\
+    &=& \inner{c\p,A^*\t} \\
+    &=& c\inner{\p,A^*\t} \\
+    &=& \inner{\p,\conj{c}(A^*\t)} \\
+    &=& \inner{\p,(\conj{c}A^*)\t)}
+  \end{eqnarray*}
+
+  $\therefore(cA)^*=\conj{c}A^*$
+
+\item Show that if $A$ and $B$ are self-adjoint, then the operator
+  $\frac{1}{\ihb}[A,B]$ is also self-adjoint.
+
+  Note: $(A+B)^*=A^*+B^*$ and $(AB)^*=B^*A^*$
+  \begin{eqnarray*}
+    (\ihb[A,B])^* &=& [\ihb(AB-BA)]^* \\
+    &=& \conj{\ihb}(AB-BA)^* \\
+    &=& -\ihb[(AB)^*-(BA)^*] \\
+    &=& -\ihb(B^*A^*-A^*B^*) \\
+    &=& -\ihb(BA-AB) \\
+    &=& \ihb(AB-BA) \\
+    &=& \ihb[A,B]
+  \end{eqnarray*}
+
+  Therefore $\ihb[A,B]$ is self-adjoint.
+\end{enumerate}
+
+\subsection*{3.5}
+
+Suppose that $\t$ is a unit vector in $L^2(\R)$ such that the functions
+$x\t(x)$ and $x^2\t(x)$ also belong to $L^2(\R)$. Show that:
+\[\inner{X^2}_{\t}>\left(\inner{X}_{\t}\right)^2\]
+
+Let $a=\et{X}$ and consider the integral:
+\[\int_{-\infty}^{\infty}(x-a)^2\txs dx\]
+Note that the integrand is positive (for non-constant $x$) and thus so is the
+integral.
+\begin{eqnarray*}
+  \int_{-\infty}^{\infty}(x-a)^2\txs dx &=&
+  \int_{-\infty}^{\infty}(x^2-2ax+a^2)\txs dx \\
+  &=& \int_{-\infty}^{\infty}x^2\txs dx-2a\int_{-\infty}^{\infty}x\txs dx
+  +a^2\int_{-\infty}^{\infty}\txs dx \\
+  &=& \et{X^2}-2\et{X}\et{X}+\left(\et{X}\right)^2\cdot1 \\
+  &=& \et{X^2}-2\left(\et{X}\right)^2+\left(\et{X}\right)^2 \\
+  &=& \et{X^2}-\left(\et{X}\right)^2 \\
+  &>& 0
+\end{eqnarray*}
+$\therefore\et{X^2}>\left(\et{X}\right)^2$
+
+\subsection*{3.6}
+
+Consider the Hamiltonian $\Hh$ for a quantum harmonic oscillator, given by:
+\[\Hh=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac{k}{2}x^2\]
+where $j$ is the spring constant of the oscillator. Show that the function
+\[\t_0(x)=e^{-\frac{\sqrt{km}}{2h}x^2}\]
+is an eigenvector for $\Hh$ with eigenvalue $\frac{\hbar\w}{2}$ where
+$\w=\sqrt{\frac{k}{m}}$ is the classical frequency of the oscillator.
+
+\[\frac{d}{dx}\t_0(x)=\frac{d}{dx}e^{-\frac{\sqrt{km}}{2h}x^2}=
+-\frac{\sqrt{km}}{h}xe^{-\frac{\sqrt{km}}{2h}x^2}\]
+
+\[\frac{d^2}{dx^2}\t_0(x)=-\frac{\sqrt{km}}{h}\left(
+e^{-\frac{\sqrt{km}}{2h}x^2}-\frac{\sqrt{km}}{h}x^2e^{-\frac{\sqrt{km}}{2h}x^2}
+\right)=-\frac{\sqrt{km}}{h}\t_0(x)+\frac{km}{\hbar^2}x^2\t_0(x)\]
+
+\begin{eqnarray*}
+  \Hh\t_0(x) &=& \left(-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac{k}{2}x^2
+  \right)\t_0(x) \\
+  &=& -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\t_0(x)+\frac{k}{2}x^2\t_0(x) \\
+  &=& -\frac{\hbar^2}{2m}
+  \left(-\frac{\sqrt{km}}{h}\t_0(x)+\frac{km}{\hbar^2}x^2\t_0(x)\right)+
+  \frac{k}{2}x^2\t_0(x) \\
+  &=& \frac{\hbar}{2}\sqrt{\frac{k}{m}}\t_0(x)-\frac{k}{2}x^2\t_0(x)+
+  \frac{k}{2}x^2\t_0(x) \\
+  &=& \frac{\hbar\w}{2}\t_0(x)
+\end{eqnarray*}
+
+\end{document}

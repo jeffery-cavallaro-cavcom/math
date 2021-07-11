@@ -1,0 +1,189 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\l}{\lambda}
+\newcommand{\p}{\rho}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\rr}{\frac{\vxct A\vx}{\vxct\vx}}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\va}{\vec{a}}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\Diag}{Diag}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 229 \\
+Homework \#5
+
+\bigskip
+
+\subsection*{4.1.3}
+
+Let $A,B\in M_n$ be Hermitian. Show that $A$ and $B$ are similar iff $A$ and $B$ are
+unitary similar.
+
+\begin{description}
+\item $\implies$ Assume $A$ and $B$ are similar.
+
+  Since $A$ and $B$ are similar we have $\Sp(A)=\Sp(B)$. Now, since $A$ and $B$ are
+  Hermitian, they are unitary diagonalizable. Let:
+
+  \newcommand{\dm}{\begin{bmatrix}
+      \l_1 & & 0 \\
+      & \ddots & \\
+      0 & & \l_n
+  \end{bmatrix}}
+  
+  Let $A=U\dm U^*$ and $B=V\dm V^*$ for unitary matrices $U$ and $V$.
+
+  $\dm=V^*BV$
+
+  $A=U(V^*BV)U^*=(UV^*)B(VU^*)=(UV^*)B(UV^*)^*$
+
+  But the product of unitary matrices is unitary, so $UV^*$ is unitary.
+
+  Therefore, $A$ and $B$ are unitary similar.
+
+\item $\impliedby$ Assume $A$ and $B$ are unitary similar.
+
+  Let $A=UBU^*$ for unitary matrix $U$. \\
+  $UU^*=U^*U=I$, so unitary matrices are invertible with $U^{-1}=U^*$. \\
+  Thus, $A=UBU^{-1}$
+
+  Therefore, $A$ and $B$ are similar.
+\end{description}
+
+\subsection*{4.1.11}
+
+Let $A,B\in M_n$ be Hermitian. Explain why $AB-BA$ is skew-Hermitian and deduce from
+(4.1.P10) that $\tr(AB)^2\le\tr(A^2B^2)$ with equality iff $AB=BA$.
+
+$(AB-BA)^*=(AB)^*-(BA)^*=B^*A^*-A^*B^*=BA-AB=-(AB-BA)$
+
+Therefore $AB-BA$ is skew-Hermitian.
+\newpage
+4.1.P10 shows that if $C\in M_n$ is skew-Hermitian then the eigenvalues of $C$ are
+pure imaginary and the eigenvalues of $B^2$ are real and non-positive, and all zero iff
+$B=0$.
+with equality iff $B=0$.
+\begin{eqnarray*}
+  \tr(AB-BA)^2 &=& \tr(ABAB-ABBA-BAAB+BABA) \\
+  &=& \tr(ABAB)+\tr(BABA)-\tr(ABBA)-\tr(BAAB) \\
+  &=& \tr(ABAB)+\tr((BAB)A)-\tr((ABB)A)-\tr(B(AAB)) \\
+  &=& \tr(ABAB)+\tr(A(BAB))-\tr(A(ABB))-\tr((AAB)B) \\
+  &=& \tr(ABAB)+\tr(ABAB)-\tr(AABB)-\tr(AABB) \\
+  &=& 2\tr(ABAB)-2\tr(AABB) \\
+  &=& 2\tr(AB)^2-2\tr(A^2B^2)
+\end{eqnarray*}
+
+But $AB-BA$ is skew Hermitian, so the eigenvalues of $(AB-BA)^2$ are real and
+non-positive, so:
+\begin{eqnarray*}
+  2\tr(AB)^2-2\tr(A^2B^2) &\le& 0 \\
+  \tr(AB)^2-\tr(A^2B^2) &\le& 0 \\
+  \therefore\tr(AB)^2 &\le& \tr(A^2B^2)
+\end{eqnarray*}
+Furthermore, the eigenvalues of $AB-BA$ are all zero iff $AB-BA=0$. Therefore,
+$\tr(AB)^2\le\tr(A^2B^2)$ iff $AB-BA=0$, or $AB=BA$.
+
+\subsection*{4.2.3}
+
+Let $A\in M_n$ be Hermitian with eigenvalues $\l_1\le\cdots\le\l_n$. Use the key
+lemma to show that $\l_1\le a_{ii}\le\l_n$ for all $1\le i\le n$ with equality in
+one of the inequalities for some $i$ only if $a_{ij}=a_{ji}=0$ for all $j\ne i$.
+Consider $A=\Diag(1,2,3)$ and explain why the condition $a_{ij}=a_{ji}=0$ for all
+$j\ne i$ does not imply that $a_{ii}=\l_1$ or $a_{ii}=\l_n$.
+
+By the key lemma we have $\forall\,\vx\in\C^n$ such that $\vx\ne\vz$:
+\[\l_1\le\rr\le\l_n\]
+Let $\vx=\ve_i$:
+\[\frac{\ve_i^{\,*}A\ve_i}{\ve_i^{\,*}\ve_i}=\frac{a_{ii}}{1}=a_{ii}\]
+Therefore:
+\[\l_1\le a_{ii}\le\l_n\]
+
+\newpage
+
+Claim: $\forall\vx\in\C^n$ such that $\vx\ne\vz$:
+\[\l_i=\rr\iff\vx\in\Eig_A(\l_i)\]
+
+\begin{description}
+\item $\implies$ Assume $\l_i=\rr$
+  \begin{eqnarray*}
+    \vxct A\vx &=& \l_i\vxct\vx \\
+    \vxct A\vx &=& \vxct\l_i\vx \\
+    A\vx &=& \l_i\vx
+  \end{eqnarray*}
+  Therefore, since $\vx\ne\vz$, $\vx\in\Eig_A(\l_i)$
+
+\item $\impliedby$ Assume $\vx\in\Eig_A(\l_i)$
+  \[\rr=\frac{\vxct\l_i\vx}{\vxct\vx}=\l_i\frac{\vxct\vx}{\vxct\vx}=\l_i\]
+\end{description}
+
+Now assume that $a_{ii}=\l_1$ or $a_{ii}=\l_n$ for some $i$. Since:
+\[a_{ii}=\frac{\ve_i^{\,*}A\ve_i}{\ve_i^{\,*}\ve_i}\]
+It must be the case that $\ve_i\in\Eig_A(a_{ii})$, and so:
+\begin{eqnarray*}
+  A\ve_i &=& a_{ii}\ve_i \\
+  \va_i &=& a_{ii}\ve_i \\
+  a_{ij} &=& \begin{cases} a_{ii}, & i=j \\ 0, & i\ne j \end{cases}
+\end{eqnarray*}
+But $A$ is Hermitian, so $a_{ji}=0$ as well.
+
+Now, consider $A=\begin{bmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{bmatrix}$
+We have $\l_1=1$ and $\l_n=3$. Consider $i=2$. $a_{ii}=2$, which is neither $\l_1$
+nor $\l_n$.
+
+\subsection*{4.3.1}
+
+Let $A,B\in M_n$ be Hermitian. Show that:
+\[\l_1(B)\le\l_i(A+B)-\l_i(A)\le\l_n(B)\]
+Conclude that $\abs{\l_i(A+B)-\l_i(A)}\le\p(B)$.
+
+Start with Weyl's inequalities:
+\[\l_{i+j-n}(A+B)\le\l_i(A)+\l_j(B)\le\l_{i+j-1}(A+B)\]
+First, let j=1:
+\[\l_{i+1-1}(A+B)=\l_i(A+B)\ge\l_i(A)+\l_1(B)\]
+Now, for the same $i$, let $j=n$:
+\[\l_{i+n-n}(A+B)=\l_i(A+B)\le\l_i(A)+\l_n(B)\]
+Putting these two together we have:
+\[\l_i(A)+\l_1(B)\le\l_i(A+B)\le\l_i(A)+\l_n(B)\]
+and finally:
+\[\l_1(B)\le\l_i(A+B)-\l_i(A)\le\l_n(B)\]
+
+Note that due to the assumed ordering for the eigenvalues of B:
+\[\l_1(B)\le\cdots\le\l_n(B)\]
+It is the case that:
+\[\p(B)=\max\{\abs{\l_1(B)},\abs{\l_n(B)}\}\]
+\begin{description}
+\item Case 1: $\p(B)=\abs{\l_1(B)}$
+
+  It must be the case that $\l_1(B)\le0$ and thus:
+  \[-\abs{\l_1(B)}\le\l_i(A+B)-\l_i(A)\le\abs{\l_n(B)}\le\abs{\l_1(B)}\]
+  and thus:
+  \[\abs{\l_i(A+B)-\l_i(A)}\le\abs{\l_1(B)}=\p(B)\]
+
+\item Case 2: $\p(B)=\abs{\l_n(B)}$
+
+  It must be the case that $\l_n(B)\ge0$ and thus:
+  \[-\abs{\l_n(B)}\le\abs{\l_1(B)}\le\l_i(A+B)-\l_i(A)\le\abs{\l_n(B)}\]
+  and thus:
+  \[\abs{\l_i(A+B)-\l_i(A)}\le\abs{\l_n(B)}=\p(B)\]
+\end{description}
+
+$\therefore\abs{\l_i(A+B)-\l_i(A)}\le\p(B)$
+
+\subsection*{4.3.3}
+
+Let $A,B\in M_n$ be Hermitian. Explain why:
+\[\l_i(A+B)\le\min_{j+k=i+n}\{\l_j(A)+\l_k(B)\}\]
+
+Starting with the first part of Weyl's inequalities:
+\[\l_{j+k-n}(A+B)\le\l_j(A)+\l_k(B)\]
+For $j+k=i+n$ we have:
+\[\l_i(A+B)\le\l_j(A)+\l_k(B)\]
+and therefore:
+\[\l_i(A+B)\le\min_{j+k=i+n}\{\l_j(A)+\l_k(B)\}\]
+\end{document}

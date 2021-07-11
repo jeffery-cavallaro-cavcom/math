@@ -1,0 +1,215 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\e}{\epsilon}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Analytic Functions}
+
+\begin{definition}
+  To say that $f(z)$ is \emph{analytic} at a point $z_0$ means that it is
+  differentiable at every point in some $\e$-neighborhood of $z_0$:
+  \[\exists\,\e>0,\forall\,z\in N_{\e}(z_0), f\ \mbox{is analytic at}\ z\]
+
+  To say that $f(z)$ is analytic in a domain $D$ means that it is analytic
+  everywhere in $D$:
+  \[\forall\,z\in D, f\ \mbox{is analytic at}\ z\]
+
+  To say that $f(z)$ is an \emph{entire} function means that it is analytic
+  everywhere in $\C$:
+  \[\forall\,z\in\C, f\ \mbox{is analytic at}\ z\]
+
+  To say that $z_0$ is a \emph{singular} point of $f(z)$ means that $f$ is
+  analytic in some deleted neighborhood of $z_0$, but not at $z_0$.
+\end{definition}
+
+\begin{example}
+  \begin{minipage}[t]{1.5in}
+    $f(z)=z^2$ \\
+    $f'(z)=2z$ \\
+    $f(z)$ is entire
+  \end{minipage}
+  \begin{minipage}[t]{2.5in}
+    $f(z)=\frac{1}{1-z}$ \\
+    $f'(z)=\frac{1}{(1-z)^2}, z\ne1$ \\
+    $z=1$ is a singular point of $f$
+  \end{minipage}
+  \begin{minipage}[t]{2.5in}
+    $f(z)=\abs{z}^2$ \\
+    $f'(0)=0$ only (no neighborhood) \\
+    $f(z)$ is analytic nowhere
+  \end{minipage}
+\end{example}
+
+The following theorem follows directly from the differentiation laws:
+
+\begin{theorem}
+  Let $f(z)$ and $g(z)$ be analytic in a domain $D$. The following are also
+  analytic in $D$:
+  \begin{enumerate}
+  \item $f(z)\pm g(z)$
+  \item $f(z)g(z)$
+  \item $\frac{f(z)}{g(z)}$, wherever $g(z)\ne0$
+  \item $(f\circ g)(z)$
+  \end{enumerate}
+\end{theorem}
+
+Note that by extension, all polynomial and rational functions ($g(z)\ne0$) are
+analytic as well
+
+\begin{theorem}
+  Let $D$ be a domain:
+
+  $\forall\,z\in D,f'(z)=0\implies f(z)$ constant in $D$
+\end{theorem}
+
+\begin{theproof}
+  Assume $\forall\,z\in D,f'(z)=0$ \\
+  $f(z)=u+iv$ \\
+  $f'(z)=u_x+iv_x=0$ \\
+  $u_x=v_x=0$, and CR, $v_x=v_y=0$ \\
+  Let $z_0,z\in D$ such that $z_0$ and $z$ can be connected by a single line
+  segment $L$ \\
+  Let $s$ denote the distance from $z_0$ to $z$ \\
+  $\frac{du}{ds}=\nabla{u}\cdot\hat{u}$ \\
+  But $\nabla{u}=u_x\hat{i}+u_y\hat{j}=\hat{0}$ \\
+  So $\frac{du}{ds}=0$ along $L$ and thus $u$ is some constant $a$ \\
+  Similarly, $v$ is some constant $b$ \\
+  $f=a+ib$ along $L$ \\
+  But any two points in $D$ can be connected by a finite number of line
+  segments \\
+  $\therefore f$ is constant in $D$
+\end{theproof}
+
+\begin{theorem}
+  Let $f(z)=u+iv$ be analytic in a domain $D$:
+
+  $u$ constant in $D\implies f$ constant in $D$
+\end{theorem}
+
+\begin{theproof}
+  Assume $u=c,c\in\C$ in $D$ \\
+  $u_x=0=v_y$ \\
+  $-u_y=0=v_x$ \\
+  So $v$ is constant in $D$ \\
+  $\therefore f$ is constant in $D$
+\end{theproof}
+
+\begin{theorem}
+  Let $f(z)$ be analytic in a domain $D$:
+
+  $\conj{f(z)}$ analytic in $D\iff f(z)$ is constant in $D$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $\conj{f(z)}$ is analytic in $D$
+
+    $f(z)=u+iv$ \\
+    $u_x=v_y$ and $v_x=-u_y$ \\
+    $\conj{f(z)}=u-iv$ \\
+    $u_x=-v_y$ and $-v_x=-u_y$, or $v_x=u_y$ \\
+    $u_x=v_y=-v_y$, so $u_x=v_y=0$ \\
+    $v_x=-u_y=u_y$, so $v_x=u_y=0$ \\
+    $f'(z)=u_x+iv_x=0$ \\
+    $\therefore f(z)$ is constant in $D$
+\newpage    
+  \item $\impliedby$ Assume $f(z)$ is constant in $D$
+    
+    $\conj{f(z)}$ is constant in $D$ \\
+    $\therefore\conj{f(z)}$ is analytic in $D$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $f(z)$ be analytic in a domain $D$:
+
+  $f(z)$ constant in $D\iff\abs{f(z)}$ constant in $D$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $f(z)$ is constant in $D$
+    $\therefore \abs{f(z)}$ is constant in $D$
+
+  \item $\impliedby$ Assume $\abs{f(z)}$ is constant in $D$
+    
+    \begin{description}
+    \item case 1: $f(z)=0$
+
+      $\therefore f(z)$ is constant in $D$
+
+    \item case 2: $f(z)\ne0$
+      
+      Let $\abs{f(z)}=c$ \\
+      $\abs{f(z)}^2=c^2$ \\
+      $f(z)\conj{f(z)}=c^2$ \\
+      $\conj{f(z)}=\frac{c^2}{f(z)}$ \\
+      So $\conj{f(z)}$ is analytic \\
+      $\therefore f(z)$ is constant in $D$
+    \end{description}
+  \end{description}
+\end{theproof}
+
+\begin{theproof}[alternate]
+  Assume $\abs{f(z)}$ is constant \\
+  $\abs{f(z)}^2$ is constant \\
+  Let $f(z)=u+iv$ \\
+  $\abs{f(z)}^2=u^2+v^2$ \\
+  Let $u^2+v^2=c$
+  \begin{description}
+  \item case 1: $c=0$
+
+    $u=v=0$ \\
+    $f(z)=0$ \\
+    $\therefore f(z)$ is constant in $D$
+
+  \item case 2: $c\ne0$
+
+    $2uu_x+2vv_x=0$ \\
+    $2uu_y+2vv_y=0$
+
+    Note that if any of $u_x,u_y,v_x,v_y=0$ then, by above and CR, all must be
+    0 \\
+    and $f(z)$ would be constant, so assume none are 0
+
+    $2uu_x=-2vv_x$ \\
+    $\frac{u_x}{v_x}=-\frac{v}{u}$
+    
+    $2uu_y=-2vv_y$ \\
+    $\frac{u_y}{v_y}=-\frac{v}{u}$
+
+    $\frac{u_x}{v_x}=\frac{u_y}{v_y}$ \\
+    $u_xv_y=v_xu_y$ \\
+    $u_xv_y-v_xu_y=0$
+
+    By CR, $u_x^2+v_x^2=0$, so $u_x=v_x=0$ and $f'(z)=0$ \\
+    $\therefore f(z)$ is constant on $D$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $f(z)=u(x,y)+iv(x,y)$ be analytic on a domain $D$ and let $f'(z)\ne 0$ at
+  a point $z_0\in D$, which is the point of intersection of the level curves
+  $u(x,y)=c_1$ and $v(x,y)=c_2$:
+  
+  $u$ and $v$ are orthogonal at $z_0$
+\end{theorem}
+
+\begin{theproof}
+  $du=u_xdx+u_ydy=0$ \\
+  $dv=v_xdx+v_ydy=0$ \\
+
+  $\frac{dy}{dx}=-\frac{u_x}{u_y}=m_1$ \\
+  $\frac{dy}{dx}=-\frac{v_x}{v_y}=m_2$ \\
+
+  $m_1m_2=\left(-\frac{u_x}{u_y}\right)\left(-\frac{v_x}{v_y}\right)=
+  \left(\frac{u_x}{u_y}\right)\left(\frac{v_x}{v_y}\right)=
+  \left(-\frac{v_y}{v_x}\right)\left(\frac{v_x}{v_y}\right)=-1$
+
+  $\therefore u$ and $v$ are orthogonal at $z_0$
+\end{theproof}
+
+\end{document}

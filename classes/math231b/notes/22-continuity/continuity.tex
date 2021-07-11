@@ -1,0 +1,159 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\begin{document}
+\section*{Continuity}
+
+\begin{definition}[Continuous]
+  Let $T:E_1\to E_2$ be a mapping of normed spaces. To say that $T$ is
+  continuous at $\vx$ means $\forall\,(\vx_n)$ in $E_1$:
+  \[\vx_n\to\vx\implies T(\vx_n)\to T(\vx)\]
+  To say that $T$ is continuous means $T$ is continuous at
+  $\forall\,\vx\in E_1$.
+\end{definition}
+
+\begin{theorem}
+  Let $E$ be a normed space. $\norm{\cdot}:E\to\R$ is continuous.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in E$. \\
+  Assume $(\vx_n)$ is a sequence in $E$ such that $\vx_n\to\vx$.
+  \[\abs{\norm{\vx_n}-\norm{\vx}}\le\norm{\vx_n-\vx}\to0\]
+  Therefore $\norm{\cdot}$ is continuous.
+\end{theproof}
+
+\begin{theorem}
+  Let $L:E_1\to E_2$ be a mapping of normed spaces and let $U\subseteq E_2$.
+  TFAE:
+  \begin{enumerate}
+  \item $L$ is continuous.
+  \item $U$ open $\implies$ $L^{-1}[U]$ open.
+  \item $U$ closed $\implies$ $L^{-1}[U]$ closed.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $1\to2$: Assume $L$ is continuous.
+
+    Assume $U$ is open. \\
+    Assume $\vx\in L^{-1}[U]$. \\
+    Since $U$ is open, $\exists\,\e>0,B(L\vx,\e)\subset U$. \\
+    But since $L$ is continuous, $\exists\,\d>0$ such that
+    $\forall\,\vx_n\in E$:
+    \[\norm{\vx_n-\vx}<\d\implies\norm{L\vx_n-L\vx}<\e\]
+    But $L\vx_n\in U$, so $\vx_n\in L^{-1}[U]$. \\
+    Therefore $B(\vx,\d)\in L^{-1}[U]$ and thus $L^{-1}[U]$ is open.
+
+  \item $2\to1$: Assume $U$ open $\implies$ $L^{-1}[U]$ open.
+
+    Assume $\vx\in E_1$. \\
+    And so $L\vx\in E_2$. \\
+    Assume $\e>0$. \\
+    Consider the open ball $U=B(L\vx,\e)$. \\
+    By assumption, $L^{-1}[U]$ is also open. \\
+    But $\vx\in L^{-1}[U]$, so $\exists\,\d>0$ such that
+    $B(\vx,\d)\subset L^{-1}[U]$. \\
+    Assume $\vx_n\in E_1$ such that $\norm{\vx_n-\vx}<\d$. \\
+    This means that $\vx_n\in B(\vx,\d)$, and hence in $L^{-1}[U]$. \\
+    Thus, $L\vx_n\in U$ and $\norm{L\vx_n-L\vx}<e$.
+
+    Therefore, $L$ is continuous.
+
+  \item $2\implies3$: Assume $U$ open $\implies$ $L^{-1}[U]$ open.
+
+    Assume $U$ is closed. \\
+    Thus $E_2\setminus U$ is open. \\
+    Note that $L^{-1}[U]\cap L^{-1}[E_2\setminus U]=\emptyset$, otherwise $L$ is
+    not well-defined. \\
+    By assumption, $L^{-1}[E_2\setminus U]=E_1\setminus L^{-1}[U]$ is open.
+
+    Therefore $L^{-1}[U]$ is closed.
+
+  \item $3\implies2$: Assume $U$ closed $\implies$ $L^{-1}[U]$ closed.
+    
+    Assume $U$ is open. \\
+    Thus $E_2\setminus U$ is closed. \\
+    Note that $L^{-1}[U]\cap L^{-1}[E_2\setminus U]=\emptyset$, otherwise $L$ is
+    not well-defined. \\
+    By assumption, $L^{-1}[E_2\setminus U]=E_1\setminus L^{-1}[U]$ is closed.
+
+    Therefore $L^{-1}[U]$ is open.
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $L:E_1\to E_2$ be a linear map of normed spaces:
+
+  \qquad$L$ is continuous (everywhere in $E_1$) iff it is continuous at some
+  $\vx_0\in E_1$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item Assume $L$ is continuous everywhere in $E_1$.
+
+    Therefore it must be continuous at some $\vx_0\in E_1$.
+
+  \item Assume $L$ is continuous at some $\vx_0\in E_1$.
+
+    Assume $\vx\in E_1$. \\
+    Assume $(\vx_n)$ is a sequence in $E_1$ such that $\vx_n\to\vx$. \\
+    Thus, the sequence $(\vx_n-\vx+\vx_o)$ converges to $\vx_0$. \\
+    $\norm{L\vx_n-L\vx}=\norm{L\vx_n-L\vx+L\vx_0-L\vx_0}=
+    \norm{L(\vx_n-\vx+\vx_0)-L\vx_0}\to0$
+
+    Therefore, $L$ is continuous at $\vx$, and thus is continuous everywhere
+    in $E_1$.
+  \end{description}
+\end{theproof}
+
+\newpage
+
+\begin{theorem}
+  Let $L:E_1\to E_2$ be a linear map of normed spaces.
+
+  \qquad$L$ is continuous iff $L$ is bounded.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $L$ is continuous.
+
+    ABC: $L$ is not bounded. \\
+    $\forall\,M>0,\exists\,\vx\in E_1,\norm{L\vx}>M\norm{\vx}$ \\
+    Let $M=n$. \\
+    So $\norm{L\vx}>n\norm{\vx}$ for some $\vx\in E_1$. \\
+    Thus, $\norm{L\frac{\vx}{n\norm{\vx}}}>1$. \\
+    Let $y_n=\frac{\vx}{n\norm{\vx}}$. \\
+    $\norm{y_n}=\norm{\frac{\vx}{n\norm{\vx}}}=
+    \frac{1}{n}\norm{\frac{\vx}{\norm{\vx}}}=\frac{1}{n}\cdot1=
+    \frac{1}{n}\to0$. \\
+    But $\norm{L\vy_n}>1\ne0$. \\
+    Therefore $L$ is not continuous. \\
+    CONTRADICTION!
+
+    Therefore, $L$ is bounded.
+
+  \item $\impliedby$ Assume $L$ is bounded.
+
+    Assume $(\vx_n)$ is a sequence in $E_1$ such that $\vx_n\to\vo$. \\
+    $\norm{L\vx_n-L\vo}=\norm{L\vx_n-\vo}=\norm{L\vx_n}\le
+    \norm{L}\norm{\vx_n}\to0$
+
+    Therefore $L$ is continuous at $\vo\in E_1$ and thus is continuous
+    everywhere in $E_1$.
+  \end{description}
+\end{theproof}
+
+\end{document}

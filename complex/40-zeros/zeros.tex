@@ -1,0 +1,93 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\e}{\epsilon}
+\begin{document}
+\section*{Zeros of Analytic Functions}
+
+\begin{theorem}
+  Let $f(z)$ be analytic in a domain $D$:
+  \[\exists\,a\in D,\forall\,n\in\Z\cup\{0\},f^{(n)}(a)=0\implies
+  \forall\,z\in D,f(z)=0\]
+\end{theorem}
+
+\begin{theorem}
+  Let $f(z)$ be analytic such that $\abs{f(z)}\le M$ in and on a circle
+  $\overline{C}$ with center $a$ and radius $r$:
+  \[\forall\,n\in\Z\cup\{0\},\abs{f^{(n)}(a)}\le\frac{Mn!}{r^n}\]
+\end{theorem}
+
+\begin{theproof}
+  By the CITFD:
+  \begin{eqnarray*}
+    \abs{f^{(n)}(a)} &=& \abs{\frac{n!}{2\pi i}\int_C\frac{f(z)}
+      {(z-a)^{n+1}}dz} \\
+    &=& \abs{\frac{n!}{2\pi i}}\abs{\int_C\frac{f(z)}{(z-a)^{n+1}}dz} \\
+    &\le& \frac{n!}{2\pi}\int_c\frac{\abs{f(z)}}{\abs{z-a}^{n+1}}\abs{dz} \\
+    &\le& \frac{n!}{2\pi}\int_c\frac{M}{r^{n+1}}\abs{dz} \\
+    &\le& \frac{Mn!}{2\pi r^{n+1}}\int_c\abs{dz} \\
+    &=& \frac{Mn!}{2\pi r^{n+1}}(2\pi r) \\
+    &=& \frac{Mn!}{r^n}
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{theorem}[Liouville]
+  $f(z)$ entire and bounded$\implies f(z)$ constant.
+\end{theorem}
+
+\begin{theproof}
+  Assume $f(z)\le M$ \\
+  By the previous theorem with $n=1$ and $a$ in some circle $C$ with radius
+  $r$:
+  \[\abs{f'(z)}\le\frac{M}{r}\]
+  As $r\to\infty$, $\abs{f'(z)}\to0$ \\
+  Thus, $\forall\,z\in\C,f'(z)=0$
+  
+  $\therefore f(z)$ is constant.
+\end{theproof}
+
+\begin{definition}
+  To say that a point $x$ is an \emph{accumulation point} of a set $X$ means
+  that $\forall\,\e>0,N_{\e}(x)$ contains infinitely many points in $X$.
+\end{definition}
+
+\begin{theorem}[Uniqueness]
+  Let $f(z)$ and $g(z)$ be analytic in a domain $D$. If there exists a set
+  $E$ in which $f(z)=g(z)$ and which contains an accumulation point $z_0\in D$
+  for $D$ then $f(z)=g(z)$ in $D$.
+\end{theorem}
+
+\begin{theproof}
+  Assume that such a set $E$ exists \\
+  There exists a sequence $\{z_n\}\subset E$ such that $\lim{z_n}=z_0$ \\
+  So $f(z_n)=g(z_n)$ in $E$ \\
+  Let $F(z)=(f-g)(z)$, which is also analytic in $D$ \\
+  $F(z_n)=(f-g)(z_n)=0$ in $E$, and in particular: \\
+  $F(z_0)=0$ in both $E$ and $D$
+
+  Rewrite $F(z)$ as a Taylor series about $z_0$:
+  \[F(z)=\sum_{n=0}^{\infty}\frac{F^{(k)}(z_0)}{k!}(z-z_0)^k=
+  F(z_0)+\sum_{n=1}^{\infty}\frac{F^{(k)}(z_0)}{k!}(z-z_0)^k\]
+  We already know that $F(z_0)=0$, so:
+  \[F(z)=\sum_{n=1}^{\infty}\frac{F^{(k)}(z_0)}{k!}(z-z_0)^k\]
+  Let $z=z_n$:
+  \[F(z_n)=\sum_{n=1}^{\infty}\frac{F^{(k)}(z_0)}{k!}(z_n-z_0)^k=0\]
+  \[F'(z_0)(z_n-z_0)+\sum_{n=2}^{\infty}\frac{F^{(k)}(z_0)}{k!}(z_n-z_0)^k=0\]
+  But $(z_n-z_0)\ne0$, so:
+  \[F'(z_0)+\sum_{n=2}^{\infty}\frac{F^{(k)}(z_0)}{k!}(z_n-z_0)^{k-1}=0\]
+  As $n\to\infty$, $z_n\to z_0$, so:
+  \[F'(z_0)=0\]
+  By repeating the process, we find that $F^{(n)}(z_0)=0$ \\
+  So, by previous theorem, $F(z)=0$ in $D$
+  
+  $\therefore f(z)=g(z)$ in $D$.
+\end{theproof}
+
+\begin{corollary}
+  If $D$ is compact then $f(z)$ has a finite number of zeros in $D$.
+\end{corollary}
+
+Note that zeros of an analytic function must be isolated; otherwise, the
+function is the zero function over the domain.
+
+\end{document}

@@ -1,0 +1,263 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\mb}{\mathcal{B}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 231b \\
+Homework \#6
+
+\subsection*{4.12.20}
+
+Let $(\ve_n)$ be a complete orthonormal sequence in a Hilbert space $H$. Show
+that a bounded operator $A$ on $H$ is unitary if and only if $(A\ve_n)$ is a
+complete orthonormal sequence in $H$.
+
+\begin{description}
+\item $\implies$ Assume $A$ is unitary.
+
+  Since $A\in\mb(H)$ it is also the case that $A^*\in\mb(H)$.
+
+  $A$ is isometric and thus preserves the norm and inner product.
+  
+  $\inner{\ve_i,\ve_j}=\inner{A\ve_i,A\ve_j}$ \\
+  But $\ve_i\perp\ve_j$ and so $\inner{\ve_i,\ve_j}=\inner{A\ve_i,A\ve_j}=0$ \\
+  $\therefore A\ve_i\perp A\ve_j$
+
+  Also $\norm{A\vx}=\norm{\vx}=1$.
+
+  Therefore $(A\ve_n)$ is an orthonormal sequence.
+
+  Now, assume $\vy\in H$. \\
+  Since $A$ is onto, $\exists\,\vx\in H$ such that $\vy=A\vx$. \\
+  Since $(\ve_n)$ is complete orthonormal and since $A$ is linear and
+  isometric:
+  \[\vy=A\vx=A\sum_{k=1}^{\infty}\inner{\vx,\ve_k}\ve_k=
+  \sum_{k=1}^{\infty}\inner{A\vx,A\ve_k}A\ve_k\]
+  Therefore $(A\ve_n)$ is complete.
+
+\item $\impliedby$ Assume $(A\ve_n)$ is a complete orthonormal sequence.
+
+  Assume $\vx\in H$.
+
+  $\vx=\sum_{k=1}^{\infty}\inner{\vx,A\ve_k}A\ve_k=
+  A\sum_{k=1}^{\infty}\inner{A^*\vx,\ve_k}\ve_k$
+
+  But $(\ve_n)$ is complete orthonormal, and so:
+
+  $\vx=AA^*\vx$ for all $\vx\in H$ and thus $AA^*=I$
+
+  Now, note that:
+  \[A^*A\vx=\sum_{k=1}^{\infty}\inner{A^*A\vx,\ve_k}\ve_k=
+  \sum_{k=1}^{\infty}\inner{A\vx,A\ve_k}\ve_k\]
+  Let $\vx=\ve_j$:
+  \[A^*A\ve_j=\sum_{k=1}^{\infty}\inner{A\ve_j,A\ve_k}\ve_k=
+  \norm{A\ve_j}^2\ve_j=1\cdot\ve_j=\ve_j\]
+  Thus $(A^*A\ve_n)$ is also a complete orthonormal sequence.
+
+  Assume $\vx\in H$:
+  \[\vx=\sum_{k=1}^{\infty}\inner{\vx,A^*A\ve_k}A^*A\ve_k=
+  A^*\sum_{k=1}^{\infty}\inner{A\vx,A\ve_k}A\ve_k=A^*A\vx\]
+  And so $\vx=A^*A\vx$ for all $\vx\in H$ and thus $A^*A=I$
+
+  Therefore $AA^*=A^*A=I$ and thus $A$ is unitary.
+\end{description}
+
+\subsection*{4.12.23}
+
+Let $A$ be a bounded operator on a Hilbert space. Define the exponential
+operator:
+\[e^A=\sum_{n=0}^{\infty}\frac{A^n}{n!}\]
+where $A^0=I$.
+
+Show that $e^A$ is a well-defined operator.
+
+$\sum_{k=1}^{\infty}\norm{\frac{A^n}{n!}}=
+\sum_{k=1}^{\infty}\frac{\norm{A^n}}{n!}\le
+\sum_{k=1}^{\infty}\frac{\norm{A}^n}{n!}$
+
+which converges to $e^{\norm{A}}$ for all $\norm{A}\in\R$.
+
+So $e^A$ converges absolutely. But $H$ is complete, so $e^A$ converges.
+
+Therefore $e^A$ is well-defined.
+
+Prove the following:
+\begin{enumerate}[label=(\alph*)]
+\item $(e^A)^n=e^{nA}$
+
+  Proof by induction on $n$:
+  \begin{description}
+  \item Base case: $n=1$
+
+    Trivial.
+
+  \item Assume $(e^A)^n=e^{nA}$
+
+  \item Consider $(e^A)^{n+1}$.
+
+    $(e^A)^{n+1}=\left[\sum_{k=0}^{\infty}\frac{A^k}{k!}\right]^{n+1}=
+    \left[\sum_{k=0}^{\infty}\frac{A^k}{k!}\right]^n
+    \left[\sum_{k=0}^{\infty}\frac{A^k}{k!}\right]=
+    (e^A)^ne^A=e^{nA}e^A$
+
+    Note that $nA$ and $A$ commute, so applying part (d):
+    \[(e^A)^{n+1}=e^{nA}e^A=e^{nA+A}=e^{(n+1)A}\]
+  \end{description}
+  
+\item $e^0=I$
+
+  $e^A=\sum_{n=0}^{\infty}\frac{A^n}{n!}=
+  \frac{A^0}{0!}+\sum_{n=1}^{\infty}\frac{A^n}{n!}=
+  I+\sum_{n=1}^{\infty}\frac{A^n}{n!}$
+
+  Now let $A=0$:
+
+  $e^0=I+\sum_{n=1}^{\infty}\frac{0^n}{n!}=I+0=I$
+  
+\item $e^A$ is invertible (even if $A$ is not) and its inverse is $e^{-A}$.
+
+  Note that $A$ and $-A$ commute, so applying part (d):
+
+  $e^Ae^{-A}=e^{A-A}=e^0=I$
+
+  $e^{-A}e^A=e^{-A+A}=e^0=I$
+
+  Therefore $e^A$ is invertible with inverse $e^{-A}$.
+  
+\item $e^Ae^B=e^{A+B}$ for any commuting operators $A$ and $B$.
+  \begin{eqnarray*}
+    e^{A+B} &=& \sum_{n=0}^{\infty}\frac{(A+B)^n}{n!} \\
+    &=& \sum_{n=0}^{\infty}\frac{1}{n!}\sum_{k=0}^n\binom{n}{k}A^kB^{n-k} \\
+    &=& \sum_{n=0}^{\infty}\frac{1}{n!}\sum_{k=0}^n
+    \frac{n!}{k!(n-k)!}A^kB^{n-k} \\
+    &=& \sum_{n=0}^{\infty}\sum_{k=0}^n\frac{A^k}{k!}\frac{B^{n-k}}{(n-k)!} \\
+    &=& \left[\sum_{n=0}^{\infty}\frac{A^k}{k!}\right]
+    \left[\sum_{n=0}^{\infty}\frac{B^k}{k!}\right] \\
+    &=& e^Ae^B
+  \end{eqnarray*}
+  (by the Cauchy product of two infinite, absolutely converging series).
+    
+\item If $A$ is self-adjoint then $e^{iA}$ is unitary.
+
+  Assume $A$ is self-adjoint. \\
+  $A=A^*$
+  
+  \begin{eqnarray*}
+    (e^{iA})^* &=& \left[\sum_{n=1}^{\infty}\frac{(iA)^n}{n!}\right]^* \\
+    &=& \lim_{N\to\infty}\left[\sum_{n=1}^N\frac{(iA)^n}{n!}\right]^* \\
+    &=& \lim_{N\to\infty}\sum_{n=1}^N\frac{[(iA)^n]^*}{n!} \\
+    &=& \lim_{N\to\infty}\sum_{n=1}^N\frac{[(iA)^*]^n}{n!} \\
+    &=& \lim_{N\to\infty}\sum_{n=1}^N\frac{[-iA^*]^n}{n!} \\
+    &=& \lim_{N\to\infty}\sum_{n=1}^N\frac{[-iA]^n}{n!} \\
+    &=& e^{-iA}
+  \end{eqnarray*}
+
+  Therefore, by part (c), $e^{iA}$ is unitary.
+\end{enumerate}
+
+\subsection*{4.12.28}
+
+If $T^*T=I$, is it true that $TT^*=I$?
+
+No. Let $H=\ell^2$ and let $T$ be the right-shift operator:
+\[T(z_1,z_2,z_3,\ldots)=(0,z_1,z_2,z_3,\ldots)\]
+Claim: $\forall\,z\in\ell^2,Tz\in\ell^2$
+
+Assume $z\in\ell^2$.
+
+$\sum_{n=1}^{\infty}\abs{(Tz)_n}^2=0+\sum_{n=1}^{\infty}\abs{z_n}^2=
+\sum_{n=1}^{\infty}\abs{z_n}^2<\infty$
+
+Claim: $T$ is linear.
+
+Assume $x,y\in\ell^2$ and $\a,\b\in\C$.
+\begin{eqnarray*}
+  T(\a x+\b y) &=& T(\a x_1+\b y_1,\a x_2+\b y_2,\a x_3+\b y_3,\ldots) \\
+  &=& (0,\a x_1+\b y_1,\a x_2+\b y_2,\a x_3+\b y_3,\ldots) \\
+  &=& \a(0,x_1,x_2,x_3,\ldots)+\b(0,y_1,y_2,y_3,\ldots) \\
+  &=& \a Tx+\b Ty
+\end{eqnarray*}
+Claim: $T$ is bounded.
+\[\norm{Tz}^2=\sum_{n=1}^{\infty}\abs{(Tz)_n}^2=0+\sum_{n=1}^{\infty}\abs{z_n}^2
+=\norm{z}^2\]
+Therefore $\norm{T}\le1$ and thus $T$ is bounded.
+
+$\therefore T\in\mb(\ell^2)$
+
+Now, assume $T^*T=I$. \\
+Thus, $T^*$ is a left-inverse of $T$ and must therefore be the left-shift
+operator:
+\[T^*(z_1,z_2,z_3,z_4\ldots)=(z_2,z_3,z_4,\ldots)\]
+And so:
+\[T^*T(z_1,z_2,z_3,\ldots)=T^*(0,z_1,z_2,z_3,\ldots)=(z_1,z_2,z_3,\ldots)\]
+However:
+\[TT^*(z_1,z_2,z_3,\ldots)=T(z_2,z_3,\ldots)=(0,z_2,z_3,\ldots)\ne
+(z_1,z_2,z_3,\ldots)\]
+And therefore $TT^*\ne I$.
+
+\subsection*{4.12.31}
+
+If $A$ and $B$ are positive operators and $A+B=0$, show that $A=B=0$.
+
+Assume $A$ and $B$ are positive operators and $A+B=0$.
+
+$\inner{(A+B)\vx,\vx}=\inner{A\vx+B\vx,\vx}=
+\inner{A\vx,\vx}+\inner{B\vx,\vx}=0$
+
+But $A$ and $B$ are positive, so $\inner{A\vx,\vx}\ge0$ and
+$\inner{B\vx,\vx}\ge0$.
+
+And so $\inner{A\vx,\vx}=\inner{B\vx,\vx}=0$, for all $\vx$.
+
+$\therefore A=B=0$
+
+\subsection*{4.12.54}
+
+Give an example of a self-adjoint operator that has no eigenvalues.
+
+Let $H=L^2[a,b]$ and let $f_0\in H$ be a real-valued, continuous, non-constant
+(and hence non-zero), and bounded function. For example: $f_0(x)=2+\sin x$.
+
+Define $Tf=f_0f$.
+
+Claim: $T$ is linear.
+
+$T(\a f+\b g)=f_0(\a f+\b g)=\a f_0f+\b f_0g=\a Tf+\b Tg$
+
+Claim: $T$ is bounded.
+
+$\norm{Tf}=\norm{f_0f}\le\norm{f_0}\norm{f}$
+
+Therefore $\norm{T}\le\norm{f_0}$ and thus $T$ is bounded.
+
+$\therefore T\in\mb(H)$
+
+Claim: $T$ is self-adjoint.
+\begin{eqnarray*}
+  \inner{Tf,g} &=& \int_a^b((Tf)(x))\conj{g(x)}dx \\
+  &=& \int_a^b(f_0f)(x)\conj{g(x)}dx \\
+  &=& \int_a^bf_0(x)f(x)\conj{g(x)}dx \\
+  &=& \int_a^bf(x)\conj{f_0(x)g(x)}dx \\
+  &=& \int_a^bf(x)\conj{(Tg)(x)}dx \\
+  &=& \inner{f,Tg}
+\end{eqnarray*}
+
+Claim: $T$ has no eigenvalues.
+
+If it did, then $(Tf)(x)=(f_0f)x=f_0(x)f(x)=\l f(x)$ for all $x\in[a,b]$.
+But this is only true for $f(x)\equiv0$.
+
+Therefore $T$ has no eigenvalues.
+
+\end{document}

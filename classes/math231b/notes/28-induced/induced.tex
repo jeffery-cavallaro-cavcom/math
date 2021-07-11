@@ -1,0 +1,199 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\l}{\lambda}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\mc}{\mathcal{C}}
+\DeclareMathOperator{\Real}{Re}
+\begin{document}
+\section*{Inner Product Induced Norm}
+
+\begin{theorem}
+  Let $E$ be a inner product space over a field $\F$. $E$ is also a normed
+  space with norm:
+  \[\norm{\vx}=\sqrt{\inner{\vx}{\vx}}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vy\in E$ and $\l\in\F$:
+  \begin{enumerate}
+  \item Positivity follows from positivity of the inner product.
+
+  \item Homogeneity
+    \[\norm{\l\vx}=\sqrt{\inner{\l\vx}{\l\vx}}=
+    \sqrt{\abs{\l}^2\inner{\vx}{\vx}}=\abs{\l}\sqrt{\inner{\vx}{\vx}}=
+    \abs{\l}\norm{\vx}\]
+
+  \item Sub-additivity
+    \begin{eqnarray*}
+      \norm{\vx+\vy}^2 &=& \inner{\vx+\vy}{\vx+\vy} \\
+      &=& \inner{\vx,\vx}+\inner{\vx,\vy}+\inner{\vy}{\vx}+\inner{\vy}{\vy} \\
+      &=& \norm{\vx}^2+\inner{\vx,\vy}+\conj{\inner{\vx}{\vy}}+\norm{\vy}^2 \\
+      &=& \norm{\vx}^2+2\Real[\inner{\vx}{\vy}]+\norm{\vy}^2 \\
+      &\le& \norm{\vx}^2+2\abs{\inner{\vx}{\vy}}+\norm{\vy}^2 \\
+      &\le& \norm{\vx}^2+2\norm{\vx}\norm{\vy}+\norm{\vy}^2 \\
+      &=& (\norm{\vx}+\norm{\vy})^2 \\
+      \therefore\norm{\vx+\vy} &\le& \norm{\vx}+\norm{\vy}
+    \end{eqnarray*}
+  \end{enumerate}
+\end{theproof}
+
+Thus, every inner product space is also a normed space; however, the converse
+is not always true.
+
+\begin{theorem}[Parallelogram Law]
+  Let $E$ be an inner product space. $\forall,\vx,\vy\in E$:
+  \[\norm{\vx+\vy}^2+\norm{\vx-\vy}^2=2\left(\norm{\vx}^2+\norm{\vy}^2\right)\]
+\end{theorem}
+
+\begin{tikzpicture}
+  \draw [->] (0,0) -- node [below] {$x$} (4,0);
+  \draw [->] (0,0) -- node [left] {$y$} (1,3);
+  \node [below left] at (0,0) {$0$};
+  \draw [->,dashed] (4,0) -- (5,3);
+  \draw [->,dashed] (1,3) -- (5,3);
+  \draw [->,dashed] (0,0) -- node [above, pos=0.7, sloped] {$x+y$} (5,3);
+  \draw [->,dashed] (1,3) -- node [above, pos=0.75, sloped] {$x-y$} (4,0);
+\end{tikzpicture}
+
+\begin{theproof}
+  Assume $\vx,\vy\in E$:
+  \begin{eqnarray*}
+    \norm{\vx+\vy}^2 + \norm{\vx-\vy}^2 &=&
+    \inner{\vx+\vy}{\vx+\vy} + \inner{\vx-vy}{\vx-\vy} \\
+    &=& \inner{\vx}{\vx}+\inner{\vx}{\vy}+\inner{\vy}{\vx}+\inner{\vy}{\vy} +
+    \inner{\vx}{\vx}+\inner{\vx}{-\vy}+\inner{-\vy}{\vx}+\inner{\vy}{\vy} \\
+    &=& \norm{\vx}^2+\inner{\vx}{\vy}+\inner{\vy}{\vx}+\norm{\vy}^2 +
+    \norm{\vx}^2-\inner{\vx}{\vy}-\inner{\vy}{\vx}+\norm{\vy}^2 \\
+    &=& 2\norm{\vx}^2+2\norm{\vy}^2 \\
+    &=& 2\left(\norm{\vx}^2+\norm{\vy}^2\right)
+  \end{eqnarray*}
+\end{theproof}
+
+Every norm on an inner product space must satisfy this law.
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $\mc[0,1]$ and $\norm{f}_{\infty}$
+
+    Let $f(t)=1$ and $g(t)=t$
+
+    \begin{tikzpicture}
+      \draw (0,0) -- (4,0);
+      \draw (0,0) -- (0,4);
+      \draw [dashed] (3,0) -- (3,3);
+      \draw (0,0) -- node [left] {$f$} (3,3);
+      \draw (0,3) -- node [above] {$g$} (3,3);
+      \node [below left] at (0,0) {$0$};
+      \node [below] at (3,0) {$1$};
+      \node [left] at (0,3) {$1$};
+    \end{tikzpicture}
+
+    $\norm{f}=\max_{t\in[0,1]}\abs{f}=\max_{t\in[0,1]}\abs{1}=1$
+
+    $\norm{g}=\max_{t\in[0,1]}\abs{g}=\max_{t\in[0,1]}\abs{t}=1$
+    
+    $\norm{f+g}=\max_{t\in[0,1]}\abs{f+g}=\max_{t\in[0,1]}\abs{1+t}=2$
+
+    $\norm{f-g}=\max_{t\in[0,1]}\abs{f-g}=\max_{t\in[0,1]}\abs{1-t}=1$
+
+    $\norm{f+g}^2+\norm{f-g}^2=1^2+1^2=1+1=2$
+
+    $2(\norm{f}^2+\norm{g}^2)=2(1^2+1^2)=2(1+1)=4$
+
+    $2\ne4$, therefore not an inner product space.
+
+  \item $L^p[a,b]$ for $1\le p<\infty$ and
+    $\norm{f}=\left(\int_a^b\abs{f}\right)^{\frac{1}{p}}$
+
+    Any $f\in L^p[a,b]$ can be transformed to $[0,1]$ via:
+    \[g(t)=f(a+t(b-a))\]
+    So AWLOG: $L^p[0,1]$.
+
+    Let $f(t)=t$ and $g(t)=1-t$:
+
+    \begin{tikzpicture}
+      \draw (0,0) -- (4,0);
+      \draw (0,0) -- (0,4);
+      \draw [dashed] (3,0) -- (3,3);
+      \draw [dashed] (0,3) -- (3,3);
+      \draw (0,0) -- node [left, pos=0.75] {$f$} (3,3);
+      \draw (0,3) -- node [right, pos=0.7] {$g$} (3,0);
+      \node [below left] at (0,0) {$0$};
+      \node [below] at (3,0) {$1$};
+      \node [left] at (0,3) {$1$};
+    \end{tikzpicture}
+
+    $\norm{f}=\left(\int_0^1\abs{f}^p\right)^{\frac{1}{p}}=
+    \left(\int_0^1t^p\right)^{\frac{1}{p}}=
+    \left(\left.\frac{t^{p+1}}{p+1}\right|_0^1\right)^{\frac{1}{p}}=
+    \frac{1}{(p+1)^{\frac{1}{p}}}$
+
+    $\norm{g}=\left(\int_0^1\abs{g}\right)^{\frac{1}{p}}=
+    \left(\int_0^1(1-t)^p\right)^{\frac{1}{p}}=
+    \left(\int_1^0(-t)^p\right)^{\frac{1}{p}}=
+    \left(\int_0^1t^p\right)^{\frac{1}{p}}=
+    \frac{1}{(p+1)^{\frac{1}{p}}}$
+
+    $\norm{f+g}=\left(\int_0^1\abs{f+g}^p\right)^{\frac{1}{p}}=
+    \left(\int_0^11\right)^{\frac{1}{p}}=
+    \left(\left.t\right|_0^1\right)^{\frac{1}{p}}=1$
+
+    $\norm{f-g}=\left(\int_0^1\abs{f-g}^p\right)^{\frac{1}{p}}=
+    \left(\int_0^1\abs{2t-1}^p\right)^{\frac{1}{p}}=
+    \left(\int_0^{\frac{1}{2}}(1-2t)^p+
+    \int_{\frac{1}{2}}^1(2t-1)^p\right)^{\frac{1}{p}} \\
+    =\left(-\left.\frac{(1-2t)^{p+1}}{2(p+1)}\right|_0^{\frac{1}{2}}+
+    \left.\frac{(2t-1)^{p+1}}{2(p+1)}\right|_{\frac{1}{2}}^1
+    \right)^{\frac{1}{p}}=\frac{1}{2(p+1)}+\frac{1}{2(p+1)}=\frac{1}{(p+1)}$
+
+    $\norm{f+g}^2-\norm{f-g}^2=1^2+\left(\frac{1}{(p+1)^{\frac{1}{p}}}\right)^2=
+    1+\frac{1}{(p+1)^{\frac{2}{p}}}$
+
+    $2(\norm{f}^2+\norm{g}^2)=
+    2\left[\left(\frac{1}{(p+1)^{\frac{1}{p}}}\right)^2+
+      \left(\frac{1}{(p+1)^{\frac{1}{p}}}\right)^2\right]=
+    \frac{4}{(p+1)^{\frac{2}{p}}}$
+
+    $1+\frac{1}{(p+1)^{\frac{2}{p}}}=\frac{4}{(p+1)^{\frac{2}{p}}}$
+    
+    $(p+1)^{\frac{2}{p}}+1=4$
+    
+    $(p+1)^{\frac{2}{p}}=3$
+
+    This only has a solution at $p=2$, and so only $L^2$ is an inner product
+    space.
+
+    \bigskip
+
+    \newpage
+
+  \item $L^{\infty}[a,b]$ and $\norm{f}_{\infty}$
+
+    Once again, AWLOG: $L^{\infty}[0,1]$.
+
+    $\norm{f}=\max_{t\in[0,1]}{\abs{f}}=\max_{t\in[0,1]}{\abs{t}}=1$
+
+    $\norm{g}=\max_{t\in[0,1]}{\abs{g}}=\max_{t\in[0,1]}{\abs{1-t}}=1$
+
+    $\norm{f+g}=\max_{t\in[0,1]}{\abs{f+g}}=\max_{t\in[0,1]}{\abs{t+(1-t)}}=
+    \max_{t\in[0,1]}{1}=1$
+
+    $\norm{f-g}=\max_{t\in[0,1]}{\abs{f-g}}=\max_{t\in[0,1]}{\abs{t-(1-t)}}=
+    \max_{t\in[0,1]}{2t-1}=1$
+
+    $\norm{f+g}^2+\norm{f-g}^2=1^2+1^2=1+1=2$
+
+    $2(\norm{f}^2+\norm{g}^2)=2(1^2+1^2)=2(1+1)=4$
+
+    $2\ne4$, therefore $L^{\infty}$ is not an inner product space.
+  \end{enumerate}
+\end{examples}
+
+\end{document}

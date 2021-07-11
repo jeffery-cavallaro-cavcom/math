@@ -1,0 +1,155 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Milne-Thomson}
+
+\begin{example}
+  Let $f(z)$ be entire and $u(x,y)=x^4-6x^2y^2+y^4$. Find $v(x,y)$.
+
+  $u_x=4x^3-12xy^2=v_y$ \\
+  $v(x,y)=4x^3y-4xy^3+g(x)$ \\
+  $v_x=12x^2y-4y^3+g'(x)=-u_y$ \\
+  $u_y=-12x^2y+4y^3$ \\
+  $12x^2-4y^3+g'(x)=12x^2y-4y^3$ \\
+  $g'(x)=0$ \\
+  $g(x)=C$ \\
+
+  $v(x,y)=4x^3y-4xy^3+C$
+\end{example}
+
+To find $f(z)$ from $u(x,y)$ and $v(x,y)$, use:
+\[x=\frac{z+\bar{z}}{2}\]
+\[y=\frac{z-\bar{z}}{2i}\]
+This can be very tedious. For the above example, the answer would be:
+\[f(x)=z^4+iC\]
+
+As an alternative, use the Milne-Thompson formula:
+
+\begin{theorem}
+  Let $f(z)=u(x,y)+iv(x,y)$ be analytic in a domain $D$ such that
+  $z_0=x_0+iy_0\in D$:
+  \[f(z)=2u\left(\frac{z+\conj{z_0}}{2},\frac{z-\conj{z_0}}{2i}\right)-
+  u(x_0,y_0)+iC,\hspace{0.25in}C\in\R\]
+\end{theorem}
+
+\begin{theproof}
+  $u(x,y)=\frac{1}{2}\left[f(z)+\Conj{f(z)}\right]=
+  \frac{1}{2}\left[f(z)+\conj{f}(\conj{z})\right]=
+  \frac{1}{2}\left[f(x+iy)+\conj{f}(x-iy)\right]$
+
+  Let $x=\frac{z+\Conj{z_0}}{2}$ and $y=\frac{z-\Conj{z_0}}{2i}$:
+  \begin{eqnarray*}
+    u\left(\frac{z+\Conj{z_0}}{2},\frac{z-\Conj{z_0}}{2i}\right) &=&
+    \frac{1}{2}\left[f(\frac{z+\Conj{z_0}}{2}+i\frac{z-\Conj{z_0}}{2i})+
+      \conj{f}(\frac{z+\Conj{z_0}}{2}-i\frac{z-\Conj{z_0}}{2i})\right] \\
+    &=& \frac{1}{2}\left[f(z)+\conj{f}(\Conj{z_0})\right] \\
+  \end{eqnarray*}
+  \begin{eqnarray*}
+    2u\left(\frac{z+\Conj{z_0}}{2},\frac{z-\Conj{z_0}}{2i}\right) &=&
+    f(z)+\conj{f}\left(\Conj{z_0}\right) \\
+    &=& f(z)+\Conj{f(z_0)} \\
+    &=& f(z)+u(x_0,y_0)-iv(x_0,y_0) \\
+  \end{eqnarray*}
+  Let $v(x_0,y_0)=C\in\R$:
+  \[f(z)=2u\left(\frac{z+\Conj{z_0}}{2},\frac{z-\Conj{z_0}}{2i}\right)
+  -u(x_0,y_0)+iC\]
+\end{theproof}
+
+\begin{example}
+  Continuing with the above example with $z_0=0$:
+  \begin{eqnarray*}
+    f(z) &=& 2u\left(\frac{z}{2},\frac{z}{2i}\right)-u(0,0)+iC \\
+    &=& 2\left[\left(\frac{z}{2}\right)^4-
+      6\left(\frac{z}{2}\right)^2\left(\frac{z}{2i}\right)^2+
+      \left(\frac{z}{2i}\right)^4\right]-0+iC \\
+    &=& 2\left(\frac{z^4}{16}+\frac{6z^4}{16}+\frac{z^4}{16}\right)+iC \\
+    &=& 2\left(\frac{8z^4}{16}\right)+iC \\
+    &=& z^4+iC \\
+  \end{eqnarray*}
+\end{example}
+
+\begin{theorem}
+  Let $f(z)=u(x,y)+iv(x,y)$ be analytic in a domain $D$ such that
+  $z_0=x_0+iy_0\in D$:
+  \[f(z)=2iv\left(\frac{z+\conj{z_0}}{2},\frac{z-\conj{z_0}}{2i}\right)-
+  iv(x_0,y_0)+C,\hspace{0.25in}C\in\R\]
+\end{theorem}
+
+\begin{theproof}
+  Let $f(z)=u+iv$:
+  \begin{eqnarray*}
+    if(z) &=& -v+iu \\
+    if(z) &=& -2v\left(\frac{z+\Conj{z_0}}{2},\frac{z-\Conj{z_0}}{2i}\right)
+    +v(x_0,y_0)+iC \\
+    f(z) &=& 2iv\left(\frac{z+\Conj{z_0}}{2},\frac{z-\Conj{z_0}}{2i}\right)
+    -iv(x_0,y_0)+C \\
+  \end{eqnarray*}
+\end{theproof}
+\newpage
+If $u-v$ is known then:
+\[(1+i)(u+iv)=u+iv+iu-v=(u-v)+i(u+v)\]
+So, perform the following steps:
+\begin{enumerate}
+\item Let $F(z)=(1+i)f(z)=(u-v)+i(u+v)$
+\item Perform M-T on $F(z)$
+\item Divide the result by $1+i$
+\end{enumerate}
+
+\begin{theorem}
+  Let $f(z)=f(x+iy)=u(x,y)+iv(x,y)$ be analytic in $D$ such that $0\in D$:
+  \[f(z)=u(z,0)+i(v,0)\]
+\end{theorem}
+
+\begin{theproof}
+  $u(x,y)=\frac{1}{2}[f(z)+\Conj{f(z)}]=\frac{1}{2}[f(z)+\conj{f}(\conj{z})]=
+  \frac{1}{2}[f(x+iy)+\conj{f}(x-iy)]$ \\
+  $v(x,y)=\frac{1}{2i}[f(z)-\Conj{f(z)}]=\frac{1}{2i}[f(z)-\conj{f}(\conj{z})]=
+  \frac{1}{2i}[f(x+iy)-\conj{f}(x-iy)]$
+
+  Let $x=z$ and $y=0$
+
+  $u(z,0)=\frac{1}{2}[f(z)+\conj{f}(z)]$ \\
+  $v(z,0)=\frac{1}{2i}[f(z)-\conj{f}(z)]$
+
+  $\therefore f(z)=u(z,0)+iv(z,0)$
+\end{theproof}
+
+\begin{example}
+  $f(z)=(x^2-y^2)+i2xy$
+
+  $u(z,0)=z^2$ \\
+  $v(z,0)=0$
+
+  $f(z)=z^2+i0=z^2$
+\end{example}
+
+\begin{theorem}
+  Let $f(z)=f(x+iy)=u(x,y)+iv(x,y)$ be analytic in $D$ such that $0\in D$:
+  \[f(z)=\int\left[u_x(z,0)-iu_y(z,0)\right]dz+C\]
+\end{theorem}
+
+\begin{theproof}
+  $f'(z)=f_x=u_x+iv_x=u_x-iu_y$
+
+  Let $x=z$ and $y=0$
+
+  $f'(z)=u_x(z,0)-iu_y(z,0)$ \\
+  $\therefore f(z)=\int\left[u_x(z,0)-iu_y(z,0)\right]dz+C$
+\end{theproof}
+
+\begin{example}
+  $f(z)=(x^2-y^2)+i2xy$
+
+  $u_x=2x$ \\
+  $u_y=-2y$
+
+  $u_x(z,0)=2z$ \\
+  $u_y(z,0)=0$
+
+  $f(z)=\int 2zdz=z^2+C$
+\end{example}
+
+\end{document}

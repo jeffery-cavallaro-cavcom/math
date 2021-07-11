@@ -1,0 +1,63 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\begin{document}
+\section*{Strong Convergence}
+
+\begin{definition}[Strong Convergence]
+  Let $E$ be an inner product space and let $(\vx_n)$ be a sequence of vectors
+  in $E$. To say that $(\vx_n)$ converges to $\vx\in E$ \emph{strongly}, denoted
+  $\vx_n\to\vx$, means:
+  \[\norm{\vx_n-\vx}\to0\]
+\end{definition}
+
+\begin{theorem}
+  Let $E$ be an inner product space and let $(\vx_n)$ be a sequence of vectors
+  in $E$:
+  \[\vx_n\to\vx\implies\norm{\vx_n}\to\norm{\vx}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx_n\to\vx$.
+  
+  $0\le\abs{\norm{\vx_n}-\norm{\vx}}\le\norm{\vx_n-\vx}$
+
+  But $\norm{\vx_n-\vx}\to0$.
+
+  $\therefore\abs{\norm{\vx_n}-\norm{\vx}}\to0$ and thus
+  $\norm{\vx_n}\to\norm{\vx}$.
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be an inner product space and let $(\vx_n)$ and $(\vy_n)$ be
+  sequences of vectors in $E$:
+  \[\vx_n\to\vx\ \mbox{and}\ \vy_n\to\vy\implies
+  \inner{\vx_n,\vy_n}\to\inner{\vx,\vy}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx_n\to\vx\ \mbox{and}\ \vy_n\to\vy$.
+
+  This means that $(\vx_y)$ is bounded. \\
+  So $\exists\,M>0$ such that $\forall\,n\in\N,\norm{\vy_n}\le M$.
+  \begin{eqnarray*}
+    \abs{\inner{\vx_n,\vy_n}-\inner{\vx,\vy}} &=&
+    \abs{\inner{\vx_n,\vy_n}-\inner{\vx,\vy_n}+\inner{\vx,\vy_n}-
+      \inner{\vx,\vy}} \\
+    &=& \abs{(\inner{\vx_n,\vy_n}-\inner{\vx,\vy_n})+(\inner{\vx,\vy_n}-
+      \inner{\vx,\vy})} \\
+    &\le& \abs{\inner{\vx_n,\vy_n}-\inner{\vx,\vy_n}}+
+    \abs{\inner{\vx,\vy_n}-\inner{\vx,\vy}} \\
+    &=& \abs{\inner{\vx_n-\vx,\vy_n}}-\abs{\inner{\vx,\vy_n-\vy}} \\
+    &\le& \norm{\vx_n-\vx}\norm{\vy_n}-\norm{\vx}\norm{\vy_n-\vy} \\
+    &\le& \norm{\vx_n-\vx}M-\norm{\vx}\norm{\vy_n-\vy} \\
+    &\to& 0
+  \end{eqnarray*}
+  $\therefore\inner{\vx_n,\vy_n}\to\inner{\vx,\vy}$
+\end{theproof}
+
+\end{document}

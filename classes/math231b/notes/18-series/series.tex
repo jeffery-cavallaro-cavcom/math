@@ -1,0 +1,89 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\vx}{\vec{x}}
+\renewcommand{\mp}{\mathcal{P}}
+\begin{document}
+\section*{Series in a Normed Space}
+
+\begin{definition}[Infinite Series]
+  Let $E$ be a normed space and let $S=\sum_{n=1}^{\infty}\vx_n$ be an
+  \emph{infinite series} in $E$. To say that $S$ \emph{converges} in $E$ means
+  the sequence of partial sums $(S_N)$ where $S_N=\sum_{n=1}^N\vx_n$ converges
+  in the norm to some value $\vx\in E$:
+  \[\norm{S_n-S}=\norm{\sum_{n=1}^N\vx_n-\vx}\to0\]
+
+  To say that $S$ converges \emph{absolutely} in $E$ means:
+  \[\sum_{n=1}^{\infty}\norm{\vx_n}<\infty\]
+\end{definition}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $E=\R$ and $\sum_{n=1}^{\infty}\frac{(-1)^n}{n}$ converges, but not
+    absolutely.
+
+    $\sum_{n=1}^{\infty}\frac{(-1)^n}{n}=\ln{2}$
+
+    $\sum_{n=1}^{\infty}\abs{\frac{(-1)^n}{n}}=
+    \sum_{n=1}^{\infty}\frac{1}{n}=\infty$
+
+  \item $E=\mp[0,1]$ and $f_n(t)=\sum_{n=1}^{\infty}\frac{t^n}{n!}$
+    converges absolutely but does not converge in the norm.
+
+    $f_n\to f=e^t\notin\mp[0,1]$
+
+    $\sum_{n=1}^{\infty}\norm{\frac{t^n}{n!}}=
+    \sum_{n=1}^{\infty}\max_{t\in[0,1]}\abs{\frac{t^n}{n!}}=
+    \sum_{n=1}^{\infty}\frac{1}{n!}=e<\infty$
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let $E$ be a normed space. $E$ is Banach iff every ACV series in $E$
+  converges in $E$.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $E$ is Banach.
+
+    Assume $\sum_{n=1}^{\infty}\vx_n$ is ACV in $E$. \\
+    Thus, $\sum_{n=1}^{\infty}\norm{\vx_n}<\infty$. \\
+    Let $S_N=\sum_{n=1}^N\norm{\vx_n}$. \\
+    Let $s_N=\sum_{n=1}^N\vx_n$. \\
+    AWLOG: $N<M$. \\
+    $\norm{s_M-s_N}=\norm{\sum_{n=1}^M\vx_n-\sum_{n=1}^N\vx_n}=
+    \norm{\sum_{n=N+1}^M\vx_n}\le\sum_{n=N+1}^M\norm{\vx_n}=S_M-S_N\to0$
+
+    Therefore, $(s_n)$ is Cauchy in $E$. \\
+    But $E$ is complete, therefore $(s_n)$ converges in $E$.
+
+  \item $\impliedby$ Assume every ACV series in $E$ converges in $E$.
+
+    Assume $(\vx_n)$ is Cauchy in $E$. \\
+    $\forall\,k\in\N,\exists\,N_k>0,m,n>N_k\implies\norm{\vx_n-\vx_m}<
+    \frac{1}{2^k}$ \\
+    Let $(n_k)$ be a strictly increasing sequence in $\N$. \\
+    Thus, for all $n_k>N_k$:
+    \[\sum_{k=1}^{\infty}\norm{\vx_{n_{k+1}}-\vx_{n_k}}\le
+    \sum_{k=1}^{\infty}\left(\frac{1}{2}\right)^k<\infty\]
+    Thus $\sum_{k=1}^{\infty}(\vx_{n_{k+1}}-\vx_{n_k})$ is ACV, and by assumption,
+    converges to some element $\vx\in E$.
+
+    Let $S_N=\sum_{k=1}^N(\vx_{n_{k+1}}-\vx_{n_k})$.
+    
+    Note that this sum is telescoping, so:
+    \[S_N=\vx_{n_{N+1}}-\vx_{n_1}\to\vx\]
+    And so $\vx_{n_{N+1}}\to\vx+\vx_{n_1}$.
+    
+    This means that $(\vx_{n_k})$ is a convergent subsequence of $(\vx_n)$
+    that converges to $\vx\in E$.
+
+    Therefore, by previous lemma, $\vx_n\to\vx\in E$ and thus $E$ is complete.
+  \end{description}
+\end{theproof}
+
+\end{document}

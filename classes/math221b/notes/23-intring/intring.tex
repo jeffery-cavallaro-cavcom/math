@@ -1,0 +1,172 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\Zb}{\overline{\Z}}
+\newcommand{\sd}{\sqrt{d}}
+\newcommand{\Qd}{\Q(\sd)}
+\newcommand{\Zd}{\Z[\sd]}
+\newcommand{\w}{\frac{-1+\sd}{2}}
+\newcommand{\Zw}{\Z\left[\w\right]}
+\renewcommand{\a}{\alpha}
+\DeclareMathOperator{\even}{even}
+\DeclareMathOperator{\odd}{odd}
+\begin{document}
+\section*{Ring of Integers}
+
+\begin{definition}[Algebraic Integer]
+  To say that an algebraic number is an \emph{algebraic integer} means that
+  its minimal polynomial has coefficients in $\Z$.
+\end{definition}
+
+\begin{theorem}
+  Let $\Zb$ be the set of algebraic integers:
+
+  $\Zb$ is a ring (but not a field).
+\end{theorem}
+
+\begin{definition}[Ring of Integers]
+  Let $d$ be a squarefree integer. The \emph{ring of integers} of $\Qd$ is
+  given by:
+  \[R_d=\Qd\cap\Zb\]
+\end{definition}
+
+\begin{theorem}[Integer Criterion]
+  Let $\a\in\Qd$:
+  \[\a\in R_d\iff N(\a),T(\a)\in\Z\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\a\in\Qd$
+
+  $\a$ is a zero of the monic polynomial:
+  \[f(x)=(x-\a)(x-\a')=x^2-(\a+\a')x+(\a\a')=x^2-T(\a)x+N(\a)\]
+  which has all rational coefficients
+    
+  Thus, $x-\a$ or $f(x)$ is the minimal polynomial for $a$ and it is then
+  clear that $N(\a),T(\a)\in\Z$.
+\end{theproof}
+
+\begin{theorem}
+  $R_d=\begin{cases} \Zw, & d\equiv 1\pmod 4 \\ \Zd, & d\equiv 2,3\pmod 4
+  \end{cases}$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $\a\in R_d$
+
+    Let $\a=r+\sd$
+    \newpage
+    By the integer criterion:
+    \[N(\a)=r^2-ds^2\in\Z\]
+    \[T(\a)=2r\in\Z\]
+    Then:
+    \[-4N(\a)+T(\a)^2=4(ds^2-r^2)+(2r)^2=4ds^2=d(2s)^2\in\Z\]
+    Since $s\in\Q$, let $2s=\frac{a}{c}$ where $(a,c)=1$ and $c\ne0$ \\
+    Let $d\left(\frac{a}{c}\right)^2=k\in\Z$ \\
+    $da^2=kc^2$ \\
+    Now, ABC that there exists prime $p$ such that $p\mid c$ \\
+    $p^2\mid c^2$ \\
+    But $(a,c)=1$, so $p^2\nmid a^2$, and thus $p^2\mid d$ \\
+    CONTRADICTION! Since $d$ is squarefree \\
+    Thus, $c=1$ and $d\left(\frac{a}{c}\right)^2=d(2s)^2\in\Z$ \\
+    And since $d\in\Z$, we have $2s\in\Z$
+
+    Now, let $a=2s\in\Z$ amd $b=2r\in\Z$ \\
+    $\a=\frac{a}{2}+\frac{b}{2}\sd$ \\
+    $N(\a)=\left(\frac{a}{2}\right)^2-d\left(\frac{b}{2}\right)^2=
+    \frac{a^2-db^2}{4}$ \\
+    $a^2-db^2=4N(\a)\equiv0\pmod4$ \\
+    and so: $a^2\equiv db^2\pmod4$
+
+    Now, consider the even/odd cases for $a$ and $b$ \\
+    Recall: $\forall\,n\in\Z,n$ is even $\iff n^2$ \\
+    Assume $n\in\Z$:
+    \begin{description}
+    \item Case 1: $n \even$
+      \begin{description}
+      \item Case 1a: $n\equiv0\pmod4$
+
+        $n^2\equiv0\cdot0\pmod4\equiv0\pmod4$
+
+      \item Case 1b: $n\equiv2\pmod4$
+
+        $n^2\equiv2\cdot2\pmod4\equiv0\pmod4$
+      \end{description}
+      Thus, $n \even\implies n^2\equiv0\pmod4 $
+      
+    \item Case 2: $n \odd$
+      \begin{description}
+      \item Case 2a: $n\equiv1\pmod4$
+
+        $n^2\equiv1\cdot1\pmod4\equiv1\pmod4$
+
+      \item Case 2b: $n\equiv3\pmod4$
+
+        $n^2\equiv(-1)\cdot(-1)\pmod4\equiv1\pmod4$
+      \end{description}
+      Thus, $n \odd\implies n^2\equiv1\pmod4 $
+    \end{description}
+
+    Now, apply this information to $a$ and $b$ based on $d$:
+    \begin{description}
+    \item Case 1: $d\equiv1\pmod4$
+
+      $a^2\equiv b^2\pmod4$ \\
+      Thus $a$ and $b$ must have the same parity, and so:
+      \[\a=\frac{a+b\sd}{2}=\frac{a+b}{2}+b\left(\w\right)\]
+      But since $a$ and $b$ have the same parity: $\frac{a+b}{2}\in\Z$ \\
+      Also $b\in\Z$
+
+      $\therefore\a\in\Zw$
+
+    \item Case 2: $d\equiv2\pmod4$
+
+      $a^2\equiv 2b^2\pmod4$ \\
+      and so $a^2,b^2\equiv0\pmod4$, and thus $a$ and $b$ must both be even \\
+      Thus $r=\frac{a}{2}$ and $s=\frac{b}{2}$ are both integers
+
+      $\therefore\a\in\Zd$
+
+    \item Case 3: $d\equiv3\pmod4$
+
+      $a^2\equiv -b^2\pmod4$ \\
+      and so $a^2,b^2\equiv0\pmod4$, and thus $a$ and $b$ must both be even
+      and this is the same as the previous case
+
+      $\therefore\a\in\Zd$
+    \end{description}
+
+  \item $\impliedby$ Assume $\a\in\begin{cases} \Zw, & d\equiv 1\pmod 4 \\
+    \Zd, & d\equiv 2,3\pmod 4 \end{cases}$
+    \begin{description}
+    \item Case 1: $d\equiv1\pmod4$
+
+      $\a\in\Zw$ \\
+      Let $\a=m+n\left(\frac{-1+\sd}{2}\right)$ where $m,n\in\Z$ \\
+      $\a=m-\frac{n}{2}+\frac{n\sd}{2}$
+
+      $N(\a)=\left(m-\frac{n}{2}\right)^2-d\left(\frac{n}{2}\right)^2=
+      m^2-mn+\frac{n^2}{4}-\frac{dn^2}{4}=
+      m^2-mn+n^2\left(\frac{1-d}{4}\right)\in\Z$
+
+      $T(\a)=2\left(m-\frac{n}{2}\right)=2m-n\in\Z$
+
+      Therefore, by the integer criterion, $\a\in R_d$
+
+    \item Case 2: $d\equiv2\pmod4$ or $d\equiv3\pmod4$
+    
+      $\a\in\Zd$ \\
+      Let $\a=m+n\sd$ where $m,n\in\Z$
+
+      $N(\a)=m^2-dn^2\in\Z$
+
+      $T(\a)=2m\in\Z$
+    
+      Therefore, by the integer criterion, $\a\in R_d$
+    \end{description}
+  \end{description}
+\end{theproof}
+
+\end{document}

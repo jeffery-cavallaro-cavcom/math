@@ -1,0 +1,82 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\group}[2]{\left<#1,#2\right>}
+\begin{document}
+\section*{Subfields}
+
+\begin{definition}
+  Let $F$ be a field. To say that $F'$ is a \emph{subfield} of $F$, denoted
+  $F'\le F$, means:
+  \begin{enumerate}
+  \item $F'\subseteq F$
+  \item $F'$ is a field under the induced operations
+  \end{enumerate}
+
+  $F'<F$ means $F'$ is a subfield of $F$ but $F'\ne F$.
+\end{definition}
+
+\begin{theorem}
+  Let $F$ be a field and $F'\le F$. $1'=1$.
+\end{theorem}
+
+\begin{theproof}
+  $\group{F}{\cdot}$ is a group, so $1'$ is unique \\
+  $\forall\,f'\in F',f'1'=1'f'=f'$ \\
+  But $f',1'\in F$ \\
+  $\group{F-\{0\}}{\cdot}$ is a group and thus has uniform, unique
+  identity $1$ \\
+  $\therefore 1'=1$
+\end{theproof}
+
+\begin{theorem}[Subfield Test]
+  Let $F$ be a field and let $G$ be a non-empty subset of $F$. $G$ is a subfield of $F$
+  iff the following are true:
+  \begin{enumerate}
+  \item $\forall\,a,b\in G,a-b\in G$
+  \item $\forall\,a,b\in G^*,ab^{-1}\in G^*$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+    \begin{minipage}[t]{3in}
+    \item $\implies$ Assume $G\le F$
+
+      $\group{G}{+}\le\group{F}{+}$ \\
+      $\group{G^*}{\cdot}\le\group{F^*}{\cdot}$ \\
+      Assume $a,b\in G$ \\
+      $\group{G}{+}$ is a group, so $-b\in G$ \\
+      $a-b\in G$ (closure) \\
+      $\group{G^*}{\cdot}$ is a group, so $b^{-1}\in G$ \\
+      $ab^{-1}\in G$ (closure)
+
+      $\therefore 1$ and $2$ hold.
+    \end{minipage}
+    \begin{minipage}[t]{3in}
+    \item $\impliedby$ Assume $1$ and $2$ hold
+
+      By the subgroup test, $\group{G}{+}\le\group{F}{+}$ \\
+      By the subgroup test, $\group{G*}{\cdot}\le\group{F*}{\cdot}$ \\
+      The distributive laws are inherited from $F$
+
+      $\therefore G\le F$.
+    \end{minipage}
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $F$ be a field and let $G=\bigcap_{i\in I}F_i$ where $F_i\le F$:
+  \[G\le F\]
+\end{theorem}
+
+\begin{theproof}
+  $\group{G}{+}\le\group{F}{+}$ \\
+  $\group{G}{\cdot}\le\group{F}{\cdot}$ \\
+  The distributive laws are inherited from $F$
+
+  $\therefore G\le F$
+\end{theproof}
+
+\end{document}

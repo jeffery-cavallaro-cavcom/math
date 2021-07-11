@@ -1,0 +1,41 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Schwarz's Lemma}
+
+\begin{theorem}
+  Let $f(z)$ be analytic in $\abs{z}<R$, $f(0)=0$, and $\abs{f(z)}\le M$:
+  \begin{enumerate}
+  \item $\abs{f(z)}\le\abs{z}\frac{M}{R}$
+  \item $\abs{f'(0)}\le\frac{M}{R}$
+  \item Equality holds for $f(z)=cz\frac{M}{R}$ where $\abs{c}=1$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Let $g(z)=\begin{cases}
+  \frac{f(z)}{z}, & 0<z<R \\
+  f'(0), & z=0 \\
+  \end{cases}$ \\
+  Since $f(z)$ is analytic $\abs{z}<R$, $f'(z)$ exists in $\abs{z}<R$ \\
+  So, by L'Hospital, $\lim_{z\to 0}g(z)=\frac{f'(z)}{1}=f'(0)$ \\
+  Thus, $f(z)$ is continuous at $z=0$ \\
+  Assume $0<r<R$ \\
+  On $\abs{z}=r$,$\abs{g(z)}=\frac{f(z)}{z}\le\frac{M}{r}$ \\
+  Since $g(z)$ analytic in $\abs{z}\le r$, by the maximum principle:
+  $\abs{g(z)}\le\frac{M}{R}$ \\
+  Let $r\to R$ \\
+  Therefore, $\abs{f(z)}\le\abs{z}\frac{M}{R}$
+
+  $\abs{f'(0)}=\abs{g(0)}\le\frac{M}{R}$
+
+  For equality, $\abs{g(z)}$ reaches its maximum value of $\frac{M}{R}$ \\
+  Let $c\in\C,\abs{c}=1$ \\
+  $\abs{g(z)}=\frac{M}{R}=\abs{\frac{f(z)}{z}}$ \\
+  $\abs{f(z)}=\abs{z}\frac{M}{R}$ \\
+  $\abs{f(z)}=\abs{c}\abs{z}\frac{M}{R}=\abs{cz}\frac{M}{R}$ \\
+  $\therefore f(z)=cz\frac{M}{R}$
+\end{theproof}
+
+\end{document}

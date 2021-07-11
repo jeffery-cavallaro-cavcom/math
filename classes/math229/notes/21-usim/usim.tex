@@ -1,0 +1,55 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Unitary Similarity}
+
+\begin{definition}[Unitary Similarity]
+  Let $A,B\in M_n$. To say that $A$ is \emph{unitary similar} to $B$ means
+  there exists a unitary matrix $U$ such that:
+  \[B=UAU^*\]
+\end{definition}
+
+\begin{theorem}
+  Let $A,B\in M_n$ be unitary similar:
+  \[\tr(AA^*)=\tr(BB^*)\]
+\end{theorem}
+
+\begin{theproof}
+  There exists unitary matrix $U$ such that $B=UAU^*$ \\
+  $BB^*=(UAU^*)(UAU^*)^*=UAU^*UA^*U^*=(UA)(A^*U^*)$ \\
+  $\tr(BB^*)=\tr((UA)(A^*U^*))=\tr((A^*U^*)(UA))=\tr(A^*A)=\tr(AA^*)$
+\end{theproof}
+
+Thus, we can rule out unitary similarity if $\tr(AA^*)\ne\tr(BB^*)$.
+
+\begin{theorem}[Frobenius Norm]
+  Let $A\in M_n$:
+  \[\tr(AA^*)=\sum_{1\le i,j\le n}\abs{A_{ij}}^2\]
+\end{theorem}
+
+\begin{theproof}
+  $A=[a_{ij}]$ \\
+  $A^*=[\conj{a_{ji}}]$ \\
+  $(A^*A)_{ij}=\sum_{k=1}^n(A^*)_{ik}A_{kj}=\sum_{k=1}^n\conj{a_{ki}}a_{kj}$ \\
+  $(A^*A)_{ii}=\sum_{k=1}^n\conj{a_{ki}}a_{ki}=\sum_{k=1}^n\abs{a_{ki}}^2$ \\
+  $\therefore\tr(A^*A)=\sum_{i=1}^n\sum_{k=1}^n\abs{a_{ki}}^2=
+  \sum_{i,j=1}^n\abs{a_{ij}}^2$ \\
+\end{theproof}
+
+\begin{example}
+  Let $A=\begin{bmatrix} 3 & 1 \\ -2 & 0 \end{bmatrix}$ and
+  $B=\begin{bmatrix} 1 & 1 \\ 0 & 2 \end{bmatrix}$
+
+  These matrices are similar; however:
+
+  $\tr(AA^*)=3^2+1^2+(-2)^2+0^2=14$
+
+  $\tr(BB^*)=1^2+1^2+0^2+2^2=6$
+
+  Thus, $A$ and $B$ are not unitary similar.
+\end{example}
+
+\end{document}

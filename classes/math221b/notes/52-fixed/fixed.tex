@@ -1,0 +1,87 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\newcommand{\vp}{\varphi}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\id}{id}
+\begin{document}
+\section*{Fixed Fields}
+
+\begin{definition}[Fixed Field]
+  Let $K/F$ be a field extension and let $H\le\Aut(K/F)$. The \emph{fixed field} of $H$,
+  denoted $F(H)$, is given by:
+  \[F(H)=\{\a\in K\mid\forall\,\vp\in H,\vp(\a)=\a\}\]
+\end{definition}
+
+\begin{tikzpicture}
+  \node (F) at (0,0) {$F$};
+  \node (K) at (0,1) {$K$};
+  \draw (F) to (K);
+  \node [right] (GF) at (2,0) {$G(F)$};
+  \node [right] (GK) at (2,1) {$G(K)$};
+  \draw [dashed] (F) to (GF);
+  \draw [dashed] (K) to (GK);
+  \node [right] (FGF) at (4,0) {$F(G(F))\supseteq F$};
+  \node [right] (FGK) at (4,1) {$F(\{\id\})=K$};
+  \draw [dashed] (GF) to (FGF);
+  \draw [dashed] (GK) to (FGK);
+  \node at (2.5,0.5) {\rotatebox{-90}{$\subseteq$}};
+  \node at (4.5,0.5) {\rotatebox{90}{$\subseteq$}};
+\end{tikzpicture}
+
+\begin{example}
+  Recall that for $K=\Q(\sqrt[3]{2})$ and $F=Q$, $G(F)$ is trivial because $K$ is
+  not a splitting field for $x^3-2$. Thus:
+  \[F(G(F))=K\supset F\]
+\end{example}
+
+\begin{definition}
+  To say that a field extension $K/F$ is \emph{Galois} means:
+  \[F(G(F))=F\]
+  There is no slippage - $G(F)$ only fixes $F$ and nothing else.
+\end{definition}
+
+\begin{example}[Quadratic Extensions]
+  Let $[K:\Q]=2$ \\
+  Assume $\a\in K$:
+  \[m_{\a,\Q}(x)=x^2+bx+c\]
+  for some $b,c\in\Q$.
+  \[x=\frac{-b\pm\sqrt{b^2-4c}}{2}\]
+  If $\sqrt{b^2-4c}\in\Q$ then $[K:\Q]=1$, so assume not. \\
+  Let $b=\frac{p}{q}$ and $c=\frac{h}{k}$ where $p,q,h,k\in\Z$ and $q,k\ne0$:
+  \begin{eqnarray*}
+    x &=& \frac{-\frac{p}{q}\pm\sqrt{\left(\frac{p}{q}\right)^2-\frac{4h}{k}}}{2} \\
+    &=& -\frac{p}{2q}\pm\frac{1}{2}\sqrt{\frac{p^2k-4qh}{q^2k}} \\
+    &=& -\frac{p}{2q}\pm\frac{1}{2q^2k}\sqrt{q^2k(p^2k-4qh)}
+  \end{eqnarray*}
+  Note that $q^2k(p^2k-4qh)\in\Z$, so factor out any perfect square part, calling it
+  $n^2$, and whatever squarefree integer is left call it $d$:
+  \[x=-\frac{p}{2q}\pm\frac{1}{2q^2k}\sqrt{n^2d}=
+  -\frac{p}{2q}\pm\frac{n}{2q^2k}\sqrt{d}\]
+  Now let $r=-\frac{p}{2q}\in\Q$ and $s=\frac{n}{2q^2k}\in\Q$:
+  \[x=r\pm s\sqrt{d}\]
+  And so $K=\Q(\sqrt{d})$
+
+  Now assume $\vp\in G(\Q)$ \\
+  Since $\vp$ is a ring homomorphism that fixes $\Q$:
+  \[\vp(x)=\phi(r\pm s\sqrt{d})=\phi(r)\pm\phi(s\sqrt{d})=r\pm\phi(s)\phi(\sqrt{d})=
+  r\pm s\phi(\sqrt{d})\]
+  And so $\vp$ is completely determined by what it does to $\sqrt{d}$.
+  
+  Thus, there are only two $\Q$-automorphisms:
+  \begin{enumerate}
+  \item $\id$
+  \item $\sqrt{d}\mapsto -\sqrt{d}$
+  \end{enumerate}
+  In other words, the identity and a two-cycle.
+
+  Therefore, $\Aut(\Q(\sqrt{d})/\Q)\cong \Z/2\Z$
+
+  Also note that since $\vp$ only moves $\pm\sqrt{d}$:
+  \[F(G(\Q))=\Q\]
+  Thus, there there are no proper subfields of $L$ such that
+  $\Q\subset L\subset \Q(\sqrt{d})$.
+\end{example}
+
+\end{document}

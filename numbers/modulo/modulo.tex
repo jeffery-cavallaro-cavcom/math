@@ -1,0 +1,106 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{changepage}
+\newcommand{\emod}[3]{#1\equiv#2\ (\mbox{mod}\ #3)}
+\newcommand{\ec}[1]{\overline{#1}}
+\pagestyle{empty}
+\begin{document}
+\section*{Modulo Congruence}
+\begin{definition}
+Let $n\in Z^+$. To say that $a$ is equivalent to $b$ modulo $n$, denoted
+$a\equiv_nb$ or $\emod{a}{b}{n}$, means:
+\[n\mid(b-a)\]
+\end{definition}
+\begin{theorem}
+Let $n\in Z^+$:
+\[\emod{a}{b}{n}\iff\exists\,k\in\Z,b=a+kn\]
+\end{theorem}
+\begin{theproof}
+\listbreak
+\begin{eqnarray*}
+\emod{a}{b}{c} &\iff& n\mid(b-a) \\
+    &\iff& \exists\,k\in\Z,b-a=kn \\
+    &\iff& b=a+kn \\
+\end{eqnarray*}
+\end{theproof}
+\begin{theorem}
+Modulo congruence is an equivalence relation on $\Z$.
+\end{theorem}
+\begin{theproof}
+Assume $n\in\Z^+$.
+\begin{enumerate}
+\item Assume $a\in\Z$. \\
+$a-a=0$ \\
+$n\mid0$ \\
+$n\mid(a-a)$ \\
+$\emod{a}{a}{n}$ \\
+$a\sim a$ \\
+Therefore, modulo congruence is reflexive.
+
+\item Assume $a\sim b$. \\
+$\emod{a}{b}{n}$ \\
+$n\mid(b-a)$ \\
+$\exists\,k\in\Z,b-a=kn$ \\
+$a-b=(-k)n$ \\
+$-k\in\Z$ \\
+$n\mid(a-b)$ \\
+$\emod{b}{a}{n}$ \\
+$b\sim a$ \\
+Therefore, modulo congruence is symmetric.
+\newpage
+\item Assume $a\sim b$ and $b\sim c$. \\
+$\emod{a}{b}{n}$ and $\emod{b}{c}{n}$ \\
+$n\mid(b-a)$ and $n\mid(c-b)$ \\
+$\exists\,h\in\Z,(b-a)=hn$ \\
+$\exists\,k\in\Z,(c-b)=kn$ \\
+$(b-a)+(c-b)=hn+kn$ \\
+$c-a=(h+k)n$ \\
+$h+k\in\Z$ \\
+$n\mid(c-a)$ \\
+$\emod{a}{c}{n}$ \\
+$a\sim c$ \\
+Therefore, modulo congruence is transitive.
+\end{enumerate}
+\end{theproof}
+The $n$ equivalence classes: $\ec{0},\ec{1},\ldots,\ec{n-1}$, are called the
+\emph{residue} classes modulo $n$.
+\begin{example}
+Let $n=15$
+
+$\ec{a}=\{a+kn\mid k\in\Z\}$
+
+$\ec{0}=\{0,15,-15,30,-30,\ldots\}$ \\
+$\ec{1}=\{1,16,-14,31,-29,\ldots\}$ \\
+$\hspace{0.5in}\vdots$ \\
+$\ec{14}=\{14,29,-1,44,-16,\ldots\}$ \\
+\end{example}
+Per the division algorithm, the residue class modulo $n$ for $m\in\Z$ is the
+remainder $r$:
+\begin{adjustwidth}{0.5in}{\rightskip}
+$m=nq+r,\hspace{0.25in} 0\le r<n$ \\
+$m-r=nq$ \\
+$r-m=(-q)n$ \\
+$n\mid(r-m)$ \\
+$\emod{m}{r}{n}$ \\
+\end{adjustwidth}
+To find the residue class $\ec{r}$ modulo $n$ for a given $m\in\Z$:
+\[r=m-\left\lfloor\frac{m}{n}\right\rfloor\cdot n\]
+\newpage
+\begin{example}
+Let $n=15$
+
+\bigskip
+
+$\frac{1796}{15}\approx119.73$ \\
+$r=1796-119\cdot 15=11$ \\
+$\emod{1796}{11}{15}$ \\
+$1796\in\ec{11}$
+
+\bigskip
+
+$\frac{-1796}{15}\approx-119.73$ \\
+$r=-1796+120\cdot 15=4$ \\
+$\emod{-1796}{4}{15}$ \\
+$-1796\in\ec{4}$
+\end{example}
+\end{document}

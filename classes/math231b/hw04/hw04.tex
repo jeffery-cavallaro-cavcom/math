@@ -1,0 +1,126 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\Sp}{S^{\perp}}
+\DeclareMathOperator{\spn}{span}
+\newcommand{\Snp}{(\spn{S})^{\perp}}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\renewcommand{\a}{\alpha}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 231b \\
+Homework \#4
+
+\subsection*{3.8.47}
+
+What is the orthogonal complement in $L^2(\R)$ of the set of all even
+functions?
+
+Every function $f\in L^2(\R)$ can be written as a combination of an even
+function and an odd function: $f=f_e+f_o$. Furthermore, the integral of an even
+function over all of $\R$ is not necessarily $0$, but the integral of an odd
+function over all of $\R$ is $0$.
+
+So assume $f\in L^2(\R)$ is an even function and assume $g\in L^2(\R)$:
+\[\int_{\R}fg=\int_{\R}f(g_e+g_o)=\int_{\R}fg_e+\int_{\R}fg_o=\int_{\R}fg_e\]
+because an even function times an odd function is odd. But this will only be
+$0$ for any even $f$ if $g_e=0$ and thus $g$ must be odd.
+
+Therefore, the orthogonal complement to the set of even functions in
+$L^2(\R)$ is the set of odd functions in $L^2(\R)$.
+
+\subsection*{3.8.50}
+
+Let $S$ be a subset of an inner product space. Show: $\Sp=\Snp$.
+
+\begin{description}
+\item $\subseteq$ Assume $\vx\in\Sp$.
+
+  $\forall\,\vy\in S,\vx\perp\vy$. \\
+  Assume $\vy\in\spn(S)$. \\
+  $\exists\,\{\vy_1,\ldots,\vy_n\}\subseteq S$ and scalars $\a_1,\ldots,\a_n$
+  such that $\vy=\sum_{k=1}^n\a_k\vy_k$. \\
+  $\inner{\vy,\vx}=\inner{\sum_{k=1}^n\a_k\vy_k,\vx}=
+  \sum_{k=1}^n\a_k\inner{\vy_k,\vx}=0$, since $\vx\perp\vy_k$.
+
+  Therefore $\vx\perp\vy$ and thus $\vx\in\Snp$.
+
+\item $\supseteq$ Assume $\vx\in\Snp$.
+
+  $\forall\,\vy\in\spn(S),\vx\perp\vy$. \\
+  But $\forall\,\vy\in S,\vy\in\spn(S)$. \\
+  And so $\forall\,\vy\in S,\vx\perp\vy$.
+
+  Therefore $\vx\in\Sp$.
+\end{description}
+
+\subsection*{3.8.52}
+
+Let $E$ be the Banach space $\R^2$ with norm
+$\norm{(x,y)}=\max(\abs{x},\abs{y})$. Show that $E$ does not have the closest
+point property.
+
+Let $S=\{(x,0)\mid x\in[-1,1]\}$, which is a closed and convex subset of $E$.
+Also, let $w=(0,1)\in E$:
+
+\begin{minipage}{3.5in}
+  \begin{tikzpicture}
+    \draw (-4,0) -- (4,0);
+    \draw (0,-4) -- (0,4);
+    \node [draw,circle,fill,scale=0.5] (a) at (-3,0) {};
+    \node [below] at (a) {$(-1,0)$};
+    \node [draw,circle,fill,scale=0.5] (b) at (3,0) {};
+    \node [below] at (b) {$(1,0)$};
+    \node [draw,circle,fill,scale=0.5] (c) at (0,3) {};
+    \node [above left] at (c) {$w(0,1)$};
+    \draw [line width=1mm] (a) to node [above,pos=0.75] {$S$} (b);
+    \node [draw,circle,fill,scale=0.5] (d) at (-1,0) {};
+    \node [below] at (d) {$p(x,0)$};
+    \draw [dashed] (c) to (d);
+  \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{3in}
+  Assume $p=(x,0)\in S$:
+  
+  \begin{eqnarray*}
+    d(w,p) &=& \norm{w-p} \\
+    &=& \norm{(0,1)-(x,0)} \\
+    &=& \norm{(-x,1)} \\
+    &=&\max(\abs{-x},\abs{1}) \\
+    &=& 1
+  \end{eqnarray*}
+  
+  Since $-1\le x\le1$.
+\end{minipage}
+
+Thus, $\forall\,p\in S,d(w,p)=1$ and so the closest point is not unique.
+
+Therefore, $E$ does not have the closest point property with the given norm.
+
+\subsection*{3.8.53}
+
+Let $S$ be a closed subspace of a Hilbert space $H$ and let
+$(\ve_1,\ve_2,\ldots)$ be a complete orthonormal sequence in $S$. For an
+arbitrary $\vx\in H$ there exists $\vy\in S$ such that
+$\norm{\vx-\vy}=\inf_{\vz\in S}\norm{\vx-\vz}$. Define $\vy$ in terms of
+$(\ve_1,\ve_2,\ldots)$.
+
+Assume $\vx\in H$. \\
+Thus, $\exists\,\vy\in S,\norm{\vx-\vy}=\inf_{\vz\in S}\norm{\vx-\vz}$. \\
+By definition, this means that $d(x,S)=\norm{\vx-\vy}$. \\
+By Theorem done is class, we can conclude that $\vx-\vy\perp S$. \\
+Thus, $\vx-\vy\perp\ve_n$. \\
+Now, since $(\ve_n)$ is complete:
+$\vy=\sum_{n=1}^{\infty}\inner{\vy,\ve_n}\ve_n$.
+
+$\inner{\vx,\ve_n}-\inner{\vy,\ve_n}=\inner{\vx-\vy,\ve_n}=0$, since
+${\vx-\vy\perp\ve_n}$, and so $\inner{\vx,\ve_n}=\inner{\vy,\ve_n}$.
+
+$\therefore\vy=\sum_{n=1}^{\infty}\inner{\vx,\ve_n}\ve_n$
+\end{document}

@@ -1,0 +1,183 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vo}{\vec{0}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Adjoint Operator}
+
+Let $H$ be a Hilbert space and let $A\in\mb(H)$. Fix some $\vy\in H$ and
+define:
+\[f_{\vy}(\vx)=\inner{A\vx,\vy}\]
+$f$ is clearly linear, and it is bounded:
+\[\abs{f_{\vy}(\vx)}=\abs{\inner{A\vx,\vy}}\le\norm{A\vx}\norm{\vy}\le
+\norm{A}\norm{\vx}\norm{\vy}=(\norm{A}\norm{\vy})\norm{\vx}\]
+Furthermore, by the Riesz Representation Theorem, $\exists,\vz\in H$ such
+that:
+\[f_{\vy}(\vx)=\inner{\vx,\vz}\ \mbox{where}\ \norm{f_y}=\norm{\vz}\]
+Let $\vz=A^*\vy$.
+
+\begin{definition}
+  Let $H$ be a Hilbert space and let $A\in\mb(H)$. The \emph{adjoint} of $A$,
+  denoted $A^*$ is the uniquely-defined operator that makes the following
+  statement true $\forall\,\vx,\vy\in H$:
+  \[\inner{A\vx,\vy}=\inner{\vx,A^*\vy}\]
+\end{definition}
+
+\begin{example}
+  Let $H=\C^N$ and let $A\in\mb(H)$.
+
+  $A$ can be represented by matrix multiplication. \\
+  Assume the standard basis:
+  \[a_{ij}^*=\inner{A^*e_j,e_i}=\inner{e_j,Ae_i}=\conj{\inner{Ae_i,e_j}}=
+  \conj{a_{ji}}\]
+  Therefore, $A^*$ corresponds to the conjugate transpose of the matrix
+  corresponding to $A$.
+
+  Note that this also holds for $H$ infinite dimensional and separable.
+\end{example}
+
+\begin{lemma}
+  Let $H$ Hilbert space and let $S,T\in\mb(H)$:
+  \begin{enumerate}
+  \item $\left(\forall\,\vx,\vy\in H,\inner{S\vx,\vy}=\inner{T\vx,\vy}\right)
+    \iff S=T$
+  \item $\left(\forall\,\vx,\vy\in H,\inner{\vx,S\vy}=\inner{\vx,T\vy}\right)
+    \iff S=T$
+  \end{enumerate}
+\end{lemma}
+
+\begin{theproof}
+  Assume $\vx,\vy\in H$.
+  \begin{eqnarray*}
+    \inner{S\vx,\vy}=\inner{T\vx,\vy} &\iff&
+    \inner{S\vx,\vy}-\inner{T\vx,\vy}=0 \\
+    &\iff& \inner{S\vx-T\vx,\vy}=0 \\
+    &\iff& \inner{(S-T)\vx,\vy}=0 \\
+    &\iff& S-T\equiv0 \\
+    &\iff& S=T
+  \end{eqnarray*}
+  \begin{eqnarray*}
+    \inner{\vx,S\vy}=\inner{\vx,T\vy} &\iff&
+    \conj{\inner{S\vy,\vx}}=\conj{\inner{T\vy,\vx}} \\
+    &\iff& \inner{S\vy,\vx}=\inner{T\vy,\vx} \\
+    &\iff& S=T
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $A\in\mb(H)$:
+  \[A^*\in\mb(H)\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vy,\vz\in H$ and $\a,\b\in\C$:
+  \begin{eqnarray*}
+    \inner{\vz,A^*(\a\vx+\b\vy)} &=& \inner{A\vz,\a\vx+\b\vy} \\
+    &=& \conj{\a}\inner{A\vz,\vx}+\conj{\b}\inner{A\vz,\vy} \\
+    &=& \conj{\a}\inner{\vz,A^*\vx}+\conj{\b}\inner{\vz,A^*\vy} \\
+    &=& \inner{z,\a A^*\vx+\b A^*\vy}
+  \end{eqnarray*}
+  $\therefore A^*(\a\vx+\b\vy)=\a A^*\vx+\b A^*\vy$ and thus $A^*$ is linear.
+  \begin{eqnarray*}
+    \norm{A^*\vx}^2 &=& \inner{A^*\vx,A^*\vx} \\
+    &=& \inner{A(A^*\vx),\vx} \\
+    &\le& \norm{A(A^*\vx)}\norm{\vx} \\
+    &\le& \norm{A}\norm{A^*\vx}\norm{\vx}
+  \end{eqnarray*}
+  Thus $\norm{A^*\vx}\le\norm{A}\norm{\vx}$ with equality at $\vx=0$.
+
+  Therefore $A^*$ is bounded by $\norm{A}$.
+\end{theproof}
+
+\begin{properties}
+  Let $H$ be a Hilbert space and let $A,B\in\mb(H)$ and $\a\in\C$:
+  \begin{enumerate}
+  \item $(A+B)^*=A^*+B^*$
+  \item $(\a A)^*=\conj{\a}A^*$
+  \item $(A^*)^*=A$
+  \item $I^*=I$
+  \item $(AB)^*=B^*A^*$
+  \end{enumerate}
+\end{properties}
+
+\begin{theproof}
+  Assume $\vx,\vy\in H$:
+  \begin{enumerate}
+  \item
+    \begin{eqnarray*}
+      \inner{(A+B)^*\vx,\vy} &=& \inner{\vx,(A+B)\vy} \\
+      &=& \inner{\vx,A\vy+B\vy} \\
+      &=& \inner{\vx,A\vy}+\inner{\vx,B\vy} \\
+      &=& \inner{A^*\vx,\vy}+\inner{B^*\vx,\vy} \\
+      &=& \inner{A^*\vx+B^*\vx,\vy} \\
+      &=& \inner{(A^*+B^*)\vx,\vy}
+    \end{eqnarray*}
+    $\therefore(A+B)^*=A^*+B^*$
+
+  \item
+    \[\inner{(\a A)^*\vx,\vy}=\inner{\vx,\a A\vy}=\conj{\a}\inner{\vx,A\vy}=
+    \conj{\a}\inner{A^*\vx,\vy}=\inner{\conj{\a}A^*\vx,\vy}\]
+
+    $\therefore(\a A)^*=\conj{\a}A^*$
+
+  \item
+    \[\inner{(A^*)^*\vx,\vy}=\inner{\vx,A^*\vy}=\inner{A\vx,\vy}\]
+
+    $\therefore(A^*)^*=A$
+
+  \item
+    \[\inner{I^*\vx,\vy}=\inner{\vx,I\vy}=\inner{\vx,\vy}=\inner{I\vx,\vy}\]
+
+    $\therefore I^*=I$
+
+  \item
+    \[\inner{(AB)^*\vx,\vy}=\inner{\vx,(AB)\vy}=\inner{\vx,A(B\vy)}=
+    \inner{A^*\vx,B\vy}=\inner{B^*(A^*\vx),\vy}=\inner{(B^*A^*)\vx,\vy}\]
+
+    $\therefore(AB)^*=B^*A^*$
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and $A\in\mb(H)$:
+  \begin{enumerate}
+  \item $\norm{A^*}=\norm{A}$
+  \item $\norm{A^*A}=\norm{A}^2$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in H$:
+  \begin{enumerate}
+    \item From above: $\norm{A^*}\le\norm{A}$. \\
+      Also: $\norm{A}=\norm{(A^*)^*}\le\norm{A^*}$.
+
+      $\therefore\norm{A^*}=\norm{A}$
+
+    \item $\norm{A^*A}\le\norm{A^*}\norm{A}=\norm{A}\norm{A}=\norm{A}^2$
+      Also:
+      \begin{eqnarray*}
+        \norm{A}^2 &=& \left[\sup_{\norm{\vx}=1}\norm{A\vx}\right]^2 \\
+        &=& \sup_{\norm{\vx}=1}\norm{A\vx}^2 \\
+        &=& \sup_{\norm{\vx}=1}\inner{A\vx,A\vx} \\
+        &=& \sup_{\norm{\vx}=1}\inner{A^*(A\vx),\vx} \\
+        &=& \sup_{\norm{\vx}=1}\inner{(A^*A)\vx,\vx} \\
+        &\le& \sup_{\norm{\vx}=1}\norm{(A^*A)\vx}\norm{\vx} \\
+        &\le& \sup_{\norm{\vx}=1}\norm{A^*A}\norm{\vx}\norm{\vx} \\
+        &=& \sup_{\norm{\vx}=1}\norm{A^*A}\norm{\vx}^2 \\
+        &\le& \norm{A^*A}
+      \end{eqnarray*}
+      $\therefore\norm{A^*A}=\norm{A}^2$
+  \end{enumerate}
+\end{theproof}
+
+\end{document}

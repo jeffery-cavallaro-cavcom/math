@@ -1,0 +1,161 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Sums of Powers}
+
+\begin{theorem}\mbox{}
+\vspace*{-\parskip}
+\vspace*{-\baselineskip}
+\begin{enumerate}
+\item $\sum_{k=1}^n1=n$
+\item $\sum_{k=1}^nk=\frac{n(n+1)}{2}$
+\item $\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}{6}$
+\item $\sum_{k=1}^nk^3=\frac{n^2(n+1)^2}{4}$
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+By derivation:
+\begin{enumerate}
+\item $\sum_{k=1}^n1=n$
+
+trivial
+
+\bigskip
+
+\item $\sum_{k=1}^nk=\frac{n(n+1)}{2}$ \\
+\begin{eqnarray*}
+\sum_{k=1}^n[(k+1)^2-k^2] &=& \sum_{k=1}^n[k^2+2k+1-k^2] \\
+    &=& \sum_{k=1}^n[2k+1] \\
+    &=& 2\sum_{k=1}^nk+\sum_{k=1}^n1 \\
+    &=& 2\sum_{k=1}^nk+n \\
+\end{eqnarray*}
+But note that the LHS is a telescoping sum, so we have:
+\begin{eqnarray*}
+\sum_{k=1}^n[(k+1)^2-k^2] &=& (n+1)^2-1^2 \\
+    &=& n^2+2n+1-1 \\
+    &=& n^2+2n \\
+\end{eqnarray*}
+Equating the two, we have:
+\begin{eqnarray*}
+n^2+2n &=& 2\sum_{k=1}^nk+n \\
+2\sum_{k=1}^nk &=& n^2+n \\
+    &=& n(n+1) \\
+\sum_{k=1}^nk &=& \frac{n(n+1)}{2} \\
+\end{eqnarray*}
+
+\item $\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}{6}$
+\begin{eqnarray*}
+\sum_{k=1}^n[(k+1)^3-k^3] &=& \sum_{k=1}^n(k^3+3k^2+3k+1-k^3) \\
+    &=& \sum_{k=1}^n(3k^2+3k+1) \\
+    &=& 3\sum_{k=1}^nk^2+3\sum_{k=1}^nk+\sum_{k=1}^n1 \\
+    &=& 3\sum_{k=1}^nk^2+3\frac{n(n+1)}{2}+n \\
+    &=& 3\sum_{k=1}^nk^2+\frac{3n^2+3n+2n}{2} \\
+    &=& 3\sum_{k=1}^nk^2+\frac{3n^2+5n}{2} \\
+\end{eqnarray*}
+But note that the LHS is a telescoping sum, so we have:
+\begin{eqnarray*}
+\sum_{k=1}^n[(k+1)^3-k^3] &=& (n+1)^3-1^3 \\
+    &=& n^3+3n^2+3n+1-1 \\
+    &=& n^3+3n^2+3n \\
+\end{eqnarray*}
+Equating the two, we have:
+\begin{eqnarray*}
+n^3+3n^2+3n &=& 3\sum_{k=1}^nk^2+\frac{3n^2+5n}{2} \\
+3\sum_{k=1}^nk^2 &=& n^3+3n^2+3n-\frac{3n^2+5n}{2} \\
+    &=& \frac{2n^3+6n^2+6n-3n^2-5n}{2} \\
+    &=& \frac{2n^3+3n^2+n}{2} \\
+    &=& \frac{n(2n^2+3n+1)}{2} \\
+    &=& \frac{n(n+1)(2n+1)}{2} \\
+\sum_{k=1}^nk^2 &=& \frac{n(n+1)(2n+1)}{6} \\
+\end{eqnarray*}
+
+\item $\sum_{k=1}^nk^3=\frac{n^2(n+1)^2}{4}$
+\begin{eqnarray*}
+\sum_{k=1}^n[(k+1)^4-k^4] &=& \sum_{k=1}^n(k^4+4k^3+6k^2+4k+1-k^4) \\
+    &=& \sum_{k=1}^n(4k^3+6k^2+4k+1) \\
+    &=& 4\sum_{k=1}^nk^3+6\sum_{k=1}^nk^2+4\sum_{k=1}^nk+\sum_{k=1}^n1 \\
+    &=& 4\sum_{k=1}^nk^3 + 6\frac{n(n+1)(2n+1)}{6}+4\frac{n(n+1)}{2}+n \\
+    &=& 4\sum_{k=1}^nk^3+n(n+1)(2n+1)+2n(n+1)+n \\
+    &=& 4\sum_{k=1}^nk^3+(n^2+n)(2n+1)+2n^2+2n+n \\
+    &=& 4\sum_{k=1}^nk^3+2n^3+3n^2+n+2n^2+3n \\
+    &=& 4\sum_{k=1}^nk^3+2n^3+5n^2+4n \\
+\end{eqnarray*}
+But note that the LHS is a telescoping sum, so we have:
+\begin{eqnarray*}
+\sum_{k=1}^n[(k+1)^4-k^4] &=& (n+1)^4-1^4 \\
+    &=& n^4+4n^3+6n^2+4n+1-1 \\
+    &=& n^4+4n^3+6n^2+4n \\
+\end{eqnarray*}
+Equating the two, we have:
+\begin{eqnarray*}
+n^4+4n^3+6n^2+4n &=& 4\sum_{k=1}^nk^3+2n^3+5n^2+4n \\
+4\sum_{k=1}^nk^3 &=& n^4+2n^3+n^2 \\
+    &=& n^2(n^2+2n+1) \\
+    &=& n^2(n+1)^2 \\
+\sum_{k=1}^nk^3 &=& \frac{n^2(n+1)^2}{4} \\
+\end{eqnarray*}
+\end{enumerate}
+\end{theproof}
+
+\begin{theproof}
+By induction:
+\begin{enumerate}
+\item $\sum_{k=1}^n1=n$
+\subsubsection*{Base: $n=1$}
+\[\sum_{k=1}^11=1\]
+\subsubsection*{Inductive Assumption:}
+Assume $\sum_{k=1}^n1=n$
+\[\sum_{k=1}^{n+1}1=1+\sum_{k=1}^n1=1+n=n+1\]
+
+\item $\sum_{k=1}^nk=\frac{n(n+1)}{2}$
+\subsubsection*{Base: $n=1$}
+\[\sum_{k=1}^1k=1\]
+\[\frac{1(1+1)}{2}=\frac{2}{2}=1\]
+\subsubsection*{Inductive Assumption:}
+Assume $\sum_{k=1}^nk=\frac{n(n+1)}{2}$
+\begin{eqnarray*}
+\sum_{k=1}^{n+1}k &=& (n+1)+\sum_{k=1}^nk \\
+    &=& n+1+\frac{n(n+1)}{2} \\
+    &=& \frac{2(n+1)+n(n+1)}{2} \\
+    &=& \frac{2n+2+n^2+n}{2} \\
+    &=& \frac{n^2+3n+2}{2} \\
+    &=& \frac{(n+1)(n+2)}{2} \\
+    &=& \frac{(n+1)[(n+1)+1]}{2} \\
+\end{eqnarray*}
+
+\item $\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}{6}$
+\subsubsection*{Base: $n=1$}
+\[\sum_{k=1}^1k^2=1^2=1\]
+\[\frac{1(1+1)(2\cdot1+1)}{6}=\frac{1\cdot2\cdot3}{6}=\frac{6}{6}=1\]
+\subsubsection*{Inductive Assumption:}
+Assume $\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}{6}$
+\begin{eqnarray*}
+\sum_{k=1}^{n+1}k^2 &=& (n+1)^2+\sum_{k=1}^nk^2 \\
+    &=& (n+1)^2+\frac{n(n+1)(2n+1)}{6} \\
+    &=& \frac{(n+1)[6(n+1)+n(2n+1)]}{6} \\
+    &=& \frac{(n+1)(6n+6+2n^2+n)}{6} \\
+    &=& \frac{(n+1)(2n^2+7n+6)}{6} \\
+    &=& \frac{(n+1)(n+2)(2n+3)}{6} \\
+    &=& \frac{(n+1)[(n+1)+1][2(n+1)+1]}{6} \\
+\end{eqnarray*}
+
+\item $\sum_{k=1}^nk^3=\frac{n^2(n+1)^2}{4}$
+\subsubsection*{Base: $n=1$}
+\[\sum_{k=1}^1k^3=1\]
+\[\frac{1^2(1+1)^2}{4}=\frac{2^2}{4}=\frac{4}{4}=1\]
+\subsubsection*{Inductive Assumption:}
+Assume $\sum_{k=1}^nk^3=\frac{n^2(n+1)^2}{4}$
+\begin{eqnarray*}
+\sum_{k=1}^{n+1}k^3 &=& (n+1)^3+\sum_{k=1}^nk^3 \\
+    &=& (n+1)^3+\frac{n^2(n+1)^2}{4} \\
+    &=& \frac{(n+1)^2[4(n+1)+n^2]}{4} \\
+    &=& \frac{(n+1)^2(n^2+4n+4)}{4} \\
+    &=& \frac{(n+1)^2(n+2)^2}{4} \\
+    &=& \frac{(n+1)^2[(n+1)+1]^2}{4} \\
+\end{eqnarray*}
+\end{enumerate}
+\end{theproof}
+
+\end{document}

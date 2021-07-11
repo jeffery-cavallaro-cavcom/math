@@ -1,0 +1,286 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\input{../graph/graph.tex}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\newcommand{\comp}[1]{\overline{#1}}
+\begin{document}
+\section*{Decomposition}
+
+\begin{definition}[Decomposition]
+  Let $G$ be a simple graph. A \emph{decomposition} of $G$ is a collection of
+  simple graphs $G_1,G_2,\ldots G_k$ such that:
+  \begin{enumerate}
+  \item $E(G)=\bigcup_{k=1}^nE(G_k)$
+  \item $\forall\,i,j,E(G_i)\cap E(G_j)=\emptyset$
+  \end{enumerate}
+\end{definition}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $K_4$
+
+    \begin{minipage}{1in}
+      \centering
+      \gkfour{2}
+    \end{minipage}
+    \begin{minipage}{0.5in}
+      \centering
+      $=$
+    \end{minipage}
+    \begin{minipage}{1in}
+      \centering
+      \begin{tikzpicture}[scale=2]
+        \vertex{a}{(0,0)};
+        \vertex{b}{(1,0)};
+        \vertex{c}{(1,1)};
+        \vertex{d}{(0,1)};
+        \draw (a) to (c) to (d) to (a);
+        \draw (b) to (c);
+      \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.5in}
+      \centering
+      $\bigcup$
+    \end{minipage}
+    \begin{minipage}{1in}
+      \centering
+      \begin{tikzpicture}[scale=2]
+        \vertex{a}{(0,0)};
+        \vertex{b}{(1,0)};
+        \vertex{d}{(0,1)};
+        \draw (a) to (b);
+        \draw (b) to (d);
+      \end{tikzpicture}
+    \end{minipage}
+
+    \bigskip
+
+  \item $P=5P_4$
+
+    \begin{minipage}{1.5in}
+      \centering
+      \gpeter{1}
+    \end{minipage}
+    \begin{minipage}{0.5in}
+      \centering
+      $=$
+    \end{minipage}
+    \begin{minipage}{1.5in}
+      \centering
+      \begin{tikzpicture}
+        \vertex{d}{({2*cos(72)+1},{4*sin(72)})};
+        \vertex{e}{(0,{2*sin(72)})};
+        \vertex{g}{({2*cos(72)+2-cos(54)},0.75)};
+        \vertex{i}{({2*cos(72)+1},{4*sin(72)-1})};
+        \draw (g) to (i) to (d) to (e);
+      \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.5in}
+      \centering
+      $\bigcup$
+    \end{minipage}
+    \begin{minipage}{1.5in}
+      \centering
+      \begin{tikzpicture}
+        \vertex{c}{({4*cos(72)+2},{2*sin(72)})};
+        \vertex{d}{({2*cos(72)+1},{4*sin(72)})};
+        \vertex{f}{({2*cos(72)+cos(54)},0.75)};
+        \vertex{h}{({4*cos(72)+2-0.75},{2*sin(72)})};
+        \draw (f) to (h) to (c) to (d);
+      \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.5in}
+      \centering
+      $\bigcup$
+    \end{minipage}
+
+    \vspace{0.5in}
+    
+    \begin{minipage}{1.5in}
+      \centering
+      \begin{tikzpicture}
+        \vertex{b}{({2*cos(72)+2},0)};
+        \vertex{c}{({4*cos(72)+2},{2*sin(72)})};
+        \vertex{g}{({2*cos(72)+2-cos(54)},0.75)};
+        \vertex{j}{(0.75,{2*sin(72)})};
+        \draw (c) to (b) to (g) to (j);
+      \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.5in}
+      \centering
+      $\bigcup$
+    \end{minipage}
+    \begin{minipage}{1.5in}
+      \centering
+      \begin{tikzpicture}
+        \vertex{a}{({2*cos(72)},0)};
+        \vertex{b}{({2*cos(72)+2},0)};
+        \vertex{f}{({2*cos(72)+cos(54)},0.75)};
+        \vertex{i}{({2*cos(72)+1},{4*sin(72)-1})};
+        \draw (b) to (a) to (f) to (i);
+      \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.5in}
+      \centering
+      $\bigcup$
+    \end{minipage}
+    \begin{minipage}{1.5in}
+      \centering
+      \begin{tikzpicture}
+        \vertex{a}{({2*cos(72)},0)};
+        \vertex{e}{(0,{2*sin(72)})};
+        \vertex{h}{({4*cos(72)+2-0.75},{2*sin(72)})};
+        \vertex{j}{(0.75,{2*sin(72)})};
+        \draw (a) to (e) to (j) to (h);
+      \end{tikzpicture}
+    \end{minipage}
+  \end{enumerate}
+\end{examples}
+
+\begin{definition}[Path Number]
+  Let $G$ be a simple graph. The \emph{path number} for $G$, denoted $p(G)$, is
+  the minimum number of paths in any decomposition of $G$.
+\end{definition}
+
+\newpage
+
+\begin{conjecture}[Gallai]
+  Let $G$ be a simple graph of order $n$. $G$ can be decomposed into at most
+  $\ceil*{\frac{n}{2}}$ paths. In other words:
+  \[p(G)\le\ceil*{\frac{n}{2}}\]
+\end{conjecture}
+
+\begin{example}
+  Since $n(P)=10$, so $p(P)\le\ceil*{\frac{10}{2}}=5$, meaning the Petersen
+  graph can be decomposed into at most $5$ paths --- indeed: $P=5P_4$ as shown
+  above and $p(P)=5$, but we need a way to find a lower bound.
+\end{example}
+
+\begin{theorem}
+  Let $G$ be a simple graph. If $G$ can be decomposed into $k$ paths then the
+  number of odd vertices in $G\le2k$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $G$ can be decomposed into $k$ paths:
+  \[G=\bigcup_{i=1}^kP_{n_i}\]
+  Isolated vertices are treated as $P_1$ and are considered even. Each of the
+  other paths consist of $2$ odd vertices and $n_i-2$ even vertices:
+
+  \begin{tikzpicture}
+    \vertex{a}{(0,0)} node at (a) [below] {$o$};
+    \vertex{b}{(1,0)} node at (b) [below] {$e$};
+    \node (c) at (2,0) {};
+    \node (d) at (3,0) {};
+    \vertex{e}{(4,0)} node at (e) [below] {$e$};
+    \vertex{f}{(5,0)} node at (f) [below] {$o$};
+    \draw (a) to (b) to (c);
+    \draw (d) to (e) to (f);
+    \node at (2.5,0) {$\cdots$};
+  \end{tikzpicture}
+
+  Let $G_i$ be the spanning subgraph of $G$ such that $E(G_i)=E(P_{n_i})$, in
+  other words, $G_i$ contains the vertices and edges from $P_{n_i}$ and all of
+  the remaining vertices in $G$ as isolated vertices. For example, if $G=K_4$,
+  one such $G_i$ might be:
+
+  \begin{tikzpicture}
+    \vertex{a}{(0,0)};
+    \vertex{b}{(2,0)};
+    \vertex{c}{(2,2)};
+    \vertex{d}{(0,2)};
+    \draw (a) to (b) to (d);
+  \end{tikzpicture}
+
+  consisting of a $P_3$ and one isolated vertex.
+
+  Let $e(G_i)$ be the number of even (including isolated) vertices in $G_i$ and
+  $o(G_i)$ be the number of odd vertices in $G_i$:
+  \[\bigcap_{i=1}^ke(G_i)\subseteq e(G)\]
+  The LHS contains all isolated vertices in $G$ and all vertices that are
+  either isolated or in the interior of the path in each $G_i$. Note that a
+  vertex that is in the interior of multiple paths (never an end vertex of a
+  path) remains even:
+
+  \begin{tikzpicture}
+    \node (a) at (0,0) {};
+    \node (b) at (0,2) {};
+    \node (c) at (2,2) {};
+    \node (d) at (2,0) {};
+    \vertex{e}{(1,1)};
+    \draw (a) to (e) to (c);
+    \draw (b) to (e) to (d);
+  \end{tikzpicture}
+
+  However, the LHS is a subset of the RHS, because two end (odd) vertices in
+  different paths can be joined in $G$ to form an even vertex:
+  
+  \begin{tikzpicture}
+    \node (a) at (0,0) {};
+    \vertex{b}{(1,0)};
+    \node (c) at (2,0) {};
+    \draw (a) to (b) to (c);
+  \end{tikzpicture}
+
+  But no even vertex on the LHS can be converted to an odd vertex, because it
+  would have to be an end vertex in at least one path and thus would not be in
+  the LHS:
+
+  \begin{tikzpicture}
+    \node (a) at (0,2) {};
+    \vertex{b}{(0,1)};
+    \node (c) at (0,0) {};
+    \node (d) at (1,1) {};
+    \draw (a) to (b) to (c);
+    \draw (b) to (d);
+  \end{tikzpicture}
+\end{theproof}
+
+Now, take the complement of both sides:
+\[\comp{\bigcap_{i=1}^ke(G_i)}\supseteq\comp{e(G)}=o(G)\]
+To see why this is true, consider the following Venn diagram for $V(G)$:
+
+\begin{tikzpicture}
+  \draw [fill=lightgray] (0,0) rectangle (6,6);
+  \draw (3,3) circle [radius=2];
+  \draw [dashed,fill=white] (3,3) circle [radius=1];
+  \node at (5,5) {$o(G)$};
+  \node at (3,1.5) {$e(G)$};
+  \node at (3,3) {$\bigcap_{i=1}^ke(G_i)$};
+\end{tikzpicture}
+
+Now, applying DeMorgan:
+\[o(G)\subseteq\comp{\bigcap_{i=1}^ke(G_i)}=\bigcup_{i=1}^k\comp{e(G_i)}=
+\bigcup_{i=1}^ko(G_i)\]
+And then the triangle inequality:
+\[\abs{o(G)}\le\abs{\sum_{i=1}^ko(G_i)}\le\sum_{i=1}^k\abs{o(G_i)}=
+\sum_{i=1}^k2=2k\]
+
+$\therefore\abs{o(G)}\le2k$
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item P
+
+    By Gallai: $p(P)\le5$. By the lemma: $10\le2p(P)$ and so $p(P)\ge5$.
+    Therefore $p(P)=5$. A decomposition $P=5P_4$ is shown above.
+
+  \item $C_n$
+
+    $P(C_n)=P_n\cup P_2$ and so $p(C_n)=2$
+
+  \item $ST_n$
+
+    $ST_{2k+1}=\bigcup_{i=1}^kP_3$ and so $p(ST_{2k+1})=k$
+
+    $ST_{2k}=\bigcup_{i=1}^{k-1}P_3\cup P_2$ and so $p(ST_{2k})=k$
+
+    Therefore: $p(ST_n)=\floor*{\frac{n}{2}}$
+  \end{enumerate}
+\end{examples}
+
+\end{document}

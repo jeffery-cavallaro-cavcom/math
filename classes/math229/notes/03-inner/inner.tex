@@ -1,0 +1,153 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vu}{\vec{u}}
+\begin{document}
+\section*{Inner Product}
+
+\begin{definition}[Inner Product]
+  Let $\vx,\vy\in\C^n$. The \emph{inner product} of $\vx$ and $\vy$,
+  denoted $\inner{\vx}{\vy}$, is given by:
+  \[\inner{\vx}{\vy}=\vy^{\,*}\vx=\sum_{k=1}^n\conj{y_k}x_k\]
+\end{definition}
+
+\begin{theorem}
+  Let $\vx,\vy,\vz,\vu\in\C^n$ and $c\in\C$:
+  \begin{enumerate}
+  \item $\inner{\vx}{\vy}=\conj{\inner{\vy}{\vx}}$
+  \item $\inner{c\vx}{\vy}=c\inner{\vx}{\vy}$
+  \item $\inner{\vx}{c\vy}=\conj{c}\inner{\vx}{\vy}$
+  \item $\inner{\vx+\vy}{\vz+\vu}=\inner{\vx}{\vz}+\inner{\vx}{\vu}+
+    \inner{\vy}{\vz}+\inner{\vy}{\vu}$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item
+    \[\inner{\vx}{\vy}=\vy^{\,*}\vx=\left(\vx^{\,*}\vy\right)^*=
+    \conj{\vx^{\,*}\vy}=\conj{\inner{\vy}{\vx}}\]
+
+  \item
+    \[\inner{c\vx}{\vy}=\vy^{\,*}(c\vx)=c(\vy^{\,*}\vx)=c\inner{\vx}{\vy}\]
+
+  \item
+    \[\inner{\vx}{c\vy}=(c\vy)^*\vx=\conj{c}(\vy^{\,*}\vx)=
+    \conj{c}\inner{\vx}{\vy}\]
+
+  \item
+    \begin{eqnarray*}
+      \inner{\vx+\vy}{\vz+\vu} &=& (\vz+\vu)^*(\vx+\vy) \\
+      &=& (\vz^{\,*}+\vu^{\,*})(\vx+\vy) \\
+      &=& \vz^{\,*}\vx+\vu^{\,*}\vx+\vz^{\,*}\vy+\vu^{\,*}\vy \\
+      &=& \inner{\vx}{\vz}+\inner{\vx}{\vu}+\inner{\vy}{\vz}+\inner{\vy}{\vu}
+    \end{eqnarray*}
+  \end{enumerate}
+\end{theproof}
+
+\newpage
+
+\subsection*{Norm}
+
+\begin{definition}[Norm]
+  Let $\vx\in\C^n$. The \emph{norm} of $\vx$, denoted $\norm{\vx}$, is given by:
+  \[\norm{\vx}=\sqrt{\inner{\vx}{\vx}}=\sqrt{\sum_{k=1}^n\conj{x_k}x_k}=
+  \sqrt{\sum_{k=1}^n\abs{x_k}^2}\]
+\end{definition}
+
+\begin{definition}[Orthogonal]
+  Let $\vx,\vy\in\C^n$. To say that $\vx$ and $\vy$ are \emph{orthogonal}
+  means:
+  \[\inner{\vx}{\vy}=0\]
+\end{definition}
+
+\begin{theorem}[Pythagorean Theorem]
+  Let $\vx,\vy\in\C^n$:
+
+  $\vx,\vy$ orthogonal $\implies\norm{\vx+\vy}=\norm{\vx}+\norm{\vy}$
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vy$ orthogonal
+  \begin{eqnarray*}
+    \norm{\vx+\vy} &=& \inner{\vx+\vy}{\vx+\vy} \\
+    &=& \inner{\vx}{\vx}+\inner{\vx}{\vy}+\inner{\vy}{\vx}+\inner{\vy}{\vy} \\
+    &=& \norm{\vx}+0+0+\norm{\vy} \\
+    &=& \norm{\vx}+\norm{\vy}
+  \end{eqnarray*}
+\end{theproof}
+
+Note that the converse is only true when $\inner{\vx}{\vy}+\inner{\vy}{\vx}=0$,
+or when $\inner{\vx}{\vy}=-\conj{\inner{\vx}{\vy}}$, but this can only occur
+if the real part is zero. Thus, the converse only holds when $\inner{\vx}{\vy}$
+is imaginary.
+
+\begin{theorem}
+  Let $\vx$ and $\vy$ be non-zero vectors in $\C^n$:
+
+  $\vx$ and $\vy$ are orthogonal $\implies$ $\vx$ and $\vy$ are linearly
+  independent.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx$ and $\vy$ are orthogonal \\
+  $\inner{\vx}{\vy}=0$ \\
+  ABC: $\vx$ and $\vy$ are linearly dependent \\
+  There exists non-zero $c\in\C$ such that $\vx=c\vy$ \\
+  $\inner{\vx}{\vy}=\inner{c\vy}{\vy}=c\norm{\vy}^2\ne0$ \\
+  CONTRADICTION!
+  
+  Therefore, $\vx$ and $\vy$ must be linearly independent.
+\end{theproof}
+
+\newpage
+
+\subsection*{Inequalities}
+
+\begin{theorem}[Cauchy-Schwarz]
+  Let $\vx,\vy\in\C^n$:
+  \[\abs{\inner{\vx}{\vy}}\le\norm{\vx}\norm{\vy}\]
+\end{theorem}
+
+\begin{theproof}
+  Note that when $\vx$ and $\vy$ are dependent (including one or both zero)
+  then equality holds, so AWLOG: $\vx$ and $\vy$ are independent (and thus
+  non-zero).
+
+  Let $\vz=\vx-\frac{\inner{\vx}{\vy}}{\inner{\vy}{\vy}}\vy$ \\
+  $\inner{\vy}{\vz}=\inner{\vz}{\vy}=0$ \\
+  $\vx=\vz+\frac{\inner{\vx}{\vy}}{\inner{\vy}{\vy}}\vy$ \\
+  $\norm{\vx}^2=\norm{\vz}^2+
+  \norm{\frac{\inner{\vx}{\vy}}{\inner{\vy}{\vy}}\vy}^2=
+  \norm{\vz}^2+\frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2}$ \\
+  $\norm{\vx}^2\ge\frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2}$
+  
+  $\therefore \abs{\inner{\vx}{\vy}}\le\norm{\vx}\norm{\vy}$
+\end{theproof}
+
+\begin{theorem}[Triangle Inequality]
+  Let $\vx,\vy\in\C^n$:
+  \[\norm{\vx+\vy}\le\norm{\vx}+\norm{\vy}\]
+\end{theorem}
+
+\begin{theproof}
+  Note that when $\vx$ and $\vy$ are dependent (including one or both zero)
+  then equality holds.
+  \begin{eqnarray*}
+    \norm{\vx+\vy}^2 &=& \inner{\vx+\vy}{\vx+\vy} \\
+    &=& \norm{\vx}^2+\norm{\vy}^2+\inner{\vx}{\vy}+\inner{\vy}{\vx} \\
+    &\le& \norm{\vx}^2+\norm{\vy}^2+2\abs{\inner{\vx}{\vy}} \\
+    &\le& \norm{\vx}^2+\norm{\vy}^2+2\norm{\vx}\norm{\vy} \\
+    &=& (\norm{\vx}+\norm{\vy})^2 \\
+    \therefore \norm{\vx+\vy} &\le& \norm{\vx}+\norm{\vy}
+  \end{eqnarray*}
+\end{theproof}
+  
+\end{document}

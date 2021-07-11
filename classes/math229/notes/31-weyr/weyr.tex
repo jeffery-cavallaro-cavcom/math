@@ -1,0 +1,106 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\begin{document}
+\section*{Weyr Indices}
+
+It has been proven that every matrix $A\in M_n$ is similar to a Jordan matrix
+$J_A$, but how does one find such a $J_A$?.
+
+\begin{definition}[Weyr Index]
+  Let $A\in M_n$ and let $A\sim J_A$. The \emph{Weyr index} denoted $b_i(\l)$
+  indicates the number of $i\times i$ Jordan blocks with respect to
+  $\l\in\o(A)$ in $J_A$.
+\end{definition}
+
+\begin{example}
+  \begin{minipage}{3in}
+    $J_A=J_3(3)$
+
+    \bigskip
+
+    $\o(A)=\{3\}$
+
+    \bigskip
+
+    $b_1(3)=0$ \\
+    $b_2(3)=0$ \\
+    $b_3(3)=1$ \\
+
+    \bigskip
+
+    $J_A=\begin{bmatrix}
+    3 & 1 & 0 \\
+    0 & 3 & 1 \\
+    0 & 0 & 3
+    \end{bmatrix}$
+  \end{minipage}
+  \begin{minipage}{3in}
+    $J_B=J_2(3)\oplus J_1(3)$
+
+    \bigskip
+
+    $\o(B)=\{3\}$
+
+    \bigskip
+
+    $b_1(3)=1$ \\
+    $b_2(3)=1$ \\
+    $b_3(3)=0$ \\
+
+    \bigskip
+
+    $J_B=\left[\begin{array}{cc|c}
+    3 & 1 & 0 \\
+    0 & 3 & 0 \\
+    \hline
+    0 & 0 & 3
+    \end{array}\right]$
+  \end{minipage}
+\end{example}
+
+\begin{example}
+  $J_C=J_1(2)\oplus J_2(2)\oplus J_2(2)+J_4(3)$
+
+  \bigskip
+
+  $\o(C)=\{2,3\}\hspace{4ex}n=9$
+
+  \bigskip
+
+  \begin{minipage}{3in}
+    \begin{tabular}{c|cc}
+      & $\l=2$ & $\l=3$ \\
+      \hline
+      $b_1$ & 1 & 0 \\
+      $b_2$ & 2 & 0 \\
+      $b_3$ & 0 & 0 \\
+      $b_4$ & 0 & 1 \\
+      $b_5$ & 0 & 0 \\
+      $b_6$ & 0 & 0 \\
+      $b_7$ & 0 & 0 \\
+      $b_8$ & 0 & 0 \\
+      $b_9$ & 0 & 0
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}{3in}
+    $\left[\begin{array}{c|cc|cc|cccc}
+          2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+          \hline
+          0 & 2 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 0 \\
+          \hline
+          0 & 0 & 0 & 2 & 1 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 0 \\
+          \hline
+          0 & 0 & 0 & 0 & 0 & 3 & 1 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 & 3 & 1 & 0 \\
+          0 & 0 & 0 & 0 & 0 & 0 & 0 & 3 & 1 \\
+          0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 3
+      \end{array}\right]$
+  \end{minipage}
+\end{example}
+
+\end{document}

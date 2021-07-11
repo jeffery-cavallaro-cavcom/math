@@ -1,0 +1,63 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Natural Numbers}
+
+\begin{definition}
+The set of \emph{Natural Numbers}, denoted $\mathbb{N}$, are the whole numbers
+starting from 1 and continuing to infinity:
+\[\mathbb{N}=\{1, 2, 3, \ldots\}\]
+\end{definition}
+
+\begin{notation}{}
+$[n]=\{1, 2, 3, \ldots, n\}$
+\end{notation}
+
+\theoremstyle{mathitem}
+\newtheorem*{peano}{Peano Axioms}
+\begin{peano}
+\listbreak
+\begin{description}
+\item{N1: } $1\in\mathbb{N}$.
+\item{N2: } $n\in\mathbb{N}\implies(n+1)\in\mathbb{N}$.
+\item{N3: } 1 is not the successor of any $n\in\mathbb{N}$.
+\item{N4: } $n,m\in\mathbb{N}$ have the same successor $\implies n=m$.
+\item{N5: } $S\subseteq\mathbb{N}$ and $1\in S$ and
+$(n\in S\implies (n+1)\in S)\implies S=\mathbb{N}$.
+\end{description}
+\end{peano}
+
+Note that N5 is the basis for mathematical induction.
+
+\newtheorem*{closure}{Closure Property}
+\begin{closure}
+$\forall n,m\in\mathbb{N}$:
+\begin{enumerate}
+\item $n+m\in\mathbb{N}$
+\item $nm\in\mathbb{N}$
+\end{enumerate}
+\end{closure}
+
+\begin{theorem}
+$\sum_{k=1}^n(2k-1)=n^2$
+\end{theorem}
+
+\begin{theproof}
+By induction:
+\subsubsection*{Base: $n=1$}
+\[\sum_{k=1}^n(2k-1)=2(1)-1=2-1=1\]
+\[1^2=1\]
+
+\subsubsection*{Inductive Assumption}
+Assume $\sum_{k=1}^n(2k-1)=n^2$.
+\begin{eqnarray*}
+\sum_{k=1}^{n+1}(2k-1) &=& 2(n+1)-1+\sum_{k=1}^n(2k-1) \\
+    &=& 2n+2-1+n^2 \\
+    &=& n^2+2n+1 \\
+    &=& (n+1)^2 \\
+\end{eqnarray*}
+
+\end{theproof}
+
+\end{document}

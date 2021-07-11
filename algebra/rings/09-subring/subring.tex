@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\group}[2]{\left<#1,#2\right>}
+\begin{document}
+\section*{Subrings}
+
+\begin{definition}
+  Let $R$ be a ring. To say that $R'$ is a \emph{subring} of $R$, denoted
+  $R'\le R$, means:
+  \begin{enumerate}
+  \item $R'\subseteq R$
+  \item $R'$ is a ring under the induced operations
+  \end{enumerate}
+
+  $R'<R$ means $R'$ is a subring of $R$ but $R'\ne R$.
+\end{definition}
+
+\begin{theorem}[Subring Test]
+  Let $R$ be a (commutative) ring and let $S$ be a non-empty subset of $R$. $S$ is a
+  (commutative) subring of $R$ iff the following are true:
+  \begin{enumerate}
+  \item $\forall\,a,b\in S,a-b\in S$
+  \item $\forall\,a,b\in S,ab\in S$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+    \begin{minipage}[t]{3in}
+    \item $\implies$ Assume $S\le R$
+
+      $\group{S}{+}\le\group{R}{+}$ \\
+      Assume $a,b\in S$ \\
+      $\group{S}{+}$ is a group so $-b\in S$ \\
+      $a-b\in S$ (closure) \\
+      $ab\in S$ (closure)
+    
+      $\therefore 1$ and $2$ hold.
+    \end{minipage}
+    \begin{minipage}[t]{3in}
+    \item $\impliedby$ Assume $1$ and $2$ hold
+
+      By the subgroup test, $\group{S}{+}\le\group{R}{+}$ \\
+      $\group{S}{\cdot}$ is closed \\
+      Associativity is inherited from $R$ \\
+      The distributive laws are inherited from $R$
+
+      $\therefore S\le R$.
+    \end{minipage}
+  \end{description}
+\end{theproof}
+
+Note that proving subrings with unity is more complicated because unity for a subring may
+differ from unity of its parent ring:
+
+$\Z\times\Z$ is a ring with unity $(1,1)$ \\
+$\Z\times\{0\}$ is a ring with unity $(1,0)$ \\
+$\Z\times\{0\}<\Z\times\Z$, but $(1,0)\ne(1,1)$
+
+\begin{theorem}
+  Let $R$ be a ring and let $S=\bigcap_{i\in I}R_i$ where $R_i\le R$:
+  \[S\le R\]
+\end{theorem}
+
+\begin{theproof}
+  $\group{S}{+}\le\group{R}{+}$ \\
+  Assume $a,b\in S$ \\
+  $\forall\,i\in I,a,b\in R_i$ \\
+  Assume $i\in I$ \\
+  $a,b\in R_i$ \\
+  By closure, $ab\in R_i$ \\
+  $\forall\i\in I,ab\in R_i$ \\
+  $ab\in S$
+
+  $\therefore S$ is closed under multiplication.
+
+  Multiplicative associativity is inherited from $R$ \\
+  The distributive laws are inherited from $R$
+
+  $\therefore S\le R$
+\end{theproof}
+
+\end{document}

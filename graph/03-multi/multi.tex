@@ -1,0 +1,129 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\newcommand{\E}{\mathscr{E}}
+\begin{document}
+
+\section*{Multigraphs}
+
+\begin{definition}[Multigraph]
+  A \emph{multigraph} \(M=(V,E,\E,\ldots)\) is a graph with a non-empty and finite set of vertices \(V(M)\), a
+  possibly empty and finite set of edges \(E(M)\), and a function \(\E\) that associates each edge with a two-element
+  subset of \(V(M)\):
+  \[\E:E(M)\to\ps_2(V(M))\]
+\end{definition}
+
+\begin{example}
+  \begin{minipage}[t]{3in}
+    \vspace{0cm}
+    \begin{tikzpicture}[node distance=2]
+      \begin{scope}[every node/.style=labeled node]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+      \end{scope}
+      \draw (A) edge node [auto] {\(e_1\)} (B);
+      \draw (B) edge node [auto] {\(e_2\)} (C);
+      \draw (C) edge node [auto] {\(e_3\)} (D);
+      \draw (D) edge [bend left] node [auto] {\(e_4\)} (A);
+      \draw (D) edge [bend right] node [auto,swap] {\(e_5\)} (A);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}[t]{3.25in}
+    \vspace{0.1in}
+    \(V=V(M)=\set{a,b,c,d,e}\)
+
+    \(E=E(M)=\set{e_1,e_2,e_3,e_4,e_5}\)
+    \begin{gather*}
+      e_1\mapsto\set{a,b} \\
+      e_2\mapsto\set{b,c} \\
+      e_3\mapsto\set{c,d} \\
+      e_4\mapsto\set{a,d} \\
+      e_5\mapsto\set{a,d}
+    \end{gather*}
+  \end{minipage}
+\end{example}
+
+\begin{definition}[Isolated Vertex]
+  Let \(M\) be a multigraph and let \(u\in V(M)\).  To say that \(u\) is an \emph{isolated} vertex means that
+  it is not and endpoint for any edge in \(E(M)\):
+  \[\forall\,e\in E(M),u\notin\E(e)\]
+\end{definition}
+
+In the above example, \(e\) is an isolated vertex.
+
+\begin{definition}[Parallel Edges]
+  Let \(M\) be a multigraph and let \(e,f\in E(M)\).  To say that \(e\) and \(f\) are \emph{parallel} edges
+  means that \(\E\) associates \(e\) and \(f\) with the same two endpoints:
+  \[\E(e)=\E(f)\]
+\end{definition}
+
+In the above example, \(e_4\) and \(e_5\) are parallel edges.
+
+\begin{definition}[Pseudograph]
+  A \emph{pseudograph} \(P\) is a multigraph such that each edge is associated with either a one-element or a
+  two-element subset of \(V(P)\):
+  \[\E:E(P)\to\ps_1(V(P))\cup\ps_2(V(P))\]
+  The single endpoint case is referred to as a \emph{loop} edge.
+\end{definition}
+
+\begin{example}
+  \begin{minipage}[t]{3.25in}
+    \vspace{0cm}
+    \begin{tikzpicture}[node distance=2]
+      \begin{scope}[every node/.style=labeled node]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+      \end{scope}
+      \draw (A) edge node [auto] {\(e_1\)} (B);
+      \draw (B) edge node [auto] {\(e_2\)} (C);
+      \draw (C) edge node [auto] {\(e_3\)} (D);
+      \draw (D) edge [bend left] node [auto] {\(e_4\)} (A);
+      \draw (D) edge [bend right] node [auto,swap] {\(e_5\)} (A);
+      \draw (C) edge [out=345,in=285,min distance=2cm] node [auto] {\(e_6\)} (C);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \vspace{0.1in}
+    \(V=V(M)=\set{a,b,c,d,e}\)
+
+    \(E=E(M)=\set{e_1,e_2,e_3,e_4,e_5,e_6}\)
+    \begin{gather*}
+      e_1\mapsto\set{a,b} \\
+      e_2\mapsto\set{b,c} \\
+      e_3\mapsto\set{c,d} \\
+      e_4\mapsto\set{a,d} \\
+      e_5\mapsto\set{a,d} \\
+      e_6\mapsto\set{c}
+    \end{gather*}
+  \end{minipage}
+\end{example}
+
+In the above example, \(e_6\) is a loop edge.
+
+\begin{definition}[Adjacent Vertices]
+  Let \(M\) be a multigraph or pseudograph and let \(u,v\in V(M)\).  To say that \(u\) and \(v\) are
+  \emph{adjacent} vertices (\emph{neighbors}) means that they are the endpoints of some edge \(e\in E(M)\):
+  \[\exists\,e\in E(M),\E(e)=\set{u,v}\]
+  The edge \(e\) is said to \emph{join} \(u\) and \(v\).  Furthermore, the edge \(e\) is said to be \emph{incident}
+  to \(u\) and \(v\).
+\end{definition}
+
+Note that in the pseudograph case, a vertex \(v\in V(M)\) is adjacent to itself when:
+\[\exists\,e\in E(M),\E(e)=\set{v,v}=\set{v}\]
+
+\begin{definition}[Adjacent Edges]
+  Let \(M\) be a multigraph or pseudograph and let \(e,f\in E(M)\).  To say that \(e\) and \(f\) are
+  \emph{adjacent} edges means that they share an endpoint:
+  \[\exists\,v\in V(M),\E(e)\cap\E(f)=\set{v}\]
+  or
+  \[\abs{\E(e)\cap\E(f)}=1\]
+\end{definition}
+
+\end{document}

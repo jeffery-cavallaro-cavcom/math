@@ -1,0 +1,36 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Field of Fractions}
+
+\begin{example}
+  Consider the injective homomorphism (monomorphism) from the integral domain $\Z$ to
+  the field $\Q$ where $n\mapsto\frac{n}{1}$.
+\end{example}
+
+\begin{definition}
+  Let $R$ be a commutative ring with $1\ne0$. Let $S\subseteq R$ such that $S$ is
+  multiplicatively closed. Define a binary relation on $R\times S$ as follows:
+  \[(a,b)\sim(c,d)\iff ad-bc=0\]
+  This is an equivalence relation with the equivalence class of $(a,b)$ denoted by
+  $\frac{a}{b}$. The set $R_S$ of equivalence classes is a ring that is called the
+  \emph{localization} of $R$ at $S$.
+\end{definition}
+
+\begin{definition}
+  Let $R$ be an integral domain and let $S=R\setminus\{0\}$. Define operations:
+  \[\frac{a}{b}+\frac{c}{d}=\frac{ad-bc}{bd}\]
+  \[\frac{a}{b}\cdot\frac{c}{d}=\frac{ac}{bd}\]
+  Note that:
+  \[\frac{a}{b}+\frac{0}{1}=\frac{a\cdot1+b\cdot0}{b\cdot1}=\frac{a}{b}\]
+  \[\frac{a}{b}\cdot\frac{1}{1}=\frac{a\cdot1}{b\cdot1}=\frac{a}{b}\]
+  Also note that if $(a,b)\ne(0,1)$ then $\frac{b}{a}$ is a valid equivalence class and:
+  \[\frac{a}{b}\cdot\frac{b}{a}=\frac{ab}{ba}=\frac{ab}{ab}=\frac{1}{1}\]
+  Thus $R_S$ is a field and is called the field of fractions for $R$.
+\end{definition}
+
+All other localizations of and integral domain are contained in the domain's field of
+fractions.
+
+\end{document}

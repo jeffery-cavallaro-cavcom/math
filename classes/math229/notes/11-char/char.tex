@@ -1,0 +1,65 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\DeclareMathOperator{\Sp}{Sp}
+\begin{document}
+\section*{Characteristic Polynomial}
+
+\begin{definition}[Characteristic Polynomial]
+  Let $A\in M_n(\C)$. The \emph{characteristic polynomial} of $A$ is given by:
+  \[p_A(t)=\det(t I_n-A)\]
+  Thus, the eigenvalues are the zeros of the characteristic polynomial.
+\end{definition}
+
+\begin{properties}
+  \listbreak
+  \begin{enumerate}
+  \item $p_A(t)$ is monic
+  \item For $\C$, $1\le\abs{\o(A)}\le n$
+  \end{enumerate}
+\end{properties}
+
+\begin{definition}[Algebraic Multiplicity]
+  The \emph{algebraic multiplicity} of an eigenvalue $\l$ for a matrix $A$,
+  denoted $a_A(\l)$ is the multiplicity of $\l$ as a zero of the characteristic
+  polynomial for $A$.
+
+  Thus:
+  \[\sum_{\l\in\o(A)}a_A(\l)=n\]
+\end{definition}
+
+\begin{definition}[Spectrum]
+  The \emph{spectrum} of a matrix $A$, denoted $\Sp(A)$, is the collection of eigenvalues
+  for $A$ with each eigenvalue repeated according to its algebraic multiplicity.
+\end{definition}
+
+Thus, finding $\Sp(A)$ requires finding all of the zeros for the characteristic
+polynomial, which is usually very hard and requires numerical methods.
+
+Recall that to find the characteristic equation:
+\[a_{n-k}=(-1)^kS_k(\l_1,\ldots,\l_n)\]
+where $S_k$ is the symmetric function given by:
+\[S_k(\l_1,\ldots,\l_n)=\sum_{\mathcal{P}_k[n]}\prod_{i=1}^k\lambda_i\]
+
+\begin{theorem}
+  Let $A\in UT(n)$:
+  \[\Sp(A)=\{A_{kk}\mid 1\le k\le n\}\]
+  In other words, the diagonal entries.
+\end{theorem}
+
+\begin{theproof}
+  Note that $tI_n-A$ is also in $UT(n)$ where $(tI_n-A)_{kk}=t-A_{kk}$, so: \\
+  $p_A(t)=\det(tI_n-A)=\prod_{k=1}^n(t-A_{kk})$ \\
+  $\therefore \Sp(A)=\{A_{kk}\mid 1\le k\le n\}$.
+\end{theproof}
+
+\begin{definition}
+  Let $A\in M_n(\C)$. A \emph{principle minor} of $A$ is a $k\times k$ matrix
+  ($1\le k\le n$) where the same row and column numbers are selected.
+
+  Thus, there are $\binom{n}{k}$ principle minors for each $k$.
+\end{definition}
+
+\end{document}

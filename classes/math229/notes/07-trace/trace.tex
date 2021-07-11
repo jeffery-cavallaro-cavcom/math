@@ -1,0 +1,60 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\tr}{tr}
+\renewcommand{\a}{\alpha}
+\begin{document}
+\section*{Trace}
+
+\begin{definition}[Trace]
+  Let $A\in M_n$. The \emph{trace} of $A$ is given by:
+  \[\tr(A)=\sum_{k=1}^na_{kk}\]
+  In other words, the trace is the sum of the diagonal entries.
+\end{definition}
+
+\begin{properties}[Trace]
+  \listbreak
+  \begin{enumerate}
+  \item $\tr(A+B)=\tr(A)+\tr(B)$
+  \item $\tr(A)=\tr(A^T)$
+  \item $\tr(cA)=c\tr(A)$
+  \end{enumerate}
+\end{properties}
+
+\begin{theorem}
+  Let $f:M_n\to\C$ be a linear transformation such that $f(AB)=f(BA)$:
+  \[f(I_n)=n\iff f\ \mbox{is the trace}\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item Assume $f(I_n)=n$
+
+    Assume $A\in M_n$ \\
+    Let $f(A)=f\left(\sum_{i,j}a_{ij}E_{ij}\right)=\sum_{i,j}a_{ij}f(E_{ij})$
+    \begin{description}
+    \item Case 1: $i\ne j$
+
+      $f(E_{ij})=f(E_{i1}E_{1j})=f(E_{1j}E_{i1})=f(0)=0$
+
+    \item Case 2: $i=j$
+
+      $f(E_{ii})=f(E_{i1}E_{1i})=f(E_{1i}E_{i1})=f(E_{11})=\a$
+    \end{description}
+
+    So, after discarding the zero $f(E_{ij})$ entries and replacing the $f(E_{ii})$
+    entries with $\a$:
+    \[f(A)=\a\sum_{i=1}^na_{ii}\]
+    But $f(I)=\a n=n$ \\
+    So $\a=1$
+
+    $\therefore f(A)=\sum_{i=1}^na_{ii}=\tr(A)$
+
+  \item Assume $f$ is the trace
+
+    $f(I_n)=tr(I_n)=n\cdot1=n$
+  \end{description}
+\end{theproof}
+
+\end{document}

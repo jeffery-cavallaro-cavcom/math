@@ -1,0 +1,203 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\allowdisplaybreaks
+\begin{document}
+\section*{Reduction Formulas}
+\begin{theorem}
+Let $n\in\N$:
+\begin{enumerate}
+\item $\cos^{2n+1}\o=\frac{1}{2^{2n}}\sum_{k=0}^n\binom{2n+1}{k}\cos[(2n+1-2k)\o]$
+\item $\cos^{2n}\o=\frac{1}{2^{2n}}\binom{2n}{n}+
+    \frac{1}{2^{2n-1}}\sum_{k=0}^{n-1}\binom{2n}{k}\cos[2(n-k)\o]$
+\item $\sin^{2n+1}\o=\frac{(-1)^n}{2^{2n}}
+    \sum_{k=0}^n\binom{2n+1}{k}(-1)^k\sin[(2n+1-2k)\o]$
+\item $\sin^{2n}\o=\frac{1}{2^{2n}}\binom{2n}{n}+
+    \frac{(-1)^n}{2^{2n-1}}\sum_{k=0}^{n-1}\binom{2n}{k}(-1)^k\cos[2(n-k)\o]$
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+Assume $m\in\N-\{1\}$.
+
+There exists $n\in\N$ such that:
+\[m=\begin{cases}
+    2n+1, & m\ \mbox{odd} \\
+    2n, & m\ \mbox{even} \\
+\end{cases}\]
+
+\begin{eqnarray*}
+\cos^m\o &=& \left(\frac{e^{i\o}+e^{-i\o}}{2}\right)^m \\
+    &=& \frac{1}{2^m}\left(e^{i\o}+e^{-i\o}\right)^m \\
+    &=& \frac{1}{2^m}\sum_{k=0}^m\binom{m}{k}e^{i(m-k)\o}e^{-ik\o} \\
+    &=& \frac{1}{2^m}\sum_{k=0}^m\binom{m}{k}e^{i(m-2k)\o} \\
+\end{eqnarray*}
+
+\begin{description}
+\item{\underline{case 1: $m$ odd ($m=2n+1$)}}
+
+Consider the symmetry and the possible signs of the even number of binomial
+coefficients:
+
+\begin{tabular}{cccccc}
+$\binom{2n+1}{0}$ & $\cdots$ & $\binom{2n+1}{n}$ &
+    $\binom{2n+1}{n+1}$ & $\cdots$ & $\binom{2n+1}{2n+1}$ \\
+$+$ & & $+$ & $+$ & & $+$ \\
+\end{tabular}
+
+The $k$ coefficient is equal to the $2n+1-k$ coefficient and all signs are
+positive.
+
+\begin{eqnarray*}
+\cos^{2n+1}\o &=& \frac{1}{2^{2n+1}}\sum_{k=0}^n\binom{2n+1}{k}
+        \left[e^{i(2n+1-2k)\o}+e^{i[2n+1-2(2n+1-k)]\o}\right] \\
+    &=& \frac{1}{2^{2n+1}}\sum_{k=0}^n\binom{2n+1}{k}
+        \left[e^{i(2n+1-2k)\o}+e^{i(-2n-1+2k)\o}\right] \\
+    &=& \frac{1}{2^{2n+1}}\sum_{k=0}^n\binom{2n+1}{k}
+        \left[e^{i(2n+1-2k)\o}+e^{-i(2n+1-2k)\o}\right] \\
+    &=& \frac{1}{2^{2n}}\sum_{k=0}^n\binom{2n+1}{k}
+        \left[\frac{e^{i(2n+1-2k)\o}+e^{-i(2n+1-2k)\o}}{2}\right] \\
+    &=& \frac{1}{2^{2n}}\sum_{k=0}^n\binom{2n+1}{k}\cos[(2n+1-2k)\o] \\
+\end{eqnarray*}
+
+\item{\underline{case 2: $m$ even ($m=2n$)}}
+
+Consider the symmetry and the possible signs of the odd number of binomial
+coefficients:
+
+\begin{tabular}{ccccccc}
+$\binom{2n}{0}$ & $\cdots$ & $\binom{2n}{n-1}$ & $\binom{2n}{n}$ &
+    $\binom{2n}{n+1}$ & $\cdots$ & $\binom{2n}{2n}$ \\
+$+$ & & $+$ & $+$ & $+$ & & $+$ \\
+\end{tabular}
+
+The $k$ coefficient is equal to the $2n-k$ coefficient and all signs are
+positive.
+
+\begin{eqnarray*}
+\cos^{2n}\o &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{1}{2^{2n}}\sum_{k=0}^n\binom{2n}{k}
+        \left[e^{i(2n-2k)\o}+e^{i[2n-2(2n-k)]\o}\right] \\
+    &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{1}{2^{2n}}\sum_{k=0}^n\binom{2n}{k}
+        \left[e^{i(2n-2k)\o}+e^{i(-2n+2k)\o}\right] \\
+    &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{1}{2^{2n}}\sum_{k=0}^n\binom{2n}{k}
+        \left[e^{i(2n-2k)\o}+e^{-i(2n-2k)\o}\right] \\
+    &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{1}{2^{2n-1}}\sum_{k=0}^n\binom{2n}{k}
+        \left[\frac{e^{i(2n-2k)\o}+e^{-i(2n-2k)\o}}{2}\right] \\
+    &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{1}{2^{2n-1}}\sum_{k=0}^n\binom{2n}{k}\cos[2(n-k)\o] \\
+\end{eqnarray*}
+\end{description}
+
+Similarly:
+
+\begin{eqnarray*}
+\sin^m\o &=& \left(\frac{e^{i\o}-e^{-i\o}}{2i}\right)^m \\
+    &=& \frac{1}{(2i)^m}\left(e^{i\o}-e^{-i\o}\right)^m \\
+    &=& \frac{1}{(2i)^m}\sum_{k=0}^m\binom{m}{k}
+        e^{i(m-k)\o}\left(-e^{-i\o}\right)^k \\
+    &=& \frac{1}{(2i)^m}\sum_{k=0}^m\binom{m}{k}(-1)^ke^{i(m-k)\o}e^{-ik\o} \\
+    &=& \frac{1}{(2i)^m}\sum_{k=0}^m\binom{m}{k}(-1)^ke^{i(m-2k)\o} \\
+\end{eqnarray*}
+
+\begin{description}
+\item{\underline{case 1: $m$ odd ($m=2n+1$)}}
+
+Consider the symmetry and the possible signs of the even number of binomial
+coefficients:
+
+\begin{tabular}{cccccc}
+$\binom{2n+1}{0}$ & $\cdots$ & $\binom{2n+1}{n}$ &
+    $\binom{2n+1}{n+1}$ & $\cdots$ & $\binom{2n+1}{2n+1}$ \\
+$+$ & & $+$ & $-$ & & $-$ \\
+$+$ & & $-$ & $+$ & & $-$ \\
+\end{tabular}
+
+The $k$ coefficient is equal to the $2n+1-k$ coefficient and the signs
+alternate.
+
+\begin{eqnarray*}
+\sin^{2n+1}\o &=& \frac{1}{(2i)^{2n+1}}\sum_{k=0}^n\binom{2n+1}{k}
+        \left[(-1)^ke^{i(2n+1-2k)\o}+(-1)^{k+1}e^{i[2n+1-2(2n+1-k)]\o}\right] \\
+    &=&  \frac{1}{(2i)^{2n+1}}\sum_{k=0}^n\binom{2n+1}{k}(-1)^k
+        \left[e^{i(2n+1-2k)\o}-e^{i(-2n-1+2k)\o}\right] \\
+    &=& \frac{1}{(2i)^{2n+1}}\sum_{k=0}^n\binom{2n+1}{k}(-1)^k
+        \left[e^{i(2n+1-2k)\o}-e^{-i(2n+1-2k)\o}\right] \\
+    &=& \frac{1}{(2i)^{2n}}\sum_{k=0}^n\binom{2n+1}{k}(-1)^k
+        \left[\frac{e^{i(2n+1-2k)\o}-e^{-i(2n+1-2k)\o}}{2i}\right] \\
+    &=& \frac{1}{2^{2n}}\frac{1}{i^{2n}}\sum_{k=0}^n\binom{2n+1}{k}(-1)^k
+        \sin[(2n+1-2k)\o] \\
+    &=& \frac{(-1)^n}{2^{2n}}\sum_{k=0}^n\binom{2n+1}{k}(-1)^k
+        \sin[(2n+1-2k)\o] \\
+\end{eqnarray*}
+
+\item{\underline{case 2: $m$ even ($m=2n$)}}
+
+Consider the symmetry and the possible signs of the odd number of binomial
+coefficients:
+
+\begin{tabular}{ccccccc}
+$\binom{2n}{0}$ & $\cdots$ & $\binom{2n}{n-1}$ & $\binom{2n}{n}$ &
+    $\binom{2n}{n+1}$ & $\cdots$ & $\binom{2n}{2n}$ \\
+$+$ & & $+$ & $-$ & $+$ & & $+$ \\
+$+$ & & $-$ & $+$ & $-$ & & $+$ \\
+\end{tabular}
+
+The $k$ coefficient is equal to the $2n-k$ coefficient and all signs match, but
+alternate.
+
+\begin{eqnarray*}
+\sin^{2n}\o &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{1}{(2i)^{2n}}\sum_{k=0}^n\binom{2n}{k}(-1)^k
+        \left[e^{i(2n-2k)\o}+e^{i[2n-2(2n-k)]\o}\right] \\
+    &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{1}{(2i)^{2n}}\sum_{k=0}^n\binom{2n}{k}(-1)^k
+        \left[e^{i(2n-2k)\o}+e^{i(-2n+2k)\o}\right] \\
+    &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{1}{(2i)^{2n}}\sum_{k=0}^n\binom{2n}{k}(-1)^k
+        \left[e^{i(2n-2k)\o}+e^{-i(2n-2k)\o}\right] \\
+    &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{1}{2^{2n-1}}\left(\frac{1}{i^{2n}}\right)\sum_{k=0}^n\binom{2n}{k}
+        (-1)^k\left[\frac{e^{i(2n-2k)\o}+e^{-i(2n-2k)\o}}{2}\right] \\
+    &=& \frac{1}{2^{2n}}\binom{2n}{n}+
+        \frac{(-1)^n}{2^{2n-1}}\sum_{k=0}^n\binom{2n}{k}(-1)^k\cos[2(n-k)\o] \\
+\end{eqnarray*}
+\end{description}
+\end{theproof}
+
+\begin{example}
+\begin{eqnarray*}
+\cos^2\o &=& \frac{1}{4}\binom{2}{1}+
+    \frac{1}{2}\sum_{k=0}^0\binom{2}{k}\cos(2-2k)\o \\
+    &=& \frac{1}{4}(2)+\frac{1}{2}\binom{2}{0}\cos2\o \\
+    &=& \frac{1}{2}+\frac{1}{2}\cos2\o \\
+    &=& \frac{1+\cos2\o}{2} \\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\sin^2\o &=& \frac{1}{4}\binom{2}{1}-
+    \frac{1}{2}\sum_{k=0}^0\binom{2}{k}\cos(2-2k)\o \\
+    &=& \frac{1}{4}(2)-\frac{1}{2}\binom{2}{0}\cos2\o \\
+    &=& \frac{1}{2}-\frac{1}{2}\cos2\o \\
+    &=& \frac{1-\cos2\o}{2} \\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\cos^3\o &=& \frac{1}{4}\sum_{k=0}^1\binom{3}{k}\cos[(3-2k)\o] \\
+4\cos^3\o &=& \binom{3}{0}\cos3\o+\binom{3}{1}\cos\o \\
+4\cos^3\o &=& \cos3\o+3\cos\o \\
+\cos3\o &=& 4\cos^3\o-3\cos\o \\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\sin^3\o &=& -\frac{1}{4}\sum_{k=0}^1\binom{3}{k}(-1)^k\sin[(3-2k)\o] \\
+-4\sin^3\o &=& \binom{3}{0}\sin3\o-\binom{3}{1}\sin\o \\
+-4\sin^3\o &=& \sin3\o-3\sin\o \\
+\sin3\o &=& 3\sin\o-4\sin^3\o \\
+\end{eqnarray*}
+\end{example}
+\end{document}

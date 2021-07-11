@@ -1,0 +1,109 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\mr}{\mathcal{R}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\begin{document}
+\section*{Isometric Operators}
+
+\begin{definition}[Isometric]
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$. To say that $T$ is an
+  \emph{isometric} operator means $\forall\,\vx\in H$:
+  \[\norm{T\vx}=\norm{\vx}\]
+  An isometric operator preserves the norm.
+\end{definition}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$:
+
+  \qquad$T$ is isometric $\iff T^*T=I$
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in H$.
+  
+  $\norm{T\vx}=\norm{\vx}$
+
+  \begin{description}
+  \item $\implies$ Assume $T$ is isometric.
+    \begin{eqnarray*}
+      \norm{T\vx}^2 &=& \norm{\vx}^2 \\
+      \inner{T\vx,T\vx} &=& \inner{\vx,\vx} \\
+      \inner{T^*T\vx,\vx} &=& \inner{\vx,\vx} \\
+    \end{eqnarray*}
+    $\therefore T^*T=I$
+    
+  \item $\impliedby$ Assume $T^*T=I$.
+    \begin{eqnarray*}
+      \norm{T\vx}^2 &=& \inner{T\vx,T\vx} \\
+      &=& \inner{T^*T\vx,\vx} \\
+      &=& \inner{I\vx,\vx} \\
+      &=& \inner{\vx,\vx} \\
+      &=& \norm{\vx}^2 \\
+      \norm{T\vx} &=& \norm{\vx}
+    \end{eqnarray*}
+    Therefore $T$ is isometric.
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$ be isometric.
+  $\forall\vx,\vy\in H$:
+  \[\inner{T\vx,T\vy}=\inner{\vx,\vy}\]
+  In other words, an isometric operator preserves the inner product.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vx\in H$.
+  
+  $\inner{T\vx,T\vy}=\inner{T^*T\vx,\vy}=\inner{I\vx,\vy}=\inner{\vx,\vy}$
+\end{theproof}
+
+\begin{corollary}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$ be isometric.
+  $\forall\vx,\vy\in H$:
+  \[\vx\perp\vy\iff T\vx\perp T\vy\]
+\end{corollary}
+
+\begin{theproof}
+  Assume $\vx,\vy\in H$.
+
+  $\vx\perp\vy\iff\inner{\vx,\vy}=0\iff\inner{T\vx,T\vy}=0\iff
+  T\vx\perp T\vy$
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$ be isometric:
+
+  \qquad$T$ is a Hilbert space isomorphism between $H$ and $\mr(T)$.
+\end{theorem}
+
+\begin{theproof}
+  $ T\vx=0\iff\norm{T\vx}=0\iff\norm{\vx}=0\iff\vx=\vo$
+
+  Thus, the kernel is trivial and $T$ is one-to-one.
+
+  By definition, $T$ is onto $\mr(T)$
+
+  Therefore, $T$ is bijective.
+
+  Also by definition: $\inner{T\vx,T\vy}=\inner{\vx,\vy}$.
+
+  Therefore $T$ is a Hilbert space isomorphism between $H$ and $\mr(T)$.
+\end{theproof}
+
+Note that although isometric $T$ is necessarily one-to-one, it need not
+be onto.
+
+\begin{example}
+  Let $H=\ell^2$ and $T(z_1,z_2,z_3,\ldots)=(0,z_1,z_2,z_3,\ldots)$.
+
+  $T$ is isometric; however, it is not onto.
+\end{example}
+
+\end{document}

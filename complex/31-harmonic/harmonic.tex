@@ -1,0 +1,185 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\n}{\nabla}
+\renewcommand{\n}{\nabla}
+\newcommand{\p}{\phi}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\wb}{\conj{w}}
+\newcommand{\zb}{\conj{z}}
+\begin{document}
+\section*{Harmonic Functions}
+
+\begin{definition}
+  To say that a real-valued function $h(x,y)$ is \emph{harmonic} in a domain
+  $D$ means that the first and second partial derivatives exist and are
+  continuous in D, and:
+  \[\n^2h=h_{xx}+h_{yy}=0\]
+  This is known as the \emph{Laplace's equation}.
+\end{definition}
+
+\begin{theorem}
+  Let $D$ be a domain:
+
+  $f(z)=u+iv$ analytic in $D\implies u$ and $v$ harmonic in $D$
+\end{theorem}
+
+\begin{theproof}
+  $u_x=v_y$ and $v_x=-u_y$
+
+  $u_{xx}=v_{yx}$ and $v_{xy}=-u_{yy}$ \\
+  But since the partials are continuous, $v_{xy}=v_{yx}$ \\
+  $u_{xx}=-u_{yy}$ \\
+  $\therefore u_{xx}+u_{yy}=0$
+
+  $u_{xy}=v_{yy}$ and $v_{xx}=-u_{yx}$ \\
+  But since the partials are continuous, $u_{xy}=u_{yx}$ \\
+  $v_{yy}=-v_{xx}$ \\
+  $\therefore v_{xx}+v_{yy}=0$
+\end{theproof}
+
+\begin{example}
+  $f(z)=z^2=(x^2-y^2)+i2xy$
+
+  $f(z)$ is entire
+  
+  $u_x=2x$ and $u_{xx}=2$ \\
+  $u_y=-2y$ and $u_{yy}=-2$ \\
+  $u_{xx}+u_{yy}=2-2=0$ \\
+  $\therefore u$ is harmonic
+
+  $v_x=2y$ and $v_{xx}=0$ \\
+  $v_y=2x$ and $y_{yy}=0$ \\
+  $v_{xx}+v_{yy}=0+0=0$ \\
+  $\therefore v$ is harmonic
+\end{example}
+
+Note that the converse is \emph{not} true!
+\newpage
+\begin{example}
+  $f(z)=x+i(x^2-y^2)$
+
+  $u_x=1$ and $u_{xx}=0$ \\
+  $u_y=0$ and $u_{yy}=0$ \\
+  $u_{xx}+u_{yy}=0+0=0$ \\
+  $\therefore u$ is harmonic
+
+  $v_x=2x$ and $v_{xx}=2$ \\
+  $v_y=-2y$ and $v_{yy}=-2$ \\
+  $v_{xx}+v_{yy}=2-2=0$ \\
+  $\therefore v$ is harmonic
+  \begin{eqnarray*}
+    f(z) &=& \frac{z+\zb}{2}+i\left[
+      \left(\frac{z+\zb}{2}\right)^2-
+      \left(\frac{z-\zb}{2i}\right)^2\right] \\
+    &=& \frac{z+\zb}{2}+i\left[
+    \frac{(z^2+2z\zb+\zb^2)+(z^2-2z\zb+\zb^2)}{4}\right] \\
+    &=& \frac{z+\zb}{2}+i\left(\frac{2z^2+2\zb^2}{4}\right) \\
+    &=& \frac{1}{2}(z+\zb+iz^2+i\zb^2) \\
+  \end{eqnarray*}
+  \[\frac{df}{d\zb}=\frac{1}{2}(1+i2\zb)=\frac{1}{2}+i\zb\ne0\]
+
+  $\therefore f(z)$ is analytic nowhere
+\end{example}
+
+So, $u$ and $v$ harmonic is necessary but not sufficient.
+
+\begin{definition}
+  To say that $v$ is a \emph{harmonic conjugate} of $u$ on a domain $D$ means
+  that $u$ and $v$ are harmonic and CR holds.
+\end{definition}
+
+\begin{theorem}
+  Let $D$ be a domain:
+
+  $f(z)=u+iv$ analytic in $D\iff v$ is a harmonic conjugate of $u$ in $D$
+\end{theorem}
+\newpage
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $f(z)=u+iv$ analytic in $D$
+
+    $u$ and $v$ are harmonic \\
+    CR holds \\
+    $\therefore v$ is a harmonic conjugate of $u$
+
+  \item $\impliedby$ Assume $v$ is a harmonic conjugate of $u$
+
+    $u$ and $v$ are harmonic \\
+    The partials of $u$ and $v$ exist and are continuous \\
+    CR holds \\
+    $\therefore f$ is analytic
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $u(z,\zb)$ be a real-valued function on a domain $D$:
+  \[\n^2{u}=4u_{z\zb}\]
+\end{theorem}
+
+\begin{theproof}
+  Let:
+  \begin{tabular}{lll}
+    $z=x+iy$ & $z_x=1$ & $z_y=i$ \\
+    $\zb=x-iy$ & $\zb_x=1$ & $\zb_y=-i$ \\
+  \end{tabular}
+  \[u_x=u_zz_x+u_{\zb}\zb_x=u_z+u_{\zb}\]
+  \begin{eqnarray*}
+    u_{xx} &=& u_{zz}z_x+u_{z\zb}\zb_x+u_{\zb z}z_xu_{\zb\zb}+\zb_x \\
+    &=& u_{zz}+u_{z\zb}+u_{\zb z}+u_{\zb\zb} \\
+    &=& u_{zz}+u_{z\zb}+u_{z\zb}+u_{\zb\zb} \\
+    &=& u_{zz}+2u_{z\zb}+u_{\zb\zb} \\
+  \end{eqnarray*}
+  \[u_y=u_zz_y+u_{\zb}\zb_y=iu_z-iu_{\zb}=i(u_z-u_{\zb})\]
+  \begin{eqnarray*}
+    u_{yy} &=& i(u_{zz}z_y+u_{z\zb}\zb_y-u_{\zb z}z_y-u_{\zb\zb}\zb_y) \\
+    &=& i(iu_{zz}-iu_{z\zb}-iu_{\zb z}+iu_{\zb\zb}) \\
+    &=& i(iu_{zz}-iu_{z\zb}-iu_{z\zb}+iu_{\zb\zb}) \\
+    &=& i(iu_{zz}-2iu_{z\zb}+iu_{\zb\zb}) \\
+    &=& -u_{zz}+2u_{z\zb}-u_{\zb\zb} \\
+  \end{eqnarray*}
+  \[\n^zu=u_{xx}+u_{yy}=(u_{zz}+2u_{z\zb}+u_{\zb\zb})-(-u_{zz}+2u_{z\zb}-u_{\zb\zb})=
+  4u_{z\zb}\]
+\end{theproof}
+\newpage
+\begin{corollary}
+  Let $u(z,\zb)$ be a real-valued,analytic function on a domain $D$:
+  \[u_{z\zb}=0\]
+\end{corollary}
+
+\begin{theproof}
+  $u(z,\zb)$ is harmonic \\
+  $\n^2u=4u_{z\zb}=0$ \\
+  $\therefore u_{z\zb}=0$
+\end{theproof}
+
+Note that this is consistent with the fact that for $f$ analytic, $f_{\zb}=0$.
+
+\begin{theorem}
+  Let $\p(x,y)$ be harmonic in a domain $D_z$ and let $w=f(z)$ be analytic in
+  $D_z$ such that $f'(z)\ne0$. $\p$ is harmonic in $D_w$.
+\end{theorem}
+
+\begin{theproof}
+  Let $w=u+iv$. In order for $\p$ to be harmonic in $D_w$:
+  \[\p_{uu}+\p_{vv}=4\p_{w\wb}=0\]
+  So, WTS $\p_{w\wb}=0$
+
+  $\p_z=\p_ww_z+\p_{\wb}\wb_z$ \\
+  But in order for $\p$ to be differentiable on $D_w$, $\p_{\wb}=0$, so: \\
+  $\p_z=\p_ww_z$
+
+  $\p_{z\zb}=(\p_{ww}w_{\zb}+\p_{w\wb}\wb_{\zb})w_z+\p_ww_{z\zb}$ \\
+  But for $f$ to be differentiable in $D_z$, $w_{\zb}=0$ and for $w_z$ to be
+  differentiable in $D_z$, $w_{z\zb}=0$, so:
+  $\p_{z\zb}=\p_{w\wb}\wb_{\zb}w_z=\p_{w\wb}\conj{w_z}w_z=\p_{w\wb}\abs{w_z}^2=
+  \p_{w\wb}\abs{f'(z)}^2$
+
+  But for $\p$ harmonic on $D_z$, $\p_{z\zb}=0$, so \\
+  $\p_{w\wb}\abs{f'(z)}^2=0$ \\
+  But $f'(z)\ne0$ by assumption, \\
+  $\therefore\p_{w\wb}=0$
+\end{theproof}
+
+\end{document}

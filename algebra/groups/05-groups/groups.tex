@@ -1,0 +1,248 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\newcommand{\bas}[2]{\left<#1,#2\right>}
+\newcommand{\gln}{GL\left<n,\R\right>}
+\newcommand{\w}{\omega}
+\newcommand{\z}{\zeta}
+\begin{document}
+\section*{Groups}
+
+\begin{definition}
+  Let $G$ be a binary algebraic structure:
+
+  To say that $G$ is a \emph{semigroup} means $G$ is associative.
+
+  To say that $G$ is a \emph{monoid} means $G$ is a semigroup with a two-sided
+  identity element.
+
+  To say that $G$ is a \emph{group} means $G$ is a monoid and every element in
+  $G$ has a two-sided inverse.
+
+  To say that (semi)group $G$ is \emph{abelian} means $G$ is commutative.
+\end{definition}
+
+Common examples:
+
+\begin{tabular}{c|c|c}
+  structure & type & reason \\
+  \hline
+  $\bas{\Z}{+}$ & abelian & \\
+  $\bas{\Q}{+}$ & abelian & \\
+  $\bas{\R}{+}$ & abelian & \\
+  $\bas{\C}{+}$ & abelian & \\
+  \hline
+  $\bas{\Z}{\cdot}$ & monoid & $0^{-1}\notin\Z$ \\
+  $\bas{\Q}{\cdot}$ & monoid & $0^{-1}\notin\Q$ \\
+  $\bas{\R}{\cdot}$ & monoid & $0^{-1}\notin\R$ \\
+  $\bas{\C}{\cdot}$ & monoid & $0^{-1}\notin\C$ \\
+  \hline
+  $\bas{\Z^*}{\cdot}$ & monoid & Except for $a=\pm1, a^{-1}\notin\Z^*$ \\
+  $\bas{\{-1,1\}}{\cdot}$ & abelian & \\
+  \hline
+  $\bas{\Q^*}{\cdot}$ & abelian \\
+  $\bas{\R^*}{\cdot}$ & abelian \\
+  $\bas{\C^*}{\cdot}$ & abelian \\
+\end{tabular}
+
+\bigskip
+
+To prove that a binary algebraic structure $G$ is a group, show that:
+\begin{enumerate}
+\item The binary operation is indeed closed and well-defined:
+  \[\forall\,a,b\in G,ab\in G\]
+  \[\forall\,a,b,c,d\in G,ab=c\ \mbox{and}\ ab=d\implies c=d\]
+  
+\item $G$ is associative:
+  \[\forall,a,b,c\in G,(ab)c=a(bc)\]
+
+\item $G$ has an identity element:
+  \[\exists\,e\in G,\forall\,a\in G,ae=ea=a\]
+
+\item Every element in $G$ has an inverse that is also in $G$:
+  \[\forall\,a\in G,\exists\,a^{-1}\in G,aa^{-1}=a^{-1}a=e\]
+\end{enumerate}
+\newpage
+To prove that a binary algebraic structure $G$ is an abelian group, show that:
+\begin{enumerate}
+\item $G$ is a group
+\item $G$ is commutative
+\end{enumerate}
+
+\begin{example}
+  Prove: $\bas{U_n}{\cdot}$ is an abelian group.
+
+  Note that $U_n\subset\C$, so as long as $U_n$ is closed, it will inherit
+  certain properties from $C$.
+
+  \begin{description}
+  \item Closure
+
+    Assume $z_1,z_2\in U_n$ \\
+    $\exists\,h,k\in\Z_n,z_1=e^{i\frac{2\pi h}{n}}$ and $z_2=e^{i\frac{2\pi k}{n}}$ \\
+    $z_1z_2=e^{i\frac{2\pi(h+_n\,k)}{n}}$ \\
+    $h+_n\,k\in\Z_n$ \\
+    $z_1z_2\in U_n$ \\
+    $\therefore U_n$ is closed under multiplication.
+
+  \item Well-defined
+    
+    Multiplication is well-defined in $\C$. \\
+    $\therefore$ multiplication is well-defined in $U_n$.
+
+  \item Associativity
+
+    $\bas{\C}{\cdot}$ is associative \\
+    $\therefore \bas{U_n}{\cdot}$ is associative.
+
+  \item Identity
+
+    $1$ is an identity element for $\bas{\C}{\cdot}$ \\
+    $1=e^{i0}\in U_n$ \\
+    $\therefore 1$ is an identity element for $\bas{U_n}{\cdot}$.
+
+  \item Inverses
+
+    Assume $z\in U_n$ \\
+    $\exists\,k\in\Z_n,z=e^{i\frac{2\pi k}{n}}$ \\
+    Let $z^{-1}=e^{i\frac{2\pi(n-k)}{n}}$ \\
+    $n-k\in\Z_n$ \\
+    $z^{-1}\in U_n$ \\
+    $zz^{-1}=z^{-1}z=e^{i2\pi}=1$ \\
+    $z^{-1}$ is an inverse for $z$ \\
+    $\therefore$ every element in $U_n$ has an inverse that is also in $U_n$.
+
+  \item Commutativity
+
+    $\bas{\C}{\cdot}$ is commutative \\
+    $\therefore \bas{U_n}{\cdot}$ is commutative.
+  \end{description}
+
+  \bigskip
+
+  $\therefore U_n$ is an abelian group.
+
+  \bigskip
+
+  Let $n=3$
+
+  $U_3=\{1,e^{i\frac{2\pi}{3}},e^{i\frac{4\pi}{3}}\}=\{1,\w,\w^2\}$
+
+  \begin{minipage}{3in}
+  \begin{tikzpicture}
+    \draw (-3,0) -- (3,0);
+    \draw (0,-3) -- (0,3);
+    \draw (0,0) circle [radius=2];
+    \draw [dashed] (0,0) -- (-1,1.732);
+    \draw [dashed] (0,0) -- (-1,-1.732);
+    \draw [fill=black] (2,0) circle [radius=0.05];
+    \draw [fill=black] (-1,1.732) circle [radius=0.05];
+    \draw [fill=black] (-1,-1.732) circle [radius=0.05];
+    \node [above right] at (2,0) {$\z^0=1$};
+    \node [above left] at (-1,1.732) {$\z^1=\w$};
+    \node [below left] at (-1,-1.732) {$\z^2=\w^2$};
+  \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{tabular}{c|ccc}
+      $\cdot$ & $1$ & $\w$ & $\w^2$ \\
+      \hline
+      $1$ & $1$ & $\w$ & $\w^2$ \\
+      $\w$ & $\w$ & $\w^2$ & $1$ \\
+      $\w^2$ & $\w^2$ & $1$ & $\w$ \\
+    \end{tabular}
+  \end{minipage}
+\end{example}
+
+\begin{definition}
+  The \emph{general linear group of degree n} is given by:
+  \[\gln=\{A\in M_n(\R)\mid A\ \mbox{is invertible}\}\]
+\end{definition}
+
+\begin{example}
+  Prove: $\bas{\gln}{\cdot}$ is a group; however, it is not abelian.
+
+  Note that $\gln\subset M_n(\R$)$, so as long as \gln$ is closed, it will
+  inherit certain properties from matrix arithmetic.
+
+  \begin{description}
+  \item Well-defined
+
+    Matrix multiplication is well-defined. \\
+    $\therefore$ multiplication is well-defined in $\gln$.
+
+  \item Associativity
+
+    Matrix multiplication is associative. \\
+    $\therefore \bas{\gln}{\cdot}$ is associative.
+
+  \item Identity
+
+    $I_n$ is an identity for matrix multiplication. \\
+    $I_n$ is invertible. \\
+    $I_n\in\gln$ \\
+    $\therefore I_n$ is an identity element for $\bas{\gln}{\cdot}$.
+\newpage
+  \item Inverses
+
+    Assume $A\in\gln$ \\
+    $A$ is invertible \\
+    $A^{-1}$ exists and is invertible \\
+    $A^{-1}\in\gln$ \\
+    $\therefore$ every element in $\gln$ has an inverse that is also in $\gln$.
+
+  \item Closure
+
+    Assume $A,B\in\gln$ \\
+    $(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AI_nA^{-1}=AA^{-1}=I_n$ \\
+    So $AB$ is invertible. \\
+    $AB\in\gln$ \\
+    $\therefore \gln$ is closed under the binary operation.
+
+  \item Commutativity
+
+    Matrix multiplication is not commutative.
+  \end{description}
+
+  \bigskip
+
+  $\therefore \bas{\gln}{\cdot}$ is a group, but not abelian.
+\end{example}
+
+It was already shown that a binary algebraic structure has at most one identity
+element, so a group always has a unique identity element.
+
+\begin{theorem}
+  Let $G$ be a group:
+  \[\forall\,a\in G,a^{-1}\ \mbox{is unique}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in G$ \\
+  Assume $b$ and $c$ are inverses of $a$ \\
+  $ab=e=ac$ \\
+  $b(ab)=b(ac)$ \\
+  $(ba)b=(ba)c$ \\
+  $eb=ec$ \\
+  $\therefore b=c$
+\end{theproof}
+\newpage
+\begin{theorem}
+  Let $G$ be a group: \\
+  $G$ has exactly one idempotent element, namely $e$.
+\end{theorem}
+
+\begin{theproof}
+  First, note that $ee=e$, so $e$ is indeed idempotent.
+  Now, assume $a\in G$ is idempotent.
+  \begin{eqnarray*}
+    aa &=& a \\
+    a^{-1}(aa) &=& a^{-1}a \\
+    (a^{-1}a)a &=& e \\
+    ea &=& e \\
+    a &=& e \\
+  \end{eqnarray*}
+  $\therefore e$ is the only idempotent element in $G$.
+\end{theproof}
+\end{document}

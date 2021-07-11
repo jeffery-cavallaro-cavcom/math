@@ -1,0 +1,118 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\allowdisplaybreaks
+\begin{document}
+\section*{Other Operations}
+\begin{definition}
+Subtraction in $\C$ is defined as follows:
+\begin{eqnarray*}
+z_1-z_2 &=& z_1+(-z_2) \\
+    &=& (x_1,y_1)+(-x_2,-y_2) \\
+    &=& (x_1-x_2,y_1-y_2) \\
+    &=& (x_1-x_2)+i(y_1-y_2) \\
+\end{eqnarray*}
+\end{definition}
+
+\begin{theorem}
+\[z^{-1}=\frac{1}{z}\]
+\end{theorem}
+
+\begin{theproof}
+\begin{eqnarray*}
+\frac{1}{z} &=& \frac{1}{x+iy} \\
+    &=& \left(\frac{1}{x+iy}\right)\left(\frac{x-iy}{x-iy}\right) \\
+    &=& \frac{x-iy}{x^2+y^2} \\
+\end{eqnarray*}
+\end{theproof}
+
+\begin{theorem}
+\[(z_1z_2)^{-1}=z_1^{-1}z_2^{-1}\]
+\end{theorem}
+
+\begin{theproof}
+$(z_1z_2)(z_1^{-1}z_2^{-1})=(z_1z_1^{-1})(z_2z_2^{-1})=1\cdot1=1$ \\
+So, $z_1z_2$ and $z_1^{-1}z_2^{-2}$ are multiplicative inverses. \\
+But multiplicative inverses are unique. \\
+$\therefore (z_1z_2)^{-1}=z_1^{-1}z_2^{-1}$ \\
+\end{theproof}
+
+\begin{definition}
+Division in $\C$ is defined as follows:
+\begin{eqnarray*}
+\frac{z_1}{z_2} &=& z_1z_2^{-1} \\
+    &=& z_1\left(\frac{1}{z_2}\right) \\
+    &=& (x_1,y_1)\left(\frac{x_2}{x_2^2+y_2^2},\frac{-y_2}{x_2^2+y_2^2}\right) \\
+    &=& \left(\frac{x_1x_2+y_1y_2}{x^2+y^2},
+        \frac{y_1x_2-x_1y_2}{x_2^2+y_2^2}\right) \\
+\end{eqnarray*}
+\end{definition}
+
+We can also get the same result as follows:
+\begin{eqnarray*}
+\frac{z_1}{z_2} &=& \frac{x_1+iy_1}{x_2+iy_2} \\
+    &=& \frac{(x_1+iy_1)(x_2-iy_2)}{(x_2+iy_2)(x_2-iy_2)} \\
+    &=& \frac{(x_1x_2+y_1y_2)+i(y_1x_2-y_2x_1)}{x_2^2+y_2^2} \\
+    &=& \frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+i\frac{y_1x_2-y_2x_1}{x_2^2+y_2^2} \\
+\end{eqnarray*}
+
+\begin{theorem}
+\[\left(\frac{z_1}{z_3}\right)\left(\frac{z_2}{z_4}\right)=
+    \frac{z_1z_2}{z_3z_4}\]
+\end{theorem}
+
+\begin{theproof}
+\begin{eqnarray*}
+\left(\frac{z_1}{z_3}\right)\left(\frac{z_2}{z_4}\right) &=&
+    (z_1z_3^{-1})(z_2z_4^{-1}) \\
+    &=& (z_1z_2)(z_3^{-1}z_4^{-1}) \\
+    &=& (z_1z_2)(z_3z_4)^{-1} \\
+    &=& \frac{z_1z_2}{z_3z_4} \\
+\end{eqnarray*}
+\end{theproof}
+
+\begin{example}
+\[\left(\frac{2i}{1+i}\right)^4=
+    \left[\left(\frac{2i}{1+i}\right)\left(\frac{1-i}{1-i}\right)\right]^4=
+    \left[\frac{2i(1-i)}{2}\right]^4=(1+i)^4=[(1+i)^2]^2=(2i)^2=-4\]
+\end{example}
+
+\newpage
+
+\begin{example}
+\[\frac{5}{(1-i)(2-i)(3-i)}=\frac{5(1+i)(2+i)(3+i)}{2\cdot5\cdot10}=
+    \frac{(1+i)(5+5i)}{20}=\frac{(1+i)^2}{4}=\frac{2i}{4}=\frac{1}{2}i\]
+\end{example}
+
+\begin{theorem}
+\listbreak
+\[\sqrt{z}=\left(\frac{\sqrt{x^2+y^2}+x}{2}\right)^{\frac{1}{2}}+
+    i\left(\frac{\sqrt{x^2+y^2}-x}{2}\right)^{\frac{1}{2}}\]
+\end{theorem}
+
+\begin{theproof}
+$z=x+iy$ \\
+$z^{\frac{1}{2}}=(x+iy)^{\frac{1}{2}}=u+iv$ \\
+$x+iy=(u+iv)^2=u^2-v^2+i2uv$ \\
+$x=u^2-v^2$ \\
+$y=2uv$ \\
+$x^2=u^4+v^4-2u^2v^2$ \\
+$y^2=4u^2v^2$ \\
+$x^2+y^2=u^4+v^4+2u^2v^2=(u^2+v^2)^2$ \\
+$u^2+v^2=\sqrt{x^2+y^2}$ \\
+$u^2-v^2=x$ \\
+$2u^2=\sqrt{x^2+y^2}+x$ \\
+$u=\left(\frac{\sqrt{x^2+y^2}+x}{2}\right)^{\frac{1}{2}}$ \\
+$2v^2=\sqrt{x^2+y^2}-x$ \\
+$v=\left(\frac{\sqrt{x^2+y^2}-x}{2}\right)^{\frac{1}{2}}$ \\
+$\therefore \sqrt{z}=\left(\frac{\sqrt{x^2+y^2}+x}{2}\right)^{\frac{1}{2}}+
+    i\left(\frac{\sqrt{x^2+y^2}-x}{2}\right)^{\frac{1}{2}}$
+\end{theproof}
+
+The binomial theorem also holds:
+\begin{theorem}
+$\forall z_1,z_2\in\C$ and $n\in\N$:
+\[(z_1+z_2)^n=\sum_{k=0}^{n}\binom{n}{k}z_1^kz_2^{n-k}\]
+\end{theorem}
+The proof is the same as it is for $\R$.
+\end{document}

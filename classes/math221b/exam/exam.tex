@@ -1,0 +1,135 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221b \\
+Exam
+
+\bigskip
+
+\begin{enumerate}
+\item Let $R$ be a commutative ring with 1. Suppose that $x$ is in the
+  intersection of all maximal ideals of $R$. Show that $x+1$ is a unit in R.
+
+  \bigskip
+
+  Let $M=\bigcap M_i$ where $M_i$ is maximal in $R$. \\
+  In particular, each $M_i$ is proper and contains no units in $R$. \\
+  By assumption, $1\in R$ and $1\cdot1=1$, so $1$ is a unit in $R$ and
+  $\forall\,i,1\notin M_1$. \\
+  Assume $x\in M$ \\
+  ABC: $x+1$ is a non-unit in $R$ \\
+  But every non-unit in $R$ must be contained in some maximal ideal in $R$. \\
+  So $x+1\in M_i$ for some $i$. \\
+  But, by assumption, $x\in M_i$, and since $M_i$ is an additive group, $-x\in M_i$. \\
+  By closure, $(-x)+(x+1)\in M_i$ \\
+  $(-x)+(x+1)=(-x+x)+1=0+1=1\in M_i$ \\
+  CONTRADICTION!
+
+  Therefore $x+1$ is a unit in $R$.
+
+  \bigskip
+  
+\item Let $d$ be a squarefree integer different from 1. Show that if
+  $\pi\in R_d$ has norm $N(\pi)=p$ for some prime $p\in\Z$ then $\pi$ is
+  irreducible in $R_d$
+
+  \bigskip
+
+  Assume $\pi\in R_d$ has norm $N(\pi)=p$ for some prime $p\in\Z$. \\
+  Assume $\pi=ab$ for some $a,b\in R_d$. \\
+  So, by the multiplicity of the norm:
+  \[N(\pi)=N(ab)=N(a)N(b)=p\]
+  Now, by the integer criterion, since $a,b\in R_d$ it must be the case that
+  $N(a),N(b)\in\Z$. \\
+  But $p$ is prime, hence the only divisors of $p$ are $p$ and $1$. \\
+  So $N(a)=1$ or $N(b)=1$, and thus by the unit criterion, either $a$ or $b$ is
+  a unit in $R_d$.
+
+  Therefore, $\pi$ is irreducible in $R_d$.
+
+  \bigskip
+  
+\item Explain why $x^4$ is irreducible over $\Q$. Find the splitting field
+  $K$ of $x^4-2$ over $\Q$ and show that $[K:\Q]=8$. Find three distinct
+  quadratic subfields of $K/Q$.
+
+  \bigskip
+
+  By the rational root test, the only rational roots of $x^4-2$ would be from
+  the set $\{\pm1,\pm2\}$; however, clearly none of these values are roots.
+  Therefore, $x^4-2$ is irreducible over $\Q$.
+
+  \newcommand{\ft}{\sqrt[4]{2}}
+
+  To find the splitting field, find all of the complex roots of $x^4-2$:
+  \begin{eqnarray*}
+    x^4-2 &=& 0 \\
+    x^4 &=& 2 \\
+    x^4 &=& 2e^{i(2\pi n)} \\
+    x &=& \ft e^{i\frac{\pi}{2}n} \\
+    x &=& \ft,i\ft,-\ft,-i\ft
+  \end{eqnarray*}
+
+  \newcommand{\kf}{\Q(\ft,i)}
+
+  Therefore, $K=\kf$
+
+  Now, consider the following extension field stack:
+
+  \newcommand{\lf}{\Q(\ft)}
+
+  \begin{tikzpicture}
+    \node (Q) at (0,0) {$\Q$};
+    \node (L) at (0,2) {$\lf$};
+    \node (K) at (0,4) {$\kf$};
+    \draw (Q) to (L);
+    \draw (L) to (K);
+  \end{tikzpicture}
+
+  Since $\ft$ is a root of $x^4-2$, which is irreducible in $\Q$,
+  $m_{\ft,\lf}(x)=x^4-2$ and thus $[\lf:\Q]=4$:
+
+  \begin{tikzpicture}
+    \node (Q) at (0,0) {$\Q$};
+    \node (L) at (0,2) {$\lf$};
+    \node (K) at (0,4) {$\kf$};
+    \draw (Q) to node [right] {$4$} (L);
+    \draw (L) to (K);
+  \end{tikzpicture}
+
+  Clearly, $i\notin\lf$, and so $[\kf:\lf]\ne1$. But note that $i$ is a root of
+  $x^2+1\in\lf$, and since $\kf$ is a UFD, the only factorization of $x^2+1$ in
+  $\kf$ is $(x+i)(x-i)\notin\lf$. Thus, $x^2+1$ is irreducible in $\lf$ and
+  $m_{i,\lf}(x)=x^2+1$ and so $[\kf:\lf]=2$:
+
+  \begin{tikzpicture}
+    \node (Q) at (0,0) {$\Q$};
+    \node (L) at (0,2) {$\lf$};
+    \node (K) at (0,4) {$\kf$};
+    \draw (Q) to node [right] {$4$} (L);
+    \draw (L) to node [right] {$2$} (K);
+  \end{tikzpicture}
+
+  Therefore, $[\kf:\Q]=[\kf:\lf][\lf:\Q]=2\cdot4=8$
+
+  Three quadratic subfields over $\Q$ can be constructed as follows:
+
+  \begin{tabular}{|c|c|}
+    \hline
+    subfield & min poly \\
+    \hline
+    $Q(i)$ & $x^2+1$ \\
+    \hline
+    $Q(\sqrt[4]{4})$ & $x^2-2$ \\
+    \hline
+    $Q(i\sqrt[4]{4})$ & $x^2+2$ \\
+    \hline
+  \end{tabular}
+
+  Note that all of the stated minimum polynomials are irreducible in $\Q$ by
+  the rational root test.
+\end{enumerate}
+
+\end{document}

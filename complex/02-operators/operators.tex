@@ -1,0 +1,57 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Equality and Operators}
+\begin{definition}
+To say that two complex numbers $z_1=(x_1,y_1)$ and $z_2=(x_2,y_2)$ are equal
+$(z_1=z_2)$ means that $x_1=x_2$ and $y_1=y_2$.
+\end{definition}
+\begin{definition}
+The following two binary operators are defined on $\C$:
+\[z_1+z_2=(x_1,y_1)+(x_2,y_2)=(x_1+x_2,y_1+y_2)\]
+\[z_1z_2=(x_1,y_1)(x_2,y_2)=(x_1x_2-y_1y_2,x_1y_2+x_2y_1)\]
+\end{definition}
+Note that these operators are closed and well-defined because each component in
+the reals is closed and well-defined.
+
+Every complex number $z$ can be expressed as follows:
+\[z=(x,y)=(x,0)+(0,1)(0,y)=x+iy\]
+where $i^2=(0,1)(0,1)=(-1,0)=-1$, or $i=\sqrt{-1}$.
+
+Note that the powers of $i$ cycle every four:
+\begin{eqnarray*}
+i^0 &=& 1 \\
+i^1 &=& i \\
+i^2 &=& -1 \\
+i^3 &=& -i \\
+i^4 &=& 1 \\
+\end{eqnarray*}
+We can now redefine addition and multiplication as follows:
+\begin{eqnarray*}
+z_1+z_2 &=& (x_1+iy_1)+(x_2+iy_2) \\
+    &=& (x_1+x_2) + i(y_1+y_2) \\
+\end{eqnarray*}
+\listbreak
+\begin{eqnarray*}
+z_1z_2 &=& (x_1+iy_1)(x_2+iy_2) \\
+    &=& x_1x_2+ix_1y_2+ix_2y_1+i^2y_1y_2 \\
+    &=& (x_1x_2-y_1y_2)+i(x_1y_2+x_2y_1) \\
+\end{eqnarray*}
+
+\newpage
+
+\begin{theorem}
+Let $z=x+iy$.
+\begin{enumerate}
+\item $Re(iz)=-Im(z)$
+\item $Im(iz)=Re(z)$
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+$iz=i(x+iy)=ix+i^2y=-y+ix$ \\
+$Re(iz)=-y=-Im(z)$ \\
+$Im(iz)=x=Re(z)$
+\end{theproof}
+\end{document}

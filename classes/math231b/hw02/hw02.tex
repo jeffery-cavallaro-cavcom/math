@@ -1,0 +1,208 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\newcommand{\mc}{\mathcal{C}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 231b \\
+Homework \#2
+
+\subsection*{3.8.4}
+
+\begin{enumerate}[label=(\alph*)]
+\item Let $E=\mc^1[a,b]$, the space of all continuously differentiable
+  complex-valued functions on $[a,b]$. For $f,g\in E$ define:
+  \[\inner{f}{g}=\int_a^bf'(x)\conj{g'(x)}dx\]
+  Is $\inner{\cdot}{\cdot}$ an inner product in $E$?
+
+  \bigskip
+
+  No. For a counterexample, consider $f(x)=1$, and so $f'(x)=0$:
+
+  $\inner{f}{f}=\int_a^b0=0$
+
+  So $\inner{f}{f}=0$; however, $f\not\equiv0$.
+
+  Therefore, $\inner{\cdot}{\cdot}$ is not an inner product in $E$.
+
+  \bigskip
+
+\item Let $F=\{f\in\mc^1[a,b]\mid f(a)=0\}$. Is $\inner{\cdot}{\cdot}$ an
+  inner product in $F$? Is $F$ a Hilbert space?
+
+  The additional limitation excludes all non-zero constant functions. And so:
+
+  $\inner{f}{f}=\int_a^bf'\,\conj{f'}=\int_a^b\abs{f'}^2$
+
+  which is $\ge0$, with equality only when $f'\equiv0$, which can only happen
+  now when $f\equiv0$.
+
+  $\inner{f}{g}=\int_a^bf'\,\conj{g'}=\conj{\int_a^b\conj{f'}\,g}=
+  \conj{\inner{f}{g}}$
+
+  holds because $f,g,f',g'$ are all continuous.
+
+  $\inner{\a f+\b g}{h}=\int_a^b(\a f'+\b g')\conj{h'}=
+  \a\int_a^bf'\,\conj{h'}+\b\int_a^bg'\,\conj{h'}=
+  \a\inner{f}{h}+\b\inner{g}{h}$
+
+  holds due to the linearity of the integral.
+
+  Therefore $F$ is an inner product space.
+
+  However, $F$ is not a Hilbert space.
+
+  As a counterexample, consider the sequence $f_n=t^{\frac{1}{2n}}$ on $[0,1]$.
+
+  \begin{tikzpicture}
+    \draw (0,0) -- (5,0);
+    \draw (0,0) -- (0,5);
+    \node [below left] at (0,0) {$0$};
+    \node [below] at (4,0) {$1$};
+    \node [left] at (0,4) {$1$};
+    \draw [dashed] (4,0) -- (4,4);
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/2)});
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/4)});
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/6)});
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/8)});
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/10)});
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/12)});
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/14)});
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/16)});
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/18)});
+    \draw [domain=0:4] plot ({\x},{4*((\x)/4)^(1/20)});
+    \draw (0,4) -- node [above] {$f$} (4,4);
+    \node [below] at (2,2.5) {$f_n$};
+  \end{tikzpicture}
+
+  $f_n'=\frac{1}{2n}t^{\frac{1-2n}{2n}}$
+  
+  Note that $\forall\,t\in[0,1],f_n(t),f_n'(t)\ge0$.
+
+  Claim: $f_n$ is Cauchy in the inner product induced norm:
+  \begin{eqnarray*}
+    \norm{f_n-f_m}^2 &=& \int_0^1\left(\frac{1}{2n}t^{\frac{1-2n}{2n}}-
+    \frac{1}{2m}t^{\frac{1-2m}{2m}}\right)^2 \\
+    &=& \int_0^1\left(\frac{1}{4n^2}t^{\frac{1-2n}{n}}-
+    \frac{1}{2nm}t^{\frac{1-2n}{2n}+\frac{1-2m}{2m}}+\frac{1}{4m^2}t^{\frac{1-2m}{m}}
+    \right) \\
+    &=& \int_0^1\left(\frac{1}{4n^2}t^{\frac{1-2n}{n}}-
+    \frac{1}{2nm}t^{\frac{m+n-4nm}{mn}}+\frac{1}{4m^2}t^{\frac{1-2m}{m}}\right) \\
+    &=& \left[\frac{1}{4n^2}\left(\frac{n}{1-n}\right)t^{\frac{1-n}{n}}-
+      \frac{1}{2nm}\left(\frac{mn}{m+n-3nm}\right)t^{\frac{m+n-3nm}{nm}}+
+      \frac{1}{4m^2}\left(\frac{m}{1-m}\right)t^{\frac{1-m}{m}}
+      \right]_0^1 \\
+    &=& \frac{1}{4n(1-n)}-\frac{1}{2(m+n-3nm)}+\frac{1}{4m(1-m)} \\
+    &\to& 0
+  \end{eqnarray*}
+
+  Thus, $f_n$ is Cauchy.
+
+  Claim: $f_n\to f$ in the inner product induced norm, where $f=1$.
+  \begin{eqnarray*}
+    \norm{f_n-1}^2 &=& \int_0^1(f_n'-0)^2 \\
+    &=& \int_0^1\frac{1}{4n^2}t^{\frac{1-2n}{n}} \\
+    &=& \left.\frac{1}{4(1-n)}t^{\frac{1-n}{n}}\right|_0^1 \\
+    &=& \frac{1}{4(1-n)} \\
+    &\to& 0
+  \end{eqnarray*}
+
+  Thus, $f_n\to f$.
+
+  However, $f(0)=1\ne0$, and so $f\notin F$.
+
+  Therefore, $F$ is not complete in the inner product induced norm and hence is
+  not a Hilbert space.
+\end{enumerate}
+
+\subsection*{3.8.10}
+
+Show that the polarization identity:
+\[\inner{\vx}{\vy}=
+\frac{1}{4}\left[\norm{\vx+\vy}^2+\norm{\vx-\vy}^2+
+  i\norm{\vx+i\vy}^2-i\norm{\vx-i\vy}^2\right]\]
+holds is any inner product space.
+
+\begin{eqnarray*}
+  \norm{\vx+\vy}^2 &=& \inner{\vx+\vy}{\vx+\vy} \\
+  &=& \inner{\vx}{\vx}+\inner{\vx}{\vy}+\inner{\vy}{\vx}+\inner{\vy}{\vy} \\
+  &=& \norm{\vx}^2+\inner{\vx}{\vy}+\conj{\inner{\vx}{\vy}}+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2+2\Real[\inner{\vx}{\vy}]+\norm{\vy}^2
+\end{eqnarray*}
+\begin{eqnarray*}
+  \norm{\vx-\vy}^2 &=& \inner{\vx-\vy}{\vx-\vy} \\
+  &=& \inner{\vx}{\vx}+\inner{\vx}{-\vy}+\inner{-\vy}{\vx}+\inner{\vy}{\vy} \\
+  &=& \norm{\vx}^2-\inner{\vx}{\vy}-\inner{\vy}{\vx}+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2-\inner{\vx}{\vy}-\conj{\inner{\vx}{\vy}}+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2-(\inner{\vx}{\vy}+\conj{\inner{\vx}{\vy}})+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2-2\Real[\inner{\vx}{\vy}]+\norm{\vy}^2
+\end{eqnarray*}
+\begin{eqnarray*}
+  \norm{\vx+i\vy}^2 &=& \inner{\vx+i\vy}{\vx+i\vy} \\
+  &=& \inner{\vx}{\vx}+\inner{\vx}{i\vy}+\inner{i\vy}{\vx}+\inner{i\vy}{i\vy} \\
+  &=& \norm{\vx}^2-i\inner{\vx}{\vy}+i\inner{\vy}{\vx}+
+  \abs{i}^2\inner{\vy}{\vy} \\
+  &=& \norm{\vx}^2-i\inner{\vx}{\vy}+i\conj{\inner{\vx}{\vy}}+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2-i(\inner{\vx}{\vy}-\conj{\inner{\vx}{\vy}})+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2-i2i\Imag[\inner{\vx}{\vy}]+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2+2\Imag[\inner{\vx}{\vy}]+\norm{\vy}^2
+\end{eqnarray*}
+\begin{eqnarray*}
+  \norm{\vx-i\vy}^2 &=& \inner{\vx-i\vy}{\vx-i\vy} \\
+  &=& \inner{\vx}{\vx}+\inner{\vx}{-i\vy}+\inner{-i\vy}{\vx}+
+  \inner{-i\vy}{-i\vy} \\
+  &=& \norm{\vx}^2+i\inner{\vx}{\vy}-i\inner{\vy}{\vx}+
+  \abs{i}^2\inner{\vy}{\vy} \\
+  &=& \norm{\vx}^2+i\inner{\vx}{\vy}-i\conj{\inner{\vx}{\vy}}+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2+i(\inner{\vx}{\vy}-\conj{\inner{\vx}{\vy}})+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2+i2i\Imag[\inner{\vx}{\vy}]+\norm{\vy}^2 \\
+  &=& \norm{\vx}^2-2\Imag[\inner{\vx}{\vy}]+\norm{\vy}^2
+\end{eqnarray*}
+
+$\norm{\vx+\vy}^2-\norm{\vx-\vy}^2=4\Real[\inner{\vx}{\vy}]$
+
+$\norm{\vx+i\vy}^2-\norm{\vx-i\vy}^2=4\Imag[\inner{\vx}{\vy}]$
+
+\begin{eqnarray*}
+\frac{1}{4}\left[\norm{\vx+\vy}^2+\norm{\vx-\vy}^2+
+  i(\norm{\vx+i\vy}^2-\norm{\vx-i\vy}^2)\right] &=&
+\frac{1}{4}\left(4\Real[\inner{\vx}{\vy}]+4i\Imag[\inner{\vx}{\vy}]\right) \\
+&=& \Real[\inner{\vx}{\vy}]+i\Imag[\inner{\vx}{\vy}] \\
+&=& \inner{\vx}{\vy}
+\end{eqnarray*}
+
+\subsection*{3.8.11}
+
+Show that for any $\vx$ in an inner product space:
+\[\norm{\vx}=\sup_{\norm{\vy}=1}\abs{\inner{\vx}{\vy}}\]
+
+Let $E$ be an inner product space. \\
+Assume $\vx\in E$.
+
+By Cauchy-Schwarz:
+\[\sup_{\norm{\vy}=1}\abs{\inner{\vx}{\vy}}\le
+\sup_{\norm{\vy}=1}\norm{\vx}\norm{\vy}=\norm{\vx}\cdot1=\norm{\vx}\]
+
+Also:
+\[\sup_{\norm{\vy}=1}\abs{\inner{\vx}{\vy}}\ge
+\abs{\inner{\vx}{\frac{\vx}{\norm{\vx}}}}=
+\frac{1}{\norm{\vx}}\inner{\vx}{\vx}=\frac{1}{\norm{\vx}}\norm{\vx}^2=
+\norm{\vx}\]
+
+So:
+
+$\norm{\vx}\le\sup_{\norm{\vy}=1}\abs{\inner{\vx}{\vy}}\le\norm{\vx}$
+
+$\therefore\norm{\vx}=\sup_{\norm{\vy}=1}\abs{\inner{\vx}{\vy}}$
+
+\end{document}

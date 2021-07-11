@@ -1,0 +1,105 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vo}{\vec{0}}
+\renewcommand{\d}{\mathcal{D}}
+\renewcommand{\r}{\mathcal{R}}
+\newcommand{\n}{\mathcal{N}}
+\newcommand{\g}{\mathcal{G}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\begin{document}
+\section*{Linear Maps}
+
+\begin{notation}
+  Let $E_1$ and $E_2$ be vector spaces and let $L$ be a mapping from $E_1$ to
+  $E_2$. Also, let $A\subseteq E_1$ and $B\subseteq E_2$:
+  \begin{itemize}
+  \item $L\vx=L(\vx)$
+  \item If $\vy=L\vx$ then $\vy$ is called the \emph{image} of $\vx$ and
+    $\vx$ is called the \emph{pre-image} of $\vy$.
+  \item $L[A]=\{L\vx\mid\vx\in A\}\subseteq E_2$ is called the \emph{image} of
+    $A$.
+  \item $L^{-1}[B]=\{\vx\in E_1\mid L\vx\in B\}\subseteq E_1$ is called the
+    \emph{pre-image} of $B$.
+  \item $\d(L)\subseteq E_1$ is the domain of $L$.
+  \item $\r(L)=L[\d(L)]\subseteq E_2$ is called the range of $L$.
+  \item $\n(L)=\{\vx\in\d(L)\mid L\vx=\vo\}\subseteq\d(L)$ is called the
+    \emph{null space (kernel)} of $L$.
+  \item $\g(L)=\{(\vx,L\vx)\mid\vx\in\d(L)\}\subseteq E_1\times E_2$ is called
+    the \emph{graph} of $L$.
+  \end{itemize}
+\end{notation}
+
+\begin{definition}[Linear]
+  Let $L:E_1\to E_2$ be a mapping of vector spaces over a field $\F$. To say
+  that $L$ is \emph{linear} means $\forall\,\vx,\vy\in E_1$ and
+  $\forall\,\a,\b\in\F$:
+  \[L(\a\vx+\b\vy)=\a L\vx+\b L\vy\]
+\end{definition}
+
+\begin{theorem}
+  Let $L:E_1\to E_2$ be a linear mapping of vector spaces over a field $\F$ and
+  let $\d(L)\subseteq E_1$:
+  \begin{enumerate}
+  \item $\d(L)$ is a subspace of $E_1$.
+  \item $\n(L)$ is a subspace of $\d(L)$.
+  \item $\r(L)$ is a subspace of $E_2$.
+  \item $\g(L)$ is a subspace of $E_1\times E_2$ using component-wise
+    operations.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $S=\{\vx_1,\ldots,\vx_n\}\subseteq\d(L)$.
+
+    Thus, by linearity, $\forall\,\a_k\in\F$:
+    \[\sum_{k=1}^n\a_k\vx_k\in\d(L)\]
+    Therefore, $\d(L)$ is a subspace of $E_1$.
+
+  \item Assume $\vx,\vy\in\n(L)$ and $\a,\b\in\F$.
+
+    $L(\a\vx+\b\vy)=\a L\vx+\b L\vy=\a\vo+\b\vo=\vo+\vo=\vo$ \\
+    So $\a\vx+\b\vy\in\n(L)$.
+
+    Therefore, $\n(L)$ is a subspace of $\d(L)$.
+
+  \item Assume $\vv,\vw\in\r(L)$ and $\a,\b\in\F$:
+
+    $\exists\,\vx,\vy\in\d(L)$ such that $\vv=L\vx$ and $\vw=L\vy$. \\
+    $\a\vv+\b\vw=\a L\vx+\b L\vy=L(\a\vx+\b\vy)$ \\
+    But, by closure, $\a\vx+\b\vy\in\d(L)$. \\
+    And so $L(\a\vx+\b\vy)\in\r(L)$.
+
+    Therefore $\r(L)$ is a subspace of $E_2$.
+
+  \item Assume $(\vx,L\vx),(\vy,L\vy)\in\g(L)$ and $\a,\b\in\F$.
+
+    $\a(\vx,L\vx)+\b(\vy,L\vy)=(\a\vx+\b\vy,\a L\vx+\b L\vy)=
+    (\a\vx+\b\vy,L(\a\vx+\b\vy))$ \\
+    But, by closure, $\a\vx+\b\vy\in\d(L)$. \\
+    And so, $(\a\vx+\b\vy,L(\a\vx+\b\vy))\in\g(L)$.
+
+    Therefore $\g(L)$ is a subspace of $E_1\times E_2$.
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+  Let $L:E_1\to E_2$ be a linear map of vector spaces:
+  \[L\vo=\vo\]
+\end{theorem}
+
+\begin{theproof}
+  $L\vo=L(\vo+\vo)=L(\vo)+L(\vo)$
+
+  $\therefore L\vo=\vo$
+\end{theproof}
+
+\end{document}

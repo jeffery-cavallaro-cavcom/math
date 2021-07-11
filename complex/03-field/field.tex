@@ -1,0 +1,148 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\subsection*{Complex Field}
+
+\begin{theorem}
+$\C$ is a field with:
+\begin{itemize}
+\item additive identity: $0=(0,0)$
+\item additive inverse: $-z=(-x,-y)$
+\item multiplicative identity: $1=(1,0)$
+\item multiplicative inverse:
+    $z^{-1}=\left(\frac{x}{x^2+y^2},\frac{-y}{x^2+y^2}\right)$
+\end{itemize}
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item Additive Commutivity
+\begin{eqnarray*}
+z_1+z_2 &=& (x_1+iy_1)+(x_2+iy_2) \\
+    &=& (x_1+x_2)+i(y_1+y_2) \\
+    &=& (x_2+x_1)+i(y_2+y_1) \\
+    &=& (x_2+iy_2)+(x_1+iy_1) \\
+    &=& z_2+z_1 \\
+\end{eqnarray*}
+
+\item Additive Associativity
+\begin{eqnarray*}
+(z_1+z_2)+z_3 &=& [(x_1+iy_1)+(x_2+iy_2)]+(x_3+iy_3) \\
+    &=& [(x_1+x_2)+i(y_1+y_2)]+(x_3+iy_3) \\
+    &=& [(x_1+x_2)+x_3]+i[(y_1+y_2)+y_3] \\
+    &=& [x_1+(x_2+x_3)]+i[y_1+(y_2+y_3)] \\
+    &=& (x_1+iy_1)+[(x_2+x_3)+i(y_2+y_3)] \\
+    &=& (x_1+iy_1)+[(x_2+iy_2)+(x_3+iy_3)] \\
+    &=& z_1+(z_2+z_3) \\
+\end{eqnarray*}
+
+\item Additive Identity
+\begin{eqnarray*}
+z+0 &=& (x+iy)+(0+i0) \\
+    &=& (x+0)+i(y+0) \\
+    &=& x+iy \\
+    &=& z \\
+\end{eqnarray*}
+
+\item Additive Inverse
+\begin{eqnarray*}
+z+(-z) &=& 0 \\
+(x+iy)+(u+iv) &=& 0+i0 \\
+(x+u)+i(y+v) &=& 0+i0 \\
+x+u &=& 0 \\
+y+v &=& 0 \\
+u &=& -x \\
+v &=& -y \\
+\end{eqnarray*}
+\[\therefore\forall z\in\C,\exists(-z)=(-x,-y),z+(-z)=0\]
+
+\item Multiplicative Commutivity
+\begin{eqnarray*}
+z_1z_2 &=& (x_1+iy_1)(x_2+iy_2) \\
+    &=& (x_1x_2-y_1y_2)+i(x_1y_2+x_2y_1) \\
+    &=& (x_2x_1-y_2y_1)+i(x_2y_1+x_1y_2) \\
+    &=& (x_2+iy_2)(x_1+iy_1) \\
+    &=& z_2z_1 \\
+\end{eqnarray*}
+
+\item Multiplicative Associativity
+\begin{eqnarray*}
+(z_1z_2)z_2 &=& [(x_1+iy_1)(x_2+iy_2)](x_3+iy_3) \\
+    &=& [(x_1x_2-y_1y_2)+i(x_1y_2+x_2y_1)](x_3+iy_3) \\
+    &=& [(x_1x_2-y_1y_2)x_3-(x_1y_2+x_2y_1)y_3]+
+        i[(x_1x_2-y_1y_2)y_3+(x_1y_2+x_2y_1)x_3] \\
+    &=& (x_1x_2x_3-y_1y_2x_3-x_1y_2y_3-x_2y_1y_3)+
+        i(x_1x_2y_3-y_1y_2y_3+x_1y_2x_3+x_2y_1x_3) \\
+    &=& [x_1(x_2x_3-y_2y_3)-y_1(x_2y_3+x_3y_2)]+
+        i[x_1(x_2y_3+x_3y_2)+y_1(x_2x_3-y_2y_3)] \\
+    &=& (x_1+iy_1)[(x_2x_3-y_2y_3)+i(x_2y_3+x_3y_2)] \\
+    &=& (x_1+iy_1)[(x_2+iy_2)(x_3+iy_3)] \\
+    &=& z_1(z_2z_3) \\
+\end{eqnarray*}
+
+\item Multiplicative Identity
+\begin{eqnarray*}
+1z &=& (1+i0)(x+iy) \\
+    &=& (x-0)+i(y+0) \\
+    &=& x+iy \\
+    &=& z \\
+\end{eqnarray*}
+
+\item Multiplicative Inverse
+\allowdisplaybreaks
+\begin{eqnarray*}
+zz^{-1} &=& 1 \\
+(x+iy)(u+iv) &=& 1+i0 \\
+(xu-yv)+i(xv+yu) &=& 1+i0 \\
+xu-yv &=& 1 \\
+yu+xv &=& 0 \\
+u &=& \frac{\abs{\begin{array}{cc}1 & -y \\ 0 & x\end{array}}}
+    {\abs{\begin{array}{cc}x & -y \\ y & x\end{array}}}=\frac{x}{x^2+y^2} \\
+v &=& \frac{\abs{\begin{array}{cc}x & 1 \\ y & 0\end{array}}}
+    {\abs{\begin{array}{cc}x & -y \\ y & x\end{array}}}=\frac{-y}{x^2+y^2} \\
+\end{eqnarray*}
+\[\therefore \forall z\in\C-\{0\},
+    \exists z^{-1}=\left(\frac{x}{x^2+y^2},\frac{-y}{x^2+y^2}\right),zz^{-1}=1\]
+
+\item Distribution
+\begin{eqnarray*}
+z_1(z_2+z_3) &=& (x_1+iy_1)[(x_2+iy_2)+(x_3+iy_3)] \\
+    &=& (x_1+iy_1)[(x_2+x_3)+i(y_2+y_3)] \\
+    &=& [x_1(x_2+x_3)-y_1(y_2+y_3)]+i[x_1(y_2+y_3)+y_1(x_2+x_3)] \\
+    &=& (x_1x_2+x_1x_3-y_1y_2-y_1y_3)+i(x_1y_2+x_1y_3+y_1x_2+y_1x_3) \\
+    &=& [(x_1x_2-y_1y_2)+i(x_1y_2+y_1x_2)]+[(x_1x_3-y_1y_2)+i(x_1y_2+y_1x_3)] \\
+    &=& (x_1+iy_1)(x_2+iy_2)+(x_1+iy_1)(x_3+iy_3) \\
+    &=& z_1z_2+z_1z_3 \\
+\end{eqnarray*}
+\end{enumerate}
+\end{theproof}
+
+Since $\C$ is a field, all of the following properties also hold:
+\begin{enumerate}
+\item Uniqueness
+\begin{enumerate}
+\item The additive identity ($0$) is unique.
+\item Additive inverses ($-z$) are unique.
+\item The multiplicative identity ($1$) is unique.
+\item Multiplicative inverses ($z^{-1}$) are unique.
+\end{enumerate}
+\newpage
+\item Properties of 0
+\begin{enumerate}
+\item $0=-0$
+\item $z0=0$
+\item $z_1z_2=0\iff z_1=0$ or $z_2=0$
+\end{enumerate}
+\item Properties of Additive Inverses
+\begin{enumerate}
+\item $-z=(-1)z$
+\item $-(-z)=z$
+\item $(-z_1)z_2=z_1(-z_2)=-(z_1z_2)$
+\item $(-z_1)(-z_2)=z_1z_2$
+\item $-(z_1+z_2)=-z_1+(-z_2)$
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

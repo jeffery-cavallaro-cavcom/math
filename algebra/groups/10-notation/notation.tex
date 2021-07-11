@@ -1,0 +1,296 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Notation}
+
+\begin{description}
+\item{Additive Groups:}
+  \begin{eqnarray*}
+    0 &=& \mbox{identity} \\
+    -a &=& \mbox{inverse of}\ a \\
+    0a &=& 0 \\
+    na &=& a+a+\ldots+a\hspace{0.25in}\mbox{(n times)} \\
+    -na &=& (-a)+(-a)+\ldots+(-a)=n(-a) \\
+  \end{eqnarray*}
+    
+\item{Multiplicative Groups:}
+  \begin{eqnarray*}
+    1 &=& \mbox{identity} \\
+    a^{-1} &=& \mbox{inverse of}\ a \\
+    a^0 &=& 1 \\
+    a^n &=& aa\ldots a\hspace{0.25in}\mbox{(n times)} \\
+    a^{-n} &=& (a^{-1})(a^{-1})\ldots(a^{-1})=(a^{-1})^n \\
+  \end{eqnarray*}
+\end{description}
+  
+Unless the form of the group is explicitly stated, the multiplicative
+(juxtaposition) notation is generally used by default. An exception is for
+abelian groups, where the additive notation is preferred.
+
+\begin{theorem}
+  Let $G$ be a group and $n\in\Z$:
+  \[\forall\,a\in G,a^{-n}=(a^n)^{-1}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in G$
+
+  \begin{description}
+  \item{Case 1: $n=0$}
+
+    $a^{-0}=a^0=e=e^{-1}=(a^0)^{-1}$ \\
+
+  \item {Case 2: $n>0$}
+
+    Proof by induction on $n$:
+
+    \begin{description}
+    \item{Base: $n=1$:}
+
+      $a^{-1}=(a^1)^{-1}$
+
+    \item{Assume $a^{-n}=(a^n)^{-1}$}
+
+    \item{Consider $a^{-(n+1)}$:}
+      
+      $a^{-(n+1)}=(a^{-1})^{n+1}=(a^{-1})^na^{-1}=a^{-n}a^{-1}=(a^n)^{-1}a^{-1}=
+      (aa^n)^{-1}=(a^{n+1})^{-1}$
+    \end{description}
+
+  \item{Case 3: $n<0$}
+
+    Let $m=-n$ \\
+    $m>0$ \\
+    $a^{-n}=a^m=[(a^m)^{-1}]^{-1}=(a^{-m})^{-1}=(a^{-(-n)})^{-1}=(a^n)^{-1}$
+  \end{description}
+\end{theproof}
+
+\begin{corollary}
+  Let $G$ be a group and $n\in\Z$:
+  \[\forall\,a\in G,a^na^{-n}=e\]
+\end{corollary}
+
+\begin{theproof}
+  Assume $a\in G$ \\
+  $a^na^{-n}=a^n(a^n)^{-1}=e$
+\end{theproof}
+
+\begin{theorem}
+  Let $G$ be a group and $n,m\in\Z$:
+  \[\forall\,a\in G,a^ma^n=a^{m+n}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in G$ \\
+
+  \begin{description}
+  \item{Case 1: $m=0$}
+
+    $a^0a^n=ea^n=a^n=a^{0+n}$
+
+  \item{Case 2: $n=0$}
+
+    $a^ma^0=a^me=a^m=a^{m+0}$
+
+  \item{Case 3: $m,n>0$}
+
+    Proof by induction on $n$ for a fixed value of $m$:
+    
+    \begin{description}
+    \item Base: $n=1$:
+    
+      $a^ma^1=a^ma=a^{m+1}$
+    
+    \item Assume $a^ma^n=a^{m+n}$
+
+    \item Consider $a^ma^{n+1}$:
+    
+      $a^ma^{n+1}=a^m(a^na)=(a^ma^n)a=a^{m+n}a=a^{(m+n)+1}=a^{m+(n+1)}$
+    \end{description}
+
+  \item {Case 4: $m,n<0$}
+
+    Let $h=-m$ and $k=-n$ \\
+    $h,k>0$ \\
+    $a^ma^n=a^{-h}a^{-k}=(a^h)^{-1}(a^k)^{-1}=(a^ka^h)^{-1}=(a^{k+h})^{-1}=
+    (a^{h+k})^{-1}=a^{-(h+k)}$ \\
+    $a^ma^n=a^{-(-m-n)}=a^{m+n}$
+
+  \item{Case 5: $m>0$ and $n<0$}
+
+    \begin{description}
+    \item{Case 1: $m=\abs{n}$}
+
+      $m+n=0$ \\
+      $n=-m$ \\
+      $a^ma^n=a^ma^{-m}=e=a^0=a^{m-m}=a^{m-(-n)}=a^{m+n}$
+
+    \item{Case 2: $m>\abs{n}$}
+
+      $(a^ma^n)(a^{m+n})^{-1}=[a^ma^{-(-n)}](a^{m+n})^{-1}=
+      a^m[(a^{-n})^{-1}(a^{m+n})^{-1}]=a^m(a^{m+n}a^{-n})^{-1}$ \\
+      But $m+n>0$ and $-m>0$, so \\
+      $(a^ma^n)(a^{m+n})^{-1}=a^m[a^{(m+n)-n}]^{-1}=a^m(a^m)^{-1}=e$ \\
+      By uniqueness of the inverse, $a^ma^n=[(a^{m+n})^{-1}]^{-1}$ \\
+      $\therefore a^ma^n=a^{m+n}$
+
+    \item{Case 3: $m<\abs{n}$}
+
+      $(a^{m+n})^{-1}(a^ma^n)=(a^{m+n})^{-1}[a^{-(-m)}a^n]=
+      [(a^{m+n})^{-1}(a^{-m})^{-1}]a^n=(a^{-m}a^{m+n})^{-1}a^n$ \\
+      But $-m<0$ and $m+n<0$, so \\
+      $(a^{m+n})^{-1}(a^ma^n)=[a^{-m+(m+n)}]^{-1}a^n=(a^n)^{-1}a^n=e$ \\
+      By uniqueness of the inverse, $a^ma^n=[(a^{m+n})^{-1}]^{-1}$ \\
+      $\therefore a^ma^n=a^{m+n}$
+    \end{description}
+
+  \item{Case 6: $m<0$ and $n>0$}
+
+    \begin{description}
+    \item{Case 1: $\abs{m}=n$}
+
+      $m+n=0$ \\
+      $n=-m$ \\
+      $a^ma^n=a^ma^{-m}=e=a^0=a^{m-m}=a^{m-(-n)}=a^{m+n}$
+
+    \item{Case 2: $\abs{m}<n$}
+
+      $(a^{m+n})^{-1}(a^ma^n)=(a^{m+n})^{-1}[a^{-(-m)}a^n]=
+      [(a^{m+n})^{-1}(a^{-m})^{-1}]a^n=(a^{-m}a^{m+n})^{-1}a^n$ \\
+      But $-m>0$ and $m+n>0$, so \\
+      $(a^{m+n})^{-1}(a^ma^n)=[a^{-m+(m+n)}]^{-1}a^n=(a^n)^{-1}a^n=e$ \\
+      By uniqueness of the inverse, $a^ma^n=[(a^{m+n})^{-1}]^{-1}$ \\
+      $\therefore a^ma^n=a^{m+n}$
+
+    \item{Case 3: $\abs{m}>n$}
+
+      $(a^ma^n)(a^{m+n})^{-1}=[a^ma^{-(-n)}](a^{m+n})^{-1}=
+      a^m[(a^{-n})^{-1}(a^{m+n})^{-1}]=a^m(a^{m+n}a^{-n})^{-1}$ \\
+      But $m+n<0$ and $-n<0$, so \\
+      $(a^ma^n)(a^{m+n})^{-1}=a^m[a^{(m+n)-n}]^{-1}=a^m(a^m)^{-1}=e$ \\
+      By uniqueness of the inverse, $a^ma^n=[(a^{m+n})^{-1}]^{-1}$ \\
+      $\therefore a^ma^n=a^{m+n}$
+    \end{description}
+  \end{description}
+\end{theproof}
+
+\begin{corollary}
+  Let $G$ be a group and $n,m\in\Z$:
+  \[\forall\,a\in G,a^ma^n=a^na^m\]
+\end{corollary}
+
+\begin{theproof}
+  Assume $a\in G$ \\
+  $a^ma^n=a^{m+n}+a^{n+m}=a^na^m$
+\end{theproof}
+
+\begin{theorem}
+  Let $G$ be a group and $n,m\in\Z$:
+  \[\forall\,a\in G,(a^m)^n=a^{mn}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in G$
+  
+  \begin{description}
+  \item{Case 1: $n=0$}
+
+    $(a^m)^0=e=a^0=a^{m0}$
+
+  \item{Case 2: $n>0$}
+
+    Proof by induction on $n$:
+
+    \begin{description}
+    \item{Base: $n=1$}
+
+      $(a^m)^1=a^m=a^{m1}$
+
+    \item{Assume $(a^m)^n=a^{mn}$}
+
+    \item{Consider $(a^m)^{n+1}$}
+
+      $(a^m)^{n+1}=(a^m)^n(a^m)=a^{mn}a^m=a^{mn+m}=a^{m(n+1)}$
+    \end{description}
+
+  \item{Case 3: $n<0$}
+
+    Let $k=-n$ \\
+    $k>0$ \\
+    $(a^m)^n=(a^m)^{-k}=[(a^m)^k]^{-1}=(a^{mk})^{-1}=a^{-mk}=a^{-m(-n)}=a^{mn}$
+  \end{description}
+\end{theproof}
+
+Thus, all of the exponent rules work as expected.
+
+\begin{example}
+  \[a^{-2}a^5=(a^{-1})(a^{-1})aaaaa=(a^{-1})eaaaa=(a^{-1})aaaa=eaaa=aaa=a^3\]
+\end{example}
+
+\begin{theorem}
+  Let $G$ be an abelian group and $n\in\Z$:
+  \[\forall\,a,b\in G,(ab)^n=a^nb^n\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in G$.
+  \begin{description}
+  \item{Case 1: $n=0$}
+    
+    $(ab)^0=e=ee=a^0b^0$
+
+  \item{Case 2: $n>0$}
+
+    Proof by induction on $n$:
+
+    \begin{description}
+    \item{Base: $n=1$}
+
+      $(ab)^1=ab=a^1b^1$
+
+    \item Assume $(ab)^n=a^nb^n$
+
+    \item Consider $(ab)^{n+1}$
+      \begin{eqnarray*}
+        (ab)^{n+1} &=& (ab)(ab)^n \\
+        &=& (ab)(a^nb^n) \\
+        &=& (ab)(b^na^n) \\
+        &=& a(bb^n)a^n \\
+        &=& ab^{n+1}a^n \\
+        &=& aa^nb^{n+1} \\
+        &=& a^{n+1}b^{n+1} \\
+      \end{eqnarray*}
+    \end{description}
+
+  \item{Case 3: $n<0$}
+
+    Let $m=-n$ \\
+    $(ab)^n=(ab)^{-m}=[(ab)^m]^{-1}$ \\
+    But $m>0$, so: \\
+    $(ab)^n=(a^mb^m)^{-1}=(b^m)^{-1}(a^m)^{-1}=b^{-m}a^{-m}=b^{-(-n)}a^{-(-n)}=
+    b^na^n=a^nb^n$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $G$ be a finite group with order $m$:
+  \[\forall\,a\in G,\exists\,n\in\Z^+,a^n=e\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in G$ \\
+  Consider the set $S=\{a^0=e,a,a^2,a^3,\ldots,a^m\}$ \\
+  By closure, $S\subseteq G$ \\
+  $\abs{S}=m+1$, so at least one of the elements in $S$ is repeated \\
+  If the repeated element is $e$ then done \\
+  Otherwise, assume $a^i=a^j$, where $i<j$ \\
+  $a^ia^{-i}=a^ja^-i$ \\
+  $a^0=a^{j-i}$ \\
+  $e=a^{j-i}$ \\
+  Let $n=j-i$ \\
+  $0<n<m$ so $a^n\in S$ \\
+  $\therefore\exists n\in\Z^+,a^n=e$
+\end{theproof}
+
+\end{document}

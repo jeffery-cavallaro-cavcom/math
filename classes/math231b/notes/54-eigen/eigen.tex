@@ -1,0 +1,112 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vo}{\vec{0}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\DeclareMathOperator{\spn}{Span}
+\allowdisplaybreaks
+\begin{document}
+\section*{Eigenvalues and Eigenvectors}
+
+\begin{definition}[Eigenvalue]
+  Let $E$ be a complex vector space and let $A$ be an operator on $E$. To say
+  that $\l\in\C$ is an \emph{eigenvalue} of $A$ means $\exists\,\vx\in E$ such
+  that $\vx\ne\vo$ and:
+  \[A\vx=\l\vx\]
+  All such $\vx$ are called the \emph{eigenvectors} of $A$ corresponding to
+  $\l$.
+
+  When $E$ is a function space the eigenvectors are referred to as
+  \emph{eigenfunctions}.
+
+  The \emph{eigenspace} corresponding to $\l$, denoted $E_{\l}$, is given by:
+  \[E_{\l}=\{\vx\in H-\{\vo\}\mid A\vx=\l\vx\}\]
+\end{definition}
+
+\begin{theorem}
+  Let $E$ be a complex vector space and let $A$ be an operator on $E$ with
+  an eigenvalue $\l$:
+
+  \qquad$E_{\l}$ is a vector space.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in E_{\l}$. \\
+  $A\vx=\l\vx$ \\
+  $A\vx-\l\vx=\vo$ \\
+  $(A-\l I)\vx=\vo$
+  
+  Therefore $E_{\l}=\ker(A-\l I)$, which is a subspace of $H$.
+\end{theproof}
+
+Thus, $\l$ is an eigenvalue of $A$ iff $\ker(A-\l I)$ is nontrivial.
+
+\begin{definition}[Multiplicity]
+  Let $E$ be a complex vector space and let $A$ be an operator on $E$ with
+  an eigenvalue $\l$. The \emph{multiplicity} of $\l$ is the dimension of
+  the corresponding eigenspace $E_{\l}$.
+
+  An eigenvalue with a multiplicity of $1$ is called \emph{simple}.
+\end{definition}
+
+\begin{example}
+  Let $E=L^2[0,2\pi]$ and let $A$ be an operator on $E$ defined by:
+  \[Au=\cos\star u\]
+  and so:
+  \[(Au)(t)\int_0^{2\pi}\cos(t-x)u(x)dx\]
+  First, assume $\l\ne0$:
+
+  $Au=\l u$
+  
+  $\int_0^{2\pi}\cos(t-x)u(x)dx=\l u(t)$
+
+  $\int_0^{2\pi}[cos(t)cos(x)+sin(t)sin(x)]u(x)dx=\l u(t)$
+  
+  $\left[\int_0^{2\pi}cos(x)u(x)dx\right]cos(t)+
+  \left[\int_0^{2\pi}sin(x)u(x)dx\right]sin(t)=\l u(t)$
+  
+  And so $u(t)=\a\cos(t)+\b\sin(t)\in\spn\{\cos,\sin\}$ and $\dim E_{\l}=2$.
+  
+  Let:
+  \[a=\int_0^{2\pi}cos(x)u(x)dx\]
+  \[b=\int_0^{2\pi}sin(x)u(x)dx\]
+  Now solve for $a$ and $b$:
+  \begin{eqnarray*}
+    a &=& \int_0^{2\pi}cos(x)[\a\cos(x)+\b\sin(x)]dx \\
+    &=& \a\int_0^{2\pi}cos^2(x)dx+\b\int_0^{2\pi}\cos(x)\sin(x)dx \\
+    &=& \frac{\a}{2}\int_0^{2\pi}[1+cos(2x)]dx+
+    \frac{\b}{2}\int_0^{2\pi}\sin(2x)dx \\
+    &=& \frac{\a}{2}\int_0^{2\pi}[1+cos(2x)]dx+0 \\
+    &=& \frac{\a}{2}\left[\int_0^{2\pi}dx+\int_0^{2\pi}cos(2x)dx\right] \\
+    &=& \frac{\a}{2}(2\pi+0) \\
+    &=& \a\pi
+  \end{eqnarray*}
+  \begin{eqnarray*}
+    b &=& \int_0^{2\pi}sin(x)[\a\cos(x)+\b\sin(x)]dx \\
+    &=& \a\int_0^{2\pi}sin(x)cos(x)dx+\b\int_0^{2\pi}\sin^2(x)dx \\
+    &=& \frac{\a}{2}\int_0^{2\pi}\sin(2x)dx+
+    \frac{\b}{2}\int_0^{2\pi}[1-\cos(2x)]dx \\
+    &=& 0+\frac{\b}{2}\int_0^{2\pi}[1-cos(2x)]dx \\
+    &=& \frac{\b}{2}\left[\int_0^{2\pi}dx-\int_0^{2\pi}cos(2x)dx\right] \\
+    &=& \frac{\b}{2}(2\pi+0) \\
+    &=& \b\pi
+  \end{eqnarray*}
+  And so:
+  \[\a\pi\cos(t)+\b\pi\sin(t)=\l(\a\cos(t)+\b\sin(t)\]
+  and:
+  $\a\pi=\l\a$ and $\b\pi=\l\b$
+  And therefore $\l=\pi$.
+
+  Now assume $\l=0$.
+
+  $a\cos(t)+b\sin(t)=0\iff a=b=0$ and so:
+  \[E_0=\{u\in E\mid u\perp\cos$ and $u\perp\sin\}=\{\cos,\sin\}^{\perp}\]
+  and $\dim E_0=\infty$.
+
+  And so $L^2[0,2\pi]=E_{\pi}\oplus E_0$.
+\end{example}
+
+\end{document}

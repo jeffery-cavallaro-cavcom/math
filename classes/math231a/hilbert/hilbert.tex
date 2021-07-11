@@ -1,0 +1,62 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\Rd}{\mathbb{R}^d}
+\newcommand{\LtwoRd}{L^2(\Rd)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\newcommand{\hilbert}{\mathcal{H}}
+\begin{document}
+\section*{Hilbert Spaces}
+
+\begin{definition}
+To say that a set $\hilbert$ is a \emph{Hilbert space} means that it
+satisfies the following properties:
+\begin{description}
+\item{H1: } $\hilbert$ is a vector space over $\mathbb{C}$ (or $\mathbb{R}$).
+
+\item{H2: } $\hilbert$ is equipped with an inner product
+$\inner{\cdot\,}{\cdot}$ that also defines a norm
+$\norm{f}=\inner{f}{f}^{\frac{1}{2}}$.
+
+\item{H3: } $\hilbert$ is complete in its metric $d(f,g)=\norm{f-g}$.
+
+\item{H4: } $\hilbert$ is separable.
+\end{description}
+\end{definition}
+
+\subsection{Examples:}
+\begin{enumerate}
+\item{$L^2(E)$}
+\[L^2(E)=\left\{f\ \mbox{supported on}\ E\ \mbox{and}\ \int_E\abs{f}^2
+    <\infty\right\}\]
+\[\inner{f}{g}=\int_Ef\conj{g}\]
+\[\norm{f}=\left(\int_E\abs{f}^2\right)^{\frac{1}{2}}\]
+
+\item{$\mathbb{R}^N$ or $\mathbb{C}^N$}
+\[\mathbb{R}^N=\left\{(a_1,a_2,\ldots,a_N)\mid a_k\in\mathbb{R}\right\}\]
+\[\mathbb{C}^N=\left\{(a_1,a_2,\ldots,a_N)\mid a_k\in\mathbb{C}\right\}\]
+\[\inner{a}{b}=\sum_{k=1}^Na_k\Conj{b_k}\]
+\[\norm{a}=\left(\sum_{k=1}^N\abs{a_k}^2\right)^{\frac{1}{2}}\]
+
+\item{$\ell^2(\mathbb{Z})$}
+\[\ell^2(\mathbb{Z})=\left\{(\ldots,a_{-2},a_{-1},a_0,a_1,a_2,\ldots)\mid
+    a_k\in\mathbb{C}\ \mbox{and}\ \sum_{k=-\infty}^{\infty}\abs{a_k}^2<
+    \infty\right\}\]
+\[\inner{a}{b}=\sum_{k=-\infty}^{\infty}a_k\Conj{b_k}\]
+\[\norm{a}=\left(\sum_{k=-\infty}^{\infty}\abs{a_k}^2\right)^{\frac{1}{2}}\]
+
+\item{$\ell^2(\mathbb{N})$}
+\[\ell^2(\mathbb{N})=\left\{(a_1,a_2,\ldots)\mid
+    a_k\in\mathbb{C}\ \mbox{and}\ \sum_{k=1}^{\infty}\abs{a_k}^2<
+    \infty\right\}\]
+\[\inner{a}{b}=\sum_{k=1}^{\infty}a_k\Conj{b_k}\]
+\[\norm{a}=\left(\sum_{k=1}^{\infty}\abs{a_k}^2\right)^{\frac{1}{2}}\]
+\end{enumerate}
+
+Remark: All Hilbert spaces are isomorphic to $\ell^2(\mathbb{Z})$.
+
+\end{document}

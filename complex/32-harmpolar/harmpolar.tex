@@ -1,0 +1,42 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\begin{document}
+\section*{Harmonic Polar Form}
+
+\begin{theorem}
+  Let $u(x,y)$ be harmonic:
+  \[r^2u_{rr}+ru_r+u_{\o\o}=0\]
+\end{theorem}
+
+\begin{theproof}
+  \begin{tabular}{lll}
+    $x=r\cos\o$ & $x_r=\cos\o$ & $x_{\o}=-r\sin\o$ \\
+    $y=r\sin\o$ & $y_r=\sin\o$ & $y_{\o}=r\cos\o$ \\
+  \end{tabular}
+  \[u_r=u_xx_r+u_yy_r=u_x\cos\o+u_y\sin\o\]
+  \[u_{\o}=u_xx_{\o}+u_yy_{\o}=-u_xr\sin\o+u_yr\cos\o\]
+
+  \[u_{rr}=(u_{xx}x_r+u_{xy}y_r)\cos\o+(u_{yx}x_r+u_{yy}y_r)\sin\o\]
+  \[=(u_{xx}\cos\o+u_{yx}\sin\o)\cos\o+(u_{yx}\cos\o+u_{yy}\sin\o)\sin\o\]
+  \[=u_{xx}\cos^2\o+u_{yx}\sin\o\cos\o+u_{yx}\sin\o\cos\o+u_{yy}\sin^2\o\]
+  \[=u_{xx}\cos^2\o+2u_{xy}\sin\o\cos\o+u_{yy}\sin^2\o\]
+
+  \[u_{\o\o}=-(u_{xx}x_{\o}+u_{xy}y_{\o})r\sin\o-u_xr\cos\o+
+  (u_{yx}x_{\o}+u_{yy}y_{\o})r\cos\o-u_yr\sin\o\]
+  \[=u_{xx}r^2\sin^2\o-u_{xy}r^2\sin\o\cos\o-u_xr\cos\o-
+  u_{yx}r^2\sin\o\cos\o+u_{yy}r^2\cos^2\o-u_yr\sin\o\]
+  \[=u_{xx}r^2\sin^2\o-2u_{xy}r^2\sin\o\cos\o+u_{yy}r^2\cos^2\o-
+  r(u_x\cos\o+u_y\sin\o)\]
+  \[=u_{xx}r^2\sin^2\o-2u_{xy}r^2\sin\o\cos\o+u_{yy}r^2\cos^2\o-ru_r\]
+  \[\frac{1}{r^2}u_{\o\o}=u_{xx}\sin^2\o-2u_{xy}\sin\o\cos\o+u_{yy}\cos^2\o-
+  \frac{1}{r}u_r\]
+
+  \[u_{rr}+\frac{1}{r^2}u_{\o\o}=u_{xx}+u_{yy}-\frac{1}{r}u_r\]
+  \[u_{rr}+\frac{1}{r^2}u_{\o\o}=0-\frac{1}{r}u_r\]
+  \[u_{rr}+\frac{1}{r}u_r+\frac{1}{r^2}u_{\o\o}=0\]
+  \[r^2u_{rr}+ru_r+u_{\o\o}=0\]
+\end{theproof}
+
+\end{document}

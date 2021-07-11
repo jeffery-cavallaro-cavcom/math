@@ -1,0 +1,159 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\x}{\times}
+\begin{document}
+\section*{Polynomial Rings}
+
+\begin{definition}[Polynomial Ring]
+  Let $R$ be a commutative ring with $1\ne0$. The \emph{ring of polynomials}, denoted
+  $R[x]$, is given by:
+  \[R[x]=\left\{\sum_{k=0}^na_kx^k\mid n\in\N_0\ \mbox{and}\ a_k\in R\right\}\]
+  In other words, $R[x]$ consists of polynomials with coefficients from $R$.
+
+  $a_0$ is called the \emph{constant} coefficient/term.
+
+  $a_nx^n$ for largest $n$ such that $a_n\ne0$ is called the \emph{leading} term and
+  $a_n$ is called the \emph{leading} coefficient.
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a ring. $R[x]$ is a ring under the standard definitions of polynomial
+  addition and multiplication:
+  \[\sum_{k=0}^na_kx^k+\sum_{k=0}^nb_kx^k=\sum_{k=0}^n(a_k+b_l)x^k\]
+  \[\left(\sum_{k=0}^na_kx^k\right)\left(\sum_{k=0}^nb_kx^k\right)=\sum_{k=0}^nc_kx^k,
+  \hspace{2ex}c_k=\sum_{j=0}^ka_kb_{k-j}\]
+  Addition is component-wise and multiplication is based on the distributive property.
+\end{theorem}
+
+\begin{theproof}
+  Addition is component-wise and is thus based on the additive properties of $R$. Thus,
+  $R[x]$ is an additive abelian group. Likewise, multiplication is based on the
+  associative and distributive properties of $R$. Therefore, $R[x]$ is a ring.
+\end{theproof}
+
+\begin{definition}[Degree]
+  Let $R[x]$ be a polynomial ring over a ring $R$. The \emph{degree} function:
+  \[\deg:R[x]\to\N_0\cup\{-\infty\}\]
+  is defined by:
+  \[\deg(f(x))=\begin{cases}
+  -\infty & f(x)\equiv0 \\
+  n & a_nx^n\ \mbox{is the leading term of}\ f(x)
+  \end{cases}\]
+\end{definition}
+\newpage
+\begin{definition}[Equality]
+  Let $R$ be a ring and $f(x),g(x)\in R[x]$ where:
+  \[f(x)=\sum_{k=0}^na_kx^k\]
+  \[g(x)=\sum_{k=0}^mb_kx^k\]
+  To say that $f(x)=g(x)$ means $m=n$ and $a_k=b_k$ for all $0\le k\le n$.
+\end{definition}
+
+\begin{properties}[Polynomial Rings]
+  Assume $R$ is an integral domain:
+  \begin{enumerate}
+  \item $R[x]$ is an integral domain.
+  \item $\deg(f(x)g(x))=\deg(f(x))+\deg(g(x))$
+  \item $R[x]^{\x}=R^{\x}$
+  \end{enumerate}
+\end{properties}
+
+\begin{theorem}[Division Algorithm]
+  Let $R$ be an integral domain and $f(x),g(x)\in R[x]$ such that $g(x)\ne0$.
+  There exists $k\in\N_0$ and $q(x),r(x)\in R[x]$ such that:
+  \begin{enumerate}
+  \item $b^kf(x)=q(x)g(x)+r(x)$
+  \item $deg(r(x))<\deg(g(x))$
+  \item $b$ is the leading coefficient of $g(x)$
+  \end{enumerate}
+  Note that if $b$ is a unit then we can take $k=0$.
+
+  It is OK to select the minimum $k$ that works.
+
+  For a fixed $k$, $q(x)$ and $r(x)$ are unique.
+\end{theorem}
+
+\begin{example}
+  Let $R=\Z$ and:
+  \begin{eqnarray*}
+    f(x) &=& 2x^2+1 \\
+    g(x) &=& 3x-1
+  \end{eqnarray*}
+
+  $3^k(2x^2+1)=(ax+b)(3x-1)+c$ \\
+  $3^k\cdot2x^2+3^k=3ax^2+(3b-a)x+(c-b)$
+
+  $3a=2\cdot3^k$ \\
+  $3b-a=0$ \\
+  $c-b=3^k$
+
+  $a=2\cdot3^{k-1}$, so $k\ne0$ \\
+  $b=2\cdot3^{k-2}$, so $k\ne1$ \\
+  $c=3^k+2\cdot3^{k-2}$, so $k\ge 2$
+
+  For $k=2: a=6, b=2, c=11$:
+
+  $3^2(2x^2+1)=(6x+2)(3x-1)+11$
+
+  Note that $\deg(3x-1)=1$ and $\deg(11)=0$, and indeed: $0\le0<1$.
+\end{example}
+
+\begin{theproof}
+  Let $\deg(f(x))=m$ and $\deg(g(x))=n$
+  
+  If $m<n$ then we can take $k=0, q(x)\equiv0$, and $r(x)=f(x)$:
+  \[b^0f(x)=0\cdot g(x)+f(x)\]
+  So, AWLOG: $m\ge n\ge 0$
+
+  Let $a$ be the leading coefficient for $f(x)$
+
+  Proof by induction on $m$ for a given $n$
+  \begin{description}
+  \item Base: $m=0$
+
+    Since $m\ge n$ it must be the case that $n=0$ \\
+    $f(x)=a$ and $g(x)=b$ \\
+    $bf(x)=ba=ab+0=ag(x)+0$ and $-\infty<0$
+
+  \item Assume the statement is true for $\deg(f(x))<m$.
+
+  \item Consider $\deg(f(x))=m$
+
+    $ax^m$ is the leading term of $f(x)$ \\
+    $bx^n$ is the leading term of $g(x)$ \\
+    Let $f_1(x)=bf(x)-a^{m-n}g(x)$ \\
+    Consider the leading term of $f_1(x): bax^m-abx^m=0$ \\
+    So $\deg(f_1(x))<m$ and thus by the inductive assumption, there exists
+    $k_1\in N_0$ and $q_1(x),r_1(x)\in R[x]$ such that:
+    \[b^{k_1}f_1(x)=q_1(x)g(x)+r_1(x)\]
+    where $\deg(r_1(x))<\deg(g(x))=n$. Now:
+    \begin{eqnarray*}
+      b^{k_1}f_1(x) &=& b^{k_1+1}f(x)-b^{k_1}a^{m-n}g(x) \\
+      b^{k_1+1}f(x) &=& b^{k_1}f_1(x)+b^{k_1}a^{m-n}g(x) \\
+      &=& q_1(x)g(x)+r_1(x)+b^{k_1}a^{m-n}g(x) \\
+      &=& [q_1(x)+b^{k_1}a^{m-n}]g(x)+r_1(x)
+    \end{eqnarray*}
+    Let $k=k_1+1$, $q(x)=q_1(x)+b^{k_1}a^{m-n}$, and $r_1(x)=r(x)$:
+    \[b^kf(x)=q(x)g(x)+r(x)\hspace{2ex}\deg(r(x))<\deg(g(x))\]
+  \end{description}
+\end{theproof}
+
+Note that if $b$ is a unit then:
+\[f(x)=[b^{-k}q(x)]g(x)+b^{-k}r(x)\]
+which does not affect the various degrees.
+
+\begin{corollary}[Remainder Theorem]
+  Let $R[x]$ be a ring of polynomials over a ring $R$, $f(x),g(x)\in R[x]$, and
+  $g(x)=x-a$. The remainder upon division of $f(x)$ by $g(x)$ is the constant $f(a)$.
+\end{corollary}
+
+\begin{theproof}
+  $f(x)=q(x)(x-a)+r$
+  
+  $f(a)=q(a)(a-a)+r=0+r=r$
+\end{theproof}
+
+We can also consider rings of multiple, independent, commuting variables:
+\[R[x,y]=(R[x])[y]\]
+
+\end{document}

@@ -1,0 +1,379 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\DeclareMathOperator{\rnk}{rank}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Null}{Null}
+\newcommand{\va}{\vec{a}}
+\newcommand{\vb}{\vec{b}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vz}{\vec{0}}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 229 \\
+Midterm Exam
+
+\bigskip
+
+It was previously proven that $\rnk{A}=\rnk{A^T}$. Note that this is the same as saying
+the dimension of the column space of $A$ equals the dimension of the row space of $A$.
+  
+\begin{enumerate}
+\item Let $A\in M_n$:
+
+
+  \begin{enumerate}
+  \item Prove that if $A$ has a $k\times k$ submatrix $B$ such that $\det(B)\ne0$
+    then $\rnk(A)\ge k$
+
+    Assume $A$ has a $k\times k$ submatrix $B$ such that $\det(B)\ne0$. By the IVT, $B$
+    is invertible and so its $k$ columns are linearly independent. This means that the
+    dimension of the column space of $B$ is $k$, which is also the dimension of the row
+    space of $B$. Now expand the $k\times1$ column vectors of $B$ into the original
+    $n\times1$ column vectors of $A$ and construct a new $n\times k$ matrix C consisting
+    of these $k$ column vectors from $A$. The dimension of the row space of $C$ is
+    unchanged, and so the dimension of the column space of $C$ is also unchanged, meaning
+    that the $k$ columns of $C$ are still linearly independent and so $\rnk{C}=k$.
+    Finally, extend $C$ back to the full matrix $A$. $A$ has at least $k$ linearly
+    independent column vectors (from $C$).
+
+    Therefore, $\rnk(A)\ge k$.
+
+    \bigskip
+    
+  \item Let $n\ge 2$. Prove that:
+    \[\rnk(\adj(A))=\begin{cases}
+    n, & \rnk(A)=n \\
+    1, & \rnk(A)=n-1 \\
+    0, & \rnk(A)\le n-2
+    \end{cases}\]
+
+    By previously-proved theorem:
+    \[A(\adj(A))=(\det(A))I\]
+    Now, consider the three cases:
+    \begin{description}
+    \item Case 1: $\rnk(A)=n$
+
+      $A$ has $n$ linearly independent columns and so, by the IVT, $A$ is invertible and:
+      \[\adj(A)=(\det(A))A^{-1}\]
+      But, since $A$ is invertible, $\det(A)\ne0$ and we have:
+      \[(\det(A))A^{-1})\left(\frac{1}{\det(A)}A\right)=I\]
+      Thus $(\det(A))A^{-1}$ is invertible, meaning that $\adj(A)$ is also invertible.
+      So the $n$ columns of $\adj(A)$ are linearly independent.
+
+      Therefore $\rnk(\adj(A))=n$
+
+    \item Case 2: $\rnk(A)=n-1$
+
+      The $n$ columns of $A$ form a linearly dependent set, and by the IVT, $A$ is not
+      invertible and so $\det(A)=0$. Thus we have:
+      \[A(\adj(A))=0\]
+      But from the definition of matrix multiplication, the columns of $\adj(A)$ are a
+      subset of the null space of $A$, which has dimension $n-(n-1)=1$. And so the
+      dimension of the column space of $\adj{A}$ is either $0$ or $1$.
+
+      Since $\rnk(A)=n-1$, there exists an $n-1$ subset of the columns of $A$ that form
+      a linearly independent set. AWLOG that removing the $j^{th}$ column results in such
+      a linearly independent set. Construct a new $n\times(n-1)$ matrix $B$ from the
+      $n-1$ linearly independent columns of $A$. Note that the dimension of the column
+      space of $B$ is still $n-1$, and so the dimension of the row space of $B$ is also
+      $n-1$. Thus, there exists an $n-1$ subset of the rows of $B$ that also forms a
+      linearly independent set. AWLOG that removing the $i^{th}$ row of $B$ forms such a
+      linearly independent set. Construct a new $(n-1)\times(n-1)$ matrix $C$ by dropping
+      the $i^{th}$ row of $B$. Now, the $n-1$ rows of $C$ are linearly independent and so
+      the dimension of the row space of $C$ is $n-1$, and thus the dimension of the
+      column space of $C$ must also be $n-1$. This means that the $n-1$ columns of $C$
+      are linearly independent and thus $\det(C)\ne0$. But $C=A_{ij}$, and thus $A$ has
+      at least one non-zero minor.
+
+      Therefore, $\adj(A)$ is not the zero matrix and $\rnk(\adj(A))=1$.
+
+    \item Case 3: $\rnk(A)\le n-2$
+
+      Since the dimension of the column space of A is $n-2$, any $n-1$ subset of the
+      columns of $A$ forms a linearly dependent set. Discard the $j^{th}$ column of $A$
+      and form a new $n\times(n-1)$ matrix $B$ from the remaining columns of $A$. Since
+      the dimension of the column space of $B$ is still $n-2$, the dimension of the row
+      space must also be $n-2$. Thus, any $n-1$ subset of the rows of $B$ form a linearly
+      dependent set. Discard the $i^{th}$ row of $B$ and form a new $(n-1)\times(n-1)$
+      matrix $C$ from the remaining rows of $B$. Since the dimension of the row space of
+      $C$ is still $n-2$, the rank of the column space of $C$ is also $n-2$ and thus the
+      $n-1$ columns of $C$ are linearly dependent and $\det(C)=0$. But $C=A_{ij}$, and
+      thus $A$ has no non-zero minors.
+
+      Therefore, $\rnk(\adj(A))=0$
+    \end{description}
+  \end{enumerate}
+
+  \newpage
+
+\item Given a real $n$-vector
+  $\va^T=\begin{bmatrix} a_1 & a_2 & \ldots & a_n \end{bmatrix}$ with $n\ge 2$, defined
+  the $n\times n$ matrix:
+  \[M(\va)=\begin{bmatrix} a_i-a_j \end{bmatrix}\]
+  \begin{enumerate}
+  \item Find a necessary and sufficient condition on the vector $\va$ such that
+    $M(\va)=0$.
+
+    Assume $M(\va)=0$. By selecting any row, say the $i^{th}$ row, of $M(\va)$, we get
+    a system of $n$ equations:
+    \[a_i-a_j=0\]
+    for all $1\le j\le n$. Thus, for all $1\le j\le n$, $a_i=a_j$, and thus by
+    transitivity, all of the components of $\va$ must be equal.
+
+    Likewise, by selecting any column, say the $j^{th}$ column, of $M(\va)$, we get
+    a system of $n$ equations:
+    \[a_i-a_j=0\]
+    for all $1\le i\le n$. Thus, for all $1\le i\le n$, $a_i=a_j$, and thus by
+    transitivity, all of the components of $\va$ must be equal.
+
+    Clearly, if all of the components of $\va$ equal, then the difference between any two
+    components will always be 0.
+
+    $\therefore M(\va)=0 \iff \va=\begin{bmatrix} a & a & \ldots & a \end{bmatrix}$ where
+    $a\in\R$.
+
+  \item Write $M(\va)=AB$ for some $n\times2$ matrix $A$ and some $2\times n$ matrix
+    $B$.
+
+    \newcommand{\MA}{\begin{bmatrix}
+        a_1 & 1 \\
+        a_2 & 1 \\
+        \vdots & \vdots \\
+        a_n & 1
+      \end{bmatrix}}
+    \newcommand{\MB}{\begin{bmatrix}
+        1 & 1 & \cdots & 1 \\
+        -a_1 & -a_2 & \cdots & -a_n
+      \end{bmatrix}}
+
+    Let $A=\begin{bmatrix} \va & 1 \end{bmatrix}=\MA$ and
+    $B=\begin{bmatrix} 1 \\ -\va^T \end{bmatrix}=\MB$
+
+    $[AB]_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}=a_i\cdot1+1\cdot(-a_j)=a_i-a_j$
+
+  \item Compute $\Sp(M(\va))$ in terms of $\va$.
+
+    By a previously proven theorem: $p_{AB}(t)=t^{n-2}p_{BA}(t)$, and so:
+    \[BA=\MB\MA=\begin{bmatrix}
+    \sum{a_k} & n \\ 
+    -\sum{(a_k^2)} & -\sum{a_k}
+    \end{bmatrix}\]
+    The characteristic polynomial of $BA$ is calculated as follows:
+    \begin{eqnarray*}
+      p_{BA}(t) &=& (t-\sum{a_k})(t+\sum{a_k})+n\sum{(a_k^2)} \\
+      &=& t^2-(\sum{a_k})^2+n\sum{(a_k^2)} \\
+      &=& t^2-\left((\sum{a_k})^2-n\sum{(a_k^2)}\right) \\
+    \end{eqnarray*}
+    and therefore:
+    \begin{eqnarray*}
+      \l_1 &=& \sqrt{(\sum{a_k})^2-n\sum{(a_k^2)}} \\
+      \l_2 &=& -\sqrt{(\sum{a_k})^2-n\sum{(a_k^2)}} \\
+      \l_3-\l_n &=& 0
+    \end{eqnarray*}
+
+    $\Sp(M(\va))=\left\{0^{(n-2)},\pm\sqrt{(\sum{a_k})^2-n\sum{(a_k^2)}}\right\}$
+  \end{enumerate}
+
+  \newpage
+
+\item Let $A\in M_n$
+  \begin{enumerate}
+  \item Prove that $AA^*$ and $A^*A$ are unitary similar.
+
+    Let $A=UDV$ be the SVD for $A$, where $U,V$ are unitary and $D$ is diagonal
+    containing the singular values of $A$. \\
+    $A^*=(UDV)^*=V^*D^*U^*$ \\
+    $AA^*=(UDV)(V^*D^*U^*)=UDD^*U^*$ \\
+    But $D$ and $D^*$ are both diagonal, so $DD^*=D^*D$ and: \\
+    $AA^*=UD^*DU^*$ \\
+    Similarly, $A^*A=(V^*D^*U^*)(UDV)=V^*D^*DV$ and so $D^*D=VA^*AV^*$ \\
+    Now, plugging the second equation into the first: \\
+    $AA^*=U(VA^*AV^*)U^*=(UV)A^*A(V^*U^*)=(UV)A^*A(UV)^*$ \\
+    But the product of unitary matrices is also unitary, so $UV$ is unitary
+
+    Therefore $AA^*$ is unitary similar to $A^*A$.
+    
+
+  \item Use (a) to prove that $\rnk(AA^*-\l I)=\rnk(A^*A-\l I)$ for any $\l$.
+
+    It was previously proven that the ranks of similar matrices are equal, so it
+    suffices to show that $AA^*-\l I$ and $A^*A-\l I$ are similar.
+
+    Since $AA^*$ and $A^*A$ are unitary similar, there exists unitary $U$ such that
+    $AA^*=UA^*AU^*$, and so:
+    \[AA^*-\l I=UA^*AU^*-\l I=UA^*AU^*-\l UU^*=U(A^*A-\l I)U^*\]
+    and thus $AA^*-\l I$ is unitary similar to $A^*A-\l I$ \\
+    But unitary similar matrices are similar.
+
+    $\therefore \rnk(AA^*-\l I)=\rnk(A^*A-\l I)$
+  \end{enumerate}
+
+  \newpage
+
+  \newcommand{\JA}{\begin{bmatrix} \l & 0 & 0 \\ 0 & \l & 0 \\ 0 & 0 & \l \end{bmatrix}}
+  \newcommand{\JB}{\begin{bmatrix} \l & 1 & 0 \\ 0 & \l & 0 \\ 0 & 0 & \l \end{bmatrix}}
+  \newcommand{\JC}{\begin{bmatrix} \l & 1 & 0 \\ 0 & \l & 1 \\ 0 & 0 & \l \end{bmatrix}}
+
+  \newcommand{\JD}{\begin{bmatrix} \l & 0 & 0 \\ 0 & \m & 0 \\ 0 & 0 & \m \end{bmatrix}}
+  \newcommand{\JE}{\begin{bmatrix} \l & 0 & 0 \\ 0 & \m & 1 \\ 0 & 0 & \m \end{bmatrix}}
+  \newcommand{\JF}{\begin{bmatrix} \l & 0 & 0 \\ 0 & \l & 0 \\ 0 & 0 & \m \end{bmatrix}}
+  \newcommand{\JG}{\begin{bmatrix} \l & 1 & 0 \\ 0 & \l & 0 \\ 0 & 0 & \m \end{bmatrix}}
+
+  \newcommand{\JZ}{\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}}
+    
+\item Let $A,B\in M_3$
+  \begin{enumerate}
+  \item List all possible Jordan matrices (up to permutation) of $A$ if
+    $\o(A)=\{\l,\m\}$.
+
+    $J_{21}=\JD\hspace{4ex}J_{22}=\JE\hspace{4ex}J_{23}=\JF\hspace{4ex}J_{24}=\JG$
+
+  \item List all possible Jordan matrices (up to permutation) of $A$ if $\o(A)=\{\l\}$.
+
+    $J_{11}=\JA\hspace{4ex}J_{12}=\JB\hspace{4ex}J_{13}=\JC$
+
+  \item Let $A,B\in M_3$ such that $g_A(\l)=g_B(\l)$ for all $\l\in\o(A)=\o(B)$.
+    Prove: $A\sim B$.
+
+    There are three cases that need to be investigated:
+    \begin{enumerate}
+    \item $\o(A)=\{\l\}$ and thus $a_A(\l)=3\hspace{2ex}(J_{11},J_{12},J_{13})$
+    \item $\o(A)=\{\l,\m\}$ with $a_A(\l)=1$ and $a_A(\m)=2\hspace{2ex}(J_{21},J_{22})$
+    \item $\o(A)=\{\l,\m\}$ with $a_A(\l)=2$ and $a_A(\m)=1\hspace{2ex}(J_{23},J_{24})$
+    \end{enumerate}
+
+    The goal is to show for each case that $J_A=J_B$, from which we can thus conclude
+    that $A\sim B$.
+
+    Start with case 1. Since $g_A(\l)=\dim\Null(A-\l I)$:
+    \begin{eqnarray*}
+      r_0 &=& \rnk(A-\l I)^0=\rnk(I_3)=3 \\
+      r_1 &=& \rnk(A-\l I)=3-g_A(\l) \\
+      r_2 &=& \rnk(A-\l I)^2=? \\
+      r_3 &=& n-a_A(\l)=3-3=0 \\
+      r_4 &=& n-a_A(\l)=3-3=0
+    \end{eqnarray*}
+    Since $J_A\sim A$, we can compute the cases for $r_2$ from the possible Jordan forms:
+    \[(J_{11}-\l I)^2=\JZ^2=\JZ\]
+    \[(J_{12}-\l I)^2=
+    \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}^2=\JZ\]
+    \[(J_{13}-\l I)^2=
+    \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}^2=
+    \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}\]
+    And so:
+    \begin{eqnarray*}
+      r_0 &=& 3 \\
+      r_1 &=& 3-g_A(\l) \\
+      r_2 &=& 0\ \mbox{or}\ 1 \\
+      r_3 &=& 0 \\
+      r_4 &=& 0
+    \end{eqnarray*}
+    Assume $g_A(\l)=1$, and so $r_1=2$:
+    \[b_1=r_0-2r_1+r_2=3-2(2)+r_2=-1+r_2\]
+    This forces $r_2=1$ and so:
+    \begin{eqnarray*}
+      b_1 &=& 0 \\
+      b_2 &=& r_1-2r_2+r_3=2-2(1)+0=0 \\
+      b_3 &=& r_2-2r_3+r_4=1-2(0)+0=1
+    \end{eqnarray*}
+    And thus $J_A=J_B=J_{13}$
+
+    Assume $g_A(\l)=2$, and so $r_1=1$:
+    \[b_2=r_1-2r_2+r_3=1-2r_2+0=1-2r_2\]
+    This forces $r_2=0$ and so:
+    \begin{eqnarray*}
+      b_1 &=& r_0-2r_1+r_2=3-2(1)+0=1 \\
+      b_2 &=& 1 \\
+      b_3 &=& r_2-2r_3+r_4=0-2(0)+0=0
+    \end{eqnarray*}
+    And thus $J_A=J_B=J_{12}$
+
+    Assume $g_A(\l)=3$, and so $r_1=0$:
+    \[b_1=r_0-2r_1+r_2=3-2(0)+r_2=3+r_2\]
+    This forces $r_2=0$ and so:
+    \begin{eqnarray*}
+      b_1 &=& 3 \\
+      b_2 &=& r_1-2r_2+r_3=0-2(0)+0=0 \\
+      b_3 &=& r_2-2r_3+r_4=0-2(0)+0=0
+    \end{eqnarray*}
+    And thus $J_A=J_B=J_{11}$
+
+    So in all of these cases, $J_A=J_B$ and therefore $A\sim B$.
+
+    Next, consider case 2. Since $a_A(\l)=1$, the only possible indices for $\l$ are:
+    \begin{eqnarray*}
+      b_1 &=& 1 \\
+      b_2 &=& 0 \\
+      b_3 &=& 0
+    \end{eqnarray*}
+    So we only need to check $\m$.
+    \begin{eqnarray*}
+      r_0 &=& \rnk(A-\m I)^0=\rnk(I_3)=3 \\
+      r_1 &=& 3-g_A(\m) \\
+      r_2 &=& ? \\
+      r_3 &=& n-a_A(\m)=3-2=1 \\
+      r_4 &=& n-a_A(\m)=3-2=1
+    \end{eqnarray*}
+    Once again, we need to calculate $r_2$ for the possible cases:
+    \[(J_{21}-\m I)^2=\begin{bmatrix}
+    \l-\m & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+    \end{bmatrix}^2=\begin{bmatrix}
+    (\l-\m)^2 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+    \end{bmatrix}\]
+    \[(J_{22}-\m I)^2=\begin{bmatrix}
+    \l-\m & 0 & 0 \\
+    0 & 0 & 1 \\
+    0 & 0 & 0
+    \end{bmatrix}^2=\begin{bmatrix}
+    (\l-\m)^2 & 0 & 0 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+    \end{bmatrix}\]
+    And so in both cases $r_2=1$. Also note that since $a_A(\m)=2$ and
+    $g_A(\m)\le a_A(\m)$, this forces $g_A(\m)=0$ or $1$. We now have:
+    \begin{eqnarray*}
+      r_0 &=& 3 \\
+      r_1 &=& 3-g_A(\m) \\
+      r_2 &=& 1 \\
+      r_3 &=& 1 \\
+      r_4 &=& 1
+    \end{eqnarray*}
+    Assume $g_A(\m)=1$ and so $r_1=2$:
+    \begin{eqnarray*}
+      b_1 &=& r_0-2r_1+r_2=3-2(2)+1=0 \\
+      b_2 &=& r_1-2r_2+r_3=2-2(1)+1=1 \\
+      b_3 &=& r_2-2r_3+r_4=1-2(1)+1=0
+    \end{eqnarray*}
+    And thus $J_A=J_B=J_{22}$
+
+    Assume $g_A(\m)=2$ and so $r_1=1$:
+    \begin{eqnarray*}
+      b_1 &=& r_0-2r_1+r_2=3-2(1)+1=2 \\
+      b_2 &=& r_1-2r_2+r_3=1-2(1)+1=0 \\
+      b_3 &=& r_2-2r_3+r_4=1-2(1)+1=0
+    \end{eqnarray*}
+    And thus $J_A=J_B=J_{21}$
+
+    So in all of these cases, $J_A=J_B$ and therefore $A\sim B$.
+
+    Next consider case 3. By symmetry, this is the same as case 2, except
+    $J_A=J_B=J_{23}$ or $J_{24}$
+
+    In summary, each choice of $g_A(\l)$ forces a particular Jordan matrix, and since
+    $g_A(\l)=g_B(\l)$, the resulting Jordan matrices will be the same.
+
+    Therefore $A\sim B$.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,216 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Order}
+
+\begin{definition}
+  The \emph{order} of a group $G$, denoted $\abs{G}$ is the cardinality of the
+  set of $G$.
+\end{definition}
+
+\begin{minipage}{2in}
+\underline{$\abs{G}=1$}
+
+\bigskip
+
+$G=\{e\}$
+
+\bigskip
+
+\begin{tabular}{c|c}
+  $*$ & $e$ \\
+  \hline
+  $e$ & $e$ \\
+\end{tabular}
+
+\bigskip
+
+$G\simeq\Z_1$ \\
+(abelian)
+\end{minipage}
+\begin{minipage}{2in}
+\underline{$\abs{G}=2$}
+
+\bigskip
+
+$G=\{e,a\}$
+
+\bigskip
+
+\begin{tabular}{c|cc}
+  $*$ & $e$ & $a$ \\
+  \hline
+  $e$ & $e$ & $a$ \\
+  $a$ & $a$ & $e$ \\
+\end{tabular}
+
+\bigskip
+
+$G\simeq\Z_2$ \\
+(abelian)
+\end{minipage}
+\begin{minipage}{2in}
+\underline{$\abs{G}=3$}
+
+\bigskip
+
+$G=\{e,a,b\}$
+
+\bigskip
+
+\begin{tabular}{c|ccc}
+  $*$ & $e$ & $a$ & $b$ \\
+  \hline
+  $e$ & $e$ & $a$ & $b$ \\
+  $a$ & $a$ & $b$ & $e$ \\
+  $b$ & $b$ & $e$ & $a$ \\
+\end{tabular}
+
+\bigskip
+
+$G\simeq\Z_3$ \\
+(abelian)
+\end{minipage}
+
+\bigskip
+
+Note that each element may appear only once in each row; otherwise, the linear
+equation $ax=b$ would have more than one solution. Likewise, each element may
+appear only once in each column; otherwise, the linear equation $xa=b$ would
+have more than one solution.
+
+\underline{$\abs{G}=4$}
+
+\bigskip
+
+$G=\{e,a,b,c\}$
+
+\bigskip
+
+\begin{tabular}{c|cccc}
+  $*$ & $e$ & $a$ & $b$ & $c$ \\
+  \hline
+  $e$ & $e$ & $a$ & $b$ & $c$ \\
+  $a$ & $a$ & $b$ & $c$ & $e$ \\
+  $b$ & $b$ & $c$ & $e$ & $a$ \\
+  $c$ & $c$ & $e$ & $a$ & $b$ \\
+\end{tabular}
+
+\bigskip
+
+$G\simeq\Z_4$ \\
+(abelian)
+
+\bigskip
+
+\begin{minipage}{1.5in}
+\begin{tabular}{c|cccc}
+  $*$ & $e$ & $a$ & $b$ & $c$ \\
+  \hline
+  $e$ & $e$ & $a$ & $b$ & $c$ \\
+  $a$ & $a$ & $c$ & $e$ & $b$ \\
+  $b$ & $b$ & $e$ & $c$ & $a$ \\
+  $c$ & $c$ & $b$ & $a$ & $e$ \\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.5in}
+  $b\leftrightarrow c$
+\end{minipage}
+\begin{minipage}{1.5in}
+\begin{tabular}{c|cccc}
+  $*$ & $e$ & $a$ & $c$ & $b$ \\
+  \hline
+  $e$ & $e$ & $a$ & $c$ & $b$ \\
+  $a$ & $a$ & $b$ & $e$ & $c$ \\
+  $c$ & $c$ & $e$ & $b$ & $a$ \\
+  $b$ & $b$ & $c$ & $a$ & $e$ \\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.5in}
+  $\to$
+\end{minipage}
+\begin{minipage}{1.5in}
+\begin{tabular}{c|cccc}
+  $*$ & $e$ & $a$ & $b$ & $c$ \\
+  \hline
+  $e$ & $e$ & $a$ & $b$ & $c$ \\
+  $a$ & $a$ & $b$ & $c$ & $e$ \\
+  $b$ & $b$ & $c$ & $e$ & $a$ \\
+  $c$ & $c$ & $e$ & $a$ & $b$ \\
+\end{tabular}
+\end{minipage}
+
+\bigskip
+
+$G\simeq\Z_4$ \\
+(abelian)
+
+\bigskip
+
+\begin{minipage}{1.5in}
+\begin{tabular}{c|cccc}
+  $*$ & $e$ & $a$ & $b$ & $c$ \\
+  \hline
+  $e$ & $e$ & $a$ & $b$ & $c$ \\
+  $a$ & $a$ & $e$ & $c$ & $b$ \\
+  $b$ & $b$ & $c$ & $a$ & $e$ \\
+  $c$ & $c$ & $b$ & $e$ & $a$ \\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.5in}
+  $a\leftrightarrow b$
+\end{minipage}
+\begin{minipage}{1.5in}
+\begin{tabular}{c|cccc}
+  $*$ & $e$ & $b$ & $a$ & $c$ \\
+  \hline
+  $e$ & $e$ & $b$ & $a$ & $c$ \\
+  $b$ & $b$ & $e$ & $c$ & $a$ \\
+  $a$ & $a$ & $c$ & $b$ & $e$ \\
+  $c$ & $c$ & $a$ & $e$ & $b$ \\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{0.5in}
+  $\to$
+\end{minipage}
+\begin{minipage}{1.5in}
+\begin{tabular}{c|cccc}
+  $*$ & $e$ & $a$ & $b$ & $c$ \\
+  \hline
+  $e$ & $e$ & $a$ & $b$ & $c$ \\
+  $a$ & $a$ & $b$ & $c$ & $e$ \\
+  $b$ & $b$ & $c$ & $e$ & $a$ \\
+  $c$ & $c$ & $e$ & $a$ & $b$ \\
+\end{tabular}
+\end{minipage}
+
+\bigskip
+
+$G\simeq\Z_4$ \\
+(abelian)
+
+\bigskip
+
+\begin{minipage}{2in}
+\begin{tabular}{c|cccc}
+  $*$ & $e$ & $a$ & $b$ & $c$ \\
+  \hline
+  $e$ & $e$ & $a$ & $b$ & $c$ \\
+  $a$ & $a$ & $e$ & $c$ & $b$ \\
+  $b$ & $b$ & $c$ & $e$ & $a$ \\
+  $c$ & $c$ & $b$ & $a$ & $e$ \\
+\end{tabular}
+\end{minipage}
+\begin{minipage}{3in}
+  This group is also abelian; however, $G\not\simeq\Z_4$ because:
+  \[\forall\,x\in G,xx=e\]
+  Thus, it is structurally different from $\Z_4$. It is referred to as the
+  Klein-4 group, denoted by $V$ or $K_4$.
+\end{minipage}
+
+\bigskip
+
+So, every group of 4 elements is isometric to either $\Z_4$ or $K_4$. Thus,
+there are only 2 distinct groups \emph{up to isomorphism}.
+\end{document}

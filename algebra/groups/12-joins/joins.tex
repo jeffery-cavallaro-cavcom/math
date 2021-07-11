@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Joins}
+
+\begin{definition}
+  Let $G$ be a group and $H,K\le G$:
+  \[HK=\{hk\mid h\in H\ \mbox{and}\ k\in K\}\]
+  The \emph{join} of $H$ and $K$, denoted $H\vee K$, is the smallest subgroup
+  of $G$ containing $HK$.
+\end{definition}
+
+\begin{theorem}
+  Let $G$ be an abelian group:
+  \[H,K\le G\implies HK=H\vee K\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $H,K\le G$ \\
+  Assume $a,b\in HK$ \\
+  $\exists\,h_1\in H$ and $k_1\in K,a=h_1k_1$ \\
+  $\exists\,h_2\in H$ and $k_2\in K,b=h_2k_2$ \\
+  $H$ and $K$ are groups, so $h_2^{-1}\in H$ and $k_2^{-1}\in K$ \\
+  $H,K\subseteq G$, so $h_2,k_2\in G$, and by closure, $b=h_2k_2\in G$ \\
+  $G$ is a group, so $b^{-1}=(h_2k_2)^{-1}\in G$ \\
+  $ab^{-1}=(h_1k_1)(h_2k_2)^{-1}=(h_1k_1)(k_2^{-1}h_2^{-1})=
+  (h_1h_2^{-1})(k_1k_2^{-1})$ \\
+  But, by closure, $h_1h_2^{-1}\in H$ and $k_1k_2^{-1}\in K$ \\
+  $ab^{-1}\in HK$ \\
+  So, by the subgroup test, $HK\le G$ \\
+  $HK$ is the smallest subgroup containing $HK$ \\
+  $\therefore HK=H\vee K$
+\end{theproof}
+
+\begin{theorem}
+  Let $G$ be a group and $H,K\le G$:
+  \[H,K\subseteq HK\]
+\end{theorem}
+
+\begin{theproof}
+  \begin{minipage}[t]{2in}
+    Assume $h\in H$ \\
+    $e\in K$ \\
+    $he=h\in HK$ \\
+    $\therefore H\subseteq HK$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    Assume $k\in K$ \\
+    $e\in H$ \\
+    $ek=k\in HK$ \\
+    $\therefore K\subseteq HK$
+  \end{minipage}
+\end{theproof}
+\newpage
+\begin{corollary}
+  Let $G$ be a group and $H,K\le G$:
+  \[H,K\le H\vee K\]
+\end{corollary}
+
+\begin{theproof}
+  $H,K\subseteq HK$ \\
+  $HK\subseteq H\vee K$ \\
+  $H,K\subseteq H\vee K$ \\
+  But $H$ and $K$ are also groups \\
+  $\therefore H,K\le H\vee K$
+\end{theproof}
+
+\begin{theorem}
+  Let $G$ be a group and $H,K\le G$:
+
+  $H\vee K$ is the smallest subgroup of $G$ containing $H$ and $K$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $S\le G\ \mbox{such that}\ H,K\le S$ \\
+  Assume $hk\in H\vee K$ \\
+  $h\in H$ and $k\in K$ \\
+  $h\in S$ and $k\in S$ \\
+  So, by closure, $hk\in S$ \\
+  $H\vee K\subseteq S$ and $H\vee K$ is a group \\
+  $\therefore H\vee K$ is the smallest subgroup of $G$ containing $H$ and $K$.
+\end{theproof}
+
+\end{document}

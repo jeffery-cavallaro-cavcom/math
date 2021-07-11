@@ -1,0 +1,78 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{esint}
+\pagestyle{empty}
+\DeclareMathOperator{\Res}{Res}
+\begin{document}
+\section*{Extended Complex Plane}
+
+\begin{definition}
+  The extended complex plane is $C\cup\{\infty\}$.
+\end{definition}
+
+\begin{definition}
+  Let $C$ be a circle in the clockwise direction containing all of the
+  singularities of $f(z)$ in the finite complex plane. The residue of $f(z)$
+  at $\infty$ is given by:
+  \[\Res[f,\infty]=\frac{1}{2\pi i}\ointclockwise_{C}f(z)dz=
+  -\frac{1}{2\pi i}\ointctrclockwise_{C}f(z)dz\]
+\end{definition}
+
+\begin{example}
+  $f(z)=z$
+
+  To determine the behavior at $\infty$, examine the behavior in the
+  neighborhood of infinity: \\
+  $\lim_{z\to\infty}f(z)=\lim_{z\to 0}f(\frac{1}{z})=\frac{1}{z}$ \\
+  Since the latter has a simple pole at $0$, $f(z)$ has a simple pole at
+  $\infty$.
+
+  Note that $f(z)=z$ is entire in the finite complex place, so:
+  \[\Res[f,\infty]=-\frac{1}{2\pi i}\int_{C}zdz=0\]
+\end{example}
+
+\begin{example}
+  $f(z)=\frac{1}{z}$
+
+  $lim_{z\to\infty}f(z)=lim_{z\to0}f(\frac{1}{z})=z$ \\
+  Since the latter is analytic at $0$, $f(z)$ is analytic at $\infty$.
+  \[\Res[f,\infty]=-\frac{1}{2\pi i}\int_{C}\frac{1}{z}dz=
+  -\frac{1}{2\pi i}[2\pi i(1)]=-1\]
+\end{example}
+
+\begin{theorem}
+  $\Res[f,\infty]$ equals the negative of the coefficient of $z$ in the
+  expansion of $f(\frac{1}{z})$.
+\end{theorem}
+
+\begin{theorem}
+  Let $f(z)$ have a finite number of singularities $\{z_k\mid1\le k\le n\}$,
+  all contained within $C$:
+  \[\int_{C}f(z)dz=2\pi i\sum_{k=1}^n\Res[f,z_k]=-2\pi i\Res[f,\infty]\]
+\end{theorem}
+
+\begin{theorem}
+  $Res[f(z),\infty]$ equals the negative of the coefficient of $w$ in the
+  expansion of $f(\frac{1}{w})$.
+\end{theorem}
+
+\begin{example}
+  $G(z)=\frac{b_{n-1}z^{n-1}+\cdots+b_0}{a_nz^n+\cdots+a_0}$
+  \begin{eqnarray*}
+    G\left(\frac{1}{w}\right) &=& \frac{\frac{b_{n-1}}{w^{n-1}}+\cdots+b_0}
+    {\frac{a_n}{w^n}+\cdots+a_0} \\
+    &=& \frac{b_{n-1}w+\cdots+b_0w^n}{a_n+\cdots+a_0w^n} \\
+    &=& \frac{b_{n-1}}{a_n}w\left[\frac{1+\frac{b_{n-2}}{b_{n-1}}w+\cdots+
+        \frac{b_0}{b_{n-1}}w^n}
+      {1+\frac{a_{n-1}}{a_n}w+\cdots+\frac{a_0}{a_n}w^n}\right] \\
+    &=& \frac{b_{n-1}}{a_n}w\left[\frac{1+\frac{b_{n-2}}{b_{n-1}}w+\cdots+
+        \frac{b_0}{b_{n-1}}w^n}{1+a}\right] \\
+    &=& \frac{b_{n-1}}{a_n}w\left[1+\frac{b_{n-2}}{b_{n-1}}w+\cdots+
+      \frac{b_0}{b_{n-1}}w^n\right]\left[1-a+a^2\cdots\right] \\
+  \end{eqnarray*}
+  So the coefficient of $w$ is $\frac{b_{n-1}}{a_n}$
+
+  $Res[G(z),\infty]=-\frac{b_{n-1}}{a_n}$
+\end{example}
+
+\end{document}

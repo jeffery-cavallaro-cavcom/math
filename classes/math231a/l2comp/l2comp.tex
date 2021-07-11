@@ -1,0 +1,74 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\Rd}{\mathbb{R}^d}
+\newcommand{\LtwoRd}{L^2(\Rd)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\begin{document}
+\section*{L\textsuperscript{2} Completeness}
+
+\begin{theorem}
+$\forall f,g\in L^2$, let $d(f,g)=\norm{f-g}$. This is a proper metric, and
+thus $L^2$ is a metric space.
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{description}
+\item{M1: Assume $f,g\in L^2$}
+
+$\norm{f-g}=0\iff f-g=0\;\;a.e.\iff f=g\;\;a.e.$
+
+\item{M2: Assume $f,g\in L^2$}
+
+$\norm{f-g}=\left(\int\abs{f-g}^2\right)^{\frac{1}{2}}=
+    \left(\int\abs{g-f}^2\right)^{\frac{1}{2}}=\norm{g-f}$
+
+\item{M3: Assume $f,g,h\in L^2$}
+
+$\norm{x-z}=\norm{(x-y)+(y-z)}\le\norm{x-y}+\norm{y-z}$
+\end{description}
+\end{theproof}
+
+\begin{theorem}
+$L^2$ is complete in its metric.
+\end{theorem}
+
+\begin{theproof}
+Assume $(f_n)$ is Cauchy in $L^2$ \\
+Let $(f_{n_k})$ be the subsequence such that $\norm{f_{n_{k+1}}-f_{n_k}}\le2^{-k}$ \\
+Let $f=f_{n_1}+\sum_{k=0}^{\infty}(f_{n_{k+1}}-f_{n_k})$ \\
+Let $g=\abs{f_{n_1}}+\sum_{k=0}^{\infty}\abs{f_{n_{k+1}}-f_{n_k}}$ \\
+$0\le\abs{f}\le g$ \\
+\\
+Consider the partial sum:
+\[S_N(g)=\abs{f_{n_1}}+\sum_{k=0}^{N}\abs{f_{n_{k+1}}-f_{n_k}}\]
+So, by the triangle inequality:
+\[\norm{S_N(g)}\le\norm{f_{n_1}}+\sum_{k=0}^{N}\norm{f_{n_{k+1}}-f_{n_k}}
+    \le\norm{f_{n_1}}+\sum_{k=0}^{N}2^{-k}<\infty\]
+As $N\to\infty$, $S_{N}(g)\nearrow g$, and since $S_{N}(g),g\ge0$,
+$\abs{S_{N}(g)}^2\nearrow\abs{g}^2$. \\
+Thus, by the MCT, $\int\abs{S_{N}(g)}^2\nearrow\int\abs{g}^2$ \\
+and since $\norm{S_N(g)}$ converges, $\int\abs{g}^2$ also converges \\
+$\therefore g\in L^2$, and since $|f|\le g, f\in L^2$. \\
+\\
+So, $f<\infty\;\;a.e.$, and $S_n(f)=f_{n_{k+1}}\to f\;\;a.e.$ \\
+\\
+To show that this convergence is in $L^2$, consider:
+\[\abs{f_{n_k}-f}^2\le(\abs{f_{n_k}}+\abs{f})^2\le(2g)^2\]
+Thus, by the DCT:\\
+\[\lim\int\abs{f_{n_k}-f}^2=\int\lim\abs{f_{n_k}-f}^2=0\]
+$\therefore \norm{f_{n_k}-f}\to0$ \\
+\\
+Finally, since $L^2$ is a metric space and a subsequence of every Cauchy
+sequence in $L^2$ converges in the norm, every Cauchy sequence converges in
+the norm. \\
+\\
+$\therefore L^2$ is complete in its norm.
+\end{theproof}
+
+\end{document}

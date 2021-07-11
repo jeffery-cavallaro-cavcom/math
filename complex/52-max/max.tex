@@ -1,0 +1,74 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\e}{\epsilon}
+\begin{document}
+\section*{Maximum Principle}
+
+\begin{theorem}[Open Mapping]
+  A non-constant analytic function maps an open set onto an open set and a
+  domain onto a domain (connectedness is preserved).
+\end{theorem}
+
+\begin{theorem}[Maximum Principle]
+  Let $f(z)$ be a non-constant analytic function in a domain $D$. \\
+  $\abs{f(z)}$ has no maximum in $D$.
+\end{theorem}
+
+\begin{minipage}{3in}
+  \begin{tikzpicture}
+    \draw [->] (0,0) -- (5,0) node [right] {$x$};
+    \draw [->] (0,0) -- (0,5) node [above] {$y$};
+    \draw [dashed] (2.5,2.5) circle [radius=2];
+    \node at (3,1) {$D_z$};
+    \draw (1.5,3) node (z) [fill,circle,scale=0.5] {} node [below left] {$z$};
+    \draw [->] (1.5,3) to [bend left=15] (9.15,3.1);
+    \draw (2.5,4) node (z0) [fill,circle,scale=0.5] {}
+    node [below left] {$z_0$};
+    \draw [dashed] (z0) circle [radius=0.25];
+  \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{3in}
+  \begin{tikzpicture}
+    \draw [->] (0,0) -- (5,0) node [right] {$u$};
+    \draw [->] (0,0) -- (0,5) node [above] {$v$};
+    \draw [dashed] (2.5,2.5) circle [radius=2];
+    \node at (3,1) {$D_w$};
+    \draw (1.5,3) node (w) [fill,circle,scale=0.5] {}
+    node [below right] {$f(z)$};
+    \draw [->] (0,0) -- node [right] {$\abs{f(z)}$} (w);
+    \draw (2.5,4) node (w0) [fill,circle,scale=0.5] {}
+    node [below right] {$w_0$};
+    \draw [dashed] (w0) circle [radius=0.25];
+  \end{tikzpicture}
+\end{minipage}
+
+\begin{theproof}
+  ABC: $\abs{f(z)}$ obtains its maximum value at $z_0\in D_z$ \\
+  $\forall\,z\in D_z,\abs{f(z)}\le\abs{f(z_0)}$ \\
+  Let $w_0=f(z_0)$ \\
+  Since $z_0\in D_z$ and $D_z$ is open, there exists $N_{\e}(z_0)\in D_z$ \\
+  By the open mapping theorem, $N_{\e}(z_0)$ is mapped to some
+  $N_{\e'}(w_0)\in D_w$ \\
+  $\exists\,z_1\in N_{\e}(z_0)$ such that $f(z_1)=w_1\in N_{\e'}(w_0)\in D_w$ \\
+  But $\abs{w_1}>\abs{w_0}$ \\
+  CONTRADICTION! \\
+  Therefore, $f(z)$ has no maximum in $D$.
+\end{theproof}
+
+\begin{corollary}
+  Let $f(z)$ be a non-constant analytic function in region $\overline{D}$
+  with boundary $C$. \\
+  $\abs{f(z)}$ has a maximum at some $z\in C$.
+\end{corollary}
+
+\begin{theproof}
+  $\overline{D}$ is compact and thus $\abs{f(z)}$ has a maximum in
+  $\overline{D}$ \\
+  But that maximum cannot occur in $D$ \\
+  Therefore the maximum must occur on the boundary at some $z\in C$.
+\end{theproof}
+Note that the above theorems can also be stated in terms of a minimum as
+long as $\forall\,z\in D,f(z)\ne0$.
+
+\end{document}

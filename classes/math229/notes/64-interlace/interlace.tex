@@ -1,0 +1,140 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vyct}{\vy^{\,*}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vvct}{\vv^{\,*}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vz}{\vec{0}}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\spn}{span}
+\begin{document}
+\section*{Interlacing Inequalities}
+
+\begin{theorem}[Rank-One Interlace]
+  Let $A,B\in M_n$ such that $B=\vx\vxct$ for some $\vx\in\C^n$:
+  \[\l_1(A)\le\l_1(A+B)\le\l_2(A)\le\l_2(A+B)\le\cdots\le\l_n(A)\le\l_n(A+B)\]
+\end{theorem}
+
+\begin{theproof}
+  Recall that $\Sp(B)=\Sp(\vx\vxct)=\{0^{(n-1)},\vxct\vx\}$.
+  
+  From Weyl with $j=i$ and $k=1$:
+  \[\l_i(A)+\l_1(B)\le\l_i(A+B)\]
+  But $\l_1(B)=0$
+  
+  $\therefore\l_i(A)\le\l_i(A+B)$
+
+  Now, from Weyl with $j=i+1$ and $k=n-1$:
+  \[\l_i(A+B)\le\l_{i+1}(A)+\l_{n-1}(B)\]
+  But $\l_{n-1}(B)=0$
+  
+  $\therefore\l_i(A+B)\le\l_{i+1}(A)$
+\end{theproof}
+
+Note that the converse is also true: Given interlacing sets of $n$ numbers $\{\l_k\}$ and
+$\{\mu_k\}$, there exists Hermitian matrices $A$ and $B=\vx\vxct$ with these interlacing
+sets as their respective eigenvalues (proof omitted). To find such a $\vx$, solve the
+following SOLE:
+\[\Sp\left\{\begin{bmatrix}\l_1 & & 0 \\
+& \ddots & \\
+0 & & \l_n
+\end{bmatrix}+\vx\vxct\right\}=\{\mu_k\mid 1\le k\le n\}\]
+
+\begin{theorem}
+  Let $A\in M_n$ be Hermitian and let $B$ be the leading principal submatrix of $A$
+  (also Hermitian):
+  \[\l_1(A)\le\l_1(B)\le\l_2(A)\le\l_2(B)\le\cdots\le\l_{n-1}(A)\le\l_{n-1}(B)\le\l_n(A)\]
+\end{theorem}
+
+\begin{example}
+  \begin{minipage}{1.5in}
+    $A=\begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix}$
+  \end{minipage}
+  \begin{minipage}{1in}
+    $B=\begin{bmatrix} 1 \end{bmatrix}$
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{eqnarray*}
+      (1-\l)(4-\l) &=& 2(2) \\
+      4-5\l+\l^2 &=& 4 \\
+      \l^2-5\l &=& 0 \\
+      \l(\l-5) &=& 0 \\
+      \l &=& 0,5
+    \end{eqnarray*}
+  \end{minipage}
+  
+  $0\le1\le5$
+\end{example}
+
+\begin{theproof}
+  Let $A=\begin{bmatrix} B & \vy \\ \vyct & a \end{bmatrix}$ where $B$ is the leading
+  principal submatrix of $A$, $\vy\in\C^{n-1}$, and $a\in\C$.
+
+  Let $\{\vu_1,\ldots,\vu_n\}$ be eigenvectors of $A$ corresponding to
+  $\l_1(A)\le\cdots\le\l_n(A)$. \\
+  Let $\{\vv_1,\ldots,\vv_{n-1}\}$ be eigenvectors of $B$ corresponding to
+  $\l_1(B)\le\cdots\le\l_{n-1}(B)$. \\
+  Let $\vw_k=\begin{bmatrix} \vv_k \\ 0 \end{bmatrix}$ for $1\le k\le n-1$.
+
+  Let $S_1=\spn\{\vu_i,\ldots\vu_n\}$ \\
+  Let $S_2=\spn\{\vw_1,\ldots\vw_i\}$ \\
+  $\dim(S_1\cap S_2)\ge\dim(S_1)+\dim(S_2)-n=(n-i+1)+i-n=1$ \\
+  Thus, there exists $\vx\in S_1\cap S_2$ such that $\vx\ne\vz$
+
+  Let $\vx\in S_1\cap S_2$ such that $\vx=\begin{bmatrix} \vv \\ 0 \end{bmatrix}$ where
+  $\vv\in\Sp\{\vv_1,\ldots,\vv_i\}$. \\
+  Since $\vx\in S_1$, by the key lemma:
+  \[\l_i(A)\le\frac{\vxct A\vx}{\vxct\vx}\]
+  Since $\vv\in\Sp\{\vv_1,\ldots,\vv_i\}$, by the key lemma:
+  \[\frac{\vvct B\vv}{\vvct\vv}\le\l_i(B)\]
+  But:
+  \[\frac{\vxct A\vx}{\vxct\vx}=
+  \frac{\begin{bmatrix} \vvct & 0 \end{bmatrix}
+    \begin{bmatrix} B & \vy \\ \vyct & a \end{bmatrix}
+    \begin{bmatrix} \vv \\ 0 \end{bmatrix}
+  }{\begin{bmatrix} \vvct & 0 \end{bmatrix}\begin{bmatrix} \vv \\ 0 \end{bmatrix}}=
+  \frac{\begin{bmatrix} \vvct B & \vvct\vy \end{bmatrix}
+    \begin{bmatrix} \vv \\ 0 \end{bmatrix}
+  }{\vvct\vx}=
+  \frac{\vvct B\vv}{\vvct\vx}
+  \]
+  Therefore:
+  \[\l_i(A)\le\frac{\vxct A\vx}{\vxct\vx}=\frac{\vvct B\vv}{\vvct\vx}\le\l_i(B)\]
+
+  Let $S_3=\spn\{\vu_1,\ldots,\vu_{i+1}\}$ \\
+  Let $S_4=\spn\{\vw_i,\ldots,\vw_{n-1}\}$ \\
+  $\dim(S_3\cap S_4)\ge\dim(S_3)+\dim(S_4)-n=(i+1)+[(n-1)-i+1]-n=1$ \\
+  Thus, there exists $\vx\in S_3\cap S_4$ such that $\vx\ne\vz$
+
+  Let $\vx\in S_3\cap S_4$ such that $\vx=\begin{bmatrix} \vv \\ 0 \end{bmatrix}$ where
+  $\vv\in\Sp\{\vv_i,\ldots,\vv_{n-1}\}$. \\
+  Since $\vx\in S_3$, by the key lemma:
+  \[\frac{\vxct A\vx}{\vxct\vx}\le\l_{i+1}(A)\]
+  Since $\vv\in\Sp\{\vv_i,\ldots,\vv_{n-1}\}$, by the key lemma:
+  \[\l_i(B)\le\frac{\vvct B\vv}{\vvct\vv}\]
+  Therefore:
+  \[\l_i(B)\le\frac{\vvct B\vv}{\vvct\vx}=\frac{\vxct A\vx}{\vxct\vx}\le\l_{i+1}(A)\]
+\end{theproof}
+
+Note that the converse is also true: Given interlacing sets of $n$ numbers
+$\{\l_k\mid 1\le k\le n\}$ and $\{\mu_k\mid 1\le k\le n-1\}$, there exists Hermitian
+matrix $A$ with leading princple submatrix $B$ with these interlacing sets as their
+respective eigenvalues (proof omitted). To find such an $A$, solve the
+following SOLE for a suitable $\vy\in\C^{n-1}$:
+\[\Sp\left\{\left[\begin{array}{ccc|c}
+    \mu_1 & & 0 & y_1 \\
+    & \ddots & & \vdots \\
+    0 & & \mu_{n-1} & y_{n-1} \\
+    \hline
+    \bar{y}_1 & \cdots & \bar{y}_{n-1} & \mu'
+  \end{array}\right]\right\}=\{\l_1,\ldots,\l_n\]
+where:
+\[\mu'=\sum_{k=1}^n\l_k-\sum_{k=1}^{n-1}\m_k\]
+\end{document}

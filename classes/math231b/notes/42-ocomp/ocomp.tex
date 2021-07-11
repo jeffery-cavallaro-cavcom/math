@@ -1,0 +1,187 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vyp}{\vec{y}\,'}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vzp}{\vec{z}\,'}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\zs}{\{\vo\}}
+\newcommand{\Sp}{S^{\perp}}
+\newcommand{\Spp}{S^{\perp\perp}}
+\newcommand{\mc}{\mathcal{C}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\mp}{\mathcal{P}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\proj}{proj}
+\begin{document}
+\section*{Orthogonal Complement}
+
+\begin{definition}[Orthogonal Complement]
+  Let $E$ be an inner product space and let $S$ be a non-empty subset of $E$.
+  To say that an $\vx\in E$ is \emph{orthogonal} to $S$, denoted $\vx\perp S$,
+  means $\forall\,\vy\in S,\vx\perp\vy$.
+
+  The set of all elements of $E$ that are orthogonal to $S$, denoted $\Sp$, is
+  called the \emph{orthogonal complement} of $S$:
+  \[\Sp=\{\vx\in E\mid\vx\perp S\}\]
+
+  To say that two non-empty subsets $A$ and $B$ of $E$ are orthogonal, denoted
+  $A\perp B$, means $\forall\,\vx\in A,\forall\,\vy\in B,\vx\perp\vy$.
+\end{definition}
+
+\begin{examples}
+  Let $E$ be an inner product space:
+  \begin{enumerate}
+  \item $E^{\perp}=\{\vo\}$
+
+  \item $\zs^{\perp}=E$
+
+  \item Let $(\vx_n)$ be a complete orthonormal sequence is $E$:
+    \[\{\vx_n\mid n\in\N\}^{\perp}=\{\vo\}\]
+
+  \item $E=\mc[0,1]$ with $\inner{f,g}=\int_0^1f\conj{g}$.
+
+    Let $S=\mp[0,1]$, all polynomials. \\
+    Assume $f\in\Sp$. \\
+    But there exists $(p_n)$ in $\mp[0,1]$ such that $p_n\rightrightarrows f$,
+    and thus $p_n\overset{L_2}{\rightarrow}f$. \\
+    Now, by continuity of the inner product, $\forall\,n\in\N$:
+    \[\norm{f}^2=\inner{f,f}=\inner{f,\lim_{n\to\infty}p_n}=
+    \lim_{n\to\infty}\inner{f,p_n}=0\]
+    $\therefore\Sp=\zs$
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let $E$ be an inner product space and $S\subseteq E$:
+
+  \qquad$\Sp$ is a closed subspace of $E$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vy\in\Sp$. \\
+  Assume $\a,\b\in\C$. \\
+  Assume $\vz\in S$. \\
+  $\inner{\a\vx+\b\vy,\vz}=\a\inner{\vx,\vz}+\b\inner{\vy,\vz}=0$ \\
+  Thus $\a\vx+\b\vy\perp\vz$ and so $\a\vx+\b\vy\in\Sp$.
+
+  Therefore, $\Sp$ is a subspace of $E$.
+
+  Assume $(\vx_n)$ is a sequence in $\Sp$ such that $\vx_n\to\vx\in E$. \\
+  Assume $\vy\in S$. \\
+  So $\forall\,n\in\N,\vy\perp\vx_n$. \\
+  $\inner{\vx,\vy}=\inner{\lim_{n\to\infty}\vx_n,\vy}=
+  \lim_{n\to\infty}\inner{\vx_n,\vy}=0$ \\
+  Thus $\vx\perp\vy$ and so $\vx\in\Sp$.
+
+  Therefore $\Sp$ is closed.
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $S$ be a convex subset of $H$. Let
+  $\vx\in H\setminus S$ and let $\vy\in S$ such that $d(\vx,S)=\norm{\vx-\vy}$:
+  \[\vx-\vy\perp S\]
+  Thus, $\forall\,\vz\in S,\vx-\vy\perp\vz$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vz\in S$ such that $\vz\ne\vo$. \\
+  Consider the perturbation $\vy+\e\vz$ for some $\e\in\R$. \\
+  Let $d=d(\vx,S)$.
+  \begin{eqnarray*}
+    d^2 &\le& \norm{\vx-(\vy+\e\vz}^2 \\
+    &=& \norm{(\vx-\vy)+\e\vz}^2 \\
+    &=& \inner{(\vx-\vy)+\e\vz,(\vx-\vy)+\e\vz} \\
+    &=& \norm{\vx-\vy}^2-\inner{\vx-\vy,\e\vz}-\inner{\e\vz,\vx-\vy}+
+    \e^2\norm{\vz}^2 \\
+    &=& \norm{\vx-\vy}^2-\e[\inner{\vx-\vy,\vz}-\conj{\inner{\vx-\vy,\vz}}]+
+    \e^2\norm{\vz}^2 \\
+    &=& \norm{\vx-\vy}^2-2\e\Real(\inner{\vx-\vy,\vz})+\e^2\norm{\vz}^2 \\
+    &=& d^2-2\e\Real(\inner{\vx-\vy,\vz})+\e^2\norm{\vz}^2 \\
+    0 &\le& \e^2\norm{\vz}^2-2\e\Real(\inner{\vx-\vy,\vz}) \\
+  \end{eqnarray*}
+  Now, let $a=\norm{\vz}^2$ and $b=2\Real(\inner{\vx-\vy,\vz})$:  
+  \begin{eqnarray*}
+    a\e^2-b\e &\ge& 0 \\
+    a\e\left(\e-\frac{b}{a}\right) &\ge& 0
+  \end{eqnarray*}
+  But for this to always be true it must be the case that $b=0$.
+
+  And so $\Real(\inner{\vx-\vy,\vz})=0$.
+
+  By similar argument for $\vy+i\e\vz$, $\Imag(\inner{\vx-\vy,\vz})=0$.
+
+  Thus $\inner{\vx-\vy,\vz}=0$ and so $\vx-\vy\perp\vz$.
+
+  $\therefore\vx-\vy\perp S$.
+\end{theproof}
+
+Such a $\vy$ is called the \emph{orthogonal projection} of $\vx$ onto $S$:
+\[y=\proj_S\vx\]
+Resulting in a mapping: $\proj_S:H\to S$.
+
+\begin{corollary}
+  Let $H$ be Hilbert space and let $S$ be a closed subspace of $H$. Every
+  $\vx\in H$ can be written uniquely as $\vx=\vy+\vz$ where $\vy\in S$ and
+  $\vz\in\Sp$.
+
+  Thus, $H=S\oplus\Sp$.
+\end{corollary}
+
+\begin{theproof}
+  Assume $\vx\in H$. \\
+  Since $S$ is a closed subspace, $S$ is closed and convex. \\
+  Thus a nearest point $\vy\in S$ to $\vx$ exists. \\
+  But $\vz=\vx-\vy\perp S$ and so $\vz\in\Sp$.
+
+  Therefore $\vx=\vy+\vz$, thus proving existence.
+
+  Now, assume $\vx=\vy+\vz=\vyp+\vzp$ where $\vy,\vyp\in S$ and
+  $\vz,\vzp\in\Sp$. \\
+  Let $\vw=\vy-\vyp=\vzp-\vz$. \\
+  But $\vy-\vyp\in S$ and $\vzp-\vz\in\Sp$. \\
+  And so $\vw\in S$ and $\vw\in\Sp$.
+
+  $\therefore\vw=\vo$ and thus $\vy=\vyp$ and $\vz=\vzp$, thus proving
+  uniqueness.
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $S$ be a closed subspaceof $H$:
+  \[\Spp=S\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\subseteq$ Assume $\vx\in\Spp$
+
+    $\exists\,\vy\in S$ and $\vz\in\Sp$ such that $\vx=\vy+\vz$. \\
+    So $\vy\in\Spp$. \\
+    $\vx-\vy=\vz$. \\
+    So $\vz\in\Spp$. \\
+    So $\vz\in\Sp$ and $\vz\in\Spp$, and so $\vz=\vo$.
+
+    $\therefore\vx=\vy\in S$
+
+    $\therefore\Spp=\Sp$
+
+  \item $\supseteq$ Assume $\vx\in S$.
+
+    $\vx\perp\Sp$
+
+    $\therefore\vx\in\Spp$
+  \end{description}
+\end{theproof}
+
+In general, in a Hilbert space $H$, $\Spp$ is the closure of $S$.
+\end{document}

@@ -1,0 +1,101 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Et}{\tilde{E}}
+\renewcommand{\o}{\Phi}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\begin{document}
+\section*{Completion of Normed Spaces}
+
+\begin{definition}[Completion]
+  Let $E$ be a normed space over a field $\F$. To say that a normed space
+  $\Et$ is a \emph{completion} of $E$ means:
+  \begin{enumerate}
+  \item There exists an injective mapping $\o:E\to\Et$ such that
+    $\forall\,\vx,\vy\in E$ and $\forall\,\a,\b\in\F$:
+    \[\o(\a\vx+\b\vy)=\a\o(\vx)+\b\o(\vy)\]
+  \item $\norm{\o(\vx)}_{\sim}=\norm{\vx}$
+  \item $\o(E)$ is dense in $\Et$.
+  \item $\Et$ is complete (Banach).
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Equivalence]
+  Let $E$ be a normed space and let $(\vx_n)$ and $(\vy_n)$ be Cauchy in $E$.
+  To say that $(\vx_n)$ and $(\vy_n)$ are \emph{equivalent} in $E$ means:
+  \[\norm{\vx_n-\vy_n}\to0\]
+\end{definition}
+
+\begin{theorem}
+  Every normed space $E$ has a completion $\Et$.
+\end{theorem}
+
+\begin{theproof}
+  Let $[(\vx_n)]$ denote the set of all sequences in $E$ that are equivalent
+  to $(\vx_n)$. \\
+  Let $\Et$ be the set of all equivalence classes of sequences in $E$. \\
+  Equip $\Et$ with the binary operations:
+  \begin{itemize}
+  \item $[(\vx_n)]+[(\vy_n)]=[(\vx_n+\vy_n)]$
+  \item $\l[(\vx_n)]=[(\l\vx_n)]$
+  \end{itemize}
+
+  Assume $(\vx_n)_1\sim(\vx_n)_2$ and $(\vy_n)_1\sim(\vy_n)_2$:
+  \begin{eqnarray*}
+    \norm{((\vx_n)_1+(\vy_n)_1)-((\vx_n)_2+(\vy_n)_2)} &=&
+    \norm{((\vx_n)_1-(\vx_n)_2)+((\vy_n)_1-(\vy_n)_2)} \\
+    &\le& \norm{(\vx_n)_1-(\vx_n)_2}+\norm{(\vy_n)_1-(\vy_n)_2} \\
+    &\to& 0+0 \\
+    &=& 0
+  \end{eqnarray*}
+  and:
+  \[\norm{\l(\vx_n)_1-\l(\vx_n)_2}=\abs{\l}\norm{(\vx_n)_1-(\vx_n)_2}\to0\]
+  Therefore, the operations are well-defined and $\Et$ is a vector space.
+
+  Now, define $\norm{[\vx_n]}_{\sim}=\norm{[\vx_n]}_1=
+  \lim_{n\to\infty}\norm{\vx_n}$. \\
+  By previous theorem, this norm always converges for Cauchy $(\vx_n)$. \\
+  Furthermore, if $(\vx_n)\sim(\vy_n)$:
+  \[\abs{\norm{\vx_n}-\norm{\vy_n}}\le\norm{\vx_n-\vy_n}\to0\]
+  And so $\lim_{n\to\infty}\norm{\vx_n}=\lim_{n\to\infty}\norm{\vy_n}$.
+
+  Now, define $\o:E\to\Et$ by $\o(\vx)=[(\vx,\vx,\ldots)]$. \\
+  Clearly, $\o$ satisfies the linearity conditions under the binary operations.
+
+  Since every $[(x_n)]$ is the result of some sequence in $E$, $\o(E)$ is
+  dense in $\Et$.
+
+  Assume $(X_n)$ be a sequence in $\Et$. \\
+  Since $\o(E)$ is dense in $\Et$, $\exists\,(\vx_n)$ in $E$ such that:
+  \[\norm{\o(\vx_n)-X_n}<\frac{1}{n}\]
+  And so:
+  \begin{eqnarray*}
+    \norm{\vx_n-\vx_m} &=& \norm{\o(\vx_n)-\o(\vx_m)} \\
+    &=& \norm{(\o(\vx_n)-X_n)+(X_n-X_m)+(X_m-\o(\vx_m))} \\
+    &\le& \norm{\o(\vx_n)-X_n}+\norm{X_n-X_m}+\norm{X_m-\o(\vx_m)} \\
+    &\le& \frac{1}{n}+\norm{X_n-X_m}+\frac{1}{m} \\
+    &\to& 0+0+0 \\
+    &=& 0
+  \end{eqnarray*}
+  Therefore, $(\vx_n)$ is Cauchy in $E$.
+
+  Finally, let $X=[(\vx_n)]$:
+  \begin{eqnarray*}
+    \norm{X_n-X} &=& \norm{(X_n-\o(\vx_n))+(\o(\vx_n)-X)} \\
+    &\le& \norm{X_n-\o(\vx_n)}+\norm{\o(\vx_n)-X} \\
+    &\le& \frac{1}{n}+\norm{\o(\vx_n)-X} \\
+    &\to& 0+0 \\
+    &=& 0
+  \end{eqnarray*}
+  Therefore $E$ is complete (Banach).
+
+  Therefore there exists $\Et$ which is a completion of $E$.
+\end{theproof}
+
+\end{document}

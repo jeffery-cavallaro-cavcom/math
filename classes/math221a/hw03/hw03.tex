@@ -1,0 +1,332 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\cycle}[1]{\left<#1\right>}
+\renewcommand{\l}{\ell}
+\newcommand{\p}{\phi}
+\newcommand{\mtx}[4]{\begin{pmatrix}
+    #1 & #2 \\
+    #3 & #4 \\
+  \end{pmatrix}}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221a \\
+Homework \#3
+
+\bigskip
+
+\subsection*{1.3.11}
+
+Let $G$ be a group and $a,b\in G$. Prove:
+
+\begin{enumerate}
+\item $\abs{a}=\abs{a^{-1}}$
+
+  Assume $x\in\cycle{a}$ \\
+  $\exists\,n\in\Z,x=a^n$ \\
+  $x=(a^{-1})^{-n},-n\in\Z$ \\
+  $x\in\cycle{a^{-1}}$ \\
+  $\cycle{a}\subseteq\cycle{a^{-1}}$
+
+  Assume $x\in\cycle{a^{-1}}$ \\
+  $\exists\,m\in\Z,x=(a^{-1})^m$ \\
+  $x=a^{-m},-m\in\Z$ \\
+  $x\in\cycle{a}$ \\
+  $\cycle{a^{-1}}\subseteq\cycle{a}$
+
+  $\cycle{a}=\cycle{a^{-1}}$ \\
+  $\therefore\abs{a}=\abs{a^{-1}}$
+
+  \bigskip
+
+\item $\abs{ab}=\abs{ba}$
+
+  If $a=b=e$ then $\abs{ab}=\abs{ba}=1$, so AWLOG that $a\ne e$ or $b\ne e$
+
+  Assume $\cycle{ab}$ is finite \\
+  Let $\abs{ab}=n$ \\
+  $(ab)^n=e$ \\
+  $b(ab)^na=bea$ \\
+  $(ba)^{n+1}=ba$ \\
+  $(ba)^n=e$ \\
+  $\abs{ba}\le n$ \\
+  $\abs{ba}\le\abs{ab}$ and $\cycle{ba}$ is finite
+
+  Assume $\cycle{ba}$ is finite \\
+  Let $\abs{ba}=m$ \\
+  $(ba)^m=e$ \\
+  $a(ba)^mb=aeb$ \\
+  $(ab)^{m+1}=ab$ \\
+  $(ab)^m=e$ \\
+  $\abs{ab}\le m$ \\
+  $\abs{ab}\le\abs{ba}$ and $\cycle{ab}$ is finite
+\newpage
+  $\therefore\cycle{ab}$ finite $\iff\cycle{ba}$ finite, and so if $\cycle{ab}$
+  is finite then so is $\cycle{ba}$, and $\abs{ab}=\abs{ba}$.
+
+  By the CP, $\cycle{ab}$ infinite $\iff\cycle{ba}$ infinite, and all infinite
+  cyclic groups are isomorphic to $\Z$ (and each other). So if $\cycle{ab}$ is
+  infinite then so is $\cycle{ab}$, and $\abs{ab}=\abs{ba}=\aleph_0$.
+
+  $\therefore\abs{ab}=\abs{ba}$
+
+  \bigskip
+
+\item $\forall\,c\in G,\abs{a}=\abs{cac^{-1}}$
+
+  Assume $c\in G$
+
+  \begin{lemma}
+    \listbreak
+    \[\forall\,n\in\Z^+,(cac^{-1})^n=ca^nc^{-1}\]
+  \end{lemma}
+
+  \begin{theproof}
+    Proof by induction on $n$:
+
+    \begin{description}
+    \item Base: $n=1$
+
+      $(cac^{-1})^1=cac^{-1}=ca^1c^{-1}$
+
+    \item Assume $(cac^{-1})^n=ca^nc^{-1}$
+
+    \item $(cac^{-1})^{n+1}=(cac^{-1})^n(cac^{-1})=ca^nc^{-1}cac^{-1}=ca^neac^{-1}=
+      ca^nac^{-1}=ca^{n+1}c^{-1}$
+      
+    \end{description}
+  \end{theproof}
+  
+  If $a=e$ then $cac^{-1}=cec^{-1}=cc^{-1}=e$, and so $\abs{a}=\abs{cac^{-1}}=1$
+
+  If $c=e$ then $cac^{-1}=eae^{-1}=eae=a$, and so $\abs{cac^{-1}}=\abs{a}$
+
+  If $cac^{-1}=e$ then $a=c^{-1}ec=c^{-1}c=e$, and so $\abs{a}=\abs{cac^{-1}}=1$
+
+  So AWLOG that $a\ne e$, $c\ne e$, and $cac^{-1}\ne e$
+
+  Assume $\cycle{a}$ is finite \\
+  Let $\abs{a}=n,n\in\Z^+$ \\
+  $a^n=e$ \\
+  $(cac^{-1})^n=ca^nc^{-1}=cec^{-1}=cc^{-1}=e$ \\
+  $\abs{cac^{-1}}\le n$ \\
+  $\abs{cac^{-1}}\le\abs{a}$ and $\cycle{cac^{-1}}$ is finite
+
+  Assume $\cycle{cac^{-1}}$ is finite \\
+  Let $\abs{cac^{-1}}=m,m\in\Z^+$ \\
+  $(cac^{-1})^m=e$ \\
+  $ca^mc^{-1}=e$ \\
+  $a^m=c^{-1}ec=c^{-1}c=e$ \\
+  $\abs{a}\le m$ \\
+  $\abs{a}\le\abs{cac^{-1}}$ and $\cycle{a}$ is finite
+
+  $\therefore\cycle{a}$ finite $\iff\cycle{cac^{-1}}$ finite, and so if
+  $\cycle{a}$ is finite then so is $\cycle{cac^{-1}}$, and
+  $\abs{a}=\abs{cac^{-1}}$.
+
+  By the CP, $\cycle{a}$ infinite $\iff\cycle{cac^{-1}}$ infinite, and all
+  infinite cyclic groups are isomorphic to $\Z$ (and each other). So if
+  $\cycle{a}$ is infinite then so is $\cycle{cac^{-1}}$, and
+  $\abs{a}=\abs{cac^{-1}}=\aleph_0$.
+
+  $\therefore\abs{a}=\abs{cac^{-1}}$
+\end{enumerate}
+
+\subsection*{1.3.2}
+
+Let $G$ be an abelian group. Let $a,b\in G$ such that $\cycle{a}$ and
+$\cycle{b}$ are finite with $\abs{a}=m$ and $\abs{b}=n$.
+
+Prove: $\exists\,c\in G,\abs{c}=[m,n]$
+
+\begin{lemma}
+Let $G$ be an abelian group. Let $a,b\in G$ such that $\cycle{a}$ and
+$\cycle{b}$ are finite with $\abs{a}=m$ and $\abs{b}=n$ such that $(m,n)=1$.
+\[\exists\,c\in G,\abs{c}=mn\]
+\end{lemma}
+
+\begin{theproof}
+  Let $c=ab\in G$ \\
+  $\cycle{c}\le G$ \\
+  $c^{rs}=(ab)^{rs}=a^{rs}b^{rs}=(a^r)^s(b^s)^r=e^se^r=ee=e$ \\
+  So $\cycle{c}$ is finite \\
+  Let $\abs{c}=n$ \\
+  $n\le rs$
+
+  $c^n=e$ \\
+  $(ab)^n=e$ \\
+  $a^nb^n=e$ \\
+  $a^n=b^{-n}$ \\
+  Let $\l=a^n=b^{-n}$ \\
+  $\l\in\cycle{a}$ and $\l\in\cycle{b}$ \\
+  $\cycle{\l}\le\cycle{a}$ and $\cycle{\l}\le\cycle{b}$ \\
+  $\abs{\l}\mid r$ and $\abs{\l}\mid s$ \\
+  $\l$ is a common divisor of $r$ and $s$ \\
+  But $(r,s)=1$ \\
+  So $\abs{\l}=1$ and thus $\l=e$ \\
+  $a^n=b^{-n}=e$ \\
+  $b^n=e$ \\
+  $r\mid n$ and $s\mid n$ \\
+  $n$ is a common multiple of $r$ and $s$ \\
+  But since $(r,s)=1, [r,s]=rs$, and so: \\
+  $rs\le n$
+
+  $\therefore rs=n$
+
+  $\therefore\cycle{c}\le G$ and $\abs{c}=rs$
+\end{theproof}
+
+Now, let $d=(r,s)$ \\
+$[r,s]=\frac{rs}{d}$ \\
+Let $s_0=\frac{s}{d}$ \\
+$(r,s_0)=1$
+
+$\abs{a}=r$ \\
+$\abs{b^d}=\frac{s}{(d,s)}=\frac{s}{(d,ds_0)}=\frac{s}{d}=s_0$
+
+So by the lemma: \\
+$\exists\,c\in G,\abs{c}=rs_0$ \\
+But $rs_0=\frac{rs}{d}=[r,s]$
+
+$\therefore\exists\,c\in G,\abs{c}=[r,s]$
+
+\subsection*{1.3.3}
+
+Let $G$ be an abelian group of order $pq$ such that $(p,q)=1$.
+
+Prove: $\left(\exists\,a,b\in G,\abs{a}=p\ \mbox{and}\ \abs{b}=q\right)\implies
+G$ is cyclic
+
+Assume $\exists\,a,b\in G,\abs{a}=p$ and $\abs{b}=q$ \\
+By the lemma: \\
+$\exists\,c\in G,\abs{c}=pq$ \\
+$\cycle{c}\le G$ and $\abs{c}=\abs{G}$ \\
+So $\cycle{c}=G$ \\
+$\therefore G$ is cyclic.
+
+\subsection*{1.3.4}
+
+Let $\p:G\to H$ be a homomorphism of groups.
+
+Prove: $a\in G$ and $\p(a)$ has finite order in $H\implies\abs{a}$ is infinite
+or $\abs{\p(a)}\mid\abs{a}$
+
+Assume $a\in G$ and $\p(a)$ has finite order in $H$ \\
+If $\abs{a}$ is infinite then done, so assume $\abs{a}$ is finite \\
+Let $\abs{a}=n$ \\
+$a^n=e_G$ \\
+$\p(a^n)=\p(a)^n$ \\
+$\p(a^n)=\p(e_G)=e_H$ \\
+$\p(a)^n=e_H$ \\
+So $\abs{\p(a)}\mid n$ \\
+$\therefore\abs{\p(a)}\mid\abs{a}$
+
+\subsection*{1.3.5}
+
+Let $G=GL_2(\Q)$.
+\begin{enumerate}
+\item Let $a=\mtx{0}{-1}{1}{0}$. Show $\abs{a}=4$
+  \[a^2=\mtx{0}{-1}{1}{0}\mtx{0}{-1}{1}{0}=\mtx{-1}{0}{0}{-1}\]
+  \[a^4=\mtx{-1}{0}{0}{-1}\mtx{-1}{0}{0}{-1}=\mtx{1}{0}{0}{1}=e\]
+
+\item Let $b=\mtx{0}{1}{-1}{-1}$. Show $\abs{b}=3$
+  \[b^2=\mtx{0}{1}{-1}{-1}\mtx{0}{1}{-1}{-1}=\mtx{-1}{-1}{1}{0}\]
+  \[b^3=\mtx{-1}{-1}{1}{0}\mtx{0}{1}{-1}{-1}=\mtx{1}{0}{0}{1}=e\]
+
+\item Show $\abs{ab}=\aleph_0$
+  \[ab=\mtx{0}{-1}{1}{0}\mtx{0}{1}{-1}{-1}=\mtx{1}{1}{0}{1}\]
+
+  Claim: $(ab)^n=\mtx{1}{n}{0}{1}$
+
+  \begin{description}
+  \item case 1: $n>0$
+
+    Proof by induction on $n$
+
+    \begin{description}
+    \item Base: $n=1$
+
+      $(ab)^1=ab=\mtx{1}{1}{0}{1}$
+
+    \item Assume $(ab)^n=\mtx{1}{n}{0}{1}$
+
+    \item $(ab)^{n+1}=(ab)^n(ab)=\mtx{1}{n}{0}{1}\mtx{1}{1}{0}{1}=
+      \mtx{1}{n+1}{0}{1}$
+    \end{description}
+
+  \item case 2: $n=0$
+
+    $(ab)^0=I_2=\mtx{1}{0}{0}{1}$
+
+  \item case 3: $n<0$
+
+    Claim: $\forall\,n>0,[(ab)^n]^{-1}=\mtx{1}{-n}{0}{1}$
+    \[\mtx{1}{n}{0}{1}\mtx{1}{-n}{0}{1}=\mtx{1}{-n}{0}{1}\mtx{1}{n}{0}{1}=
+    \mtx{1}{0}{0}{1}=e\]
+
+    Let $m=-n>0$ \\
+    $(ab)^n=(ab)^{-m}=[(ab)^m]^{-1}=\mtx{1}{m}{0}{1}^{-1}=\mtx{1}{-m}{0}{1}=
+    \mtx{1}{n}{0}{1}$
+  \end{description}
+
+  Let $A=\{(ab)^n\mid n\in\N\}$ \\
+  Define $\p:\N\to A$ by $\p(n)=(ab)^n$ \\
+  Let $\p^{-1}:A\to N$ be defined by $\p^{-1}\left((ab)^n\right)=n$ \\
+  $(\p\p^{-1})\left((ab)^n\right)=\p(n)=(ab)^n$ \\
+  $(\p^{-1}\p)(n)=\p^{-1}\left((ab)^n\right)=n$ \\
+  So $\p$ is invertible, and thus bijective \\
+  $\p(n+m)=(ab)^{n+m}=\mtx{1}{n+m}{0}{1}$ \\
+  $\p(n)\p(m)=\mtx{1}{n}{0}{1}\mtx{1}{m}{0}{1}=\mtx{1}{n+m}{0}{1}$ \\
+  $\p(n+m)=\p(n)\p(m)$ \\
+  So $\p$ is a homomorphism, and thus an isomorphism \\
+  So $A$ has infinite order \\
+  But $A\subset\cycle{ab}$ \\
+  $\therefore ab$ has infinite order.
+
+\item Show that $Z_2\oplus\Z$ has elements $a$ and $b$ of infinite order such
+  that $a+b$ has finite order.
+
+  Let $a=(0,1)$ and $b=(0,-1)$
+
+  Clearly, $a$ and $b$ have infinite order:
+  \[na=(0,n)\]
+  \[nb=(0,-n)\]
+  But $a+b=(0,1)+(0,-1)=(0,0)=e$, and $\cycle{e}$ is finite with order 1.
+\end{enumerate}
+
+\subsection*{1.3.8}
+
+Prove: A group that has only a finite number of subgroups must be finite.
+
+Assume that $G$ is a group with only a finite number of subgroups \\
+ABC: $\exists\,a\in G$ such that $a$ has infinite order \\
+$\cycle{a}\simeq\Z$, which has an infinite number of subgroups \\
+So $\cycle{a}$, and thus $G$, have an infinite number of subgroups \\
+CONTRADICTION! \\
+Thus $G$ is a union of a finite number of finite subgroups \\
+$\therefore G$ is finite.
+
+\subsection*{1.3.9}
+
+Let $G$ be an abelian group and define $T=\{a\in G\mid a$ has finite order$\}$.
+
+Prove: $T\le G$
+
+$\abs{e}=1$, so $e\in T$ and $T\ne\emptyset$
+
+Assume $a,b\in T$ \\
+By closure, $ab\in G$ \\
+Let $\abs{a}=r$ and $\abs{b}=s$ \\
+$(ab)^{rs}=a^{rs}b^{rs}=(a^r)^s(b^s)^r=e^se^r=ee=e$ \\
+Thus, $ab$ has finite order \\
+$ab\in T$ \\
+$\therefore T$ is closed.
+
+Assume $a\in T$ \\
+$\abs{a}=\abs{a^{-1}}$ \\
+$a^{-1}$ has finite order \\
+$a^{-1}\in T$ \\
+$\therefore T$ has inverses.
+
+$\therefore T\le G$
+\end{document}

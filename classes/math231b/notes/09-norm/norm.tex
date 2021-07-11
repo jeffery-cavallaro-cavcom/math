@@ -1,0 +1,138 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\renewcommand{\O}{\Omega}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\lp}{\ell^{\,p}}
+\begin{document}
+\section*{Norms}
+
+\begin{definition}[Norm]
+  Let $E$ be a vector space over a scalar field $\F$. A \emph{norm} on $E$ is a
+  function $\norm{\cdot}:E\to\R$ such that the following axioms are satisfied
+  $\forall\,\vx\in E$ and $\forall\l\in\F$:
+  \begin{enumerate}
+  \item Definiteness: $\norm{\vx}=0\iff\vx=\vo$
+  \item Homogeneity: $\norm{\l\vx}=\abs{\l}\norm{\vx}$
+  \item Subadditive: $\norm{\vx+\vy}\le\norm{\vx}+\norm{\vy}$\qquad(triangle
+    inequality)
+  \end{enumerate}
+  A vector space equipped with such a norm is called a \emph{normed} space.
+\end{definition}
+
+\begin{theorem}
+  Let $E$ be a vector space over a scalar field $\F$ and let $\norm{\cdot}$ be
+  a norm on $E$. $\forall,\vx\in E$:
+  \[\norm{\vx}=\norm{-\vx}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in E$.
+  \[\norm{-\vx}=\norm{(-1)\vx}=\abs{-1}\norm{\vx}=1\cdot\norm{\vx}=\norm{\vx}\]
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a vector space over a scalar field $\F$ and let $\norm{\cdot}$ be
+  a norm on $E$. $\forall,\vx\in E$:
+  \[\norm{\vx}\ge0\]
+  Thus, the norm is positive-definite.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in E$.
+  \[0=\norm{\vo}=\norm{\vx+(-\vx)}\le\norm{\vx}+\norm{-\vx}=
+  \norm{\vx}+\norm{\vx}=2\norm{\vx}\]
+  $\therefore\norm{\vx}\ge0$
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a vector space over a scalar field $\F$ and let $\norm{\cdot}$ be
+  a norm on $E$. $\forall,\vx,\vy\in E$:
+  \[\abs{\norm{\vx}-\norm{\vy}}\le\norm{\vx-\vy}\]
+\end{theorem}
+
+\newpage
+
+\begin{theproof}
+  Assume $\vx,\vy\in E$.
+
+  $\norm{\vx}=\norm{(\vx-\vy)+\vy}\le\norm{\vx-\vy}+\norm{\vy}$ \\
+  $\norm{\vx}-\norm{\vy}\le\norm{\vx-\vy}$
+
+  $\norm{\vy}=\norm{(\vy-\vx)+\vx}\le\norm{\vy-\vx}+\norm{\vx}$ \\
+  $\norm{\vy}-\norm{\vx}\le\norm{\vy-\vx}$ \\
+  $-(\norm{\vx}-\norm{\vy})\le\norm{\vx-\vy}$
+
+  $\therefore\abs{\norm{\vx}-\norm{\vy}}\le\norm{\vx-\vy}$
+\end{theproof}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $E=\R^n$ or $\C^n$:
+    \[\norm{\vz}=\sqrt{\sum_{k=1}^n\abs{z_n}^2}\]
+    is called the \emph{Euclidean} norm.
+
+  \item $E=\R^n$ or $\C^n$:
+    \[\norm{\vz}=\max_{1\le k\le n}\abs{z_n}\]
+    is called the \emph{sup} norm.
+
+  \item Let $\O$ be a closed, bounded subset of $\R^n$ and $E=C(\O)$:
+    \[\norm{f}_p=\left(\int_{\O}\abs{f(t)}^pdt\right)^{\frac{1}{p}}\]
+    is a norm for $1\le p<\infty$. The integral form of Minkowski is needed
+    for this:
+    \[\left(\int_{\O}\abs{f+g}^p\right)^{\frac{1}{p}}\le
+    \left(\int_{\O}\abs{f}^p\right)^{\frac{1}{p}}+
+    \left(\int_{\O}\abs{g}^p\right)^{\frac{1}{p}}\]
+
+  \item Let $\O$ be a closed, bounded subset of $\R^n$ and $E=C(\O)$:
+    \[\norm{f}_{\infty}=\max_{t\in\O}\abs{f(t)}\]
+    is a sup norm for $E$.
+
+  \item Let $E=\lp$:
+    \[\norm{x}_p=\left(\sum_{n=1}^{\infty}\abs{x_n}^p\right)^{\frac{1}{p}}\]
+    is a norm for $1\le p<\infty$. In fact, Minkowski serves as the triangle
+    inequality for this norm.
+
+  \item Let $E=\lp$:
+    \[\norm{x}_{\infty}=\sup\abs{x_n}\]
+    is a sup norm for $\lp$.
+  \end{enumerate}
+\end{examples}
+
+\begin{definition}[Metric]
+  Let $E$ be a vector space and define function $d:E\times E\to\R$ such that
+  $d$ satisfies the following axioms $\forall\vx,\vy,\vz\in E$:
+  \begin{enumerate}
+  \item $d(\vx,\vy)=0\iff\vx=\vy$
+  \item $d(\vx,\vy)=d(\vy,\vx)$
+  \item $d(\vx,\vz)\le d(\vx,\vy)+d(\vy,\vz)$
+  \end{enumerate}
+  The function $d$ is called a \emph{metric} for $E$.
+
+  A vector space equipped with a metric is called a \emph{metric} space.
+\end{definition}
+
+\begin{theorem}
+  Let $E$ be a normed space. $E$ is a metric space with metric
+  $d(\vx,\vy)=\norm{\vx-\vy}$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vy,\vz\in E$
+
+  $d(\vx,\vy)=0\iff\norm{\vx-\vy}=0\iff\vx-\vy=\vo\iff\vx=\vy$.
+
+  $d(\vx,\vy)=\norm{\vx-\vy}=\norm{\vy-\vx}=d(\vy,\vx)$
+
+  $d(\vx,\vz)=\norm{\vx-\vz}=\norm{(\vx-\vy)+(\vy-\vz)}\le
+  \norm{\vx-\vy}+\norm{\vy-\vz}=d(\vx,\vy)+d(\vy,\vz)$
+\end{theproof}
+
+\end{document}

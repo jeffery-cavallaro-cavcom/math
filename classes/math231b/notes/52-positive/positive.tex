@@ -1,0 +1,223 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{centernot}
+\pagestyle{empty}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\mc}{\mathcal{C}}
+\newcommand{\md}{\mathcal{D}}
+\newcommand{\mr}{\mathcal{R}}
+\renewcommand{\P}{\Phi}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vp}{\varphi}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\newcommand{\X}{\chi}
+\allowdisplaybreaks
+\begin{document}
+\section*{Postive Operators}
+
+\begin{lemma}
+  Let $H$ be a Hilbert space and $T\in\mb(H)$:
+  \[T=T^*\iff\forall\,\vx\in H,\inner{T\vx,\vx}\in\R\]
+\end{lemma}
+
+\begin{theproof}
+  Assume $\vx\in H$.
+
+  \begin{description}
+  \item $\implies$ Assume $T=T^*$.
+      
+    $\inner{T\vx,\vx}=\inner{\vx,T\vx}=\conj{\inner{T\vx,\vx}}$
+      
+    $\therefore\inner{T\vx.\vx}\in\R$
+
+  \item $\impliedby$ Assume $\forall\,\vx\in H,\inner{T\vx,\vx}\in\R$.
+
+    $\exists A,B\in\mb(H)$ such that $T=A+iB$ and $A,B$ are self-adjoint.
+
+    $\inner{T\vx,\vx}=\inner{(A+iB)\vx,\vx}=\inner{A\vx,\vx}+i\inner{B\vx,\vx}$
+
+    But by lemma, $\inner{A\vx,\vx},\inner{B\vx,\vx}\in\R$. \\
+    Thus, for $\inner{T\vx,\vx}\in\R$ it must be the case that
+    $\inner{B\vx,\vx}=0$.
+
+    Therefore $T=A$ and thus $T$ is self-adjoint.
+  \end{description}
+\end{theproof}
+
+\begin{definition}
+  Let $H$ be a Hilbert space and $A\in\mb(H)$. To say that $A$ is a
+  \emph{positive} operator, denoted $A\ge0$, means $\forall\,\vx\in H$:
+  \[\P(x)=\inner{A\vx,\vx}\ge0\]
+  Note that by previous lemma, $A$ is also self-adjoint.
+\end{definition}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $H=L^2[a,b]$ and $(Tf)(s)=\int_a^bK(s,t)f(t)dt$, where
+    $K(s,t)=K(t,s)\ge0$
+
+    AWLOG: $f$ is simple: $f=\sum_{k=1}^n\a_k\X_{E_k}$ where $m(E_k)<\infty$.
+    \begin{eqnarray*}
+      \inner{Tf,f} &=& \int_a^b(Tf)(s)\conj{f(s)}ds \\
+      &=& \int_a^b\left(\int_a^bK(s,t)f(t)dt\right)\conj{f(s)}ds \\
+      &=& \int_a^b\left[\int_a^bK(s,t)\left(\sum_{j=1}^n\a_j\X_{E_j}\right)dt
+      \right]\left(\conj{\sum_{k=1}^n\a_k\X_{E_k}}\right)ds \\
+      &=& \int_a^b\left[\int_a^bK(s,t)\left(\sum_{j=1}^n\a_j\X_{E_j}\right)dt
+        \right]\left(\sum_{k=1}^n\conj{\a_k}\X_{E_k}\right)ds \\
+      &=& \sum_{j=1}^n\sum_{k=1}^n\left(\int_{E_j}\int_{E_k}K(s,t)dsdt\right)
+      \a_j\a_k \\
+      &=& \sum_{j=1}^n\sum_{k=1}^nK_{jk}\a_j\a_k \\
+      &=& \inner{K\vx,\vx}
+    \end{eqnarray*}
+    where $K_{jk}=\int_{E_j}\int_{E_k}K(s,t)dsdt$ and $\vx=[\a_k]$.
+    
+    But $K=[K_{jk}]$ is a real, symmetric matrix and $K\ge0$.
+
+    And so $K=U^*DU$ where $D=[\l_n]$ and $\l_n\ge0$.
+
+    Let $U\vx=\vy$:
+    \begin{eqnarray*}
+      \inner{Tf,f} &=& \inner{K\vx,=vx} \\
+      &=& \inner{U^*DU\vx,\vx} \\
+      &=& \inner{DU\vx,U\vx} \\
+      &=& \inner{D\vy,\vy} \\
+      &=& \sum_{k=1}^n\l_ky_k\conj{y_k} \\
+      &=& \sum_{k=1}^n\l_k\abs{y_k}^2 \\
+      &\ge& 0
+    \end{eqnarray*}
+
+  \item $H=L^2[a,b]$ and fix $\vp\in\mc[a,b]$.
+
+    Let $M_{\vp}\in H$ such that $M_{\vp}f=\vp f$.
+
+    Claim: $\vp\ge0\implies M_{\vp}\ge0$
+
+    Assume $\vp\ge0$:
+    \[\inner{M_{\vp}f,f}=\inner{\vp f,f}=\int_a^b\vp(t)f(t)\conj{f(t)}dt=
+    \int_a^b\vp(t)\abs{f(t)}^2dt\ge0\]
+
+  \item $H=\C^N$ and $A\in H$ such that $A=[a_{ij}]$.
+
+    $A\ge0\implies A=A^*\implies a_{ij}=\conj{a_{ji}}$
+
+    Let $x=e_k$:
+    \[\inner{Ae_k,e_k}=a_{kk}\]
+
+    Thus, if a matrix is either not self-adjoint or the diagonal entries are
+    not real, nonnegative then $A$ cannot be positive.
+  \end{enumerate}
+\end{examples}
+
+\begin{definition}
+  Let $H$ be a Hilbert space and let $A,B\in\mb(H)$. To say that $A\le B$
+  (or $B\ge A$) means that $B-A$ is a positive operator.
+
+  Note that the above relation is a partial ordering on the space of
+  self-adjoint operators:
+  \begin{enumerate}
+  \item $A\le A$
+  \item $A\le B$ and $B\le A\implies A=B$
+  \item $A\le B$ and $B\le C\implies A\le C$
+  \end{enumerate}
+\end{definition}
+
+\begin{properties}
+  Let $H$ be a Hilbert space and then $A,B,C,D\in\mb H$ and $\a\in\R$:
+  \begin{enumerate}
+  \item $A\le B\implies -A\ge-B$
+  \item $A\le B$ and $C\le D\implies A+C\le B+D$
+  \item $A\ge0$ and $\a\ge0\implies\a A\ge0$
+  \end{enumerate}
+\end{properties}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $A\le B$.
+
+    $B-A\ge0$
+
+    $-A-(-B)=B-A\ge0$
+    
+    $\therefore -A\ge-B$
+
+  \item Assume $A\le B$ and $C\le D$.
+
+    $B-A\ge0$ and $D-C\ge0$
+
+    $(B+D)-(A+C)=(B-A)+(D-C)\ge0$
+
+    $\therefore A+C\le B+D$
+
+  \item Assume $A\ge0$ and $\a\ge0$:
+
+    Assume $\vx\in H$.
+    
+    $\inner{\a A\vx,\vx}=\a\inner{A\vx,\vx}\ge0$
+
+    $\therefore\a A\ge0$
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and $A\in\mb(H)$:
+
+  \qquad$A^*A\ge0$ and $AA^*\ge0$
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in H$.
+  
+  $\inner{A^*A\vx,\vx}=\inner{A\vx,A\vx}=\norm{A\vx}^2\ge0$
+  
+  $\inner{AA^*\vx,\vx}=\inner{A^*\vx,A^*\vx}=\norm{A^*\vx}^2\ge0$
+
+  $\therefore A^*A\ge0$ and $AA^*\ge0$
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and $A\in\mb(H)$:
+
+  \qquad$A\ge0$ and $A$ invertible $\implies A^{-1}\ge0$
+\end{theorem}
+
+\begin{theproof}
+  Assume $A\ge0$ and $A$ invertible. \\
+  Thus $A$ is also self-adjoint. \\
+  Assume $\vy\in\mr(A)$. \\
+  $\exists\vx\in\md(A),\vy=A\vx$
+
+  $\inner{A^{-1}\vy,\vy}=\inner{A^{-1}A\vx,A\vx}=\inner{\vx,A\vx}=
+  \inner{A\vx,\vx}\ge0$
+
+  $\therefore A^{-1}\ge0$
+\end{theproof}
+
+Note that $A,B\ge0\centernot{\implies}AB\ge0$.
+
+\begin{example}
+  Let $A=\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}$ and
+  $B=\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$.
+
+  Note that both $A$ and $B$ are self-adjoint and thus positive.
+
+  $AB=\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}
+  \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}=
+  \begin{bmatrix} 1 & 1 \\ 0 & 0 \end{bmatrix}$
+
+  Thus, $AB$ is not self-adjoint and therefore $AB$ is not positive.
+\end{example}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and $A,B\in\mb(H)$:
+
+  \qquad$A,B\ge0$ and $AB=BA\implies AB\ge0$.
+\end{theorem}
+
+\end{document}

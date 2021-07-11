@@ -1,0 +1,36 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\sd}{\sqrt{d}}
+\newcommand{\Qd}{\Q(\sd)}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\begin{document}
+\section*{Norm and Trace}
+
+\begin{definition}[Conjugate]
+  Let $\a=r+s\sd\in\Qd$. The \emph{conjugate} of $\a$ is given by:
+  \[\a'=r-s\sd\in\Qd\]
+  Note that when $d<0$ then $\a'=\overline{\a}$.
+\end{definition}
+
+\begin{definition}
+  Let $\a=r+s\sd\in\Qd$. The \emph{norm} of $\a$ is given by:
+  \[N(\a)=\a\a'\]
+  The \emph{trace} of $\a$ is given by:
+  \[T(\a)=\a+\a'\]
+  Note that $N(\a)=r^2-ds^2$ and $T(\a)=2r$, and so $N(\a),T(\a)\in\Q$.
+\end{definition}
+
+\begin{properties}
+  Let $\a=r+s\sd,\b=u+v\sd\in\Qd$:
+  \begin{enumerate}
+  \item $T(\a+\b)=T(\a)+T(\b)$
+  \item $N(\a\b)=N(\a)N(\b)$
+  \item $N(\a)=0\iff\a=0$
+  \item $\a\ne0\implies\a^{-1}=\frac{\a'}{N(\a)}$
+  \item $d<0\implies N(\a)\ge 0$
+  \end{enumerate}
+\end{properties}
+
+\end{document}

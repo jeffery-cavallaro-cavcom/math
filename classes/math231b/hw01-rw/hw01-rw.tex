@@ -1,0 +1,53 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\mc}{\mathcal{C}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 231b \\
+Homework \#1 Rewrite
+\subsection*{1.7.45}
+
+Show that $L(f)(x)=\int_0^xf(t)dt$ defines a continuous linear mapping from
+$\mc[0,1]$ into itself.
+
+Claim: $L$ is linear.
+
+Assume $f,g\in\mc[0,1]$ and $\a,\b\in\F$:
+\[L(\a f+\b g)=\int_0^x(\a f+\b g)=\a\int_0^xf+\b\int_0^xg=\a Lf+\b Lg\]
+Therefore, $L$ is linear.
+
+Furthermore, by the FTC, since $f\in\mc[0,1]$, it must be the case that
+$Lf\in\mc[0,1]$.
+
+Claim: $L$ is continuous.
+
+Let the norm be the sup norm: $\norm{\cdot}_{\infty}$.
+
+Assume $(f_n)$ is a sequence in $\mc[0,1]$ such that $f_n\to f$ in the norm.
+
+Thus $\norm{f_n(x)-f(x)}\to0$.
+
+Check for pointwise converge and take the $\sup$ later:
+\begin{eqnarray*}
+  \abs{(Lf_n)(x)-(Lf)(x)} &=& \abs{L(f_n(x)-f(x))} \\
+  &=& \abs{\int_0^x(f_n(t)-f(t))dt} \\
+  &\le& \int_0^x\abs{f_n(t)-f(t)}dt \\
+  &\le& \int_0^x\max_{t\in[0,x]}\abs{f_n(t)-f(t)}dt \\
+  &=& \int_0^x\norm{f_n(t)-f(t)}dt \\
+  &=& \norm{f_n(x)-f(x)} \\
+  &\to& 0
+\end{eqnarray*}
+
+So we have $\abs{(Lf_n)(x)-(Lf)(x)}\to0$ and thus:
+\[\max_{x\in[0,1]}\abs{(Lf_n)(x)-(Lf)(x)}=\norm{(Lf_n)(x)-(Lf)(x)}\to0\]
+
+Therefore, $L$ is continuous.
+
+\end{document}

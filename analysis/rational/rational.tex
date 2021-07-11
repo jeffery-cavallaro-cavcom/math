@@ -1,0 +1,117 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Rational Numbers}
+
+\begin{definition}
+The set of \emph{Rational Numbers} is given by:
+\[\mathbb{Q}=\left\{\left.\frac{p}{q}\right|
+    p,q\in\mathbb{Z}\ \mbox{and}\ q\ne0\right\}\]
+If a number is not rational then it is called \emph{irrational}.
+\end{definition}
+
+\begin{properties}
+A rational number can be written as:
+\begin{enumerate}
+\item{A ratio of integers}
+\item{A finite decimal}
+\item{A repeating decimal}
+\end{enumerate}
+\end{properties}
+
+\begin{example}
+Convert $0.1\overline{23}$ into a ratio of integers. \\
+\\
+Let $x=0.1\overline{23}$. \\
+$1000x=123.\overline{23}$ \\
+$10x=1.\overline{23}$ \\
+$990x=122$ \\
+$x=\frac{122}{990}=\frac{61}{495}$
+\end{example}
+
+\begin{theorem}
+$\forall r,s\in\mathbb{Q},r+s\in\mathbb{Q}$
+\end{theorem}
+
+\begin{theproof}
+Assume $r,s\in\mathbb{Q}$. \\
+$\exists a,b\in\mathbb{Z},r=\frac{a}{b}, b\ne0$ \\
+$\exists c,d\in\mathbb{Z},s=\frac{c}{d}, d\ne0$ \\
+$r+s=\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}$ \\
+$ab+bc\in\mathbb{Z}$ \\
+$bd\in\mathbb{Z}$ and $bd\ne0$ \\
+$\therefore r+s\in\mathbb{Q}$ \\
+\end{theproof}
+
+\begin{lemma}
+$r\in\mathbb{Q}\iff -r\in\mathbb{Q}$
+\end{lemma}
+
+\begin{theproof}
+\begin{eqnarray*}
+r\in\mathbb{Q} &\iff& \exists p,q\in\mathbb{Z},r=\frac{p}{q}, q\ne0 \\
+    &\iff& \frac{-p}{q}\in\mathbb{Q} \\
+    &\iff& -r\in\mathbb{Q} \\
+\end{eqnarray*}
+\end{theproof}
+
+\begin{theorem}
+$\forall r\in\mathbb{Q}$ and $s\notin\mathbb{Q},r+s\notin\mathbb{Q}$
+\end{theorem}
+
+\begin{theproof}
+Assume $r\in\mathbb{Q}$ and $s\notin\mathbb{Q}$. \\
+ABC: $r+s\in\mathbb{Q}$ \\
+Let $t=r+s$ \\
+$-r\in\mathbb{Q}$ \\
+$s=t-r$ \\
+But $t-r\in\mathbb{Q}$. \\
+Thus $s\in\mathbb{Q}$. \\
+Contradiction. \\
+$\therefore r+s\notin\mathbb{Q}$
+\end{theproof}
+
+\begin{theorem}
+$\forall r,s\in\mathbb{Q},rs\in\mathbb{Q}$
+\end{theorem}
+
+\begin{theproof}
+Assume $r,s\in\mathbb{Q}$. \\
+$\exists a,b\in\mathbb{Z},r=\frac{a}{b}, b\ne0$ \\
+$\exists c,d\in\mathbb{Z},s=\frac{c}{d}, d\ne0$ \\
+$rs=\frac{a}{b}\cdot\frac{c}{d}=\frac{ac}{bd}$ \\
+$ac\in\mathbb{Z}$ \\
+$bd\in\mathbb{Z}$ and $bd\ne0$ \\
+$\therefore rs\in\mathbb{Q}$ \\
+\end{theproof}
+
+\begin{lemma}
+$r\in\mathbb{Q}-\{0\}\iff \frac{1}{r}\in\mathbb{Q}$
+\end{lemma}
+
+\begin{theproof}
+\begin{eqnarray*}
+r\in\mathbb{Q}-\{0\} &\iff& \exists p,q\in\mathbb{Z}-\{0\},r=\frac{p}{q} \\
+    &\iff& \frac{q}{p}\in\mathbb{Q} \\
+    &\iff& \frac{1}{r}\in\mathbb{Q} \\
+\end{eqnarray*}
+\end{theproof}
+
+\begin{theorem}
+$\forall r\in\mathbb{Q}$ and $s\notin\mathbb{Q},rs\notin\mathbb{Q}$
+\end{theorem}
+
+\begin{theproof}
+Assume $r\in\mathbb{Q}$ and $s\notin\mathbb{Q}$. \\
+ABC: $rs\in\mathbb{Q}$ \\
+Let $t=rs$ \\
+$\frac{1}{r}\in\mathbb{Q}$ \\
+$s=t\cdot\frac{1}{r}$ \\
+But $t\cdot\frac{1}{r}\in\mathbb{Q}$. \\
+Thus $s\in\mathbb{Q}$. \\
+Contradiction. \\
+$\therefore rs\notin\mathbb{Q}$
+\end{theproof}
+
+\end{document}

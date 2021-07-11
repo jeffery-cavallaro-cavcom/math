@@ -1,0 +1,101 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Relatively Prime}
+
+\begin{definition}
+  $\forall\,a,b\in\Z$, to say that $a$ and $b$ are \emph{relatively prime}
+  means $(a,b)=1$.
+\end{definition}
+
+\begin{corollary}[To B\'ezout]
+  \listbreak
+  \[\forall\,a,b\in\Z,(a,b)=1\iff\exists\,m,n\in\Z,ma+nb=1\]
+\end{corollary}
+
+\begin{theproof}
+  Assume $a,b\in\Z$ \\
+  $(a,b)=1\iff1=\min\{ma+nb\in\Z^+\mid m,n\in\Z\}\iff\exists\,m,n\in\Z,ma+nb=1$
+\end{theproof}
+
+\begin{theorem}
+  Let $a,b,c\in\Z$ and $a\ne0$:
+  \[a\mid bc\ \mbox{and}\ (a,b)=1\implies a\mid c\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\mid bc$ and $(a,b)=1$ \\
+  $\exists\,m,n\in\Z,ma+nb=1$ \\
+  $(cm)a+n(bc)=c$ \\
+  But $a\mid a$ and $a\mid bc$ \\
+  So $a\mid(cm)a+n(bc)$ \\
+  $\therefore a\mid c$
+\end{theproof}
+
+\begin{theorem}
+  Let $p$ be a prime number:
+  \[\forall\,a\in\Z,(p,a)=1\iff p\nmid a\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in\Z$
+
+  \begin{description}
+  \item $\implies$ Assume $p\mid a$
+
+    $p\mid p$ \\
+    $p\in D_p\cap D_a$ \\
+    $p>1$ \\
+    $\therefore (p,a)\ge p>1$
+
+  \item $\impliedby$ Assume $p\nmid a$
+
+    $D_p=\{\pm1,\pm p\}$ \\
+    $D_p\cap D_a=\{\pm1\}$ \\
+    $\therefore (p,a)=1$
+  \end{description}
+\end{theproof}
+
+\begin{corollary}
+  Let $p$ be a prime number:
+  \[\forall\,a,b\in\Z,p\mid ab\implies p\mid a\ \mbox{or}\ p\mid b\]
+\end{corollary}
+
+\begin{theproof}
+  Assume $a,b\in\Z$ \\
+  Assume $p\mid ab$ \\
+  \begin{description}
+  \item{Case 1: $p\mid a$}
+
+    Done.
+    
+  \item{Case 2: $p\nmid a$}
+
+    (p,a)=1 \\
+    $\therefore p\mid b$
+  \end{description}
+\end{theproof}
+
+\begin{corollary}
+  Let $a,b\in\Z$ such that $a\ne0$ or $b\ne0$ and $d=(a,b)$:
+  \[(\frac{a}{d},\frac{b}{d})=1\]
+\end{corollary}
+
+\begin{theproof}
+  \[(\frac{a}{d},\frac{b}{d})=\frac{d}{d}=1\]
+\end{theproof}
+
+\begin{corollary}
+  Let $\frac{a}{b}\in\Q$:
+  \[\exists\,\frac{p}{q}\in\Q,\frac{a}{b}=\frac{p}{q}\ \mbox{and}\ (p,q)=1\]
+\end{corollary}
+
+\begin{theproof}
+  Let $d=(a,b)$ \\
+  Let $p=\frac{a}{d}$ and $q=\frac{b}{d}$ \\
+  $(p,q)=1$ \\
+  $\frac{p}{q}=\frac{\frac{a}{d}}{\frac{b}{d}}=\frac{a}{b}$
+\end{theproof}
+
+\end{document}

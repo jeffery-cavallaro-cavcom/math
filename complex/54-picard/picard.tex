@@ -1,0 +1,26 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Picard's Theorem}
+
+\begin{theorem}
+  In every neighborhood of an essential singularity, an analytic function
+  takes on every value (with one possible exception) an infinite number of
+  times.
+\end{theorem}
+
+\begin{example}
+  $w=f(z)=e^{\frac{1}{z}}$
+
+  $f(z)=\sum_{k=0}^{\infty}\frac{1}{k!z^k}$ \\
+  Thus, $z=0$ is an essential singularity for $f(z)$ \\
+  Note that $f(z)\ne0$; this is the one exception \\
+  Let $w_0=e^{\frac{1}{z}}$ \\
+  $\log{w_0}+2k\pi i=\frac{1}{z}$ \\
+  $z=\frac{1}{\log{w_0}+2k\pi i}$
+
+  Thus, each $w_0$ occurs at an infinite number of $z$.
+\end{example}
+
+\end{document}

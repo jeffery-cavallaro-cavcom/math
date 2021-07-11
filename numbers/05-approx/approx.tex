@@ -1,0 +1,131 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\renewcommand{\c}{\checkmark}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\fpart}[1]{\left\{#1\right\}}
+\begin{document}
+\section*{Approximating Values}
+
+\begin{definition}
+  Let $x\in\R$:
+  \begin{itemize}
+  \item The greatest integer (floor) function, denoted $\floor{x}$, yields the
+    greatest integer that is less than or equal to $x$:
+    \[\floor{x}\le x<\floor{x}+1\]
+
+  \item The least integer (ceiling) function, denoted $\ceil{x}$, yields the
+    least integer that is greater than or equal to $x$:
+    \[\ceil{x}-1<x\le\ceil{x}\]
+
+  \item The fractional part of $x$ is given by:
+    \[\fpart{x}=x-\floor{x}\]
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  \[\forall\,x\in\R,0\le\fpart{x}<1\]
+\end{theorem}
+
+\begin{theproof}
+    \[\floor{x}\le x<\floor{x}+1\]
+    \[0\le x-\floor{x}<1\]
+    \[\therefore 0\le\fpart{x}<1\]
+\end{theproof}
+
+\begin{example}
+  \[\floor{\frac{3}{2}}=1\]
+  \[\fpart{\frac{3}{2}}=\frac{3}{2}-1=\frac{1}{2}\]
+
+  \[\floor{-\frac{3}{2}}=-2\]
+  \[\fpart{-\frac{3}{2}}=-\frac{3}{2}-(-2)=\frac{1}{2}\]
+\end{example}
+
+A real number is always within $\frac{1}{2}$ of some integer. The following
+theorem provides a more general approximation for real numbers:
+
+\begin{theorem}[Dirichlet Approximation]
+  Let $\a\in\R$ and $n\in\Z^+$:
+  \[\exists\,a,b\in\Z,\abs{a\a-b}<\frac{1}{n}\]
+  Given an $\a$ and $n$, some multiple of $\a$ is within $\frac{1}{n}$ of
+  some other integer.
+\end{theorem}
+
+\begin{theproof}
+  Let $S=\left\{\fpart{k\a}\mid0\le k\le n\right\}$ \\
+  $S$ contains the fractional parts of $n+1$ multiples of $\a$ \\
+  $0\le\fpart{k\a}<1$ \\
+  Let $T=\left\{\left[\frac{k}{n},\frac{k+1}{n}\right)\mid0\le k<n\right\}$ \\
+  $T$ is a partition of $[0,1)$ into $n$ mutually disjoint intervals of length
+      $\frac{1}{n}$ \\
+  By the pigeonhole principle, at least one of the intervals in $T$ must
+  contain at least two of the fractional parts in $S$ \\
+  $\abs{\fpart{k\a}-\fpart{j\a}}<\frac{1}{n},0\le j<k\le n$ \\
+  $\abs{\left(k\a-\floor{k\a}\right)-\left(j\a-\floor{j\a}\right)}<
+      \frac{1}{n}$ \\
+  $\abs{(k-j)\a-\left(\floor{k\a}-\floor{j\a}\right)}<\frac{1}{n}$ \\
+  Let $a=(k-j)$ and $b=\left(\floor{k\a}-\floor{j\a}\right)$ \\
+  $\abs{a\a-b}<\frac{1}{n}$ \\
+  $1\le a\le n$
+\end{theproof}
+
+\begin{example}
+  $\a=\sqrt[3]{3}\approx1.44225$ \\
+  $n=10$ \\
+  $\frac{1}{n}=\frac{1}{10}=0.1$
+
+  \bigskip
+
+  \begin{tabular}{c|c|c|cc}
+    $a$ & $a\a$ & $b$ & $\abs{a\a-b}$ \\
+    \hline
+    1 & 1.44225 & 1 & 0.44225 \\
+    2 & 2.88450 & 3 & 0.11550 \\
+    3 & 4.32675 & 4 & 0.32675 \\
+    4 & 5.76900 & 6 & 0.23100 \\
+    5 & 7.21225 & 7 & 0.21225 \\
+    6 & 8.65350 & 9 & 0.34650 \\
+    7 & 10.0957 & 10 & 0.09575 & \c \\
+    8 & 11.5380 & 12 & 0.46200 \\
+    9 & 12.9802 & 13 & 0.01975 & \c \\
+    10 & 14.4225 & 14 & 0.42250 \\
+  \end{tabular}
+\end{example}
+\newpage
+\begin{corollary}
+  Given $\a\in\R-\Q$, a rational approximation $\frac{p}{q}$ can be found
+  within $\frac{1}{q^2}$ of $\a$.
+\end{corollary}
+
+\begin{theproof}
+  $\exists\,p,q\in\Z,\abs{q\a-p}<\frac{1}{n}$ with $1\le q\le n$ \\
+  $\abs{\a-\frac{p}{q}}\le\frac{1}{nq}\le\frac{1}{q^2}$
+\end{theproof}
+
+\begin{example}
+  $\a=\sqrt{2}\approx1.41421$
+
+  \bigskip
+
+  \begin{tabular}{c|c|c|c|ccc}
+    $q$ & $\frac{1}{q}$ & $\frac{1}{q^2}$ & $p$ & $\abs{\a-\frac{p}{q}}$ \\
+    \hline
+    1 & 1 & 1 & 1 & 0.414214 & \c & \c \\
+    &   &   & 2 & 0.585786 & \c & \c \\
+    \hline
+    2 & 0.5000 & 0.2500 & 3 & 0.085786 & \c & \c \\
+    \hline
+    3 & 0.3333 & 0.1111 & 4 & 0.080880 & \c & \c \\
+    & & & 5 & 0.252453 & \c \\
+    \hline
+    4 & 0.2500 & 0.0625 & 5 & 0.164214 & \c \\
+    \hline
+    5 & 0.2000 & 0.0400 & 6 & 0.214214 \\
+    & & & 7 & 0.014214 & \c & \c \\
+    & & & 8 & 0.185786 & \c \\
+  \end{tabular}
+\end{example}
+
+\end{document}

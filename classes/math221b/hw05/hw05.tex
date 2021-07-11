@@ -1,0 +1,153 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\ide}{\trianglelefteq}
+\newcommand{\w}{\omega}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221b \\
+Homework \#5
+
+\bigskip
+
+\begin{enumerate}
+\item Show that every non-zero prime ideal in a PID $R$ is maximal.
+
+  Assume $R$ is a PID and $a\in R$ such that $a\ne0$ and $(a)$ is prime. \\
+  Since $(a)$ is prime, by definition it must be a proper ideal. \\
+  ABC: $(a)$ is not maximal. \\
+  Since a PID is an integral domain, there exists $b\in R$ such that $(a)$ is a
+  proper subset of $(b)$ and $(b)$ is maximal in $R$. \\
+  To contain is to divide, so $b\mid a$. \\
+  So $\exists\,c\in R$ such that $a=cb\in(a)$. \\
+  But $(a)$ is prime, so $b\in(a)$ or $c\in(a)$.
+  \begin{description}
+  \item Case 1: $b\in(a)$
+
+    Let $b=as$ for some $s\in R$ \\
+    Assume $d\in(b)$ \\
+    Let $d=br$ for some $r\in R$. \\
+    Note that by closure, $sr\in R$, and so: \\
+    $d=(as)r=a(sr)\in(a)$ \\
+    Thus $(b)\subseteq(a)$ \\
+    Contradiction.
+
+  \item Case 2: $c\in(a)$
+
+    Then $\exists\,d\in R$ such that $c=ad$. \\
+    So $a=(ad)b=a(db)$ and so $db=1$. \\
+    Thus $b$ is a unit and $(b)=R$. \\
+    Contradiction.
+  \end{description}
+  Therefore $(a)$ is maximal.
+
+  A shorter proof might be:
+
+  Assume $R$ is a PID and $a\in R$ such that $a\ne0$ and $(a)$ is prime. \\
+  Since $(a)$ is prime, by definition it must be a proper ideal. \\
+  Since $R$ is a PID, prime and irreducible are the same thing. \\
+  So $a$ is prime and irreducible and thus has no non-trivial factorization. \\
+  To divide is to contain, so since $a$ has no non-trivial divisors there is
+  no containing proper ideal other than $R$. \\
+  Therefore $(a)$ is maximal.
+\newpage  
+\item Let $R$ be a ring and $I_1\subseteq I_2\subseteq I_3\subseteq\ldots$ be
+  a chain of ideals in $R$. Prove:
+  \[I=\bigcup_{k=1}^{\infty}I_k\ide R\]
+
+  Clearly, $I$ is a non-empty subset of $R$
+
+  Assume $a,b\in I$ \\
+  $\exists\,i,j\in\Z^+$ such that $a\in I_i$ and $b\in I_j$ \\
+  AWLOG: $I_i\subseteq I_j$ \\
+  So also $a\in I_j$ \\
+  $I_j$ is a group so $(-b)\in I_j$ and by closure $a-b\in I_j$ \\
+  But $I_j\subseteq I$, so $a-b\in I$
+
+  Therefore, by the subgroup test, $I$ is a subgroup of $R$. Furthermore,
+  since $R$ is an additive abelian group, so is $I$.
+
+  Since $a\in I_i$ and $I_i\subseteq I$ we have $a\in I$ as well \\
+  Assume $r\in R$ \\
+  $I_i$ is an ideal, and so $ar\in I_i$ and thus $ar\in I$ \\
+  Likewise, $ra\in I$
+
+  Therefore, $I\ide R$.
+\newpage
+\item Show that an integral domain $R$ is Noetherian iff every ideal is
+  finitely-generated.
+  \begin{description}
+  \item $\implies$ Assume $R$ is Noetherian:
+
+    Assume $I\ide R$. \\
+    Assume $a_1\in I$. \\
+    If $(a_1)=I$ then $I$ is finitely-generated, so done. \\
+    Otherwise, choose $a_2\in I\setminus(a_1)$. \\
+    If $(a_1,a_2)=I$ then $I$ is finitely-generated, so done. \\
+    Continue in this fashion as long as the generated ideal does not equal $I$,
+    which creates the chain:
+    \[(a_1)\subset(a_1,a_2)\subset(a_1,a_2,a_3)\subset\cdots\]
+    But $R$ is Noetherian, so there exists $k\in\Z^+$ such that the chain
+    stabilizes after $k$ steps. At that point, $(a_1,\ldots,a_k)=I$,
+    otherwise, another step could be performed.
+
+    Therefore, $I$ is finitely-generated with $k$ generators.
+
+  \item $\impliedby$ Assume every ideal in $R$ is finitely-generated:
+
+    Assume $\mathcal{C}$ is an ascending chain of ideals in $R$:
+    \[I_1\subseteq I_2\subseteq I_3\subseteq\cdots\]
+    By the result of problem (2):
+    \[I=\bigcup_{k=1}^{\infty}I_k\ide R\]
+    Furthermore, by assumption, $I$ is finitely-generated, so let
+    $I=(a_1,a_2,\ldots,a_n)$. \\
+    For each $a_i$ in the generating set, pick a ideal in the chain where it
+    occurs and identify that ideal by $I_{k_i}$. \\
+    Let $k=\max\{k_i\}$ \\
+    So by the $I_k$ ideal, all generators have been included and the chain must
+    thus stabilize.
+
+    Therefore $R$ is Noetherian.
+  \end{description}
+\newpage
+\item Show that $\Z[\w]=R_{-3}$ (the ring of Eisenstein integers) is a
+  Euclidean domain with Euclidean function:
+  \[N(a+b\w)=a^2-ab+b^2\]
+
+  Let $a,b\in\Z[\w]$. By the division algorithm and working in $\Q[\w]$ (the
+  field of fractions), we have:
+  \[\frac{a}{b}=q+\frac{r}{b}\]
+  \[\frac{a}{b}-q=\frac{r}{b}\]
+  We want $q$ to be close to $\frac{a}{b}$ such that:
+  \[N(\frac{a}{b}-q)=N(\frac{r}{b})<1\]
+  so that we get the desired condition for $N(r)<N(b)$. So, let
+  $\frac{a}{b}=n_1+n_2\w$ and $q=q_1+q_2\w$ and try the condition:
+  \[\abs{n_1-q_1}\le\frac{1}{2}\ \mbox{and}\ \abs{n_2-q_2}\le\frac{1}{2}\]
+  Now, calculate the resulting norm:
+  \begin{eqnarray*}
+    N(\frac{a}{b}-q) &=& N((n_1+n_2\w)-(q_1+q_2\w)) \\
+    &=& N((n_1-q_1)+(n_2-q_2)\w) \\
+    &=& (n_1-q_1)^2+(n_2-q_2)^2-(n_1-q_1)(n_2-q_2) \\
+    &\le& \left(\frac{1}{2}\right)^2+\left(\frac{1}{2}\right)^2-
+    \left(\frac{1}{2}\right)\left(-\frac{1}{2}\right) \\
+    &=& \frac{1}{4}+\frac{1}{4}+\frac{1}{4} \\
+    &=& \frac{3}{4} \\
+    &<& 1
+  \end{eqnarray*}
+  Thus resulting in the desired condition.
+
+  Therefore, $\Z[\w]$ is a Euclidean domain under the norm function.
+\newpage
+\item Let $R$ be a Euclidean domain with a nice Euclidean function
+  $d:R^*\to\N_0$. Show that if $a\mid b$ and $d(a)=d(b)$ for some $a,b\in R$
+  then $a$ and $b$ are associates.
+
+  Since $a$ divides $b$, let $\frac{a}{b}=q\in R$. Now, since $d$ is
+  multiplicative:
+  \[d\left(\frac{a}{b}\right)=\frac{d(a)}{d(b)}=1\]
+  So $d(q)=1$ and thus $q$ is a unit in $R$. So:
+  \[a=qb\ \mbox{and}\ b=q^{-1}a\]
+  Therefore $a$ and $b$ are associates.
+\end{enumerate}
+
+\end{document}

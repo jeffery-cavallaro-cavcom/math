@@ -1,0 +1,126 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\allowdisplaybreaks
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Conjugates}
+\begin{definition}
+Let $z=x+iy\in\C$. The conjugate of $z$, denoted $\conj{z}$, is given by:
+\[\conj{z}=x-iy\]
+\end{definition}
+
+\begin{figure}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw [<->] (-1,0) -- (3,0);
+\draw [<->] (0,-2) -- (0,2);
+\draw [dashed] (0,0) -- (2,1);
+\draw [dashed] (0,0) -- (2,-1);
+\draw [dashed] (2,1) -- (2,-1);
+\draw [fill=black] (2,1) circle [radius=0.1];
+\draw [fill=black] (2,-1) circle [radius=0.1];
+\node [above right] at (2,1) {$z=(x,y)$};
+\node [below right] at (2,-1) {$\conj{z}=(x,-y)$};
+\end{tikzpicture}
+\end{figure}
+
+\begin{properties}
+\listbreak
+\begin{enumerate}
+\item{$\conj{\conj{z}}=z$}
+\item{$\Conj{z_1\pm z_2}=\conj{z}_1\pm\conj{z}_2$}
+\item{$\Conj{z_1z_2}=\conj{z}_1\conj{z}_2$}
+\item{$\Conj{\left(\frac{1}{z}\right)}=\frac{1}{\conj{z}}$}
+\item{$\Conj{\left(\frac{z_1}{z_2}\right)}=\frac{\conj{z}_1}{\conj{z}_2}$}
+\end{enumerate}
+\end{properties}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item
+\begin{eqnarray*}
+\conj{\conj{z}} &=& \Conj{\Conj{x+iy}} \\
+    &=& \Conj{x-iy} \\
+    &=& x+iy \\
+    &=& z \\
+\end{eqnarray*}
+
+\item
+\begin{eqnarray*}
+\Conj{z_1\pm z_2} &=& \Conj{(x_1+iy_1)\pm(x_2+iy_2)} \\
+    &=& \Conj{(x_1\pm x_2)+i(y_1\pm y_2)} \\
+    &=& (x_1\pm x_2)-i(y_1\pm y_2) \\
+    &=& (x_1-iy_1)\pm(x_2-iy_2) \\
+    &=& \conj{z}_1\pm\conj{z}_2 \\
+\end{eqnarray*}
+
+\item
+\begin{eqnarray*}
+\Conj{z_1z_2} &=& \Conj{(x_1+iy_2)(x_2+iy_2)} \\
+    &=& \Conj{(x_1x_2-y_1y_2)+i(x_1y_2+x_2y_1)} \\
+    &=& (x_1x_2-y_1y_2)-i(x_1y_2+x_2y_1) \\
+    &=& x_1(x_2-iy_2)-y_1(y_2+ix_2) \\
+    &=& x_1(x_2-iy_2)-iy_1(x_2-iy_2) \\
+    &=& (x_1-iy_1)(x_2-iy_2) \\
+    &=& \conj{z}_1\conj{z}_2 \\
+\end{eqnarray*}
+
+\item
+\begin{eqnarray*}
+\Conj{\left(\frac{1}{z}\right)} &=& \Conj{\left(\frac{x-iy}{x^2+y^2}\right)} \\
+    &=& \frac{x+iy}{x^2+y^2} \\
+    &=& \frac{x-i(-y)}{x^2+(-y)^2} \\
+    &=& \frac{1}{x-iy} \\
+    &=& \frac{1}{\conj{z}} \\
+\end{eqnarray*}
+
+\item
+\begin{eqnarray*}
+\Conj{\left(\frac{z_1}{z_2}\right)} &=& \Conj{z_1\cdot\frac{1}{z_2}} \\
+    &=& \conj{z}_1\Conj{\left(\frac{1}{z_2}\right)} \\
+    &=& \conj{z}_1\left(\frac{1}{\conj{z}_2}\right) \\
+    &=& \frac{\conj{z}_1}{\conj{z}_2} \\
+\end{eqnarray*}
+\end{enumerate}
+\end{theproof}
+
+\newpage
+
+\begin{theorem}
+Let $z=x+iy\in\C$:
+\begin{itemize}
+\item{$Re(z)=\frac{z+\conj{z}}{2}$}
+\item{$Im(z)=\frac{z-\conj{z}}{2}$}
+\end{itemize}
+\end{theorem}
+
+\begin{theproof}
+$z+\conj{z}=(x+iy)+(x-iy)=2x=2Re(z)$ \\
+$\therefore Re(z)=\frac{z+\conj{z}}{2}$
+
+$z-\conj{z}=(x+iy)-(x-iy)=2iy=2iIm(z)$ \\
+$\therefore Im(z)=\frac{z-\conj{z}}{2i}$
+\end{theproof}
+
+\begin{example}
+Let $Z=\frac{1}{z+i}$.
+\begin{eqnarray*}
+Im(Z) &=& \frac{z-\conj{z}}{2i} \\
+    &=& \frac{1}{2i}\left[\frac{1}{z+i}-
+        \Conj{\left(\frac{1}{z+i}\right)}\right] \\
+    &=& \frac{1}{2i}\left(\frac{1}{z+i}-\frac{1}{\Conj{z+i}}\right) \\
+    &=& \frac{1}{2i}\left(\frac{1}{z+i}-\frac{1}{\conj{z}-i}\right) \\
+    &=& \frac{1}{2i}\left[\frac{(\conj{z}-i)-(z+i)}
+        {(z+i)\Conj{(z+i)})}\right] \\
+    &=& \frac{1}{2i}\left(\frac{\conj{z}-z-2i}{\abs{z+i}^2}\right) \\
+    &=& -\frac{\frac{z-\conj{z}}{2i}+1}{\abs{z+i}^2} \\
+    &=& -\frac{y+1}{\abs{(x+iy)+i}} \\
+    &=& -\frac{y+1}{\abs{x+i(y+1)}} \\
+    &=& -\frac{y+1}{x^2+(y+1)^2} \\
+\end{eqnarray*}
+\end{example}
+\end{document}

@@ -1,0 +1,82 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Inverses}
+
+\begin{definition}[Inverses]
+  Let $A\in M_n$. To say that $B\in M_n$ is an \emph{inverse} of $A$ means:
+  \[AB=BA=I_n\]
+  $B$ is often denoted by $A^{-1}$.
+\end{definition}
+
+\begin{properties}
+  Let $A\in M_n$:
+  \begin{enumerate}
+  \item $A^{-1}$ is unique (if it exists).
+  \item $(A^{-1})^{-1}=A$
+  \item $(A^T)^{-1}=(A^{-1})^T$
+  \item $(\bar{A})^{-1}=\overline{A^{-1}}$
+  \item $(A^*)^{-1}=(A^{-1})^*$
+  \item $(AB)^{-1}=B^{-1}A^{-1}$
+  \end{enumerate}
+\end{properties}
+
+\begin{theorem}[Sherman-Morrison-Woodbury]
+  Let $A\in M_n$, $X\in M_{n,h}$, $R\in M_{h,k}$, and $Y\in M_{k,n}$:
+  \[(A+XRY)^{-1}=A^{-1}-A^{-1}X(R^{-1}+YA^{-1}X)^{-1}YA^{-1}\]
+\end{theorem}
+
+Special Cases:
+\begin{enumerate}
+\item $R=\begin{bmatrix} 1 \end{bmatrix}$, $X\in M_{n,1}$ (a row matrix), and
+  $Y\in M_{1,n}$ (a column matrix):
+  \[(A+xy^T)^{-1}=A^{-1}-A^{-1}x(1+y^TA^{-1}x)y^TA^{-1}\]
+
+\item Same conditions, but $A=I$:
+  \[(I+xy^T)^{-1}=I-x(1+y^Tx)y^T=I-\frac{xy^T}{1+y^Tx}\]
+
+\item $A=I_n$, $R=I_m$, and $X,Y\in M_{n,m}$ where $n>>m$:
+  \[(I+XY^T)^{-1}=I-X(1+y^Tx)^{-1}y^T\]
+  This formula results in the inversion of a much smaller $m\times m$ matrix.
+\end{enumerate}
+
+\begin{example}
+  \listbreak
+  \begin{eqnarray*}
+    \begin{bmatrix}
+      2 & 1 & 1 & 1 \\
+      1 & 2 & 1 & 1 \\
+      1 & 1 & 2 & 1 \\
+      1 & 1 & 1 & 2 \\
+    \end{bmatrix}^{-1} &=& \left(I_4+\begin{bmatrix}
+    1 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 1
+    \end{bmatrix}\right)^{-1} \\
+    &=& \left(I_4+\begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix}
+    \begin{bmatrix} 1 & 1 & 1 & 1 \end{bmatrix}\right)^{-1} \\
+    &=& I_4-\frac{1}{1+4}
+    \begin{bmatrix}
+      1 & 1 & 1 & 1 \\
+      1 & 1 & 1 & 1 \\
+      1 & 1 & 1 & 1 \\
+      1 & 1 & 1 & 1
+    \end{bmatrix} \\
+    &=& \frac{1}{5}\left(5I_4-\begin{bmatrix}
+      1 & 1 & 1 & 1 \\
+      1 & 1 & 1 & 1 \\
+      1 & 1 & 1 & 1 \\
+      1 & 1 & 1 & 1
+    \end{bmatrix}\right) \\
+    &=& \frac{1}{5}\begin{bmatrix}
+      4 & -1 & -1 & -1 \\
+      -1 & 4 & -1 & -1 \\
+      -1 & -1 & 4 & -1 \\
+      -1 & -1 & -1 & 4
+    \end{bmatrix}
+  \end{eqnarray*}
+\end{example}
+
+\end{document}

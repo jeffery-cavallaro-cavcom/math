@@ -1,0 +1,319 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\newcommand{\ec}[1]{\overline{#1}}
+\newcommand{\bas}[2]{\left<#1,#2\right>}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221a \\
+Homework \#1
+
+\bigskip
+
+\subsection*{1.1.6}
+
+Construct the addition table for $\Z_2\bigoplus\Z_2$.
+
+\bigskip
+
+$\Z_2=\{0,1\}$
+
+\bigskip
+
+\begin{tabular}{c|cccc}
+  $\bigoplus$ & $(0,0)$ & $(0,1)$ & $(1,0)$ & $(1,1)$ \\
+  \hline
+  $(0,0)$ & $(0,0)$ & $(0,1)$ & $(1,0)$ & $(1,1)$ \\
+  $(0,1)$ & $(0,1)$ & $(0,0)$ & $(1,1)$ & $(1,0)$ \\
+  $(1,0)$ & $(1,0)$ & $(1,1)$ & $(0,0)$ & $(0,1)$ \\
+  $(1,1)$ & $(1,1)$ & $(1,0)$ & $(0,1)$ & $(0,0)$ \\
+\end{tabular}
+$\implies$
+\begin{tabular}{c|cccc}
+  $*$ & e & a & b & c \\
+  \hline
+  e & e & a & b & c \\
+  a & a & e & c & b \\
+  b & b & c & e & a \\
+  c & c & b & a & e \\
+\end{tabular}
+$\implies K_4$
+
+\subsection*{1.1.8}
+Let $\sim$ be a relation on $\bas{\Q}{+}$ defined by: $a\sim b\iff a-b\in\Z$
+
+\begin{enumerate}[label=\alph*)]
+\item\label{pa} Prove: $\sim$ is a congruence relation.
+
+  First, prove that $\sim$ is an equivalence relation.
+  \begin{description}
+  \item{R:} Assume $a\in\Q$
+
+    $a-a=0\in\Z$ \\
+    $\therefore a\sim a$
+    
+  \item{S:} Assume $a\sim b$
+
+    $a-b\in\Z$ \\
+    $-(a-b)\in\Z$ \\
+    $b-a\in\Z$ \\
+    $\therefore b\sim a$
+    
+  \item{T:} Assume $a\sim b$ and $b\sim c$
+
+    $a-b\in\Z$ and $b-c\in\Z$ \\
+    $(a-b)+(b-c)\in\Z$ \\
+    $a-c\in\Z$ \\
+    $\therefore a\sim c$
+  \end{description}
+
+  $\therefore\ \sim$ is an equivalence relation.
+
+  Now show that $\sim$ is a congruence relation.
+
+  Assume $a_1,a_2,b_1,b_2\in\Q$ \\
+  Assume $a_1\sim a_2$ and $b_1\sim b_2$ \\
+  $a_1-a_2\in\Z$ and $b_1-b_2\in\Z$ \\
+  $(a_1+b_1)-(a_2+b_2)=(a_1-a_2)+(b_1-b_2)\in\Z$ \\
+  $a_1+b_1\sim a_2+b_2$ \\
+  $\therefore\ \sim$ is a congruence relation.
+
+\item Prove: $\Q/\Z$ is an infinite abelian group.
+
+  $\bas{\Q}{+}$ is an abelian group (and thus a monoid) \\
+  From part (\ref{pa}, $\sim$ is a congruence relation on $\bas{\Q}{+}$ \\
+  $\therefore$ by Theorem $1.5$, $G/Z$ is an abelian group under the binary
+  operation $\ec{a}+\ec{b}=\ec{a+b}$.
+
+  To show that $G/Z$ is infinite, start by noting that if $a\sim b$ and
+  $a\ne b$ then $\abs{a-b}\in\Z^+$. Thus, given $a\in\Q$, the closest related
+  values are $a+1$ and $a-1$.
+
+  Assume $a_0\in\Q$ and consider the interval $(a_0,a_0+1)$. \\
+  $a_0$ is related to nothing else in this interval.
+    
+  Claim: $\forall\,n\in\N$ there exists a unique equivalence class
+  representative in $(a_0,a_0+1)$.
+
+  Proof by induction on $n$ (the number of steps)
+
+  \begin{description}
+  \item Base: $n=1$
+
+    By the density of $\Q$ there exists $a_1$ not yet selected in
+    $(a_0,a_0+1)$. \\
+    $\abs{a_0-a_1}<1$, so $a_0\nsim a_1$ and thus $\ec{a_0}\ne\ec{a_1}$.
+
+    Assume that $n$ unique representatives have been selected in $(a_0,a_0+1)$
+    by selecting $a_k\in(a_0,a_{k-1})$.
+
+    Consider the $(n+1)$ step. \\
+    By the density of $\Q$ there exists $a_{n+1}\in(a_0,a_n)$ not yet
+    selected. \\
+    $\abs{a_{n+1}-a_k}<1,1\le k\le n$ \\
+    So $a_{n+1}\nsim a_k$ and thus $\ec{a_{n+1}}\ne\ec{a_k}$.
+  \end{description}
+
+  Let $A$ be the set of unique equivalence class representatives selected in
+  this fashion. Since $A$ has a one-to-one correspondence with $\N$, $A$ is an
+  infinite set. But since $A\subseteq\Q/\Z$, $\Q/\Z$ is also infinite.
+\end{enumerate}
+
+\subsection*{1.1.9}
+
+Let $p$ be a prime number.
+
+\begin{enumerate}[label=\alph*)]
+\item Let $R_p=\left\{\frac{a}{b}\in\Q\mid(p,b)=1\right\}$.
+  Prove $\bas{R_p}{+}$ is an abelian group.
+
+  $R_p\subset\Q$
+
+  Assume $r=\frac{a}{b}\in R_p$ \\
+  $\frac{a}{b}$ may not be in lowest form, so there is a possible issue with
+  $R_p$ being well-formed. \\
+  Let $\frac{a}{b}=\frac{a'}{b'}$, where $\frac{a'}{b'}$ is in lowest form. \\
+  Let $d=(a,b)$ \\
+  $b'=\frac{b}{d}$ \\
+  $b=b'd$ \\
+  $b'\mid b$, so $(b,b')=b'$ \\
+  $(p,b)=1$ \\
+  $(p,b,b')=((p,b),b')=(1,b')=1$ \\
+  $(p,b,b')=(p,(b,b'))=(p,b')$ \\
+  $(p,b')=1$ \\
+  $\therefore \frac{a'}{b'}\in R_p$ and $R_p$ is well-defined.
+
+  Assume $r,s\in R_p$ \\
+  $\exists\,a_1,b_1\in\Z,r=\frac{a_1}{b_1},b_1\ne0,(p,b_1)=1$ \\
+  $\exists\,a_2,b_2\in\Z,s=\frac{a_2}{b_2},b_2\ne0,(p,b_2)=1$ \\
+  $r+s=\frac{a_1b_2+a_2b_1}{b_1b_2}\in\Q$ \\
+  $a_1b_2+a_2b_1\in\Z$ \\
+  $b_1\ne0$ and $b_2\ne0$ so $b_1b_2\ne0$ \\
+  $p\nmid b_1$ and $p\nmid b_2$ so $p\nmid b_1b_2$ \\
+  But $p$ is prime and thus has no divisors other than $p$ and $1$, so
+  $(p,b_1b_2)=1$ \\
+  $\therefore r+s\in R_p$ and $\bas{R_p}{+}$ is closed.
+
+  $\bas{\Q}{+}$ is associative, so $\bas{R_p}{+}$ is associative.
+
+  $(p,1)=1$, so $\frac{0}{1}\in R_p$ \\
+  Assume $r=\frac{a}{b}\in R_p$ \\
+  $\frac{0}{1}+r=\frac{0}{1}+\frac{a}{b}=\frac{0b+1a}{1b}=\frac{a}{b}=r$ \\
+  $r+\frac{0}{1}=\frac{a}{b}+\frac{0}{1}=\frac{1a+0b}{1b}=\frac{a}{b}=r$ \\
+  $\therefore \frac{0}{1}$ is a two-sided identity for $R_p$.
+
+  Assume $r=\frac{a}{b}\in R_p$ \\
+  $-r=-\frac{a}{b}=\frac{(-a)}{b}\in R_p$ \\
+  $-r+r=-\frac{a}{b}+\frac{a}{b}=0=\frac{0}{1}$ \\
+  $r+(-r)=\frac{a}{b}-\frac{a}{b}=0=\frac{0}{1}$ \\
+  $\therefore -r$ is a two-sided inverse for $r$.
+
+  $\bas{\Q}{+}$ is commutative, so $\bas{R_p}{+}$ is commutative.
+
+  $\therefore \bas{R_p}{+}$ is an abelian group.
+
+\item Let $R^p=\left\{\frac{a}{b}\in\Q\mid b=p^n,n\ge0\right\}$
+  Prove $\bas{R^p}{+}$ is an abelian group.
+
+  $R^p\subset\Q$
+
+  Once again, there are well-formed worries. \\
+  Assume $r=\frac{a}{b}\in R^p$. \\
+  If $\frac{a}{b}$ is not in lowest form then $\exists\,\frac{a'}{b'}\in R^p$
+  in lowest form such that $\frac{a}{b}=\frac{a'}{b'}$. \\
+  Assume $d=(a,b)$ \\
+  $a'=\frac{a}{d}$ and $b'=\frac{b}{d}$ \\
+  But all the factors of $b$ are non-negative powers of $p$, \\
+  so $d$ must also be a non-negative power of $p$. \\
+  Since $d\le b$, $b'$ must also be a non-negative power of $p$. \\
+  $\therefore R^p$ is well-defined.
+
+  Assume $r,s\in R_p$ \\
+  $\exists\,a_1,b_1\in\Z,r=\frac{a_1}{b_1},b_1=p^{k_1},k_1\in\Z^+\cup\{0\}$
+  $\exists\,a_2,b_2\in\Z,s=\frac{a_2}{b_2},b_2=p^{k_2},k_2\in\Z^+\cup\{0\}$
+  $r+s=\frac{a_1b_2+a_2b_1}{b_1b_2}\in\Q$ \\
+  $a_1b_2+a_2b_1\in\Z$ \\
+  $b_1\ne0$ and $b_2\ne0$ so $b_1b_2\ne0$ \\
+  $b_1b_2=p^{k_1}p^{k_2}=p^{k_1+k_2}$ \\
+  But $k_1+k_2\in\Z^+\cup\{0\}$ \\
+  $\therefore r+s\in R^p$ and $\bas{R^p}{+}$ is closed.
+
+  $\bas{\Q}{+}$ is associative, so $\bas{R^p}{+}$ is associative.
+
+  $p^0=1$, so $\frac{0}{1}\in R^p$ \\
+  Assume $r=\frac{a}{b}\in R_p$ \\
+  $\frac{0}{1}+r=\frac{0}{1}+\frac{a}{b}=\frac{0b+1a}{1b}=\frac{a}{b}=r$ \\
+  $r+\frac{0}{1}=\frac{a}{b}+\frac{0}{1}=\frac{1a+0b}{1b}=\frac{a}{b}=r$ \\
+  $\therefore \frac{0}{1}$ is a two-sided identity for $R_p$.
+
+  Assume $r=\frac{a}{b}\in R_p$ \\
+  $-r=-\frac{a}{b}=\frac{(-a)}{b}\in R_p$ \\
+  $-r+r=-\frac{a}{b}+\frac{a}{b}=0=\frac{0}{1}$ \\
+  $r+(-r)=\frac{a}{b}-\frac{a}{b}=0=\frac{0}{1}$ \\
+  $\therefore -r$ is a two-sided inverse for $r$.
+
+  $\bas{\Q}{+}$ is commutative, so $\bas{R^p}{+}$ is commutative.
+
+  $\therefore \bas{R^p}{+}$ is an abelian group.
+\end{enumerate} 
+
+\subsection*{1.1.12}
+
+Let $G$ be a group such that $\forall\,a,b\in G,\exists\,r\in\Z^+,bab^{-1}=a^r$.
+
+Prove: $\forall\,a,b\in G,\forall\,n\in\Z^+,b^nab^{-n}=a^{r^n}$
+
+Proof by induction on $n$
+
+\begin{description}
+\item {Base: $n=1$}
+
+  $b^1ab^{-1}=bab^{-1}=a^r=a^{r^1}$
+
+\item Assume $\forall\,a,b\in G,\forall\,n\in\Z^+,b^nab^{-n}=a^{r^n}$
+
+\item Consider $(n+1)$
+  \begin{eqnarray*}
+    b^{n+1}ab^{-(n+1)} &=& b(b^nab^{-n})b^{-1} \\
+    &=& b(a^{r^n})b^{-1} \\
+    &=& b(b^{-1}ba)^{r^n}b^{-1} \\
+    &=& (bb^{-1})(bab^{-1})^{r^n} \\
+    &=& e(a^r)^{r^n} \\
+    &=& (a^r)^{r^n} \\
+    &=& a^{rr^n} \\
+    &=& a^{r^{(n+1)}} \\
+  \end{eqnarray*}
+\end{description}
+
+\subsection*{1.1.13}
+
+Let $G$ be a group. Prove: $\left(\forall\,a\in G,a^2=e\right)\implies G$
+is abelian.
+
+Assume $\forall\,a\in G,a^2=e$ \\
+Assume $a,b\in G$ \\
+$ab\in G$ \\
+$(ab)^2=e$ \\
+$(ab)(ab)=e$ \\
+$a(ab)(ab)b=aeb$ \\
+$(aa)(ba)(bb)=ab$ \\
+$ebae=ab$ \\
+$ba=ab$ \\
+$\therefore G$ is abelian.
+
+\subsection*{1.1.15}
+
+Let $G$ be a semigroup such that the left and right cancellation rules hold.
+
+\begin{enumerate}[label=\alph*)]
+\item Prove: $G$ is finite$\implies G$ is a group.
+
+  Assume $G$ is finite \\
+  Let $\abs{G}=n$ \\
+  Assume $a\in G$ \\
+  By closure of the binary operation, $\forall\,m\in\Z^+,a^m\in G$ \\
+  Let $S=\{a^m\mid 1\le m\le n+1\}$ \\
+  $S\subseteq G$, but $\abs{S}=n+1>n=\abs{G}$ \\
+  Thus, $S$ must have duplicates \\
+  Assume $a^j=a^k,j<k$ \\
+  \begin{description}
+  \item Case 1: $j=1$
+
+    $a=a^k=a^{k-1+1}=a^{k-j+1}$
+
+  \item Case 2: $j>1$
+
+    $G$ is associative, and thus so is $S$ \\
+    $aa^{j-1}=a^{k-j+1}a^{j-1}$ \\
+    So, by right cancellation, $a=a^{k-j+1}$
+  \end{description}
+  Thus, combining the two cases, $a=a^{k-j+1}\in S$ and also in $G$ \\
+
+  $G$ is a semigroup and is thus associative.
+
+  Now, assume $b\in G$ \\
+  $ba=ba^{k-j+1}=ba^{k-j}a$ \\
+  By right cancellation, $b=ba^{k-j}$ \\
+  $ab=a^{k-j+1}b=aa^{k-j}b$ \\
+  By left cancellation, $b=a^{k-j}b$ \\
+  $\therefore a^{k-j}$ is a two-sided identity for $G$.
+
+  Remember that $a$ was selected as any arbitrary element in $G$ \\
+  Since $e\in G$, $e=a^0$ is defined \\
+  $a=a^{k-j+1}$ \\
+  $ea=a^{k-j-1}aa$ \\
+  By right cancellation, $e=a^{k-j-1}a$ \\
+  $ae=aaa^{k-j-1}$ \\
+  By left cancellation, $e=aa^{k-j-1}$ \\
+  $\therefore a^{k-j-1}$ is a two-sided inverse for $a$.
+
+  $\therefore G$ is a group.
+
+\item If G is infinite, then the implication does not hold. As a
+  counter-example, consider $\bas{Z^+}{+}$. It is a semigroup and the
+  cancellation rules hold; however, there is no identity or inverses and
+  thus it is not a group.
+\end{enumerate}
+
+\end{document}

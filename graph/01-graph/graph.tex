@@ -1,0 +1,109 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\begin{document}
+
+\section*{Graphs}
+
+\begin{definition}[Graph]
+  A \emph{graph} is a mathematical object represented by a tuple \(G=G(V,E,\ldots)\) consisting of a set of
+  \emph{vertices} (also called \emph{nodes}) \(V=V(G)\), a set of \emph{edges} \(E=E(G)\), and zero of more
+  relations.
+
+  Each edge in \(E(G)\) is associated with exactly two (not necessarily distinct) vertices in \(V(G)\) called the
+  \emph{endpoints} of the edge.  The nature of the edge/endpoint association is determined by the class of the
+  graph (\emph{undirected} vs \emph{directed} and \emph{multi} vs \emph{simple}), which is indicated by the type of
+  the elements in \(E(G)\).
+
+  Each relation has \(V(G)\) or \(E(G)\) as its domain and is used to establish additional graph structure or to
+  associate vertices or edges with problem-specific attributes (e.g. color, weight).
+\end{definition}
+
+\begin{example}
+  Graphs are often portrayed visually using filled or labeled circles for the vertices and lines for the edges such
+  that each edge line is drawn between its two endpoint vertex circles.
+  
+  \begin{minipage}[t]{3.25in}
+    \vspace{0in}
+    \begin{tikzpicture}[node distance=2]
+      \begin{scope}[every node/.style=labeled node]
+        \node (E) at (0,0) {\(e\)};
+        \node (A) [above left=of E] {\(a\)};
+        \node (B) [above right=of E] {\(b\)};
+        \node (C) [below right=of E] {\(c\)};
+        \node (D) [below left=of E] {\(d\)};
+      \end{scope}
+      \draw (A) edge node [auto] {\(e_1\)} (B);
+      \draw (B) edge node [auto] {\(e_2\)} (C);
+      \draw (C) edge node [auto] {\(e_3\)} (D);
+      \draw (D) edge [bend left] node [auto] {\(e_4\)} (A);
+      \draw (D) edge [bend right] node [auto,swap] {\(e_5\)} (A);
+      \draw (C) edge [out=345,in=285,min distance=2cm] node [auto] {\(e_6\)} (C);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}[t]{2.5in}
+    \vspace{0.25in}
+    \(V=V(G)=\set{a,b,c,d,e}\)
+
+    \(E=E(G)=\set{e_1,e_2,e_3,e_4,e_5,e_6}\)
+
+    \bigskip
+
+    \begin{tabular}{c|c}
+      edge & endpoints \\
+      \hline
+      \(e_1\) & \(a,b\) \\
+      \(e_2\) & \(b,c\) \\
+      \(e_3\) & \(c,d\) \\
+      \(e_4\) & \(d,a\) \\
+      \(e_5\) & \(d,a\) \\
+      \(e_6\) & \(c,c\)
+    \end{tabular}
+  \end{minipage}
+
+  Note that it is not required that all vertices act as endpoints to edges; in the above example, vertex \(e\) is
+  such a vertex.
+\end{example}
+
+\begin{definition}[Order]
+  Let \(G\) be a graph.  The \emph{order} of \(G\), typically denoted by \(n=n(G)\), is the number of vertices in
+  \(G\):
+  \[n=n(G)=\abs*{V(G)}\]
+\end{definition}
+
+\begin{definition}[Size]
+  Let \(G\) be a graph.  The \emph{size} of \(G\), typically denoted by \(m=m(G)\), is the number of edges in \(G\):
+  \[m=m(G)=\abs*{E(G)}\]
+\end{definition}
+
+In the above example, \(n=5\) and \(m=6\).
+
+\begin{definition}[Degenerate Cases]
+  \begin{itemize}[left=0in]
+  \item[]
+  \item The \emph{null} graph is the graph with no vertices \((n=m=0)\).
+  \item The \emph{trivial} graph is the graph with exactly one vertex and no edges \((n=1,m=0)\).  Otherwise, the
+    graph is \emph{non-trivial}.
+  \item An \emph{empty} graph is a graph with no edges \((m=0)\).
+  \end{itemize}
+  Hence, both the null graph and the trivial graph are empty.
+\end{definition}
+
+\begin{definition}[Labeled Graph]
+  To say that a graph \(G\) is \emph{labeled} means that its vertices are considered to be distinct and are
+  assigned identifying names (labels) by adding a bijective labeling function to the graph tuple:
+  \[\ell:V(G)\to L\]
+  where \(L\) is a set of labels (names).  Otherwise, the vertices are considered to be identical (only the
+  structure of the graph matters) and the graph is \emph{unlabeled}.
+\end{definition}
+
+Since the labeling function \(\ell\) is bijective, a vertex \(v\in V(G)\) with label ``a'' can be identified by
+\(v\) or \(\ell^{-1}(a)\).  In practice, the presence of a labeling function is assumed for a labeled graph and so
+a vertex is freely identified by its label.  This is important to note when a proof includes a phrase such as,
+``let \(v\in V(G)\ldots\)'' since \(v\) may be a reference to any vertex in \(V(G)\) or may call out a specific
+vertex by its label.  The intention is usually clear from the context.
+
+\end{document}
+
+\end{document}

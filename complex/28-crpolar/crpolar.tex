@@ -1,0 +1,95 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\newcommand{\D}{\Delta}
+\newcommand{\Dz}{\D z}
+\newcommand{\Dr}{\D r}
+\newcommand{\Do}{\D\o}
+\newcommand{\limDz}{\lim_{\Dz\to0}}
+\newcommand{\limDr}{\lim_{\Dr\to0}}
+\newcommand{\limDo}{\lim_{\Do\to0}}
+\begin{document}
+\section*{Polar Cauchy-Riemann Equations}
+
+\begin{theorem}
+  Let $f(z)=u(r,\o)+iv(r,\o)$ be differentiable on a domain $D$. The first
+  partial derivatives ($u_r,u_{\o},v_r,v_{\o}$) exist in $D$ and satisfy the
+  polar form of the Cauchy-Riemann equations:
+  \[ru_r=v_{\o}\ \mbox{and}\ u_{\o}=-rv_r\]
+  so that:
+  \[f'(z)=e^{-i\o}(u_r+iv_r)=\frac{1}{r}e^{-i\o}(v_{\o}-iu_{\o})\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $z=re^{i\o}\in D$
+
+  Let $\Dz=(\Dr)e^{-i\o}$:
+  \[f'(z)=\limDz{\frac{f(z+\Dz)-f(z)}{\Dz}}\]
+  \[=\limDr{\frac{[u(r+\Dr,\o)+iv(r+\Dr,\o)]-[u(r,\o)+iv(r,\o)]}
+    {(\Dr)e^{-i\o}}}\]
+  \[=e^{i\o}\limDr{\left[\frac{u(r+\Dr,\o)-u(r,\o)}{\Dr}+
+      i\frac{v(r+\Dr,\o)-v(r,\o)}{\Dr}\right]}\]
+  \[=e^{i\o}(u_r+iv_r)\]
+
+  Let $\Dz=r\D(e^{i\o})=r\left(\frac{d}{d\o}e^{i\o}\right)\Do=ire^{i\o}\Do$:
+  \[f'(z)=\limDo{\frac{[u(r,\o+\Do)+iv(r,\o+\Do)]-[u(r,\o)+iv(r,\o)]}
+    {ire^{i\o}\Do}}\]
+  \[=-i\frac{1}{r}e^{-i\o}\limDo{\left[\frac{u(r,\o+\Do)-u(r,\o)}{\Do}+
+      i\frac{v(r,\o+\Do)-v(r,\o)}{\Do}\right]}\]
+  \[=-i\frac{1}{r}e^{-i\o}(u_{\o}+iv_{\o})\]
+  \[=\frac{1}{r}e^{-i\o}(v_{\o}-iu_{\o})\]
+  Thus, in order for the limit to exist:
+  \[f'(z)=e^{i\o}(u_r+iv_r)=\frac{1}{r}e^{-i\o}(v_{\o}-iu_{\o})\]
+
+  $\therefore ru_r=v_{\o}$ and $u_{\o}=-rv_r$
+\end{theproof}
+
+\begin{corollary}
+  Let $f(z)=u(r,\o)+iv(r,\o)$ be differentiable on a domain $D$.
+  \[f'(z)=e^{-i\o}f_r=-i\frac{1}{r}e^{-i\o}f_{\o}\]
+\end{corollary}
+
+\begin{theproof}
+  The polar CR equations hold in $D$ \\
+  $f'(z)=e^{-i\o}(u_r+iv_r)=e^{-i\o}f_r$ \\
+  $f'(z)=\frac{1}{r}e^{-i\o}(v_{\o}-iu_{\o})=-i\frac{1}{r}e^{-i\o}(u_{\o}+iv_{\o})=
+  -i\frac{1}{r}e^{-i\o}f_{\o}$
+\end{theproof}
+
+\begin{theorem}
+  Let $f(z)=u(r,\o)+iv(r,\o)$ be defined in some domain $D$ with $r\ne0$:
+
+  $u_r,u_{\o},v_r,v_{\o}$ exist, are continuous, and satisfy CR in $D\implies f$
+  is differentiable in $D$
+\end{theorem}
+
+\begin{theproof}
+  Let $x=r\cos\o$ and $y=r\sin\o$ \\
+  $r=\sqrt{x^2+y^2}$ and $\o=\tan^{-1}\frac{y}{x}$
+  \[r_x=\frac{2x}{2\sqrt{x^2+y^2}}=\frac{x}{r}\]
+  \[r_y=\frac{2y}{2\sqrt{x^2+y^2}}=\frac{y}{r}\]
+  \[\o_x=\frac{1}{1+\frac{y^2}{x^2}}\left(-\frac{y}{x^2}\right)=
+  -\frac{y}{x^2+y^2}=-\frac{y}{r^2}\]
+  \[\o_y=\frac{1}{1+\frac{y^2}{x^2}}\left(\frac{1}{x}\right)=
+  \frac{1}{1+\frac{y^2}{x^2}}\left(\frac{x}{x^2}\right)=
+  \frac{x}{x^2+y^2}=\frac{x}{r^2}\]
+
+  \[u_x=u_rr_x+u_{\o}\o_x=u_r\frac{x}{r}-u_{\o}\frac{y}{r^2}\]
+  \[u_y=u_rr_y+u_{\o}\o_y=u_r\frac{y}{r}+u_{\o}\frac{x}{r^2}\]
+  \[v_x=v_rr_x+v_{\o}\o_x=v_r\frac{x}{r}-v_{\o}\frac{y}{r^2}\]
+  \[v_y=v_rr_y+v_{\o}\o_y=v_r\frac{y}{r}+v_{\o}\frac{x}{r^2}\]
+\newpage
+  But $ru_r=v_{\o}$ and $u_{\o}=-rv_r$
+
+  \[u_x=\left(\frac{1}{r}v_{\o}\right)\frac{x}{r}-(-rv_r)\frac{y}{r^2}=
+  v_r\frac{y}{r}+v_{\o}\frac{x}{r^2}=v_y\]
+  \[v_x=\left(-\frac{1}{r}u_{\o}\right)\frac{x}{r}-(ru_r)\frac{y}{r^2}=
+  -\left(u_r\frac{y}{r}+u_{\o}\frac{x}{r^2}\right)=-u_y\]
+
+  $u_x,u_y,v_x,v_y$ exist, are continuous, and the CR equation hold
+  
+  $\therefore f$ is differentiable in $D$ with $r\ne0$
+\end{theproof}
+
+\end{document}

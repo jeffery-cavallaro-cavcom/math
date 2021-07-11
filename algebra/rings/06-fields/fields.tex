@@ -1,0 +1,47 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Fields}
+
+\begin{definition}
+  To say that $R$ is a \emph{commutative ring} means:
+  \begin{enumerate}
+  \item $R$ is a ring
+  \item Multiplication in $R$ is commutative
+  \end{enumerate}
+\end{definition}
+
+Note that the binomial theorem holds for any commutative ring $R$:
+
+$\forall\,a,b\in R,\forall\,n\in\N$:
+\[(a+b)^n=\sum_{k=0}^n\binom{n}{k}\cdot a^{n-k}b^k\]
+
+\begin{definition}
+  To say that $R$ is a \emph{division ring (skew field)} means:
+  \begin{enumerate}
+  \item $R$ is a ring with unity $1\ne0$
+  \item $\left<R-\{0\},\cdot\right>$ is a group
+  \end{enumerate}
+  In other words, every non-zero element of $R$ is a unit.
+\end{definition}
+
+\begin{definition}
+  To say that $R$ is a \emph{field} means:
+  \begin{enumerate}
+  \item $R$ is a ring with unity $1\ne0$
+  \item $\left<R-\{0\},\cdot\right>$ is an abelian group
+  \end{enumerate}
+  In other words, $R$ is a commutative division ring (skew field).
+
+  If $R$ is a non-commutative division ring then it is called a
+  \emph{strictly skew field}.
+\end{definition}
+
+\begin{example}
+  $\Z$ is not a field, because $2\in\Z$ but $2$ has no multiplicative inverse.
+
+  $\Q$, $\R$, and $\C$ are fields.
+\end{example}
+
+\end{document}

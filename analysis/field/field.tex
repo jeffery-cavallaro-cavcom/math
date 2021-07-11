@@ -1,0 +1,319 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\begin{document}
+\section*{Fields}
+
+\begin{definition}
+To say that `*' is a binary operator on a set $S$ means $\forall a,b\in S$, the
+operator `*' is:
+\begin{enumerate}
+\item{Closed: $a*b\in S$}
+\item{Well-defined: $a*b=c$ and $a*b=d\implies c=d$}
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+A field is a mathematical object consisting of a non-empty set of elements $F$
+and two binary operators called addition $(a+b)$ and multiplication
+$(a\cdot b=ab)$ that satisfy the following nine axioms:
+\begin{description}
+\item{A1. } Additive Commutivity: $\forall a,b\in F, a+b=b+a$
+\item{A2. } Additive Associativity: $\forall a,b,c\in F, (a+b)+c=a+(b+c)$
+\item{A3. } Additive Identity: $\exists\, 0\in F,\forall a\in F, a+0=0+a=a$
+\item{A4. } Additive Inverse: $\forall a\in F, \exists (-a)\in F,a+(-a)=0$
+\\
+\item{M1. } Multiplicative Commutivity: $\forall a,b\in F, ab=ba$
+\item{M2. } Multiplicative Associativity: $\forall a,b,c\in F, (ab)c=a(bc)$
+\item{M3. } Multiplicative Identity: $\exists\, 1\in F,\forall a\in F, a1=1a=a$
+\item{M4. } Multiplicative Inverse:
+    $\forall a\in F-\{0\}, \exists a^{-1}\in F,aa^{-1}=1$
+\\
+\item{LD. } Left Distribution: $\forall a,b,c\in F, a(b+c)=ab+ac$
+\end{description}
+\end{definition}
+
+\begin{theorem}[Right Distribution (RD)]
+$\forall a,b,c\in F, (a+b)c=ac+bc$
+\end{theorem}
+
+\begin{theproof}
+Assume $a,b,c\in F$. \\
+\begin{tabular}{ll}
+$a+b\in F$ & closure \\
+$(a+b)c=c(a+b)$ & M1 \\
+$(a+b)c=ca+cb$ & LD \\
+$\therefore (a+b)c=ac+bc$ & M1 \\
+\end{tabular}
+\end{theproof}
+
+\begin{theorem}[Right Cancellation]
+\listbreak
+\begin{enumerate}
+\item{$\forall a,b,c\in F, a+c=b+c\iff a=b$}
+\item{$\forall a,b,c\in F, ac=bc$ and $c\ne0\implies a=b$}
+\item{$\forall a,b,c\in F, a=b\implies ac=bc$}
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item Assume $a,b,c\in F$.
+\begin{description}
+\item{$\implies$} Assume $a+c=b+c$.
+
+\begin{tabular}{ll}
+$\exists (-c)\in F,c+(-c)=0$ & A4 \\
+$(a+c)+(-c)=(b+c)+(-c)$ & WD \\
+$a+(c+(-c))=b+(c+(-c))$ & A2 \\
+$a+0=b+0$ & A4 \\
+$\therefore a=b$ & A3 \\
+\end{tabular}
+
+\item{$\impliedby$} Assume $a=b$.
+
+\begin{tabular}{ll}
+$\therefore a+c=b+c$ & WD \\
+\end{tabular}
+\end{description}
+
+\item Assume $a,b\in F$ and $c\in F-\{0\}$.
+\\
+Assume $ac=bc$.
+
+\begin{tabular}{ll}
+$\exists c^{-1}\in F,cc^{-1}=1$ & M4 \\
+$(ac)c^{-1}=(bc)c^{-1}$ & WD \\
+$a(cc^{-1})=b(cc^{-1})$ & M2 \\
+$a1=b1$ & M4 \\
+$\therefore a=b$ & M3 \\
+\end{tabular}
+
+\item Assume $a,b,c\in F$.
+\\
+Assume $a=b$.
+
+\begin{tabular}{ll}
+$\therefore ac=bc$ & WD \\
+\end{tabular}
+
+\end{enumerate}
+\end{theproof}
+
+\begin{theorem}[Left Cancellation]
+\listbreak
+\begin{enumerate}
+\item{$\forall a,b,c\in F, c+a=c+b\iff a=b$}
+\item{$\forall a,b,c\in F, ca=cb$ and $c\ne0\implies a=b$}
+\item{$\forall a,b,c\in F, a=b\implies ca=cb$}
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item{Assume $a,b,c\in F$.}
+\begin{eqnarray*}
+c+a=c+b &\iff& a+c=b+c\hspace{0.25in}\mbox{(A1)} \\
+    &\iff& a=b\hspace{0.25in}\mbox{(RCAN)} \\
+\end{eqnarray*}
+
+\item{Assume $a,b\in F$ and $c\in F-\{0\}$.}
+\\
+Assume $ac=bc$.
+
+\begin{tabular}{ll}
+$ac=bc$ & M1 \\
+$\therefore a=b$ & RCAN \\
+\end{tabular}
+
+\item{Assume $a,b,c\in F$}.
+\\
+Assume $a=b$.
+
+\begin{tabular}{ll}
+$ac=bc$ & WD \\
+$\therefore ca=cb$ & M1 \\
+\end{tabular}
+\end{enumerate}
+\end{theproof}
+
+\begin{theorem}[Uniqueness]
+\listbreak
+\begin{enumerate}
+\item{The additive identify is unique}
+\item{$\forall a\in F, (-a)$ is unique}
+\item{The multiplicative identify is unique}
+\item{$\forall a\in F-\{0\}, a^{-1}$ is unique}
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item{Assume that there are two: $0$ and $0'$.}
+
+\begin{tabular}{ll}
+$a+0=a$ & A3 \\
+$a+0'=a$ & A3 \\
+$a+0=a+0'$ & WD \\
+$\therefore 0=0'$ & LCAN \\
+\end{tabular}
+
+\item{Assume that there are two: $a'$ and $a''$.}
+
+\begin{tabular}{ll}
+$a+a'=0$ & A4 \\
+$a+a''=0$ & A4 \\
+$a+a'=a+a''$ & WD \\
+$\therefore a'=a''$ & LCAN \\
+\end{tabular}
+
+\item{Assume that there are two: $1$ and $1'$.}
+
+\begin{tabular}{ll}
+$a1=a$ & A3 \\
+$a1'=a$ & A3 \\
+$a1=a1'$ & WD \\
+$\therefore 1=1'$ & LCAN \\
+\end{tabular}
+
+\item{Assume that there are two: $a'$ and $a''$.}
+
+\begin{tabular}{ll}
+$aa'=1$ & M4 \\
+$aa''=1$ & M4 \\
+$aa'=aa''$ & WD \\
+$\therefore a'=a''$ & LCAN \\
+\end{tabular}
+\end{enumerate}
+\end{theproof}
+
+\theoremstyle{mathitem}
+\newtheorem*{zero}{Properties of Zero}
+\begin{zero}
+\listbreak
+\begin{enumerate}
+\item{$0=-0$}
+\item{$\forall a\in F,a0=0a=0$}
+\item{$\forall a,b\in F, ab=0\iff a=0$ or $b=0$}
+\end{enumerate}
+\end{zero}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+
+\item\mbox{}
+\listbreak
+
+\begin{tabular}{ll}
+$0+(-0)=0$ & A4 \\
+$0+(-0)=-0$ & A3 \\
+$\therefore 0=-0$ \\
+\end{tabular}
+
+\item{Assume $a\in F$.}
+
+\begin{tabular}{ll}
+$a0\in F$ & Closure \\
+$a0=a0+0$ & A3 \\
+$a(0+0)=a0+0$ & A3 \\
+$a0+a0=a0+0$ & LD \\
+$\therefore a0=0$ & LCAN \\
+$\therefore 0a=0$ & M1 \\
+\end{tabular}
+
+\item{Assume $a,b\in F$.}
+\begin{description}
+\item{$\implies$} Assume $ab=0$.
+
+\begin{tabular}{ll}
+AWLOG: $b\ne 0$ & \\
+$\exists b^{-1}\in F, bb^{-1}=1$ & M4 \\
+$(ab)b^{-1}=0b^{-1}$ & WD \\
+$(ab)b^{-1}=0$ & prop of 0 \\
+$a(bb^{-1})=0$ & M2 \\
+$a1=0$ & M4 \\
+$\therefore a=0$ & M3 \\
+\end{tabular}
+
+\item{$\impliedby$} AWLOG: $a=0$
+
+\begin{tabular}{ll}
+$ab=0a=0$ & prop of 0 \\
+\end{tabular}
+
+\end{description}
+\end{enumerate}
+\end{theproof}
+
+\theoremstyle{mathitem}
+\newtheorem*{inverse}{Properties of Negatives}
+\begin{inverse}
+\listbreak
+\begin{enumerate}
+\item{$\forall a\in F, (-1)a=-a$}
+\item{$\forall a\in F, -(-a)=a$}
+\item{$\forall a,b\in F, (-a)b=-ab$}
+\item{$\forall a,b\in F, a(-b)=-ab$}
+\item{$\forall a,b\in F, (-a)(-b)=ab$}
+\end{enumerate}
+\end{inverse}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item{Assume $a\in F$}
+
+\begin{tabular}{ll}
+$a+(-1)a=1a+(-1)a$ & M3 \\
+$a+(-1)a=(1+(-1))a$ & RD \\
+$a+(-1)a=0a$ & A4 \\
+$a+(-1)a=0$ & prop of 0 \\
+$\therefore (-1)a=-a$ & uniqueness \\
+\end{tabular}
+
+\item{Assume $a\in F$}
+
+\begin{tabular}{ll}
+$-(-a)+(-a)=(-1)(-a)+(-a)$ & (1) \\
+$-(-a)+(-a)=(-1)(-a)+1(-a)$ & M3 \\
+$-(-a)+(-a)=((-1)+1)(-a)$ & RD \\
+$-(-a)+(-a)=0(-a)$ & A4 \\
+$-(-a)+(-a)=0$ & prop of 0 \\
+$\therefore -(-a)=a$ & uniqueness \\
+\end{tabular}
+
+\item{Assume $a,b\in F$}
+
+\begin{tabular}{ll}
+$ab+(-a)b=(a+(-a))b$ & RD \\
+$ab+(-a)b=0b$ & A4 \\
+$ab+(-a)b=0$ & prop of 0 \\
+$\therefore (-a)b=-ab$ & uniqueness \\
+\end{tabular}
+
+\item{Assume $a,b\in F$}
+
+\begin{tabular}{ll}
+$ab+a(-b)=a(b+(-b))$ & LD \\
+$ab+a(-b)=a0$ & A4 \\
+$ab+a(-b)=0$ & prop of 0 \\
+$\therefore a(-b)=-ab$ & uniqueness \\
+\end{tabular}
+
+\item{Assume $a,b\in F$}
+
+\begin{tabular}{ll}
+$(-a)(-b)+(-ab)=(-a)(-b)+(-a)b$ & (3) \\
+$(-a)(-b)+(-ab)=(-a)(-b+b)$ & LD \\
+$(-a)(-b)+(-ab)=(-a)0$ & A4 \\
+$(-a)(-b)+(-ab)=0$ & A3 \\
+$\therefore (-a)(-b)=ab$ & uniqueness \\
+\end{tabular}
+\end{enumerate}
+\end{theproof}
+\end{document}

@@ -1,0 +1,112 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\begin{document}
+\section*{Real Numbers}
+
+\begin{definition}
+  \listbreak
+  \begin{itemize}
+    \item The set of \emph{rational} numbers is given by:
+      \[\Q=\left\{\frac{p}{q}\mid p,q\in\Z\ \mbox{and}\ q\ne0\right\}\]
+
+    \item A number that is not rational is called \emph{irrational}.
+
+    \item The set of \emph{real} numbers, denoted $\R$, is the union of the
+      sets of rational and irrational numbers.
+  \end{itemize}
+\end{definition}
+
+The set of irrational numbers is often denoted: $\R-\Q$.
+
+Note that $\Z\subset\Q$ because $\forall\,n\in\Z,n=\frac{n}{1}$.
+
+\begin{definition}
+  \listbreak
+  \begin{itemize}
+  \item To say that $\a\in\R$ is \emph{algebraic} means that it is a zero of
+    some polynomial with integer coefficients:
+    \[\exists\,a_k,\sum_{k=0}^na_k\a^k=0\]
+
+    \item A number that is not algebraic is called \emph{transcendental}.
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  $\Q$ is closed under addition and multiplication.
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in\Q$ \\
+  Let $a=\frac{p}{q}$ and $b=\frac{r}{s}$ where $p,q,r,s\in\Z$ and $p,q\ne0$
+
+  \bigskip
+
+  $a+b=\frac{p}{q}+\frac{r}{s}=\frac{ps+qr}{qs}$ \\
+  $ps+qr\in\Z$ \\
+  $qs\in\Z$ and $qs\ne0$ \\
+  $\therefore a+b\in\Q$
+
+  \bigskip
+
+  $ab=\frac{p}{q}\cdot\frac{r}{s}=\frac{pr}{qs}$ \\
+  $pr\in\Z$ \\
+  $qs\in\Z$ and $qs\ne0$ \\
+  $\therefore ab\in\Q$
+\end{theproof}
+
+\begin{example}
+  Prove that $\sqrt{2}$ is irrational.
+
+  \underline{Proof 1}
+
+  ABC: $\sqrt{2}$ is rational
+
+  $\exists\,a,b\in\Z^+,\frac{a}{b}=\sqrt{2}$ and either $a$ or $b$ not even \\
+  $\frac{a^2}{b^2}=2$ \\
+  $a^2=2b^2$ \\
+  $a^2$ is even, so $a$ is even, so $b$ must be odd \\
+  Let $a=2k,k\in\Z$ \\
+  $(2k)^2=4k^2=2(2k^2)=b^2$ \\
+  $b^2$ is even, so $b$ is even \\
+  CONTRADICTION! \\
+  $\therefore\sqrt{2}$ is irrational.
+
+  \bigskip
+
+  \underline {Proof 2}
+
+  ABC: $\sqrt{2}$ is rational
+
+  $\exists\,a,b\in\Z^+,\frac{a}{b}=\sqrt{2}$ \\
+  Let $S=\{k\sqrt{2}\mid k,k\sqrt{2}\in\Z^+\}$ \\
+  Note that $S\ne\emptyset$ because $a=b\sqrt{2}$ \\
+  By the well-ordering principle, $S$ has a minimum \\
+  Let $s=\min S\in\Z^+$ \\
+  Let $s=t\sqrt{2},t\in\Z^+$ \\
+  $s\sqrt{2}-s=s\sqrt{2}-t\sqrt{2}=(s-t)\sqrt{2}$ \\
+  $s\sqrt{2}=(t\sqrt{2})\sqrt{2}=2t\in\Z^+$ \\
+  Since $\sqrt{2}>1$, $s\sqrt{2}>s$ and $s\sqrt{2}-s>0$ \\
+  $(s-t)\sqrt{2}>0$ \\
+  $s-t>0$ \\
+  So $(s-t)\sqrt{2}\in S$ \\
+  But $s\sqrt{2}-s=s(\sqrt{2}-1)<s$ \\
+  CONTRADICTION (of the minimality of $s$)! \\
+  $\therefore\sqrt{2}$ is irrational.
+
+  \bigskip
+
+  \underline {Proof 3}
+
+  Let $x=\sqrt{2}$ \\
+  $x^2=2$ \\
+  $x^2-2=0$ \\
+  $\sqrt{2}$ is algebraic \\
+  The only possible rational zeros are $\pm2$ \\
+  $(\pm2)^2-2=4-2=2\ne0$ \\
+  So there are no rational zeros \\
+  $\therefore\sqrt{2}$ is irrational.
+\end{example}
+
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ring}[1]{\left<#1,+,\cdot\right>}
+\newcommand{\group}[2]{\left<#1,#2\right>}
+\begin{document}
+\section*{Rings}
+
+\begin{definition}
+  Let $R$ be a non-empty set equipped with two binary operators: addition and
+  multiplication. To say that $\ring{R}$ is a \emph{ring} means:
+  \begin{enumerate}
+  \item $\group{R}{+}$ is an abelian group
+  \item Multiplication is associative
+  \item The left and right distributive rules hold: $\forall\,a,b,c\in R$:
+    \[a(b+c)=ab+ac\]
+    \[(a+b)c=ac+bc\]
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  The following are all rings:
+  \begin{enumerate}
+  \item The trivial ring: $\{0\}$
+  \item $\Z, \Q, \R, \C$
+  \item $n\Z$
+  \item $\Z_n$
+  \item $M_n(R), R$ is a ring
+  \item A direct product of rings: $\prod_{i\in I}R_i$, with component-wise
+    operators
+  \item The set $F$ of real-valued functions such that:
+    \begin{enumerate}
+    \item $(f+g)(x)=f(x)+g(x)$
+    \item $(fg)(x)=f(x)g(x)$
+    \end{enumerate}
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}
+  Let $R$ be a ring. $\forall\,a,b\in R$:
+  \begin{enumerate}
+  \item $a0=0a=0$
+  \item $(-a)b=a(-b)=-(ab)$
+  \item $(-a)(-b)=ab$
+  \end{enumerate}
+\end{theorem}
+\newpage
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $a\in R$
+
+    $a0=a(0+0)=a0+a0$ \\
+    $\therefore a0=0$ (cancellation)
+
+    $0a=(0+0)a=0a+0a$ \\
+    $\therefore 0a=0$ (cancellation)
+
+  \item Assume $a,b\in R$
+
+    $(-a)b+ab=(-a+a)b=0b=0$ \\
+    So $(-a)b$ is an inverse of $ab$ \\
+    But inverses are unique \\
+    $\therefore (-a)b=-(ab)$
+
+    $a(-b)+ab=a(-b+b)=a0=0$ \\
+    So $a(-b)$ is an inverse of $ab$ \\
+    But inverses are unique \\
+    $\therefore a(-b)=-(ab)$
+
+  \item Assume $a,b\in R$
+
+    $(-a)(-b)=a[-(-b)]=ab$
+  \end{enumerate}
+\end{theproof}
+
+\begin{notation}
+  Let $R$ be a ring, $a\in R$, and $n\in\Z$:
+  \[n\cdot a=\begin{cases}
+  a+a+\cdots+a & n>0 \\
+  (-a)+(-a)+\cdots+(-a) & n<0 \\
+  0 & n=0
+  \end{cases}\]
+
+  This helps distinguish these cases from multiplication between two elements of $R$.
+\end{notation}
+
+\end{document}

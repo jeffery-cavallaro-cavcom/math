@@ -1,0 +1,115 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Even/Odd Integers}
+
+\begin{definition}
+  To say that $n\in\Z$ is \emph{even} means that it can be expressed as:
+  \[n=2k,k\in\Z\]
+
+  To say that $n\in\Z$ is \emph{odd} means that it can be expressed as:
+  \[n=2k+1,k\in\Z\]
+\end{definition}
+
+\begin{theorem}
+  An odd integer $n$ can be expressed as:
+  \[n=2k-1,k\in\Z\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $n$ is odd \\
+  $\exists\,h\in\Z,n=2h+1$ \\
+  Let $h=k-1\in\Z$ \\
+  $n=2h+1=2(k-1)+1=2k-1$ \\
+\end{theproof}
+
+\begin{theorem}
+  An integer is either even or odd.
+\end{theorem}
+
+\begin{theproof}
+  Assume $n\in\Z$
+  \begin{description}
+  \item{Case 1: $n$ is positive}
+
+    Proof by strong induction on $n$
+
+    \begin{description}
+    \item {Base: n=1,2}
+
+      $1=2\cdot0+1$ \\
+      $2=2\cdot1$ \\
+      $\therefore 1$ is odd and $2$ is even.
+
+    \item Assume all integers from $1$ to $n$ are either even or odd.
+
+    \item Consider $n+1$
+
+      \begin{description}
+      \item {Case 1: $n$ is even}
+
+        $\exists\,k\in\Z,n=2k$ \\
+        $n+1=2k+1$ \\
+        $\therefore n+1$ is odd.
+        
+      \item {Case 2: $n$ is odd}
+
+        $\exists\,k\in\Z,n=2k-1$ \\
+        $n+1=2k-1+1=2k$ \\
+        $\therefore n+1$ is even.
+      \end{description}
+    \end{description}
+
+  \item {Case 2: $n=0$}
+
+    $0=2\cdot0$ \\
+    $\therefore 0$ is even.
+
+  \item {Case 3: $n$ is negative}
+
+    Let $m=-n$ \\
+    $m$ is positive
+    
+    \begin{description}
+    \item {Case 1: $m$ is even}
+
+      $\exists\,k\in\Z,m=2k$ \\
+      $n=-m=-(2k)=2(-k)$ \\
+      But $(-k)\in\Z$ \\
+      $\therefore n$ is even.
+      
+    \item {Case 2: $m$ is odd}
+
+      $\exists\,k\in\Z,m=2k-1$ \\
+      $n=-m=-(2k-1)=2(-k)+1$ \\
+      But $(-k)\in\Z$ \\
+      $\therefore n$ is odd.
+    \end{description}
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  $\forall\,n\in\Z,n$ is even $\iff n^2$ is even
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $n$ is even
+
+    $\exists\,k\in\Z,n=2k$ \\
+    $n^2=(2k)^2=4k^2=2(2k^2)$ \\
+    But, by closure, $2k^2\in\Z$ \\
+    $\therefore n^2$ is even.
+
+  \item $\impliedby$ Assume $n$ is odd
+
+    $\exists\,k\in\Z,n=2k+1$ \\
+    $n^2=(2k+1)^2=4k^2+4k+1=2(2k^2+2k)+1$ \\
+    But, by closure, $2k^2+2k\in\Z$ \\
+    $\therefore n^2$ is odd.
+  \end{description}
+\end{theproof}
+
+\end{document}

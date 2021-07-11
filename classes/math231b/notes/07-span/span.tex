@@ -1,0 +1,88 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vo}{\vec{0}}
+\DeclareMathOperator{\spn}{Span}
+\begin{document}
+\section*{Span}
+
+\begin{definition}[Span]
+  Let $E$ be a vector space over a scalar field $\F$ and let $X$ be non-empty
+  subset of $E$. The \emph{span} of $X$, denoted $\spn(X)$, is the set of all
+  (finite) linear combinations of $X$.
+\end{definition}
+
+\begin{theorem}
+  Let $E$ be a vector space over a scalar field $\F$ and let $X\subset E$:
+
+  \qquad$\spn(X)$ is a subspace of $E$.
+
+  This subspace is called the subspace \emph{spanned} by $X$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vy\in\spn(X)$ and $\a,\b\in\F$.
+  
+  $\exists\,a_k\in\F$ and $X_1=\{\vx_1,\ldots,\vx_n\}\subset X$ such that
+  $\vx=\sum_{k=1}^na_k\vx_k$. \\
+  $\exists\,b_k\in\F$ an $X_2=\{\vy_1,\ldots,\vy_m\}\subset X$ such that
+  $\vy=\sum_{k=1}^nb_k\vy_k$.
+
+  $\a\vx+\b\vy=\a\sum_{k=1}^na_k\vx_k+\b\sum_{k=1}^nb_k\vy_k=
+  \sum_{k=1}^n(\a a_k)\vx_k+\sum_{k=1}^n(\b b_k)\vy_k=
+  \sum_{k=1}^r\l_k\vz_k$
+
+  where $\l_k\vz_k=\begin{cases}
+  \a a_i\vx_i, & \vx_i\in X_1-X_2 \\
+  \b b_i\vy_i, & \vx_i\in X_2-X_1 \\
+  (\a a_i+\b b_i)\vx_i, & \vx_i\in X_1\cap X_2
+  \end{cases}$
+
+  But $\sum_{k=1}^r\l_k\vz_k\in\spn(X)$.
+
+  Therefore, by the subspace test, $\spn(X)$ is a subspace of $E$
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a vector space let $X$ be a non-empty subset of $E$. $\spn(X)$ is
+  the smallest subspace of $E$ containing $X$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $S$ is a subspace of $E$ and $X\subseteq S$. \\
+  Assume $\vx\in\spn(X)$. \\
+  But $X\subseteq S$ and so $\vx\in S$.
+
+  $\therefore\spn(X)\subseteq S$.
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a vector space over a field $F$ and let $X=\{\vx_1,\ldots,\vx_n\}$
+  be a linearly independent subset of $E$. $\forall\,r<n$ and
+  $\forall\,\l_k\in\F$:
+  \[X'=\{\vx,\vx_{r+1},\ldots,\vx_n\}\]
+  where $\vx\in\spn\{\vx_1,\ldots,\vx_r\}-\{\vo\}$
+  is a linearly independent set.
+\end{theorem}
+
+\begin{theproof}
+  Assume $r<n$. \\
+  Assume $\vx\in\spn\{\vx_1,\ldots,\vx_r\}$. \\
+  $\exists\,\l_k\in\F$ such that $\vx=\sum_{k=1}^r\l_k\vx_k$. \\
+  Assume $\a\vx+\sum_{k=r+1}^n\a_k\vx_k=0$. \\
+  $\a\sum_{k=1}^r\vx_k+\sum_{k=r+1}^n\a_k\vx_k=0$ \\
+  $\sum_{k=1}^r\a\vx_k+\sum_{k=r+1}^n\a_k\vx_k=0$
+  
+  But $X$ is linearly dependent, and so $\a,\a_k=0$.
+
+  Therefore $X'$ is a linearly independent set.
+\end{theproof}
+
+\end{document}

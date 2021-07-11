@@ -1,0 +1,79 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\Rd}{\mathbb{R}^d}
+\newcommand{\LtwoRd}{L^2(\Rd)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\newcommand{\hilb}{\mathcal{H}}
+\begin{document}
+\section*{Orthogonality}
+
+\begin{definition}
+Let $\hilb$ be a Hilbert space and let $f,g\in\hilb$. To say that $f$ is
+orthogonal (perpendicular) to $g$, denoted $f\perp g$, means that
+$\inner{f}{g}=0$.
+\end{definition}
+
+\begin{lemma}
+$f\perp g\iff g\perp f$
+\end{lemma}
+
+\begin{theproof}
+$f\perp g\iff\inner{f}{g}=0\iff\Conj{\inner{g}{f}}=0\iff\inner{g}{f}=0\iff
+    g\perp f$
+\end{theproof}
+
+\begin{theorem}
+$f\perp g\implies\norm{f+g}^2=\norm{f}^2+\norm{g}^2$
+\end{theorem}
+
+\begin{theproof}
+Assume $f\perp g$ \\
+$\inner{f}{g}=\inner{g}{f}=0$ \\
+\begin{eqnarray*}
+\norm{f+g}^2 &=& \inner{f+g}{f+g} \\
+    &=& \inner{f}{f}+\inner{f}{g}+\inner{g}{f}+\inner{g}{g} \\
+    &=& \norm{f}^2+0+0+\norm{g}^2 \\
+    &=& \norm{f}^2+\norm{g}^2 \\
+\end{eqnarray*}
+\end{theproof}
+
+\begin{definition}
+Let $\hilb$ be a Hilbert space. To say that $\{e_1,e_2,\ldots\}\subset\hilb$ is
+orthonormal means:
+\[\inner{e_j}{e_k}=\begin{cases}
+1, & j=k \\
+0, & j\ne k \\
+\end{cases}\]
+In other words, every element has a norm of 1 and is orthogonal to every other
+element.
+\end{definition}
+
+\begin{theorem}
+Let $\hilb$ be a Hilbert space, $\{e_k\}_{k=1}^{\infty}\subset\hilb$ be
+orthonormal, and $f=\sum a_ke_k\in\hilb$ be a finite sum.
+\[\norm{f}^2=\sum\abs{a_k}^2\]
+\end{theorem}
+
+\begin{theproof}
+$\norm{f}^2=\inner{f}{f}=\inner{\sum a_je_j}{\sum a_ke_k}$ \\
+
+Each term in the linear expansion is one of the following two forms:
+\begin{enumerate}
+\item{$j=k$}
+
+$\inner{a_ke_k}{a_ke_k}=\abs{a_k}^2\inner{e_k}{e_k}=\abs{a_k}^2\cdot1=\abs{a_k}^2$
+
+\item{$j\ne k$}
+
+$\inner{a_je_j}{a_ke_k}=a_j\Conj{a_k}\inner{e_j}{e_k}=a_j\Conj{a_k}\cdot0=0$
+\end{enumerate}
+
+$\therefore \norm{f}^2=\sum\abs{a_k}^2$
+\end{theproof}
+
+\end{document}

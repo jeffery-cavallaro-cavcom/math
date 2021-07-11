@@ -1,0 +1,249 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\sd}{\sqrt{d}}
+\newcommand{\Zd}{\Z[\sd]}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\x}{\times}
+\DeclareMathOperator{\even}{even}
+\DeclareMathOperator{\odd}{odd}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221b \\
+Homework \#4
+
+\bigskip
+
+\begin{enumerate}
+\item Determine the units in $(\Z/4\Z)[x]$
+
+  We know that $(\Z/4\Z)^{\x}=\{a+4\Z\mid(a,4)=1\}=\{1+4\Z,3+4\Z\}$:
+  Since addition and multiplication are by representatives, for convenience, we can work
+  in arithmetic $\pmod 4$ for the coefficients. \\
+  Assume $f(x)\in(\Z/4\Z)^{\x}$. The there exists $g(x)\in(\Z/4\Z)^{\x}$ such that:
+  \[f(x)g(x)=1\]
+  Thus, $a_0=1$ and all other $a_k=0$. \\
+  The only possibilities for $a_0=1$ are $1\cdot1$ and $3\cdot3$.
+
+  Let $f(x)=1+af_1(x)$ where $f_1(x)\in(\Z/4\Z)[x]$ and \\
+  let $g(x)=1+bg_1(x)$ where $g_1(x)\in(\Z/4\Z)[x]$ and \\
+  AWLOG that the coefficients of $f_1(x)$ and $g_1(x)$ are relatively prime - otherwise
+  factor out any common factors. \\
+  $f(x)g(x)=1+af_1(x)+bg_1(x)+abf_1(x)g_1(x)=1$ \\
+  The only possibilities that allow the last term to drop out occur when:
+  \begin{enumerate}
+  \item $a=0$ or $b=0$
+  \item $a=b=2$
+  \end{enumerate}
+  If $a=0$ then $b$ must also be 0 so that the two middle terms drop out. $a=b=2$ works
+  as long as $f_1(x)=g_1(x)$.
+  
+  Now, let $f(x)=3+af_1(x)$ and $g(x)=3+bg_1(x)$. \\
+  $f(x)g(x)=1+3af_1(x)+3bg_1(x)+abf_1(x)g_1(x)=1$ \\
+  Once again, we have the same two cases and the same conditions so that all the none
+  constant terms fall out.
+
+  Therefore $(\Z/4\Z)^{\x}=
+  \{(1+4\Z)+(2+4\Z)f(x),(3+4\Z)+(2+4\Z)f(x)\mid f(x)\in(\Z/4\Z)[x]$.
+
+\item Show that $(2,x)$ is a non-principal, prime ideal in $\Z[x]$.
+
+  $(2,x)=\{xf(x)+2g(x)\mid f(x),g(x)\in\Z[x]\}$
+
+  First, let's make sure that this is a prime ideal. Assume:
+  \[\a\b=xf(x)+2g(x)\]
+  and AWLOG that $\a\notin(2,x)$. Thus $\b\mid xf(x)$ and $\b\mid 2g(x)$. Note that if
+  $b=2$ or $b=x$ then $b\in(2,x)$, so AWLOG that $b\ne x$ and $b\ne 2$. Then
+  $b\mid f(x)$ and $b\mid g(x)$. But then $\a=xh(x)+2i(x)$ for some $h(x),i(x)\in\Z[x]$
+  and thus $\a\in(2,x)$, a contradiction.
+
+  Therefore, $(2,x)$ is prime.
+
+  Now show that it is not principal. ABC that $(2,x)=(h(x))$ where $h(x)\in(2,x)$. \\
+  Note that $(2,x)$ is a proper ideal in $\Z[x]$, since the coefficient of all constant
+  terms in $(2,x)$ must be even. \\
+  Since $2\in(2,x)$, there must exist $g(x)\in\Z[x]$ such that $h(x)g(x)=2$ and thus, \\
+  $\deg(2)=\deg((h(x)g(x))=\deg(g(x))+\deg(g(x))=0$, and so,
+  $\deg(h(x))=\deg(g(x))=0$ and thus $h(x)$ is constant. \\
+  But since $2$ is prime, the only candidates are $h(x)=\{\pm1,\pm2\}$. \\
+  But $\pm1$ are units and their inclusion in the ideal would make it non-proper, so
+  only $\pm2$ are left. \\
+  But $x\in(2,x)$ as well, so there must exist $f(x)\in\Z[x]$ such that $x=\pm2f(x)$.
+  But this can only happen when $f(x)=\pm\frac{x}{2}$, resulting in non-integer
+  coefficients. a contradiction.
+
+  Therefore, $(2,x)$ is not principal.
+
+\item Show that $F[x,y]$ is not a PID.
+
+  It was proven in class that in order for an ideal $I$ to be a PID, then
+  $\forall\,a,b\in I$, $a$ and $b$ must have a non-unit GCD in $I$.
+
+  Consider $(x,y)$, an ideal in $F[x,y]$. Note that this ideal is proper, since it does
+  not contain any non-zero constant terms. \\
+  $x\in(x,y)$ and $y\in(x,y)$ but both $x$ and $y$ are prime in $F[x,y]$ and thus have
+  no common divisor other than $1$. So $(x,y)$ is not principle.
+
+  Therefore $F[x,y]$ is not a PID.
+
+\item Prove that $R_{-2}^{\x}=\{\pm1\}$
+
+  Assume $\a\in R_{-2}$ \\
+  Let $\a=a+b\sqrt{-2}$ where $a,b\in\Z$ \\
+  By the unit criterion, in order for $\a$ to be a unit in $R_{-2}$:
+  \[N(\a)=a^2+2b=1\]
+  Note that any value of $b>0$ is too big, and so $b=0$, and so: \\
+  $a^2=1$ \\
+  $a=\pm1$
+
+  $\therefore R_{-2}^{\x}=\{\pm1\}$
+  
+\item Let $d$ be a squarefree integer other than $1$. Show that:
+  \[d\equiv2\ \mbox{or}\ 3\pmod4\implies R_d=\Zd\]
+
+  Assume $d\equiv2\ \mbox{or}\ 3\pmod4$
+  \begin{description}
+  \item $\implies$ Assume $\a\in R_d$
+
+    Let $\a=r+\sd$
+
+    By the integer criterion:
+    \[N(\a)=r^2-ds^2\in\Z\]
+    \[T(\a)=2r\in\Z\]
+    Then:
+    \[-4N(\a)+T(\a)^2=4(ds^2-r^2)+(2r)^2=4ds^2=d(2s)^2\in\Z\]
+    Since $s\in\Q$, let $2s=\frac{a}{c}$ where $(a,c)=1$ and $c\ne0$ \\
+    Let $d\left(\frac{a}{c}\right)^2=k\in\Z$ \\
+    $da^2=kc^2$ \\
+    Now, ABC that there exists prime $p$ such that $p\mid c$ \\
+    $p^2\mid c^2$ \\
+    But $(a,c)=1$, so $p^2\nmid a^2$, and thus $p^2\mid d$ \\
+    CONTRADICTION! Since $d$ is squarefree \\
+    Thus, $c=1$ and $d\left(\frac{a}{c}\right)^2=d(2s)^2\in\Z$ \\
+    And since $d\in\Z$, we have $2s\in\Z$
+
+    Now, let $a=2s\in\Z$ amd $b=2r\in\Z$ \\
+    $\a=\frac{a}{2}+\frac{b}{2}\sd$ \\
+    $N(\a)=\left(\frac{a}{2}\right)^2-d\left(\frac{b}{2}\right)^2=
+    \frac{a^2-db^2}{4}$ \\
+    $a^2-db^2=4N(\a)\equiv0\pmod4$ \\
+    and so: $a^2\equiv db^2\pmod4$
+
+    Now, consider the even/odd cases for $a$ and $b$ \\
+    Recall: $\forall\,n\in\Z,n$ is even $\iff n^2$ \\
+    Assume $n\in\Z$:
+    \begin{description}
+    \item Case 1: $n \even$
+      \begin{description}
+      \item Case 1a: $n\equiv0\pmod4$
+
+        $n^2\equiv0\cdot0\pmod4\equiv0\pmod4$
+
+      \item Case 1b: $n\equiv2\pmod4$
+
+        $n^2\equiv2\cdot2\pmod4\equiv0\pmod4$
+      \end{description}
+      Thus, $n \even\implies n^2\equiv0\pmod4 $
+      
+    \item Case 2: $n \odd$
+      \begin{description}
+      \item Case 2a: $n\equiv1\pmod4$
+
+        $n^2\equiv1\cdot1\pmod4\equiv1\pmod4$
+
+      \item Case 2b: $n\equiv3\pmod4$
+
+        $n^2\equiv(-1)\cdot(-1)\pmod4\equiv1\pmod4$
+      \end{description}
+      Thus, $n \odd\implies n^2\equiv1\pmod4 $
+    \end{description}
+
+    Now, apply this information to $a$ and $b$ based on $d$:
+    \begin{description}
+    \item Case 1: $d\equiv2\pmod4$
+
+      $a^2\equiv 2b^2\pmod4$ \\
+      and so $a^2,b^2\equiv0\pmod4$, and thus $a$ and $b$ must both be even \\
+      Thus $r=\frac{a}{2}$ and $s=\frac{b}{2}$ are both integers
+
+      $\therefore\a\in\Zd$
+
+    \item Case 2: $d\equiv3\pmod4$
+
+      $a^2\equiv -b^2\pmod4$ \\
+      and so $a^2,b^2\equiv0\pmod4$, and thus $a$ and $b$ must both be even
+      and this is the same as the previous case
+
+      $\therefore\a\in\Zd$
+    \end{description}
+
+  \item $\impliedby$ Assume $\a\in\Zd$
+
+    Let $\a=m+n\sd$ where $m,n\in\Z$
+
+    $N(\a)=m^2-dn^2\in\Z$
+
+    $T(\a)=2m\in\Z$
+    
+    Therefore, by the integer criterion, $\a\in R_d$
+  \end{description}
+
+  $\therefore R_d=\Zd$
+
+\item Show that $R_{-13}$ is not a UFD.
+
+  Since $(-13)\equiv3\pmod4$, $R_{-13}=\Z[\sqrt{-13}]$. \\
+  Also, since $13>4$, $\Z[\sqrt{-13}]^{\x}=\{\pm1\}$.
+  
+  Consider $14\in\Z[\sqrt{-13}]$ \\
+  $2\cdot7=14$ and $(1+\sqrt{-13})(1-\sqrt{-13})=14$
+
+  $2(1+\sqrt{-13})\ne\pm1$ \\
+  $2(1-\sqrt{-13})\ne\pm1$ \\
+  $7(1+\sqrt{-13})\ne\pm1$ \\
+  $7(1-\sqrt{-13})\ne\pm1$
+
+  Thus, none of the factors are associates.
+
+  ABC: $2$ is not irreducible in $\Z[\sqrt{-13}]$ \\
+  $\exists\,\a,\b\in\Z[\sqrt{-13}],\a\b=2$ \\
+  $N(2)=N(\a)N(\b)=4$ \\
+  We can discount $4\cdot1$ because a norm of 1 indicates a unit and thus the
+  factorization differs only by a unit. \\
+  Thus $N(\a)=N(\b)=2$ \\
+  But $x^2+13y^2=2$ has no integer solutions.
+  CONTRADICTION!
+
+  Therefore $2$ is irreducible in $\Z[\sqrt{-13}]$
+
+  ABC: $7$ is not irreducible in $\Z[\sqrt{-13}]$ \\
+  $\exists\,\a,\b\in\Z[\sqrt{-13}],\a\b=7$ \\
+  $N(7)=N(\a)N(\b)=49$ \\
+  We can discount $49\cdot1$ because a norm of 1 indicates a unit and thus the
+  factorization differs only by a unit. \\
+  Thus $N(\a)=N(\b)=7$ \\
+  But $x^2+13y^2=7$ has no integer solutions.
+  CONTRADICTION!
+
+  Therefore $7$ is irreducible in $\Z[\sqrt{-13}]$
+
+  ABC: $1\pm\sqrt{-13}$ is not irreducible in $\Z[\sqrt{-13}]$ \\
+  $\exists\,\a,\b\in\Z[\sqrt{-13}],\a\b=1\pm\sqrt{-13}$ \\
+  $N(1\pm\sqrt{-13})=N(\a)N(\b)=14$ \\
+  We can discount $14\cdot1$ because a norm of 1 indicates a unit and thus the
+  factorization differs only by a unit. \\
+  Thus, WLOG: $N(\a)=2$ and $N(\b)=7$ \\
+  But we have already proven that no such $\a$ or $\b$ exist in
+  $\Z[\sqrt{-13}]$. \\
+  CONTRADICTION!
+
+  Therefore $1\pm\sqrt{-13}$ is irreducible in $\Z[\sqrt{-13}]$
+
+  So, there exists two distinct factorization of $14$ into irreducibles that
+  are not associates.
+
+  Therefore $R_{-13}$ is not a UFD.
+\end{enumerate}
+
+\end{document}

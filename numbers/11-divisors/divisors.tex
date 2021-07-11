@@ -1,0 +1,99 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Divisors}
+
+\begin{definition}
+  Let $n\in\Z$. The set of \emph{divisors} of $n$, denoted $D_n$, is given by:
+  \[D_n=\{d\in\Z\mid d\mid n\}\]
+\end{definition}
+
+\begin{theorem}
+  \listbreak
+  \[D_0=\Z\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item{$\implies$} By definition, $D_0\subseteq\Z$.
+  \item{$\impliedby$} Assume $d\in\Z$
+
+    $0\in\Z$ \\
+    $0d=0$ \\
+    $d\mid0$ \\
+    $d\in D_0$ \\
+    $\Z\subseteq D_0$
+  \end{description}
+  $\therefore D_0=\Z$
+\end{theproof}
+
+\begin{theorem}
+  Let $n\in\Z,n\ne0$:
+  \[0\notin D_n\]
+\end{theorem}
+
+\begin{theproof}
+  ABC: $0\in D_n$ \\
+  $\exists\,k\in\Z,k0=0=n$ \\
+  CONTRADICTION! \\
+  $\therefore 0\notin D_n$
+\end{theproof}
+
+\begin{theorem}
+  \listbreak
+  \[\forall\,n\in\Z,D_n=D_{-n}\]
+\end{theorem}
+\newpage
+\begin{theproof}
+  Assume $n\in\Z$
+  \begin{eqnarray*}
+    d\in D_n &\iff& d\mid n \\
+    &\iff& \exists\,k\in\Z,kd=n \\
+    &\iff& \exists\,-k\in\Z,(-k)d=-n \\
+    &\iff& d\mid -n \\
+    &\iff& d\in D_{-n} \\
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{theorem}
+  $\forall\,n\in\Z,D_n\ne\emptyset$. In fact:
+  \[\forall\,n\in\Z,\{\pm1,\pm n\}\subseteq D_n\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $n\in\Z$
+
+  \begin{minipage}[t]{2in}
+    $1\in\Z$ \\
+    $n1=n$ \\
+    $\therefore 1,n\in D_n$
+  \end{minipage}
+  \begin{minipage}[t]{2in}
+    $-n\in\Z$ \\
+    $-1\in\Z$ \\
+    $(-n)(-1)=n$ \\
+    $\therefore -1,-n\in D_n$
+  \end{minipage}
+\end{theproof}
+
+\begin{theorem}
+  Let $n\in\Z,n\ne0$. $D_n$ is finite. In fact:
+  \[\forall\,d\in D_n,1\le\abs{d}\le\abs{n}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $d\in D_n$
+
+  $\abs{d}\ge0$ \\
+  $0\ne D_n$ \\
+  $1\in D_n$ \\
+  $\therefore 1\le\abs{d}$
+
+  $\exists\,k\in\Z^+,k\abs{d}=\abs{n}$ \\
+  But $k\abs{d}\ge \abs{d}$, since $k\ge1$ \\
+  $\therefore \abs{d}\le\abs{n}$
+\end{theproof}
+
+\end{document}

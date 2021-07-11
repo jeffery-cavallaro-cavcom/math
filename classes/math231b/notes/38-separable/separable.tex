@@ -1,0 +1,167 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vs}{\vec{x}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\p}{\varphi}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\cl}[1]{\overline{#1}}
+\DeclareMathOperator{\spn}{Span}
+\begin{document}
+\section*{Separable Hilbert Spaces}
+
+\begin{definition}[Separable]
+  Let $H$ be a Hilbert space. To say that $H$ is \emph{separable} means that
+  $H$ contains a complete orthonormal sequence.
+\end{definition}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $\ell^2$ is separable with $(e_n)$
+
+  \item $L^2[-\pi,\pi]$ is separable with
+    $\left(\frac{1}{\sqrt{2\pi}},\frac{1}{\sqrt{\pi}}\sin(nt),
+    \frac{1}{\sqrt{\pi}}\cos(nt)\right)_{n\in\N}$
+
+  \item Let:
+    
+    $H=\left\{f:\R\to\C\middle|f(x)\ne0\ \mbox{for only countably many}
+    \ x\in\R\ \mbox{and}\ \sum_{x\mid f(x)\ne0}\abs{f(x)}^2<\infty\right\}$
+
+    Let $\inner{f,g}=\sum_{\vx\mid f(x)g(x)\ne0}f(x)\conj{g(x)}$.
+    
+    Claim: $H$ is complete.
+
+    Assume $(f_n)$ is a Cauchy sequence in $H$. \\
+    Let $S_n$ be the support of $f_n$. \\
+    Since $S_n$ is countable, let $S_n=\{t_1,t_2,t_3,\ldots\}$. \\
+    Let $(x_n)$ be a sequence in $\C$ where $x_{n,k}=f(t_k)$.
+
+    $\norm{f_n}_H=\sum_{x\mid f(x)\ne0}\abs{f(x)}^2=
+    \sum_{k=1}^{\infty}\abs{f(t_k)}^2=\sum_{k=1}^{\infty}\abs{x_{n,k}}^2=
+    \norm{x_n}_{\ell^2}<\infty$
+
+    And so $(x_n)$ is a sequence in $\ell^2$.
+
+    Furthermore, $\norm{x_n-x_m}_{\ell^2}=\norm{f_n-f_m}_H$, and so $(x_n)$ is
+    Cauchy in $\ell^2$. \\
+    But $\ell^2$ is complete, so $x_n\to x\in\ell^2$.
+
+    Now, let $S=\bigcup_{n=1}^{\infty}S_n$. \\
+    Note that $S$ is countable, since all the $S_n$ are countable. \\
+    Define $f:\R\to\C$ as $f(t_k)=x_k, k\in\N$ and $f(t)=0,t\notin S$. \\
+    Thus, $f\in H$ and $\norm{x-x_n}=\norm{f-f_n}\to0$.
+
+    Therefore $H$ is complete.
+    
+    Claim: $H$ is not separable.
+
+    Assume $(f_n)$ be an orthonormal sequence in $H$. \\
+    Construct $f\in H$ such that $f\not\equiv0$ and
+    $\forall\,n\in\N,\inner{f,f_n}=0$. \\
+    Let $S_n=\{x\in\R\mid f_n(x)\ne0\}$. \\
+    Let $S=\bigcup_{n\in N}S_n=\{x\in\R\mid\exists\,n\in\N,f_n(x)\ne0\}$. \\
+    So $\R\setminus S=\{x\in\R\mid\forall\,n\in\N,f_n(x)=0\}$. \\
+    Assume $x_0\in\R\setminus S$. \\
+    Let $f(x)=\begin{cases}1, & x=x_0 \\ 0, & x\ne x_0\end{cases}$. \\
+    $\inner{f,f_n}=f(x_0)f_n(x_0)=0$. \\
+    But $f(x)\not\equiv0$.
+
+    Therefore $(f_n)$ is not complete.
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let $H$ be a finite dimensional inner product (hence Hilbert) space.
+
+  \qquad$H$ is separable.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\dim H=N$. \\
+  Assume $S=\{\vx_1,\ldots,\vx_N\}$ is an orthonormal basis for $H$. \\
+  Thus, $(\vx_n)$ is an orthonormal sequence in $H$. \\
+  Assume $x\in H$. \\
+  $\exists\,\a_n\in\F$ such that $x=\sum_{n=1}^N\a_n\vx_n$ \\
+  $\inner{\vx,\vx_n}=\inner{\sum_{k=1}^N\a_k\vx_k,\vx_n}=\inner{\a_n\vx_n,\vx_n}=
+  \a_n$. \\
+  $\sum_{n=1}^N\inner{x,\vx_n}\vx_n=\sum_{n=1}^N\a_n\vx_n=\vx$
+
+  Therefore $(\vx_n)$ is complete and thus $H$ is separable.
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space:
+
+  \qquad$H$ is separable $\iff H$ contains a countable dense subset.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $H$ is separable.
+
+    Assume $(\vx_n)$ is a complete sequence in $H$. \\
+    Assume $\vx\in H$. \\
+    $\vx=\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n=
+    \lim_{N\to\infty}\sum_{n=1}^N\inner{\vx,\vx_n}\vx_n$ \\
+    Let $\inner{\vx,\vx_n}=\a_n+i\b_n$ where $\a_n,\b_n\in\Q$. \\
+    Let $S_n=\{(\a_n+i\b_n)\vx_n\mid\a_n,\b_n\in\Q\}$. \\
+    Clearly, $S_n$ is a countable set. \\
+    Furthermore, $\norm{\sum_{n=1}^N\inner{\vx,\vx_n}\vx_n-\vx}=
+    \norm{\sum_{n=1}^N(\a_n+i\b_n)\vx_n-\vx}\to0$.
+
+    Therefore $S_n$ is dense and countable in $H$.
+
+  \item $\impliedby$ Assume $S\subset H$ is a countable dense subset.
+
+    Assume $S=\{\vs_n\mid n\in\N\}$. \\
+    Discard any $\vo$ and linearly dependent elements, resulting in a
+    linearly independent set $Y=\{\vy_n\mid n\in\N\}$. \\
+    Note that $\spn(S)=\spn(Y)$. \\
+    Furthermore, $\cl{\spn(Y)}=H$ since $S$ is dense in $H$. \\
+    Now apply Gram-Schmidt to $Y$ to produce an orthonormal set
+    $X=\{\vx_n\mid n\in\N\}$. \\
+    So $(\vx_n)$ is an orthonormal sequence in $H$. \\
+    Assume $\vx=\sum_{n=1}^{\infty}\a_n\vx_n\in H$. \\
+    Assume $\forall\,n\in N,\vx\perp\vx_n$. \\
+    $\inner{\vx,\vx_n}=\inner{\sum_{k=1}^{\infty}\a_k\vx_k,\vx_n}=\a_n=0$ \\
+    Thus, $\vx=0$ and so $(\vx_n)$ is complete.
+
+    Therefore $H$ is separable.
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a separable Hilbert space and let
+  $S=\{\vx_n\mid n\in\N\}\subset H$ be a mutually orthogonal set.
+
+  \qquad$S$ is countable.
+\end{theorem}
+
+\begin{theproof}
+  AWLOG: $S$ is an orthonormal set (otherwise normalize the vectors in $S$). \\
+  Assume $\vx$ and $\vy$ are two distinct elements of $S$. \\
+  $\norm{\vx-\vy}^2=\inner{\vx-\vy,\vx-\vy}=
+  \norm{\vx}^2-\inner{\vx,\vy}-\inner{\vy,\vx}+\norm{\vy}^2=1-0-0+1=2$ \\
+  So any two elements in $S$ are separated by a distance of $\sqrt{2}$. \\
+  Now, consider the set of disjoint open balls:
+  \[\left\{B\left(\vx,\frac{\sqrt{2}}{2}\right)\middle|\vx\in S\right\}\]
+  But $H$ is separable, so it contains a countable dense subset $Z$. \\
+  Thus, there is at least one element of $\vz_x\in Z$ in each
+  $B\left(\vx,\frac{\sqrt{2}}{2}\right)$. \\
+  Thus, $\p:S\to Z$ defined in this way is a one-to-one mapping. \\
+  But $\{\vz_x\mid\vx\in S\}$ is a countable set, and therefore $S$ is a
+  countable set.
+\end{theproof}
+
+\end{document}

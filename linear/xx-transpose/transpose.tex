@@ -1,0 +1,84 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Mn}{M_n(\F)}
+\begin{document}
+\section*{Transpose}
+
+\begin{definition}[Transpose]
+  Let $A$ be an $m\times n$ matrix. The \emph{transpose} of $A$, denoted $A^T$,
+  is the $n\times m$ matrix with entries:
+  \[(A^T)_{ij}=A_{ji}\]
+  Thus, the $i^{th}$ row becomes the $i^{th}$ column and the $j^{th}$ column
+  becomes the $j^{th}$ row.
+\end{definition}
+
+\begin{theorem}
+  \listbreak
+  \begin{enumerate}
+  \item $(A^T)^T=A^T$
+  \item $(cA)^T=cA^T$
+  \item $(A+B)^T=A^T+B^T$
+  \item $(cA+dB)^T=cA^T+dB^T$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item
+
+    $((A^T)^T)_{ij}=(A^T)_{ji}=A_{ij}$
+
+    $\therefore (A^T)^T=A^T$
+
+  \item
+
+    $((cA)^T)_{ij}=(cA)_{ji}=cA_{ji}=c(A^T)_{ij}$
+
+    $\therefore (cA)^T=cA^T$
+
+  \item
+
+    $((A+B)^T)_{ij}=(A+B)_{ji}=A_{ji}+B_{ji}=(A^T)_{ij}+(B^T)_{ij}=(A^T+B^T)_{ij}$
+
+    $\therefore (A+B)^T=A^T+B^T$
+
+  \item
+
+    $(cA+dB)^T=(cA)^T+(dB)^T=cA^T+dB^T$
+  \end{enumerate}
+\end{theproof}
+
+\begin{definition}[Symmetric]
+  To say that a matrix $A$ is symmetry means $A=A^T$.
+
+  Thus, all symmetry matrices must be square matrices.
+\end{definition}
+
+\begin{theorem}
+  Let $S$ be the set of all symmetric $n\times n$ matrices over a field $\F$:
+
+  $S$ is a subspace of $\Mn$
+\end{theorem}
+
+\begin{theproof}
+  Clearly, $0^T=0$, so the zero matrix is in $S$.
+
+  Assume $A,B\in S$ \\
+  $(A+B)^T=A^T+B^T=A+B$ \\
+  Thus, $A+B\in S$
+
+  Therefore $S$ is closed under matrix addition.
+
+  Assume $c\in\F$ \\
+  $(cA)^T=cA^T=cA$ \\
+  Thus, $cA\in S$
+
+  Therefore $S$ is closed under scalar multiplication.
+
+  Therefore, by the subspace test, $S$ is a subspace of $\Mn$.
+\end{theproof}
+
+\end{document}

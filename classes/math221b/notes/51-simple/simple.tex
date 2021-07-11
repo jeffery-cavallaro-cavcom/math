@@ -1,0 +1,102 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\newcommand{\w}{\omega}
+\newcommand{\vp}{\varphi}
+\newcommand{\ct}{\sqrt[3]{2}}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\id}{id}
+\begin{document}
+\section*{Automorphism Groups for Simple Extensions}
+
+\begin{theorem}
+Consider the simple field extension $\Q(\a)/\Q$ with minimum polynomial
+$m_{\a,\Q}(x)$ and let $\vp\in\Aut(\Q(\a)/\Q)$:
+\begin{enumerate}
+\item $\vp$ is completely determined by $\vp(\a)$
+\item $\vp$ permutes the roots of $m_{\a,\Q}(x)$
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Assume $f(x)\in \Q[x]$ \\
+  $f(\a)=\sum_{k=1}^nc_k\a^k$, where $c_k\in\Q$ \\
+  But $\vp$ fixes $\Q$, so $\vp(c_k)=c_k$, and so:
+  \begin{eqnarray*}
+    \vp(f(\a)) &=& \vp\left(\sum_{k=1}^nc_k\a^k\right) \\
+    &=& \sum_{k=1}^n\vp(c_k\a^k) \\
+    &=& \sum_{k=1}^n\vp(c_k)\vp(\a^k) \\
+    &=& \sum_{k=1}^nc_k\vp(\a)^k
+  \end{eqnarray*}
+  Now, assume $y\in\Q(\a)$ \\
+  $\exists\,f(x),g(x)\in \Q[x]$ such that $y=\frac{f(\a)}{g(\a)}$
+  \begin{eqnarray*}
+    \vp(y) &=& \vp\left(\frac{f(\a)}{g(\a)}\right) \\
+    &=& \vp\left(f(\a)g(\a)^{-1}\right) \\
+    &=& \vp(f(\a))\vp(g(\a)^{-1}) \\
+    &=& \vp(f(\a))\vp(g(\a))^{-1} \\
+    &=& f(\vp(\a))g(\vp(\a)))^{-1} \\
+    &=& \frac{f(\vp(\a))}{g(\vp(\a))}
+  \end{eqnarray*}
+  Therefore, $\vp$ is completely determined by $\vp(\a)$
+
+  Let $m(x)=m_{\a,\Q}(x)$ \\
+  Assume $\a$ is a root of $m(x)$ \\
+  $m(\a)=0$ \\
+  $\vp(m(\a))=m(\vp(\a))$ \\
+  But $\vp(m(\a))=\vp(0)=0$ \\
+  So $m(\vp(\a))=0$
+
+  Therefore $\vp(\a)$ maps to some other (possibly the same) root of
+  $m_{\a,\Q}(x)$.
+\end{theproof}
+
+\begin{example}
+  $\C/\R=\R[i]/\R$
+
+  $m_{i,\R}(x)=x^2+1$ with roots $\pm i$
+
+  $i\mapsto i$ \\
+  $i\mapsto -i$
+
+  $\Aut(\C/\R)=\{\id,\bar{z}\}$ and $\abs{\Aut(\C/\R)}=2$
+\end{example}
+
+\begin{example}
+  $\Q(\w)/\Q$
+
+  $m_{\w,\Q}(x)=x^3-1$ with roots $1,\w,\w^2$
+
+  Note that $1\mapsto 1$ always \\
+  $\w\mapsto \w$ \\
+  $\w\mapsto \w^2$
+
+  $\Aut(\Q(\w)/\Q)=\{\id, \w\mapsto\w^2\}\cong\Z/(2)$
+\end{example}
+
+\begin{example}
+  $\Q(\ct)/\Q$
+
+  $m_{\ct,\Q}=x^3-2$ with root $\ct, \w\ct, \w^2\ct$
+
+  Thus, two of the roots are not in $\Q(\ct)$ and thus $\Q(\ct)$ is not a
+  splitting field for $m_{\ct,\Q}(x)$. Thus, the only possibility for $\vp$
+  is $\ct\mapsto\ct$.
+
+  $\Aut(\Q(\ct)/\Q)={\id}$ (trivial)
+\end{example}
+
+\begin{example}
+  $\Q(\ct,\w)/\Q$
+
+  Now the extension is a splitting field and $\Aut(\Q(\ct,\w)/\Q)$ contains
+  all possible permutations of the three roots, so:
+  \[\Aut(\Q(\ct,\w)/\Q)\cong S_3\]
+
+  Example of a 3-cycle: $\ct\mapsto\w\ct\mapsto\w^2\ct\mapsto\ct$
+
+  Example of a 2-cycle: $\ct$ fixed, $\w\ct\mapsto\w^2\ct\mapsto\w\ct$
+\end{example}  
+
+\end{document}

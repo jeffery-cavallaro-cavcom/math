@@ -1,0 +1,68 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ide}{\trianglelefteq}
+\begin{document}
+\section*{Maximal Ideals}
+
+\begin{definition}
+  Let $R$ be a ring and $I\ide R$. To say that $I$ is \emph{maximal} means:
+  \begin{enumerate}
+  \item $I$ is proper
+  \item $\forall\,J\ide R,I\not\subset J$.
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  \listbreak
+  \begin{enumerate}
+  \item Let $F$ be a field. Only the zero ideal is maximal.
+
+  \item For $Z$, all ideals are of the form $n\Z$. Since
+    $n\Z\subseteq m\Z\iff m\mid n$, it follows that $p\Z$, $p$ prime are the
+    maximal ideals in $\Z$.
+
+  \item Let $p$ be prime. $F_p=\Z/p\Z$. Since
+    $F_p^{\times}=\{a+p\Z\mid(a,p)=1\}$, $F_p^{\times}=F_p^*$ and thus $F_p$ is
+    a field. Therefore, the only maximal ideal is $\{p\Z\}$ (the zero ideal).
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}
+  Let $R$ be a ring with $1\ne0$. Every proper ideal $I$ in $R$ is contained
+  in a maximal ideal in $R$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $I$ is a proper ideal in $R$ \\
+  Let $\mathcal{L}$ be the set of all proper ideals of $R$ such that
+  $I\subseteq J$, partially ordered by inclusion \\
+  $I\in\mathcal{L}$ so $\mathcal{L}\ne\emptyset$ \\
+  Note that none of the $J$ contain a unit (since proper) \\
+  Assume $\mathcal{C}$ is a chain in $\mathcal{L}$ \\
+  Let $L=\bigcup\{J:J\in\mathcal{C}\}$ \\
+  $L\ide R$ \\
+  Plus, $L$ does not contain a unit, so $L$ is proper \\
+  Thus, $L\in\mathcal{L}$ and $L$ is an upper bound for $\mathcal{C}$
+
+  Therefore, by Zorn's Lemma, there exists a maximal ideal $M\in\mathcal{L}$
+\end{theproof}
+
+\begin{theorem}
+  Let $R$ be a commutative ring with $1\ne0$ and $I\ide R$. TFAE:
+  \begin{enumerate}
+  \item $I$ is maximal in $R$
+  \item $R/I$ is simple
+  \item $R/I$ is a field
+  \end{enumerate}
+\end{theorem}
+\newpage
+\begin{theproof}
+  $I$ is maximal in $R$ \\
+  $\iff \forall\,J\ide R,I\not\subset J$ \\
+  $\iff R/I$ has no proper ideals \\
+  $\iff R/I$ is simple \\
+  $\iff R/I$ is a field.
+\end{theproof}
+
+\end{document}

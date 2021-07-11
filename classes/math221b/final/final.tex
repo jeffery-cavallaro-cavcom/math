@@ -1,0 +1,176 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\cycle}[1]{\left<#1\right>}
+\renewcommand{\o}{\theta}
+\newcommand{\p}{\phi}
+\DeclareMathOperator{\Gal}{Gal}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221b \\
+Final Exam
+
+\bigskip
+
+\begin{enumerate}
+\item Let $K$ be the splitting field of $x^4-x^2+1$ over $\Q$. Compute
+  $\Gal{K/\Q}$ and find all subfields of $K$.
+
+  First, find the roots:
+  \[x^2=\frac{1\pm\sqrt{1-4}}{2}=\frac{1\pm i\sqrt{3}}{2}=
+  e^{\pm i\frac{\pi}{3}}\]
+  \[x=\pm e^{\pm i\frac{\pi}{6}}=\pm\frac{\sqrt{3}\pm i}{2}\]
+  Thus $x^4-x^2+1$ is irreducible over $\Q$ with $K=\Q(\sqrt{3},i)$:
+
+  \begin{tikzpicture}
+    \node (a) at (0,0) {$\Q$};
+    \node (b) at (0,2) {$\Q(\sqrt{3})$};
+    \node (c) at (0,4) {$\Q(\sqrt{3},i)$};
+    \draw (a) to node [right] {$2$} (b);
+    \draw (b) to node [right] {$2$} (c);
+  \end{tikzpicture}
+
+  Thus $[K:\Q]=4$ and so $\Gal(K/\Q)$ is either $V$ or $Z/4Z$. To determine
+  which, consider the resolvant. Since $x^4-x^2+1$ is already depressed, we
+  have $p=-1$, $q=0$, and $r=1$ for a resolvant of:
+  \[h(x)=x^3+2x^2-3x=x(x^2+2x-3)=x(x-1)(x+3)\]
+  Thus, $h(x)$ has three rational roots.
+
+  $\therefore \Gal{K/\Q}=V$
+
+  The corresponding subfield diagram is as follows:
+
+  \begin{tikzpicture}
+    \node (q) at (2,0) {$\Q$};
+    \node (qi) at (0,2) {$\Q(i)$};
+    \node (qr) at (2,2) {$\Q(\sqrt{3})$};
+    \node (qx) at (4,2) {$\Q(i\sqrt{3})$};
+    \node (k) at (2,4) {$\Q(\sqrt{3},i)$};
+    \draw (q) to node [below left] {$2$} (qi);
+    \draw (q) to node [right] {$2$} (qr);
+    \draw (q) to node [below right] {$2$} (qx);
+    \draw (qi) to node [above left] {$2$} (k);
+    \draw (qr) to node [left] {$2$} (k);
+    \draw (qx) to node [above right] {$2$} (k);
+  \end{tikzpicture}
+
+\item Let $K$ be the splitting field of $x^4+5x^2+5$ over $\Q$. Compute
+  $\Gal(K/\Q)$ and find all subfields of $K$.
+
+  By Eisenstein ($p=5$), $x^4+5x^2+5$ is irreducible over $\Q$. Find the roots:
+  \[x^2=\frac{-5\pm\sqrt{25-20}}{2}=\frac{-5\pm\sqrt{5}}{2}\]
+  \[x=\pm\sqrt{\frac{-5\pm\sqrt{5}}{2}}=\pm i\sqrt{\frac{5\pm\sqrt{5}}{2}}\]
+  Let:
+  
+  $r_1=i\sqrt{\frac{5+\sqrt{5}}{2}}$ \\
+  $r_2=i\sqrt{\frac{5-\sqrt{5}}{2}}$ \\
+  $r_3=-i\sqrt{\frac{5+\sqrt{5}}{2}}$ \\
+  $r_4=-i\sqrt{\frac{5-\sqrt{5}}{2}}$
+
+  Consider $K=\Q(r_1)$:
+  \[r_1^2=-\frac{5+\sqrt{5}}{2}\]
+  So:
+  \[\sqrt{5}=2r_1^2+5\in\Q(r_1)\]
+  Furthermore:
+  \[r_1r_2=-\frac{\sqrt{(5+\sqrt{5})(5-\sqrt{5})}}{2}=-\frac{\sqrt{20}}{2}=
+  -\sqrt{5}\]
+  And so:
+  \[r_2=-\frac{\sqrt{5}}{r_1}\in\Q(r_1)\]
+  Thus all of the roots are contained in $K=\Q(r_1)$:
+
+  \begin{tikzpicture}
+    \node (a) at (0,0) {$\Q$};
+    \node (b) at (0,2) {$\Q(r_1)$};
+    \draw (a) to node [right] {$4$} (b);
+  \end{tikzpicture}
+
+  So $[K:\Q]=4$ and may be either $\Z/4\Z$ or $V$. Next, since $x^4+5x^2+5$ is
+  already depressed,consider the resolvant with $p=5$, $q=0$, and $r=5$:
+  \[h[x]=x^3-10x^2+5x=x(x^2-10x+5)=x[x-(5+2\sqrt{5})][x-(5-2\sqrt{5})]\]
+  So:
+
+  $\o_1=0\in\Q$ \\
+  $\o_2=5+2\sqrt{5}\notin\Q$ \\
+  $\o_3=5-2\sqrt{5}\notin\Q$
+
+  Thus, $\o_1$ is fixed.
+
+  $\therefore \Gal(K/\Q)=\Z/4\Z$.
+
+  The corresponding subfield diagram is as follows:
+
+  \begin{tikzpicture}
+    \node (q) at (0,0) {$\Q$};
+    \node (qr) at (0,2) {$\Q(\sqrt{5})$};
+    \node (k) at (0,4) {$\Q(r_1)$};
+    \draw (q) to node [right] {$2$} (qr);
+    \draw (qr) to node [right] {$2$} (k);
+  \end{tikzpicture}
+
+  \bigskip
+
+\item Show that the angle $30^{\circ}$ is constructable but not trisectable.
+
+  An angle $\o$ is constructable iff $\sin\o$ is constructable. 
+  $\sin(30^{\circ})=\frac{1}{2}$. But $Q\left(\frac{1}{2}\right)=\Q$.
+
+  Therefore an angle of $30^{\circ}$ is constructable.
+
+  Now, let $\p=10^{\circ}$ and $\o=3\p=30^{\circ}$. From Euler's formula we
+  have:
+  \[e^{i3\p}=(e^{i\p})^3=(\cos\p+i\sin\p)^3=
+  \cos^3\p+3i\cos^2\p\sin\p-3\cos\p\sin^2\p-i\sin^3\p\]
+  Since we want $\sin\p$, take the imaginary part:
+  \[\sin\o=3\cos^2\p\sin\p-\sin^3\p=3(1-\sin^2\p)\sin\p-\sin^3\p=
+  -4\sin^3\p+3\sin\p\]
+  Thus, if $4x^3-3x+\sin\o$ is irreducible over $\Q(\sin\o)[x]$
+  then a field extension not a power of $2$ is required and thus $\sin\p$
+  would not be constructable.
+
+  In this case, $\sin\o=\frac{1}{2}\in\Q$ so
+  \[f(x)=4x^3-3x+\frac{1}{2}=2(8x^3-6x+1)\]
+  must be factorable over $\Q$ for $\p$ to be constructable. By the rational
+  root test, the only possible rational roots are:
+  $\pm1,\pm\frac{1}{2},\pm\frac{1}{4},\pm\frac{1}{8}$:
+  \[\begin{array}{c|c}
+  x & f(x) \\
+  \hline
+  1 & 3 \\
+  -1 & -1 \\
+  \frac{1}{2} & -1 \\
+  -\frac{1}{2} & 3 \\
+  \frac{1}{4} & -\frac{3}{8}\\
+  -\frac{1}{4} & \frac{19}{8} \\
+  \frac{1}{8} & \frac{17}{64} \\
+  -\frac{1}{8} & \frac{111}{64} \\
+  \end{array}\]
+  Thus, $f(x)$ has no rational roots and so is irreducible over $\Q$.
+
+  Therefore $\p=10^{\circ}$ is not constructable.
+
+  \bigskip
+
+\item Explain why $f(x)=x^5-2x^3-8x+2$ is not solvable by radicals.
+
+  Let $K$ be the splitting field of $f(x)$ over $\Q$. By Eisenstein ($p=2$),
+  $f(x)$ is irreducible in $\Q$.
+
+  Since $f(x)$ has two sign changes, by Decartes, $f(x)$ has $0$ or $2$
+  positive real roots (not $4$, since complex roots must come in conjugate
+  pairs). But $f(0)=2$ and $(1)=-7$, thus there must be at least one, and
+  therefore there are $2$.
+
+  Now $f(-x)=-x^5+2x^3+8x+2$ has $1$ sign change and thus $f(x)$ has $0$ or
+  $1$ negative real roots. There must be exactly $1$ since the complex roots
+  must come in conjugate pairs.
+
+  Thus, $f(x)$ has $3$ real and $2$ complex roots, and so $\Gal(K/\Q)=S_5$.
+  But we know that:
+  \[S_5\ge S_5'=A_5\]
+  where $S_5'$ is the commutator group of $S_5$. But $A_5$ is simple and so
+  the commutator chain is locked into $A_5$. Thus, $S_5$ is not solvable.
+
+  Therefore $f(x)$ is not solvable.
+\end{enumerate}
+
+\end{document}

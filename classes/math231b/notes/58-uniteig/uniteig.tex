@@ -1,0 +1,87 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\begin{document}
+\section*{Eigenvalues of Unitary Operators}
+
+\begin{theorem}
+  Let $E$ be a normed space and let $A$ be a unitary operator on $E$:
+
+  \qquad$\l$ is an eigenvalue of $A\implies\abs{\l}=1$
+\end{theorem}
+
+\begin{theproof}
+  Assume $\l$ is an eigenvalue of $A$.
+  Assume $\vx$ is an eigenvector of $\l$, and thus $\vx\ne\vo$.
+  $A$ unitary $\implies A$ preserves the norm: $\norm{A\vx}=\norm{\vx}$.
+  \begin{eqnarray*}
+    A\vx &=& \l\vx \\
+    \norm{A\vx} &=& \norm{\l\vx} \\
+    \norm{\vx} &=& \abs{\l}\norm{\vx} \\
+    \therefore\abs{\l} &=& 1
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{lemma}
+  Let $E$ be a normed space and let $A$ be a unitary operator on $E$. For
+  all eigenvalues $\l,\m$ of $A$:
+  \[\l\ne\mu\implies\l\conj{\m}\ne1\]
+\end{lemma}
+
+\begin{theproof}
+  Assume $\l$ and $\m$ are eigenvalues of $A$ such that $\l\ne\m$. \\
+  Since $A$ is unitary, $\abs{\l}=\abs{\mu}=1$. \\
+  So $\exists\,\a,\b\in\R$ such that $\l=e^{i\a}$ and $\m=e^{i\b}$. \\
+  ABC: $\l\conj{\m}=1$ \\
+  $\frac{\l}{\m}=1$ \\
+  $\l=\m$ \\
+  CONTRADICTION!
+
+  $\therefore\l\conj{\m}\ne1$
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $A$ be a unitary or self-adjoint operator
+  on $H$. For all eigenvalues $\l,\m$ of $A$:
+  \[\l\ne\m\implies E_{\l}\perp E_{\m}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in E_{\l}$ and $\vy\in E_{\m}$. \\
+  Thus $\vx,\vy\ne0$.
+  \begin{description}
+  \item Case 1: $A=A^*$
+
+    $\l\inner{\vx,\vy}=\inner{\l\vx,\vy}=\inner{A\vx,\vy}=\inner{\vx,A\vy}=
+    \inner{\vx,\m\vy}=\conj{\m}\inner{\vx,\vy}$
+
+    $(\l-\m)\inner{\vx,\vy}=0$
+
+    But $\l\ne\m$ and so $\inner{\vx,\vy}=0$ and thus $\vx\perp\vy$.
+
+    $\therefore E_{\l}\perp E_{\m}$
+
+  \item Case 2: $AA^*=A^*A=I$
+
+    $\l\conj{\m}\inner{\vx,\vy}=\inner{\l\vx,\m\vy}=\inner{A\vx,A\vy}=
+    \inner{\vx,\vy}$
+
+    $(\l\conj{\m}-1)\inner{\vx,\vy}=0$
+
+    But $\l\conj{\m}\ne1$ and so $\inner{\vx,\vy}=0$ and thus $\vx\perp\vy$.
+
+    $\therefore E_{\l}\perp E_{\m}$
+  \end{description}
+\end{theproof}
+
+\end{document}

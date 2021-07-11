@@ -1,0 +1,128 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\cycle}[1]{\left<#1\right>}
+\newcommand{\n}{\mathrel{\triangleleft}}
+\newcommand{\p}{\phi}
+\newcommand{\m}{\mu}
+\begin{document}
+\section*{Factor Groups}
+
+\begin{definition}
+  Let $H\n G$. The set of all cosets of $H$, denoted $G/H$ and often referred
+  to as $G$ modulo $H$, is given by:
+  \[G/H=\{gH\mid g\in G\}\]
+\end{definition}
+
+\begin{theorem}
+  Let $H\n G$:
+  \[(aH)(bH)=(ab)H\]
+  is a binary operation on $G/H$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $a_1,a_2,b\in G$ \\
+  Assume $a_1H=a_2H$
+
+  $a_1H,a_2H,bH\in G/H$ \\
+  $(a_1H)(bH)=(a_1b)H$ \\
+  $(a_2H)(bH)=(a_2b)H$ \\
+  $a_1b,a_2b\in G$ \\
+  So $(a_1b)H,(a_2b)H\in G/H$ \\
+  Therefore the operation is closed.
+
+  $a_1^{-1}a_2\in H$ \\
+  $\exists\,h\in H,a_1^{-1}a_2=h$ \\
+  $(a_1b)^{-1}(a_2b)=b^{-1}(a_1^{-1}a_2)b=b^{-1}hb$ \\
+  But $H\n G$ \\
+  So $b^{-1}hb\in H$ \\
+  $(a_1b)H=(a_2b)H$ \\
+  Therefore the operation is well-defined.
+
+  Therefore the operation is a binary operation.
+\end{theproof}
+
+\begin{theorem}
+  Let $H\n G$:
+  \[G/H\ \mbox{is a group}\]
+\end{theorem}
+
+$G/H$ is called a factor or quotient group.
+\newpage
+\begin{theproof}
+  Assume $a,b,c\in G$
+
+  $(aH)(bH)=(ab)H$ is a well-defined and closed operation.
+
+  $[(aH)(bH)](cH)=[(ab)H](cH)=[(ab)c]H=[a(bc)]H=(aH)[(bc)H]=(aH)[(bH)(cH)]$ \\
+  $\therefore G/H$ is associative under the operation.
+
+  $H(aH)=(eH)(aH)=(ea)H=aH$ \\
+  $(aH)H=(aH)(eH)=(ae)H=aH$ \\
+  $\therefore G/H$ has identity $H$
+
+  $a^{-1}\in G$ \\
+  $(a^{-1}H)(aH)=(a^{-1}a)H=eH=H$ \\
+  $(aH)(a^{-1}H)=(aa^{-1})H=eH=H$ \\
+  $\therefore G/H$ is closed under inverses.
+
+  $\therefore G/H$ is a group under the operation.
+\end{theproof}
+
+\begin{theorem}
+  Let $\p:G\to G'$ be a homomorphism of groups and $K=\ker(\p)$:
+  \[G/K\simeq\p[G]\]
+\end{theorem}
+
+\begin{theproof}
+  Let $\m:G/K\to\p[G]$ be defined by $\m(aK)=\p(a)$ \\
+  By previous theorem, $\m$ is well-defined
+
+  \begin{minipage}[t]{3in}
+    Assume $\m(aK)=\m(bK)$ \\
+    $\p(a)=\p(b)$ \\
+    $\p(a)^{-1}\p(b)=e'$ \\
+    $\p(a^{-1})\p(b)=e'$ \\
+    $\p(a^{-1}b)=e'$ \\
+    $a^{-1}b\in K$ \\
+    $aK=bK$ \\
+    $\therefore\m$ is one-to-one.
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    Assume $g'\in\p[G]$ \\
+    $\exists\,g\in G,\p(g)=g'$
+    $gK\in G/K$ \\
+    $\m(gK)=\p(g)=g'$ \\
+    $\therefore\m$ is onto and is thus a bijection.
+  \end{minipage}
+
+  $\m((aK)(bK))=\m((ab)K)=\p(ab)=\p(a)\p(b)=\m(aK)\m(bK)$ \\
+  $\therefore\m$ is a homomorphism and thus an isomorphism
+
+  $\therefore G/K\simeq\p[G]$
+\end{theproof}
+
+\begin{example}
+  $G=\Z_2\times\Z_4$ \\
+  $H=\cycle{(1,2)}=\{(0,0),(1,2)\}$
+
+  Since $G$ is abelian and $H\le G$ we have $H\n G$
+
+  $\abs{G}=2\cdot4=8$ \\
+  $\abs{H}=2$ \\
+  $\abs{G/H}=(G:H)=\frac{8}{2}=4$
+
+  \begin{minipage}[t]{2in}
+    $(0,0)H=H$ \\
+    $(1,0)H$ \\
+    $(0,1)H$ \\
+    $(1,1)H$
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    $-(1,0)+(0,1)=(-1,1)=(1,1)\notin H$ \\
+    $-(1,0)+(1,1)=(0,1)\notin H$ \\
+    $-(0,1)+(1,1)=(1,0)\notin H$
+  \end{minipage}
+\end{example}
+
+\end{document}

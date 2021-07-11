@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vect}{\ve^{\,*}}
+\newcommand{\vf}{\vec{f}}
+\newcommand{\vu}{\vec{u}}
+\pagestyle{empty}
+\begin{document}
+\section*{Gram Matrix}
+
+\begin{theorem}
+  Let $\inner{\cdot}{\cdot}$ be an inner product on a vector space $V$ with
+  basis $\{\vf_1,\ldots,\vf_2\}$ and let $G=\left[\inner{\vf_j}{\vf_i}\right]$,
+  which is called the \emph{Gram matrix}:
+
+  $G$ is positive definite.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in\C^n$:
+  \begin{eqnarray*}
+    \vxct G\vx &=& \left(\sum_{i=1}^nx_i\ve_i\right)^*G
+    \left(\sum_{j=1}^nx_j\ve_j\right) \\
+    &=& \sum_{i=1}^n\sum_{j=1}^n\conj{x_i}(\vect_iG\ve_j)x_j \\
+    &=& \sum_{i=1}^n\sum_{j=1}^n\conj{x_i}x_ja_{ij} \\
+    &=& \sum_{i=1}^n\sum_{j=1}^n\conj{x_i}x_j\inner{\vf_j}{\vf_i} \\
+    &=& \sum_{i=1}^n\sum_{j=1}^n\inner{x_j\vf_j}{x_i\vf_i} \\
+    &=& \inner{\sum_{j=1}^nx_j\vf_j}{\sum_{i=1}^nx_i\vf_i} \\
+  \end{eqnarray*}
+  Let $\vu=\sum_{i=1}^nx_i\vf_i\in V$:
+  \[\vxct G\vx = \inner{\vu}{\vu}\ge 0\]
+  Equality only holds when $\vu=0$, which means that all the $x_i=0$ because the
+  $\vf_i$ are linearly independent, which means $\vx=0$
+
+  $\therefore G$ is positive definite.
+\end{theproof}
+
+\begin{example}
+  \listbreak
+  \begin{enumerate}
+  \item $V=\C^n$ and $\inner{x}{y}=\sum_{k=1}^n\conj{y_i}x_i=y^*x$ and
+    $\vf_i=\ve_i$
+
+    $\inner{\vf_i}{\vf_j}=\begin{cases}
+    1, & i=j \\
+    0, & i\ne j
+    \end{cases}$
+
+    So $G=I_n$, which is positive definite.
+
+  \item Same as above, except use basis
+    $\left\{\begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix},
+    \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix},
+    \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}\right\}$
+
+    $G=\begin{bmatrix}
+    1 & 1 & 1 \\
+    1 & 2 & 2 \\
+    1 & 2 & 3
+    \end{bmatrix}$
+
+  \item $V$ consists of polynomials of degree at most $n$
+
+    $\inner{p(x)}{q(x)}=\int_0^1p(x)\conj{q(x)}dx$
+
+    Use basis $\{1,x,x^2,\ldots,x^n\}$
+
+    $\inner{x^{j-1}}{x^{i-1}}=\int_0^1x^{i+j-2}dx=
+    \left.\frac{1}{i+j-1}x^{i+j-1}\right\rvert_0^1=\frac{1}{i+j+1}$
+
+    $G=\begin{bmatrix}
+    \frac{1}{1} & \frac{1}{2} & \frac{1}{3} & \cdots & \frac{1}{n} \\
+    \frac{1}{2} & \frac{1}{3} & \frac{1}{4} & \cdots & \frac{1}{n+1} \\
+    \frac{1}{3} & \frac{1}{4} & \frac{1}{5} & \cdots & \frac{1}{n+2} \\
+    \vdots & \vdots & \vdots & \vdots & \vdots \\
+    \frac{1}{n} & \frac{1}{n+1} & \frac{1}{n+2} & \cdots & \frac{1}{2n-1} \\
+    \end{bmatrix}$
+  \end{enumerate}
+\end{example}
+
+\end{document}

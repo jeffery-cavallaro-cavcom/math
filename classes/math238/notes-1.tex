@@ -1,0 +1,87 @@
+\documentclass[letterpaper,12pt,fleqn,twocolumn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\zb}{\bar{z}}
+\renewcommand{\o}{\theta}
+\newcommand{\p}{\phi}
+\newcommand{\g}{\gamma}
+\newcommand{\G}{\Gamma}
+\newcommand{\z}{\zeta}
+\newcommand{\x}{\xi}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\s}{\psi}
+\renewcommand{\S}{\Psi}
+\DeclareMathOperator{\sech}{sech}
+\begin{document}
+$z=e^{i\o}\implies z+\frac{1}{z}=2\cos\o$ \\
+$z^n-1=\prod_{k=0}^{n-1}{\left(z-e^{i\frac{2\pi k}{n}}\right)}$ \\
+$\cos(\o)=\cosh{i\o}$ \\
+$i\sin(\o)=\sinh{i\o}$ \\
+$\cosh(\o)=\cos{i\o}$ \\
+$i\sinh(\o)=\sin{i\o}$ \\
+Cauchy-Schwarz: \\
+$\abs{\sum{a_kb_k}}^2\le\left(\sum{\abs{a_k}^2}\right)
+\left(\sum{\abs{b_k}^2}\right)$ \\
+$\sum{\abs{a_k-c\overline{b_k}}^2}, c=\frac{\sum{a_kb_k}}{\sum{\abs{b_k}^2}}$ \\
+Cauchy-Riemann: \\
+$f'(z)=u_x+iv_x=v_y-iu_y$ \\
+$u_x=v_y$ and $v_x=-u_y$ \\
+$f'(z)=f_x=-if_y$ \\
+$f'(z)\implies f_{\zb}=0$ \\
+partials exist, cont, CR $\implies f'(z)$ \\
+Polar Cauchy-Riemann: \\
+$f'(z)=e^{-i\o}(u_r+iv_r)=\frac{1}{r}e^{-i\o}(v_{\o}-iu_{\o})$ \\
+$ru_r=v_{\o}$ and $u_{\o}=-rv_r$ \\
+$f'(z)=e^{-i\o}f_r=-i\frac{1}{r}e^{-i\o}f_{\o}$ \\
+Milne-Thompson:\\
+$f(z)=2u\left(\frac{z+\bar{z}}{2},\frac{z-\bar{z}}{2i}\right)-u(x_0,y_0)+iC$ \\
+$f(z)=2iv\left(\frac{z+\bar{z}}{2},\frac{z-\bar{z}}{2i}\right)-
+iv(x_0,y_0)+C$ \\
+$f(z)=u(z,0)+iv(z,0)$ \\
+Harmonic:\\
+$u_{xx}+u_{yy}=0$ \\
+$r^2u_{rr}+ru_r+u_{\o\o}=0$ \\
+Torsion: \\
+$Re[f(z)]-(\a x^2+\b y^2+\g)=0$ \\
+$\s(x,y)=A Re[F(z)]+B(x^2-y^2)+C$ \\
+$\s(x,y)=\frac{1}{2}(x^2-y^2)$ \\
+$\S(x,y)=\s(x,y)-\frac{1}{2}(x^2-y^2)$ \\
+$\s(x,y)=\frac{1}{\a+\b}[Re(f(z))+\frac{1}{2}(\b-\a)(x^2-y^2)-\g]$ \\
+$\S(x,y)=\frac{1}{\a+\b}[Re[f(z)]-(\a x^2+\b y^2+\g)]$ \\
+Green: $\int_CMdx+Ndy=\iint_D(N_x-M_y)dxdy$ \\
+CG: $\int_{\g}f(z)dz=0$ \\
+CGMCD: $\int_{C}f(z)dz=\sum_{k=1}^n\int_{\g_k}f(z)dz$ \\
+CIF: $f(a)=\frac{1}{2\pi i}\int_{\G}\frac{f(z)}{z-a}dz$ \\
+CIFMCD: $f(a)=\frac{1}{2\pi i}\int_C\frac{f(z)}{z-a}dz-
+\sum_{k=1}^n\int_{\g_k}\frac{f(z)}{z-a}dz$ \\
+CIFD: $f^{(n)}(a)=\frac{n!}{2\pi i}\int_{\G}\frac{f(z)}{(z-a)^{n+1}}$ \\
+CIFHP: $f(z)=\frac{y}{\pi}\int_{-\infty}^{\infty}\frac{f(\x)}{(\x-x)^2+y^2}$ \\
+Poisson: $f(a)=f(re^{i\o})=\frac{1}{2\pi}
+\int_0^{2\pi}\frac{(R^2-r^2)f(Re^{i\p})}{R^2-2rR\cos(\o-\p)+r^2}d\p=
+\frac{1}{2\pi}\int_0^{2\pi}\frac{(R^2-r^2)f(Re^{i\p})}
+     {\abs{Re^{i\p}-re^{i\o}}^2}d\p$ \\
+MVT Harm: $u(0)=\frac{1}{2\pi}\int_0^{2\pi}u(R,\p)d\p$ \\
+Harnack: $\frac{R-r}{R+r}u(0)\le u(r,\o)\le\frac{R+r}{R-r}u(0)$ \\
+Parseval: $\frac{1}{2\pi}\int_0^{2\pi}\abs{f(re^{i\o})}^2d\o=
+\sum_{n=0}^{\infty}\abs{a_n}^2r^{2n}$ \\
+Schwarz: $f(z)=\frac{1}{2\pi i}\int_{\abs{z}=R}\left(\frac{\z+z}{\z-z}\right)
+\frac{u(\z)}{\z}d\z$ \\
+Laurent: \\
+$f(z)=\sum_{n=0}^{\infty}a_n(z-z_0)^n+\sum_{n=1}^{\infty}\frac{b_n}{(z-z_o)^n}$ \\
+$a_n=\frac{1}{2\pi i}\int_{C_2}\frac{f(\z)}{(\z-z_0)^{n+1}}d\z$ \\
+$b_n=\frac{1}{2\pi i}\int_{C_1}\frac{f(\z)}{(\z-z_0)^{-n+1}}d\z$ \\
+$a=\frac{z-z_0}{\z-z_0}$ \\
+Residue: $Res[f,z_0]=\frac{1}{(n-1)!}\lim_{z\to z_0}D^{(n-1)}[(z-z_0)^nf(z)]$ \\
+Fibonacci: \\
+$\sum_{n=0}^{\infty}F_nz^n=\frac{z}{1-z-z^2}$ \\
+Bernoulli:\\
+$\frac{z}{e^z-1}=\sum_{n=0}^{\infty}\frac{B_n}{n!}z^n$ \\
+$B_0=1, B_1=-\frac{1}{2}, B_n=-\frac{1}{n+1}\sum_{k=0}^{n-1}\binom{n+1}{k}B_k$ \\
+$B_{2k+1}=0,k>0$ \\
+Euler: \\
+$\sech{z}=\frac{2e^z}{e^{2z}+1}=\sum_{n=0}^{\infty}\frac{E_n}{n!}z^n$ \\
+$E_0=1, E_n=1-\frac{1}{2}\sum_{k=1}^n\binom{n}{k}E_{n-k}$ \\
+Bessel: \\
+$e^{\frac{u}{2}(z-\frac{1}{z})}=\sum_{n=-\infty}^{\infty}J_n(u)z^n$ \\
+\end{document}

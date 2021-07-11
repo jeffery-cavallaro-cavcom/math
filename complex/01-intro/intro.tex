@@ -1,0 +1,38 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\begin{document}
+\section*{Complex Numbers}
+Complex numbers arise when attempting to solve polynomials that have more than
+just real roots. For example:
+\begin{eqnarray*}
+x^2+1 &=& 0 \\
+x^2 &=& -1 \\
+x &=& \pm\sqrt{-1} \\
+\end{eqnarray*}
+\begin{definition}
+The set of complex numbers $\C$ is defined by:
+\[\C=\{z=(x,y)\mid x,y\in\R\}\]
+$x=Re(z)$ is called the \emph{real} part of $z$ \\
+$y=Im(z)$ is called the \emph{imaginary} part of $z$ \\
+\end{definition}
+Complex numbers are interpreted as points on the complex plane:
+\begin{figure*}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw [<->] (-3,0) -- (3,0);
+\draw [<->] (0,-3) -- (0,3);
+\node [right] at (3,0) {Re};
+\node [above] at (0,3) {Im};
+\draw [fill=black] (1,2) circle [radius=0.1];
+\draw [dashed] (0,2) -- (1,2);
+\draw [dashed] (1,0) -- (1,2);
+\node [below] at (1,0) {$x$};
+\node [left] at (0,2) {$y$};
+\node [above right] at (1,2) {$z=(x,y)$};
+\end{tikzpicture}
+\end{figure*}
+
+Note that $\R=\{(x,0)\mid x\in\R\}$ so $\R\subset\C$.
+\end{document}

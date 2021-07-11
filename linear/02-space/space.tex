@@ -1,0 +1,210 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxp}{\vec{x'}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vi}{\vec{0}}
+\newcommand{\F}{\mathbb{F}}
+\begin{document}
+\section*{Vector Space}
+
+\begin{definition}[Vector Space]
+  A \emph{vector (linear) space} is an algebraic structure that consists of:
+  \begin{enumerate}
+  \item A set of objects $V$ called vectors.
+  \item A field $\F$ called scalars.
+  \item An operation of vector addition ($\vx+\vy$).
+  \item An operation of scalar multiplication ($c\vx$).
+  \end{enumerate}
+  such that $\forall\,\vx,\vy,\vz\in V$ and $\forall\,a,b\in F$ the following ten
+  properties hold:
+  \begin{enumerate}
+  \item Additive Closure: $\vx+\vy\in V$
+  \item Additive Commutativity: $\vx+\vy=\vy+\vx$
+  \item Additive Associativity: $(\vx+\vy)+\vz=\vx+(\vy+\vz)$
+  \item Additive Identity: $\exists\,\vi\in V,\vx+\vi=\vi+\vx=\vx$
+  \item Additive Inverse: $\exists\,(-\vx)\in V,\vx+(-\vx)=(-\vx)+\vx=\vi$
+  \item Multiplicative Closure: $a\vx\in V$
+  \item Multiplicative Inverse: $1\vx=\vx$
+  \item Multiplicative Associativity $(ab)\vx=a(b\vx)$
+  \item Scalar (Left) Distributivity: $a(\vx+\vy)=a\vx+a\vy$
+  \item Vector (Right) Distributivity: $(a+b)\vx=a\vx+b\vx$
+  \end{enumerate}
+\end{definition}
+
+Typical choices for scalar fields are the infinite fields: $\Q, \R,$ and $\C$; or a finite
+field like $\Z_2$, but not $\Z$, which is only a ring.
+
+\begin{example}
+  \listbreak
+  \begin{enumerate}
+  \item $\F^n$, where the scalars are from $\F$ and the vectors are n-tuples of
+    elements from $\F$, usually represented by column vectors. Addition and
+    multiplication are component-wise:
+    \[\vx+\vy=\begin{bmatrix}x_1 \\ x_2 \\ \vdots \\ x_n\end{bmatrix}+
+    \begin{bmatrix}y_1 \\ y_2 \\ \vdots \\ y_n\end{bmatrix}=
+      \begin{bmatrix}x_1+y_1 \\ x_2+y_2 \\ \vdots \\ x_n+y_n\end{bmatrix}\hspace{0.5in}
+        c\vx=c\begin{bmatrix}x_1 \\ x_2 \\ \vdots \\ x_n\end{bmatrix}=
+        \begin{bmatrix}cx_1 \\ cx_2 \\ \vdots \\ cx_n\end{bmatrix}\]
+\newpage
+  \item $M_{m\times n}(\F)$, where the scalars are from $\F$ and the vectors are
+    $m\times n$ matrices whose components are also from $\F$. Addition and multiplication
+    are the standard matrix operations:
+    \[(A+B)_{ij}=A_{ij}+B_{ij}\]
+    \[(cA)_{ij}=cA_{ij}\]
+
+  \item $\mathcal{F}(S,\F)$, where the scalars are from $\F$ and the vectors are
+    functions with domain $S$ and codomain $\F$. Addition and multiplication are the
+    standard function operations:
+    \[(f+g)(s)=f(s)+g(s)\]
+    \[(cf)(s)=cf(s)\]
+
+  \item $\F[x]$, where the scalars are from $\F$ and the vectors are polynomials with
+    coefficients from $\F$. Note that this is an example of $\mathcal{F}(S,\F)$, so
+    addition and multiplication are the standard function operations as well.
+  \end{enumerate}
+\end{example}
+
+\newpage
+
+\subsection*{Properties}
+
+\begin{theorem}[Cancellation Rules]
+  Let $V$ be a vector space over a field $F$. The cancellation rules hold in $V$:
+
+  $\forall\,\vx,\vy,\vz\in V$ and $\forall\,a\in\F-\{0\}$:
+  \begin{enumerate}
+  \item Right: $\vx+\vz=\vy+\vz\implies\vx=\vy$
+  \item Left: $\vz+\vx=\vz+\vy\implies\vx=\vy$
+  \item Scalar: $a\vx=a\vy\implies\vx=\vy$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vy,\vz\in V$ and $a\in\F-\{0\}$:
+  \begin{enumerate}
+  \item Assume $\vx+\vz=\vy+\vz$
+
+    $\exists\,(-z)\in V$ \\
+    $(\vx+\vz)+(-\vz)=(\vy+\vz)+(-\vz)$ \\
+    $\vx+[\vz+(-\vz)]=\vy+[\vz+(-\vz)]$ \\
+    $\vx+\vi=\vy+\vi$
+    
+    $\therefore\vx=\vy$
+
+  \item Assume $\vz+\vx=\vz+\vy$
+
+    $\vx+\vz=\vy+\vz$
+
+    $\therefore \vx=\vy$
+
+  \item Assume $a\vx=a\vy$
+
+    Since $a\ne0$, $\exists\,a^{-1}\in\F$ \\
+    $a^{-1}(a\vx)=a^{-1}(a\vy)$ \\
+    $(a^{-1}a)\vx=(a^{-1}a)\vy$ \\
+    $1\vx=1\vy$
+
+    $\therefore\vx=\vy$
+  \end{enumerate}
+\end{theproof}
+
+\newpage
+
+\begin{theorem}[Zero]
+  Let $V$ be a vector space over a field $\F$:
+  
+  $\forall\,\vx\in V$ and $\forall\,c\in\F$:
+  \begin{enumerate}
+  \item $\vi\in V$ is unique
+  \item $(-\vi)=\vi$
+  \item $0\vx=\vi$
+  \item $c\vi=\vi$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in V$ and $c\in\F$
+  \begin{enumerate}
+  \item Assume $\vi,\vi'\in V$ are both additive identities in $V$
+    
+    $\vx+\vi=\vx$ \\
+    $\vx+\vi'=\vx$ \\
+    $\vx+\vi=\vx+\vi'$
+  
+    $\therefore\vi=\vi'$
+
+  \item
+
+    $\vi+\vi=\vi$ \\
+    $\vi+(-\vi)=\vi$ \\
+    $\vi+(-\vi)=\vi+\vi$
+
+    $\therefore (-\vi)=\vi$
+
+  \item
+
+    $0\vx=(0+0)\vx=0\vx+0\vx$ \\
+    $0\vx=0\vx+\vi$ \\
+    $0\vx+0\vx=0\vx+\vi$
+
+    $\therefore 0\vx=\vi$
+
+  \item
+
+    $c\vi=c(\vi+\vi)=c\vi+c\vi$ \\
+    $c\vi=c\vi+\vi$ \\
+    $c\vi+c\vi=c\vi+\vi$
+
+    $\therefore c\vi=\vi$
+  \end{enumerate}
+\end{theproof}
+
+\newpage
+
+\begin{theorem}[Inverses]
+  Let $V$ be a vector space over a field $\F$:
+  
+  $\forall\,\vx\in V$ and $\forall\,c\in\F$:
+  \begin{enumerate}
+  \item $(-\vx)$ is unique
+  \item $(-1)\vx=(-\vx)$
+  \item $(-c)\vx=-(c\vx)=c(-\vx)$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in V$ and $c\in\F$
+  \begin{enumerate}
+    \item Assume $(-\vx),(-\vxp)\in V$ are both additive inverses for $\vx$
+
+      $\vx+(-\vx)=\vi$ \\
+      $\vx+(-\vxp)=\vi$ \\
+      $\vx+(-\vx)=\vx+(-\vxp)$
+
+      $\therefore(-\vx)=(-\vxp)$
+
+    \item
+
+      $(-1)\vx+\vx=(-1)\vx+1\vx=[(-1)+1]\vx=0\vx=\vi$ \\
+      But inverses are unique
+
+      $\therefore (-1)\vx=(-\vx)$
+
+    \item
+
+      $(-c)\vx+c\vx=[(-c)+c]\vx=0\vx=\vi$ \\
+      But additive inverses are unique
+
+      $\therefore (-c)x=-(cx)$
+
+      In particular, let $c=1$ \\
+      $c(-\vx)=c[(-1)\vx]=[c\cdot(-1)]\vx=(-c)\vx$
+
+      $\therefore (-c)\vx=-(c\vx)=c(-\vx)$
+  \end{enumerate}
+\end{theproof}
+
+\end{document}

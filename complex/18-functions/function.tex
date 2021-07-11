@@ -1,0 +1,109 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\newcommand{\Arg}[1]{\mathrm{Arg}\,#1}
+\newcommand{\conj}[1]{\overline{#1}}
+\allowdisplaybreaks
+\begin{document}
+\section*{Functions}
+
+\begin{definition}
+  Let $S\subseteq\C$. A \emph{function} $f$ is a rule that assigns to each
+  $z\in S$ a value $w\in\C$, denoted:
+  \[w=f(z)\]
+  where $w$ is called the value of the function $f$ at $z$.
+
+  The set $S$ is called the \emph{domain} of $f$. When no domain is explicitly
+  stated then the domain is assumed to be as large as possible.
+\end{definition}
+
+\begin{minipage}[t]{3in}
+  $w=f(x+iy)=u(x,y)+iv(i,y)$
+
+  $u(x,y)=Re(w)$ \\
+  $v(x,y)=Im(w)$
+\end{minipage}
+\begin{minipage}[t]{3in}
+  $w=f(re^{i\o})=u(r,\o)+iv(r,\o)$
+
+  $u(r,\o)=Re(w)$ \\
+  $v(r,\o)=Im(w)$
+\end{minipage}
+
+\begin{example}
+  $f(z)=z^2$
+  
+  Domain: $\C$ \\
+  \begin{minipage}[t]{3in}
+    \begin{eqnarray*}
+      f(x+iy) &=& (x+iy)^2 \\
+      &=& x^2-y^2+i2xy \\
+      \\
+      u &=& x^2-y^2 \\
+      v &=& 2xy \\
+    \end{eqnarray*}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \begin{eqnarray*}
+      f(re^{i\o}) &=& (re^{i\o})^2 \\
+      &=& r^2e^{i2\o} \\
+      &=& r^2\cos{2\o}+ir^2\sin{2\o} \\
+      \\
+      u &=& r^2\cos{2\o} \\
+      v &=& r^2\sin{2\o} \\
+    \end{eqnarray*}
+  \end{minipage}
+\end{example}
+
+When $Im(w)=0$ then $f$ is called a real-valued function of a complex variable.
+
+\begin{example}
+  $f(x)=\abs{z}=\sqrt{x^2+y^2}$
+
+  $u=\sqrt{x^2+y^2}$ \\
+  $v=0$
+\end{example}
+\newpage
+\begin{example}
+  Let $Z=f(z)=\frac{z-1}{z+1}$
+
+  Find: $\Arg{Z}$
+
+  \begin{eqnarray*}
+    Re(Z) &=& \frac{Z+\conj{Z}}{2} \\
+    &=& \frac{1}{2}\left[\frac{z-1}{z+1}+
+      \conj{\left(\frac{z-1}{z+1}\right)}\right] \\
+    &=& \frac{1}{2}\left[\frac{z-1}{z+1}+
+      \frac{\conj{z}-1}{\conj{z}+1}\right] \\
+    &=& \frac{1}{2}\left[\frac{(z-1)(\conj{z}+1)+(z+1)(\conj{z}-1)}
+      {(z+1)(\conj{z}+1)}\right] \\
+    &=& \frac{1}{2}\left[\frac{z\conj{z}+z-\conj{z}-1+z\conj{z}-z+\conj{z}-1}
+      {z\conj{z}+z+\conj{z}+1}\right] \\
+    &=& \frac{1}{2}\left[\frac{2\abs{z}^2-2}{\abs{z}^2+z+\conj{z}+1}\right] \\
+    &=& \frac{\abs{z}^2-1}{\abs{z}^2+(z+\conj{z})+1} \\
+    &=& \frac{\abs{z}^2-1}{\abs{z}^2+2Re(z)+1} \\
+    &=& \frac{x^2+y^2-1}{x^2+y^2+2x+1} \\
+  \end{eqnarray*}
+
+  \begin{eqnarray*}
+    Im(Z) &=& \frac{Z-\conj{Z}}{2i} \\
+    &=& \frac{1}{2i}\left[\frac{z-1}{z+1}-
+      \conj{\left(\frac{z-1}{z+1}\right)}\right] \\
+    &=& \frac{1}{2i}\left[\frac{z-1}{z+1}-
+      \frac{\conj{z}-1}{\conj{z}+1}\right] \\
+    &=& \frac{1}{2i}\left[\frac{(z-1)(\conj{z}+1)-(z+1)(\conj{z}-1)}
+      {(z+1)(\conj{z}+1)}\right] \\
+    &=& \frac{1}{2i}\left[\frac{z\conj{z}+z-\conj{z}-1-z\conj{z}+z-\conj{z}+1}
+      {z\conj{z}+z+\conj{z}+1}\right] \\
+    &=& \frac{1}{2i}\left[\frac{2z-2\conj{z}}{\abs{z}^2+z+\conj{z}+1}\right] \\
+    &=& 2\left[\frac{\frac{z-\conj{z}}{2i}}{\abs{z}^2+(z+\conj{z})+1}\right] \\
+    &=& \frac{2Im(z)}{\abs{z}^2+2Re(z)+1} \\
+    &=& \frac{2y}{x^2+y^2+2x+1} \\
+  \end{eqnarray*}
+
+  \[Z=\frac{x^2+y^2-1}{x^2+y^2+2x+1}+i\frac{2y}{x^2+y^2+2x+1}\]
+  \[\Arg{Z}=\tan^{-1}\frac{Im(Z)}{Re(Z)}=\tan^{-1}\frac{2y}{x^2+y^2-1}\]
+\end{example}
+
+\end{document}

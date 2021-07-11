@@ -1,0 +1,35 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\E}{\emptyset}
+\begin{document}
+\section*{Subsets and Equality}
+\begin{definition}
+To say that a set $A$ is a \emph{subset} of a set $B$, denoted $A\subseteq B$,
+means:
+\[\forall a\in A,a\in B\]
+or more conveniently for proofs:
+\[x\in A\implies x\in B\]
+\end{definition}
+\begin{definition}
+To say that a set $A$ equals a set $B$, denoted $A=B$, means:
+\[A\subseteq B\ \mbox{and}\ B\subseteq A\]
+or more conveniently for proofs:
+\[x\in A\iff x\in B\]
+\end{definition}
+\begin{definition}
+To say that $A$ is a \emph{proper} subset of $B$, denoted $A\subset B$, means
+that $A\subseteq B$ but $A\ne B$. If $A=B$ then $A$ is called an \emph{improper}
+subset of $B$.
+\end{definition}
+\begin{theorem}
+For all sets $A$:
+\begin{enumerate}
+\item $\E\subseteq A$
+\item $A\subseteq A$
+\item $A\subseteq\U$
+\end{enumerate}
+The proofs follow trivially from the definitions.
+\end{theorem}
+\end{document}

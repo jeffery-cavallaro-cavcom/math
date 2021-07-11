@@ -1,0 +1,117 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\renewcommand{\L}{\Lambda}
+\renewcommand{\o}{\sigma}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\weak}{\overset{w}{\longrightarrow}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\begin{document}
+\section*{Eigenvalues of Compact, Self-adjoint Operators}
+
+\begin{theorem}
+  Let $A$ be a compact, self-adjoint operator on a Hilbert space $H$:
+
+  \qquad There exists and eigenvalue $\l$ of $A$ such that
+  $\abs{\l}=\norm{A}$.
+\end{theorem}
+
+\begin{theproof}
+  From a previous theorem, there exists a bounded sequence $(\vx_n)$ in $H$
+  such that:
+  \begin{itemize}
+  \item $\norm{\vx}=1$
+  \item $\exists\l\in\o(A)$ such that $A\vx_n-\l\vx_n\to0$
+  \item $\abs{\l}=\norm{A}$
+  \end{itemize}
+  Since $A$ is compact, $(A\vx_n)$ has a convergent subsequence
+  $(A\vx{n_k})$. \\
+  Let $(A\vx_{n_k})\to\vy\in H$. \\
+  And so $A\vx_{n_k}-\l\vx_{n_k}\to0\implies\vy-\l\vx_{n_k}\to0\implies
+  \vx_{n_k}\to\frac{1}{\l}\vx_y$. \\
+  Thus $\vx_n$ contains a convergent subsequence
+  $\vx_{n_k}\to\frac{1}{\l}\vx_y=\vx\in H$. \\
+  And so $A\vx-\l\vx=0$ or $A\vx=\l\vx$ where $\vx\ne0$.
+
+  Therefore $\l$ is an eigenvalue of $A$ and $\abs{\l}=\norm{A}$.
+\end{theproof}
+
+\begin{corollary}
+  Let $A$ be a compact, self-adjoint operator on a Hilbert space $H$.
+  $\exists\,\vx_0\in H$ such that $\norm{\vx_0}=1$ and:
+  \[\abs{\inner{A\vx_0,\vx_0}}=\sup_{\norm{\vx}=1}\abs{\inner{A\vx,\vx}}\]
+\end{corollary}
+
+\begin{theproof}
+  By previous theorem, there exists an eigenvector $\l$ of $A$ such that
+  $\abs{\l}=\norm{A}$. \\
+  Also by previous theorem,
+  $\sup_{\norm{\vx}=1}\abs{\inner{A\vx,\vx}}=\norm{A}$.
+
+  Assume $\vx_0$ is an eigenvalue of $A$ such that $\norm{\vx_0}=1$:
+  \[\abs{\inner{A\vx_0,\vx_0}}=\abs{\inner{\l\vx_0,\vx_0}}=
+  \abs{\l\inner{\vx_0,\vx_0}}=\abs{\l}\norm{\vx_0}^2=\abs{\l}=\norm{A}\]
+  $\therefore
+  \abs{\inner{A\vx_0,\vx_0}}=\sup_{\norm{\vx}=1}\abs{\inner{A\vx,\vx}}$
+\end{theproof}
+
+\begin{theorem}
+  Let $A$ be a compact operator on a Hilbert space $H$.
+  For all eigenvalues $\l$ of $A$:
+  \[\l\ne0\implies\dim E_{\l}<\infty\]
+  In other words, eigenspaces for non-zero eigenvalues are finite-dimensional.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\l$ is an eigenvalue of $A$ such that $\l\ne0$. \\
+  ABC: $E_{\l}$ is infinite-dimensional. \\
+  Since $E_{\l}=\ker(A-\l I)$, $E_{\l}$ is a closed subspace of $H$ and is thus
+  also Hilbert (and separable). \\
+  So there exists a complete orthonormal sequence $(\vx_n)$ in $E_{\l}$,
+  where $\vx_n\weak0$. \\
+  Thus, since $A$ is compact, $A\vx_n\to0$. \\
+  And so $A\vx_n=\l\vx_n\to0$. \\
+  But $\l\ne0$ and so $\vx_n\to0$. \\
+  CONTRADICTION!
+
+  Therefore $E_{\l}$ is finite-dimensional.
+\end{theproof}
+
+\begin{definition}
+  Let $H$ be a Hilbert space and let $A$ be an operator on $H$:
+
+  \qquad$\L=\{\l\in\C\mid\l$ is an eigenvalue of $A\}$
+\end{definition}
+
+\begin{theorem}
+  Let $A$ be a compact, self-adjoint operator on a Hilbert space $H$. One
+  of the following is true:
+  \begin{enumerate}
+  \item $\L$ is finite.
+  \item $L$ is infinitely-countable such that $\l_n\to0$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  First, Assume $A=0$. \\
+  Thus, $\l=0$ is the only eigenvalue for $A$ and therefore $\L$ is finite.
+
+  So, assume $\L$ is infinite. \\
+  Since $A$ is self-adjoint and compact, eigenvectors for distinct eigenvalues
+  are orthogonal. \\
+  And so there exists an orthonormal sequence $(\vx_n)$ where $\vx_n$ is
+  an eigenvector of $\l_n$. \\
+  But $H$ is separable and so $(\vx_n)$ is countable.
+
+  Therefore $\L$ is countable.
+
+  Now, since $(\vx_n)$ is orthonormal, $\vx_n\weak0$. \\
+  But $A$ is compact and so $A\vx\to0$.
+
+  $\norm{A\vx}=\norm{\l\vx}=\abs{\l}\norm{\vx}=\abs{\l}\to0$
+\end{theproof}
+
+\end{document}

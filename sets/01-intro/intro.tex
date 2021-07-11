@@ -1,0 +1,64 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\E}{\emptyset}
+\begin{document}
+\section*{Sets}
+\begin{definition}
+A set is a \emph{well-defined}, \emph{distinct}, and \emph{unordered}
+collection of members called elements, where the elements are selected from
+an all-inclusive set called a universe.
+\end{definition}
+This definition is poor because it is circular, since it uses the word ``set''
+in the definition, and incomplete because it appeals to the reader's intuition
+of what it means to be a collection and a member of a collection. This is due to
+limitations in the recursive nature of the definition of things via language.
+Thus, this approach to sets is often referred to as na\"{i}ve set theory.
+\begin{properties}
+\listbreak
+\begin{enumerate}
+\item To say that a set $A$ is \emph{well-defined} means that every element $a$
+from the universe $\U$ is unambiguously either in set $A$ ($a\in A$) or not in
+set $A$ ($a\notin A$):
+\[\forall a\in\U,a\in A\ \mbox{or}\ a\notin A\]
+
+\item The elements of a set are distinct; if two elements are equal then they
+are considered to be the \emph{same} element---not two separate elements.
+
+\item The elements of a set are unordered; when listing the elements of a set,
+any convenient ordering is acceptable and all orderings represent the same set.
+\end{enumerate}
+\end{properties}
+\begin{notation}
+Sets can be specified in any of the following ways:
+\begin{enumerate}
+\item \textbf{Description}. The use of words to describe the elements of a set:
+\[A=\mbox{the set of natural numbers from 2 to 5, inclusive}\]
+\item \textbf{Roster}. A comma-separated list of the elements enclosed in
+curly-braces. Ellipses ($\ldots$) can be used to represent omitted elements
+when the pattern of the elements is obvious, or in the case of infinite sets:
+\[A=\{1,2,3\}\]
+\[B=\{1,2,3,\ldots,10\}\]
+\[\N=\{1,2,3,\ldots\}\]
+\[\Z=\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}\]
+\newpage
+\item \textbf{Setbuilder Notation}.
+\begin{enumerate}
+\item Universe/Condition
+\[E=\{e\in\Z\mid e=2n,n\in\Z\}\]
+Although sometimes the universe is omitted when obvious or understood:
+\[E=\{e\mid e=2n,n\in\Z\}\]
+\item Pattern/Qualifier
+\[E=\{2n\mid n\in\Z\}\]
+\end{enumerate}
+\end{enumerate}
+\end{notation}
+\begin{definition}
+The set with no elements is called the \emph{empty set} and is denoted by $\E$:
+\[\E=\{\}\]
+\end{definition}
+Sometimes we will say something like, ``let S be a set of$\ldots$,'' where any
+possible such set is acceptable; however, any such set selected will always be
+well-defined.
+\end{document}

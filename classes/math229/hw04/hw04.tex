@@ -1,0 +1,268 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\mnorm}[1]{\left\lvert\left\lvert\left\lvert#1
+  \right\rvert\right\rvert\right\rvert}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\hy}{\hat{y}}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vz}{\vec{0}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\nc}{\norm{\cdot}}
+\newcommand{\ig}{G_{\nc}}
+\DeclareMathOperator{\rnk}{rank}
+\DeclareMathOperator{\tr}{tr}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 229 \\
+Homework \#4
+
+\bigskip
+
+\subsection*{5.1.9}
+Let $\nc$ be a norm on $V$ that is derived from an inner product. Let
+$\vx,\vy\in V$ and $\vy\ne0$.
+\begin{enumerate}[label={\alph*)}]
+\item Show that the scalar $\a_0$ that minimizes the value of
+  $\norm{\vx-\a\vy}$ is $\a_0=\frac{\vx,\vy}{\norm{\vy}^2}$.
+
+  It is a bit easier to minimize $\norm{\vx-\a\vy}^2$:
+  \begin{eqnarray*}
+    \norm{\vx-\a\vy}^2 &=& \inner{\vx-\a\vy}{\vx-\a\vy} \\
+    &=& \inner{\vx}{\vx}-\inner{\vx}{\a\vy}-\inner{\a\vy}{\vx}+
+    \inner{\a\vy}{\a\vy} \\
+    &=& \inner{\vx}{\vx}-\conj{\a}\inner{\vx}{\vy}-\a\inner{\vy}{\vx}+
+    \abs{\a}^2\inner{\vy}{\vy}
+  \end{eqnarray*}
+
+  From complex analysis, we know that:
+  \[\frac{d\conj{\a}}{d\a}=0\]
+  And so, by the product rule:
+  \[\frac{d}{d\a}\abs{\a}^2=\frac{d}{d\a}a\conj{\a}=
+  \frac{d\a}{d\a}\conj{\a}+\a\frac{d\conj{\a}}{d\a}=\conj{\a}+0=\conj{\a}\]
+  We can also show that:
+  \[\conj{\norm{\vy}^2}=\conj{\inner{\vy}{\vy}}=\inner{\vy}{\vy}=
+  \norm{\vy}^2\]
+
+  Now minimize:
+  \begin{eqnarray*}
+    0-0-\inner{\vy}{\vx}+\conj{\a_0}\inner{\vy}{\vy} &=& 0 \\
+    \conj{\a_0}\inner{\vy}{\vy} &=& \inner{\vy}{\vx} \\
+    \conj{\a_0}\norm{\vy}^2 &=& \conj{\inner{\vx}{\vy}} \\
+    \a_0\norm{\vy}^2=\inner{\vx}{\vy} \\
+    \therefore\a_0=\frac{\inner{\vx}{\vy}}{\norm{\vy}^2}
+  \end{eqnarray*}
+
+\item Show $\norm{\vx-\a_0\vy}^2=\norm{\vx}^2-
+  \frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2}$
+
+  From part(a) we have:
+  \begin{eqnarray*}
+    \norm{\vx-\a_0\vy}^2 &=&
+    \inner{\vx}{\vx}-\conj{\a_0}\inner{\vx}{\vy}-\a_0\inner{\vy}{\vx}+
+    \abs{\a_0}^2\inner{\vy}{\vy} \\
+    &=&
+    \inner{\vx}{\vx}-\conj{\left(\frac{\inner{\vx}{\vy}}{\norm{\vy}^2}\right)}
+    \inner{\vx}{\vy}-\frac{\inner{\vx}{\vy}}{\norm{\vy}^2}\inner{\vy}{\vx}+
+    \abs{\frac{\inner{\vx}{\vy}}{\norm{\vy}^2}}^2\inner{\vy}{\vy} \\
+    &=&
+    \norm{\vx}^2-\frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2}
+    -\frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2}+
+    \frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^4}\norm{\vy}^2 \\
+    &=& 
+    \norm{\vx}^2-2\frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2} +
+    \frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2} \\
+    &=& \norm{\vx}^2-\frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2}
+  \end{eqnarray*}
+
+\item Show that $\vx-\a_0\vy$ is orthogonal to $\vy$.
+  \begin{eqnarray*}
+    \inner{\vx-\a_0\vy}{\vy} &=& \inner{\vx}{\vy}-\inner{\a_0\vy}{\vy} \\
+    &=& \inner{\vx}{\vy}-\a_0\inner{\vy}{\vy} \\
+    &=& \inner{\vx}{\vy}-\a_0\norm{\vy}^2 \\
+    &=& \inner{\vx}{\vy}-\frac{\inner{\vx}{\vy}}{\norm{\vy}^2}\norm{\vy}^2 \\
+    &=& \inner{\vx}{\vy}-\inner{\vx}{\vy} \\
+    &=& 0
+  \end{eqnarray*}
+  Therefore, $\vx-\a_0\vy$ is orthogonal to $\vy$.
+\end{enumerate}
+
+\subsection*{5.2.6}
+
+If $\nc$ is a unitary invariant norm on $C^n$, show that $\forall\,\vx\in\C^n$:
+\[\norm{\vx}=\norm{\vx}_2\norm{\ve_1}\]
+Explain why the Euclidean norm is the only unitary invariant norm on $\C^n$
+for which $\norm{\ve_1}=1$.
+
+Assume $\vx\in\C^n$ and consider the unit vector
+$\hy_1=\frac{\vx}{\norm{\vx}_2}$. Using G-S, construct $n-1$ additional
+orthogonal unit vectors $\{\hy_2,\ldots,\hy_n\}$ and form the matrix
+$U=\begin{bmatrix} \hy_1 & \hy_2 & \ldots & \hy_n \end{bmatrix}$.
+Since the columns of $U$ are orthonormal, $U$ is a unitary matrix.
+
+Now, since the norm is unitary invariant:
+\[\norm{\ve_1}=\norm{U\ve_1}=\norm{\hy_1}=\norm{\frac{\vx}{\norm{\vx}_2}}=
+\frac{1}{\norm{\vx}_2}\norm{\vx}\]
+Therefore:
+\[\norm{\vx}=\norm{\vx}_2\norm{\ve_1}\]
+So, if $\norm{\ve_1}=1$ then:
+\[\norm{\vx}=\norm{\vx}_2\cdot1=\norm{\vx}_2\]
+
+\subsection*{5.4.11}
+
+Let $\nc$ be a norm on $F^n$ where $F=\R$ or $\C$.
+\begin{enumerate}[label={\alph*)}]
+\item Show that every isometry for $\nc$ is nonsingular.
+
+  Assume $A\in\ig$ \\
+  Assume $\l\in\o(A)$ \\
+  $\norm{A\vx}=\norm{\l\vx}=\abs{\l}\norm{\vx}=\norm{\vx}$ \\
+  But $\vx$ is an eigenvector and thus $\vx\ne\vz$ \\
+  Thus $\abs{\l}=1$ and so $\l\ne0$
+
+  Therefore, by the IMT, $A$ is invertible (nonsingular).
+
+\item Prove: $\ig\le GL(n)$
+
+  Assume $A,B\in\ig$ and $\vx\in F^n$ \\
+  $A$ is invertible \\
+  $A\in GL(n)$
+
+  Therefore $\ig\subseteq GL(n)$.
+
+  $B\vx\in F^n$ \\
+  $\norm{(AB)\vx}=\norm{A(B\vx)}=\norm{B\vx}=\norm{\vx}$ \\
+  $AB\in\ig$
+
+  Therefore $\ig$ is closed under the operation (composition).
+
+  $\norm{I_n\vx}=\norm{\vx}$
+
+  Therefore $I_n\in\ig$.
+
+  Since $A$ is invertible we have $A^{-1}\in GL(n)$ \\
+  $A^{-1}\vx\in F^n$ \\
+  $\norm{A^{-1}\vx}=\norm{A(A^{-1}\vx)}=\norm{(AA^{-1})\vx}=\norm{I_n\vx}=
+  \norm{\vx}$ \\
+  $A^{-1}\in\ig$
+
+  Therefore $\ig$ is closed under inverses.
+
+  $\therefore\ig\le GL(n)$.
+
+\item Show that if $A\in\ig$ and $\l\in\o(A)$ then $\abs{\l}=1$.
+
+  See part (a).
+
+\item Prove: If $A\in M_n$ is an isometry for $\nc$ then $\abs{\det(A)}=1$.
+
+  By Auerbach's Theorem, $A$ is similar to some unitary matrix $U\in M_n$:
+  \begin{eqnarray*}
+    A &=& SUS^{-1} \\
+    \det(A) &=& \det(SUS^{-1}) \\
+    &=& \det(S)\det(U)\det(S^{-1}) \\
+    &=& \det(U) \\
+    &=& \pm1 \\
+    \therefore\abs{\det(A)} &=& 1
+  \end{eqnarray*}
+
+\item Prove: Any unitary generalized permutation matrix is an isometry for
+  every $k$-norm and every $\ell_p$ norm for $1\le p\le\infty$.
+
+  Assume that $U$ is a generalized permutation matrix and assume $\vx\in\C^n$.
+  The result of $U\vx$ is to permute the components of $\vx$ and multiply moved
+  components by $e^{i\theta}$ for some $\theta\in\R$. Assume $x_k$ is such a
+  permuted component. Then:
+  \[\abs{x_ke^{i\theta}}=\abs{x_k}\abs{e^{i\theta}}=\abs{x_k}\cdot1=\abs{x_k}\]
+  Thus, the absolute values of the moved components do not change, just their
+  positions.
+
+  This does not affect the $k$-norm because the $k$-norm adds the $k$ greatest
+  component absolute values regardless of position. It does not affect any of
+  the $\ell_p$ norms because all of the component absolute values are involved
+  in the calculation regardless of position. Finally, it does not affect the
+  $\ell_{\infty}$ norm because the largest component absolute value is selected
+  regardless of position.
+\end{enumerate}
+
+\subsection*{5.5.7}
+
+If $\nc_{\a}$ and $\nc_{\b}$ are norms on a vector space and if $\nc$ is the
+norm defined by:
+\[\norm{\vx}=\max\{\norm{\vx}_{\a},\norm{\vx}_{\b}\}\]
+then show that:
+\[B_{\nc}=B_{\nc_{\a}}\cap B_{\nc_{\b}}\]
+
+First show that $\nc$ is a norm by checking the four norm properties:
+\begin{enumerate}
+\item Assume $\vx\in\C^n$
+
+  $\norm{\vx}_{\a}\ge0$ \\
+  $\norm{\vx}_{\b}\ge0$ \\
+  $\max\{\norm{\vx}_{\a},\norm{\vx}_{\b}\}\ge0$
+
+  $\therefore\norm{\vx}\ge0$
+
+\item Assume $\vx\in\C^n$
+  \begin{eqnarray*}
+    \norm{\vx}=\vz &\iff& \max\{\norm{\vx}_{\a},\norm{\vx}_{\b}\}=\vz \\
+    &\iff& \norm{\vx}_{\a}=\vz\ \mbox{and}\ \norm{\vx}_{\b}=\vz \\
+    &\iff& \vx=\vz
+  \end{eqnarray*}
+
+\item Assume $\vx\in\C^n$ and $c\in\C$
+  \begin{eqnarray*}
+    \norm{c\vx} &=& \max\{\norm{c\vx}_{\a},\norm{c\vx}_{\b}\} \\
+    &=& \max\{\abs{c}\norm{\vx}_{\a},\abs{c}\norm{c\vx}_{\b}\} \\
+    &=& \abs{c}\max\{\norm{\vx}_{\a},\norm{c\vx}_{\b}\} \\
+    &=& \abs{c}\norm{\vx}
+  \end{eqnarray*}
+
+\item Assume $\vx.\vy\in\C^n$
+  \begin{eqnarray*}
+    \norm{\vx+\vy} &=& \max\{\norm{\vx+\vy}_{\a},\norm{\vx+\vy}_{\b}\} \\
+    &\le& \max\{\norm{\vx}_{\a}+\norm{\vy}_{\a},
+    \norm{\vx}_{\b}+\norm{\vy}_{\b}\} \\
+    &\le& \max\{\norm{\vx}_{\a},\norm{\vx}_{\b}\}+
+    \max\{\norm{\vy}_{\a},\norm{\vy}_{\b}\} \\
+    &=& \norm{\vx}+\norm{\vy}
+  \end{eqnarray*}
+\end{enumerate}
+
+Therefore $\nc$ is a proper norm.
+\begin{eqnarray*}
+  \vx\in B_{\nc} &\iff& \norm{\vx}\le1 \\
+  &\iff& \max\{\norm{\vx}_{\a},\norm{\vx}_{\b}\}\le1 \\
+  &\iff& \norm{\vx}_{\a}\le1\ \mbox{and}\ \norm{\vx}_{\b}\le1 \\
+  &\iff& \vx\in B_{\nc_{\a}}\ \mbox{and}\ \vx\in B_{\nc_{\b}} \\
+  &\iff& \vx\in B_{\nc_{\a}}\cap B_{\nc_{\b}}
+\end{eqnarray*}
+$\therefore B_{\nc}=B_{\nc_{\a}}\cap B_{\nc_{\b}}$
+
+\subsection*{5.6.24}
+
+Let $A\in M_n$. Show:
+\[\norm{A}_2\le(\rnk A)^{\frac{1}{2}}\mnorm{A}_2\]
+
+Let $r=\rnk A$. From a previous homework problem we know:
+\[\tr(A^*A)=\sum_{1\le i,j}\abs{a_{ij}}^2=\sum_{k=1}^n\o_k^2\]
+where $\o_k$ are the singular values of $A$. And we also know from the SVD
+proof done in class that $\rnk A^*A=\rnk A=$ the number of non-zero singular
+values of $A$, and so:
+\[\tr(A^*A)=\sum_{k=1}^r\o_k^2\le\sum_{k=1}^r\o_1^2=r\o_1^2\]
+But:
+\[\tr(A^*A)=\sum_{1\le i,j\le n}\abs{a_{ij}}^2=\norm{A}_2^2\]
+And:
+\[\o_1=\mnorm{A}_2\]
+And so:
+\[\norm{A}_2^2\le(\rnk A)\mnorm{A}_2^2\]
+Therefore:
+\[\norm{A}_2\le(\rnk A)^{\frac{1}{2}}\mnorm{A}_2\]
+\end{document}

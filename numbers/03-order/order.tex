@@ -1,0 +1,177 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Integer Ordering}
+
+\begin{definition}
+  The set of \emph{positive integers}, a subset of $\Z$, is given by:
+  \[\Z^+=\{1,2,3,\ldots\}\]
+\end{definition}
+
+Note that $\Z^+$ inherits from $\Z$ all those properties that do not involve
+inverses. In particular, $\Z^+$ is closed under addition and multiplication.
+
+\begin{definition}
+  $\forall a,b\in\Z$:
+  \begin{itemize}
+  \item To say that $a$ is less than $b$, denoted $a<b$, means $b-a$ is a
+    positive value. This can also be stated as $b$ is greater than $a$,
+    denoted $b>a$.
+
+  \item To say that $a$ is less than or equal to $b$, denoted $a\le b$, means
+    $a<b$ or $a=b$: $b-a$ is either positive or zero. This can also be stated
+    as $b$ is greater than or equal to $a$, denoted $b\ge a$
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}
+  $\forall\,a\in\Z$:
+  \begin{itemize}
+    \item $a$ is positive $\iff a>0$
+    \item $a$ is negative $\iff a<0$
+  \end{itemize}
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in\Z$
+  
+  \begin{minipage}{3in}
+    \begin{eqnarray*}
+      a\ \mbox{is positive} &\iff& a\in\Z^+ \\
+      &\iff& a-0\in\Z^+ \\
+      &\iff& 0<a \\
+      &\iff& a>0 \\
+    \end{eqnarray*}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{eqnarray*}
+      a\ \mbox{is negative} &\iff& -a\in\Z^+ \\
+      &\iff& -a+0\in\Z^+ \\
+      &\iff& 0-a\in\Z^+ \\
+      &\iff& a<0 \\
+    \end{eqnarray*}
+  \end{minipage}
+\end{theproof}
+
+Thus, the trichotomy principle can be rewritten as follows:
+
+$\forall\,n\in\Z$, exactly one of the following is true:
+\begin{enumerate}
+\item $n>0$
+\item $n=0$
+\item $n<0$
+\end{enumerate}
+\newpage
+\begin{properties}
+  $\forall a,b,c\in\Z$:
+  \begin{enumerate}
+  \item $a<b$ and $b<c\implies a<c$
+  \item $a<b$ and $c<d\implies a+c<b+d$
+  \item $a<b\iff a+c<b+c$
+  \item $c>0\implies\left(a<b\iff ac<bc\right)$
+  \item $c<0\implies\left(a<b\iff ac>bc\right)$
+  \end{enumerate}
+\end{properties}
+
+Note that all of the above properties hold if `$<$' is replaced with '$\le$'.
+
+\begin{theproof}
+  Assume $a,b,c\in\Z$
+  \begin{enumerate}
+  \item Assume $a<b$ and $b<c$
+
+    $b-a\in\Z^+$ and $c-b\in\Z^+$ \\
+    By closure $(b-a)+(c-b)\in\Z^+$ \\
+    $(b-a)+(c-b)>0$ \\
+    $c-a>0$ \\
+    $\therefore a<c$
+
+  \item Assume $a<b$ and $c<d$
+
+    $b-a\in\Z^+$ and $d-c\in\Z^+$ \\
+    By closure $(b-a)+(d-c)\in\Z^+$ \\
+    $(b-a)+(d-c)>0$ \\
+    $(b+d)-(a+c)>0$ \\
+    $\therefore a+c<b+d$
+
+  \item \begin{eqnarray*}
+    a<b &\iff& b-a>0 \\
+    &\iff& b-a+0>0 \\
+    &\iff& b-a+c-c>0 \\
+    &\iff& (b+c)-(a+c)>0 \\
+    &\iff& a+c<b+c \\
+  \end{eqnarray*}
+\newpage
+  \item Assume $c>0$
+    
+    $c\in\Z^+$
+
+    \begin{eqnarray*}
+      a<b &\iff& b-a\in\Z^+ \\
+      &\iff& c(b-a)\in\Z^+ \\
+      &\iff& c(b-a)>0 \\
+      &\iff& bc-ac>0 \\
+      &\iff& ac<bc \\
+    \end{eqnarray*}
+
+  \item Assume $c<0$
+    
+    $0-c=-c\in\Z^+$
+
+    \begin{eqnarray*}
+      a<b &\iff& b-a\in\Z^+ \\
+      &\iff& (-c)(b-a)\in\Z^+ \\
+      &\iff& (-c)(b-a)>0 \\
+      &\iff& ac-bc>0 \\
+      &\iff& bc<ac \\
+      &\iff& ac>bc \\
+    \end{eqnarray*}
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+  \listbreak
+  \[\forall\,a,k\in\Z^+,ka\ge a\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $k,a\in\Z^+$ \\
+  ABC: $ka<a$ \\
+  $ka-a=a(k-1)<0$
+  \begin{description}
+  \item{Case 1: $k=1$}
+
+    $a(1-1)=a0=0$
+    CONTRADICTION!
+\newpage
+  \item {Case 2: $k>1$}
+
+    $k-1>0$ \\
+    $k-1\in\Z^+$ \\
+    $a(k-1)\in\Z^+$ \\
+    $a(k-1)>0$ \\
+    CONTRADICTION!
+  \end{description}
+  $\therefore ka\ge a$
+\end{theproof}
+
+\begin{definition}
+  Let $S\subseteq\Z$:
+  \begin{itemize}
+  \item To say that $S$ has a \emph{minimum} element means:
+    \[\exists\,m\in S,\forall\,n\in S,m\le n\]
+
+  \item To say that $S$ has a \emph{maximum} element means:
+    \[\exists\,m\in S,\forall\,n\in S,n\le m\]
+  \end{itemize}
+\end{definition}
+
+\begin{axiom}[Well-ordering Principle]
+  Every non-empty subset of $Z^+$ has a minimum value.
+\end{axiom}
+
+In fact, any ordered set that has this property is said to be
+\emph{well-ordered}.
+
+\end{document}

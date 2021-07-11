@@ -1,0 +1,70 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\cl}[1]{\overline{#1}}
+\begin{document}
+\section*{Baire Space}
+
+\begin{definition}[Nowhere Dense]
+  Let $E$ be a normed space and let $X\subset E$. To say that $X$ is
+  \emph{nowhere dense} in $E$ means that the interior of its closure is empty.
+  In other words, $\cl{X}$ contains no open subsets.
+\end{definition}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $\Z$ is nowhere dense in $R$ because $Z$ is its own closure, which
+    has no interior points.
+
+  \item The Cantor set $\mathcal{C}$.
+  \end{enumerate}
+\end{examples}
+
+\begin{definition}[Categories]
+  Let $E$ be a normed space and let $X\subset E$ be a countable union of
+  sets:
+  \[X=\bigcup_{n=1}^{\infty}U_n\]
+  To say that $X$ is of the \emph{first category (meager)} means
+  $\forall\,n\in\N$, $U_n$ is nowhere dense in $E$.
+
+  Otherwise $X$ is of the \emph{second category (nonmeagre)} - i.e.,
+  $\exists\,n\in\N$ such that $\cl{U_n}$ has a non-empty interior.
+\end{definition}
+
+\begin{definition}[Baire Space]
+  Let $E$ be a normed space. To say that $E$ is a \emph{Baire} space means
+  every non-empty open subset $X$ of $E$ is of the second category in $E$.
+
+  The following restatements are equivalent:
+  \begin{itemize}
+  \item Every countable union of nowhere dense sets in $E$ is nowhere dense.
+  \item Every countable intersection of dense sets in $E$ is dense.
+  \end{itemize}
+\end{definition}
+  
+\begin{theorem}[Baire Category Theorem]
+  Every complete normed (Banach) space $E$ is a Baire Space.
+\end{theorem}
+
+\begin{theproof}
+  Assume $X=\bigcap_{n=1}^{\infty}U_n$ is an intersection of dense sets in
+  $E$. \\
+  Assume $W$ is an open subset in $E$. \\
+  Since $U_1$ is dense in $E$, $\exists\,\vx_1\in U_1$ such that
+  $\vx_1\in W\cap U_1$. \\
+  So $\exists\,r_1\in(0,1)$ such that $\cl{B}(\vx_1,r_1)\subset W\cap U_1$.
+  Recursively construct a sequence $(x_n)$ in $E$ such that:
+  \[\cl{B}(\vx_{n+1},r_{n+1})\subset B(\vx_n,r_n)\cap U_n\]
+  where $0<r_n<\frac{1}{n}$. \\
+  Thus, $(x_n)$ is Cauchy and so, by completeness, $\vx_n\to\vx\in E$. \\
+  But $\forall\,n\in\N$, a tail part of $(\vx_n)$ is in $\cl{B}(\vx_n,r_n)$. \\
+  So, by closedness, $\vx\in\cl{B}(\vx_n,r_n)\subset U_n$. \\
+  Thus $\forall\,n\in\N,\vx\in U_n$, and so $\vx\in X$. \\
+  But $\vx\in W$ also, and so $\vx\in W\cap X$.
+
+  Therefore $X$ is dense, and so $E$ is a Baire Space.
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,106 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\begin{document}
+\section*{2.1: The Degree of a Vertex}
+
+\begin{enumerate}
+\item Give an example of the following or explain why no such example exists:
+  \begin{enumerate}
+  \item a graph of order 7 whose vertices have degrees 1, 1, 1, 2, 2, 3, 3.
+
+    Not possible due to an odd number of odd vertices.
+
+  \item a graph of order 7 whose vertices have degrees 1, 2, 2, 2, 3, 3, 7.
+
+    Not possible because \(\D(G)\le7-1=6\), so a vertex with degree 7 cannot exist.
+
+  \item a graph of order 4 whose vertices have degrees 1, 3, 3, 3.
+
+    Not possible because 3 of the 4 vertices are universal, and thus are all adjacent to the remaining vertex, which
+    must also have degree \(3\ne1\).
+  \end{enumerate}
+
+\item Give an example of the following or explain why no such example exists:
+  \begin{enumerate}
+  \item a graph that has no odd vertices.
+    \[C_n\]
+  \item a non-complete graph, all of whose vertices have degree 3.
+    \[K_{3,3}\]
+  \item a graph \(G\) of order 5 or more with the property that \(\deg(u)\ne\deg(v)\) for every pair \(u,v\) of
+    adjacent vertices of \(G\).
+    \begin{quote}
+      \begin{tikzpicture}[every node/.style={unlabeled node}]
+        \cycleNnodes{4}{(0,0)}{0.5in}{135}{c};
+        \node (v) at (0,0) {};
+        \foreach \i in {1,2,3,4}{
+          \draw (v) edge (c\i);
+        }
+      \end{tikzpicture}
+    \end{quote}
+
+  \item A non-complete graph \(H\) of order 5 or more with the property that \(\deg(u)\ne\deg(v)\) for every pair
+    \(u,v\) of non-adjacent vertices in \(H\).
+    \begin{quote}
+      \begin{tikzpicture}[every node/.style={unlabeled node}]
+        \cycleNnodes{4}{(0,0)}{0.5in}{135}{c};
+        \node (v) at (0,0) {};
+        \draw (c1) edge (c2) edge (v) edge (c4);
+        \draw (c2) edge (v) edge (c3);
+      \end{tikzpicture}
+    \end{quote}
+  \end{enumerate}
+
+\item The degree of each vertex of a certain graph of order 12 and size 31 is either 4 or 6.  How many vertices of
+  degree 4 are there?
+
+  Let \(x=\) the number of vertices with degree 4:
+  \begin{gather*}
+    4x+6(12-x)=2\cdot31 \\
+    4x+72-6x=62 \\
+    2x=10 \\
+    x=5
+  \end{gather*}
+
+\item Give an example of a graph \(G\) of order 6 and size 10 such that \(\d(G)=3\) and \(\D(G)=4\).
+  \begin{quote}
+    \begin{tikzpicture}[every node/.style={unlabeled node}]
+      \cycleNnodes{6}{(0,0)}{0.5in}{90}{};
+      \draw (1) edge (2) edge (3) edge (5) edge (6);
+      \draw (4) edge (2) edge (3) edge (5) edge (6);
+      \draw (2) edge (6);
+      \draw (3) edge (5);
+    \end{tikzpicture}
+  \end{quote}
+
+\item The degree of every vertex of a graph \(G\) of order 25 and size 62 is 3, 4, 5, or 6.  There are two vertices
+  of degree 4 and 11 vertices of degree 6.  How many vertices of \(G\) have degree 5?
+
+  Let \(x=\) the number of vertices with degree 5:
+  \begin{gather*}
+    3(25-2-x-11)+4\cdot2+5x+11\cdot6=2\cdot62 \\
+    3(12-x)+8+5x+66=124 \\
+    36-3x+5x+74=124 \\
+    2x=14 \\
+    x=7
+  \end{gather*}
+
+\item Prove that if a graph of order \(3n\) (\(n\ge1\)) has \(n\) vertices each of the degrees \(n-1\),\(n\), and
+  \(n+1\), then \(n\) is even.
+
+  \begin{proof}
+    \begin{gather*}
+      n(n-1)+n(n)+n(n+1)=2m \\
+      n^2-n+n^2+n^2+n=2m \\
+      3n^2=2m
+    \end{gather*}
+    Thus, \(3n^2\) must be even, and so \(n^2\) must be even.
+
+    \(\therefore n\) must be even.
+  \end{proof}
+\end{enumerate}
+
+\end{document}

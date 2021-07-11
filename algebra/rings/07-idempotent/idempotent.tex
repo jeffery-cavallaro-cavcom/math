@@ -1,0 +1,43 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Idempotence}
+
+\begin{definition}
+  Let $R$ be a ring and $a\in R$. To say that $a$ is \emph{idempotent} in $R$ means:
+  $a^2=a$.
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a commutative ring and $I=\{a\in R\mid a$ is idempotent in $R\}$. \\
+  $I$ is closed under multiplication.
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in I$ \\
+  $a^2=a$ \\
+  $b^2=b$ \\
+  $(ab)^2=a^2b^2=ab$ \\
+  $ab\in I$
+  
+  $\therefore I$ is closed under multiplication.
+\end{theproof}
+
+\begin{theorem}
+  Let $\phi:R\to R'$ be a homomorphism of rings:
+
+  $a$ idempotent in $R\implies\phi(a)$ idempotent in $R'$
+\end{theorem}
+
+\begin{theproof}
+  Assume $a$ is idempotent in $R$ \\
+  $a^2=a$ \\
+  $\phi(a^2)=\phi(a)$ \\
+  $\phi(a^2)=\phi(a)^2$ \\
+  $\phi(a)^2=\phi(a)$
+
+  $\therefore\phi(a)$ is idempotent in $R'$.
+\end{theproof}
+
+\end{document}

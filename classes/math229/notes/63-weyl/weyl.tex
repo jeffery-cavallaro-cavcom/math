@@ -1,0 +1,185 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\l}{\lambda}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\spn}{span}
+\begin{document}
+\section*{Weyl's Inequalities}
+
+\begin{theorem}
+  Let $A,B\in M_n$:
+  \[\sum_{k=1}^n\l_k(A+B)=\sum_{k=1}^n\l_k(A)+\sum_{k=1}^n\l_k(B)\]
+\end{theorem}
+
+\begin{theproof}
+  $\tr(A+B)=\tr(A)+\tr(B)$ \\
+  $\tr(A+B)=\sum_{k=1}^n\l_k(A+B)$ \\
+  $\tr(A)=\sum_{k=1}^n\l_k(A)$ \\
+  $\tr(B)=\sum_{k=1}^n\l_k(B)$
+
+  $\therefore\sum_{k=1}^n\l_k(A+B)=\sum_{k=1}^n\l_k(A)+\sum_{k=1}^n\l_k(B)$
+\end{theproof}
+
+\begin{theorem}[Knutson-Tao]
+  Given three sets of numbers: $\a_1\le\cdots\le\a_n$, $\b_1\le\cdots\le\b_n$,
+  and $\g_1\le\cdots\le\g_n$ satisfying some specific inequalities, there
+  exists Hermitian matrices $A$, $B$, and $C$ such that:
+  \begin{eqnarray*}
+    \Sp(A) &=& \{\a_k\} \\
+    \Sp(B) &=& \{\b_k\} \\
+    \Sp(A+B) &=& \{\g_k\} \\
+  \end{eqnarray*}
+\end{theorem}
+
+\begin{example}
+  $\Sp(A)=\{0,1\}$
+
+  $\Sp(B)=\{2,5\}$
+
+  $\Sp(A+B)=\{2,6\}$
+
+  $A=\begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}$\hspace{4ex}
+  $B=\begin{bmatrix} 2 & 0 \\ 0 & 5 \end{bmatrix}$\hspace{4ex}
+  $A=\begin{bmatrix} 2 & 0 \\ 0 & 6 \end{bmatrix}$
+
+  \bigskip
+
+  $\Sp(A)=\{0,1\}$
+
+  $\Sp(B)=\{2,5\}$
+
+  $\Sp(A+B)=\{3,5\}$
+
+  $A=\begin{bmatrix} 0 & 0 \\ 0 & 1 \end{bmatrix}$\hspace{4ex}
+  $B=\begin{bmatrix} 5 & 0 \\ 0 & 2 \end{bmatrix}$\hspace{4ex}
+  $A=\begin{bmatrix} 5 & 0 \\ 0 & 3 \end{bmatrix}$
+
+\newpage
+
+  $\Sp(A)=\{0,1\}$
+
+  $\Sp(B)=\{2,5\}$
+
+  $\Sp(A+B)=\{1,1\}$
+
+  Not possible because:
+  \begin{eqnarray*}
+    \tr(A) &=& 1 \\
+    \tr(B) &=& 7 \\
+    \tr(A+B) &=& 2 \\
+    1+7\ne2
+  \end{eqnarray*}
+\end{example}
+
+\begin{lemma}
+  Let $A,B\in M_n$ be Hermitian with eigenvalues $\l_1\le\cdots\le\l_n$:
+  \begin{enumerate}
+  \item $\l_1(A+B)\ge\l_1(A)+\l_1(B)$
+  \item $\l_n(A+B)\le\l_n(A)+\l_n(B)$
+  \end{enumerate}
+\end{lemma}
+
+\begin{theproof}
+  \listbreak
+  \begin{eqnarray*}
+    \l_1(A+B) &=& \min_{\vx\ne\vz}\frac{\vxct(A+B)\vx}{\vxct\vx} \\
+    &=& \min_{\vx\ne\vz}\frac{\vxct A\vx+\vxct B\vx}{\vxct\vx} \\
+    &\ge& \min_{\vx\ne\vz}\frac{\vxct A\vx}{\vxct\vx}+
+    \min_{\vx\ne\vx}\frac{\vxct B\vx}{\vxct\vx} \\
+    &=& \l_1(A)+\l_1(B)
+  \end{eqnarray*}
+  \begin{eqnarray*}
+    \l_n(A+B) &=& \max_{\vx\ne\vz}\frac{\vxct(A+B)\vx}{\vxct\vx} \\
+    &=& \max_{\vx\ne\vz}\frac{\vxct A\vx+\vxct B\vx}{\vxct\vx} \\
+    &\le& \max_{\vx\ne\vz}\frac{\vxct A\vx}{\vxct\vx}+
+    \max_{\vx\ne\vx}\frac{\vxct B\vx}{\vxct\vx} \\
+    &=& \l_n(A)+\l_n(B)
+  \end{eqnarray*}
+\end{theproof}
+
+\newpage
+
+\begin{theorem}[Weyl's Inequalities]
+  Let $A,B\in M_n$ be Hermitian with eigenvalues arranged such that
+  $\l_1(A)\le\cdots\le\l_n(A)$ and $\l_1(B)\le\cdots\le\l_n(B)$:
+  \[\l_{j+k-n}(A+B)\le\l_j(A)+\l_k(B)\le\l_{j+k-1}(A+B)\]
+\end{theorem}
+
+\begin{theproof}
+  Let $\vu_k$ be an eigenvector of $\l_k(A)$ \\
+  Let $\vv_k$ be an eigenvector of $\l_k(B)$ \\
+  Let $\vw_k$ be an eigenvector of $\l_k(A+B)$
+
+  Let $S_1=\spn\{\vu_1,\ldots,\vu_j\}$ \\
+  Let $S_2=\spn\{\vv_1,\ldots,\vv_k\}$ \\
+  Let $S_3=\spn\{\vw_{j+k-n},\ldots,\vw_n\}$
+  \begin{eqnarray*}
+    \dim(S_1\cap S_2\cap S_3) &\ge& \dim(S_1)+\dim(S_2)+\dim(S_3)-2n \\
+    &=& j+k+[n-(j+k-n)+1]-2n \\
+    &=& 1
+  \end{eqnarray*}
+  Thus, $\exists\vx\in S_1\cap S_2\cap S_3$ such that $\vx\ne 0$
+
+  $\l_{j+k-n}(A+B)\le\frac{\vxct(A+B)\vx}{\vxct\vx}$ because $\vx\in S_3$
+  
+  $\frac{\vxct A\vx}{\vxct\vx}\le\l_j(A)$ because $\vx\in S_1$
+  
+  $\frac{\vxct B\vx}{\vxct\vx}\le\l_k(B)$ because $\vx\in S_2$
+
+  $\therefore\l_{j+k-n}\le\frac{\vxct(A+B)\vx}{\vxct\vx}=
+  \frac{\vxct(A)\vx}{\vxct\vx}+\frac{\vxct(B)\vx}{\vxct\vx}\le\l_j(A)+\l_k(B)$
+
+  \bigskip
+
+  Let $S_4=\spn\{\vu_j,\ldots,\vu_n\}$ \\
+  Let $S_5=\spn\{\vv_k,\ldots,\vv_n\}$ \\
+  Let $S_6=\spn\{\vw_1,\ldots,\vw_{j+k-1}\}$ \\
+  \begin{eqnarray*}
+    \dim(S_4\cap S_5\cap S_6) &\ge& \dim(S_4)+\dim(S_5)+\dim(S_6)-2n \\
+    &=& (n-j+1)+(n-k+1)+(j+k-1)-2n \\
+    &=& 1
+  \end{eqnarray*}
+  Thus, $\exists\vx\in S_4\cap S_5\cap S_6$ such that $\vx\ne 0$
+
+  $\l_{j+k-1}(A+B)\ge\frac{\vxct(A+B)\vx}{\vxct\vx}$ because $\vx\in S_6$
+
+  $\frac{\vxct A\vx}{\vxct\vx}ge\l_j(A)$ because $\vx\in S_4$
+  
+  $\frac{\vxct B\vx}{\vxct\vx}\ge\l_k(B)$ because $\vx\in S_5$
+
+  $\therefore\l_{j+k-1}\ge\frac{\vxct(A+B)\vx}{\vxct\vx}=
+  \frac{\vxct(A)\vx}{\vxct\vx}+\frac{\vxct(B)\vx}{\vxct\vx}\ge\l_j(A)+\l_k(B)$
+
+  $\therefore\l_{j+k-n}(A+B)\le\l_j(A)+\l_k(B)\le\l_{j+k-1}(A+B)$
+\end{theproof}
+
+\begin{example}
+  $\Sp(A)=\{0,1\}$
+
+  $\Sp(B)=\{2,5\}$
+
+  $\l_{1+2-2}(A+B)=\l_1(A+B)\le\l_1(A)+\l_2(B)=0+5=5$ \\
+  $\l_{2+1-2}(A+B)=\l_1(A+B)\le\l_2(A)+\l_1(B)=1+2=3$ \\
+  $\l_{2+2-2}(A+B)=\l_2(A+B)\le\l_2(A)+\l_2(B)=1+5=6$
+
+  $\l_{1+1-1}(A+B)=\l_1(A+B)\ge\l_1(A)+\l_1(B)=0+2=2$ \\
+  $\l_{1+2-1}(A+B)=\l_2(A+B)\ge\l_1(A)+\l_2(B)=0+5=5$ \\
+  $\l_{2+1-1}(A+B)=\l_2(A+B)\ge\l_2(A)+\l_1(B)=1+2=3$
+
+  $2\le\g_1\le3$ \\
+  $5\le\g_2\le6$ \\
+  $\g_1+\g_2=1+7=8$
+\end{example}
+
+\end{document}

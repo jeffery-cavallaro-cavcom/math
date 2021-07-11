@@ -1,0 +1,114 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\l}{\lambda}
+\renewcommand{\d}{\delta}
+\newcommand{\p}{\varphi}
+\begin{document}
+\section*{Orthogonal Systems}
+
+\begin{definition}[Orthogonal System]
+  Let $E$ be an inner product space and let $S\subset E-\{\vo\}$. To say that
+  $S$ is an \emph{orthogonal system} means $forall\,\vx,\vy\in E$:
+  \[\vx\ne\vy\implies\vx\perp\vy\]
+  To say that $S$ is an \emph{orthonormal system} means that $S$ is an
+  orthogonal system and:
+  \[\forall\,\vx\in S,\norm{\vx}=1\]
+  A sequence of vectors that form an orthonormal system is called an
+  \emph{orthonormal sequence}.
+\end{definition}
+
+\begin{theorem}
+  Let $E$ an inner product space over a field $\F$ and left $S$ be an
+  orthogonal system in $E$:
+
+  \qquad$S$ is a linearly independent set.
+\end{theorem}
+
+\begin{theproof}
+  Assume $X=\{\vx_1,\ldots,\vx_n\}\subseteq S$. \\
+  Assume $\sum_{k=1}^n\l_k\vx_k=0$ for $\l_k\in\F$.
+  
+  $\norm{\sum_{k=1}^n\l_k\vx_k}^2=
+  \inner{\sum_{j=1}^n\l_j\vx_j,\sum_{k=1}^n\l_k\vx_k}=
+  \sum_{k=1}^n\inner{\l_k\vx_k,\l_k\vx_k}=
+  \sum_{k=1}^n\abs{\l_k}^2\norm{\vx_k}^2=0$
+  
+  But none of the $\vx_k=\vo$, so $\abs{\l_k}=0$.
+  
+  Therefore $\l_k=0$ and $S$ is a linearly independent set.
+\end{theproof}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $E=\ell^2$ and $\inner{(x_n),(y_n)}=\sum_{n=1}^{\infty}x_k\conj{y_k}$
+
+    Let $S=\{e_n\mid n\in\N\}$
+
+    $\inner{e_n,e_n}=\sum_{k=1}^{\infty}e_{n,k}\conj{e_{n,k}}=1$
+
+    $\inner{e_n,e_m}=\sum_{k=1}^{\infty}e_{n,k}\conj{e_{m,k}}=0$
+
+    $\inner{e_n,e_m}=\d_{nm}$
+
+  \item $E=L^2[-\pi,\pi]$ and $\inner{f,g}=\int_{-\pi}^{\pi}f\conj{g}$
+
+    Let $\p_n(t)=\frac{1}{\sqrt{2\pi}}e^{int}$
+    \begin{eqnarray*}
+      \inner{\p_n,\p_n} &=&
+      \inner{\frac{1}{\sqrt{2\pi}}e^{int},\frac{1}{\sqrt{2\pi}}e^{int}} \\
+      &=& \frac{1}{2\pi}\int_{-\pi}^{\pi}e^{int}\conj{e^{int}}dt \\
+      &=& \frac{1}{2\pi}\int_{-\pi}^{\pi}e^{int}e^{-int}dt \\
+      &=& \frac{1}{2\pi}\int_{-\pi}^{\pi}dt \\
+      &=& \frac{1}{2\pi}\cdot2\pi \\
+      &=& 1
+    \end{eqnarray*}
+    \begin{eqnarray*}
+      \inner{\p_n,\p_m} &=&
+      \inner{\frac{1}{\sqrt{2\pi}}e^{int},\frac{1}{\sqrt{2\pi}}e^{imt}} \\
+      &=& \frac{1}{2\pi}\int_{-\pi}^{\pi}e^{int}\conj{e^{imt}}dt \\
+      &=& \frac{1}{2\pi}\int_{-\pi}^{\pi}e^{int}e^{-imt}dt \\
+      &=& \frac{1}{2\pi}\int_{-\pi}^{\pi}e^{i(n-m)t}dt \\
+      &=& \left.\frac{1}{2\pi}\left[\frac{1}{i(n-m)}\right]e^{i(n-m)t}
+      \right|_{-\pi}^{\pi} \\
+      &=& \frac{1}{2\pi}\left[\frac{1}{i(n-m)}\right]
+      [\cos(n-m)\pi-\cos(-(n-m)\pi)] \\
+      &=& \frac{1}{2\pi}\left[\frac{1}{i(n-m)}\right]
+      [\cos(n-m)\pi-\cos(n-m)\pi] \\
+      &=& 0
+    \end{eqnarray*}
+    $\inner{\p_n,\p_m}=\d_{nm}$
+
+  \item The Legendre Polynomials
+
+    $E=L^2[-1,1]$ and $\inner{f,g}=\int_{-1}^1f\conj{g}$
+
+    Let $P_0(x)=1$ and $P_n(x)=\frac{1}{2^nn!}\frac{d}{dx}(x^2-1)^n$
+
+    The polynomials $P_n(x)$ form an orthogonal system in $L^2[-1,1]$.
+    
+    The polynomials $\sqrt{n+\frac{1}{2}}P_n(x)$ form an orthonormal system
+    in $L^2[-1,1]$.
+
+  \item The Hermite Polynomials
+
+    $E=L^2(\R)$ and $\inner{f,g}=\int_{-1}^1f\conj{g}$
+
+    Let $H_n(x)=(-1)^ne^{x^2}\frac{d^n}{dx^n}e^{-x^2}$
+
+    The polynomials $H_n(x)$ form an orthogonal system in $L^2(\R)$.
+
+    The functions $\frac{1}{\sqrt{2^nn!\sqrt{\pi}}}e^{-\frac{x^2}{2}}H_n(x)$ form
+    an orthonormal system in $L^2(\R)$.
+  \end{enumerate}
+\end{examples}
+
+\end{document}

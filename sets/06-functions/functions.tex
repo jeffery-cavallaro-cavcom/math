@@ -1,0 +1,173 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Relations and Functions}
+\begin{definition}
+A relation $\Re$ between two sets $A$ and $B$ is a subset of $A\times B$:
+\[\Re\subseteq A\times B\]
+To say that $a\in A$ is related to $b\in B$, often denoted $a\sim b$, means
+$(a,b)\in\Re$.
+
+A relation between a set $A$ and itself ($\Re\subseteq A\times A$) is referred
+to as a relation \emph{on} $A$.
+\end{definition}
+\begin{definition}
+A function $\phi$ is a relation between sets $A$ and $B$ such that:
+\begin{enumerate}
+\item $\forall\,a\in A,\exists\,b\in B,(a,b)\in\phi$
+\item $\forall\,a\in A,\forall\,b,c\in B,(a,b)\in\phi\ \mbox{and}\ (a,c)\in\phi
+    \implies b=c$
+\end{enumerate}
+The function is said to map $A$ into $B$ and is denoted $\phi:A\to B$, where $A$
+is called the \emph{domain} of $\phi$ and $B$ is called the \emph{codomain} of
+$\phi$. Also, $(a,b)\in\phi$ is denoted using the more conventional functional
+notation: $\phi(a)=b$.
+
+A function between a set $A$ and itself is referred to as a function \emph{on}
+$A$.
+\end{definition}
+\begin{definition}
+Let $\phi:A\to B$ with $C\subseteq A$ and $D\subseteq B$:
+\begin{itemize}
+\item The \emph{image} of $C$ under $\phi$, denoted $\phi[C]$, is give by:
+\[\phi[C]=\{\phi(c)\mid c\in C\}\subseteq B\]
+$\phi[A]$ is called the \emph{range} of $\phi$.
+
+\item The \emph{pre-image} of $D$ under $\phi$, denoted $\phi^{-1}[D]$, is given
+by:
+\[\phi^{-1}[D]=\{a\in A\mid\phi(a)\in D\}\subseteq A\]
+Note that $\phi^{-1}[D]$ is a (possibly empty) set and should not be confused
+with any inverse function $\phi^{-1}:B\to A$.
+\end{itemize}
+\end{definition}
+\begin{definition}
+Let $\phi:A\to B$ and $\mu:C\to D$. To say that $\phi$ and $\mu$ are equal,
+denoted $\phi=\mu$, means:
+\begin{enumerate}
+\item $A=C$ (same domain)
+\item $B=D$ (same codomain)
+\item $\forall\,a\in A,\phi(a)=\mu(a)$
+\end{enumerate}
+\end{definition}
+\begin{definition}
+Let $\phi:A\to B$:
+\begin{itemize}
+\item To say that $\phi$ is \emph{one-to-one} (\emph{injective}) means:
+\[\forall\,a,b\in A,\phi(a)=\phi(b)\implies a=b\]
+\item To say that $\phi$ is \emph{onto} (\emph{surjective}) means $\phi[A]=B$,
+or:
+\[\forall\,b\in B,\exists\,a\in A,\phi(a)=b\]
+\item To say that $\phi$ is a \emph{one-to-one correspondence}
+(\emph{bijective}) means $\phi$ is both one-to-one and onto.
+\end{itemize}
+\end{definition}
+\begin{definition}
+The \emph{identity} function on a set $A$, denoted $i_A$, is given by:
+\[\forall\,a\in A,\phi(a)=a\]
+\end{definition}
+\begin{definition}
+Let $\phi:A\to B$ and $\mu:B\to C$. The composition of $\phi$ and $\mu$,
+denoted $\mu\circ\phi$ or simply $\mu\phi$, is a new function $\mu\phi:A\to C$
+given by:
+\[\forall\,a\in A,(\mu\phi)(a)=\mu[\phi(a)]\]
+\end{definition}
+\begin{theorem}
+Function composition is associative.
+\end{theorem}
+\begin{theproof}
+Let $\phi:A\to B$, $\mu:B\to C$, and $\gamma:C\to D$. \\
+Assume $a\in A$ \\
+\[[(\gamma\mu)\phi)](a)=(\gamma\mu)[\phi(a)]=\gamma\{\mu[\phi(a)]\}=
+    \gamma[\mu\phi(a)]=[\gamma(\mu\phi)](a)\]
+\end{theproof}
+\begin{definition}
+Let $\phi:A\to B$. To say that $\phi^{-1}:B\to A$ is an inverse function for
+$\phi$ means:
+\begin{enumerate}
+\item $\phi^{-1}\phi=i_A$
+\item $\phi\phi^{-1}=i_B$
+\end{enumerate}
+Note that an inverse must be both a left and a right inverse; there are cases
+where only one side exists.
+\end{definition}
+\begin{theorem}
+Let $\phi:A\to B$:
+\[\phi\ \mbox{is invertible iff}\ \phi(a)=b\iff\phi^{-1}(b)=a\]
+\end{theorem}
+\begin{theproof}
+\listbreak
+\begin{description}
+\item $\implies$ Assume $\phi$ is invertible.
+\begin{description}
+\item $\implies$ Assume $\phi(a)=b$
+\begin{eqnarray*}
+(\phi^{-1}\phi)(a) &=& \phi^{-1}(b) \\
+\therefore a &=& \phi^{-1}(b) \\
+\end{eqnarray*}
+\listbreak
+\item $\impliedby$ Assume $\phi^{-1}(b)=a$
+\begin{eqnarray*}
+(\phi\phi^{-1})(b) &=& \phi(a) \\
+\therefore b &=& \phi(a) \\
+\end{eqnarray*}
+\end{description}
+\listbreak
+\item $\impliedby$ Assume $\phi(a)=b\iff\phi^{-1}(b)=a$
+\[(\phi^{-1}\phi)(a)=\phi^{-1}[\phi(a)]=\phi^{-1}(b)=a=i_A(a)\]
+\[(\phi\phi^{-1})(b)=\phi[\phi^{-1}(b)]=\phi(a)=b=i_B(b)\]
+\end{description}
+\end{theproof}
+\begin{theorem}
+Let $\phi:A\to B$:
+\[\phi\ \mbox{is invertible}\iff\phi\ \mbox{is bijective}\]
+\end{theorem}
+\begin{theproof}
+\listbreak
+\begin{description}
+\item $\implies$ Assume $\phi$ is invertible
+
+Assume $\phi(a)=\phi(b)$ \\
+\[(\phi^{-1}\phi)(a)=(\phi^{-1}\phi)(b)\]
+\[a=b\]
+$\therefore \phi$ is one-to-one
+\newpage
+$\phi^{-1}$ is a function with domain $B$ \\
+Assume $b\in B$ \\
+$\exists\,a\in A,\phi^{-1}(b)=a$ \\
+\[(\phi\phi^{-1})(b)=\phi(a)\]
+\[b=\phi(a)\]
+$\therefore \phi$ is onto
+
+$\therefore \phi$ is bijective
+\item $\impliedby$ Assume $\phi$ is bijective
+
+Assume $a\in A$ \\
+Since $\phi$ is a function, $\exists\,b\in B,\phi(a)=b$ \\
+But, since $\phi$ is one-to-one, $\exists\,\phi^{-1},\phi^{-1}(b)=a$. \\
+($\phi\phi^{-1})(b)=\phi(a)=b$
+
+Assume $b\in B$ \\
+But, since $\phi$ is onto, $\exists\,a\in A,\phi(a)=b$ \\
+($\phi^{-1}\phi)(a)=\phi^{-1}(b)=a$
+
+$\therefore \phi^{-1}$ exists and $\phi$ is invertible.
+\end{description}
+\end{theproof}
+\begin{theorem}
+Inverse functions are unique.
+\end{theorem}
+\begin{theproof}
+Assume $\phi:A\to B$ is invertible \\
+Assume $\mu:B\to A$ and $\gamma:B\to A$ are both inverses of $\phi$ \\
+Assume $b\in B$
+\begin{eqnarray*}
+(\phi\mu)(b) &=& b \\
+\left[\gamma(\phi\mu)\right](b) &=& \gamma(b) \\
+\left[(\gamma\phi)\mu)\right](b) &=& \gamma(b) \\
+(\gamma\phi)[\mu(b)] &=& \gamma(b) \\
+\mu(b) &=& \gamma(b) \\
+\therefore \mu &=& \gamma \\
+\end{eqnarray*}
+\end{theproof}
+\end{document}

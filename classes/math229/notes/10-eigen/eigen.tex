@@ -1,0 +1,118 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vz}{\vec{0}}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\newcommand{\hs}{\hspace{4ex}}
+\begin{document}
+\section*{Eigenvalues and Eigenvectors}
+
+\begin{definition}
+  Let $A\in M_n(\C)$ and let $\vx$ be a $n\times 1$ column vector. The
+  \emph{eigen equation} for $A$ is given by:
+  \[A\vx=\l\vx\]
+  To say that $\l$ is an \emph{eigenvalue} of $A$ means that there exists a
+  non-zero $\vx$ such that the eigen equation is true. Such a $\l$ is called
+  an $eigenvalue$ of $A$ and the corresponding non-zero $\vx$ is called an
+  \emph{eigenvector} of $A$ with respect to $\l$. The ordered pair $(\l,\vx)$
+  is called an \emph{eigen pair} of $A$.
+\end{definition}
+
+\renewcommand{\AA}{\begin{bmatrix} -1 & 2 \\ 3 & 0 \end{bmatrix}}
+\newcommand{\xa}{\begin{bmatrix} 1 \\ -1 \end{bmatrix}}
+
+\begin{example}
+  $A=\AA$\hs$\vx=\xa$\hs$\l=-3$
+
+  $A\vx=\AA\xa=\begin{bmatrix} -3 \\ 3 \end{bmatrix}=-3\xa=-3\vx$
+\end{example}
+
+\begin{definition}
+  Let $A\in M_n(\C)$. To say that $A$ is \emph{nilpotent} means
+  $\exists\,k\in\Z^+$ such that $A^k=0$.
+\end{definition}
+
+\begin{theorem}
+  Let $A\in M_n(\C)$ be nilpotent:
+
+  $\l$ is an eigenvalue of $A\implies\l=0$
+\end{theorem}
+
+\begin{theproof}
+  Assume $\l$ is an eigenvalue of $A$ \\
+  $\exists\,\vx\ne\vz,A\vx=\l\vx$ \\
+  $A^{k-1}(A\vx)=A^{k-1}(\l\vx)$ \\
+  $A^k\vx=\l(A^{k-1}\vx)$ \\
+  $0\vx=\l(\l^{k-1}\vx)$ \\
+  $\vz=\l^k\vx$ \\
+  But $\vx$ is an eigenvector and thus $\vx\ne\vz$, so: \\
+  $\l^k=0$
+
+  $\therefore \l=0$
+\end{theproof}
+
+\newpage
+
+\begin{definition}
+  Let $A\in M_n(\C)$. To say that $A$ is \emph{idempotent} means $A^2=A$.
+\end{definition}
+
+\begin{theorem}
+  Let $A\in M_n(\C)$ be idempotent:
+
+  $\l$ is an eigenvalue of $A\implies\l=0\ \mbox{or}\ 1$
+\end{theorem}
+
+\begin{theproof}
+  Assume $\l$ is an eigenvalue of $A$ \\
+  $\exists\,\vx\ne\vz,A\vx=\l\vx$ \\
+  $A(A\vx)=A(\l\vx)$ \\
+  $A^2\vx=\l(A\vx)$ \\
+  $A^2\vx=\l(\l\vx)$ \\
+  $A\vx=\l^2\vx$ \\
+  $\l^2\vx=\l\vx$ \\
+  $(\l^2-\l)\vx=\vz$ \\
+  $\l(\l-1)\vx=\vz$ \\
+  But $\vx$ is an eigenvector and thus $\vx\ne\vz$, so: \\
+  $\l(\l-1)=0$
+
+  $\therefore \l=0\ \mbox{or}\ 1$
+\end{theproof}
+
+\begin{notation}
+  Let $A\in M_n(\C)$. The set of all distinct eigenvalues of $A$ is denoted by
+  $\o(A)$.
+\end{notation}
+
+\begin{theorem}[Eigenvalue Criteria]
+  Let $A\in M_n(\C)$:
+
+  $\l$ is an eigenvalue of $A\iff\det(\l I_n-A)=0$
+
+  Thus, $\l I_n-A$ is singular.
+\end{theorem}
+
+\begin{theproof}
+  $\l$ is an eigenvalue of $A$ \\
+  $\iff A\vx=\l\vx$ \\
+  $\iff A\vx-\l\vx=\vz$ \\
+  $\iff (A-\l I_n)\vx=\vz$ \\
+  $\iff (A-\l I_n)\vx=\vz$ has non-trivial solutions \\
+  $\iff A-\l I_n$ is singular \\
+  $\iff \det(A-\l I_n)=0$ \\
+  $\iff \det(\l I_n-A)=0$
+\end{theproof}
+
+\newpage
+
+\begin{example}
+  $A=\AA\hs A-\l I_2=\begin{bmatrix} \l+1 & -2 \\ -3 & \l \end{bmatrix}$
+
+  $\det(A-\l I_2)=\l(\l+1)-6=\l^2+\l-6=(\l+3)(\l-2)=0$
+
+  $\o(A)=\{-3,2\}$
+\end{example}
+
+\end{document}

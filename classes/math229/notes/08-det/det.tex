@@ -1,0 +1,115 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\sigma}
+\newcommand{\ms}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\DeclareMathOperator{\sgn}{sgn}
+\begin{document}
+\section*{Determinants}
+
+\begin{definition}[Determinant]
+  Let $A\in M_n$. The \emph{determinant} of $A$ is given by:
+  \[\det(A)=\sum_{\o\in S_n}(-1)^{\sgn(\o)}\prod_{k=1}^na_{k,\o(k)}\]
+  where:
+  \[\sgn(\o)=\begin{cases}
+  0, & \o\ \mbox{even} \\
+  1, & \o\ \mbox{odd}
+  \end{cases}\]
+\end{definition}
+
+\begin{definition}[Laplace Expansion]
+  Let $A\in M_n$. The \emph{determinant} of $A$ is given by:
+  \[\det(A)=
+  \sum_{k=1}^n(-1)^{i+j}a_{ij}\det(A_{ij})=
+  \sum_{j=1}^n(-1)^{i+j}a_{ij}\det(A_{ij})\]
+  where the first expansion is across the $j^{th}$ column and the second
+  expansion is across the $i^{th}$ row.
+\end{definition}
+
+Recall that $(-1)^{i+j}\det(A_{ij})$ is a cofactor of $A$.
+
+\begin{example}
+  $A=\begin{bmatrix} a & b \\ c & d \end{bmatrix}$
+
+  $\det(A)=a\det\ms{d}-b\det\ms{c}=ad-bc$
+
+  $A=\begin{bmatrix}
+  a_{11} & a_{12} & a_{13} \\
+  a_{21} & a_{22} & a_{23} \\
+  a_{31} & a_{32} & a_{33} \\
+  \end{bmatrix}$
+  \begin{eqnarray*}
+    \det(A) &=& a_{11}\det\begin{bmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{bmatrix}-
+    a_{12}\det\begin{bmatrix} a_{21} & a_{23} \\ a_{31} & a_{33} \end{bmatrix}+
+    a_{13}\det\begin{bmatrix} a_{21} & a_{22} \\ a_{31} & a_{32} \end{bmatrix} \\
+    &=& a_{11}(a_{22}a_{33}-a_{23}a_{32})-a_{12}(a_{21}a_{33}-a_{23}a_{31})+
+    a_{13}(a_{21}a_{32}-a_{22}a_{31}) \\
+    &=& a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a_{23}a_{31}+
+    a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31} \\
+    &=& a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-
+    (a_{11}a_{23}a_{32}+a_{12}a_{21}a_{33}+a_{13}a_{22}a_{31})
+  \end{eqnarray*}
+\end{example}
+
+\begin{properties}
+  \listbreak
+  \begin{enumerate}
+  \item $\det(A)=\det(A^T)$
+    
+  \item $\det(\bar{A})=\overline{\det(A)}$
+    
+  \item Effects of elementary row operations:
+    \begin{description}
+    \item Scale - scale determinant
+    \item Swap - negation (change sign)
+    \item Replace - no effect
+    \end{description}
+    
+  \item Let $T$ be an upper-triangular matrix:
+    \[\det(T)=\prod_{k=1}^nt_{kk}\]
+    Use EROs to put a matrix in upper-triangular form (swap/replace) and then
+    calculate by multiplying the diagonal entries.
+
+  \item $\det\begin{bmatrix} A & B \\ 0 & C \end{bmatrix}=\det(A)\det(B)$
+
+    $\det\begin{bmatrix} A & B \\ 0 & C \end{bmatrix}\to
+    \det\begin{bmatrix} T_A & * \\ 0 & T_C \end{bmatrix}$
+
+  \item $\det(AB)=\det(A)\det(B)$
+
+    \begin{theproof}
+      \listbreak
+      \begin{description}
+      \item Case 1: $\det(A)=0$
+
+        $A$ is not invertible \\
+        ABC: $AB$ is invertible \\
+        $\exists\,C,(AB)C=I$ \\
+        $A(BC)=I$ \\
+        $A^{-1}=BC$ \\
+        Contradiction! \\
+        Thus, $AB$ is not invertible \\
+        Therefore $\det(AB)=0$ \\
+        Also $\det(A)\det(B)=0\cdot\det(B)=0$
+
+        $\therefore \det(AB)=\det(A)\det(B)$
+
+      \item Case 2: $\det(A)\ne0$
+
+        $A$ is invertible \\
+        There exists a sequence of ERO matrices $E_1E_2\cdot E_k$ such that
+        $E_k\cdot E_2E_1A=I$ \\
+        But ERO matrices are invertible, so $A=E_1^{-1}E_2^{-1}\cdot E_k^{-1}I$ \\
+        $AB=E_1^{-1}E_2^{-1}\cdot E_k^{-1}B$ \\
+        But $\det(EB)=\det(E)\det(B)=\pm\det(B)$, so:
+        \begin{eqnarray*}
+          \det(AB) &=& \det(E_1^{-1})\det(E_2^{-1})\cdot\det(E_k^{-1})\det(B) \\
+          &=& \det(E_1^{-1}E_2^{-1}\cdot E_k^{-1})\det(B) \\
+          &=& \det(A)\det(B)
+        \end{eqnarray*}
+      \end{description}
+    \end{theproof}
+  \end{enumerate}
+\end{properties}
+
+\end{document}

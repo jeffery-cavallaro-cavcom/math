@@ -1,0 +1,271 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\p}{\phi}
+\newcommand{\bas}[2]{\left<#1,#2\right>}
+\begin{document}
+\section*{Structural Properties}
+
+\begin{definition}
+  A \emph{structural property} is a property that must be shared by any two
+  isomorphic binary algebraic structures.
+
+  In fact, to show that two structures are not isomorphic, show that there is a
+  property held by one but not the other.
+\end{definition}
+
+\begin{properties}
+  \listbreak
+  \begin{enumerate}
+  \item Cardinality
+  \item Commutativity
+  \item Associativity
+  \item Identity Element
+  \item Inverse Elements
+  \item Equation Solutions
+  \item Idempotent Elements
+  \end{enumerate}
+\end{properties}
+
+\begin{theorem}
+  Let $S,T$ be binary algebraic structures.
+  \[S\simeq T\implies\abs{S}=\abs{T}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $S\simeq T$ \\
+  There exists isomorphism $\p:S\to T$ \\
+  $\p$ is a bijection \\
+  $\therefore \abs{S}=\abs{T}$
+\end{theproof}
+
+\begin{theorem}
+  Let $S,T$ be binary algebraic structures.
+  \[\p:S\to T\ \mbox{is an isomorphism}\implies
+      \left(\forall\,x,y\in S, xy=yx\implies\p(x)\p(y)=\p(y)\p(x)\right)\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\p:S\to T$ is an isomorphism \\
+  Assume $x,y\in S$ \\
+  Assume $xy=yx$ \\
+  $\p(xy)=\p(x)\p(y)$ \\
+  $\p(xy)=\p(yx)=\p(y)\p(x)$ \\
+  $\therefore \p(x)\p(y)=\p(y)\p(x)$
+\end{theproof}
+
+\begin{example}
+  $\bas{\R}{\cdot}\not\simeq\bas{M(\R)}{\cdot}$ because $\bas{\R}{\cdot}$ is
+  commutative; however, $\bas{M(\R)}{\cdot}$ is not.
+\end{example}
+
+\begin{theorem}
+  Let $S,T$ be binary algebraic structures.
+  
+  $\p:S\to T\ \mbox{is an isomorphism}\implies$
+  \[\left(\forall\,x,y,z\in S, (xy)z=x(yz)\implies
+  [\p(x)\p(y)]\p(z)=\p(x)[\p(y)\p(z)]\right)\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\p:S\to T$ is an isomorphism \\
+  Assume $x,y,z\in S$ \\
+  Assume $x(yz)=x(yz)$ \\
+  $\p((xy)z)=\p(xy)\p(z)=[\p(x)\p(y)]\p(z)$ \\
+  $\p((xy)z)=\p(x(yz))\p(x)\p(yz)=\p(x)[\p(y)\p(z)]$ \\
+  $\therefore [\p(x)\p(y)]p(z)=\p(x)[\p(y)\p(z)]$
+\end{theproof}
+
+\begin{definition}
+  Let $S$ be a binary algebraic structure. To say that $e\in S$ is an
+  \emph{identity} element for $S$ means:
+  \[\forall\,a\in S,ea=ae=a\]
+\end{definition}
+
+\begin{theorem}
+  A binary algebraic structure has at most one identity element.
+\end{theorem}
+
+\begin{theproof}
+  Assume $S$ is a binary algebraic structure \\
+  Assume $e_1,e_2\in S$ are identity elements for $S$ \\
+  $e_1e_2=e_1$ \\
+  $e_1e_2=e_2$ \\
+  $\therefore e_1=e_2$
+\end{theproof}
+
+\begin{theorem}
+  Let $S$ and $T$ be binary algebraic structures
+  
+  $\p:S\to T$ is an isomorphism $\implies$
+  \[\left(e\ \mbox{is an identity element for}\ S\implies
+  \p(e)\ \mbox{is an identity element for}\ T\right)\]
+\end{theorem}
+\newpage
+\begin{theproof}
+  Assume $\p:S\to T$ is an isomorphism \\
+  Assume $e$ is an identity element for $S$ \\
+  $\forall\,s\in S,es=se=s$ \\
+  $\p$ is well-defined \\
+  $\exists\,\p(e)\in T$ \\
+  Assume $t\in T$ \\
+  $\p$ is onto \\
+  $\exists\,s\in S,\p(s)=t$ \\
+  $\p$ is a homomorphism \\
+  $\p(es)=\p(e)\p(s)=\p(e)t$ \\
+  $\p(es)=\p(se)=\p(s)\p(e)=t\p(e)$ \\
+  $\p(es)=\p(s)=t$ \\
+  $\p(e)t=t\p(e)=t$ \\
+  $\therefore \p(e)$ is an identity for $T$
+\end{theproof}
+
+\begin{example}
+  \[S={a,b,c,d}\]
+
+  \begin{tabular}{c|cccc}
+    $*$ & a & b & c & d \\
+    \hline
+    a & a & c & b & d \\
+    b & c & d & a & c \\
+    c & b & a & c & a \\
+    d & d & c & a & b \\
+  \end{tabular}
+
+  \bigskip
+
+  $S\not\simeq \Z_4$ because $Z_4$ has an identity (0); however, $S$ does not
+  have an identity element.
+\end{example}
+
+\begin{definition}
+  Let $S$ be a binary algebraic structure with identity $e$ and let $a\in S$.
+  To say that $b\in S$ is an inverse for $a$ means:
+  \[ab=ba=e\]
+\end{definition}
+
+\begin{notation}
+  \listbreak
+  \begin{description}
+  \item{Additive:} $b=-a$
+  \item{Multiplicative:} $b=a^{-1}$
+  \end{description}
+\end{notation}
+
+\begin{theorem}
+  Let $S$ and $T$ be binary algebraic structures such that $e$ is an identity
+  element for $S$.
+  
+  $\p:S\to T$ is an isomorphism $\implies$
+  \[\left(\forall\,a\in S,b\in S\ \mbox{is an inverse for}\ a\implies
+  \p(b)\ \mbox{is an inverse for}\ \p(a)\right)\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\p:S\to T$ is an isomorphism \\
+  Assume $a\in S$ \\
+  Assume $b\in S$ is an inverse for $a$ \\
+  $ab=ba=e$ \\
+  $\p$ is well-defined \\
+  $\exists\,\p(a)\in T$ and $\exists\,\p(b)\in T$ \\
+  $\p(e)$ is an identity for $T$ \\
+  $\p$ is a homomorphism \\
+  $\p(ab)=\p(a)\p(b)$ \\
+  $\p(ab)=\p(ba)=\p(b)\p(a)$ \\
+  $\p(ab)=\p(e)$ \\
+  $\p(a)\p(b)=\p(b)\p(a)=\p(e)$ \\
+  $\therefore \p(b)$ is an inverse for $\p(a)$
+\end{theproof}
+
+\begin{theorem}
+  Let $S$ and $T$ be binary algebraic structures.
+  \[\p:S\to T\ \mbox{is an isomorphism}\implies
+    \left(\forall\,x,a\in S,xx=a\implies\p(x)\p(x)=\p(a)\right)\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\p:S\to T$ is an isomorphism \\
+  Assume $x,a\in S$ \\
+  Assume $xx=a$ \\
+  $\p$ is well-defined \\
+  $\exists\,\p(x),\p(a)\in T$ \\
+  $\p$ is a homomorphism \\
+  $\p(xx)=\p(x)\p(x)$ \\
+  $\p(xx)=\p(a)$ \\
+  $\therefore \p(x)\p(x)=\p(a)$ \\
+\end{theproof}
+
+\begin{example}
+  $\bas{\C}{\cdot}\not\simeq\bas{\R}{\cdot}$ because $\forall\,c\in\C$ the
+  equation $zz=c$ has a solution in $\C$; however, $xx=-1$ has no solutions in
+  $\R$.
+
+  ABC: $\exists\,\p:\bas{\C}{\cdot}\to\bas{\R}{\cdot}$
+  
+  $-1\in\R$ \\
+  $\p$ is onto \\
+  $\exists\,c\in\C,\p(c)=-1$ \\
+  $zz=c$ has a solution in $\C$ \\
+  $\p$ is well-defined \\
+  $\exists\,x\in\R,\p(z)=x$ \\
+  $\p$ is a homomorphism \\
+  $\p(zz)=\p(z)\p(z)=xx=x^2$ \\
+  $\p(zz)=\p(c)=-1$ \\
+  $x^2=-1$ \\
+  Contradiction! \\
+  $z$ has no image under $\p$ \\
+  $\p$ is not well-defined \\
+  no such $\p$ exists \\
+  $\therefore \bas{\C}{\cdot}\not\simeq\bas{\R}{\cdot}$
+\end{example}
+
+\begin{example}
+  $\bas{\Z}{\cdot}\not\simeq\bas{\Z}{+}$ because $nn=n$ has two solutions in
+  $\bas{\Z}{\cdot}$; however, $m+m=m$ has only one solution in $\bas{\Z}{+}$.
+
+  ABC: $\exists\,\p:\bas{\Z}{\cdot}\to\bas{\Z}{+}$
+
+  Assume $n\in\bas{\Z}{\cdot}$ \\
+  Assume $nn=n$ \\
+  $n^2-n=0$ \\
+  $n(n-1)=0$ \\
+  $n=0,1$
+
+  $\p$ is well-defined \\
+  $\exists\,m\in\bas{\Z}{+},\p(n)=m$ \\
+  $\p$ is a homomorphism \\
+  $\p(nn)=\p(n)+\p(n)=m+m$ \\
+  $\p(nn)=\p(n)=m$ \\
+  $m+m=m$ \\
+  $2m=m$ \\
+  $m=0$
+
+  $\p(0)=0$ and $\p(1)=0$ \\
+  $\p$ is not one-to-one \\
+  Contradiction! \\
+  No such $\p$ exists \\
+  $\therefore \bas{\Z}{\cdot}\not\simeq\bas{\Z}{+}$
+\end{example}
+
+\begin{definition}
+  Let $S$ be a binary algebraic structure. To say that $a\in S$ is
+  \emph{idempotent} in $S$ means $aa=a$.
+\end{definition}
+
+\begin{theorem}
+  Let $S$ and $T$ be binary algebraic structures.
+  
+  $\p:S\to T\ \mbox{is an isomorphism}\implies$
+  \[\left(\forall\,a\in S,a\ \mbox{is idempotent in}\ S\implies
+    \p(a)\ \mbox{is idempotent in}\ T\right)\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\p:S\to T$ is an isomorphism \\
+  Assume $a\in S$ \\
+  Assume $a$ is idempotent in $S$ \\
+  $aa=a$ \\
+  By previous theorem, $\p(a)\p(a)=\p(a)$ \\
+  $\therefore \p(a)$ is idempotent in $T$
+\end{theproof}
+
+\end{document}

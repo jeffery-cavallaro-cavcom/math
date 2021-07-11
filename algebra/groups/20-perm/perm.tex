@@ -1,0 +1,114 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\sigma}
+\renewcommand{\t}{\tau}
+\newcommand{\g}{\gamma}
+\renewcommand{\i}{\iota}
+\begin{document}
+\section*{Permutations}
+
+\begin{definition}
+  A permutation of a set $A$ is a bijection on $A$.
+
+  $S_A=\{\o:\o\ \mbox{is a permutation of}\ A\}$
+\end{definition}
+
+\begin{lemma}
+  Let $A$ be a set. Composition of elements in $S_A$ is associative.
+\end{lemma}
+
+\begin{theproof}
+  Assume $\o,\t,\g\in S_A$ \\
+  Assume $x\in A$ \\
+  $ ((\o\t)\g)(x)=(\o\t)(\g(x))=\o(\t(\g(x)))=\o((\t\g)(x))=(\o(\t\g))(x)$
+\end{theproof}
+
+\begin{lemma}
+  Let $A$ be a set. Composition of elements in $S_A$ is closed.
+\end{lemma}
+
+\begin{theproof}
+  Assume $\o,\t\in S_A$
+
+  Assume $(\o\t)(x)=(\o\t)(y)$ \\
+  Assume $\o(\t(x))=\o(\t(y))$ \\
+  But $\o$ is a bijection and thus one-to-one \\
+  So $\t(x)=\t(y)$ \\
+  But $\t$ is a bijection and thus one-to-one \\
+  $x=y$ \\
+  $\therefore \o\t$ is one-to-one.
+
+  Assume $y\in A$ \\
+  $\o$ is onto \\
+  So $\exists\,a\in A,\o(a)=y$ \\
+  But $\t$ is also onto so $\exists\,x\in A,\t(x)=a$ \\
+  $\o(\t(x))=y$ \\
+  $(\o\t)(x)=y$ \\
+  $\therefore \o\t$ is onto.
+
+  $\therefore \o\t$ is a bijection and thus a permutation on $S_A$
+
+  $\therefore S_A$ is closed under the operation of composition.
+\end{theproof}
+\newpage
+\begin{theorem}
+  Let $A\ne\emptyset$. $S_A$ is a group under the operation of composition.
+\end{theorem}
+
+\begin{theproof}
+  Function composition is closed and associative (lemmas) \\
+  $\i_A(x)=x$ is an identity permutation \\
+  $\o\in S_A\implies\o^{-1}\in S_A$, since $\o$ is a bijection \\
+  $\therefore S_A$ is a group.
+\end{theproof}
+
+\begin{definition}
+  $[n]=\{1,2,3,\ldots,n\}$
+
+  $S_n=\{\o:\o\ \mbox{is a permutation of}\ [n]\}$
+\end{definition}
+
+Note that $\abs{S_n}=n!$.
+
+Permutations can be represented by $2\times n$ matrices, where the top row
+contains $1,\ldots,n$ and the bottom row represents how the top row is
+permuted.
+
+\begin{example}
+  $S_2=\left\{\begin{pmatrix}1 & 2 \\ 1 & 2\end{pmatrix},
+  \begin{pmatrix}1 & 2 \\ 2 & 1\end{pmatrix}\right\}$
+    
+  $\abs{S_2}=2!=2$
+\end{example}
+
+Permutations can also be represented by a decomposition of cycles:
+\[(abcd\cdots z)=\begin{pmatrix}a & b & c & \ldots & z \\
+b & c & d & \ldots & a\end{pmatrix}\]
+Elements that do not change are omitted.
+
+The identity permutation is represented by $()$
+
+\begin{example}
+  $S_3=\left\{(123),(132),(213),(231),(312),(321)\right\}$
+
+  $\abs{S_3}=3!=6$
+\end{example}
+\newpage
+\begin{example}
+  $\begin{array}{lll}
+    S_4: & () & 1 \\
+    \\
+    & (ab) & \frac{4\cdot3}{2}=6 \\
+    \\
+    & (abc) & \frac{4\cdot3\cdot2}{3}=8 \\
+    \\
+    & (abcd) & \frac{4\cdot3\cdot2\cdot1}{4}=6 \\
+    \\
+    & (ab)(cd) & \frac{4\cdot3}{2\cdot2}=3 \\
+  \end{array}$
+
+  $\abs{S_4}=4!=1+6+8+6+3=24$
+\end{example}
+
+\end{document}

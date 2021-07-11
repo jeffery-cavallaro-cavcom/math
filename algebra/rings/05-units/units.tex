@@ -1,0 +1,117 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Units}
+
+\begin{definition}
+  Let $R$ be a ring with unity $1\ne0$ and $a\in R$. To say that $a^{-1}\in R$
+  is a \emph{multiplicative inverse} of $a$ means:
+  \[aa^{-1}=a^{-1}a=1\]
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a ring with unity $1\ne0$. $0\in R$ does not have a multiplicative
+  inverse.
+\end{theorem}
+
+\begin{theproof}
+  ABC: $0^{-1}\in R$ \\
+  $00^{-1}=1$ \\
+  But $00^{-1}=0$ \\
+  $0=1$ \\
+  CONTRADICTION! \\
+  $\therefore 0$ has no multiplicative inverse.
+\end{theproof}
+
+\begin{definition}
+  Let $R$ be a ring with unity $1\ne0$. To say that $a\in R$ is a \emph{unit}
+  means that $a$ has a multiplicative inverse $a^{-1}\in R$.
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a ring with unity $1\ne0$. $\forall\,a\in R, a$ is a unit
+  $\implies a^{-1}$ is unique.
+\end{theorem}
+
+\begin{theproof}
+  Assume $a$ is a unit in $R$ \\
+  Let $b$ and $b'$ be multiplicative inverses of $a$ in $R$ \\
+  $ab=ba=1$ \\
+  $ab'=b'a=1$ \\
+  $ab=ab'$ \\
+  $b(ab)=b(ab')$ \\
+  $(ba)b=(ba)b'$ \\
+  $1b=1b'$ \\
+  $b=b'$
+\end{theproof}
+
+\begin{theorem}
+  Let $R$ be a ring with unity $1\ne0$ and let
+  $R^*=\{a\in R\mid a\ \mbox{is a unit}\}$. $\left<R,\cdot\right>$ is a group.
+\end{theorem}
+\newpage
+\begin{theproof}
+  $(1)(1)=1$, so $1\in R^*$ and $R^*\ne\emptyset$
+
+  Assume $a,b\in R^*$ \\
+  $\exists\,a^{-1},b^{-1}\in R^*$ \\
+  $(b^{-1}a^{-1})(ab)=b^{-1}(a^{-1}a)b=b^{-1}1b=b^{-1}b=1$ \\
+  $(ab)(b^{-1}a^{-1})=a(bb^{-1})a^{-1}=a1a^{-1}=aa^{-1}=1$ \\
+  $b^{-1}a^{-1}=(ab)^{-1}$ \\
+  $ab\in R^*$ \\
+  $\therefore R^*$ is closed under the operation.
+
+  Assume $a\in R^*$ \\
+  By definition, $a^{-1}\in R^*$ \\
+  $\therefore R^*$ is closed under inverses.
+
+  $\therefore R^*$ is a group.
+\end{theproof}
+
+\begin{example}
+  $R=M_n(\R)$ \\
+  $R^*=LR_n(\R)$
+
+  $R=\Z$ \\
+  $R^*=\{-1,1\}$
+
+  $R=\Z_n$ \\
+  $R^*=\{a\in\Z_n\mid(a,n)=1\}$
+\end{example}
+
+\begin{theorem}
+  $u\in\Z_n$ is a unit $\iff (u,n)=1$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+    \begin{minipage}[t]{3in}
+    \item $\implies$ Assume $u\in\Z_n$ is a unit
+
+      $\exists\,v\in\Z_n,uv=1$ \\
+      $\exists\,k\in\Z,uv=kn+1$ \\
+      $uv-kn=1$ \\
+      Let $d=(u,n)$ \\
+      $d\mid u$ and $d\mid n$ \\
+      So $d\mid uv-kn$ \\
+      Thus $d\mid 1$ \\
+      $d=1$ \\
+      $\therefore (u,n)=1$.
+    \end{minipage}
+    \begin{minipage}[t]{3in}
+    \item $\impliedby$ Assume $(u,n)=1$
+
+      $uv-kn=1$ has solutions in $R$ \\
+      $uv=kn+1$ \\
+      $uv=1$ \\
+      But $Z_n$ is commutative, \\
+      So $vu=1$ \\
+      Thus, $u$ has multiplicative inverse $v$ \\
+      $\therefore u$ is a unit.
+    \end{minipage}
+  \end{description}
+\end{theproof}
+
+\end{document}

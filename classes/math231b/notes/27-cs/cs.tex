@@ -1,0 +1,64 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+\newcommand{\conj}[1]{\overline{#1}}
+\DeclareMathOperator{\Real}{Re}
+\begin{document}
+\section*{Cauchy-Schwarz Inequality}
+
+\begin{theorem}[Cauchy-Schwarz]
+  Let $E$ be a normed space over a field $\F$ with an inner product induced
+  norm. $\forall\,\vx,\vy\in E$:
+  \[\abs{\inner{\vx}{\vy}}\le\norm{\vx}\norm{\vy}\]
+  with equality iff $\exists\a\in\F$ such that $\vx=\a\vy$, i.e., $\vx$ and
+  $\vy$ are dependent.
+\end{theorem}
+
+\begin{theproof}
+  If $\vy=\vo$ then trivial, so AWLOG: $\vy\ne\vo$.
+
+  Assume $\l\in\F$:
+  \begin{eqnarray*}
+    0 &\le& \norm{\vx+\l\vy}^2 \\
+    &=& \inner{\vx+\l\vy}{\vx+\l\vy} \\
+    &=& \inner{\vx}{\vx}+\inner{\vx}{\l\vy}+\inner{\l\vy}{\vx}+
+    \inner{\l\vy}{\l\vy} \\
+    &=& \norm{\vx}^2+\inner{\vx}{\l\vy}+\conj{\inner{\vx}{\l\vy}}+
+    \norm{\vy}^2 \\
+    &=& \norm{\vx}^2+2\Real(\inner{\vx}{\l\vy})+\abs{\l}^2\norm{\vy}^2
+  \end{eqnarray*}
+  Now, let $\l=-\frac{\inner{\vx}{\vy}}{\norm{\vy}^2}$
+  \begin{eqnarray*}
+    0 &\le& \norm{\vx}^2+
+    2\Real\left(\inner{\vx}{-\frac{\inner{\vx}{\vy}}{\norm{\vy}^2}\vy}\right)+
+    \abs{-\frac{\inner{\vx}{\vy}}{\norm{\vy}^2}}^2\norm{\vy}^2 \\
+    &=& \norm{\vx}^2+
+    2\Real\left(-\frac{\conj{\inner{\vx}{\vy}}}{\norm{\vy}^2}\inner{\vx}{\vy}
+    \right)+\frac{\abs{\inner{\vx}{\vy}}}{\norm{\vy}^4}\norm{\vy}^2 \\
+    &=& \norm{\vx}^2+
+    2\Real\left(-\frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2}\right)+
+    \frac{\abs{\inner{\vx}{\vy}}}{\norm{\vy}^2} \\
+    &=& \norm{\vx}^2-2\frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2}+
+    \frac{\abs{\inner{\vx}{\vy}}}{\norm{\vy}^2} \\
+    &=& \norm{\vx}^2-\frac{\abs{\inner{\vx}{\vy}}^2}{\norm{\vy}^2} \\
+  \end{eqnarray*}
+  But, by assumption, $\vy\ne\vo$ and so $\norm{\vy}\ne0$:
+  \begin{eqnarray*}
+    \norm{\vx}^2\norm{\vy}^2-\abs{\inner{\vx}{\vy}}^2 &\ge& 0 \\
+    \norm{\vx}^2\norm{\vy}^2 &\ge& \abs{\inner{\vx}{\vy}}^2 \\
+    \norm{\vx}\norm{\vy} &\ge& \abs{\inner{\vx}{\vy}} \\
+  \end{eqnarray*}
+  $\therefore\abs{\inner{\vx}{\vy}}\le\norm{\vx}\norm{\vy}$
+
+  Equality $\iff\norm{\vx+\l\vy}^2=0\iff\vx+\l\vy=0\iff\vx=-\l\vy=\a\vy$
+\end{theproof}
+
+\end{document}

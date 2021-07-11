@@ -1,0 +1,126 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\vz}{\vec{0}}
+\DeclareMathOperator{\spn}{span}
+\begin{document}
+\section*{Span}
+
+\begin{definition}[Linear Combination]
+  Let $V$ be a vector space over a field $\F$ and let $S$ be a non-empty subset
+  of $V$. To say that $\vv\in V$ is a \emph{linear combination} of the
+  vectors in $S$ means $\exists\,\{\vec{s_1},\ldots,\vec{s_n}\}\subseteq S$ and
+  $\exists\,c_1,\ldots,c_n\in\F$ such that:
+  \[\vv=\sum_{k=1}^nc_k\vec{s_k}\]
+  Note that linear combinations are finite sums.
+
+  When all $c_k=0$ then the linear combination is called \emph{trivial}.
+\end{definition}
+
+\begin{definition}[Span]
+  Let $V$ be a vector space over a field $\F$ and let $S\subseteq V$. The
+  \emph{span} of $S$, denoted $\spn(S)$, is the set of all possible linear
+  combinations of $S$.
+
+  By definition, $\spn(\emptyset)=\{\vz\}$.
+\end{definition}
+
+\begin{theorem}
+  Let $V$ be a vector space over a field $\F$ and let $S\subseteq V$:
+
+  $\spn(S)$ is a subspace of $V$.
+\end{theorem}
+
+\begin{theproof}
+  If $S=\emptyset$ then by definition $\spn(S)$ is the trivial subspace. So
+  AWLOG $S\ne\emptyset$.
+
+  Assume $\vu\in\spn(S)$ \\
+  $\exists\,\{\vec{s_1},\ldots,\vec{s_n}\}\subseteq S$ and
+  $\exists\,c_1,\ldots,c_n\in\F$ such that $\vu=\sum_{k=1}^nc_k\vec{s_k}$ \\
+  But $\{\vec{s_1},\ldots,\vec{s_n}\}\in V$ as well, so by closure, $\vu\in V$
+
+  $\therefore \spn(S)\subseteq V$
+
+  Now assume $\vv\in\spn(S)$ \\
+  $\exists\,\{\vec{t_1},\ldots,\vec{t_m}\}\subseteq S$ and
+  $\exists\,d_1\ldots,d_m\in\F$ such that $\vv=\sum_{k=1}^md_k\vec{t_k}$ \\
+  $\vu+\vv=\sum_{k=1}^nc_k\vec{s_k}+\sum_{k=1}^md_k\vec{t_k}$ \\
+  After combining coefficients of common vectors, $\vu+\vv$ is a linear
+  combination of $S$, and thus $\vu+\vv\in\spn(S)$
+
+  Therefore $\spn(S)$ is closed under vector addition.
+
+  Assume $a\in\F$ \\
+  $a\vu=a\sum_{k=1}^nc_k\vec{s_k}=\sum_{k=1}^n(ac_k)\vec{s_k}$ \\
+  So $a\vu$ is also a linear combination of $S$, and thus $a\vu\in\spn(S)$
+
+  Therefore $\spn(S)$ is closed under scalar multiplication.
+
+  Therefore $\spn(S)$ is a subspace of $V$.
+\end{theproof}
+
+\begin{theorem}
+  Let $V$ be a vector space over a field $\F$ and let $S\subseteq V$:
+
+  $\spn(S)$ is the smallest subspace of $V$ containing $S$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $W$ is a subspace of $V$ such that $S\subseteq W$ \\
+  Assume $\vv\in\spn(S)$ \\
+  $\exists\,\{\vec{s_1},\ldots,\vec{s_n}\}\subseteq S$ and
+  $\exists\,c_1,\ldots,c_n\in\F$ such that $\vv=\sum_{k=1}^nc_k\vec{s_k}$ \\
+  But $\{\vec{s_1},\ldots,\vec{s_n}\}\subseteq W$ as well, so by closure,
+  $\vv\in W$
+
+  Therefore $\spn(S)\subseteq W$
+\end{theproof}
+
+\begin{corollary}
+  Let $V$ be a vector space over a field $\F$ and let $S\subseteq V$:
+
+  $\spn(S)$ is the intersection of all subspaces of $V$ that contain $S$.
+\end{corollary}
+
+\begin{theproof}
+  Let $W$ be the intersection of all subspaces of $V$ containing $S$ \\
+  $W$ is a subspace of $V$ containing $S$ \\
+  But $\spn(S)$ is the smallest such subspace, so $\spn(S)\subseteq W$ \\
+  But by construction $W\subseteq\spn(S)$
+
+  $\therefore \spn(S)=W$
+\end{theproof}
+
+\begin{theorem}
+  Let $V$ be a vector space over a field $\F$ and let $U,W$ be subspaces of $V$:
+  \[U+W=\spn(U\cup W)\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $\vv\in U+W$
+
+    There exists $\vu\in U$ and $\vw\in W$ such that $\vv=\vu+\vw$ \\
+    $\vu\in U\cup W$ and $\vw\in U\cup W$ \\
+    Thus $\vv$ is a linear combination of vectors in $U$ and $W$
+
+    $\therefore \vv\in\spn(U\cup W)$
+
+  \item $\impliedby$ Assume $\vv\in\spn(U\cup W)$
+
+    $\vv=\sum_{k=1}^mc_k\vec{u_k}+\sum_{k=1}^nd_k\vec{w_k}$ for some
+    $u_k\in U$, $w_k\in W$, and $c_k,d_k\in\F$ \\
+    But by closure, $\sum_{k=1}^mc_k\vec{u_k}\in U$ and
+    $\sum_{k=1}^nd_k\vec{w_k}\in W$
+
+    $\therefore \vv\in U+W$
+  \end{description}
+\end{theproof}
+
+\end{document}

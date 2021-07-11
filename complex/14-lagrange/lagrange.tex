@@ -1,0 +1,97 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\allowdisplaybreaks
+\begin{document}
+\section*{Lagrange's Identity}
+\begin{theorem}
+\[\sum_{k=0}^n\cos k\o=
+    \frac{1}{2}+
+        \frac{\sin\left[(2n+1)\frac{\o}{2}\right]}
+        {2\sin\left(\frac{\o}{2}\right)}=
+    \frac{\sin\left[(n+1)\frac{\o}{2}\right]\cos\left(n\frac{\o}{2}\right)}
+        {\sin\left(\frac{\o}{2}\right)}\]
+\[\sum_{k=0}^n\sin k\o=
+    \frac{\cot\left(\frac{\o}{2}\right)}{2}-
+        \frac{\cos\left[(2n+1)\frac{\o}{2}\right]}
+        {2\sin\left(\frac{\o}{2}\right)}=
+    \frac{\sin\left[(n+1)\frac{\o}{2}\right]\sin\left(n\frac{\o}{2}\right)}
+        {\sin\left(\frac{\o}{2}\right)}\]
+\end{theorem}
+
+\begin{theproof}
+Let $R=\sum_{k=0}^n\cos k\o$ \\
+Let $I=\sum_{k=0}^n\sin k\o$ \\
+\begin{eqnarray*}
+R+iI &=& \sum_{k=0}^n\cos k\o+i\sum_{k=0}^n\sin k\o \\
+    &=& \sum_{k=0}^n(\cos k\o+i\sin k\o) \\
+    &=& \sum_{k=0}^n\left(e^{i\o}\right)^k \\
+    &=& \frac{e^{i(n+1)\o}-1}{e^{i\o}-1} \\
+    &=& \frac{e^{-i\frac{\o}{2}}\left[e^{i(n+1)\o}-1\right]}
+        {e^{-i\frac{\o}{2}}\left(e^{i\o}-1\right)} \\
+    &=& \frac{\left[e^{i(n\o+\o-\frac{\o}{2})}-e^{-i\frac{\o}{2}}\right]}
+        {e^{i\frac{\o}{2}}-e^{-i\frac{\o}{2}}} \\
+    &=& \frac{\left[e^{i(n\o+\frac{\o}{2})}-e^{-i\frac{\o}{2}}\right]}
+        {2i\sin\left(\frac{\o}{2}\right)} \\
+    &=& \frac{\left[\cos\left(n\o+\frac{\o}{2}\right)+
+            i\sin\left(n\o+\frac{\o}{2}\right)\right]-
+            \left(\cos\frac{\o}{2}-i\sin\frac{\o}{2}\right)}
+            {2i\sin\left(\frac{\o}{2}\right)} \\
+    &=& \frac{\left[\cos\left(n\o+\frac{\o}{2}\right)-\cos\frac{\o}{2}\right]+
+            i\left[\sin\left(n\o+\frac{\o}{2}\right)+\sin\frac{\o}{2}\right]}
+            {2i\sin\left(\frac{\o}{2}\right)} \\
+    &=& \frac{\left[\sin\left(n\o+\frac{\o}{2}\right)+\sin\frac{\o}{2}\right]-
+            i\left[\cos\left(n\o+\frac{\o}{2}\right)-\cos\frac{\o}{2}\right]}
+            {2\sin\left(\frac{\o}{2}\right)} \\
+\end{eqnarray*}
+
+\[\sum_{k=0}^n\cos(k\o)=Re(R+iI)=
+    \frac{\sin\frac{\o}{2}+\sin\left(n\o+\frac{\o}{2}\right)}
+    {2\sin\left(\frac{\o}{2}\right)}=
+    \frac{1}{2}+\frac{\sin\left[(2n+1)\frac{\o}{2}\right]}
+    {2\sin\left(\frac{\o}{2}\right)}\]
+
+\[\sum_{k=0}^n\sin(k\o)=Im(R+iI)=
+    \frac{\cos\frac{\o}{2}-\cos\left(n\o+\frac{\o}{2}\right)}
+    {2\sin\left(\frac{\o}{2}\right)}=
+    \frac{\cot\left(\frac{\o}{2}\right)}{2}-
+    \frac{\cos\left[(2n+1)\frac{\o}{2}\right]}
+    {2\sin\left(\frac{\o}{2}\right)}\]
+
+Continuing:
+
+\begin{eqnarray*}
+R+iI &=& \frac{\left[\sin\left(n\o+\frac{\o}{2}\right)+\sin\frac{\o}{2}\right]-
+            i\left[\cos\left(n\o+\frac{\o}{2}\right)-\cos\frac{\o}{2}\right]}
+            {2\sin\left(\frac{\o}{2}\right)} \\
+     &=& \frac{2\sin\left(\frac{n\o+\frac{\o}{2}+\frac{\o}{2}}{2}\right)
+            \cos\left(\frac{n\o+\frac{\o}{2}-\frac{\o}{2}}{2}\right)+
+            i2\sin\left(\frac{n\o+\frac{\o}{2}+\frac{\o}{2}}{2}\right)
+            \sin\left(\frac{n\o+\frac{\o}{2}-\frac{\o}{2}}{2}\right)}
+            {2\sin\left(\frac{\o}{2}\right)} \\
+     &=& \frac{\sin\left(\frac{n\o+\frac{\o}{2}+\frac{\o}{2}}{2}\right)
+            \cos\left(\frac{n\o+\frac{\o}{2}-\frac{\o}{2}}{2}\right)+
+            i\sin\left(\frac{n\o+\frac{\o}{2}+\frac{\o}{2}}{2}\right)
+            \sin\left(\frac{n\o+\frac{\o}{2}-\frac{\o}{2}}{2}\right)}
+            {\sin\left(\frac{\o}{2}\right)} \\
+     &=& \frac{\sin\left(\frac{n\o+\o}{2}\right)
+            \cos\left(\frac{n\o}{2}\right)+
+            i\sin\left(\frac{n\o+\o}{2}\right)
+            \sin\left(\frac{n\o}{2}\right)}
+            {\sin\left(\frac{\o}{2}\right)} \\
+\end{eqnarray*}
+
+\[\sum_{k=0}^n\cos k\o=Re(R+iI)=
+    \frac{\sin\left(\frac{n\o+\o}{2}\right)\cos\left(\frac{n\o}{2}\right)}
+    {\sin\left(\frac{\o}{2}\right)}=
+    \frac{\sin\left[(n+1)\frac{\o}{2}\right]\cos\left(n\frac{\o}{2}\right)}
+    {\sin\left(\frac{\o}{2}\right)}\]
+
+\[\sum_{k=0}^n\sin k\o=Im(R+iI)=
+    \frac{\sin\left(\frac{n\o+\o}{2}\right)\sin\left(\frac{n\o}{2}\right)}
+    {\sin\left(\frac{\o}{2}\right)}=
+    \frac{\sin\left[(n+1)\frac{\o}{2}\right]\sin\left(n\frac{\o}{2}\right)}
+    {\sin\left(\frac{\o}{2}\right)}\]
+\end{theproof}
+\end{document}

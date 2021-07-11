@@ -1,0 +1,228 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vb}{\vec{b}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\weak}{\overset{w}{\longrightarrow}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\e}{\epsilon}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\conj}[1]{\overline{#1}}
+\DeclareMathOperator{\spn}{span}
+\begin{document}
+\section*{Weak Convergence}
+
+\begin{definition}[Weak Convergence]
+  Let $E$ be an inner product space and let $(\vx_n)$ be a sequence of vectors
+  in $E$. To say that $(\vx_n)$ converges to $\vx\in E$ \emph{weakly}, denoted
+  $\vx_n\weak\vx$, means $\forall\,\vy\in E$:
+  \[\inner{\vx_n,y}\to\inner{\vx,y}\]
+\end{definition}
+
+\begin{properties}
+  Let $H$ be a Hilbert space over a field $\F$. Let $\vx_n\weak\vx$ and
+  $\vy_n\weak\vy$ in $H$ and $\a_n\to\a$ in $\F$:
+  \begin{enumerate}
+  \item The weak limit is unique - i.e., if $\forall\,n\in\N,\vx_n=\vy_n$
+    then $\vx=\vy$.
+  \item $\vx_n+\vy_n\weak\vx+\vy$
+  \item $\a_n\vx_n\weak\a\vx$
+  \end{enumerate}
+\end{properties}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+    \item Assume $\vz\in H$ such that $\vz\ne\vo$ and $\vz\not\perp(\vx-\vy)$.
+      \begin{eqnarray*}
+        \inner{\vx-\vy,\vz} &=& \inner{(\vx-\vx_n)+(\vx_n-\vy),\vz} \\
+        &=& \inner{\vx-\vx_n,\vz}+\inner{\vx_n-\vy,\vz} \\
+        &\to& 0+0 \\
+        &=& 0
+      \end{eqnarray*}
+      And so $\vx-\vy=\vo$.
+
+      $\therefore\vx=\vy$
+
+    \item $\inner{\vx_n+\vy_n,\vz}=\inner{\vx_n,\vz}+\inner{\vy_n,\vz}\to
+      \inner{\vx,\vz}+\inner{\vy,\vz}=\inner{\vx+\vy,\vz}$
+
+      $\therefore\vx_n+\vy_n\weak\vx+\vy$
+
+    \item $\inner{\a_n\vx_n,\vz}=\a_n\inner{\vx_n,\vz}\to\a\inner{\vx,\vz}=
+      \inner{\a\vx,\vz}$
+
+      $\therefore\a_n\vx_n\weak\a\vx$
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be an inner product space and let $(\vx_n)$ be a sequence of vectors
+  in $E$:
+  \[\vx_n\to\vx\implies\vx_n\weak\vx\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx_n\to\vx$.
+
+  $\norm{\vx_n-\vx}\to0$
+
+  Assume $\vy\in E$.
+
+  $\abs{\inner{\vx_n,\vy}-\inner{\vx,\vy}}=
+  \abs{\inner{\vx_n-\vx,\vy}}\le\norm{\vx_n-\vx}\norm{\vy}\to0$
+
+  $\therefore\vx_n\weak\vx$
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be an inner product space and let $(\vx_n)$ be a sequence of vectors
+  in $E$:
+  \[\vx_n\weak\vx\ \mbox{and}\ \norm{\vx_n}\to\norm{\vx}\implies\vx_n\to\vx\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx_n\weak\vx\ \mbox{and}\ \norm{\vx_n}\to\norm{\vx}$.
+  \begin{eqnarray*}
+    \norm{\vx_n-\vx}^2 &=& \inner{\vx_n-\vx,\vx_n-\vx} \\
+    &=& \inner{\vx_n,\vx_n}-\inner{\vx_n,\vx}-\inner{\vx,\vx_n}+
+    \inner{\vx,\vx} \\
+    &=& \norm{\vx_n}^2-\inner{\vx_n,\vx}-\inner{\vx,\vx_n}+\norm{\vx}^2 \\
+    &\to& \norm{\vx}^2 -\inner{\vx,\vx}-\inner{\vx,\vx}+\norm{\vx}^2 \\
+    &=& 2\norm{\vx}^2-2\norm{\vx}^2 \\
+    &=& 0
+  \end{eqnarray*}
+  $\therefore\vx_n\to\vx$
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a finite dimensional Hilbert space over a field $\F$. For all
+  sequences $(\vx_n)$ in $H$:
+  \[\vx_n\to\vx\iff\vx_n\weak\vx\]
+  Thus, weak convergence implies strong convergence in a finite dimensional
+  Hilber space.
+\end{theorem}
+
+\begin{theproof}
+  Assume $(\vx_n)$ is a sequence in $H$.
+  \begin{description}
+  \item $\implies$ Assume $\vx_n\to\vx$.
+
+    But strong convergence implies weak convergence in any inner product space.
+
+    $\therefore\vx_n\weak\vx$
+
+  \item $\impliedby$ Assume $\vx_n\weak\vx$.
+
+    Assume $B=\{\vb_1,\ldots,\vb_N\}$ is a basis for $H$. \\
+    AWLOG: $B$ is an orthonormal basis (otherwise, use Graham-Schmitt). \\
+    $\forall\,n\in\N,\exists\,x_{n,k}\in\F$ such that
+    $\vx_n=\sum_{k=1}^nx_{n,k}\vb_k$. \\
+    $\exists\,x_k\in\F$ such that $\vx=\sum_{k=1}^Nx_k\vb_k$. \\
+    Assume $\vz\in H$. \\
+    $\exists\,z_k\in\F$ such that $\vz=\sum_{k=1}^Nz_k\vb_k$. \\
+    Since $\vx_n\weak\vx$:
+    \begin{eqnarray*}
+      \inner{\vx_n-\vx,\vz} &=&
+      \inner{\sum_{k=1}^Nx_{n,k}\vb_k-\sum_{k=1}^Nx_k\vb_k,\sum_{k=1}^Nz_k\vb_k} \\
+      &=& \inner{\sum_{k=1}^N(x_{n,k}-x_k)\vb_k,\sum_{k=1}^Nz_k\vb_k} \\
+      &=& \sum_{k=1}^N(x_{n,k}-x_k)\conj{z_k} \\
+      &\to& 0
+    \end{eqnarray*}
+    But this is for any $\vz\in E$, and so it must be the case that
+    $x_{n,k}-x_n\to0$.
+
+    So $\vx_n$ converges to $\vx$ component-wise. \\
+    It has already been shown that $\norm{\cdot}_{\infty}$ with respect to a
+    particular basis is a proper norm. \\
+    Now, since all norms are equivalent in a finite dimensional vector space:
+    \[\norm{\vx_n-\vx}_{\infty}=\sup_{k\in\N}\abs{x_{n,k}-x_k}\to0\]
+    $\therefore\vx_n\to\vx$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be an inner product space and let $S\subseteq E$ such that
+  $\spn(S)$ is dense in $E$. Let $(\vx_n)$ be a bounded sequence in $E$.
+  \[\vx_n\weak\vx\iff\forall\,\vy\in S,\inner{\vx_n,\vy}\to\inner{\vx,\vy}\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $\vx_n\weak\vx$.
+
+    $\forall\,\vy\in E,\inner{\vx_n,\vy}\to\inner{\vx,\vy}$ \\
+    But $X\subseteq E$.
+    
+    $\therefore\forall\,\vy\in S,\inner{\vx_n,\vy}\to\inner{\vx,\vy}$
+
+  \item $\impliedby$ Assume $\forall\,\vy\in S,\inner{\vx_n,\vy}\to
+    \inner{\vx,\vy}$
+
+    Assume $\e>0$. \\
+    Assume $\vz\in E$. \\
+    Since $(\vx_n)$ is bounded, $\exists\,M>0$ such that
+    $\norm{\vx_n},\norm{\vx}\le M$. \\
+    Since $\spn(S)$ is dense in $E$, $\exists\,\vy_0\in\spn(S)$ such that:
+    \[\norm{\vz-\vy_0}<\frac{\e}{3M}\]
+    Furthermore, by assumption, $\exists\,N>0$ such that $\forall\,n>N$:
+    \[\abs{\inner{\vx_n,\vy_0}-\inner{\vx,\vy_0}}<\frac{\e}{3}\]
+    Assume $n>N$:
+    \begin{eqnarray*}
+      \abs{\inner{\vx_n,\vz}-\inner{\vx,\vz}} &=&
+      \abs{(\inner{\vx_n,\vz}-\inner{\vx_n,\vy_0})+
+        (\inner{\vx_n,\vy_0}-\inner{\vx,\vy_0})+
+        (\inner{\vx,\vy_0}-\inner{\vx,\vz})} \\
+      &\le& \abs{\inner{\vx_n,\vz}-\inner{\vx_n,\vy_0}}+
+      \abs{\inner{\vx_n,\vy_0}-\inner{\vx,\vy_0}}+
+      \abs{\inner{\vx,\vy_0}-\inner{\vx,\vz}} \\
+      &\le& \abs{\inner{\vx_n,\vz-\vy_0}}+\frac{\e}{3}+
+      \abs{\inner{\vx,\vy_0-\vz}} \\
+      &\le& \norm{\vx_n}\norm{\vz-\vy_0}+\frac{\e}{3}+
+      \norm{\vx}\norm{\vy_0-\vz} \\
+      &\le& M\frac{\e}{3M}+\frac{\e}{3}+M\frac{\e}{3M} \\
+      &=& \frac{\e}{3}+\frac{\e}{3}+\frac{\e}{3} \\
+      &=& \e
+    \end{eqnarray*}
+    $\therefore\vx_n\weak\vx$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $(\vx)$ be a sequence in $H$:
+
+  \qquad$\vx_n\weak\vx\implies(\vx_n)$ is bounded.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx_n\weak\vx$. \\
+  Define $f_n:H\to\C$ by $f_n(\vy)=\inner{\vy,\vx_n}$, $\forall\,n\in\N$. \\
+  $f_n$ is clearly linear (due to sesquilinearity of the inner product).
+
+  Assume $\vy_n\to\vy$, and so $\norm{\vy_n-\vy}\to0$ \\
+  Since strong implies weak, $\vy_n\weak\vy$. \\
+  So $\inner{\vy_n,\vx_n}\to\inner{\vy,\vx_n}$. \\
+  $\norm{f_n(\vy_n)-f_n(\vy)}=\abs{\inner{\vy_n,\vx_n}-\inner{\vy,\vx_n}}
+  \to0$ \\
+  Therefore $f_n(y)$ is continuous, and thus bounded.
+
+  Now, $\forall\,\vy\in H$ the sequence $(f_n(\vy))=(\inner{\vy,\vx_n})$
+  converges to $\inner{\vy,\vx}$, and so it is bounded:
+  \[\forall\,\vy\in H,\exists\,M_y>0,\abs{f_n(\vy)}=\inner{\vy,\vx_n}<M_y\]
+  And so, by the principle of uniform boundedness:
+  \[\exists\,M>0,\forall\,n\in\N,\norm{f_n}\le M\]
+
+  Finally:
+  \[\norm{f_n(\vx_n)}=\abs{\inner{\vx_n,\vx_n}}=\norm{\vx_n}^2\le
+  \norm{f_n}\norm{\vx_n}\]
+  Therefore $\norm{\vx_n}\le\norm{f_n}\le M$ and thus $(\vx_n)$ is bounded.
+\end{theproof}
+
+\end{document}

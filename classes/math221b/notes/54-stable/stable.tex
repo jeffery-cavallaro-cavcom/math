@@ -1,0 +1,94 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\p}{\varphi}
+\newcommand{\s}{\psi}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\n}{\trianglelefteq}
+\newcommand{\rest}[2]{\left.#1\right|_{#2}}
+\DeclareMathOperator{\Aut}{Aut}
+\begin{document}
+\section*{Stable}
+
+\begin{definition}[Stable]
+  Let $F\subseteq L\subseteq K$ be an inclusion of fields. To say that $L$ is
+  \emph{stable} with respect to $K/F$ means:
+  \[\forall\p\in\Aut(K/F),\p[L]\subseteq L\]
+\end{definition}
+
+\begin{theorem}
+  Let $F\subseteq L\subseteq K$ be an inclusion of fields such that $L$ is stable with
+  respect to $K/F$:
+  \[\forall\p\in\Aut(K/F),\p[L]=L\]
+  Thus $\rest{\p}{L}\in\Aut(L/F)$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\p\in G$ \\
+  Since $L$ is stable, $\p[L]\subseteq L$ \\
+  But $\p$ is bijective, so $\rest{\p}{L}$ is surjective
+
+  $\therefore\p[L]=L$
+\end{theproof}
+
+\begin{theorem}
+  Let $F\subseteq L\subseteq K$ be an inclusion of fields such that $K/F$ is Galois and
+  $L$ is stable with respect to $K/F$:
+  \[L/F\ \mbox{is Galois}\]
+\end{theorem}
+
+\begin{theorem}
+  Assume $\a\in L\setminus F$ \\
+  $\exists\p\in\Aut(K/F),\p(\a)\ne\a$ \\
+  But $L$ is stable, so $\rest{\p}{L}\in\Aut(L/F)$ and $\rest{\p}{L}(\a)\ne\a$
+
+  Therefore $L/F$ is Galois.
+\end{theorem}
+
+\begin{theorem}
+  Let $F\subseteq L\subseteq K$ be an inclusion of fields:
+  \begin{enumerate}
+  \item $L$ stable $\implies G(L)\n G$
+  \item $H\n G \implies F(H)$ stable.
+  \end{enumerate}
+\end{theorem}
+
+\newpage
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $L$ is stable
+
+    Assume $\p\in G(L)$ \\
+    Assume $\a\in L$ \\
+    $\p(\a)=\a$
+
+    Assume $\s\in G$ \\
+    Since $\s$ is bijective and $L$ is stable, $\exists\,\b\in L,\s(b)=\a$ and
+    $\s^{-1}(\a)=\b$ \\
+    Also, since $\b\in L$, $\p(\b)=\b$
+
+    $(\s\p\s^{-1})(\a)=\s(\p(\s^{-1}(\a)))=\s(\p(\b))=\s(\b)=\a$ \\
+    Thus, $\s\p\s^{-1}\in G(L)$
+
+    $\therefore G(L)\n G$.
+
+  \item Assume $H\n G$
+
+    Assume $\p\in H$ \\
+    Assume $\s\in G$ \\
+    Since $H\n G$, $\s^{-1}\p\s\in H$
+
+    Assume $\a\in F(H)$ \\
+    $(\s^{-1}\p\s)(\a)=\a$ \\
+    $(\p\s)(\a)=\s(\a)$ \\
+    $\p(\s(\a))=\s(\a)$ \\
+    Thus, $\s(\a)\in F(H)$
+
+    Therefore, $F(H)$ is stable.
+  \end{enumerate}
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,225 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221b \\
+Homework \#3
+
+\begin{enumerate}
+\item Let $R$ be a ring and let $I$ and $J$ be ideals in $R$:
+  \begin{enumerate}
+  \item Prove: $I\cap J$ and $I+J$ are both ideals in $R$.
+
+    From group theory, we already know that $I\cap J$ is an additive subgroup
+    of $R$. Furthermore, since $R$ is an additive abelian group, $I\cap J$ is
+    an additive abelian subgroup of $R$.
+
+    Assume $a\in I\cap J$ \\
+    $a\in I$ and $a\in J$ \\
+    Assume $b\in R$ \\
+    But $I$ is an ideal in $R$, so $ab,ba\in I$ \\
+    Similarly, $ab,ba\in J$ \\
+    So $ab,ba\in I\cap J$
+
+    Therefore, by the ideal test, $I\cap J$ is an ideal in $R$
+
+    From group theory, we know that $I+J=I\vee J$ (join) when either subgroup is
+    normal in $R$. But since $R$ is abelian, all subgroups are normal.
+    Therefore $I+J$ is an additive subgroup of $R$. Furthermore, since $R$ is
+    an additive abelian group, $I+J$ is an additive abelian subgroup of $R$.
+
+    Now, assume $a\in I+J$ \\
+    By definition, there exists $i\in I$ and $j\in J$ such that $a=i+j$ \\
+    Assume $b\in R$ \\
+    $ab=(i+j)b=ib+jb$ \\
+    But $I$ is an ideal, so $ib\in I$ \\
+    Similarly, $jb\in J$ \\
+    Thus,  $ab=ib+jb\in I+J$
+
+    $ba=b(i+j)=bi+bj$ \\
+    But $I$ is an ideal, so $bi\in I$ \\
+    Similarly, $bj\in J$ \\
+    Thus $ba=bi+bj\in I+J$
+
+    Therefore, by the ideal test, $I+J$ is an ideal in $R$.
+
+  \item Prove that there is an isomorphism of rings:
+    \[I/(I\cap J)\simeq(I+J)/J\]
+
+    From part (a) we know that $I+J$ is a ring \\
+    Since $0\in I$ we have $J\subseteq I+J$ \\
+    $J$ is a ring and is thus an additive abelian subgroup of $I+J$
+
+    Assume $a\in J$ \\
+    Assume $b\in I+J$ \\
+    There exists $i\in I$ and $j\in J$ such that $b=i+j$ \\
+    $ab=a(i+j)=ai+aj$ \\
+    But $J$ is an ideal in $R$, so $ai,aj\in J$ \\
+    So by closure, $ab=ai+aj\in J$
+
+    $ba=(i+j)a=ia+ja$ \\
+    But $J$ is an ideal in $R$, so $ia,ja\in J$ \\
+    So by closure, $ba=ia+ja\in J$
+
+    Thus, by the ideal test, $J$ is an ideal in $I+J$, and therefore $(I+J)/J$
+    is a factor ring.
+
+    Now, consider $\phi:I\to(I+J)/J$ defined by $\phi(i)=i+J$.
+
+    Assume $i,i'\in I$ \\
+    $\phi(i+i')=(i+i')+J=(i+J)+(i'+J)=\phi(i)+\phi(i')$ \\
+    $\phi(ii')=(ii')+J=(i+J)(i'+J)=\phi(i)\phi(i')$
+
+    Therefore $\phi$ is a ring homomorphism.
+
+    Now, assume $a\in(I+J)/J$ \\
+    There exists $b\in(I+J)$ such that $a=b+J$ \\
+    But, there exists $i\in I$ and $j\in J$ such that $b=i+j$ \\
+    So, $a=(i+j)+J$ \\
+    Now, since $J$ is the additive identity for $(I+J)/J$: \\
+    $\phi(i)=i+J=(i+J)+J$ \\
+    And since $j\in J$: \\
+    $\phi(i)=(i+J)+(j+J)=(i+j)+J$
+
+    Therefore, $\phi$ is surjective.
+
+    Now, consider $i\in I$ such that $\phi(i)=i+J=J$ \\
+    This means that $i\in J$ as well, so $\ker(\phi)=I\cap J$
+
+    Therefore, by the first fundamental theorem:
+    \[I/(I\cap J)\simeq(I+J)/J\]
+  \end{enumerate}
+  
+\item Let $R$ be a commutative ring with $1\ne0$ and suppose $S$ is a
+  multiplicatively-closed subset of $R\setminus\{0\}$ containing no zero
+  divisors. Define $\sim$ on $R\times S$ by $(a,b)\sim(c,d)\iff ad=bc$.
+  \begin{enumerate}
+  \item Prove: $\sim$ is an equivalence relation.
+    \begin{description}
+    \item R: Assume $(a,b)\in R\times S$
+
+      $ab=ab$ and so, by definition, $(a,b)\sim(a,b)$
+
+      Therefore $\sim$ is reflexive.
+
+    \item S: Assume $(a,b)\sim(c,d)$
+
+      $ad=bc$ \\
+      But $R$ is commutative, so $da=cb$ \\
+      Furthermore, equality is symmetric, so $cb=da$ \\
+      Thus, by definition, $(c,d)\sim(a,b)$
+
+      Therefore $\sim$ is symmetric.
+
+    \item T: Assume $(a,b)\sim(c,d)$ and $(c,d)\sim(e,f)$
+
+      $ad=bc$ and $cf=de$ \\
+      $R$ is a ring, so using ring properties: \\
+      $adcf=bcde$ \\
+      $adcf-bcde=0$ \\
+      $(af)(dc)-(be)(cd)=0$ \\
+      $(af)(cd)-(be)(cd)=0$ \\
+      $(af-be)(cd)=0$ \\
+      But since $R$ has no zero-divisors: $af-be=0$ or $cd=0$
+      \begin{description}
+      \item Case 1: $cd=0$
+
+        By construction, $d\ne 0$, and so $c=0$ \\
+        $ad=b0=0$, and thus $a=0$ \\
+        Similarly, $0f=de=0$, and thus $e=0$ \\
+        So $af=0f=0$ and $be=b0=0$ \\
+        $af=be$ \\
+        Thus, by definition, $(a,b)\sim(e,f)$
+
+      \item Case 2: $af-be=0$
+
+        $af=be$ \\
+        Thus, by definition, $(a,b)=(e,f)$
+
+      \end{description}
+
+      Therefore, $\sim$ is transitive.
+    \end{description}
+
+    Therefore, $\sim$ is an equivalence relation.
+
+  \item Let $R_S$ denote the set of equivalence classes $\frac{a}{b}$ of
+    $(a,b)$. Prove that addition in $R_S$:
+    \[\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}\]
+    is well-defined. (Given: multiplication is well-defined)
+
+    Assume $(a,b)$ and $(c,d)\in R_S$ \\
+    Assume $(a,b)\sim(a',b')$ and $(c,d)\sim(c',d')$ \\
+    By definition: $ab'=ba'$ and $cd'=dc'$
+
+    Consider $(1,1)\in R_S$:
+    \[(a,b)(1,1)=(a1,b1)=(a,b)\]
+    \[(1,1)(a,b)=(1a,1b)=(a,b)\]
+    Thus $(1,1)$ is a multiplicative identity for $R_S$
+ 
+    By construction, $b,d\in S$ are non-zero and $S$ has no zero divisors, so
+    $bd\ne0$ \\
+    Thus, $\frac{bd}{bd}\in R_S$ \\
+    Furthermore: $(bd)1=1(bd)$, so $(bd,bd)\sim(1,1)$ \\
+    Similarly: $(b'd',b'd')\sim(1,1)$
+
+    Adding the two alternate representatives we get:
+    \[\frac{a'}{b'}+\frac{c'}{d'}=\frac{a'd'+b'c'}{b'd'}\]
+    Since multiplication is assumed to be well-defined:
+    \[\frac{a'}{b'}+\frac{c'}{d'}=\frac{1}{1}\cdot\frac{a'd'+b'c'}{b'd'}=
+    \frac{bd}{bd}\cdot\frac{a'd'+b'c'}{b'd'}=
+    \frac{(bd)(a'd'+b'c')}{(bd)(b'd')}\]
+    But $R$ is a commutative ring, so using ring properties:
+    \begin{eqnarray*}
+      \frac{a'}{b'}+\frac{c'}{d'} &=& \frac{bda'd'+bdb'c'}{bdb'd'} \\
+      &=& \frac{(ba')(dd')+(dc')(bb')}{(b'd')(bd)} \\
+      &=& \frac{(ab')(dd')+(cd')(bb')}{(b'd')(bd)} \\
+      &=& \frac{(b'd')(ad)+(b'd')(bc)}{(b'd')(bd)} \\
+      &=& \frac{(b'd')(ad+bc)}{(b'd')(bd)} \\
+      &=& \frac{b'd'}{b'd'}\cdot\frac{ad+bc}{db} \\
+      &=& \frac{1}{1}\cdot\frac{ad+bc}{db} \\
+      &=& \frac{ad+bc}{db}
+    \end{eqnarray*}
+
+    Therefore, addition in $R_S$ is well-defined.
+
+    \newcommand{\Zp}{\Z_{(p)}}
+
+  \item Prove that there are exactly two prime ideals in $\Zp$: one
+    corresponding to the zero ideal and one corresponding to the prime $p$.
+
+    We know that the ideals of $\Zp$ are of the form $p\Zp$ and that they form
+    a chain:
+    \[\{0\}\subset\ldots\subset p^3\Zp\subset p^2\Zp\subset p\Zp\subset\Zp\]
+
+    Assume $x,y\in\Zp$
+
+    Since $\Zp$ is an integral domain and thus has no zero divisors:
+    \[xy=0\implies x=0\ \mbox{or}\ y=0\]
+    Thus, the zero ideal is prime.
+
+    Now, assume $k\in\Z^+$
+    \begin{description}
+    \item Case 1: $k>1$:
+
+      $p^{k-1}\in p^{k-1}\Zp$ \\
+      $p\in p\Zp$ \\
+      $p^{k-1}p=p^k\in p^k\Zp$ \\
+      But $p^{k-1},p\notin p^k$
+
+      Therefore $p^k\Zp$ is not prime.
+
+    \item Case 2: $k=1$
+
+      Let $x=\frac{a}{b}$ and $y=\frac{c}{d}$ \\
+      Since $p$ divides neither $b$ nor $d$, $xy\in p\Zp$ means that one of $x,y$ must
+      be in $p\Zp$ and the other must be in $\Zp$. Otherwise, $xy$ would fall in one of
+      the other ideals.
+
+      Therefore, $p\Zp$ is prime.
+    \end{description}
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}

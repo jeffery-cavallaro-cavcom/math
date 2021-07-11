@@ -1,0 +1,99 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{One-sided Axioms}
+
+The traditional definition of a group uses a two-sided identity and two-sided
+inverses. It is possible to give a weaker definition of a group using a
+one-sided identity and matching one-sided inverses:
+
+\begin{theorem}
+  Let $G$ be a semigroup. $G$ is a group iff the following two properties hold:
+  \begin{enumerate}
+  \item $G$ contains a left identity element:
+    \[\exists\,e\in G,\forall\,a\in G,ea=a\]
+  \item Each element in $G$ contains a left inverse element that is also in
+    $G$:
+    \[\forall\,a\in G,\exists\,a^{-1}\in G,a^{-1}a=e\]
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $G$ is a group.
+
+    $G$ has a two-sided identity $e$, which is also one-sided. \\
+    $\forall\,a\in G$, $a$ has a two-sided inverse, which is also one-sided. \\
+    $\therefore$ the two properties hold.
+
+  \item $\impliedby$ Assume that $G$ has a left-sided identity and
+    left-sided inverses.
+    
+    Assume $a\in G$:
+    \begin{eqnarray*}
+      ee &=& e \\
+      (a^{-1}a)e &=& a^{-1}a \\
+      (a^{-1})^{-1}((a^{-1}a)e) &=& (a^{-1})^{-1}(a^{-1}a) \\
+      ((a^{-1})^{-1}a^{-1})(ae) &=& ((a^{-1})^{-1}a^{-1})a \\
+      e(ae) &=& ea \\
+      ae &=& a \\
+    \end{eqnarray*}
+    $\therefore e$ is a right identity as well.
+    \begin{eqnarray*}
+      a^{-1}a &=& e \\
+      (a^{-1}a)a^{-1} &=& ea^{-1} \\
+      (a^{-1}a)a^{-1} &=& a^{-1} \\
+      (a^{-1})^{-1}((a^{-1}a)a^{-1}) &=& (a^{-1})^{-1}a^{-1} \\
+      ((a^{-1})^{-1}a^{-1})(aa^{-1}) &=& e \\
+      e(aa^{-1}) &=& e \\
+      aa^{-1} &=& e \\
+    \end{eqnarray*}
+    $\therefore a^{-1}$ is a right inverse as well.
+    
+    $G$ is associative, has a two-sided identity, and has two-sided inverses. \\
+    $\therefore G$ is a group.
+  \end{description}
+\end{theproof}
+
+A similar theorem exists for a right identity and right inverses as well, but
+not for a mix of a left and a right.
+
+\begin{theorem}
+  Let $G$ be a semigroup. $G$ is a group iff the following two properties hold:
+  \begin{enumerate}
+    \item $\forall\,a,b\in G,ax=b$ has a solution in $G$.
+    \item $\forall\,a,b\in G,xa=b$ has a solution in $G$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $G$ is a group.
+
+    Previously proven.
+
+  \item $\impliedby$ Assume $\forall\,a,b\in G,ax=b$ and $xa=b$ have solutions
+    in $G$.
+
+    Assume $a,b\in G$
+    
+    Let $e\in G$ be a solution for $xa=a$ \\
+    $ea=a$ \\
+    Let $c$ be a solution for $ax=b$ \\
+    $ac=b$ \\
+    $eb=e(ac)=(ea)c=ac=b$ \\
+    $\therefore e$ is a left identity for $G$.
+
+    Let $a^{-1}\in G$ be a solution for $xa=e$ \\
+    $a^{-1}a=e$ \\
+    $a^{-1}$ is a left inverse for $a$ \\
+    $\therefore G$ has left inverses.
+
+    $\therefore$, by the one-sided test, $G$ is a group.
+  \end{description}
+\end{theproof}
+
+\end{document}

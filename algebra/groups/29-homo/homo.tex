@@ -1,0 +1,167 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\p}{\phi}
+\newcommand{\g}{\gamma}
+\begin{document}
+\section*{Homomorphisms}
+
+\begin{definition}
+  Let $G$ and $G'$ be groups. To say that a map $\p:G\to G'$ is a
+  \emph{homomorphism} means that it satisfies the homomorphism property:
+  \[\forall\,x,y\in G,\p(xy)=\p(x)\p(y)\]
+\end{definition}
+
+\begin{theorem}
+  For any two groups $G$ and $G'$, there exists at least the trivial
+  homomorphism:
+  \[\forall\,x\in G,\p(x)=e'\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $G$ and $G'$ are groups \\
+  Let $\p:G\to G'$ be defined by $\p(x)=e'$ \\
+  Assume $x,y\in G$ \\
+  $\p(xy)=e'=e'e'=\p(x)\p(y)$ \\
+\end{theproof}
+
+\begin{example}
+  \listbreak
+  \begin{enumerate}
+  \item Evaluation
+    
+    Let $F=\{f:\R\to\R\}$ and define $\p_c:F\to\R$ by:
+    \[\p_c(f)=f(c)\]
+    $\p_c(f+g)=(f+g)(c)=f(c)+g(c)=\p_c(f)+\p_c(g)$
+
+  \item Linear Transformation
+
+    Let $A\in M_{m\times n}(\R)$ and define $\p_A:\R^n\to\R^m$ by:
+    \[\p_A(x)=Ax\]
+    $\p_A(x+y)=A(x+y)=Ax+Ay=\p_A(x)+\p_A(y)$
+
+  \item Determinant
+
+    Define $\p:GL(n,R)\to\R$ by:
+    \[\p(A)=\det(A)\]
+    $\p(AB)=\det(AB)=\det(A)\det(B)=\p(A)\p(B)$
+
+  \item Projection
+
+    Let $G=\prod_{k=1}^nG_k$ and define $\pi_k:G\to G_k$ by:
+    \[\pi_k(g)=g_k\]
+    $\pi_k(g_1+g_2)=g_{1_k}+g_{2_k}=\pi_k(g_1)+\pi_k(g_2)$
+
+  \item Modulo
+
+    Define $\p:\Z\to\Z_n$ by:
+    \[\p(m)=m\bmod n\]
+    $\p(r+s)=(r+s)\bmod n=r+_n s=\p(r)+_n\p(s)$
+  \end{enumerate}
+\end{example}
+
+\begin{theorem}
+  Let $\p:G\to G'$ be an onto homomorphism:
+  \[G\ \mbox{abelian}\implies G'\ \mbox{abelian}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $G$ is abelian \\
+  Assume $a',b'\in G'$ \\
+  Since $\p$ is onto, $\exists\,a,b\in G,\p(a)=a'\ \mbox{and}\ \p(b)=b'$ \\
+  $a'b'=\p(a)\p(b)=\p(ab)=\p(ba)=\p(b)\p(a)=b'a'$ \\
+  $\therefore G'$ is abelian
+\end{theproof}
+
+\begin{theorem}
+  Let $\p:G\to G'$ and $\g:G'\to G''$ be group homomorphisms:
+  \[\g\o:G\to G''\ \mbox{is a homomorphism}\]
+  A composition of homomorphisms is a homomorphism.
+\end{theorem}
+
+\begin{theproof}
+  Assume $x,y\in G$ \\
+  $(\g\o)(xy)=\g(\p(xy))=\g(\p(x)\p(y))=
+  \g(\p(x))\g(\p(y))=(\g\p)(x)(\g\p)(y)$ \\
+  $\therefore \g\p$ is a homomorphism
+\end{theproof}
+
+\begin{definition}
+  Let $X$ and $Y$ be non-empty sets, $A\subseteq X$ and $B\subseteq Y$,
+  $A,B\ne\emptyset$, and $\p:X\to Y$:
+  \begin{enumerate}
+  \item $\p[A]=\{\p(a)\mid a\in A\}$ is called the image of $A$ in $Y$
+    under $\p$
+  \item $\p[X]$ is called the range of $\p$
+  \item $\p^{-1}[B]=\{x\in X\mid \p(x)\in B\}$ is called the inverse image of
+    $B$ in $X$ under $\p$
+  \end{enumerate}
+\end{definition}
+\newpage
+\begin{theorem}
+  Let $\p:G\to G'$ be a group homomorphism:
+  \begin{enumerate}
+  \item $\p(e)=e'$
+  \item $\forall\,a\in G,\p(a^{-1})=\p(a)^{-1}$
+  \item $H\le G\implies \p[H]\le G'$
+  \item $K'\le\p[G]\implies\p^{-1}[K']\le G$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $a\in G$
+    
+    $\p(a)\p(e)=\p(ae)=\p(a)=\p(a)e'$ \\
+    $\therefore\p(e)=e'$
+
+  \item Assume $a\in G$
+
+    $\p(e)=\p(aa^{-1})=\p(a)\p(a^{-1})=e'$ \\
+    But inverses are unique \\
+    $\therefore\p(a^{-1})=\p(a)^{-1}$
+
+  \item Assume $H\le G$
+
+    Assume $a',b'\in\p[H]$ \\
+    $\exists\,a,b\in H,\p(a)=a'$ and $\p(b)=b'$ \\
+    By closure, $ab\in H$ \\
+    $\p(ab)=\p(a)\p(b)=a'b'\in\p[H]$ \\
+    $\therefore \p[H]$ is closed under the operation.
+
+    $\p(e)=e'$ \\
+    $\therefore\p[H]$ has an identity.
+
+    Assume $a'\in\p[H]$ \\
+    $\exists\,a\in H,\p(a)=a'$ \\
+    $a^{-1}\in H$ \\
+    $\p(a^{-1})=\p(a)^{-1}=(a')^{-1}\in\p[H]$ \\
+    $\therefore\p[H]$ is closed under inverses.
+
+    $\therefore\p[H]\le G$
+
+  \item Assume $K'\le G'$
+
+    Assume $a,b\in\p^{-1}[K']$ \\
+    $\exists\,a',b'\in K',\p(a)=a'$ and $\p(b)=b'$ \\
+    By closure, $a'b'\in K'$ \\
+    $\p(ab)=\p(a)\p(b)=a'b'\in K'$ \\
+    So $ab\in\p^{-1}[K']$ \\
+    $\therefore\p^{-1}[K']$ is closed under the operation.
+
+    $\p(e)=e'$ \\
+    So $e\in\p^{-1}[K']$ \\
+    $\therefore\p^{-1}[K']$ has an identity.
+
+    Assume $a\in\p^{-1}[K']$ \\
+    $\exists\,a'\in K',\p(a)=a'$ \\
+    $(a')^{-1}=\p(a)^{-1}=\p(a^{-1})\in K'$ \\
+    So $a^{-1}\in\p^{-1}[K']$ \\
+    $\therefore\p^{-1}[K']$ is closed under inverses.
+
+    $\therefore\p^{-1}[K']\le H$
+  \end{enumerate}
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,85 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\mnorm}[1]{\left|\left|\left|#1\right|\right|\right|}
+\begin{document}
+\section*{Matrix Nearness Problem}
+
+\begin{definition}[Distance]
+  Let $\mnorm{\cdot}$ be a matrix norm on $M_n$, $S\subseteq M_n$, and
+  $A\notin S$. The \emph{distance} from $A$ to $S$ is given by:
+  \[d(A)=\inf_{Xin S}\{\mnorm{A-X}\}\]
+\end{definition}
+
+Questions:
+\begin{enumerate}
+\item Compute $d(A)$
+\item Does $X_A\in S$ exist such that $d(A)=\mnorm{X-X_A}$?
+\item If $X_A$ exists, is it unique?
+\end{enumerate}
+
+\begin{lemma}
+  Let $\mnorm{\cdot}$ be a matrix norm on $M_n$ and $A\in M_n$:
+  \[\mnorm{I-A}<1\implies A\ \mbox{is invertible}\]
+\end{lemma}
+
+\begin{theproof}
+  Assume $\mnorm{I-A}<1$ \\
+  Let $A=I-(I-A)$
+  
+  $A^{-1}=[I-(I-A)]^{-1}=\sum_{k=0}^{\infty}(I-A)^k$
+  
+  Check for absolute convergence under the norm:
+
+  $\mnorm{\sum_{k=0}^{\infty}(I-A)^k}\le\sum_{k=0}^{\infty}\mnorm{I-A}^k$
+
+  which converges for $\mnorm{I-A}<1$.
+\end{theproof}
+
+\begin{theorem}[Best Singular Approximation]
+  Let $\mnorm{\cdot}$ be the operator norm and let $S$ be the collection of all
+  singular matrices. Fix $A\notin S$:
+  \[d(A)=s_n\]
+  the smallest singular value.
+\end{theorem}
+
+\begin{theproof}
+  Consider the SVD for $A$:
+  \[A=V\begin{bmatrix} s_1 & & 0 \\ & \ddots & \\ 0 & & s_n \end{bmatrix}W^*\]
+  \[A^{-1}=(W^*)^{-1}
+  \begin{bmatrix} \frac{1}{s_1} & & 0 \\ & \ddots & \\ 0 & & \frac{1}{s_n}
+  \end{bmatrix}V^{-1}=
+  W\begin{bmatrix} \frac{1}{s_1} & & 0 \\ & \ddots & \\ 0 & & \frac{1}{s_n}
+  \end{bmatrix}V^*\]
+  
+  Note that this is the SVD for $A^{-1}$, so $\mnorm{A^{-1}}=\frac{1}{s_n}$.
+
+  Assume $B\in S$ \\
+  $A^{-1}B\in S$ \\
+  By the CP of the above lemma:
+  \begin{eqnarray*}
+    \mnorm{I-A^{-1}B} &\ge& 1 \\
+    \mnorm{A^{-1}(A-B} &\ge& 1 \\
+    \mnorm{A^{-1}}\mnorm{A-B} &\ge& 1 \\
+    \frac{1}{s_n}\mnorm{A-B} &\ge& 1 \\
+    \mnorm{A-B} &\ge& s_n \\
+  \end{eqnarray*}
+
+  Now, let $X_A=V\begin{bmatrix}
+  s_1 & & & 0 \\
+  & \ddots & & \\
+  & & s_n & & \\
+  0 & & & 0
+  \end{bmatrix}W^*\in S$
+
+  $\mnorm{A-X_A}=\mnorm{V\begin{bmatrix}
+  0 & & & 0 \\
+  & \ddots & & \\
+  & & 0 & & \\
+  0 & & & s_n
+    \end{bmatrix}W^*}=s_n$
+
+  $\therefore d(A)=s_n$
+\end{theproof}
+
+\end{document}

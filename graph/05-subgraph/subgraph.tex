@@ -1,0 +1,114 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\begin{document}
+
+\section*{Subgraphs}
+
+\begin{definition}[Subgraph]
+  Let \(G\) and \(H\) be graphs:
+  \begin{itemize}
+  \item To say that \(H\) is a \emph{subgraph} of \(G\), denoted by \(H\subseteq G\), means that \(V(H)\subseteq
+    V(G)\) and \(E(H)\subseteq E(G)\).
+  \item To say that \(H\) is a \emph{proper} subgraph of \(G\), denoted by \(H\subset G\), means that \(H\subseteq
+    G\) but \(H\ne G\).  Thus, \(V(H)\subset V(G)\) or \(E(H)\subset E(G)\).
+  \item To say that \(H\) is a \emph{spanning} subgraph of \(G\) means that \(V(H)=V(G)\) and \(E(H)\subseteq E(G)\).
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=labeled node]
+        \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{0.75in}{90}{}
+        \node (6) [below=of 4] {\(f\)};
+        \draw (1) edge (2) edge (3) edge (4) edge (5);
+        \draw (2) edge (5);
+        \draw (3) edge (4);
+        \draw (4) edge (6);
+      \end{tikzpicture}
+
+      \(G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=labeled node]
+        \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{0.75in}{90}{}
+        \node (6) [below=of 4] {\(f\)};
+        \draw (1) edge (2) edge (3) edge (4) edge (5);
+        \draw (3) edge (4);
+      \end{tikzpicture}
+
+      \(H\)
+
+      \vspace{0.25in}
+      
+      \(F\subset H\subset G\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{2in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style=labeled node]
+        \cycleVnodes{\(a\),\(c\),\(d\)}{(0,0)}{0.75in}{90}{}
+        \draw (1) edge (2) edge (3);
+        \draw (2) edge (3);
+      \end{tikzpicture}
+
+      \(F\)
+    \end{center}
+  \end{minipage}
+
+  \bigskip
+
+  \(H\) is a spanning subgraph of \(G\), but not \(F\) because \(b,e,f\in V(G)\); however, \(b,e,f\notin V(F)\).
+\end{example}
+
+\begin{definition}[Induced]
+  Let \(G\) be a graph and let \(S\subseteq V(G), S\ne\emptyset\).  The subgraph of \(G\) \emph{induced} by \(S\),
+  denoted by \(G[S]\), is a graph \(H\) such that \(V(H)=S\) and for all \(e\in E(G)\), \(e\in E(H)\) iff the
+  endpoints of \(e\) are contained in \(S\).  Such a graph \(H\) is called an induced subgraph of \(G\):
+  \[H\subseteq G\ \text{and}\ H=G[V(H)]\]
+
+  In the case of a simple graph, \(H\) is an induced subgraph of \(G\) means:
+  \begin{enumerate}
+  \item \(V(H)=S\)
+  \item \(E(H)=E(G)\cap\ps_2(V(H))\)
+  \end{enumerate}
+  In other words, \(u,v\in V(H)\) and \(uv\in E(G)\implies uv\in E(H)\).
+\end{definition}
+
+In the above example, \(F\) is an induced subgraph of \(G\); however, \(H\) is not because \(b.e,d,f\in V(H)\) and
+\(be,df\in E(G)\) but \(be,df\notin E(H)\).
+
+\begin{definition}[Edge-induced]
+  Let \(G\) be a graph and let \(X\subseteq E(G), X\ne\emptyset\).  The subgraph of \(G\) \emph{edge-induced} by
+  \(X\), denoted by \(G[X]\), is a graph \(H\) such that:
+  \begin{enumerate}
+  \item \(V(H)=\setb{v\in V(G)}{\exists\,e\in X,v\ \text{is incident to}\ e}\)
+  \item \(E(H)=X\)
+  \end{enumerate}
+  Such a graph \(H\) is called an edge-induced subgraph of \(G\):
+  \[H\subseteq G\ \text{and}\ H=G[E(H)]\]
+\end{definition}
+
+Note that in the above example, \(F\) is an edge-induced subgraph of \(G\); however, \(H\) is not because \(f\in
+V(H)\) but there is no edge in \(E(H)\) that is incident to \(f\).
+
+\begin{notation}
+  \begin{tabular}{llp{4.5in}}
+    \(G-v\) & \(v\in V(G)\) & The proper induced subgraph \(G\left[V(G)-\set{v}\right]\) \\
+    \\
+    \(G-S\) & \(S\subset V(G)\) & The proper induced subgraph \(G\left[V(G)-S\right]\) \\
+    \\
+    \(G-e\) & \(e\in E(G)\) & The proper spanning subgraph of \(G\) with edge \(e\) removed. \\
+    \\
+    \(G-X\) & \(X\subseteq E(G)\) & The proper spanning subgraph of \(G\) with all edges in \(X\) removed. \\
+    \\
+    \(G+e\) & \(e\notin E(G)\) & The graph with vertices \(V(G)\) and edges \(E(G)\cup\set{e}\), of which \(G\) is a
+    proper spanning subgraph. \\
+  \end{tabular}
+\end{notation}
+
+\end{document}

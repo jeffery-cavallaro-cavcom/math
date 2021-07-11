@@ -1,0 +1,59 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\begin{document}
+\section*{Metric}
+$\forall z_1,z_2\in\C,\abs{z_1-z_2}$ is the \emph{distance} between $z_1$ and
+$z_2$ in the complex plane:
+\begin{figure}[h]
+\setlength{\leftskip}{0.5in}
+\begin{tikzpicture}
+\draw [<->] (-1,0) -- (4,0);
+\draw [<->] (0,-1) -- (0,4);
+\draw [->] (0,0) -- (3,1);
+\draw [->] (0,0) -- (2,3);
+\draw [<-,dashed] (3,1) -- (2,3);
+\node at (1.8,0.3) {$z_1$};
+\node at (0.8,1.8) {$z_2$};
+\node at (3.3,2.1) {$z_1-z_2$};
+\end{tikzpicture}
+\end{figure}
+\begin{eqnarray*}
+dist(z_1,z_2) &=& \abs{z_1-z_2} \\
+    &=& \abs{(x_1+iy_1)-(x_2+iy_2)} \\
+    &=& \abs{(x_1-x_2)+i(y_1-y_2)} \\
+    &=& \sqrt{(x_1-x_2)^2+(y_1-y_2)^2} \\
+\end{eqnarray*}
+
+\begin{theorem}
+$dist(z_1,z_2)=\abs{z_1-z_2}$ is a metric for $\C$.
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item{positive-definite}
+Assume $z_1,z_2\in\C$
+\[\abs{z_1-z_2}=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}\ge0\]
+\begin{eqnarray*}
+\abs{z_1-z_2}=0 &\iff& \sqrt{(x_1-x_2)^2+(y_1-y_2)^2}=0 \\
+    &\iff& x_1-x_2=0\ \mbox{and}\ y_1-y_2=0 \\
+    &\iff& x_1=x_2\ \mbox{and}\ y_1=y_2 \\
+    &\iff& z_1=z_2 \\
+\end{eqnarray*}
+
+\item{symmetry}
+Assume $z_1,z_2\in\C$
+\begin{eqnarray*}
+\abs{z_1-z_2} &=& \sqrt{(x_1-x_2)^2+(y_1-y_2)^2} \\
+    &=& \sqrt{(x_2-x_1)^2+(y_2-y_1)^2} \\
+    &=& \abs{z_2-z_1} \\
+\end{eqnarray*}
+
+\item{sub-additivity}
+Assume $z_1,z_2,z_3\in\C$
+\[\abs{z_1-z_3}=\abs{(z_1-z_2)+(z_2-z_3)}\le\abs{z_1-z_2}+\abs{z_2-z_3}\]
+\end{enumerate}
+\end{theproof}
+\end{document}

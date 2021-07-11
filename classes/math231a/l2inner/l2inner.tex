@@ -1,0 +1,65 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\Rd}{\mathbb{R}^d}
+\newcommand{\LtwoRd}{L^2(\mathbb{R}^d)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\begin{document}
+
+\section*{L\textsuperscript2 Inner Product}
+
+\begin{definition}
+To say that $\inner{\cdot\:}{\cdot}$ is an inner product on a vector space $V$
+with field $F$ means that $\inner{\cdot\:}{\cdot}$ is:
+\begin{description}
+\item{I1: Linear in the first argument}
+
+$\forall u,v,w\in V$ and $\forall\,\alpha\in F$:
+\[\begin{array}{rcl}
+\inner{u+v}{w} &=& \inner{u}{w}+\inner{v}{w} \\
+\inner{\alpha u}{v} &=& \alpha\inner{u}{v} \\
+\end{array}\]
+
+\item{I2: Conjugate-symmetric (hermitian)}
+
+$\forall u,v\in V,\;\Conj{\inner{u}{v}}=\inner{v}{u}$
+
+\item{I3: Positive-definite}
+
+$\forall v\in V,\;\inner{v}{v}\ge0$ and $\inner{v}{v}=0\iff v=0$
+
+\end{description}
+\end{definition}
+
+\begin{theorem}
+$\inner{\cdot\:}{\cdot}$ is a proper inner product for $L^2$
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{description}
+\item{I1: Assume $f,g,h\in L^2$ and $\alpha\in\mathbb{C}$}
+
+$\inner{f+g}{h}=\int(f+g)\conj{h}=\int f\conj{h}+\int g\conj{h}=
+    \inner{f}{h}+\inner{g}{h}$
+
+$\inner{\alpha f}{g}=\int(\alpha f)\conj{g}=\alpha\int f\conj{g}=
+    \alpha\inner{f}{g}$
+
+\item{I2: Assume $f,g\in L^2$}
+
+$\Conj{\inner{f}{g}}=\Conj{\int f\conj{g}}=\int\conj{f}g=\inner{g}{f}$
+
+\item{I3: Assume $f\in L^2$}
+
+$\inner{f}{f}=\int f\conj{f}=\int\abs{f}^2=\norm{f}^2\ge0$
+
+$\inner{f}{f}=0\iff\norm{f}^2=0\iff f=0\;\;a.e.$
+\end{description}
+\end{theproof}
+
+\end{document}

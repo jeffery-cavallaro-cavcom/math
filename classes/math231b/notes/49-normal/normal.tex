@@ -1,0 +1,123 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\begin{document}
+\section*{Normal Operators}
+
+\begin{definition}[Normal]
+  Let $E$ be a vector space and let $T$ be a bounded operator on $E$. To say
+  that $T$ is a \emph{normal} operator means:
+  \[T^*T=TT^*\]
+  In other words, $T$ and its adjoint commute.
+\end{definition}
+
+Note that if $T$ is self-adjoint then it is clearly normal; however, the
+converse is not necessarily true.
+
+\begin{example}
+  Let $T\vx=i\vx$. \\
+  $T=iI$ \\
+  $T^*=(iI)^*=-iI^*=-iI$
+
+  $\therefore T\ne T^*$
+
+  $TT^*=(iI)(-iI)=(-iI)(iI)=T^*T$
+
+  Therefore $T$ and $T^*$ commute.
+\end{example}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$:
+
+  \qquad$T$ is normal $\iff\forall\,\vx\in H,\norm{T\vx}=\norm{T^*\vx}$
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx\in H$.
+  \begin{description}
+  \item $\implies$ Assume $T$ is normal.
+
+    $\norm{T\vx}^2=\inner{T\vx,T\vx}={T^*T\vx,\vx}={TT^*\vx,\vx}=
+    {T^*\vx,T^*\vx}=\norm{T^*\vx}^2$
+
+    $\therefore\norm{T\vx}=\norm{T^*\vx}$
+
+  \item $\impliedby$ Assume $\norm{T\vx}=\norm{T^*\vx}$.
+
+    $\inner{T\vx,T\vx}=\inner{T^*\vx,T^*\vx}$
+
+    $\inner{T^*T\vx,\vx}=\inner{TT^*\vx,\vx}$
+
+    Therefore $T^*T=TT^*$ and thus $T$ is normal.
+  \end{description}
+\end{theproof}
+
+\newpage
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $T,A,B\in\mb(H)$ such that $T=A+iB$:
+
+  \qquad$T$ is normal $\iff AB=BA$.
+\end{theorem}
+
+\begin{theproof}
+  By previous theorem, $A$ and $B$ are unique and self-adjoint.
+
+  $T^*=(A+iB)^*=A^*+(iB)^*=A^*-iB^*=A-iB$
+
+  $TT^*=(A+iB)(A-iB)=A^2-iAB+iBA=B^2=A^2+B^2+i(BA-AB)$
+
+  $T^*T=(A-iB)(A+iB)=A^2-iBA+iAB=B^2=A^2+B^2-i(BA-AB)$
+
+  \begin{tabular}{lcl}
+    $T$ is normal & $\iff$ & $TT^*=T^*T$ \\
+    & $\iff$ & $A^2+B^2+i(BA-AB)=A^2+B^2-i(BA-AB)$ \\
+    & $\iff$ & $2i(BA-AB)=0$ \\
+    & $\iff$ & $BA-BA=0$ \\
+    & $\iff$ & $AB=BA$
+  \end{tabular}
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and $T\in\mb(H)$:
+
+  \qquad$T$ is normal $\implies\norm{T^n}=\norm{T}^n$
+\end{theorem}
+
+\begin{theproof}
+  It is already known that $\norm{T^n}\le\norm{T}^n$.
+
+  For $\norm{T^n}\ge\norm{T}^n$, proof by induction on $n$:
+  \begin{description}
+  \item Base case: $n=1$: Trivial.
+
+  \item Assume $\norm{T^n}\le\norm{T}^n$
+
+  \item Consider $n+1$.
+
+    Assume $\vx\in H$ such that $\norm{\vx}=1$.
+    
+    First, note:
+    \[\norm{T^2\vx}^2=\inner{T^2\vx,T^2\vx}=\inner{T^*T\vx,T^*T\vx}=
+    \norm{T^*T\vx}^4\]
+    But, since $\norm{T^*T}=sup_{\norm{\vx}=1}\abs{\inner{T^*T\vx,\vx}}$:
+    \[\norm{T^2\vx}=\norm{T^*T\vx}^2\ge\inner{T^*T\vx,\vx}=
+    \inner{T\vx,T\vx}=\norm{T\vx}^2\]
+    Now:
+    \begin{eqnarray*}
+      \norm{T^{n+1}\vx} &=& \norm{T^nT\vx} \\
+      &=& \norm{T\vx}\norm{\frac{1}{\norm{T\vx}}T^nT\vx} \\
+      &=& \norm{T\vx}\norm{T^n\frac{T\vx}{\norm{T\vx}}} \\
+      &\ge& \norm{T\vx}\norm{T\frac{T\vx}{\norm{T\vx}}}^n \\
+      &=& \norm{T\vx}^{1-n}\norm{T^2\vx}^n \\
+      &\ge& \norm{T\vx}^{1-n}\norm{T\vx}^{2n} \\
+      &=& \norm{T\vx}^{n+1}
+    \end{eqnarray*}
+  \end{description}
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,71 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ide}{\trianglelefteq}
+\begin{document}
+\section*{Prime Ideals}
+
+\begin{definition}[Prime]
+  Let $R$ be a commutative ring and $P$ be a proper ideal in $R$. To say that $P$ is
+  a \emph{prime ideal} in $R$ means $\forall\,a,b\in R$:
+  \[ab\in P\implies a\in P\ \mbox{or}\ b\in P\]
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a commutative ring with $1\ne0$ and $P\ide R$:
+  \[P\ \mbox{is a prime ideal}\iff R/P\ \mbox{is an integral domain}\]
+\end{theorem}
+
+\begin{theproof}
+  Since $P\ide R$ and $R$ is commutative with $1\ne0$, $R/P$ is a commutative ring with
+  additive identity $0+P=P$ and multiplicative identity $1+P\ne0+P$ \\
+  Furthermore, $a+P=0+P=P\iff a\in P$
+  \begin{description}
+  \item $\implies$ Assume $P$ is a prime ideal in $R$
+
+    Assume $(a+P)(b+P)=ab+P=0+P$ \\
+    So $ab\in P$ \\
+    But $P$ is prime so $a\in P$ or $b\in P$ \\
+    Thus $a+P=0+P$ or $b+P=0+P$
+    
+    Therefore $R/P$ is an integral domain.
+
+  \item $\impliedby$ Assume $R/P$ is an integral domain
+
+    Assume $a,b\in R$ such that $ab\in P$ \\
+    $ab+P=(a+P)(b+P)=0+P$ \\
+    If $a\in P$ then done, so AWLOG: $a\ne P$ \\
+    So $a+P\notin0+P$ \\
+    But $R/P$ is an integral domain, so $b+P=0+P$ \\
+    Thus $b\in P$
+
+    Therefore $P$ is prime in $R$.
+  \end{description}
+\end{theproof}
+
+\begin{corollary}
+  Maximal ideals are prime ideals.
+\end{corollary}
+
+\begin{theproof}
+  Assume $R$ is a commutative ring with $1\ne0$ and $P\ide R$ is maximal \\
+  So $R/I$ is a field, and thus an integral domain
+
+  Therefore $P$ is prime.
+\end{theproof}
+
+\begin{example}
+  Let $R=\Z[x]$
+
+  The principal ideal $(x)$ is prime, but it is not maximal:
+  \[\Z[x]/(x)\simeq\Z\]
+  But $\Z$ is a ring, not a field.
+
+  However, we know that there should be a maximal ideal containing $(x)$. \\
+  Let $p\in\Z$ be prime. \\
+  $(p,x)=(p)+(x)$ is maximal, but not principle:
+  \[Z[x]/(x,p)\simeq\mathcal{F}_p\]
+  But $\mathcal{F}_p$ is a field.
+\end{example}
+
+\end{document}

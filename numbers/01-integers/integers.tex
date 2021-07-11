@@ -1,0 +1,146 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Integers}
+
+\begin{definition}
+  The set of \emph{integers} includes the positive and negative whole numbers
+  and zero and is given by:
+  \[\Z=\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}\]
+\end{definition}
+
+Thus, by the trichotomy principle, $\forall\,n\in\Z$, exactly one of the
+following is true:
+\begin{enumerate}
+\item $n$ is positive
+\item $n$ is zero
+\item $n$ is negative
+\end{enumerate}
+
+\begin{definition}
+  Let $a$ and $b$ be two integer values, regardless of representation. To say
+  that $a$ equals $b$, denoted $a=b$, means that $a$ and $b$ represent the same
+  element in $\Z$.
+\end{definition}
+
+\begin{axiom}[Substitution Principle]
+  Let $a$ and $b$ be two integer values, regardless of representation. If $a=b$
+  then $a$ and $b$ can syntactically replace each other in a given context
+  without altering the context.
+\end{axiom}
+
+\begin{properties}[Equality]
+  Let $a$ and $b$ be two integer values:
+  \begin{enumerate}
+  \item Reflexivity
+    \[a=a\]
+    
+  \item Symmetry
+    \[a=b\implies b=a\]
+
+  \item Transitivity
+    \[a=b\ \mbox{and}\ b=c\implies a=c\]
+  \end{enumerate}
+\end{properties}
+
+\begin{properties}
+  The set of integers is a commutative ring with unity under the binary
+  operations of addition and multiplication, and as such, the following axioms
+  hold:
+\newpage
+  $\forall\,a,b,c,d\in\Z:$
+
+  \begin{enumerate}
+  \item{Well-defined}
+    \begin{itemize}
+    \item $a+b=c$ and $a+b=d\implies c=d$
+    \item $ab=c$ and $ab=d\implies c=d$
+    \end{itemize}
+    
+  \item{Closure}
+    \begin{itemize}
+    \item $a+b\in\Z$
+    \item $ab\in\Z$
+    \end{itemize}
+    
+  \item{Cummutativity}
+    \begin{itemize}
+    \item $a+b=b+a$
+    \item $ab=ba$
+    \end{itemize}
+
+  \item{Associativity}
+    \begin{itemize}
+    \item $(a+b)+c=a+(b+c)$
+    \item $(ab)c=a(bc)$
+    \end{itemize}
+    
+  \item{Distributivity}
+    \begin{itemize}
+    \item $a(b+c)=ab+ac$
+    \end{itemize}
+
+  \item{Identity}
+    \begin{itemize}
+    \item $a+0=a$
+    \item $a1=a$
+    \end{itemize}
+
+  \item{Additive Inverse}
+    \begin{itemize}
+    \item $\exists\,(-a)\in\Z,a+(-a)=0$
+    \end{itemize}
+  \end{enumerate}
+\end{properties}
+
+Since the set of integers is a commutative ring with unity, the following
+properties also hold:
+
+\begin{properties}[Zero]
+  $\forall\,a,b\in\Z$:
+  \begin{enumerate}
+  \item $-0=0$
+  \item $a0=0$
+  \item $ab=0\implies a=0$ or $b=0$
+  \end{enumerate}
+\end{properties}
+\newpage
+\begin{properties}[Negatives]
+  $\forall\,a,b\in\Z$:
+  \begin{enumerate}
+  \item $(-1)a=-a$
+  \item $-(-a)=a$
+  \item $(-a)b=-(ab)=a(-b)$
+  \item $(-a)(-b)=ab$
+  \item $-(a+b)=(-a)+(-b)$
+  \end{enumerate}
+\end{properties}
+
+\begin{notation}
+  Integer subtraction is nothing more than a syntactic convenience:
+  \[\forall\,a,b\in\Z,a-b=a+(-b)\]
+\end{notation}
+
+\begin{properties}[Cancellation]
+  $\forall\,a,b,c\in\Z$:
+  \begin{enumerate}
+  \item $a=b\iff a+c=b+c$
+  \item $a=b\implies ac=bc$
+  \item $ac=bc$ and $c\ne0\implies a=b$
+  \end{enumerate}
+\end{properties}
+
+The last cancellation law cannot be proven in the common manner due to the
+lack of multiplication inverses.  Instead:
+
+\begin{theproof}
+  Assume $a,b,c\in\Z$ \\
+  Assume $ac=bc$ and $c\ne0$ \\
+  $ac-bc=0$ \\
+  $(a-b)c=0$ \\
+  Since $c\ne0$, $a-b=0$ \\
+  $\therefore a=b$
+\end{theproof}
+
+\end{document}

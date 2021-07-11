@@ -1,0 +1,120 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ide}{\trianglelefteq}
+\begin{document}
+\section*{Second Ring Isomorphism Theorem}
+
+Given a ring $R$ and $I\ide R$, we want to classify the ideals of $R/I$.
+
+\begin{theorem}
+  Let $R$ be a ring with $1\ne0$ and $I\ide R$:
+  \[I=R \iff \exists\,r\in I,r\ \mbox{is a unit in}\ R\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $I=R$
+
+    $1\in R$ and $I=R$, so $1\in I$ \\
+    $1\cdot1=1$ \\
+    So $1$ is a unit in $R$ \\
+    Let $r=1$
+
+    $\therefore\exists\,r\in I,r$ is a unit in $R$.
+
+  \item $\impliedby$ Assume $\exists\,r\in I,r$ is a unit in $R$
+
+    \begin{description}
+    \item $\implies$ By definition, $I\subseteq R$
+
+    \item $\impliedby$ Assume $a\in R$
+
+      $\exists\,s\in R,rs=rs=1\in I$ \\
+      Assume $a\in R$ \\
+      $1a=a1=a\in I$
+
+      $\therefore R\subseteq I$
+    \end{description}
+
+    $\therefore I=R$
+  \end{description}
+\end{theproof}
+
+Thus, if $I$ contains a unit in $R$ then $R/I=R/R=R$ and all ideals of $I$ are just
+ideals of $R$.
+
+\begin{theorem}
+  Let $R$ be a ring and $I,J\ide R$ such that $I\subseteq J$:
+  \[J/I\ide R/I\]
+\end{theorem}
+
+\begin{theproof}
+  From group theory, we already know that $J/I\le R/I$
+
+  Assume $j+I\in J/I$ and $r+I\in R/I$ \\
+  $(r+I)(j+I)=rj+I=j+I\in I/J$ \\
+  $(j+I)(r+I)=jr+I=j+I\in I/J$
+
+  $\therefore J/I\ide R/I$
+\end{theproof}
+
+\begin{theorem}
+  Let $R$ be a ring and $I\ide R$:
+  \[S\ide R/I \implies S=J/I\]
+  where $J\ide R$ and $I\subseteq J$.
+\end{theorem}
+
+\begin{theproof}
+  Consider the map $\phi:\{$ideals in $R$ containing $I\}\to\{$ ideals in $R/I\}$
+  where $J\mapsto J/I$
+
+  From group theory we know that the map from subgroups in $R$ containing $I$ to
+  subgroups of $R/I$ is a bijection, and $\phi$ is simply a restriction of this, so
+  $\phi$ is at least one-to-one.
+
+  Now, assume $S\ide R/I$ \\
+  From group theory, we know that $S=J/I$ for some (normal) subgroup $J$ in $R$
+  containing $I$ \\
+  Assume $j\in J$ and $r\in R$ \\
+  $(j+I)(r+I)=jr+I\in J/I$ \\
+  So $\exists\,j'\in J,jr+I=j'+I$ \\
+  $jr-j'=i\in I\subseteq J$ \\
+  Thus, by closure, $jr=j'+i\in J$, and so $J$ is a right ideal in $R$
+
+  Similarly, $(r+I)(j+I)=jr+I\in J/I$ \\
+  So $\exists\,j'\in J,rj+I=j'+I$ \\
+  $rj-j'=i\in I\subseteq J$ \\
+  Thus, by closure, $rj=j'+i\in J$, and so $J$ is a left ideal in $R$
+
+  So $J\ide R$ and $\phi(J)=S$, so $\phi$ is onto, and thus a bijection
+
+  Therefore $S\ide R/I \implies S=J/I$.
+\end{theproof}
+
+\begin{theorem}
+  Let $R$ be a ring, $I\ide R$, and $I\subseteq J\ide R$:
+  \[(R/I)/(J/I)\simeq R/J\]
+\end{theorem}
+
+\begin{theproof}
+  Consider $\phi:R/I\to R/J$ where $r+I\mapsto r+J$ \\
+  This is clearly a homomorphism of rings \\
+  $\ker(\phi)=J/I$ because $r+J=J\iff r\in J$
+
+  Therefore, by the first homomorphism theorem: $(R/I)/(J/I)\simeq R/J$.
+\end{theproof}
+\newpage
+\begin{example}
+  Find all of the ideals of $Z/12Z$
+
+  Mantra: To contain is to divide.
+
+  $12Z\subset6Z\subset3Z\subset Z$ \\
+  $12Z\subset4Z\subset2Z\subset Z$
+
+  So the ideals of $Z/12Z$ are $\{12Z/Z,12Z/6Z,12Z/4Z,12Z/3Z,12Z/2Z,12Z/Z\}$.
+\end{example}
+
+\end{document}

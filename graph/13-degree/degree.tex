@@ -1,0 +1,257 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\renewcommand{\d}{\delta}
+\newcommand{\D}{\Delta}
+\begin{document}
+\section*{Degree}
+
+\begin{definition}[Neighbor]
+  Let \(G\) be a graph and let \(u,v\in V(G)\).  To say that \(u\) is a \emph{neighbor} of \(v\) (and vice-versa)
+  means that \(uv\in E(G)\).
+\end{definition}
+
+Thus, neighbor vertices are adjacent.
+
+\begin{definition}[Neighborhood]
+  Let \(G\) be a graph and let \(u\in V(G)\).  The \emph{neighborhood} of \(u\), denoted by \(N(u)\), is the set of
+  all neighbors of \(u\) in \(G\):
+  \[N(u)=\setb{v\in V(G)}{uv\in E(G)}\]
+\end{definition}
+
+Note that for simple graphs, a vertex is never a neighbor of itself.
+
+\begin{definition}[Degree]
+  Let \(G\) be a graph and let \(u\in G\).  The \emph{degree} of \(u\), denoted by \(\deg_G(u)\) or \(\deg(u)\), is
+  the cardinality of the neighborhood of \(u\):
+  \[\deg(u)=\abs{N(u)}\]
+\end{definition}
+
+The degree of a vertex can be viewed as the number of neighbor vertices or the number of incident edges.
+
+\begin{notation}
+  Let \(G\) be a graph of order \(n\) and let \(u\in V(G)\):
+  \begin{gather*}
+    \d(G)=\min_{v\in V(G)}\deg(v) \\
+    \D(G)=\max_{v\in V(G)}\deg(v)
+  \end{gather*}
+  and so:
+  \[0\le\d(G)\le\deg(u)\le\D(G)\le n-1\]
+\end{notation}
+
+\begin{definition}[Vertex Types]
+  Let \(G\) be a graph of order \(n\) and let \(u\in V(G)\):
+  \begin{quote}
+    \begin{tabular}{c|l}
+      \(\deg(u)\) & TYPE \\
+      \hline
+      \(0\) & isolated \\
+      \(1\) & pendant, end, leaf \\
+      \(n-1\) & universal \\
+      even & even \\
+      odd & odd
+    \end{tabular}
+  \end{quote}
+\end{definition}
+
+\begin{theorem}[First Theorem of Graph Theory]
+  Let \(G\) be a graph of size \(m\):
+  \[\sum_{v\in V(G)}\deg(v)=2m\]
+\end{theorem}
+
+\begin{proof}
+  When summing all the degrees, each edge is counted twice: once for each endpoint.
+\end{proof}
+
+\begin{corollary}
+  Let \(G=B(U,W)\) be a bipartite graph of order \(m\):
+  \[\sum_{u\in U}\deg(u)=\sum_{w\in W}\deg(w)=m\]
+\end{corollary}
+
+\begin{proof}
+  Each edge joins a vertex in \(U\) with a vertex in \(W\), and so:
+  \[\sum_{u\in U}\deg(u)=\sum_{w\in W}\deg(w)\]
+  This means that:
+  \[\sum_{u\in U}\deg(u)+\sum_{w\in W}\deg(w)=2\sum_{u\in U}\deg(u)=2m\]
+  \[\therefore\sum_{u\in U}\deg(u)=\sum_{w\in W}\deg(w)=m\]
+\end{proof}
+
+\begin{example}
+  \begin{minipage}[t]{3in}
+    \begin{center}
+      \vspace{0pt}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleV{\(v_2\),\(v_3\),\(v_4\),\(v_5\),\(v_6\),\(v_7\)}{(0,0)}{1in}{0}{c};
+        \node (v1) at (0,0) {\(v_1\)};
+        \node (v8) at (150:1.25in) {\(v8\)};
+        \foreach \i in {c1,c2,c3,c4,c5,c6}{
+          \draw (v1) edge (\i);
+        }
+        \draw (c1) edge (c5);
+        \draw (c2) edge (c4);
+        \draw (v1) edge (v8);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \begin{tabular}{ll}
+        \(n=8\) & \(m=15=\frac{30}{2}\) \\
+        \(\d(G)=1\) & \(\D(G)=7\) \\
+        \(\diam(G)=2\)
+      \end{tabular}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \vspace{0pt}
+    \begin{tabular}{c|c|l}
+      vertex & degree & type \\
+      \hline
+      \(v_1\) & 7 & universal,odd \\
+      \(v_2\) & 4 & even \\
+      \(v_3\) & 4 & even \\
+      \(v_4\) & 3 & odd \\
+      \(v_5\) & 4 & even \\
+      \(v_6\) & 4 & even \\
+      \(v_7\) & 3 & odd \\
+      \(v_8\) & 1 & pendant,odd \\
+      \hline
+      total & 30 &
+    \end{tabular}
+  \end{minipage}
+\end{example}
+
+\begin{theorem}
+  Let \(G\) be a graph.  \(G\) has an even number of odd vertices.
+\end{theorem}
+
+\begin{proof}
+  Partition \(V(G)\) into two sets:
+  \begin{align*}
+    V_1 &= \setb{v\in V(G)}{\deg(v)\ \text{is odd}} \\
+    V_2 &= \setb{v\in V(G)}{\deg(v)\ \text{is even}}
+  \end{align*}
+  and let:
+  \begin{align*}
+    n_o=\sum_{v\in V_1}\deg(v) \\
+    n_e=\sum_{v\in V_2}\deg(v)
+  \end{align*}
+
+  By the FTGT:
+  \[n_o+n_e=2m\]
+  which is even.  But \(n_e\) is even and so \(n_o\) must also be even.
+
+  \(\therefore\abs{V_1}\) is even.
+\end{proof}
+
+\begin{theorem}
+  Let \(G\) be a graph of order n such that \(\D(G)=n-1\).  The following are all true:
+  \begin{enumerate}
+  \item \(n>1\implies\d(G)>0\)
+  \item \(G\) is connected
+  \item \(\diam(G)\le2\)
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Assume \(u\in G\) such that \(\deg(u)=n-1\).
+
+  First, assume \(n=1\).  This means that \(G=E_1\), which is connected by definition with \(\diam(G)=0\le2\).
+
+  Now, assume that \(n>1\).
+  
+  This means that \(u\) is adjacent to all of the other vertices in \(G\). and so there are no isolated vertices.
+
+  \(\therefore\d(G)\ge1>0\)
+  
+  Next assume \(n>1\) and assume \(v,w\in V(G)\) such that \(v\ne w\).
+  \begin{description}
+  \item[Case 1:] \(u\in\set{v,w}\)
+    
+    AWLOG: \(u=v\).
+    
+    But \(uw\in E(G)\) and so \(u\) and \(w\) are adjacent and thus connected with \(d(u,w)=1\).
+
+  \item[Case 2:] \(u\notin\set{v,w}\)
+    \begin{description}
+    \item[Case a:] \(vw\in E(G)\)
+      
+      So \(v\) is adjacent, and thus connected, to \(w\) with \(d(v,w)=1\).
+
+    \item[Case b:] \(vw\notin E(G)\)
+
+      Consider the path \((v,u,w)\).  This is a \(v-w\) path in \(G\) of length 2.
+    \end{description}
+  \end{description}
+
+  \(\therefore G\) is connected and \(\diam(G)\le2\).
+\end{proof}
+
+\begin{theorem}
+  Let \(G\) be a graph:
+  \[\exists\,u,v\in V(G),\deg(u)=\deg(v)\]
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[Case 1:] \(\d(G)=0\)
+
+    Thus, there is at least one isolated vertex and so \(\D(G)\le n-2\).  So for all \(v\in V(G)\):
+    \[0\le\deg(v)\le n-2\]
+
+  \item[Case 2:] \(\d(G)\ne0\)
+
+    Thus, there are no isolated vertices and so \(\D(G)\le n-1\).  So for all \(v\in V(G)\):
+    \[1\le\deg(v)\le n-1\]
+  \end{description}
+
+  In either case, there are \(n\) vertices and \(n-1\) possible degree values.
+
+  Therefore, by the PHP, at least two vertices must have the same degree.
+\end{proof}
+
+\begin{theorem}
+  Let \(G\) be graph of order \(n\) such that \(\forall\,u,v\in V(G),\deg(u)+\deg(v)\ge n-1\):
+  \begin{quote}
+    \(G\) is connected.
+  \end{quote}
+\end{theorem}
+
+\begin{proof}
+  Assume \(u,v\in V(G)\).
+
+  \begin{description}
+  \item[Case 1:] Assume \(uv\in E(G)\).
+
+    So \(u\) and \(v\) are adjacent, and thus connected, with \(d(u,v)=1\).
+
+  \item[Case 2:] Assume \(uv\notin E(G)\).
+
+    By PIE:
+    \[\abs{N(u)\cup N(v)}=\abs{N(u)}+\abs{N(v)}-\abs{N(u)\cap N(v)}\]
+    Now, since \(uv\notin E(G)\), it must be the case that \(N(u)\cup N(v)\subseteq V(G)-\set{u,v}\) and so:
+    \[\abs{N(u)\cup N(v)}\le n-2\]
+    Furthermore, by assumption, \(\abs{N(u)}+\abs{N(v)}\ge n-1\).  And so:
+    \[\abs{N(u)\cap N(v)}=\abs{N(u)}+\abs{N(v)}-\abs{N(u)\cup N(v)}\ge(n-1)-(n-2)=1\]
+    Thus, \(u\) and \(v\) are adjacent to at least one common vertex \(w\in V(G)\).  This means that there exists
+    a \((u,w,v)\) path in \(G\) of length 2.
+  \end{description}
+
+  \(\therefore G\) is connected and \(\diam(G)\le2\).
+\end{proof}
+
+\begin{corollary}
+  Let \(G\) be a graph of order \(n\) such that \(\d(G)\ge\frac{n-1}{2}\):
+  \begin{quote}
+    \(G\) is connected.
+  \end{quote}
+\end{corollary}
+
+\begin{proof}
+  Assume \(u,v\in V(G)\):
+  \[\deg(u)+\deg(v)\ge\frac{n-1}{2}+\frac{n-1}{2}=n-1\]
+  \(\therefore G\) is connected.
+\end{proof}
+
+\end{document}

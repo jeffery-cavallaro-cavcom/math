@@ -1,0 +1,30 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\p}{\varphi}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\begin{document}
+\section*{Trigonometric Fourier Series}
+
+\begin{theorem}
+  The orthonormal sequence $\p_n(t)=\frac{1}{\sqrt{2\pi}}e^{int}$ for $n\in\Z$
+  is complete in $L^2[-\pi.\pi]$. Thus, $\forall\,f\in L^2[-\pi.\pi]$, $f$ can
+  be written as:
+  \[f\sim\sum_{n=-\infty}^{\infty}\inner{f,\p_n}\p_n\]
+\end{theorem}
+
+Proving completeness is non-trivial and requires Fej\'{e}r kernels.
+
+Note that this is convergence in the $L^2$ sense:
+\[\norm{f-\sum_{n=-N}^N\inner{f,\p_n}\p_n}\to0\]
+\[\int_{-\pi}^{\pi}\abs{f(t)-\sum_{n=-N}^N\inner{f,\p_n}e^{int}}^2dt\to0\]
+Meaning $S_n\overset{L^2}{\to}f$.
+
+However, $L^2$ convergence does not guarantee pointwise convergence.
+
+\begin{theorem}[Carleson]
+  Fourier series of $L^2$ periodic functions converge pointwise a.e.
+\end{theorem}
+
+\end{document}

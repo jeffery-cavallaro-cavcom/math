@@ -1,0 +1,141 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\p}{\phi}
+\begin{document}
+\section*{Kernel}
+
+\begin{definition}
+  Let $\p:G\to G'$ be a homomorphism of groups. The $\emph{kernel}$ of $\p$,
+  denoted $\ker(\p)$, is given by:
+  \[\ker(\p)=\{g\in G\mid\p(g)=e'\}\]
+  The kernel contains all elements that map to the identity.
+\end{definition}
+
+\begin{theorem}
+  Let $\p:G\to G'$ be a homomorphism of groups:
+  \[\ker(\p)\le G\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in\ker(\p)$ \\
+  $a,b\in G$ \\
+  By closure, $ab\in G$ \\
+  $\p(ab)=\p(a)\p(b)=e'e'=e'$ \\
+  So $ab\in\ker(\p)$ \\
+  $\therefore\ker(\p)$ is closed under the operation.
+
+  $\p(e)=e'$ \\
+  So $e\in\ker(\p)$ \\
+  $\therefore\ker(\p)$ has an identity.
+
+  Assume $a\in\ker(\p)$ \\
+  $a\in G$ \\
+  $a^{-1}\in G$ \\
+  $\p(a^{-1})=\p(a)^{-1}=(e')^{-1}=e'$ \\
+  So $a^{-1}\in\ker(\p)$ \\
+  $\therefore\ker(\p)$ is closed under inverses.
+
+  $\therefore\ker(\p)\le G$
+\end{theproof}
+
+\begin{theorem}
+  Let $\p:G\to G'$ be a homomorphism of groups:
+  \[\p\ \mbox{is one-to-one}\iff\ker(\p)=e\]
+\end{theorem}
+\newpage
+\begin{theproof}
+  \begin{minipage}[t]{3in}
+    Assume $\p$ is one-to-one \\
+    $\p(e)=e'$ \\
+    Assume $\exists\,a\in G,\p(a)=e'$ \\
+    $\p(e)=\p(a)$ \\
+    $e=a$ \\
+    $\therefore\ker(\p)=\{e\}$
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    Assume $\ker(\p)=\{e\}$ \\
+    Assume $a,b\in G,\p(a)=\p(b)$ \\
+    $\p(a)\p(b)^{-1}=\p(a)\p(b^{-1})=\p(ab^{-1})=e'$ \\
+    $ab^{-1}=e$ \\
+    $a=b$ \\
+    $\therefore\p$ is one-to-one
+  \end{minipage}
+\end{theproof}
+
+\begin{theorem}
+  Let $\p:G\to G'$ be a homomorphism of groups and $K=\ker(\p)$:
+  \[\forall\,a\in G,aK=\{x\in G\mid\p(x)=\p(a)\}\]
+  A homomorphism collapses all of the elements in the coset to the same
+  element in $G'$.
+\end{theorem}
+
+\begin{figure}[h]
+  \setlength{\leftskip}{0.5in}
+  \begin{tikzpicture}
+    \node at (0,0) {
+      $\left.\begin{array}{c}a\\x_1\\x_2\\\vdots\\x_n\end{array}\right|$};
+    \draw [->] (0.5,0) -- node [above] {$\p$} (3,0) node [right] {$\p(a)$};
+    \draw (-0.5,-1.25) -- (-0.5,-1.5) -- node [below] {$aK$} (0.5,-1.5) --
+    (0.5,-1.25);
+  \end{tikzpicture}
+\end{figure}
+
+\begin{theproof}
+  Assume $a\in G$
+  
+  Assume $y\in aK$ \\
+  $\exists\,k\in K,y=ak$ \\
+  $\p(y)=\p(ak)=\p(a)\p(k)=\p(a)e'=\p(a)$ \\
+  $\therefore y\in\{x\in G\mid\p(x)=\p(a)\}$
+
+  Assume $y\in\{x\in G\mid\p(x)=\p(a)\}$ \\
+  $\p(y)=\p(a)$ \\
+  $\p(a)^{-1}\p(y)=\p(a^{-1})\p(y)=\p(a^{-1}y)=e'$ \\
+  So $a^{-1}y\in K$ and thus $\exists\,k\in K,a^{-1}y=k$ \\
+  $y=ak$ \\
+  $\therefore y\in aK$
+
+  $\therefore aK=\{x\in G\mid\p(x)=\p(a)\}$
+\end{theproof}
+
+\begin{theorem}
+  Let $\p:G\to G'$ be a homomorphism of groups and $K=\ker(\p)$:
+  \[\forall\,a\in G,Ka=\{x\in G\mid\p(x)=\p(a)\}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in G$
+  
+  Assume $y\in Ka$ \\
+  $\exists\,k\in K,y=ka$ \\
+  $\p(y)=\p(ka)=\p(k)\p(a)=e'\p(a)=\p(a)$ \\
+  $\therefore y\in\{x\in G\mid\p(x)=\p(a)\}$
+
+  Assume $y\in\{x\in G\mid\p(x)=\p(a)\}$ \\
+  $\p(y)=\p(a)$ \\
+  $\p(y)\p(a)^{-1}=\p(y)\p(a^{-1})=\p(ya^{-1})=e'$ \\
+  So $ya^{-1}\in K$ and thus $\exists\,k\in K,ya^{-1}=k$ \\
+  $y=ka$ \\
+  $\therefore y\in Ka$
+
+  $\therefore Ka=\{x\in G\mid\p(x)=\p(a)\}$
+\end{theproof}
+
+\begin{corollary}
+  Let $\p:G\to G'$ be a homomorphism of groups and $\ker(\p)=K$:
+  \[\forall\,a\in G,aK=Ka\]
+\end{corollary}
+
+\begin{theorem}
+  Let $\p:G\to G'$ be a homomorphism of groups and $\ker(\p)=K$:
+  \[\forall\,g_1,g_2\in G,\phi[g_1Kg_2]=\{\phi(g_1g_2)\}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $g_1,g_2\in G$ \\
+  Assume $k\in K$ \\
+  $\p(g_1kg_2)=\p(g_1)\p(k)\p(g_2)=\p(g_1)e'\p(g_2)=\p(g_1)\p(g_2)=\p(g_1g_2)$
+\end{theproof}
+
+\end{document}

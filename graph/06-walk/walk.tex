@@ -1,0 +1,120 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\begin{document}
+
+\section*{Walks}
+
+\begin{definition}[Walk]
+  A \(u-v\) \emph{walk} \(W\) in a graph \(G\) is a finite sequence of vertices \(w_i\in V(G)\) starting with
+  \(u=w_0\) and ending with \(v=w_k\):
+  \[W=(u=w_0,w_1,\ldots,w_k=v)\]
+  such that \(w_iw_{i+1}\in E(G)\) for \(0\le i<k\).
+
+  To say that \(W\) is \emph{open} means that \(u\ne v\).  To say that \(W\) is \emph{closed} means that \(u=v\).
+  The \emph{length} \(k\) of \(W\) is the number of edges traversed: \(k=\abs{W}\).
+
+  A \emph{trivial} walk is a walk of zero length --- i.e, a single vertex: \(W=(u)\).
+\end{definition}
+
+\begin{example}
+  \begin{minipage}{3in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleVnodes{\(a\),\(b\),\(c\),\(d\),\(e\)}{(0,0)}{0.75in}{90}{}
+        \draw (1) edge (2) edge (3) edge (4) edge (5);
+        \draw (2) edge (3) edge (5);
+        \draw (3) edge (4);
+      \end{tikzpicture}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \(W_1=(a,b,e,a,c)\ \text{is open}\)
+
+    \(W_2=(a,e,b,c,a)\ \text{is closed}\)
+
+    \bigskip
+
+    \(\abs{W_1}=\abs{W_2}=4\)
+  \end{minipage}
+\end{example}
+
+Note that in the general case, vertices and edges are allowed to be repeated during a walk.
+
+\begin{definition}[Special Walks]
+  \begin{tabular}{lll}
+    \emph{trail} & An open walk with no repeating edges & \((a,b,c,a,e)\) \\
+    \\
+    \emph{path} & A trail with no repeating vertices & \((a,e,b,c)\) \\
+    \\
+    \emph{circuit} & A closed trail & \((a,b,e,a,c,d,a)\) \\
+    \\
+    \emph{cycle} & A closed path & \((a,e,b,c,a)\)
+  \end{tabular}
+\end{definition}
+
+\begin{notation}[Concatenation]
+  Let \(G\) be a graph and let \(u,v,w\in V(G)\) such that \(W_1=(u=u_0,u_1,\ldots,u_k=v)\) is a \(u-v\) walk of
+  length \(k\) in \(G\) and \(W_2=(v=v_0,v_1,\ldots,v_{\ell}=w)\) is a \(v-w\) walk of length \(\ell\) in \(G\)
+  with common endpoint \(v\).  The \emph{concatenation} of these two walks \(W\) given by:
+  \[W=W_1\cup W_2=(u,\ldots,v,\ldots,w)\]
+  is a \(u-w\) walk in \(G\) of length \(k+\ell\).
+\end{notation}
+
+Note that the concatenation of two paths is a walk, but not necessarily a path.  In the above example, let
+\(P_1=(a,e,b)\) and \(P_2=(b,a,c,d)\):
+\[P_1\cup P_2=(a,e,b,a,c,d)\]
+which is not a path due to vertex \(a\) being traversed twice.
+
+\begin{theorem}
+  Let \(G\) be a graph and let \(u,v\in V(G)\):
+  \begin{quote}
+    \(G\) contains a \(u-v\) walk of length \(k\implies G\) contains a \(u-v\) path of length \(\ell\le k\).
+  \end{quote}
+\end{theorem}
+
+\begin{proof}
+  Assume \(G\) contains a \(u-v\) walk of length \(k\).
+
+  Consider the set of all \(u-v\) walks in \(G\).  Their lengths form a non-empty set of positive integers.  By the
+  well-ordering principle, there exists a \(u-v\) walk \(P\) of minimal length \(\ell\le k\):
+  \[P=(u=w_0,\ldots,w_{\ell}=v)\]
+  Claim: \(P\) is a path.
+
+  ABC: \(P\) is not a path, and thus \(P\) has at least one repeating vertex.
+
+  Assume \(w_i=w_j\) for some \(0\le i<j\le\ell\):
+  \begin{description}
+  \item Case 1: \(j=\ell\)
+
+    \(P'=(u=w_0,\ldots,w_i=v)\) is a \(u-v\) walk in \(G\) of length \(i<\ell\).
+
+  \item Case 2: \(j<\ell\)
+    
+    \(P'=(u=w_0,\ldots,w_i,w_{j+1},\ldots,w_{\ell}=v)\) is a \(u-v\) walk in \(G\) of length \(\ell-(j-i)<\ell\)
+    
+  \end{description}
+
+  Both cases contradict the minimality of the length of \(P\).
+
+  \(\therefore P\) is a \(u-v\) path in \(G\) of length \(\ell\le k\).
+\end{proof}
+
+\begin{definition}[Connected]
+  Let \(G\) be a graph and let \(u,v\in V(G)\).  To say that \(u\) and \(v\) are \emph{connected} means that \(G\)
+  contains a \(u-v\) path.
+\end{definition}
+
+\begin{definition}[Cycles]
+  Let \(C\) be a cycle in a graph \(G\):
+  \begin{itemize}
+  \item To say that \(C\) is a \emph{k-cycle} means that \(\abs{C}=k\).
+  \item To say that \(C\) is an \emph{even} cycle means that \(\abs{C}\) is even.
+  \item To say that \(C\) is an \emph{odd} cycle means that \(\abs{C}\) is odd.
+  \end{itemize}
+\end{definition}
+
+Note that in simple graphs, circuits and cycles must have length \(\ge3\).
+
+\end{document}

@@ -1,0 +1,117 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\r}{\rho}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\mnorm}[1]{\left\lvert\left\lvert\left\lvert#1
+  \right\rvert\right\rvert\right\rvert}
+\begin{document}
+\section*{Spectral Radius}
+
+\begin{definition}[Spectral Radius]
+  Let $A\in M_n$. The \emph{spectral radius} of $A$, denoted $\r(A)$, is given
+  by:
+  \[\rho(A)=\max_{\l\in\o(A)}\{\abs{\l}\}\]
+\end{definition}
+
+\begin{lemma}
+  Let $A\in M_n$ and $\o_1$ be the largest singular value for $A$:
+  \[\o_1=\sqrt{\r(A^*A)}\]
+\end{lemma}
+
+\begin{theproof}
+  Let the SVD for $A$ be as follows:
+  \[A=U\begin{bmatrix} \o_1 & & 0 \\ & \ddots & \\ 0 & & \o_n
+  \end{bmatrix}V^*\]
+  for unitary matrices $U$ and $V$ and $\o_k\in\R$ such that
+  $\o_1\ge\ldots\ge\o_n\ge0$.
+  \[A^*A=V\begin{bmatrix} \o_1 & & 0 \\ & \ddots & \\ 0 & & \o_n
+  \end{bmatrix}U^*U\begin{bmatrix} \o_1 & & 0 \\ & \ddots & \\ 0 & & \o_n
+  \end{bmatrix}V^*=V\begin{bmatrix} \o_1^2 & & 0 \\ & \ddots & \\ 0 & & \o_n^2
+  \end{bmatrix}V^*\]
+  Thus, the $\o_k^2$ are the eigenvalues for $A^*A$ and $\r(A^*A)=\o_1^2$
+
+  $\therefore\o_1=\sqrt{\r(A^*A)}$
+\end{theproof}
+
+\begin{lemma}
+  Let $A\in M_n$ and $\o_1$ be the largest singular value for $A$.
+  $\forall\,\vx\in\C^n$:
+  \[\norm{A\vx}_2\le\o_1\norm{\vx}_2\]
+\end{lemma}
+
+\begin{theproof}
+  From the previous proof:
+  \[A^*A=V\begin{bmatrix} \o_1^2 & & 0 \\ & \ddots & \\ 0 & & \o_n^2
+  \end{bmatrix}V^*\]
+  Assume $\vx\in\C^n$:
+  \[\vx^{\,*}A^*A\vx=\vx^{\,*}V\begin{bmatrix}
+  \o_1^2 & & 0 \\ & \ddots & \\ 0 & & \o_n^2
+  \end{bmatrix}V^*\vx\]
+  Let $\vy=V^*\vx$:
+  \[\norm{A\vx}_2^2=\vy^{\,*}\begin{bmatrix}
+    \o_1^2 & & 0 \\ & \ddots & \\ 0 & & \o_n^2
+  \end{bmatrix}\vy\]
+  By isometry: $\norm{\vy}_2=\norm{V^*\vx}_2=\norm{\vx}_2$, and so:
+  \begin{eqnarray*}
+    \norm{A\vx}_2^2 &=& \begin{bmatrix}
+      \bar{y}_1 & \bar{y}_2 & \ldots & \bar{y}_n \end{bmatrix}
+    \begin{bmatrix} \o_1^2 & & 0 \\ & \ddots & \\ 0 & & \o_n^2 \end{bmatrix}
+    \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix} \\
+    &=& \sum_{k=1}^n\bar{y}_k\o_k^2y_k \\
+    &=& \sum_{k=1}^n\o_k^2\abs{y_k}^2 \\
+    &\le& \sum_{k=1}^n\o_1^2\abs{y_k}^2 \\
+    &=& \o_1^2\sum_{k=1}^n\abs{y_k}^2 \\
+    &=& \o_1^2\norm{\vy}_2^2 \\
+    &=& \o_1^2\norm{\vx}_2^2 \\
+    \therefore\norm{A\vx}_2 &\le& \o_1\norm{\vx}_2
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{lemma}
+  Let $A\in M_n$ and $\o_1$ be the largest singular value for $A$.
+  $\exists\,\vx\in\C^n$ such that:
+  \[\norm{A\vx}_2=\o_1\norm{\vx}_2\]
+\end{lemma}
+
+\begin{theproof}
+  Let the SVD for $A$ be as follows:
+  \[A=U\begin{bmatrix} \o_1 & & 0 \\ & \ddots & \\ 0 & & \o_n
+  \end{bmatrix}V^*\]
+  for unitary matrices $U$ and $V$ and $\o_k\in\R$ such that
+  $\o_1\ge\ldots\ge\o_n\ge0$.
+  \[AV=U\begin{bmatrix} \o_1 & & 0 \\ & \ddots & \\ 0 & & \o_n
+  \end{bmatrix}\]
+  Compare the first columns:
+  \[A\vv_1=\o_1\vu_1\]
+  Since $\vu_1$ and $\vv_1$ are a unit vectors:
+  \[\norm{A\vv_1}_2=\norm{\o_1\vu_1}_2=\o_1\norm{\vu_1}_2=\o_1\cdot1=
+  \o_1\norm{\vv_1}_2\]
+  Let $\vx=\vv_1$. Therefore, $\exists\,\vx\in\C^n$ such that:
+  \[\norm{A\vx}_2=\o_1\norm{\vx}_2\]
+\end{theproof}
+
+\begin{theorem}
+  Let $A\in M_n$ and $\o_1$ be the largest singular value for $A$:
+  \[\mnorm{A}_2=\sqrt{\r(A^*A)}=\o_1\]
+\end{theorem}
+
+\begin{theproof}
+  By definition:
+  \[\mnorm{A}_2=\max_{\norm{\vx}_2=1}\{\norm{A\vx}_2\}\]
+  By the above lemma: $\forall\,\vx\in\C^n$:
+  \[\norm{A\vx}_2\le\o_1\norm{\vx}_2\]
+  And by the subsequent lemma, there exists a $\vx\in\C^n$ such that
+  $\norm{\vx}_2=1$ and:
+  \[\norm{A\vx}_2=\o_1\norm{\vx}_2=\o_1\cdot1=\o_1\]
+  Therefore:
+  \[\mnorm{A}_2=\max_{\norm{\vx}_2=1}\norm{A\vx}_2=\o_1\]
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,65 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\newcommand{\vx}{\vec{x}}
+\begin{document}
+\section*{Schur Triangularization}
+
+\begin{theorem}
+  Let $A\in M_n$. There exists a unitary matrix $U$ such that $A$ is unitary
+  similar with a $T\in UT(n)$ such that the diagonal entries of $T$ are the
+  eigenvalues of $A$ is a prescribed order.
+\end{theorem}
+
+\begin{theproof}
+  By induction on $n$:
+  \begin{description}
+  \item Base case: $n=1$
+    
+    $\begin{bmatrix} 1 \end{bmatrix}\begin{bmatrix} a \end{bmatrix}
+    \begin{bmatrix} 1 \end{bmatrix}=\begin{bmatrix} a \end{bmatrix} \in UT(1)$
+
+  \item Assume true for $n-1$
+
+  \item Consider $A\in M_n$ with eigenvalues $\l_1,\ldots,\l_n$
+
+    Each $\l_k$ is associated with an unit eigenvector $\vx_k$ \\
+    Extend the $\vx_k$ to an orthonormal basis for $\C^n$:
+    $\{\vx_1,\vx_2,\ldots,\vx_n\}$ \\
+    Let $U_1=\begin{bmatrix} \vx_1 & \vx_2 & \cdots & \vx_n \end{bmatrix}$ \\
+    Thus, $U_1$ is unitary and:
+    \begin{eqnarray*}
+      AU_1 &=&
+      \begin{bmatrix} A\vx_1 & A\vx_2 & \cdots & A\vx_n \end{bmatrix} \\
+      &=& \begin{bmatrix} \l_1\vx_1 & A\vx_2 & \cdots & A\vx_n \end{bmatrix} \\
+      &=& \begin{bmatrix} \vx_1 & \vx_2 & \cdots & \vx_n \end{bmatrix}
+      \begin{bmatrix} \l_1 & * \\ 0 & A_2 \end{bmatrix} \\
+      &=& U_1\begin{bmatrix} \l_1 & * \\ 0 & A_2 \end{bmatrix} \\
+      U_1^*AU_1 &=& \begin{bmatrix} \l_1 & * \\ 0 & A_2 \end{bmatrix}
+    \end{eqnarray*}
+    Where $A_2\in M_{n-1}$ \\
+    So by the inductive assumption, there exists unitary matrix $U_2$ such
+    that:
+    \[U_2^*A_2U_2=
+    \begin{bmatrix} \l_2 & & * \\ & \ddots & \\ 0 & & \l_n \end{bmatrix}\]
+    Let $U=U_1\begin{bmatrix} 1 & 0 \\ 0 & U_2 \end{bmatrix}$ \\
+    $U$ is also unitary and we have:
+    \begin{eqnarray*}
+      U^*AU &=&
+      \left(U_1\begin{bmatrix} 1 & 0 \\ 0 & U_2 \end{bmatrix}\right)^*A
+      \left(U_1\begin{bmatrix} 1 & 0 \\ 0 & U_2 \end{bmatrix}\right) \\
+      &=& \begin{bmatrix} 1 & 0 \\ 0 & U_2^* \end{bmatrix}(U_1^*AU_1)
+      \begin{bmatrix} 1 & 0 \\ 0 & U_2 \end{bmatrix} \\
+      &=& \begin{bmatrix} 1 & 0 \\ 0 & U_2^* \end{bmatrix}
+      \begin{bmatrix} \l_1 & * \\ 0 & A_2 \end{bmatrix}
+      \begin{bmatrix} 1 & 0 \\ 0 & U_2 \end{bmatrix} \\
+      &=& \begin{bmatrix} \l_1 & * \\ 0 & U_2^*A_2 \end{bmatrix}
+      \begin{bmatrix} 1 & 0 \\ 0 & U_2 \end{bmatrix} \\
+      &=& \begin{bmatrix} \l_1 & * \\ 0 & U_2^*AU_2 \end{bmatrix} \\
+      &=& \begin{bmatrix} \l_1 & & * \\ & \ddots & \\ 0 & & \l_n \end{bmatrix}
+    \end{eqnarray*}
+  \end{description}
+\end{theproof}
+
+\end{document}

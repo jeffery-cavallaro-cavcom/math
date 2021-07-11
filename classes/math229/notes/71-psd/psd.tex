@@ -1,0 +1,118 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vyct}{\vy^{\,*}}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vect}{\ve^{\,*}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\bx}{\bar{x}}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Eig}{Eig}
+\begin{document}
+\section*{Positive Semidefinite Matrices}
+
+\begin{definition}[Positive Semidefinite]
+  To say that $A$ is \emph{positive semidefinite} means
+  $\forall\,\vx\in\C^n$:
+  \[\vxct A\vx\ge0\]
+  Note that $A$ positive semidefinite $\implies A$ Hermitian.
+  
+  Also note that $A$ positive definite $\implies A$ positive semidefinite,
+\end{definition}
+
+\begin{properties}[Positive Semidefinite]
+  \listbreak
+  \begin{enumerate}
+  \item $A\in M_n$ positive semidefinite $\implies \Sp(A)\subseteq[0,\infty)$
+
+    Assume $A$ is positive semidefinite \\
+    Assume $\vx\in\C^n$ such that $\vx\ne\vz$ \\
+    $\vxct A\vx\ge0$ \\
+    Let $\vx\in\Eig_A(\l)$ such that $\vx$ is a unit vector \\
+    $\vxct A\vx=\vxct\l\vx=\l\vxct\vx=\l\ge0$
+
+  \item $A\in M_n$ positive semidefinite $\implies a_{ii}\ge0$
+
+    Assume $A$ is positive semidefinite \\
+    $\vect_i A\ve_i=a_{ii}\ge0$
+
+  \item $A\in M_n$ positive semidefinite $\implies \forall\,S\in GL(n),S^*AS$
+    positive semidefinite
+
+    Assume $A$ is positive semidefinite \\
+    Assume $\vx\in\C^n$ such that $\vx\ne\vz$ \\
+    $\vxct(S^*AS)\vx=(\vxct S^*)A(S\vx)=(S\vx)^*A(S\vx)=\vyct A\vy\ge0$
+
+    $\therefore S^*AS$ is positive semidefinite.
+
+  \item $A\in M_n$ positive semidefinite $\implies$ any principle submatrix B of
+    $A$ is positive semidefinite
+
+    Assume $A$ is positive semidefinite \\
+    AWLOG: $B$ is a leading principle submatrix, otherwise permute and note
+    property (3) \\
+    Assume $\vx\in\C^k$ for $1\le k\le n$
+    
+    $\begin{bmatrix} \vxct & 0 \end{bmatrix}
+    \left[\begin{array}{c|c} B & * \\ \hline * & * \end{array}\right]
+    \begin{bmatrix} \vx \\ 0 \end{bmatrix}=\vxct B\vx\ge0$
+
+    $\therefore B$ is positive semidefinite.
+  \end{enumerate}
+\end{properties}
+
+\begin{theorem}
+  Let $A\in M_n$. $A$ positive semidefinite $\iff A$ Hermitian and
+  $\Sp(A)\subseteq[0,\infty)$
+\end{theorem}
+
+\newpage
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $A$ is positive semidefinite
+
+    $A$ is also Hermitian \\
+    By property (1), $\forall\,\l\in\Sp(A),\l\ge0$
+
+  \item $\impliedby$ Assume $A$ is Hermitian and $\Sp(A)\subseteq[0,\infty)$
+
+    Assume $\l\in\Sp(A)$ \\
+    Let $\vx$ be a unit eigenvector associated with $\l$ \\
+    $\vx\ne 0$ \\
+    $\vxct A\vx=\vxct\l\vx=\l\vxct\vx=\l\ge0$
+
+    $\therefore A$ is positive semidefinite.
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $A\in M_n$. $A$ positive semidefinite $\implies A$ Hermitian and
+  $\det A_k\ge0$ for all $1\le k\le n$, where $A_k$ is the $k\times k$ leading
+  principle submatrix of $A$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $A$ is positive semidefinite \\
+  $A$ is Hermitian \\
+  Assume $1\le k\le n$ \\
+  $A_k$ is positive semidefinite \\
+  Assume $\l\in\o(A_k)$ \\
+  $\l\ge0$ \\
+  $\det A_k=\prod_{i=1}^k\l_i(A_k)\ge0$
+\end{theproof}
+
+Note that the converse is not true for positive semidefinite. Consider the following
+counterexample:
+\[A=\begin{bmatrix} 0 & 0 \\ 0 & -1 \end{bmatrix}\]
+$A$ is Hermitian and $\det A_k=0$; however, $A$ is not positive semidefinite due to the
+negative eigenvalue.
+
+\end{document}

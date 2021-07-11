@@ -1,0 +1,237 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathrsfs}
+\pagestyle{empty}
+\newcommand{\bas}[2]{\left<#1,#2\right>}
+\newcommand{\g}{\gamma}
+\renewcommand{\o}{\theta}
+\newcommand{\p}{\phi}
+\newcommand{\z}{\zeta}
+\renewcommand{\S}{\mathscr{S}}
+\begin{document}
+\section*{Binary Algebraic Structures}
+
+\begin{definition}
+  A \emph{binary algebraic structure} is a non-empty set $S$ equipped with a
+  binary operator `$*$' and is denoted $\bas{S}{*}$.
+\end{definition}
+
+When the binary operation is understood, the structure is simply referred to
+as $S$ and operations are written using the more convenient $ab$ form
+(juxtaposition) instead of $a*b$.
+
+\begin{definition}
+Let $\bas{S}{*}$ and $\bas{T}{*'}$ be two binary algebraic structures and
+$\p:S\to T$. To say that $S$ is \emph{homomorphic} to $T$ means there exists
+$\p:S\to T$ such that:
+\[\forall\,a,b\in S,\p(a*b)=\p(a)*'\p(b)\]
+
+If such a $\p$ exists then it is referred to as a \emph{homomorphism}.
+
+When the binary operations are understood, the statement of homomorphism is
+written using the shorted $\p(ab)=\p(a)\p(b)$ form. Note that the $ab$
+operation takes place is structure $S$ with its equipped binary operator, and
+the $\p(a)\p(b)$ operation takes place in structure $T$ with its equipped
+binary operator.
+\end{definition}
+
+\begin{definition}
+  Let $\bas{S}{*}$ and $\bas{T}{*'}$ be two binary algebraic structures. To say
+  that $S$ is \emph{isomorphic} to $T$, denoted $S\simeq T$, means there exists
+  $\p:S\to T$ such that:
+  \begin{enumerate}
+  \item $\p$ is a bijection
+  \item $\p$ is a homomorphism
+  \end{enumerate}
+  If such a $\p$ exists then it is referred to as an \emph{isomorphism}.
+\end{definition}
+
+\begin{example}
+  It was previously shown that $\bas{U}{\cdot}\simeq\bas{\R_{2\pi}}{+_{2\pi}}$. In
+  particular:
+  \[\p\left(e^{i\o}\right)=\o\]
+  \begin{eqnarray*}
+    \p(u_1u_2) &=& \p\left(e^{i\o_1}e^{1\o_2}\right) \\
+    &=& \p\left(e^{i(\o_1+_{2\pi}\,\o_2)}\right) \\
+    &=& \o_1+_{2\pi}\,\o_2 \\
+    &=& \p\left(e^{i\o_1}\right)+_{2\pi}\,\p\left(e^{i\o_2}\right) \\
+    &=& \p(u_1)+_{2\pi}\,\p(u_2) \\
+  \end{eqnarray*}
+
+  Similarly, $\bas{U_n}{\cdot}\simeq\bas{\Z_n}{+_n}$:
+  \[\p\left(e^{i\left[\frac{2\pi k}{n}\right]}\right)=k\]
+  \begin{eqnarray*}
+    \p(\z^h\z^k) &=&
+    \p\left(e^{i\left[\frac{2\pi h}{n}\right]}e^{i\left[\frac{2\pi k}{n}\right]}\right) \\
+    &=& \p\left(e^{i\left[\frac{2\pi(h+_n\,k}{n}\right]}\right) \\
+    &=& h+_n\,k \\
+    &=& \p\left(e^{i\left[\frac{2\pi h}{n}\right]}\right)+_n\,
+        \p\left(e^{i\left[\frac{2\pi k}{n}\right]}\right) \\
+    &=& \p(\z^h)+_n\,\p(\z^k) \\
+  \end{eqnarray*}
+
+  Let $n=4$:
+
+  \bigskip
+
+\begin{minipage}{2.5in}
+  \begin{tabular}{c|cccc}
+    $U_4$ & 1 & i & -1 & -i \\
+    \hline
+    1 & 1 & i & -1 & -i \\
+    i & i & -1 & -i & i \\
+    -1 & -1 & -i & 1 & i \\
+    -i & -i & 1 & i & -1 \\
+  \end{tabular}
+  \end{minipage}
+  \begin{minipage}{2.5in}
+  \begin{tabular}{c|cccc}
+    $\Z_4$ & 0 & 1 & 2 & 3 \\
+    \hline
+    0 & 0 & 1 & 2 & 3 \\
+    1 & 1 & 2 & 3 & 0 \\
+    2 & 2 & 3 & 0 & 1 \\
+    3 & 3 & 0 & 1 & 2 \\
+  \end{tabular}
+\end{minipage}
+
+\bigskip
+
+\begin{tabular}{c|c}
+$\z$ & $\p(\z)$ \\
+\hline
+1 & 0 \\
+i & 1 \\
+-1 & 2 \\
+-i & 3 \\
+\end{tabular}
+
+\[\p((-1)(-i))=\p(i)=1\]
+\[\p((-1)(-i))=\p(-1)+_4\,\p(-i))=2+_4\,3=1\]
+\end{example}
+
+\begin{example}
+Prove: $\bas{\R}{+}\simeq\bas{\R^+}{\cdot}$
+
+Let $\p:\R\to\R^+$ be defined by $\p(x)=e^x$
+
+\bigskip
+
+\begin{minipage}{2.5in}
+\underline{one-to-one}
+
+Assume $\p(x)=\p(y)$ \\
+$e^x=e^y$ \\
+$x=y$ \\
+$\therefore \p$ is one-to-one
+\end{minipage}
+\begin{minipage}{2.5in}
+\underline{onto}
+
+Assume $y\in\R^+$ \\
+Let $x=\ln{y}\in\R$ \\
+$e^x=y$ \\
+$\therefore \p$ is onto
+\end{minipage}
+
+\bigskip
+
+\underline{homo}
+
+Assume $x,y\in\R^+$ \\
+$\p(x+y)=e^{x+y}=e^xe^y=\p(x)\p(y)$ \\
+$\therefore \p$ is a homomorphism
+
+\bigskip
+
+Thus, $\p$ is an isomorphism and therefore
+$\bas{\R}{+}\simeq\bas{\R^+}{\cdot}$
+\end{example}
+
+\begin{theorem}
+Let $S$ and $T$ be binary algebraic structures.
+\[\p:S\to T\ \mbox{is an isomorphism}\iff
+    \p^{-1}:T\to S\ \mbox{is an isomorphism}\]
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{description}
+\item{$\implies$}: Assume $\p:S\to T$ is an isomorphism
+
+$\p$ is a bijection \\
+$\p^{-1}$ also exists and is a bijection \\
+Assume $t_1,t_2\in T$ \\
+$\p$ is onto \\
+$\exists\,s_1,s_2\in S,\p(s_1)=t_1$ and $\p(s_2)=t_2$ \\
+$\p$ is a homomorphism \\
+$\p^{-1}(t_1t_2)=\p^{-1}(\p(s_1)\p(s_2))=\p^{-1}(\p(s_1s_2))=
+    (\p^{-1}\p)(s_1s_2)=s_1s_2=\p^{-1}(t_1)\p^{-1}(t_2)$ \\
+$\p^{-1}$ is a homomorphism
+
+$\therefore \p^{-1}:T\to S$ is an isomorphism \\
+
+\item{$\impliedby$}: Assume $\p^{-1}:T\to S$ is an isomorphism
+
+$\p^{-1}$ is a bijection \\
+$\p$ also exists and is a bijection \\
+Assume $s_1,s_2\in S$ \\
+$\p^{-1}$ is onto \\
+$\exists\,t_1,t_2\in T,\p^{-1}(t_1)=s_1$ and $\p^{-1}(t_2)=s_2$ \\
+$\p^{-1}$ is a homomorphism \\
+$\p(s_1s_2)=\p(\p^{-1}(t_1)\p^{-1}(t_2))=\p(\p^{-1}(t_1t_2))=
+    (\p\p^{-1})(t_1t_2)=t_1t_2=\p(s_1)\p(s_2)$ \\
+$\p$ is a homomorphism
+
+$\therefore \p:S\to T$ is an isomorphism \\
+\end{description}
+\end{theproof}
+
+\begin{theorem}
+Let $S,T,U$ be binary algebraic structures such that $\p:S\to T$ is an
+isomorphism and $\g:T\to U$ is an isomorphism.
+\[\g\p:S\to U\ \mbox{is an isomorphism}\]
+\end{theorem}
+
+\begin{theproof}
+$\p$ and $\g$ are bijections and homomorphisms \\
+$\g\p$ is a bijection \\
+Assume $s_1,s_2\in S$ \\
+$(\g\p)(s_1s_2)=\g(\p(s_1s_2))=\g(\p(s_1)\p(s_2))=\g(\p(s_1))\g(\p(s_2))=
+(\g\p)(s_1)(\g\p)(s_2)$ \\
+$\g\p$ is a homomorphism \\
+$\therefore \g\p$ is an isomorphism
+\end{theproof}
+
+\begin{theorem}
+  Let $\S$ be the set of all binary algebraic structures. \\
+  Isomorphism is an equivalence relation on $\S$.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{itemize}
+  \item{Reflexive}
+
+    Assume $S\in\S$ \\
+    The identity function $i_S$ is clearly bijective and homomorphic \\
+    $i_S:S\to S$ is an isomorphism \\
+    $\therefore S\simeq S$
+
+  \item{Symmetric}
+
+    Assume $S\simeq T$ \\
+    There exists isomorphism $\p:S\to T$ \\
+    So there exists isomorphism $\p^{-1}:T\to S$ \\
+    $\therefore T\simeq S$
+
+  \item{Transitive}
+
+    Assume $S\simeq T$ and $T\simeq U$ \\
+    There exists isomorphisms $\p\to T$ and $\g:T\to U$ \\
+    So $\g\p:S\to U$ is an isomorphism \\
+    $\therefore S\simeq U$
+  \end{itemize}
+\end{theproof}
+
+\end{document}

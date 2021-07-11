@@ -1,0 +1,182 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\p}{\varphi}
+\DeclareMathOperator{\spn}{Span}
+\DeclareMathOperator{\proj}{proj}
+\begin{document}
+\section*{Orthonormal Basis}
+
+\begin{definition}[Orthonormal Basis]
+  Let $E$ be an inner product space over $\C$ and let $B=\{\vx_n\mid n\in\N\}$
+  be an orthonormal system in $E$. To say that $B$ is an
+  \emph{orthonormal basis} for $E$ means $\forall\,\vx\in E$, $\vx$ can be
+  written uniquely as:
+  \[\vx=\sum_{n=1}^{\infty}\a_n\vx_n\]
+  for some $\a_n\in\C$ and distinct $\vx_n\in B$.
+\end{definition}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $H=L^2[-\pi,pi]$ with $\p_n(t)=\frac{1}{\sqrt{2\pi}},
+    \frac{1}{\sqrt{\pi}}\sin{nt},\frac{1}{\sqrt{\pi}}\cos{nt}$ for all
+    $n\in\N$.
+
+  \item $H=L^2[-\pi,pi]$ with $\p_n(t)=\frac{1}{\sqrt{2\pi}}e^{-nt}$ for all
+    $n\in\Z$.
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let $E$ be an inner product space over $\C$. Every complete orthonormal
+  sequence in $E$ is an orthonormal basis for $E$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $(\vx_n)$ is a complete orthonormal sequence in $E$.
+  Assume $\vx\in E$.
+  Since $(\vx_n)$ is complete:
+  \[\vx=\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n\]
+  Thus establishing existence where $\a_n=\inner{\vx,\vx_n}$.
+
+  Now, assume $\vx=\sum_{n=1}^{\infty}\a_k\vx_n=\sum_{n=1}^{\infty}\b_k\vx_n$.
+
+  $0=\norm{\vx-\vx}^2=
+  \norm{\sum_{n=1}^{\infty}\a_n\vx_n-\sum_{n=1}^{\infty}\b_n\vx_n}^2=
+  \norm{\sum_{n=1}^{\infty}(\a_n-\b_n)\vx_n}^2=\sum_{n=1}^{\infty}\abs{\a_n-\b_n}$
+
+  But this is only true for $\a_n-\b_n=0$.
+
+  $\therefore\a_n=\b_n$, thus establishing uniqueness.
+\end{theproof}
+
+\begin{corollary}
+  Let $E$ be an inner product space and let $(\vx_n)$ be a complete orthonormal
+  sequence in $E$:
+
+  \qquad$\spn\{\vx_1,\vx_2,\ldots\}$ is dense in $E$.
+\end{corollary}
+
+\begin{theproof}
+  Let $S=\spn\{\vx_1,\vx_2,\ldots\}$. \\
+  Assume $\vx\in E$. \\
+  Since $(\vx_n)$ is complete:
+  \[\vx=\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n\]
+  Let $S_n=\sum_{k=1}^n\inner{\vx,\vx_k}\vx_k$. \\
+  $(S_n)$ is a sequence in $S$ and $S_n\to\vx\in E$.
+
+  Therefore $S$ is dense in $E$.
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $(\vx_n)$ be an orthonormal sequence in
+  $H$:
+
+  \qquad$(\vx_n)$ is complete
+  $\iff((\forall\,n\in\N,\vx\perp\vx_n)\implies\vx=\vo)$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $(\vx_n)$ is complete.
+
+    Assume $\forall\,n\in\N,\vx\perp\vx_n$. \\
+    $\forall\,n\in\N,\inner{\vx,\vx_n}=0$ \\
+    But $(\vx_n)$ is complete, so
+    $\vx=\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n=\vo$.
+
+  \item $\impliedby$ Assume $(\forall\,n\in\N,\vx\perp\vx_n)\implies\vx=\vo$.
+
+    Assume $\vx\in H$. \\
+    Since $H$ is Hilbert:
+    $\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n=\vx_*\in H$. \\
+    WTS: $\vx_*=\vx$. \\
+    Assume $n\in\N$:
+    \begin{eqnarray*}
+      \inner{\vx_*-\vx,\vx_n} &=& \inner{\vx_*,\vx_n}-\inner{\vx,\vx_n} \\
+      &=& \inner{\sum_{k=1}^{\infty}\inner{\vx,\vx_k}\vx_k,\vx_n}-
+      \inner{\vx,\vx_n} \\
+      &=& \inner{\inner{\vx,\vx_n}\vx_n,\vx_n}-\inner{\vx,\vx_n} \\
+      &=& \inner{\vx,\vx_n}\inner{\vx_n,\vx_n}-\inner{\vx,\vx_n} \\
+      &=& \inner{\vx,\vx_n}\norm{\vx_n}^2-\inner{\vx,\vx_n} \\
+      &=& \inner{\vx,\vx_n}\cdot1-\inner{\vx,\vx_n} \\
+      &=& \inner{\vx,\vx_n}-\inner{\vx,\vx_n} \\
+      &=& 0
+    \end{eqnarray*}
+    And so, by assumption, $\vx_*-\vx=\vo$.
+
+    $\therefore\vx_*=\vx$ and thus $(\vx_n)$ is complete.
+  \end{description}
+\end{theproof}
+
+\begin{theorem}[Parseval's Formula] 
+  Let $H$ be a Hilbert space and let $(\vx_n)$ be an orthonormal sequence in
+  $H$:
+
+  \qquad$(\vx_n)$ is complete $\iff\forall\,\vx\in H,\norm{\vx}^2=
+  \sum_{n=1}^{\infty}\abs{\inner{\vx,\vx_n}}^2$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $(\vx_n)$ is complete.
+
+    Assume $\vx\in H$:
+    \begin{eqnarray*}
+      \vx &=& \sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n \\
+      \norm{\vx}^2 &=& \inner{\vx,\vx} \\
+      &=& \inner{\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n,
+        \sum_{m=1}^{\infty}\inner{\vx,\vx_m}\vx_m} \\
+      &=& \sum_{n=1}^{\infty}\inner{\inner{\vx,\vx_n}\vx_n,
+        \inner{\vx,\vx_n}\vx_n} \\
+      &=& \sum_{n=1}^{\infty}\abs{\inner{\vx,\vx_n}}^2\inner{\vx_n,\vx_n} \\
+      &=& \sum_{n=1}^{\infty}\abs{\inner{\vx,\vx_n}}^2\norm{\vx_n}^2 \\
+      &=& \sum_{n=1}^{\infty}\abs{\inner{\vx,\vx_n}}^2\cdot1 \\
+      &=& \sum_{n=1}^{\infty}\abs{\inner{\vx,\vx_n}}^2
+    \end{eqnarray*}
+
+  \item $\impliedby$ Assume $\forall\,\vx\in H,\norm{\vx}^2=
+    \sum_{n=1}^{\infty}\abs{\inner{\vx,\vx_n}}^2$
+
+    Assume $\vx\in H$. \\
+    Let $S_n=\{\vx_1,\ldots,\vx_n\}$. \\
+    Let $\vy_n=\proj_{S_n}\vx=\sum_{k=1}^n\inner{\vx,\vx_n}\vx_n$. \\
+    And so $\norm{\vy_n}=\sum_{k=1}^n\abs{\inner{\vx,\vx_n}}^2$. \\
+
+    \begin{tikzpicture}
+      \draw (0,0) -- (5,0) -- (6,2) -- (1,2) -- cycle;
+      \node at (0.75,0.5) {$S_n$};
+      \node [draw,circle,fill,scale=0.5] (z) at (2,1) {};
+      \node [below] at (z) {$\vo$};
+      \node [scale=0.01] (x) at (4,4) {};
+      \draw [->] (z) to node [left] {$\vx$} (x);
+      \node [scale=0.01] (y) at (4,1) {};
+      \draw [->] (z) to node [below] {$\vy_n$} (y);
+      \draw [->,dashed] (y) to node [right] {$\vx-\vy_n$} (x);
+    \end{tikzpicture}
+
+    Note that $\vx-\vy_n\perp\vy_n$.
+    And so:
+    \begin{eqnarray*}
+      \norm{\vx}^2 &=& \norm{(\vx-\vy_n)+\vy_n}^2 \\
+      \norm{\vx}^2 &=& \norm{\vx-\vy_n}^2+\norm{\vy_n}^2 \\
+      \norm{\vx}^2-\norm{\vy_n}^2 &=& \norm{\vx-\vy_n}^2 \\
+      \norm{\vx}^2-\sum_{k=1}^n\abs{\inner{\vx,\vx_k}}^2 &=&
+      \norm{\vx-\sum_{k=1}^n\inner{\vx,\vx_k}\vx_k}\to0 \\
+    \end{eqnarray*}
+    $\therefore\vx=\sum_{n=1}^{\infty}\inner{\vx,\vx_n}\vx_n$ and thus $(\vx_n)$
+    is complete.
+  \end{description}
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,154 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\ide}{\trianglelefteq}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 221b \\
+Homework \#2
+
+\bigskip
+
+\begin{enumerate}
+
+  \newcommand{\ma}{\begin{bmatrix} a_1 & 0 \\ c_1 & 0 \end{bmatrix}}
+  \newcommand{\mb}{\begin{bmatrix} a_2 & 0 \\ c_2 & 0 \end{bmatrix}}
+  \newcommand{\mc}{\begin{bmatrix} a_3 & b_3 \\ c_3 & d_3 \end{bmatrix}}
+  
+\item Let $R=M_2(\Z)$ and let:
+  \[I=\left\{\begin{bmatrix} a & 0 \\ c & 0 \end{bmatrix}
+  \mid a,c\in\Z\right\}\]
+  Show that $I$ is a left ideal in $R$ but not a right ideal in $R$.
+
+  It is known that $R$ is a ring \\
+  Clearly, $I$ is a non-empty subset of $R$ \\
+  Assume $A,B\in I$ \\
+  Let $A=\ma$ and $B=\mb$, $a_1,c_1,a_2,c_2\in\Z$ \\
+  $A-B=\ma-\mb=\begin{bmatrix} a_1-a_2 & 0 \\ c_1-c_2 & 0 \end{bmatrix}$ \\
+  But by closure, $a_1-a_2\in\Z$ and $c_1-c_2\in\Z$, so $A-B\in I$
+  
+  Therefore, by the subgroup test, $I$ is an additive subgroup of $R$.
+
+  Furthermore, matrix addition is commutative, so $I$ is an additive abelian
+  subgroup of $R$.
+
+  Assume $C\in R$ \\
+  Let $C=\mc$ \\
+  $a_3,b_3,c_3,d_3\in\Z$ \\
+  $CA=\mc\ma=\begin{bmatrix}a_1a_3+b_3c_1 & 0 \\ a_1c_3+c_1d_3 & 0\end{bmatrix}$ \\
+  But by closure, $a_1a_3+b_3c_1\in\Z$ and $a_1c_3+c_1d_3\in\Z$, so $CA\in I$
+
+  Therefore, $I$ is a left ideal in $R$.
+
+  $AC=\ma\mc=\begin{bmatrix} a_1a_3 & a_1b_3 \\ a_3c_1 & b_3c_1 \end{bmatrix}\notin I$,
+  unless $a_1,b_3$, or $c_1=0$
+
+  Therefore, $I$ is not a right ideal in $R$.
+
+  \bigskip
+
+  \newpage
+
+\item Let $R$ be a ring with $1\ne0$ and $I\ide R$.
+  Prove: $I=R\iff\exists\,r\in I,r$ is a unit in $R$.
+
+  \begin{description}
+  \item $\implies$ Assume $I=R$
+
+    $1\in R$ and $I=R$, so $1\in I$ \\
+    $1\cdot1=1$ \\
+    So $1$ is a unit in $R$ \\
+    Let $r=1$
+
+    $\therefore\exists\,r\in I,r$ is a unit in $R$.
+
+  \item $\impliedby$ Assume $\exists\,r\in I,r$ is a unit in $R$
+
+    $\exists\,s\in R,rs=rs=1$
+
+    \begin{description}
+    \item $\implies$ Assume $i\in I$
+
+      Since $I\ide R$, $I\le R$ and thus $I\subseteq R$
+
+      $\therefore i\in R$
+
+    \item $\impliedby$ Assume $a\in R$
+
+      Assume $b\in R$ \\
+      $R$ is a ring, and thus multiplication is associative \\
+      $ab=(ab)(1)=(ab)(sr)=(abs)r$ \\
+      But, by closure, $abs\in R$ and $I$ is an ideal, so $(abs)r\in I$ \\
+      Similarly, $ba=(1)(ba)=(rs)(ba)=r(sba)\in I$
+
+      $\therefore a\in I$
+    \end{description}
+
+    $\therefore I=R$
+  \end{description}
+
+  \newpage
+
+  \newcommand{\mr}{M_2(\R)}
+
+\item Prove: $\mr$ is a simple ring.
+
+  Assume $I\ide\mr$ such that $I\ne\{0\}$ \\
+  $\exists\,A\in I,A\ne0$ \\
+  Let $A=\begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix}$,
+  $a_{11},a_{12},a_{13},a_{14}\in\R$ \\
+  AWLOG: $a_{ij}\ne0$ (since $A\ne0$) \\
+  Consider the standard basis for $\mr$: $\{E_{11},E_{12},E_{21},E_{22}\}$ \\
+  Note that left multiply by $E_{ij}$ selects the $i^{th}$ row and left multiply by
+  $E_{ij}$ selects the $j^{th}$ column, so
+  $\left(\frac{1}{a_{ij}}E_{ij}\right)AE_{ij}=E_{ij}$ \\
+  But $I\ide\mr$, so $E_{ij}\in I$ \\
+  Let $T=\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$ \\
+  By using left multiply by $T$ to switch rows and right multiply by $T$ to switch
+  columns, all four basis matrices can be generated from $E_{ij}$ \\
+  But since $E_{ij}\in I$ and $T\in\mr$, all four basis matrices are in $I$ \\
+  Assume $B\in\mr$ \\
+  Let $B=\begin{bmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{bmatrix}$,
+  $b_{11},b_{12},b_{21},b_{22}\in\R$ \\
+  Let $B_{k\ell}\in\mr$ such that the $k\ell^{th}$ entry is $b_{k\ell}$ and $0$ everywhere
+  else \\
+  $B_{k\ell}E_{k\ell}=B_{k\ell}$ \\
+  But since $E_{k\ell}\in I$, $B_{k\ell}\in I$ \\
+  Moreover, $B=B_{11}+B_{12}+B_{21}+B_{22}$ \\
+  But $I$ is a ring, and thus an additive group, and so by closure, $B\in I$ \\
+  Thus, $I=\mr$ and $\mr$ has no proper, non-trivial ideals
+
+  Therefore $\mr$ is simple.
+
+  \newpage
+
+\item Let $R$ be a commutative ring with $1\ne0$ and let $P\ide R$.
+  Prove: $P$ is a prime ideal in $R$ iff $R/P$ is an integral domain.
+
+  Since $P$ is an ideal in $R$ and $R$ is commutative, $R/P$ is a commutative ring with
+  additive identity $0+P=P$ \\
+  It is also true that $a+P=P\iff a\in P$
+
+  \begin{description}
+  \item $\implies$ Assume $P$ is a prime ideal in $R$
+
+    Assume $a,b\in R$ such that $a,b\notin P$ \\
+    Since $P$ is prime, $ab\notin P$ \\
+    $a+P\ne P$ and $b+P\ne P$ \\
+    $(a+P)(b+P)=ab+P\ne P$ \\
+    Therefore, $R/P$ has no zero-divisors and is thus an integral domain.
+
+  \item $\impliedby$ Assume $R/P$ is an integral domain
+
+    Assume $a,b\in R$ such that $ab\in P$ \\
+    $ab+P=(a+P)(b+P)\in P$ \\
+    If $a\in P$ then done, so AWLOG: $a\notin P$ \\
+    $a+P\notin P$ \\
+    But $R/P$ is an integral domain, so $b+P=P$ \\
+    Thus $b\in P$
+
+    Therefore, $P$ is a prime ideal in $R$.
+  \end{description}
+\end{enumerate}
+
+\end{document}

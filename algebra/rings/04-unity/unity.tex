@@ -1,0 +1,71 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Unity}
+
+\begin{definition}
+  To say that $R$ is a \emph{ring with unity} means:
+  \begin{enumerate}
+  \item $R$ is a ring
+  \item $R$ has a multiplicative identity element, called \emph{unity}, and
+    denoted by $1$.
+  \end{enumerate}
+\end{definition}
+
+Note that since $\left<R,\cdot\right>$ is a binary algebraic structure, $1\in R$ is
+unique.
+
+\begin{theorem}
+  Let $R$ be a ring with unity. $0=1$ iff $R$ is the trivial ring.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $0=1$
+    
+    Assume $a\in R$ \\
+    $a0=0$ \\
+    $a1=a0=a$ \\
+    $\therefore a=0$
+
+  \item $\impliedby$ Assume $R$ is the trivial ring
+
+    $00=0$ \\
+    So, $0$ is unity for $R$ \\
+    $R$ is a ring with unity, \\
+    But $\abs{R}=1$ \\
+    $\therefore 0=1$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $r,s\in\N$ such that $(r,s)=1$:
+  \[Z_{rs}\simeq\Z_r\times\Z_s\]
+\end{theorem}
+
+\begin{theproof}
+  $\Z_r$ and $\Z_s$ are cyclic with generator $1$ \\
+  $\Z_{rs}$ is cyclic with generator $(1,1)$ \\
+  Let $\phi:\Z_{rs}\to\Z_r\times\Z_s$ be defined by $\phi(n)=n\cdot(1,1)$
+
+  Assume $\phi(n)=\phi(m)$ \\
+  $n\cdot(1,1)=m\cdot(1,1)$ \\
+  But additon in $Z_{rs}$ is well-defined \\
+  $n=m$ \\
+  $\therefore\phi$ is one-to-one.
+\newpage
+  Assume $x\in\Z_{rs}$ \\
+  $\exists n\in\N,n\cdot(1,1)=x$ \\
+  $\phi(n)=n\cdot(1,1)=x$ \\
+  $\therefore\phi$ is onto, and thus a bijection.
+
+  $\phi(n+m)=(n+m)\cdot(1,1)=n\cdot(1,1)+m\cdot(1,1)=\phi(n)+\phi(m)$
+
+  $\phi(nm)=(nm)\cdot(1,1)=[n\cdot(1,1)][m\cdot(1,1)]=\phi(n)\phi(m)$
+
+  $\therefore\phi$ is a ring homomorphism, and thus a ring isomorphism.
+\end{theproof}
+
+\end{document}

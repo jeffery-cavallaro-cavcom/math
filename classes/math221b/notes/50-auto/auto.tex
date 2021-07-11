@@ -1,0 +1,112 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vp}{\varphi}
+\renewcommand{\a}{\alpha}
+\renewcommand{\i}{\iota}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\id}{id}
+\begin{document}
+\section*{Automorphism Groups}
+
+\begin{definition}[Automorphism]
+  Given a field extension $K/F$, to say that $\vp$ is an \emph{F-automorphism}
+  of $K/F$ means that $\vp:K\to K$ is a bijective ring homomorphism such that
+  $\forall\,\a\in F,\vp(\a)=\a$.
+
+  In other words, $\vp$ fixes (acts trivially on) $F$ --- it may fix more
+  that $F$, but at least $F$ is guaranteed.
+\end{definition}
+
+\begin{theorem}
+  Let $G=G(F)=\Aut(K/F)$ be the set of $F$-automorphisms of $K/F$:
+
+  $G$ is a group under the operation of function composition.
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vp_1,\vp_2\in G$ \\
+  Assume $\a\in F$ \\
+  $\vp_1(\a)=\a$ and $\vp_2(\a)=\a$ \\
+  $(\vp_1\vp_2)(\a)=\vp_1(\vp_2(\a))=\vp_1(\a)=\a$ \\
+  So $\vp_1\vp_2\in G$
+
+  Therefore $G$ is closed under the operation.
+
+  Function composition is associative.
+
+  Assume $\vp\in G$ and $\a\in F$ \\
+  $\i_K(\a)=\a$, so $\i_K\in G$ \\
+  $\i_K\vp=\vp\i_K=\vp$
+
+  Therefore $G$ has identity $\i_K$.
+
+  Assume $\vp\in G$ and $\a\in F$ \\
+  $\vp(\a)=\a$ \\
+  $\vp$ is bijective, so $\vp^{-1}$ exists \\
+  $\vp^{-1}(\a)=\vp^{-1}(\vp(\a))=(\vp^{-1}\vp)(\a)=\i_K(\a)=\a$ \\
+  So $\vp^{-1}\in G$
+
+  Therefore $G$ is closed under inverses.
+
+  Therefore $G$ is a group under the operation of function composition.
+\end{theproof}
+
+\begin{theorem}
+  Let $F\subseteq L\subseteq K$ be an inclusion of fields:
+  \[G(L)=\Aut(K/L)\le\Aut(K/F)=G(F)\]
+\end{theorem}
+\newpage
+\begin{theproof}
+  Assume $\a\in L$ \\
+  $\i_L(\a)=\a$ \\
+  $\i_L\in G(L)$
+
+  $\therefore G(L)\ne\emptyset$
+
+  Assume $\vp\in G(L)$ \\
+  Assume $\a\in F$, and thus $\a\in L$ \\
+  $\vp(\a)=\a$, so $\vp\in G(F)$
+
+  $\therefore G(L)\subseteq G(F)$
+
+  Assume $\vp_1,\vp_2\in G(L)$ \\
+  Assume $\a\in L$
+  \begin{eqnarray*}
+    (\vp_1\vp_2^{-1})(\a) &=& \vp_1(\vp_2^{-1}(\a)) \\
+    &=& \vp_1(\vp_2^{-1}(\vp_2(\a))) \\
+    &=& \vp_1((\vp_2^{-1}\vp_2)(\a))) \\
+    &=& \vp_1(\i_L(\a)) \\
+    &=& \vp_1(\a) \\
+    &=& \a
+  \end{eqnarray*}
+  So $\vp_1\vp^{-1}\in G(L)$
+
+  Therefore, by the subgroup test, $G(L)\le G(F)$.
+\end{theproof}
+
+The result is a so-called ``reverse inclusion'':
+
+\bigskip
+
+\begin{tikzpicture}
+  \node (F) at (0,0) {$F$};
+  \node (L) at (0,1) {$L$};
+  \node (K) at (0,2) {$K$};
+  \draw (F) to (L);
+  \draw (L) to (K);
+  \node (GF) at (2,0) {} node at (GF) [right] {$G(F)=\Aut(K/F)$};
+  \node (GL) at (2,1) {} node at (GL) [right] {$G(L)=\Aut(K/L)$};
+  \node (GK) at (2,2) {} node at (GK) [right] {$G(K)=\Aut(K/K)=\{\id\}$};
+  \draw [dashed] (F) to (GF);
+  \draw [dashed] (L) to (GL);
+  \draw [dashed] (K) to (GK);
+  \node at (2.5,0.5) {\rotatebox{-90}{$\subseteq$}};
+  \node at (2.5,1.5) {\rotatebox{-90}{$\subseteq$}};
+\end{tikzpicture}
+
+Note that the larger the field, the smaller the group. This makes sense
+because if there are more group elements then the number of automorphisms that
+fix all of the group elements is less.
+
+\end{document}

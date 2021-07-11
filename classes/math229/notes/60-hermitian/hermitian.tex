@@ -1,0 +1,145 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\conj}[1]{\overline{#1}}
+\renewcommand{\o}{\sigma}
+\renewcommand{\l}{\lambda}
+\DeclareMathOperator{\Imag}{Im}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Sp}{Sp}
+\begin{document}
+\section*{Hermitian Matrices}
+
+\begin{definition}[Hermitian]
+  To say that a matrix $A\in M_n$ is \emph{Hermitian (self-adjoint)} means:
+  \[A^*=A\]
+  To say that $A$ is \emph{skew-Hermitian} means:
+  \[A^*=-A\]
+\end{definition}
+
+\begin{properties}[Hermitian]
+  \listbreak
+  \begin{enumerate}
+  \item $A,B$ Hermitian $\implies \forall\,a,b\in\R,aA+bB$ Hermitian
+  \item $A,B$ skew-Hermitian $\implies \forall\,a,b\in\R,aA+bB$ Hermitian
+  \item $A$ Hermitian $\implies iA$ skew-Hermitian
+  \item $A$ skew-Hermitian $\implies iA$ Hermitian
+  \item $A=[a_{ij}]$ Hermitian $\implies a_{ii}\in\R$
+  \item $A=[a_{ij}]$ skew-Hermitian $\implies a_{ii}\in i\R$
+  \end{enumerate}
+\end{properties}
+
+\begin{theorem}
+  Let $A,B\in M_n$ be Hermitian:
+  \[AB\ \mbox{Hermitian} \iff AB=BA\]
+\end{theorem}
+
+\begin{theproof}
+  $A=A^*$ and $B=B^*$ \\
+  $AB$ Hermitian $\iff AB=(AB)^* \iff AB=B^*A^* \iff AB=BA$
+\end{theproof}
+
+\begin{theorem}
+  $A\in M_n$ Hermitian $\iff \forall\,\vx\in\C^n,\vxct A\vx\in\R$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $A\in M_n$ is Hermitian
+
+    Note that $\vxct A\vx\in M_1$:
+    \[\conj{\vxct A\vx}=(\vxct A\vx)^*=\vxct A^*\vx=\vxct A\vx\]
+    $\therefore\vxct A\vx\in\R$
+
+  \item $\impliedby$ Assume $\forall\,\vx\in\C^n,\vxct A\vx\in\R$
+
+    Let $A=[a_{ij}]$ and $A^*=[\conj{a_{ji}}]$
+    \begin{description}
+    \item Case 1: $i=j$
+
+      Let $\vx=\ve_i$ \\
+      $e_i^*Ae_i=a_{ii}\in\R$
+
+      $\therefore a_{ii}=\conj{a_{ii}}$
+
+    \item Case 2: $i\ne j$
+
+      Let $\vx=\ve_i+\ve_j$ \\
+      $(\ve_i+\ve_j)^*A(\ve_i+\ve_j)=
+      \ve_i^*A\ve_i+\ve_i^*A\ve_j+\ve_j^*A\ve_i+\ve_j^*A\ve_j=
+      a_{ii}+a_{ij}+a_{ji}+a_{jj}\in\R$ \\
+      But $a_{ii},a_{jj}\in\R$, so $a_{ij}+a_{ji}\in\R$
+
+      $\therefore\Imag(a_{ij})=-\Imag(a_{ji})$
+
+      Now let $\vx=i\ve_i+\ve_j$
+      $(i\ve_i+\ve_j)^*A(i\ve_i+\ve_j)=
+      \ve_i^*A\ve_i-i\ve_i^*A\ve_j+i\ve_j^*A\ve_i+\ve_j^*A\ve_j=
+      a_{ii}+i(-a_{ij}+a_{ji})+a_{jj}\in\R$ \\
+      But $a_{ii},a_{jj}\in\R$, so $i(-a_{ij}+a_{ji})\in\R$ \\
+      $-a_{ij}+a_{ji}\in i\R$
+
+      $\therefore\Real(a_{ij})=\Real(a_{ji})$
+    \end{description}
+    Thus, $a_{ij}=\conj{a_{ji}}$ and so $A=A^*$
+
+    Therefore, $A$ is Hermitian.
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $A\in M_n$:
+  \begin{itemize}
+  \item $A$ Hermitian $\implies \o(A)\subseteq\R$
+  \item $A$ skew-Hermitian $\implies \o(A)\subseteq i\R$
+  \end{itemize}
+\end{theorem}
+
+\begin{theproof}
+  Assume $A$ is Hermitian \\
+  Assume $\l\in\o(A)$ \\
+  $\exists\,\vx\ne\vx,A\vx=\l\vx$ \\
+  $\l=\vx^*A\vx\in\R$
+
+  $\therefore\o(A)\subseteq\R$
+
+  Assume $A$ is skew-Hermitian \\
+  $iA$ is Hermitian \\
+  $\o(iA)\subseteq\R$ \\
+  $i\o(A)\subseteq\R$ \\
+  $-\o(A)\subseteq i\R$ \\
+
+  $\therefore\o(A)\subseteq i\R$
+\end{theproof}
+\newpage
+\begin{theorem}[Spectral Theorem for Hermitian Matrices]
+  Let $A\in M_n$ be Hermitian. $A$ is unitary diagonalizable with diagonal
+  entries $\{\l_1,\ldots\l_n\}=\Sp(A)\subseteq\R$.
+\end{theorem}
+
+\begin{theproof}
+  $A$ is Hermitian $\implies A$ is normal $\implies A$ is unitary
+  diagonalizable with $\o(A)\subseteq\R$
+
+  Indeed, since $A=U\begin{bmatrix}
+  \l_1 & & 0 \\
+  & \ddots & \\
+  0 & & \l_n
+  \end{bmatrix}U^*$
+
+  $AU=U\begin{bmatrix}
+  \l_1 & & 0 \\
+  & \ddots & \\
+  0 & & \l_n
+  \end{bmatrix}U^*$
+
+  $A\vu_i=\l_i\vu_i$, so the $\vu_i$ are the eigenvectors of $A$.
+\end{theproof}
+
+\end{document}

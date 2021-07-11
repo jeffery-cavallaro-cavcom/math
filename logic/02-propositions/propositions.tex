@@ -1,0 +1,290 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\blnot}[1]{\bar{#1}}
+\newcommand{\tlnot}{\mathord{\sim}}
+\newcommand{\lxor}{\oplus}
+\begin{document}
+\section*{Propositions}
+
+The objects in the Boolean logic system are \emph{propositions}:
+
+\begin{definition}[Proposition]
+  A \emph{proposition} is a declarative statement (a sentence that states a fact) that is objectively and
+  unambiguously either \emph{true} or \emph{false}.  Thus, the \emph{value} of a proposition is either \emph{true},
+  denoted by \(T\) or \(1\), or \emph{false}, denoted by \(F\) or \(0\).
+\end{definition}
+
+\begin{examples}
+  The following are all valid propositions:
+  \begin{enumerate}
+  \item Sacramento is the current capital of California.\quad(T)
+  \item SJSU is part of the UC system.\quad(F)
+  \item \(1+2=3\)\quad(T)
+  \item \(2+3=4\)\quad(F)
+  \item Every even integer can be expressed as the sum of two odd integers.\quad(T)
+  \item \(\sqrt{2}\) is a rational number.\quad(F)
+  \end{enumerate}
+
+  The following are not propositions:
+  \begin{enumerate}
+  \item What time is it?\quad(interrogative)
+  \item Do your homework!\quad(imperative)
+  \item \(100\) is a big number.\quad(subjective)
+  \item I am lying.\quad(paradoxical)
+  \item \(x+2=5\)\quad(inconclusive)
+  \end{enumerate}
+\end{examples}
+
+Propositions are represented by variables: \(p,q,r,s,\ldots\).
+
+\begin{examples}
+  \(p\coloneqq1+2=3\)\quad(T)
+
+  \(q\coloneqq\) Every integer is either odd or even.\quad(T)
+
+  \(r\coloneqq\) \(10\) is a prime number.\quad(F)
+\end{examples}
+
+Note of the use of \(\coloneqq\), which means ``is defined as,'' as opposed to \(=\), which assigns a value to a
+variable.
+
+\begin{definition}[Simple and Compound]
+  Propositions that are not expressed in terms of other propositions are called \emph{simple} or \emph{atomic}
+  propositions.  Propositions that are constructed from other propositions using \emph{logical operators} are
+  called \emph{compound} propositions.  The basic logical operators are \emph{not}, \emph{and}, and \emph{or}.
+\end{definition}
+
+\subsection*{Not}
+
+\begin{definition}[Negation]
+  Let \(p\) be a proposition.  The \emph{negation} of \(p\), also called ``\emph{not} \(p\)'' and denoted by
+  \(\lnot p\) or \(\blnot{p}\) or \(\tlnot{p}\), is the proposition represented by the statement: ``It is not the
+  case that \(p\),'' which is true when \(p\) is false and false when \(p\) is true.
+
+  \begin{center}
+    \begin{tabular}{|c|c|}
+      \hline
+      \(p\) & \(\neg p\) \\
+      \hline
+      \(F\) & \(T\) \\
+      \hline
+      \(T\) & \(F\) \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{definition}
+
+When stating negations, always look for the most compact form.
+
+\begin{examples}
+  Let:
+  \begin{align*}
+    p &\coloneqq \text{There are more than 30 students taking this class.}\quad(T) \\
+    q &\coloneqq 2<3\quad(T) \\
+    r &\coloneqq 10\ \text{is an odd number.}\quad(F) \\
+    \\
+    \lnot{p} &= \text{It is not the case that there are more than 30 students taking this class.} \\
+    &= \text{There are not more than 30 students taking this class.} \\
+    &= \text{There are at most 30 students taking this class.}\quad(F) \\
+    \\
+    \lnot{q} &= \text{It is not the case than}\ 2<3 \\
+    &= 2\nless3 \\
+    &= 2\ge3\quad(F) \\
+    \\
+    \lnot{r} &= \text{It is not the case that 10 is an odd number.} \\
+    &= 10\ \text{is not an odd number.} \\
+    &= 10\ \text{is an even number.}\quad(T)
+  \end{align*}
+\end{examples}
+
+\subsection*{Conjunction}
+
+\begin{definition}[Conjunction]
+  Let \(p\) and \(q\) be propositions.  The \emph{conjunction} of \(p\) and \(q\), also called ``\(p\) \emph{and}
+  \(q\)'' and denoted by \(p\land q\) or simply \(pq\), is the proposition represented by the statement: ``\(p\)
+  and \(q\),'' which is true when \(p\) and \(q\) are both true and false otherwise.
+
+  \begin{center}
+    \begin{tabular}{|cc|c|}
+      \hline
+      \(p\) & \(q\) & \(p\land q\) \\
+      \hline
+      \(F\) & \(F\) & \(F\) \\
+      \hline
+      \(F\) & \(T\) & \(F\) \\
+      \hline
+      \(T\) & \(F\) & \(F\) \\
+      \hline
+      \(T\) & \(T\) & \(T\) \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{definition}
+
+\begin{examples}
+  Let:
+  \begin{align*}
+    p &\coloneqq 1<2\quad(T) \\
+    q &\coloneqq 2<3\quad(T) \\
+    r &\coloneqq \text{There are more than 30 students in this class.}\quad(T) \\
+    s &\coloneqq \text{All of the students in this class are Freshmen.}\quad(F) \\
+    t &\coloneqq 10\ \text{is an odd number.}\quad(F)
+  \end{align*}
+  \begin{align*}
+    p\land q &= 1<2\land 2<3=1<2<3\quad(TT=T) \\
+    \\
+    r\land s &= \text{\small There are more than 30 students in this class and all of the students in this class are
+      freshmen.} \\
+    &= \text{There are more than 30 students in this class and they are all freshmen.}\quad(TF=F) \\
+    \\
+    t\land p &= 10\ \text{is an odd number and}\ 1<2\quad(FT=F) \\
+    \\
+    s\land t &= \text{All of the students in this class are freshmen and}\ 10\ \text{is an odd number.} \\
+    & \quad(FF=F)
+  \end{align*}
+\end{examples}
+
+\subsection*{Disjunction}
+
+Care must be taken to distinguish between the common English use of the word \emph{or}, as in: ``Do you want soup
+or salad?'' and the more precise logical definition.  The English usage typically presents two mutually exclusive
+choices, whereas the logical usage does not.
+
+\begin{definition}[Disjunction]
+  Let \(p\) and \(q\) be propositions.  The \emph{disjunction} of \(p\) and \(q\), also called ``\(p\) \emph{or}
+  \(q\)'' or ``\(p\) \emph{inclusive-or} \(q\)'' and denoted by \(p\lor q\) or \(p+q\), is the proposition
+  represented by the statement: ``\(p\) or \(q\),'' which is false when \(p\) and \(q\) are both false and true
+  otherwise.
+
+  \begin{center}
+    \begin{tabular}{|cc|c|}
+      \hline
+      \(p\) & \(q\) & \(p\lor q\) \\
+      \hline
+      \(F\) & \(F\) & \(F\) \\
+      \hline
+      \(F\) & \(T\) & \(T\) \\
+      \hline
+      \(T\) & \(F\) & \(T\) \\
+      \hline
+      \(T\) & \(T\) & \(T\) \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{definition}
+
+\begin{examples}
+  Assume that \(p\), \(q\), \(r\), \(s\), and \(t\) are defined as above.
+  \begin{align*}
+    p\lor q &= 1<2\lor 2<3\quad(T+T=T) \\
+    \\
+    r\lor s &= \text{\small There are more than 30 students in this class or all of the students in this
+      class are freshmen.} \\
+    & \quad(T+F=T) \\
+    \\
+    t\lor p &= 10\ \text{is an odd number or}\ 1<2\quad(F+T=T) \\
+    \\
+    s\lor t &= \text{All of the students in this class are freshmen or}\ 10\ \text{is an odd number.} \\
+    & \quad(F+F=F)
+  \end{align*}
+\end{examples}
+
+Exclusivity is obtained using the exclusive-OR (XOR) operator.
+
+\begin{definition}[Exclusive-OR]
+  Let \(p\) and \(q\) be propositions.  The \emph{exclusive-or} of \(p\) and \(q\), denoted by \(p\lxor q\), is the
+  proposition represented by the statement: ``either \(p\) or \(q\),'' which is true when \(p\) and \(q\) have
+  different truth values and false otherwise.
+
+  \begin{center}
+    \begin{tabular}{|cc|c|}
+      \hline
+      \(p\) & \(q\) & \(p\lxor q\) \\
+      \hline
+      \(F\) & \(F\) & \(F\) \\
+      \hline
+      \(F\) & \(T\) & \(T\) \\
+      \hline
+      \(T\) & \(F\) & \(T\) \\
+      \hline
+      \(T\) & \(T\) & \(F\) \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{definition}
+
+\begin{examples}
+  Assume that \(p\), \(q\), \(r\), \(s\), and \(t\) are defined as above.
+  \begin{align*}
+    p\lxor q &= 1<2\lxor 2<3\quad(T\lxor T=F) \\
+    \\
+    r\lxor s &= \text{\small Either there are more than 30 students in this class or all of the students
+      in this class are freshmen.} \\
+    & \quad(T\lxor F=T) \\
+    \\
+    t\lxor p &= \text{Either}\ 10\ \text{is an odd number or}\ 1<2\quad(F\lxor T=T) \\
+    \\
+    s\lxor t &= \text{Either all of the students in this class are freshmen or}\ 10\ \text{is an odd number.} \\
+    & \quad(F\lxor F=F)
+  \end{align*}
+\end{examples}
+
+\subsection*{Compound Propositions}
+
+The logical operators can be used to construct more complex propositions.  Order of evaluation is left to right
+with precedence: not, and, or, xor.  Use parentheses to override normal precedence or for clarity.
+
+\begin{example}
+  Let \(p\), \(q\), and \(r\) be propositions.  Construct a truth table for:
+  \[s=(p\lor\lnot q)\land(\lnot p\lor r)\land\lnot(q\lor r)\]
+
+  \begin{tabular}{ccc|ccc|c|c|c|c|c}
+    \(p\) & \(q\) & \(r\) & \(\lnot p\) & \(\lnot q\) & \(\lnot r\) & \(p\lor\lnot q\) & \(\lnot p\lor r\) &
+    \(q\lxor r\) & \(\lnot(q\lxor r)\) & s \\
+    \hline
+    F & F & F & T & T & T & T & T & F & T & T \\
+    F & F & T & T & T & F & T & T & T & F & F \\
+    F & T & F & T & F & T & F & T & T & F & F \\
+    F & T & T & T & F & F & F & T & F & T & F \\
+    T & F & F & F & T & T & T & F & F & T & F \\
+    T & F & T & F & T & F & T & T & T & F & F \\
+    T & T & F & F & F & T & T & F & T & F & F \\
+    T & T & T & F & F & F & T & T & F & T & T
+  \end{tabular}
+\end{example}
+
+We can also go backwards, from the final column to the so-called \emph{canonical} form, where each true row
+contributes a conjunctive term containing each variable with false valued variables negated.
+variables.
+
+\begin{example}
+  In the previous example, \(s\) is true in only two cases:
+  \[s=(\lnot p\land\lnot q\land\lnot r)\lor(p\land q\land r)=\bar{p}\bar{q}\bar{r}+pqr\]
+\end{example}
+
+\begin{example}
+  Consider the truth table for \(p\lxor q\):
+  \[p\lxor q=\lnot p\land q\lor p\land\lnot q=\bar{p}q+p\bar{q}\]
+\end{example}
+
+\begin{example}
+  Consider the truth table:
+
+  \begin{tabular}{ccc|c}
+    \(p\) & \(q\) & \(r\) & \(s\) \\
+    \hline
+    F & F & F & F \\
+    F & F & T & T \\
+    F & T & F & F \\
+    F & T & T & F \\
+    T & F & F & T \\
+    T & F & T & T \\
+    T & T & F & F \\
+    T & T & T & T \\
+  \end{tabular}
+  \[s=(\lnot p\land\lnot q\land r)\lor(p\land\lnot q\land\lnot r)\lor(p\land\lnot q\land r)\lor(p\land q\land r)
+  =\bar{p}\bar{q}r+p\bar{q}\bar{r}+p\bar{q}r+pqr\]
+\end{example}
+
+\end{document}

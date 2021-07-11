@@ -1,0 +1,195 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ide}{\trianglelefteq}
+\begin{document}
+\section*{Ideals}
+
+\begin{definition}
+  Let $R$ be a ring and $I$ an additive subgroup of $R$:
+  \begin{itemize}
+  \item To say that $I$ is a \emph{left ideal} in $R$ means:
+    \[\forall\,r\in R,\forall\,i\in I,ri\in I\]
+  \item To say that $I$ is a \emph{right ideal} in $R$ means:
+    \[\forall\,r\in R,\forall\,i\in I,ir\in I\]
+  \item To say that $I$ is a (two-sided) \emph{ideal} in $R$, denoted $I\ide R$, means
+    that $I$ is both a left ideal and a right ideal in $R$.
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  $I=\{0\}$ is called the \emph{zero ideal}.
+\end{definition}    
+
+\begin{theorem}
+  Let $R$ be a ring and $I$ be an ideal in $R$:
+  \[I\le R\]
+\end{theorem}
+
+\begin{theproof}
+  By definition, $I$ is an additive subgroup of $R$ \\
+  Assume $r,s\in I$ \\
+  By definition, $rs\in I$
+
+  Therefore, by the subring test, $I\le R$.
+\end{theproof}
+
+\begin{theorem}[Ideal Test]
+  Let $R$ be a ring and $I$ a non-empty subset of $R$. $I\ide R$ iff
+  $\forall\,x,y\in I$ and $\forall\,z\in R$:
+  \begin{enumerate}
+  \item $x-y\in I$
+  \item $zx\in I$
+  \item $xz\in I$
+  \end{enumerate}
+\end{theorem}
+\newpage
+\begin{theproof}
+  Assume $x,y\in I$
+
+  \begin{description}
+  \item $\implies$ Assume $I\ide R$
+
+    $I$ is an additive subgroup of $R$, so $(-y)\in I$ \\
+    By closure, $x-y\in I$
+
+    Assume $z\in R$ \\
+    $I$ is a left ideal, so $zx\in I$ \\
+    $I$ is a right ideal, so $xz\in I$
+
+    Therefore, the three conditions hold.
+
+  \item $\impliedby$ Assume the three conditions hold
+
+    By condition 1, $I$ is an additive subgroup of $R$
+    
+    $I\subseteq R$ so $x,y\in R$ \\
+    So by condition 2 (or 3), $xy\in I$
+    
+    Thus, by the subring test, $I\le R$
+
+    Moreover, condition 2 implies that $I$ is a left ideal of $R$ and condition 3
+    implies that $I$ is a right ideal of $R$
+
+    $\therefore I\ide R$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $R$ be a ring and $\{I_a\mid a\in A\}$ be a family of ideals in $R$:
+  \[I=\bigcap_{a\in A}I_a\ide R\]
+\end{theorem}
+
+\begin{theproof}
+  $I\le R$ \\
+  Assume $x\in I$ and $z\in R$ \\
+  Assume $a\in A$ \\
+  $x\in I_a$ \\
+  But $I_a\ide R$, so $zx\in I_a$ and $xz\in I_a$ \\
+  $zx\in I$ and $xz\in I$
+
+  Therefore, by the ideal test, $I\ide R$.
+\end{theproof}
+
+Unions of ideals are not generally ideas, except in the following condition:
+\newpage
+\begin{theorem}
+  Let $R$ be a ring with a chain of ideals
+  $I_1\subseteq I_2\subseteq I_2\subseteq\ldots$:
+  \[\bigcup_{k=1}^{\infty}I_k\ide R\]
+\end{theorem}
+
+\begin{theproof}
+  Clearly, $I$ is a non-empty subset of $R$
+
+  Assume $a,b\in I$ \\
+  $\exists\,i,j\in\Z^+,a\in I_i$ and $b\in I_j$ \\
+  AWLOG: $I_i\subseteq I_j$ \\
+  $a\in I_j$ \\
+  $(-b)\in I_j$ \\
+  $a-b\in I_j$ \\
+  $a-b\in I$
+
+  Therefore, by the subgroup test, $I$ is a subgroup of $R$. Furthermore, since
+  $R$ is an additive abelian group, so is $I$.
+
+  $a\in I$ \\
+  Assume $r\in R$ \\
+  $ar\in I_i$ and thus $ar\in I$ \\
+  Likewise, $ra\in I$
+
+  Therefore, $I\ide R$.
+\end{theproof}
+
+\begin{theorem}
+  $\forall\,n\in\Z,n\Z\ide Z$
+\end{theorem}
+
+\begin{theproof}
+  Assume $n\in\Z$
+  
+  \begin{description}
+  \item Case 1: $n=0$
+    
+    $0\Z=\{0\}\ide\Z$
+
+  \item Case 2: $n>0$
+
+    Assume $m\in n\Z$ \\
+    $\exists\,k\in\Z,m=kn$ \\
+    Assume $h\in=Z$ \\
+    $hm=h(kn)=(hk)n\in n\Z$, so $nZ$ is a left ideal in $\Z$ \\
+    $mh=(kn)h=(kh)n\in n\Z$, so $nZ$ is a right ideal in $\Z$
+
+    $\therefore n\Z\ide\Z$
+\newpage
+  \item Case 3: $n<0$
+
+    $(-n)>0$
+
+    Assume $m\in n\Z$ \\
+    $\exists\,k\in\Z,m=kn$ \\
+    $m=kn=(-k)(-n)$ \\
+    $m\in (-n)\Z$
+
+    Assume $m\in(-n)\Z$ \\
+    $\exists\,k\in\Z,m=k(-n)$ \\
+    $m=k(-n)=(-k)n$ \\
+    $m\in n\Z$
+
+    Thus $n\Z=(-n)\Z$
+
+    $\therefore n\Z\ide Z$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  $I\ide\Z\implies\exists\,n\in\Z,I=n\Z$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item Case 1: $I=\{0\}$
+
+    $I=0Z$
+
+  \item Case 2: $\exists i\in I,i\ne0$
+
+    $I$ is an additive group, so $(-i)\in I$ \\
+    Thus $I$ contains a least positive element \\
+    Let the least positive element be $n$ \\
+    Assume $m\in I$ \\
+    By the DA, $m=qn+r$, where $0\le r<n$ \\
+    $r=m-qn$ \\
+    But $I$ is an ideal, so $qn\in I$ \\
+    So by closure, $r\in I$ \\
+    But by the minimality of $n$, $r=0$ \\
+    $m=qn$
+
+    $\therefore I=n\Z$
+
+  \end{description}
+\end{theproof}
+
+\end{document}

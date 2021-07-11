@@ -1,0 +1,98 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Ring Isomorphisms}
+
+\begin{definition}
+  Let $R$ and $R'$ be rings. To say that $\phi:R\to R'$ is a \emph{ring isomorphism}
+  means:
+  \begin{enumerate}
+  \item $\phi$ is a bijection
+  \item $\phi$ is a ring homomorphism
+  \end{enumerate}
+  If so, then $R$ and $R'$ are said to be isomorphic, denoted $R\simeq R'$.
+\end{definition}
+
+\begin{lemma}
+  Let $\phi:R\to R'$ be an isomorphism of rings. $\phi^{-1}:R'\to R$ exists and is also an
+  isomorphism of rings.
+\end{lemma}
+
+\begin{theproof}
+  $\phi$ is bijective, so $\phi^{-1}$ exists and is bijective
+
+  Assume $x,y\in R'$ \\
+  $\exists\,a\in R,\phi(a)=x$ \\
+  $\exists\,b\in R,\phi(b)=y$
+
+  $\phi^{-1}(x)=a$ \\
+  $\phi^{-1}(y)=b$
+
+  $\phi^{-1}(x+y)=\phi^{-1}(\phi(a)+\phi(b))=\phi^{-1}(\phi(a+b))=(\phi^{-1}\phi)(a+b)=
+  a+b=\phi^{-1}(x)+\phi^{-1}(y)$
+
+  $\phi^{-1}(xy)=\phi^{-1}(\phi(a)\phi(b))=\phi^{-1}(\phi(ab))=(\phi^{-1}\phi)(ab)=
+  ab=\phi^{-1}(x)\phi^{-1}(y)$
+\end{theproof}
+
+\begin{lemma}
+  Let $\phi:R\to R'$ and $\mu:R'\to R''$ be isomorphisms of rings.
+  $\mu\phi:R\to R''$ is also an isomorphism of rings.
+\end{lemma}
+
+\begin{theproof}
+  Assume $(\mu\phi)(a)=(\mu\phi)(b)$ \\
+  $\mu(\phi(a))=\mu(\phi(b))$ \\
+  $\mu$ is a bijection, so $\mu^{-1}$ exists \\
+  $\phi(a)=\phi(b)$ \\
+  $\phi$ is a bijection, so $\phi^{-1}$ exists \\
+  $a=b$ \\
+  $\therefore \mu\phi$ is one-to-one.
+
+  Assume $z\in R''$ \\
+  $\exists\,y\in R',\mu(y)=z$ \\
+  $\exists\,x\in R,\phi(x)=y$ \\
+  $(\mu\phi)(x)=\mu(\phi(x))=\mu(y)=z$ \\
+  $\therefore \mu\phi$ is onto, and thus a bijection.
+
+  Assume $a,b\in R$
+
+  $(\mu\phi)(a+b)=\mu(\phi(a+b))=\mu(\phi(a)+\phi(b))=\mu(\phi(a))+\mu(\phi(b))=
+  (\mu\phi)(a)+(\mu\phi)(b)$
+
+  $(\mu\phi)(ab)=\mu(\phi(ab))=\mu(\phi(a)\phi(b))=\mu(\phi(a))\mu(\phi(b))=
+  (\mu\phi)(a)(\mu\phi)(b)$
+
+  $\therefore \mu\phi$ is a homomorphism, and thus an isomorphism.
+\end{theproof}
+
+\begin{theorem}
+  Isomorphism is an equivalence relation.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item Reflexive: Assume $R$ is a ring
+
+    Let $\phi=\iota_R$ \\
+    $\iota_R$ is a ring isomorphism on $R$ \\
+    $\therefore R\simeq R$
+
+  \item Symmetric: Assume $R\simeq R'$
+
+    There exists ring isomorphism $\phi:R\to R'$ \\
+    So there exists ring isomorphism $\phi^{-1}:R'\to R$ (lemma) \\
+    $\therefore R'\simeq R$
+
+  \item Transitive: Assume $R\simeq R'$ and $R'\simeq R''$
+
+    There exists ring isomorphism $\phi:R\to R'$ \\
+    There exists ring isomorphism $\mu:R'\to R''$ \\
+    So there exists ring isomorphism $\mu\phi:R\to R''$ (lemma) \\
+    $\therefore R\simeq R''$
+  \end{description}
+\end{theproof}
+
+\end{document}

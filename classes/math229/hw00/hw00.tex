@@ -1,0 +1,152 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\DeclareMathOperator{\nul}{Null}
+\DeclareMathOperator{\nuly}{nullity}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 229 \\
+Homework \#0
+
+\bigskip
+
+\begin{enumerate}
+\item Let $A$ be an $m\times n$ matrix:
+  \begin{enumerate}
+  \item Prove: $\nul(A^*A)=\nul(A)$
+
+    \begin{description}
+    \item $\implies$ Assume $\vx\in\nul(A^*A)$
+
+      $A^*A\vx=\vz$ \\
+      $\conj{A}^TA\vx=\vz$ \\
+      $\conj{\vx}^T\conj{A}^TA\vx=\conj{\vx}^T\vz=\vz$ \\
+      $\left(\conj{A\vx}\right)^T(A\vx)=\vz$ \\
+      $\|A\vx\|^2=0$ \\
+      $A\vx=\vz$
+      
+      $\therefore\vx\in\nul(A)$
+
+    \item $\impliedby$ Assume $\vx\in\nul(A)$
+
+      $A\vx=\vz$ \\
+      $A^*A\vx=A^*\vz=\vz$
+      
+      $\therefore\vx\in\nul(A^*A)$
+    \end{description}
+
+    $\therefore\nul(A^*A)=\nul(A)$
+
+  \item Prove: $\rank(A^*A)=\rank(A)$
+
+    $A$ is $m\times n$ \\
+    $A^*$ is $n\times m$ \\
+    $A^*A$ is $n\times n$
+    
+    By the dimension theorem:
+    \[\rank(A^*A)+\nuly(A^*A)=n=\rank(A)+\nuly(A)\]
+    But from the part (a): $\nul(A^*A)=\nul(A)$
+
+    $\therefore\rank(A^*A)=\rank(A)$
+
+  \item Prove: $\rank(A^*A)=\rank(AA^*)$
+
+    Note that $(A^*)^*=A$, so from the part (b) we get: \\
+    $\rank(A^*A)=\rank(A)$\hspace{2ex}and \\
+    $\rank(AA^*)=\rank((A^*)^*A^*)=\rank(A^*)$
+
+    Now, consider the null space of $A$: \\
+    $A\vx=0\iff(\conj{A})\conj{\vx}=0$ \\
+    Thus, there is a one-to-one correspondence between the vectors in $\nul(A)$
+    and $\nul(\conj{A})$, and so $\nuly(A)=\nuly(\conj{A})$ \\
+    But $A$ and $\conj{A}$ have the same number of columns, so by the
+    dimension theorem: \\
+    $\rank(A)=\rank(\conj{A})$ \\
+    In class we proved that $\rank(A)=\rank(A^T)$, so: \\
+    $\rank(A^*)=\rank(\conj{A}^T)=\rank(\conj{A})=\rank(A)$
+
+    $\therefore,\rank(A^*A)=\rank(AA^*)$
+    
+  \end{enumerate}
+
+\item Let $A$ and $B$ be square ($n\times n$) matrices:
+  \begin{enumerate}
+  \item Prove: $\tr(AB)=\tr(BA)$
+    \begin{eqnarray*}
+      tr(AB) &=& \sum_{i=1}^n(AB)_{ii} \\
+      &=& \sum_{i=1}^n\sum_{k=1}^na_{ik}b_{ki} \\
+      &=& \sum_{k=1}^n\sum_{i=1}^nb_{ki}a_{ik} \\
+      &=& \sum_{k=1}^n(BA)_{kk} \\
+      &=& \tr(BA)
+    \end{eqnarray*}
+
+  \item Prove: $\det(AB)=\det(BA)$
+    \begin{eqnarray*}
+      \det(AB) &=& \det(A)\det(B) \\
+      &=& \det(B)\det(A) \\
+      &=& \det(BA)
+    \end{eqnarray*}
+
+  \item Is it always true that $\rank(AB)=\rank(BA)$?
+
+    No. Counterexample:
+
+    \newcommand{\ma}{\begin{bmatrix} 1 & -1 \\ 0 & 0 \end{bmatrix}}
+    \newcommand{\mb}{\begin{bmatrix} 1 & 0 \\ 1 & 0 \end{bmatrix}}
+
+    $A=\ma, B=\mb$
+
+    $AB=\ma\mb=\begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$
+
+    So $\rank(AB)=0$
+
+    $BA=\mb\ma=\begin{bmatrix} 1 & -1 \\ 1 & -1 \end{bmatrix}$
+
+    So $\rank(BA)=1$
+
+    $\therefore\rank(AB)\ne\rank(BA)$
+  \end{enumerate}
+
+  \newcommand{\mm}{\begin{bmatrix}
+      A & -\vx \\ \vy^T & 1
+  \end{bmatrix}}
+  \newcommand{\mn}{\begin{bmatrix}
+      I_n & 0_{n\times 1} \\ -\vy^T & 1
+  \end{bmatrix}}
+  \newcommand{\mo}{\begin{bmatrix}
+      A+\vx\vy^T & -\vx \\ 0 & 1
+  \end{bmatrix}}
+
+  \newpage
+  
+\item Let $A$ be an $n\times n$ square matrix and let $\vx$ and $\vy$ be
+  two $n\times 1$ column vectors:
+  \begin{enumerate}
+  \item
+    \[\mm\mn=\mo\]
+
+  \item Prove: $\det\mm=\det(A+\vx\vy^T)$
+
+    $\det\mn=\det(I_n)\det(\begin{bmatrix} 1 \end{bmatrix})=1\cdot1=1$
+
+    $\det\mo=\det(A+\vx\vy^T)\det(\begin{bmatrix} 1 \end{bmatrix})=
+    \det(A+\vx\vy^T)\cdot1=\det(A+\vx\vy^T)$
+
+    \begin{eqnarray*}
+      \det\left(\mm\mn\right) &=& \det\mo \\
+      \left(\det\mm\right)\left(\det\mn\right) &=& \det\mo \\
+      \left(\det\mm\right)(1) &=& \det(A+\vx\vy^T) \\
+      \det\mm &=& \det(A+\vx\vy^T)
+    \end{eqnarray*}
+    
+  \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

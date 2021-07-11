@@ -1,0 +1,207 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\sim_L}
+\renewcommand{\r}{\sim_R}
+\newcommand{\p}{\phi}
+\newcommand{\cycle}[1]{\left<#1\right>}
+\begin{document}
+\section*{Cosets}
+
+\begin{definition}
+  Let $H\le G$. The \emph{left} and \emph{right} relations on $G$ are defined
+  as follows:
+  \[a\l b\iff a^{-1}b\in H\]
+  \[a\r b\iff ba^{-1}\in H\]
+\end{definition}
+
+\begin{theorem}
+  $\l$ and $\r$ are equivalence relations.
+\end{theorem}
+
+\begin{theproof}
+  \begin{minipage}{3in}
+    \begin{description}
+    \item{R}: Assume $a\in G$ \\
+      $a^{-1}\in G$ \\
+      $e\in H$ \\
+      $a^{-1}a=e\in H$ \\
+      $\therefore a\l a$
+    \item{S}: Assume $a\l b$ \\
+      $a^{-1}b\in H$ \\
+      $(a^{-1}b)^{-1}\in H$ \\
+      $b^{-1}a\in H$ \\
+      $\therefore b\l a$
+    \item{T}: Assume $a\l b$ and $b\l c$ \\
+      $a^{-1}b\in H$ and $b^{-1}c\in H$ \\
+      $(a^{-1}b)(b^{-1}c)\in H$ \\
+      $a^{-1}c\in H$ \\
+      $\therefore a\l c$
+    \end{description}
+  \end{minipage}
+  \begin{minipage}{3in}
+    \begin{description}
+    \item{R}: Assume $a\in G$ \\
+      $a^{-1}\in G$ \\
+      $e\in H$ \\
+      $aa^{-1}=e\in H$ \\
+      $\therefore a\r a$
+    \item{S}: Assume $a\r b$ \\
+      $ba^{-1}\in H$ \\
+      $(ba^{-1})^{-1}\in H$ \\
+      $ab^{-1}\in H$ \\
+      $\therefore b\r a$
+    \item{T}: Assume $a\r b$ and $b\r c$ \\
+      $ba^{-1}\in H$ and $cb^{-1}\in H$ \\
+      $(cb^{-1})(ba^{-1})\in H$ \\
+      $ca^{-1}\in H$ \\
+      $\therefore a\r c$
+    \end{description}
+  \end{minipage}
+\end{theproof}
+
+\begin{minipage}{3in}
+  Assume $a\in G$ \\
+  Assume $g\in G,a\l g$ \\
+  $a^{-1}g\in H$ \\
+  $\exists\,h\in H,a^{-1}g=h$ \\
+  $g=ah$
+\end{minipage}
+\begin{minipage}{3in}
+  Assume $a\in G$ \\
+  Assume $g\in G,a\r g$ \\
+  $ga^{-1}\in H$ \\
+  $\exists\,h\in H,ga^{-1}=h$ \\
+  $g=ha$
+\end{minipage}
+
+\begin{definition}
+  Let $H\le G$ and $a\in G$:
+
+  $aH=\{ah\mid h\in H\}$ is called the \emph{left coset} of $H$ containing $a$
+
+  $Ha=\{ha\mid h\in H\}$ is called the \emph{right coset} of $H$ containing $a$
+\end{definition}
+
+Note that if $G$ is abelian then $aH=Ha$.
+
+\begin{theorem}
+  Let $H\le G$ and $a\in G$:
+  \[\abs{aH}=\abs{Ha}=\abs{H}\]
+\end{theorem}
+
+\begin{theproof}
+  Let $\p:H\to aH$ be defined by $\p(h)=ah$
+
+  \begin{minipage}[t]{3in}
+    Assume $\p(h_1)=\p(h_2)$ \\
+    $ah_1=ah_2$ \\
+    $h_1=h_2$ \\
+    $\therefore \p$ is one-to-one.
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    Assume $h'\in aH$ \\
+    Let $h=a^{-1}h'$ \\
+    $a\l h'$, so $h\in H$ \\
+    $\p(h)=ah=a(a^{-1}h')=h'$ \\
+    $\therefore \p$ is onto
+  \end{minipage}
+
+  $\therefore \p$ is a bijection and $\abs{H}=\abs{aH}$
+
+  \bigskip
+
+  Now let $\p:H\to Ha$ be defined by $\p(h)=ha$
+
+  \begin{minipage}[t]{3in}
+    Assume $\p(h_1)=\p(h_2)$ \\
+    $h_1a=h_2a$ \\
+    $h_1=h_2$ \\
+    $\therefore \p$ is one-to-one.
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    Assume $h'\in Ha$ \\
+    Let $h=h'a^{-1}$ \\
+    $a\r h'$, so $h\in H$ \\
+    $\p(h)=ha=(h'a^{-1})a=h'$ \\
+    $\therefore \p$ is onto
+  \end{minipage}
+
+  $\therefore \p$ is a bijection and $\abs{H}=\abs{Ha}$
+\end{theproof}
+
+So if $H\le G$, then $aH$ $(\l)$ and $Ha$ $(\r)$ partition $G$ into equivalence
+classes of order $\abs{H}$:
+
+\begin{theorem}[Lagrange]
+  Let $H$ be the subgroup of a finite group $G$:
+  \[\abs{H}\ \mbox{divides}\ \abs{G}\]
+\end{theorem}
+
+\begin{theproof}
+  Let $\abs{H}=m$ and $\abs{G}=n$ \\
+  Every coset of $H$ has $n$ elements \\
+  The cosets are the equivalence classes of a relation that partition $G$ \\
+  Assume there are $r$ such equivalence classes \\
+  $n=rm$ \\
+  $\therefore m\mid n$
+\end{theproof}
+
+\begin{definition}
+  Let $H\le G$. The \emph{index} of $H$ in $G$, denoted $(G:H)$, is the number
+  of left cosets of $H$ in $G$:
+  \[(G:H)=\frac{\abs{G}}{\abs{H}}\]
+\end{definition}
+
+When determining all of the left (right) cosets of $G$:
+\begin{enumerate}
+\item $(G:H)=\frac{\abs{G}}{\abs{H}}$
+\item $a,b\in G$ are in the same coset if $a\l b$ ($a\r b$)
+\end{enumerate}
+
+\begin{example}
+  $S_3=\{(),(12),(13),(23),(123),(132)\}$
+
+  Let $H=\{(),(23)\}$
+
+  $(S_3:H)=\frac{6}{2}=3$
+
+  $(12)\notin H$ \\
+  $(12)^{-1}(13)=(12)(13)=(132)\notin H$ \\
+  $(12)^{-1}(123)=(12)(123)=(23)\in H$
+
+  $()H=\{(),(23)\}$ \\
+  $(12)H=\{(12),(123)\} \\
+  $(13)H=\{(13),(132)\}
+
+  $()H=(23)H$ \\
+  $(12)H=(123)H$ \\
+  $(13)H=(132)H$
+\end{example}
+
+\begin{theorem}
+  Every group of prime order is cyclic.
+\end{theorem}
+
+\begin{theproof}
+  Let $\abs{G}=p$, where $p$ is prime \\
+  Let $a\in G,a\ne e$ \\
+  $\cycle{a}\le G$ and $\abs{a}\ge 2$ \\
+  By Lagrange, $\abs{a}$ divides $\abs{G}=p$ \\
+  But $p$ is prime \\
+  So $\abs{a}=p$ and thus $\cycle{a}=G$ \\
+  $\therefore G$ is cyclic
+\end{theproof}
+
+\begin{theorem}
+  Let $H,K,G$ be finite groups such that $K\le H\le G$:
+  \[(G:K)=(G:H)(H:K)\]
+\end{theorem}
+
+\begin{theproof}
+  $(G:H)(H:K)=
+  \left(\frac{\abs{G}}{\abs{H}}\right)\left(\frac{\abs{H}}{\abs{K}}\right)=
+  \frac{\abs{G}}{\abs{K}}=(G:K)$
+\end{theproof}
+
+\end{document}

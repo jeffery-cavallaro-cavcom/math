@@ -1,0 +1,119 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\inner}[2]{\left<#1,#2\right>}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Inner Product}
+
+\begin{definition}[Inner Product]
+  Let $V$ be a vector space over a field $F$. To say that a function
+  $\inner{\cdot}{\cdot}:V\times V\to F$ is an \emph{inner product} on $V$ means that it
+  satisfies the following five properties $\forall\,\vx,\vy\in V$ and $\forall\,c\in F$:
+  \begin{enumerate}
+  \item Nonnegativity: $\inner{\vx}{\vx}\ge0$
+  \item Positivity: $\inner{\vx}{\vx}=0\iff\vx=\vo$
+  \item Additivity: $\inner{\vx+\vy}{\vz}=\inner{\vx}{\vz}+\inner{\vy}{\vz}$
+  \item Homogeneity: $\inner{c\vx}{\vy}=c\inner{\vx}{\vy}$
+  \item Hermitian: $\inner{\vx}{\vy}=\conj{\inner{\vy}{\vx}}$
+  \end{enumerate}
+\end{definition}
+
+\begin{properties}[Inner Product]
+  \listbreak
+  \begin{enumerate}
+  \item $\inner{\vx}{c\vy}=\conj{c}\inner{\vx}{\vy}$
+  \item $\inner{\vx}{\vy+\vz}=\inner{\vx}{\vy}+\inner{\vx}{\vz}$
+  \item $\conj{\inner{\vx}{\vx}}=\inner{\vx}{\vx}$
+  \end{enumerate}
+\end{properties}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item $\inner{\vx}{c\vy}=\conj{\inner{c\vy}{\vx}}=\conj{c\inner{\vy}{\vx}}=
+    \conj{c}\conj{\inner{\vy}{\vx}}=\conj{c}\inner{\vx}{\vy}$
+
+  \item $\inner{\vx}{\vy+\vz}=\conj{\inner{\vy+\vz}{\vx}}=
+    \conj{\inner{\vy}{\vx}+\inner{\vz}{\vx}}=
+    \conj{\inner{\vy}{\vx}}+\conj{\inner{\vz}{\vx}}=
+    \inner{\vx}{\vy}+\inner{\vx}{\vz}$
+
+  \item Trivial
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}[Cauchy-Schwarz]
+  Let $\vx,\vy\in\C^n$:
+  \[\abs{\inner{\vx}{\vy}}^2\le\inner{\vx}{\vx}\inner{\vy}{\vy}\]
+\end{theorem}
+
+\begin{theproof}
+  If $\vx=\vy=\vo$ then there is nothing to prove, so AWLOG: $\vy\ne\vo$ \\
+  Let $\vz=\inner{\vy}{\vy}\vx-\inner{\vx}{\vy}\vy$:
+  \begin{eqnarray*}
+    0 &\le& \inner{\vz}{\vz} \\
+    &=& \inner{\inner{\vy}{\vy}\vx-\inner{\vx}{\vy}\vy}
+    {\inner{\vy}{\vy}\vx-\inner{\vx}{\vy}\vy} \\
+    &=& \inner{\vy}{\vy}\conj{\inner{\vy}{\vy}}\inner{\vx}{\vx}-
+    \inner{\vy}{\vy}\conj{\inner{\vx}{\vy}}\inner{\vx}{\vy}-
+    \inner{\vx}{\vy}\conj{\inner{\vy}{\vy}}\inner{\vy}{\vx}+
+    \inner{\vx}{\vy}\conj{\inner{\vx}{\vy}}\inner{\vy}{\vy} \\
+    &=& \inner{\vy}{\vy}\inner{\vy}{\vy}\inner{\vx}{\vx}-
+    \inner{\vy}{\vy}\inner{\vx}{\vy}\conj{\inner{\vx}{\vy}}-
+    \inner{\vx}{\vy}\conj{\inner{\vx}{\vy}}\inner{\vy}{\vy}+
+    \inner{\vx}{\vy}\conj{\inner{\vx}{\vy}}\inner{\vy}{\vy} \\
+    &=& \inner{\vy}{\vy}^2\inner{\vx}{\vx}-\inner{\vy}{\vy}\abs{\inner{\vx}{\vy}}^2 \\
+    &=& \inner{\vy}{\vy}(\inner{\vy}{\vy}\inner{\vx}{\vx}-\abs{\inner{\vx}{\vy}}^2)
+  \end{eqnarray*}
+  But, by assumption, $\vy\ne\vo$, and so:
+  \[\inner{\vx}{\vx}\inner{\vy}{\vy}-\abs{\inner{\vx}{\vy}}^2\ge0\]
+  $\therefore\abs{\inner{\vx}{\vy}}^2\le\inner{\vx}{\vx}\inner{\vy}{\vy}$
+\end{theproof}
+
+\begin{example}
+  The standard inner product:
+  \[\inner{\vx}{\vy}=\vy^{\,*}\vx=\sum_{k=1}^n\conj{y_k}x_k\]
+\end{example}
+
+\begin{definition}[Special Matrices]
+  To say that a matrix $A\in M_n$ is \emph{Hermitian} means $A=A^*$.
+
+  To say that a matrix $A\in M_n$ is \emph{positive-definite} means:
+  \begin{enumerate}
+    \item $A$ is Hermitian
+    \item $\forall\,\vx\ne0,\vx^{\,*}A\vx>0$
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  Any inner product on $C^n$ is of the form:
+  \[\inner{\vx}{\vy}=\vy^{\,*}A\vx\]
+  for some positive-definite matrix $A$.
+\end{theorem}
+
+\begin{example}
+  \newcommand{\MA}{
+    \begin{bmatrix} \pi & 0 & 0 \\ 0 & e & 0 \\ 0 & 0 & \sqrt{2} \end{bmatrix}
+  }
+
+  $A=\MA$
+
+  Note that $A$ is real-diagonal and thus Hermitian.
+
+  Assume $\vx\ne0$:
+  \[\vx^{\,*}A\vx=\begin{bmatrix} \conj{x_1} & \conj{x_2} & \conj{x_3} \end{bmatrix}\MA
+    \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}=
+    \begin{bmatrix} \conj{x_1}\pi & \conj{x_2}e & \conj{x_3}\sqrt{2} \end{bmatrix}=
+    \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}\]
+  \[\vx^{\,*}A\vx=\pi\abs{x_1}^2+e\abs{x_2}^2+\sqrt{2}\abs{x_3}^2\ge0\]
+  Thus $A$ is positive-definite.
+
+  $\inner{\vx}{\vy}=\pi\conj{y_1}x_1+e\conj{y_2}x_2+\sqrt{2}\conj{y_3}x_3$
+\end{example}
+
+\end{document}

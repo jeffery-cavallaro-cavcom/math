@@ -1,0 +1,119 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\cl}[1]{\overline{#1}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\F}{\mathbb{F}}
+\begin{document}
+\section*{Banach-Steinhaus Theorem}
+
+\begin{theorem}[Principle of Uniform Boundedness]
+  Let:
+  \begin{itemize}
+  \item $X$ be a Banach space.
+  \item $Y$ be a normed space.
+  \item $\T\subseteq\B(X,Y)$
+  \item $\forall\vx\in X,\exists\,M_x>0,\forall\,T\in\T,\norm{Tx}\le
+    M_x\norm{\vx}$
+  \end{itemize}
+  $\exists\,M>0,\forall\,T\in\T,\norm{T}\le M$
+\end{theorem}
+
+\begin{theproof}
+  Let $A_n=\{x\in X\mid\forall\,T\in\T,\norm{T\vx}\le n\}$.
+
+  Claim: $\bigcup_{n=1}^{\infty}A_n=X$
+
+  \begin{description}
+  \item $(\subseteq)$: Assume $\vx\in\bigcup_{n=1}^{\infty}A_n$
+
+    Clearly, $\vx\in X$.
+
+  \item $(\supseteq)$: Assume $\vx\in X$
+
+    $\exists\,M_x>0,\forall\,T\in\T,\norm{T\vx}\le M_x\norm{\vx}\le n$ \\
+    Thus $\exists\,n\in\N$ such that $\vx\in A_n$.
+
+    Therefore $\vx\in\bigcup_{n=1}^{\infty}A_n$
+  \end{description}
+
+  $\therefore\bigcup_{n=1}^{\infty}A_n=X$
+
+  Clearly, $A_n\subset A_{n+1}$.
+
+  Let $A_{n,T}=\{\vx\in X\mid\norm{T\vx}\le n\}$.
+
+  Claim: $A_{n,T}$ is closed.
+
+  Assume $(\vx_k)$ is a sequence in $A_{n,T}$ such that $\vx_k\to\vx\in X$. \\
+  But $T$ is bounded, and thus continuous, so
+  $\vx_k\to\vx\implies T\vx_k\to T\vx$. \\
+  $\norm{T\vx_k}=\norm{(T\vx_k-T\vx)+T\vx}\to\norm{T\vx}\le n$
+
+  Therefore, $\vx\in A_{n,T}$ and thus $A_{n,T}$ is closed.
+
+  But $A_n=\bigcap_{T\in\T}A_{n,T}$, an intersection of closed sets.
+
+  Therefore, $A_n$ is closed.
+
+  Now, $X$ is Banach by assumption, and thus is a Baire space. \\
+  So by the Baire Category Theorem, $\exists N\in\N$ such that $A_N$ has a
+  non-empty interior. \\
+  Thus, $\exists\vx_0\in A_N$ and $r>0$ such that
+  $\cl{B}(\vx_0,r)\subset A_N$. \\
+  And so $\forall\vx\in\cl{B}(\vx_0,r),\forall\,T\in\T,\norm{T\vx}\le N$.
+
+  Assume $T\in\T$. \\
+  Assume $\vx\in X$ such that $\norm{\vx}\le r$. \\
+  So $\vx+\vx_0\in\cl{B}(\vx_0,r)$. \\
+  $\norm{T\vx}=\norm{T(\vx+\vx_0-\vx_0)}=\norm{T(\vx+\vx_0)-T(\vx_0)}\le
+  \norm{T(\vx+\vx_0)}+\norm{T(\vx_0)}\le2N$ \\
+
+  Assume $\norm{\vu}=1$. \\
+  $\norm{T\vu}=\norm{T\left(\frac{1}{r}(r\vu)\right)}=
+  \frac{1}{r}\norm{T(r\vu)}\le\frac{2N}{r}$ \\
+  Let $M=\frac{2N}{r}$.
+
+  $\therefore\norm{T}=\sup_{\norm{\vx}=1}\norm{T\vu}\le M$.
+\end{theproof}
+
+\begin{corollary}
+  Let:
+  \begin{itemize}
+  \item $X$ be a Banach space.
+  \item $Y$ be a normed space.
+  \item $(T_n)$ be a sequence in $\B(X,Y)$.
+  \item $\forall\vx\in X,T\vx=\lim_{n\to\infty}T_n\vx$ exists.
+  \end{itemize}
+  $T$ is a linear, bounded map.
+\end{corollary}
+
+\begin{theproof}
+  Assume $\vx,\vy\in X$ and $\a,\b\in\F$:
+  \begin{eqnarray*}
+    T(\a\vx+\b\vy) &=& \lim_{n\to\infty}T_n(\a\vx+\b\vy) \\
+    &=& \lim_{n\to\infty}[\a T_n\vx+\b T_n\vy] \\
+    &=& \a\lim_{n\to\infty}T_n\vx+\b\lim_{n\to\infty}T_n\vy \\
+    &=& \a T\vx+\b T\vy
+  \end{eqnarray*}
+  Therefore, $T$ is linear.
+
+  Since $(T_n\vx)$ converges, it is bounded. \\
+  Thus, $\forall\vx\in X, \exists\,M_x>0,\forall\,n\in\N,\norm{T_n\vx}\le
+  M_x\norm{\vx}$. \\
+  So, all the conditions for uniform boundedness are satisfied. \\
+  Thus, $\exists\,M>0,\forall\,n\in\N,\norm{T_n}\le M$. \\
+  And so $\forall\,\vx\in X$ such that $\norm{\vx}=1$, $\norm{T_n\vx}\le M$.
+
+  Therefore, $\norm{T\vx}<M$ and thus $T$ is bounded.
+\end{theproof}
+
+Note that this does not imply that $T_n\to T$.
+\end{document}

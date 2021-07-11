@@ -1,0 +1,35 @@
+\newcommand{\vertex}[2]{\node [draw,circle,fill,scale=0.5] (#1) at #2 {}}
+
+\newcommand{\gkfour}[1]{
+  \begin{tikzpicture}[scale=#1]
+    \vertex{a}{(0,0)};
+    \vertex{b}{(1,0)};
+    \vertex{c}{(1,1)};
+    \vertex{d}{(0,1)};
+    \draw (a) to (b) to (c) to (d) to (a);
+    \draw (a) to (c);
+    \draw (b) to (d);
+  \end{tikzpicture}
+}
+
+\newcommand{\gpeter}[1]{
+  \begin{tikzpicture}[scale=#1]
+    \vertex{a}{({2*cos(72)},0)};
+    \vertex{b}{({2*cos(72)+2},0)};
+    \vertex{c}{({4*cos(72)+2},{2*sin(72)})};
+    \vertex{d}{({2*cos(72)+1},{4*sin(72)})};
+    \vertex{e}{(0,{2*sin(72)})};
+    \vertex{f}{({2*cos(72)+cos(54)},0.75)};
+    \vertex{g}{({2*cos(72)+2-cos(54)},0.75)};
+    \vertex{h}{({4*cos(72)+2-0.75},{2*sin(72)})};
+    \vertex{i}{({2*cos(72)+1},{4*sin(72)-1})};
+    \vertex{j}{(0.75,{2*sin(72)})};
+    \draw (a) to (b) to (c) to (d) to (e) to (a);
+    \draw (f) to (i) to (g) to (j) to (h) to (f);
+    \draw (a) to (f);
+    \draw (b) to (g);
+    \draw (c) to (h);
+    \draw (d) to (i);
+    \draw (e) to (j);
+  \end{tikzpicture}
+}

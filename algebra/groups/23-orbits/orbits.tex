@@ -1,0 +1,58 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\sigma}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\orb}[2]{\O_{#1,#2}}
+\newcommand{\oorb}[1]{\orb{#1}{\o}}
+\begin{document}
+\section*{Orbits}
+
+\begin{definition}
+  Let $\o$ be a permutation on a set $A$ and let $a\in A$. The \emph{orbit} of
+  $a$ under $\o$ is given by:
+  \[\oorb{a}=\{\o^n(a)\mid n\in\Z\}\]
+\end{definition}
+
+\begin{theorem}
+  Let $\o$ be a permutation on a set $A$ and define the relation $a\sim b$ iff
+  $b\in\oorb{a}$:
+  \[\sim\ \mbox{is an equivalence relation}\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item{R}: Assume $a\in A$ \\
+    $\o^0(a)=a$ \\
+    $\therefore a\sim a$
+  \item{S}: Assume $a\sim b$ \\
+    $\exists\,n\in\Z,\o^n(a)=b$ \\
+    $\o^{-n}(b)=a$ \\
+    $\therefore b\sim a$
+  \item{T}: Assume $a\sim b$ and $b\sim c$ \\
+    $\exists\,n,m\in\Z,\o^n(a)=b$ and $\o^m(b)=c$ \\
+    $\o^m(\o^n(a))=c$ \\
+    $\o^{n+m}(a)=c$ \\
+    $\therefore a\sim c$
+  \end{description}
+  $\therefore ~$ is an equivalence relation.
+\end{theproof}
+
+Thus, the orbits are the equivalence classes of the above equivalence relation.
+
+\begin{corollary}
+  Let $\o$ be a permutation on a set $A$ and $a,b\in A$:
+  \[\left(\exists\,c\in A,c\in\oorb{a}\ \mbox{and}\ c\in\oorb{b}\right)\implies
+  \oorb{a}=\oorb{b}\]
+\end{corollary}
+
+\begin{theproof}
+  Assume $\exists\,c\in A,c\in\oorb{a}\ \mbox{and}\ c\in\oorb{b}$ \\
+  $a\sim c$ and $b\sim c$ \\
+  $c\sim b$ \\
+  $a\sim b$ \\
+  $\therefore \oorb{a}=\oorb{b}$
+\end{theproof}
+
+\end{document}

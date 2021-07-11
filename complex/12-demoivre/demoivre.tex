@@ -1,0 +1,68 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\o}{\theta}
+\begin{document}
+\section*{DeMoivre's Formula}
+\begin{theorem}
+Let $n\in\Z$:
+\[(\cos\o+i\sin\o)^n=\cos(n\o)+i\sin(n\o)\]
+\end{theorem}
+
+\begin{theproof}
+\[(\cos\o+i\sin\o)^n=\left(e^{i\o}\right)^n=e^{i(n\o)}=\cos(n\o)+i\sin(n\o)\]
+\end{theproof}
+
+\begin{theorem}
+Let $n\in\N$ and:
+\[m=\begin{cases}
+    \frac{n-1}{2}, & n\ \mbox{odd} \\
+    \frac{n}{2}, & n\ \mbox{even} \\
+\end{cases}\]
+\[\cos(n\o)=\sum_{k=0}^m\binom{n}{2k}(-1)^k\cos^{n-2k}\o\sin^{2k}\o\]
+\[\sin(n\o)=\sum_{k=0}^m\binom{n}{2k+1}(-1)^k\cos^{n-(2k+1)}\o\sin^{2k+1}\o\]
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{eqnarray*}
+\cos(n\o)+i\sin(n\o) &=& (\cos\o+i\sin\o)^n \\
+    &=& \sum_{k=0}^n\binom{n}{k}\cos^{n-k}\o(i\sin\o)^k \\
+    &=& \sum_{k=0}^n\binom{n}{k}i^k\cos^{n-k}\o\sin^k\o \\
+\end{eqnarray*}
+
+Note that $\cos(n\o)$ is the real terms, occurring at even $k$:
+
+\[\cos(n\o)=\sum_{k=0}^m\binom{n}{2k}(-1)^k\cos^{n-2k}\o\sin^{2k}\o\]
+
+Similarly, $\sin(n\o)$ is the imaginary terms, occurring at odd $k$:
+
+\[\sin(n\o)=\sum_{k=0}^m\binom{n}{2k+1}(-1)^k\cos^{n-(2k+1)}\o\sin^{2k+1}\o\]
+\end{theproof}
+
+\begin{example}
+\begin{eqnarray*}
+\cos(2\o) &=& \sum_{k=0}^1\binom{2}{2k}(-1)^k\cos^{2-2k}\o\sin^{2k}\o \\
+    &=& \binom{2}{0}\cos^2\o-\binom{2}{1}\sin^2\o \\
+    &=& \cos^2\o-\sin^2\o
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\sin(2\o) &=& \sum_{k=0}^1\binom{2}{2k+1}(-1)^k\cos^{2-(2k+1)}\o\sin^{2k+1}\o \\
+    &=& \binom{2}{1}\cos\o\sin\o-0 \\
+    &=& 2\sin\o\cos\o \\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\cos(3\o) &=& \sum_{k=0}^1\binom{3}{2k}(-1)^k\cos^{3-2k}\o\sin^{2k}\o \\
+    &=& \binom{3}{0}\cos^3\o-\binom{3}{2}\cos\o\sin^2\o \\
+    &=& \cos^3\o-3\cos\o\sin^2\o \\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\sin(3\o) &=& \sum_{k=0}^1\binom{3}{2k+1}(-1)^k\cos^{3-(2k+1)}\o\sin^{2k+1}\o \\
+    &=& \binom{3}{1}\cos^2\o\sin\o-\binom{3}{3}\sin^3\o \\
+    &=& 3\cos^2\o\sin\o-\sin^3\o \\
+\end{eqnarray*}
+\end{example}
+\end{document}

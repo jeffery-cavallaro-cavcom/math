@@ -1,0 +1,145 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\gfam}{\{G_i\mid i\in I\}}
+\newcommand{\direct}{\prod_{i\in I}G_i}
+\newcommand{\iweak}{\prod_{i\in I}^wG_i}
+\newcommand{\weak}{{\prod_{i\in I}}^wG_i}
+\renewcommand{\i}{\iota}
+\newcommand{\n}{\triangleleft}
+\begin{document}
+\section*{Weak Direct Product}
+
+\begin{definition}
+  Let $\gfam$ be a family of groups. The \emph{weak direct product} of
+  $\gfam$ is given by:
+  \[\weak=\{g\in\direct\mid g(i)=e_i
+  \ \mbox{except for a finite number of}\ i\in I\}\]
+  If the $G_i$ are additive/abelian then $\iweak$ is called the
+  \emph{direct sum} and is denoted $\sum_{i\in I}G_i$.
+\end{definition}
+
+Note that if $I$ is finite then the weak direct product and the direct product
+are the same.
+
+\begin{theorem}
+  Let $\gfam$ be a family of groups:
+  \[\weak\n\direct\]
+\end{theorem}
+
+\begin{theproof}
+  Clearly, $\iweak\subseteq\direct$
+
+  Assume $g,h\in\iweak$ \\
+  Let $I_g=\{i\in I\mid g(i)\ne e_i\}$ \\
+  Let $I_h=\{j\in I\mid h(j)\ne e_j\}$ \\
+  By definition, $I_g$ and $I_h$ are finite sets \\
+  $\forall\,i\in I,(gh)(i)\ne e_i\implies i\in I_g\cap I_h$ \\
+  But $I_g\cap I_h$ is finite \\
+  So $gh\in\iweak$ \\
+  $\therefore\iweak$ is closed under the operation.
+
+  $\forall\,i\in I, e(i)=e_i$ \\
+  So $e(i)\ne e_i$ for 0 (a finite number) of $i\in I$ \\
+  $\therefore e\in\iweak$.
+
+  Assume $g\in\iweak$ \\
+  $g(i)\ne e_i$ for a finite number of $i\in I$ \\
+  $g^{-1}\in\direct$ \\
+  $g^{-1}(i)\ne e_i$ for a finite number of $i\in I$ \\
+  So $g^{-1}\in\iweak$ \\
+  $\therefore\iweak$ is closed under inverses.
+
+  $\therefore\iweak\le\direct$
+
+  Assume $g\in\iweak$ \\
+  Let $I_g=\{i\in I\mid g(i)\ne e_i\}$ \\
+  By definition, $I_g$ is finite \\
+  Assume $h\in\direct$ \\
+  Assume $i\in I$ \\
+  $(hgh^{-1})(i)=h(i)g(i)h^{-1}(i)=\begin{cases}
+  h_ig_ih_i^{-1}, i\in I_g \\
+  h_ie_ih_i^{-1}=e_i, i\notin I_g \\
+  \end{cases}$ \\
+  So $hgh^{-1}=e_i$ for all but a finite number of $i\in I$ \\
+  $hgh^{-1}\in\iweak$
+  
+  $\therefore\iweak\n\direct$
+\end{theproof}
+
+\begin{definition}
+  Let $\iweak$ be a weak product of groups and $\forall\,k\in I$ define the map
+  $\i_k:G_k\to\iweak$ by:
+  \[\i_k(g_k)=g\]
+  such that $\forall\,i\in I$:
+  \[g(i)=\begin{cases}
+  g_k, & i=k \\
+  e_k, & i\ne k \\
+  \end{cases}\]
+  The $\i_k$ are called the \emph{canonical injections} of the weak direct
+  product.
+\end{definition}
+
+\begin{theorem}
+  Let $\iweak$ be a weak direct product of groups and let $\i_k$ be the
+  canonical injections for the weak direct product. $i_k$ is a one-to-one
+  homomorphism.
+\end{theorem}
+
+\begin{theproof}
+  Assume $k\in I$ \\
+  Assume $g_k,h_k\in G_k$ \\
+  $\i_k(g_kh_k)=\ell$ where $\ell(i)=\begin{cases}
+  g_kh_k, & i=k \\
+  e_k, &i\ne k \\
+  \end{cases}$ \\
+  $\i_k(g_k)=g$ where $g(i)=\begin{cases}
+  g_k, & i=k \\
+  e_k, &i\ne k \\
+  \end{cases}$ \\
+  $\i_k(h_k)=h$ where $h(i)=\begin{cases}
+  h_k, & i=k \\
+  e_k, &i\ne k \\
+  \end{cases}$ \\
+  $\i_k(g_k)\i_k(h_k)=gh$ where $(gh)(i)=\begin{cases}
+  g_kh_k, & i=k \\
+  e_k, &i\ne k \\
+  \end{cases}$ \\
+  $\ell=gh$ \\
+  $\i_k(g_kh_k)=\i_k(g_k)\i_k(h_k)$ \\
+  $\therefore \i_k$ is a homomorphism.
+
+  Assume $\i_k(g_k)=\i_k(h_k)$ \\
+  $g=h$ \\
+  $g(k)=h(k)$ \\
+  $g_k=h_k$ \\
+  $\therefore \i_k$ is a one-to-one.
+\end{theproof}
+
+\begin{theorem}
+  Let $\direct$ be a direct product of groups:
+  \[\forall\,k\in I,\i_k[G_k]\n\direct\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $k\in I$
+  
+  $G_k$ is a group \\
+  $\i_k$ is a homomorphism \\
+  So $\i_k[G_k]\le\iweak$ \\
+  But $\iweak\le\direct$ \\
+  $\therefore\i_k[G_k]\le\direct$
+
+  Assume $g\in\i_k[G_k]$ \\
+  Assume $h\in\direct$ \\
+  Assume $i\in I$ \\
+  $(hgh^{-1})(i)=h(i)g(i)h^{-1}(i)=\begin{cases}
+  h_ig_ih_i^{-1}, i=k \\
+  h_ie_ih_i^{-1}=e_i, i\ne k \\
+  \end{cases}$ \\
+  $hgh^{-1}\in\i_k[G_k]$
+  
+  $\therefore\i_k[G_k]\n\direct$
+\end{theproof}
+
+\end{document}

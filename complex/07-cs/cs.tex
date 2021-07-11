@@ -1,0 +1,47 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\c}[1]{\overline{#1}}
+\begin{document}
+\section*{Cauchy-Schwarz Inequality}
+
+\begin{theorem}
+  $\forall\,a,b\in\C$:
+  \[\abs{\sum{a_kb_k}}^2\le
+  \left(\sum{\abs{a_k}^2}\right)\left(\sum{\abs{b_k}^2}\right)\]
+\end{theorem}
+
+\begin{theproof}
+  If $\forall\,a_k=0$ or $\forall\,b_k=0$ then trivial, so \\
+  AWLOG: $\exists\,a_k\ne0$ and $\exists\,b_k\ne0$ \\
+  Assume $c\in\C$
+  \begin{eqnarray*}
+    \sum{\abs{a_k-c\c{b_k}}^2} &=& \sum{(a_k-c\c{b_k})(\c{a_k-c\c{b_k}})} \\
+    &=& \sum{(a_k-c\c{b_k})(\c{a_k}-\c{c}b_k)} \\
+    &=& \sum{\left(a_k\c{a_k}+c\c{b_k}\c{c}b_k-a_k\c{c}b_k-c\c{b_k}\c{a_k}
+      \right)} \\
+    &=& \sum{\left[\abs{a_k}^2+\abs{c}^2\abs{b_k}^2-
+        (a_kb_k\c{c}+\c{a_kb_c\c{c}})\right]} \\
+    &=& \sum{\left[\abs{a_k}^2+\abs{c}^2\abs{b_k}^2-2Re(a_kb_k\c{c})\right]} \\
+    &=& \sum{\abs{a_k}^2}+\abs{c}^2\sum{\abs{b_k}^2}-
+    2Re\left(\c{c}\sum{a_kb_k}\right) \\
+    &\ge& 0 \\
+  \end{eqnarray*}
+  Let $c=\frac{\sum{a_kb_k}}{\sum{\abs{b_k}^2}}$
+  \[\sum{\abs{a_k}^2}+\abs{c}^2\sum{\abs{b_k}^2}-    
+  2Re\left(\c{c}\sum{a_kb_k}\right)\ge0\]
+  \[\sum{\abs{a_k}^2}+
+  \abs{\frac{\sum{a_kb_k}}{\sum{\abs{b_k}^2}}}^2\sum{\abs{b_k}^2}-    
+  2Re\left(\c{\frac{\sum{a_kb_k}}{\sum{\abs{b_k}^2}}}\sum{a_kb_k}\right)\ge0\]
+  \[\sum{\abs{a_k}^2}+\frac{\abs{\sum{a_kb_k}}^2}{\sum{\abs{b_k}^2}}-
+  2Re\left(\frac{\abs{\sum{a_kb_k}}^2}{\sum{\abs{b_k}^2}}\right)\ge0\]
+  \[\sum{\abs{a_k}^2}+\frac{\abs{\sum{a_kb_k}}^2}{\sum{\abs{b_k}^2}}-
+  2\frac{\abs{\sum{a_kb_k}}^2}{\sum{\abs{b_k}^2}}\ge0\]
+  \[\sum{\abs{a_k}^2}-\frac{\abs{\sum{a_kb_k}}^2}{\sum{\abs{b_k}^2}}\ge0\]
+  \[\left(\sum{\abs{a_k}^2}\right)\left(\sum{\abs{b_k}^2}\right)-
+  \abs{\sum{a_kb_k}}^2\ge0\]
+  \[\abs{\sum{a_kb_k}}^2\le
+  \left(\sum{\abs{a_k}^2}\right)\left(\sum{\abs{b_k}^2}\right)\]
+\end{theproof}
+
+\end{document}

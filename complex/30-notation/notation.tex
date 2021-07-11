@@ -1,0 +1,26 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Notation}
+
+Let $f(z)=f(x+iy)=u(x,y)+iv(x,y)$:
+\begin{itemize}
+\item $f(\conj{z})=f(x-iy)=u(x,-y)+iv(x,-y)$
+\item $\Conj{f(z)}=u(x,y)-iv(x,y)=\conj{f}(\conj{z})$
+\item $\conj{f}(z)=u(x,-y)-iv(x,-y)=\Conj{f(\conj{z})}$
+\end{itemize}
+
+\begin{example}
+  $f(z)=iz^3$
+
+  $f(\conj{z})=i\conj{z}^3$
+
+  $\Conj{f(z)}=\Conj{iz^3}=\conj{i}\,\Conj{z^3}=-i\conj{z}^3$
+
+  $\conj{f}(z)=\Conj{f(\conj{z})}=\Conj{i\conj{z}^3}=-iz^3$
+\end{example}
+
+\end{document}

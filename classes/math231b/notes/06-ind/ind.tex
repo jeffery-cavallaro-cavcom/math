@@ -1,0 +1,116 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+\renewcommand{\O}{\Omega}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vo}{\vec{0}}
+\begin{document}
+\section*{Linear Independence}
+
+\begin{definition}[Linear Combination]
+  Let $E$ be a vector space over a field $\F$ and let
+  $X=\{\vx_1,\vx_2,\ldots,\vx_n\}$ be a finite, nonempty subset of $E$. A
+  \emph{linear combination} of $X$ is given by:
+  \[\vx=\sum_{k=1}^n\l_k\vx_k\]
+  where $\l_k\in\F$ and $\vx\in E$ (by closure).
+\end{definition}
+
+\begin{definition}[Trivial]
+  Let $E$ be a vector space over a field $\F$ an let
+  $X=\{\vx_1,\vx_2,\ldots,\vx_n\}$ be a finite, nonempty subset of $E$. The
+  linear combination $\sum_{k=1}^n0\vx_k=\vo$ is called the \emph{trivial}
+  linear combination of $X$.
+
+  Otherwise, a linear combination is called \emph{non-trivial}.
+\end{definition}
+
+\begin{definition}[Linearly Independent]
+  Let $E$ be a vector space over a field $\F$ and let
+  $X=\{\vx_1,\vx_2,\ldots,\vx_n\}$ be a finite, non-empty subset of $E$. To say
+  that $X$ is a linearly independent set means:
+  \[\sum_{k=1}^n\l_k\vx_k=\vo\implies\forall\,\l_k=0\]
+  Otherwise, $X$ is said to be \emph{linearly dependent}.
+
+  Thus, $X$ is linearly independent means only the trivial linear combination
+  results in the zero vector. If a non-trivial linear combination that equals
+  the zero vector exists then $X$ is a linearly dependent set.
+\end{definition}
+
+This definition can be extended to allow for infinite subsets:
+
+\begin{definition}[Linearly Independent (general)]
+  Let $E$ be a vector space over a field $\F$ and let $X$ be a non-empty subset
+  of $E$. To say that $X$ is a linearly independent set means that any finite
+  subset of $X$ is linearly independent.
+
+  Otherwise, $X$ is said to be linearly dependent.
+\end{definition}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $E=\ell^p$ and $e_n=(\delta_{kn})$
+
+    $\sum_{k=1}^{\infty}(\delta_{kn})^p=1<\infty$ and so $e_n\in\ell^p$.
+
+  \item $E=C(\O)$ and $f_n(t)=t^n$
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let $E$ be a vector space over a field $\F$ and let $X$ be a linearly
+  independent subset of $E$. $\vo\notin X$.
+\end{theorem}
+
+\begin{theproof}
+  ABC: $\vo\in X$.
+
+  Assume $\{\vo,\vx_2,\ldots,\vx_n\}\subset X$. \\
+  Assume $\a_1\vo+\sum_{k=2}^n\a_k\vx_k=\vo$. \\
+  Let $\a_1=1$ and the remaining $\a_k=0$. \\
+  Assume $1\vo+\sum_{k=2}^n0\vx_k=\vo$. \\
+  So a non-trivial solution exists and thus $X$ is a linearly dependent set. \\
+  CONTRADICTION!
+
+  $\therefore\vo\notin X$.
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a vector space over a field $\F$ and let
+  $X=\{\vx_1,\ldots,\vx_n\}$ be a non-empty subset of $E$. Define a new set
+  $X'=\{\l_1\vx_1,\ldots,\l_n\vx_n\}$ for some $\l_k\in\F$ and $\l_k\ne0$:
+
+  \qquad$X$ is linearly independent iff $X'$ is linearly independent.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $X$ is a linearly independent set.
+
+    $\sum_{k=0}^n\a_k\vx_k=\vo\implies\a_k=0$ \\
+    Assume $\sum_{k=0}^n\b(\l_k\vx_k)=\vo$. \\
+    $\sum_{k=0}^n(\b\l_k)\vx_k=\vo$ \\
+    But $X$ is linearly independent, so $\b_k\l_k=0$. \\
+    By assumption, $\l_k\ne0$, and thus $\b_k=0$.
+
+    Therefore $X'$ is a linearly independent set.
+
+  \item $\impliedby$ Assume $X'$ is a linearly independent set.
+
+    $\sum_{k=0}^n\a_k(\l_k\vx_k)=\vo\implies\a_k=0$ \\
+    Assume $\sum_{k=0}^n\b_k\vx_k=\vo$. \\
+    Since $\l_k\ne0$ (by assumption), $\b_k=\frac{\b_k}{\l_k}\l_k$. \\
+    $\sum_{k=0}^n\left(\frac{\b_k}{\l_k}\l_k\right)\vx_k=\vo$ \\
+    $\sum_{k=0}^n\frac{\b_k}{\l_k}(\l_k\vx_k)=\vo$ \\
+    But $X'$ is linearly independent, so $\frac{\b_k}{\l_k}=0$. \\
+
+    Therefore $\b_k=0$ and thus $X$ is a linearly independent set.
+  \end{description}
+\end{theproof}
+
+\end{document}

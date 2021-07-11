@@ -1,0 +1,83 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\n}{\triangleleft}
+\newcommand{\nfam}{\{N_i\mid i\in I\}}
+\newcommand{\cycle}[1]{\left<#1\right>}
+\newcommand{\nweak}{{\prod_{i\in I}}^wN_i}
+\newcommand{\niweak}{\prod_{i\in I}^wN_i}
+\newcommand{\p}{\phi}
+\newcommand{\xprod}[1]{\prod_{i\in I_{#1}}#1(i)}
+\renewcommand{\i}{\iota}
+\begin{document}
+\section*{Internal Weak Direct Product}
+
+\begin{definition}
+  Let $\nfam$ be a family of normal subgroups of a group $G$ such that:
+  \begin{enumerate}
+  \item $G=\cycle{\bigcup_{i\in I}N_i}$
+  \item $\forall\,k\in I,N_k\cap\bigcup_{i\ne k}N_i=\{e\}$
+  \end{enumerate}
+  $G$ is said to be the \emph{internal weak direct product} of $\nfam$.
+
+  If $G$ is additive/abelian then $G$ is said to be the
+  \emph{internal direct sum} of $\nfam$.
+\end{definition}
+
+\begin{theorem}
+  Let $G$ be an internal weak direct product of $\nfam$:
+  \[G\simeq\nweak\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a\in\niweak$ \\
+  $a(i)=e$ except for a finite number of $i$ \\
+  Let $I_a=\{i\in I\mid a(i)\ne e\}$ \\
+  $I_a$ is a finite set \\
+  $\forall\,i\in I,N_i\n G$ \\
+  Assume $i,j\in I,i\ne j$ \\
+  Assume $n_i\in N_i$ and $n_j\in N_j$ \\
+  $n_in_j=n_jn_i$ \\
+  So, $\xprod{a}\in G$ is well-defined
+
+  Let $\p:\niweak\to G$ be defined by $\p(a)=\xprod{a}$ \\
+  Assume $a,b\in\niweak$ \\
+  $\p(ab)=\prod_{i\in I_a\cap I_b}(ab)(i)=\prod_{i\in I_a\cap I_b}a(i)b(i)=
+  \xprod{a}\xprod{b}=\p(a)\p(b)$ \\
+  $\therefore\p$ is a homomorphism.
+
+  Assume $a\in\niweak,\p(a)=e$ \\
+  $\xprod{a}=e$ \\
+  Assume $k\in I_a$ \\
+  $a(k)\prod_{i\ne k}a(i)=e$ \\
+  $a(k)^{-1}=\prod_{i\ne k}a(i)$ \\
+  $a(k)^{-1}\in N_k$ \\
+  $\prod_{i\ne k}a(i)\in\cycle{\bigcup_{i\ne k}N_i}$ \\
+  But $N_k\cap\cycle{\bigcup_{i\ne k}N_i}=\{e\}$ \\
+  So $a(k)^{-1}=e=a(k)$ and thus the kernel of $\p$ is trivial \\
+  $\therefore\p$ is one-to-one.
+
+  Assume $g\in G$ \\
+  Since $G=\cycle{\bigcup_{i\in I}N_i}$ and the $N_i$ commute, \\
+  $g=\prod_{i\in I_a}a_i$ where $a_i\in N_i$ for some finite set $I_a$ \\
+  $\i_i(a_i)\in\niweak$ \\
+  But $\niweak$ is a group, so by closure:
+  $\prod_{i\in I_a}{\i_i(a_i)}\in\niweak$ \\
+  $\p\left(\prod_{i\in I_a}{\i_i(a_i)}\right)=\prod_{i\in I_a}\p\i_i(a_i)=
+  \prod_{i\in I_a}a_i=g$ \\
+  $\therefore\p$ is onto.
+
+  $\therefore\p$ is an isomorphism.
+\end{theproof}
+
+\begin{corollary}
+  Let $G$ be a group with normal subgroups $N_1,N_2\ldots,N_r$ such that:
+  \begin{enumerate}
+  \item $G=N_1N_2\cdots N_r$
+  \item $\forall\,1\le k\le r,N_k\cap N_1\cdots N_{k-1}N_{k+1}\cdots N_r=
+    \{e\}$
+  \end{enumerate}
+  $G\simeq N_1\times N_2\times\cdots\times N_r$
+\end{corollary}
+
+\end{document}

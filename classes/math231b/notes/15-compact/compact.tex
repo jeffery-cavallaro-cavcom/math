@@ -1,0 +1,196 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\mc}{\mathcal{C}}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\e}{\epsilon}
+\DeclareMathOperator{\spn}{Span}
+\begin{document}
+\section*{Compact Sets}
+
+\begin{definition}[Compact]
+  Let $E$ be a normed space and let $K\subseteq E$. To say that $K$ is
+  \emph{compact} means every sequence $(\vx_n)$ in $K$ has a convergent
+  subsequence $\vx_{n_k}\to\vx$ such that $\vx\in K$.
+\end{definition}
+
+\begin{examples}
+  Let $E=\R^N$ or $\C^N$:
+  \begin{enumerate}
+  \item Closed balls: $\cl{B}(x,r)=\{y\in E\mid\norm{\vx-\vy}\le r\}$
+  \item Closed cubes: $[a_1,b_1]\times[a_2,b_2]\times\cdots\times[a_n,b_n]$
+  \end{enumerate}
+\end{examples}
+
+\begin{definition}[Bounded]
+  Let $E$ be a normed space and let $S\subseteq E$. To say that $S$ is
+  \emph{bounded} means $\exists\,r>0$ such that $S\subseteq B(\vo,r)$.
+\end{definition}
+
+\begin{theorem}
+  Let $E$ be a normed space and let $K\subseteq E$:
+
+  \qquad$K$ compact $\implies K$ is closed and bounded.
+\end{theorem}
+
+\begin{theproof}
+  Assume $K$ is compact.
+  
+  Assume $(\vx_n)$ is a sequence in $K$ such that $\vx_n\to\vx\in E$. \\
+  WTS: $\vx\in K$. \\
+  But $K$ is compact, so $(\vx_n)$ contains a subsequence $(\vx_{n_k})$ such
+  that $\vx_{n_k}\to\vy\in K$. \\
+  But convergent subsequences of a convergent sequence must converge to the
+  same value. \\
+  And so $\vx=\vy\in K$.
+
+  Therefore, $K$ is closed.
+
+  Now, ABC: $K$ is not bounded. \\
+  Thus, $\forall\,r>0,K\not\subseteq B(\vo,r)$. \\
+  And so, $\forall\,r>0,\exists\,\vx\in K,\norm{\vx}>r$. \\
+  Construct the sequence $(\vx_n)$ in $K$ such that $\norm{\vx_n}>n$. \\
+  For every subsequence $(\vx_{n_k})$, it is the case that
+  $\norm{\vx_{n_k}}>n_k\to\infty$. \\
+  Thus, $(\vx_n)$ does not have a convergent subsequence in $K$. \\
+  CONTRADICTION! (of the compactness of $K$)
+
+  Therefore, $K$ is bounded.
+\end{theproof}
+
+\newpage
+
+Note that by Heine-Borel, the converse is true as well for finite-dimensional
+spaces; however, not necessarity for infinite-dimensional spaces.
+
+\begin{example}
+  $E=\mc[0,1]$ equipped with the sup norm.
+  
+  $K=\cl{B}(0,1)=\{f\in\mc(0,1)\mid\norm{f}\le1\}\subset E$
+  
+  $f_n(t)=t^n\in\mc[0,1]$ since
+  $\norm{f_n}=\max_{t\in[0,1]}\abs{f_n(t)}=1\le K$.
+
+  \begin{minipage}{3in}
+    \begin{tikzpicture}
+      \draw (0,0) -- (5,0);
+      \draw (0,0) -- (0,5);
+      \node [below left] at (0,0) {$0$};
+      \node [below] at (4,0) {$1$};
+      \node [left] at (0,4) {$1$};
+      \node [draw,circle,scale=0.5] (a) at (4,0) {};
+      \node [draw,circle,fill,scale=0.5] (b) at (4,4) {};
+      \draw [dashed] (a) to (b);
+      \draw [dashed] (0,4) to (b);
+      \draw [line width=1mm] (0,0) to (a);
+      \draw [smooth,domain=0:4] plot ({\x},{4*(((\x)/4)^1)});
+      \draw [smooth,domain=0:4] plot ({\x},{4*(((\x)/4)^2)});
+      \draw [smooth,domain=0:4] plot ({\x},{4*(((\x)/4)^3)});
+      \draw [smooth,domain=0:4] plot ({\x},{4*(((\x)/4)^4)});
+      \draw [smooth,domain=0:4] plot ({\x},{4*(((\x)/4)^5)});
+      \draw [smooth,domain=0:4] plot ({\x},{4*(((\x)/4)^6)});
+      \draw [smooth,domain=0:4] plot ({\x},{4*(((\x)/4)^7)});
+      \draw [smooth,domain=0:4] plot ({\x},{4*(((\x)/4)^8)});
+      \draw [smooth,domain=0:4] plot ({\x},{4*(((\x)/4)^9)});
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{3in}
+    $f_n\to f=\begin{cases}
+    0, & 0\le t<1 \\
+    1, & t=1
+    \end{cases}$
+  \end{minipage}
+
+  But $f$ is discontinuous and thus $f\notin\mc[0,1]$.
+
+  Therefore, there exists a sequence in K with a non-converging subsequence,
+  and thus $K$ is not compact.
+\end{example}
+
+\begin{lemma}[Riesz]
+  Let $E$ be a normed space and let $X$ be a proper, closed subspace of $E$:
+  \[\forall\,\e\in(0,1),\exists\,\vx_{\e}\in E,\norm{\vx_{\e}}=1\ \mbox{and}\
+  \forall\,\vx\in X,\norm{\vx_{\e}-\vx}\ge\e\]
+\end{lemma}
+
+\begin{tikzpicture}
+  \draw (0,0) -- (6,0) -- (7,2) -- (1,2) -- cycle;
+  \node [draw,circle,fill,scale=0.5] (z) at (3.5,1) {};
+  \node [below left] at (z) {$\vo$};
+  \node at (0.75,0.5) {$X$};
+  \draw (z) circle [radius=2];
+  \draw [dashed] (z) ellipse (2 and 1);
+  \node [draw,circle,fill,scale=0.5] (xe) at (4.5,{1+sqrt(3)}) {};
+  \node [above right] at (xe) {$\vx_{\e}$};
+  \draw [dashed] (z) to (xe);
+  \draw [dashed] (xe) to node [right,pos=0.25] {$\e$} (4.5,1);
+\end{tikzpicture}
+
+\begin{theproof}
+  Since $X$ is a proper subset of $E$, $E\setminus X\ne\emptyset$. \\
+  So, $\exists\,\vy\in E\setminus X$. \\
+  Let $d=d(\vx,\vy)=\inf_{\vx\in X}\norm{\vy-\vx}$. \\
+  Since $X$ is closed and $\vy\notin X$, $d(\vx,\vy)>0$. \\
+  Assume $\e\in(0,1)$, as so $d<\frac{d}{\e}$. \\
+  $\exists\,\vx_0\in X$ such that $d\le\norm{\vy-\vx_0}\le\frac{d}{\e}$. \\
+  Let $\vx_{\e}=\frac{\vy-\vx_0}{\norm{\vy-\vx_0}}$. \\
+  Assume $\vx\in X$:
+  \begin{eqnarray*}
+    \norm{\vx_{\e}-\vx} &=& \norm{\frac{\vy-\vx_0}{\norm{\vy-\vx_0}}-\vx} \\
+    &=& \frac{1}{\norm{\vy-\vx_0}}\norm{\vy-\vx_0-\norm{\vy-\vx_0}\vx} \\
+    &=& \frac{1}{\norm{\vy-\vx_0}}
+    \norm{\vy-\left(\vx_0+\norm{\vy-\vx_0}\right)\vx} \\
+  \end{eqnarray*}
+  But, by closure, $\left(\vx_0+\norm{\vy-\vx_0}\right)\vx=\vx_1\in X$, and so:
+  \[\norm{\vx_{\e}-\vx}=\frac{1}{\norm{\vy-\vx_0}}\norm{\vy-\vx_1}\ge
+  \frac{\e}{d}d=\e\]
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a normed space. $E$ is finite-dimensional iff $\cl{B}(0,1)$ is
+  compact.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $E$ is finite-dimensional.
+
+    Since $E$ is finite-dimensional, all norms are equivalent, so AWLOG the
+    Euclidean norm. \\
+    Thus $\cl{B}(0,1)$ is closed and bounded.
+
+    Therefore, by Heine-Borel, $\cl{B}(0,1)$ is compact.
+
+  \item $\impliedby$ Assume $E$ is infinite-dimensional.
+
+    Construct $(x_n)$ in $E$ by induction using Riesz's Lemma. \\
+    Start by selecting any $\vx_1\in E$ such that $\norm{\vx_1}=1$. \\
+    Let $X_1=\spn\{\vx_1\}$. \\
+    By Riesz's Lemma, $\exists\,\vx_2\in E\setminus X_1$ such that
+    $\norm{\vx_2}=1$ and $\norm{\vx_2-\vx_1}\ge\frac{1}{2}$. \\
+    Assume $\vx_1,\ldots,\vx_n$ have been selected in this fashion and let
+    $X_n=\spn\{\vx_1,\ldots,\vx_n\}$. \\
+    $\exists\,\vx_{n+1}\in E\setminus X_n$ such that $\norm{\vx_{n+1}}=1$ and
+    $\forall\,k\le n,\norm{\vx_{n+1}-v_k}\ge\frac{1}{2}$. \\
+    Thus, $(x_n)$ is a sequence in $\cl{B}[0,1]$.
+
+    ABC: $\cl{B}[0,1]$ is compact.
+
+    Thus, $(\vx_n)$ contains a convergent subsequence $(\vx_{n_k})$ such that
+    $\vx_{n_k}\to\vx\in\cl{B}[0,1]$. \\
+    $\frac{1}{2}\le\norm{\vx_{n_{k+1}}-\vx_{n_k}}=
+    \norm{\vx_{n_{k+1}}-\vx+\vx-\vx_{n_k}}\le
+    \norm{\vx_{n_{k+1}}-\vx}+\norm{\vx_{n_k}-\vx}\to0+0=0$
+
+    CONTRADICTION!
+
+    Therefore, $\cl{B}[0,1]$ is not compact.
+  \end{description}
+\end{theproof}
+
+\end{document}

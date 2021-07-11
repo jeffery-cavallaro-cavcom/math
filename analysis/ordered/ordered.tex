@@ -1,0 +1,48 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{mathtools}
+\pagestyle{empty}
+\begin{document}
+\section*{Ordered Fields}
+
+\begin{definition}
+An \emph{ordered field} $F$ is a field that defines an ordering on its elements
+by the \emph{``less than or equal to''} $(\le)$ test such that the following
+five axioms are satisfied:
+\begin{description}
+\item{O1: } $\forall a,b\in F, a\le b$ or $b\le a$.
+\item{O2: } $\forall a,b\in F, a\le b$ and $b\le a\implies a=b$
+\item{O3: } $\forall a,b,c\in F, a\le b$ and $b\le c\implies a\le c$
+\item{O4: } $\forall a,b,c\in F, a\le b\implies a+c\le b+c$
+\item{O5: } $\forall a,b,c\in F, a\le b$ and $0\le c\implies ac\le bc$
+\end{description}
+\end{definition}
+
+\begin{example}
+\listbreak
+\begin{itemize}
+\item The set of rational numbers $\mathbb{Q}$
+\item The set of real numbers $\mathbb{R}$
+\end{itemize}
+\end{example}
+
+\begin{notation}
+\listbreak
+\begin{eqnarray*}
+a\ge b &\coloneqq& b\le a \\
+a<b &\coloneqq& a\le b\ \mbox{and}\ a\ne b \\
+a>b &\coloneqq& b< a \\
+\end{eqnarray*}
+\end{notation}
+
+\begin{properties}
+\listbreak
+\begin{enumerate}
+\item{$\forall a,b\in F, a\le b$ and $b\le a\iff a=b$}
+\item{$\forall a,b,c\in F, a\le b\iff a+c\le b+c$}
+\item{$\forall a,b,c\in F, ac\le bc$ and $0\le c\implies a\le b$}
+\item{$\forall a,b\in F, a\le b\iff -b\le -a$}
+\end{enumerate}
+\end{properties}
+
+\end{document}

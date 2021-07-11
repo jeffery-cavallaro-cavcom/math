@@ -1,0 +1,144 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\newcommand{\w}{\omega}
+\renewcommand{\a}{\alpha}
+\DeclareMathOperator{\rnk}{rank}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 229 \\
+Homework \#3
+
+\bigskip
+
+\subsection*{3.1.6}
+
+$A=\begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}$
+
+$\det(A-\l I)=\det\begin{bmatrix} 1-\l & 1 \\ 1 & 1-\l \end{bmatrix}=
+(1-\l)^2-1=\l^2-2\l+1-1=\l^2-2\l=\l(\l-2)$
+
+$\o(A)=\{0,2\}$
+
+Start with $\l=0$:
+
+$r_0(0)=\rnk(A^0)\rnk(I_2)=2$ \\
+$r_1(0)=\rnk(A)=1$ \\
+$r_2(0)=n-a(0)=2-1=1$
+$r_3(0)=r_2(0)=1$
+
+$b_1(0)=r_0-2r_1+r_2=2-2(1)+1=1$ \\
+So $b_2(0)=0$ \\
+
+Also, this means:
+
+$b_1(2)=1$ \\
+$b_2(2)=0$
+
+And therefore:
+
+$J_A=\begin{bmatrix} 0 & 0 \\ 0 & 2 \end{bmatrix}$
+
+\bigskip
+
+$B=\begin{bmatrix} 3 & 1 & 2 \\ 0 & 3 & 0 \\ 0 & 0 & 3 \end{bmatrix}$
+
+$\o(B)=\{3\}$
+
+$B-3I=\begin{bmatrix} 0 & 1 & 2 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}$
+
+$r_0(3)=\rnk(B-3I)^0=\rnk(I_3)=3$ \\
+$r_1(3)=\rnk(B-3I)^1=1$ \\
+$r_2(3)=\rnk(B-3I)^2=0$ \\
+$r_3(3)=n-a(3)=3-3=0$ \\
+$r_4(3)=r_3(3)=0$
+
+$b_1(3)=r_0-2r_1+r_2=3-2(1)+0=1$ \\
+So $b_2(3)=1$ and $b_3(3)=0$
+
+$J_b=\begin{bmatrix} 3 & 1 & 0 \\ 0 & 3 & 0 & \\ 0 & 0 & 3 \end{bmatrix}$
+
+\subsection*{3.2.7}
+
+What are the possible Jordan forms of a matrix $A\in M_n$ such that $A^3=I$.
+
+Since $A^3-I=0$, $t^3-1$ is an annihilating polynomial, and thus $q_A(t)$ must divide
+it. Since:
+\[t^3-1=(t-1)(t-\w)(t-\w^2)\]
+Thus $\o(A)\subseteq\{1,\w,\w^2\}$ and the actual $q_A(t)$ must have some combination of
+these linear factors, all with multiplicity of 1. Thus, the maximum Weyr index for any
+eigenvalue is 1 and $J_A$ is diagonal with any combination of $1$, $\w$, and $\w^2$ as
+diagonal values.
+
+\subsection*{3.3.3}
+
+Show that every protection (idempotent) matrix is diagonalizable. What is the minimum
+polynomial of $A$? What can you say if $A$ is tripotent ($A^3=A$). What if $A^k=A$?
+
+If $A^2=A$ then $t(t-1)$ is an annihilating polynomial for $A$ and thus $q_A(t)$ must be
+some combination of these distinct linear factors with multiplicity 1. Thus, the
+possibilities for $q_A(t)$ are $t$, $t-1$ and $t(t-1)$.
+
+If $A^3=A$ then $t^3-t=t(t^2-1)=t(t-1)(t+1)$ and thus the possibilities for $q_A(t)$ are
+any combination of the following linear factors with multiplicity 1: $t$, $t-1$, $t+1$.
+
+To generalize, for $A^k=A$, $q_A(t)$ is any combination of linear factors with
+multiplicity 1 from the set $\{t,t-\a\mid\a$ is a $(k-1)$-root of $1\}$.
+
+\subsection*{3.3.9}
+
+If $A\in M_5$ has $p_t(A)=(t-4)^3(t+6)^2$ and $q_A(t)=(t-4)^2(t+6)$, what is $J_A$?
+
+$\o(A)=\{4,-6\}$ with $a_A(4)=3$ and $a_A(-6)=2$.
+
+The highest non-zero Weyr index for $\l=4$ is $b_2$.
+
+The highest non-zero Weyr index for $\l=-6$ is $b_1$.
+
+And so:
+
+$b_2(4)=1$ \\
+$b_1(4)=1$ \\
+$b_1(-6)=2$
+
+$J_A=\begin{bmatrix}
+4 & 1 & 0 & 0 & 0 \\
+0 & 4 & 0 & 0 & 0 \\
+0 & 0 & 4 & 0 & 0 \\
+0 & 0 & 0 & -6 & 0 \\
+0 & 0 & 0 & 0 & -6 \\
+\end{bmatrix}$
+
+\subsection*{3.3.31}
+
+Show that there is no real $3\times3$ matrix whose minimal polynomial is $t^2+1$, but
+that there is a real $2\times2$ matrix as well as a complex $3\times3$ matrix with this
+property.
+
+ABC: $A\in M_3(\R)$ is such a matrix.
+
+Since $\deg(p_A(t))=3$ and since $q_A(t)$ divides $p_A(t)$, we know that $\pm i\in\o(A)$
+and that:
+\[p_A(t)=(t^2+1)(t-\a)=t^3-\a t^2+t-\a\]
+But we know that $\a$ cannot be distinct from $\pm i$, otherwise, all three eigenvalues
+would have to be present in $p_A(t)$ with linear factors. Thus, $a=\pm i$; however, that
+would mean that $p_A(t)$ has complex coefficients, which cannot result from a matrix
+with real components - CONTRADICTION!.
+
+Therefore, no such $A$ exists.
+
+Let $B=\begin{bmatrix} 1 & 2 \\ -1 & -1 \end{bmatrix}$
+
+$B^2+I=0$, so $t^2+1$ is an annihilator polynomial for $B$. Furthermore, the only
+possible linear cases would be $x+i$ and $x-i$, neither of which is an annihilator
+for $B$, so $q_B(t)=t^2+1$.
+
+Let $C=\begin{bmatrix} i & 0 & 0 \\ 0 & i & 0 \\ 0 & 0 & -i \end{bmatrix}$
+
+$C^2+I=0$, so $t^2+1$ is an annihilator polynomial for $C$. Furthermore, the only
+possible linear cases would be $x+i$ and $x-i$, neither of which is an annihilator
+for $C$, so $q_C(t)=t^2+1$.
+  
+\end{document}

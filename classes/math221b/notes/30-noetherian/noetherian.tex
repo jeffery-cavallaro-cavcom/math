@@ -1,0 +1,28 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Noetherian Rings}
+
+\begin{definition}[Noetherian]
+  Let $R$ be a ring. To say that $R$ is \emph{Noetherian} means for every
+  ascending chain of ideals:
+  \[I_1\subseteq I_2\subseteq I_3\subseteq\ldots\]
+  there exists $k\in\Z^+$ such that $I_j=I_k$ for all $j\ge k$.
+
+  A non-Noetherian ring is a ring that contains a chain of ideals with proper
+  containment.
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a Noetherian integer domain in which every irreducible is prime:
+  \[$R$\ \mbox{is a UFD}\]
+\end{theorem}
+
+\begin{theproof}
+  Let $r\in R$ be non-zero and not a unit \\
+  If $r$ is irreducible then done \\
+  Otherwise, $r=d_1r_1$ where neither are units \\
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,74 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\mnorm}[1]{\left\lvert\left\lvert\left\lvert#1
+  \right\rvert\right\rvert\right\rvert}
+\begin{document}
+\section*{Maximum Column Sum}
+
+\begin{definition}[Maximum Column Sum]
+  Let $A\in M_n$, the \emph{maximum column sum} of $A$ is given by:
+  \[M=\max_{1\le j\le n}\left\{\sum_{i=1}^n\abs{a_{ij}}\right\}\]
+\end{definition}
+
+\begin{lemma}
+  Let $A\in M_n$ and $M$ be the maximum column sum for $A$.
+  $\forall\,\vx\in\C^n$:
+  \[\norm{A\vx}_1\le M\norm{\vx}_1\]
+\end{lemma}
+
+\begin{theproof}
+  Assume $\vx\in\C^n$:
+  \begin{eqnarray*}
+    \norm{A\vx}_1 &=& \norm{\begin{bmatrix}
+        \sum_{j=1}^na_{1j}x_j \\
+        \sum_{j=1}^na_{2j}x_j \\
+        \vdots \\
+        \sum_{j=1}^na_{nj}x_j
+    \end{bmatrix}}_1 \\
+    &=& \sum_{i=1}^n\abs{\sum_{j=1}^na_{ij}x_j} \\
+    &\le& \sum_{i=1}^n\sum_{j=1}^n\abs{a_{ij}x_j} \\
+    &=& \sum_{j=1}^n\left(\sum_{i=1}^n\abs{a_{ij}}\right)\abs{x_j} \\
+    &\le& \sum_{j=1}^nM\abs{x_j} \\
+    &=& M\sum_{j=1}^n\abs{x_j} \\
+    &=& M\norm{\vx}_1 \\
+    \therefore\norm{A\vx}_1 &\le& M\norm{\vx}_1
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{lemma}
+  Let $A\in M_n$ and $M$ be the maximum column sum for $A$.
+  $\exists\,\vx\in\C^n$:
+  \[\norm{A\vx}_1=M\norm{\vx}_1\]
+\end{lemma}
+\newpage
+\begin{theproof}
+  Let $1\le j\le n$ such that:
+  \[\sum_{i=1}^n\abs{a_{ij}}=M\]
+  Consider $\ve_j$:
+  \[\norm{A\ve_j}_1=\sum_{i=1}^n\abs{a_{ij}}=M=M\cdot1=M\norm{\ve_k}\]
+  Let $\vx=\ve_j$. Therefore, $\exists\vx\in\C^n$ such that:
+  \[\norm{A\vx}_1=M\norm{\vx}_1\]
+\end{theproof}
+
+\begin{theorem}
+  Let $A\in M_n$ and $M$ be the maximum column sum for $A$:
+  \[\mnorm{A}_1=M\]
+\end{theorem}
+
+\begin{theproof}
+  By definition:
+  \[\mnorm{A}_1=\max_{\norm{\vx}_1=1}\{\norm{A\vx}_1\}\]
+  By the above lemma: $\forall\,\vx\in\C^n$:
+  \[\norm{A\vx}_1\le M\norm{\vx}_1\]
+  And by the subsequent lemma, there exists a $\vx\in\C^n$ such that
+  $\norm{\vx}_1=1$ and:
+  \[\norm{A\vx}_1=M\norm{\vx}_1=M\cdot1=M\]
+  Therefore:
+  \[\mnorm{A}_1=\max_{\norm{\vx}_1=1}\norm{A\vx}_1=M\]
+\end{theproof}
+
+\end{document}

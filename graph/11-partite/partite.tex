@@ -1,0 +1,393 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\begin{document}
+
+\section*{Partite Graphs}
+
+\begin{definition}[Partite Set]
+  Let \(G\) be a graph and let \(\set{S_i:1\le i\le k}\) be a partition of \(V(G)\).  The \(S_i\) are called the
+  \emph{partite sets} of the partition.
+\end{definition}
+
+\begin{definition}[Independent Set]
+  Let \(G\) be a graph and let \(S\subseteq V(G)\).  To say that \(S\) is an \emph{independent set} means that none
+  of the vertices in \(S\) are adjacent:
+  \[\forall\,u,v\in S,uv\notin E(G)\]
+\end{definition}
+
+\begin{definition}[Bipartite]
+  Let \(G\) be a graph whose vertices are partitioned into partite sets \(U\) and \(W\).  To say that \(G\) is
+  \emph{bipartite}, denoted by \(G=B(U,W)\), means that \(U\) and \(W\) are independent sets:
+  \[\forall\,uw\in E(G),u\in U\ \text{and}\ w\in W\]
+\end{definition}
+
+\begin{definition}[\(k\)-Partite]
+  Let \(G\) be a graph and let \(\set{S_i:1\le i\le k}\) be a partition of \(V(G)\).  To say that \(G\) is
+  \emph{\(k\)-partite}, denoted by \(G(S_1,S_2,\ldots,S_k)\), means that every induced subgraph
+  \(G[S_i\cup S_j],i\ne j\) is bipartite.
+\end{definition}
+
+\begin{examples}
+  \begin{minipage}{2.5in}
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{scope}[every node/.style={unlabeled node}]
+          \draw (0,0) ellipse (0.25in and 1in);
+          \node (u1) at (0,0.4in) {};
+          \node (u2) at (0,0) {};
+          \node (u3) at (0,-0.4in) {};
+          \draw (3,0) ellipse (0.25in and 1in);
+          \node (w1) at (3,0.3in) {};
+          \node (w2) at (3,-0.3in) {};
+          \draw (u1) edge (w1) edge (w2);
+          \draw (u3) edge (w1);
+        \end{scope}
+        \node at (0,-0.75in) {\(U\)};
+        \node at (3,-0.75in) {\(W\)};
+      \end{tikzpicture}
+
+      \bigskip
+
+      BIPARTITE
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{scope}[rotate=30]
+          \begin{scope}[every node/.style={unlabeled node}]
+            \draw (0,0) ellipse (0.25in and 1in);
+            \node (u1) at (0,0.4in) {};
+            \node (u2) at (0,0) {};
+            \node (u3) at (0,-0.4in) {};
+          \end{scope}
+          \node at (0,-0.75in) {\(S_1\)};
+        \end{scope}
+        \begin{scope}[xshift=2in,rotate=-30]
+          \begin{scope}[every node/.style={unlabeled node}]
+            \draw (0,0) ellipse (0.25in and 1in);
+            \node (z1) at (0,0.4in) {};
+            \node (z2) at (0,0) {};
+            \node (z3) at (0,-0.4in) {};
+          \end{scope}
+          \node at (0,-0.75in) {\(S_3\)};
+        \end{scope}
+        \begin{scope}[xshift=1in,yshift=1.25in]
+          \begin{scope}[every node/.style={unlabeled node}]
+            \draw (0,0) ellipse (1in and 0.25in);
+            \node (w1) at (-0.75,0) {};
+            \node (w2) at (0.75,0) {};
+          \end{scope}
+          \node at (0.6in,0) {\(S_2\)};
+        \end{scope}
+        \draw (u1) edge (w1) edge (w2);
+        \draw (u3) edge (w1);
+        \draw (w1) edge (z3);
+        \draw (w2) edge (z1) edge (z2);
+        \draw (u1) edge (z1);
+        \draw (u3) edge (z3);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(3\)-PARTITE
+    \end{center}
+  \end{minipage}
+\end{examples}
+
+\begin{definition}[Complete Bipartite]
+  Let \(B(U,W)\) be a bipartite graph such that \(\abs{U}=r\) and \(\abs{W}=s\).  To say that \(B\) is
+  \emph{complete bipartite}, denoted \(K_{r,s}\), means that every vertex in \(U\) is adjacent to every vertex in
+  \(W\):
+  \[E(B)=\setb{uw}{u\in U\ \text{and}\ w\in W}\]
+\end{definition}
+
+\begin{definition}[Complete \(k\)-Partite]
+  Let \(G(S_1,S_2,\ldots,S_k)\) be a \(k\)-partite graph such that \(\abs{S_i}=n_i\).  To say that \(G\) is
+  \emph{complete \(k\)-partite}, denoted \(K_{n_1,n_2,\ldots,n_k}\), means that every induced subgraph
+  \(G[S_i\cup S_j],i\ne j\) is complete bipartite \(K_{n_i,n_j}\).
+\end{definition}
+
+\begin{examples}
+  \begin{minipage}{2.5in}
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{scope}[every node/.style={unlabeled node}]
+          \draw (0,0) ellipse (0.25in and 1in);
+          \node (u1) at (0,0.4in) {};
+          \node (u2) at (0,0) {};
+          \node (u3) at (0,-0.4in) {};
+          \draw (3,0) ellipse (0.25in and 1in);
+          \node (w1) at (3,0.3in) {};
+          \node (w2) at (3,-0.3in) {};
+        \end{scope}
+        \node at (0,-0.75in) {\(U\)};
+        \node at (3,-0.75in) {\(W\)};
+        \foreach \i in {1,2,3}{
+          \foreach \j in {1,2}{
+            \draw (u\i) edge (w\j);
+          }
+        }
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(K_{3,2}\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{scope}[rotate=30]
+          \begin{scope}[every node/.style={unlabeled node}]
+            \draw (0,0) ellipse (0.25in and 1in);
+            \node (u1) at (0,0.4in) {};
+            \node (u2) at (0,0) {};
+            \node (u3) at (0,-0.4in) {};
+          \end{scope}
+          \node at (0,-0.75in) {\(S_1\)};
+        \end{scope}
+        \begin{scope}[xshift=2in,rotate=-30]
+          \begin{scope}[every node/.style={unlabeled node}]
+            \draw (0,0) ellipse (0.25in and 1in);
+            \node (z1) at (0,0.4in) {};
+            \node (z2) at (0,0) {};
+            \node (z3) at (0,-0.4in) {};
+          \end{scope}
+          \node at (0,-0.75in) {\(S_3\)};
+        \end{scope}
+        \begin{scope}[xshift=1in,yshift=1.25in]
+          \begin{scope}[every node/.style={unlabeled node}]
+            \draw (0,0) ellipse (1in and 0.25in);
+            \node (w1) at (-0.75,0) {};
+            \node (w2) at (0.75,0) {};
+          \end{scope}
+          \node at (0.6in,0) {\(S_2\)};
+        \end{scope}
+        \foreach \i in {1,2,3}{
+          \foreach \j in {1,2}{
+            \draw (u\i) edge (w\j);
+          }
+        }
+        \foreach \i in {1,2,3}{
+          \foreach \j in {1,2}{
+            \draw (z\i) edge (w\j);
+          }
+        }
+        \foreach \i in {1,2,3}{
+          \foreach \j in {1,2,3}{
+            \draw (u\i) edge (z\j);
+          }
+        }
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(K_{3,2,3}\)
+    \end{center}
+  \end{minipage}
+\end{examples}
+
+Note that \(K_{1,1,\ldots,1}\) is the complete graph \(K_k\).
+
+\begin{definition}[Star]
+  The complete graph \(K_{1,n-1}\) is called a \emph{star} graph, denote by \(S_n\).
+\end{definition}
+
+\begin{examples}
+  \begin{minipage}{0.5in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={unlabeled node}]
+        \node at (0,0) {};
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(S_1\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{0.5in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={unlabeled node}]
+        \node (c) at (0,0) {};
+        \node (s) at (1,0) {};
+        \draw (c) edge (s);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(S_2\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={unlabeled node}]
+        \node (c) at (0,0) {};
+        \node (s1) at (-1,0) {};
+        \node (s2) at (1,0) {};
+        \draw (c) edge (s1) edge (s2);
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(S_3\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={unlabeled node}]
+        \node (c) at (0,0) {};
+        \cycleNnodes{3}{(0,0)}{0.5in}{0}{s};
+        \foreach \i in {1,2,3}{
+          \draw (c) edge (s\i);
+        }
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(S_4\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={unlabeled node}]
+        \node (c) at (0,0) {};
+        \cycleNnodes{4}{(0,0)}{0.5in}{0}{s};
+        \foreach \i in {1,2,3,4}{
+          \draw (c) edge (s\i);
+        }
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(S_5\)
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{1.25in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={unlabeled node}]
+        \node (c) at (0,0) {};
+        \cycleNnodes{8}{(0,0)}{0.5in}{0}{s};
+        \foreach \i in {1,...,8}{
+          \draw (c) edge (s\i);
+        }
+      \end{tikzpicture}
+
+      \bigskip
+
+      \(S_9\)
+    \end{center}
+  \end{minipage}
+\end{examples}
+
+\begin{theorem}
+  Let \(G\) be a a non-trivial graph:
+  \begin{quote}
+    \(G\) is bipartite \(\iff G\) has no odd cycles.
+  \end{quote}
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item[\(\implies\)] Assume \(G\) is bipartite.
+
+    Let \(G=B(U,W)\).
+
+    ABC: \(G\) contains an odd cycle \((u_1,u_2,\ldots,u_{2k+1},u_1)\) for some \(k\in\N\).
+
+    AWLOG: \(u_1\in U\).
+
+    Since \(G\) is bipartite, adjacent vertices must alternate between \(U\) and \(W\):
+    \[u_i\in\begin{cases}
+    U, & i\ \text{odd} \\
+    W, & i\ \text{even} \\
+    \end{cases}\]
+
+    But this means that \(u_1,u_{2k+1}\in U\) and \(u_1u_{2k+1}\in E(G)\), contradicting the bipartiteness of \(G\).
+
+    \(\therefore G\) contains no odd cycles.
+
+  \item[\(\impliedby\)] Assume \(G\) has no odd cycles.
+    \begin{description}
+    \item[Case 1:] \(G\) is connected.
+      
+      Assume \(u\in V(G)\) and let:
+      \begin{gather*}
+        U=\setb{v\in V(G)}{d(u,v)\ \text{is even}} \\
+        W=\setb{v\in V(G)}{d(u,v)\ \text{is odd}}
+      \end{gather*}
+      Note that \(u\in U\) since \(d(u,u)=0\) is even.  Thus, \(\set{U,W}\) is a partition of \(V(G)\).
+
+      Claim: \(G=B(U,W)\) is bipartite.
+
+      ABC: There exists \(u_1,u_2\in U\) such that \(u_1u_2\in E(G)\) or there exists \(w_1,w_2\in W\) such that
+      \(w_1w_2\in E(G)\).
+      \begin{description}
+      \item[Case a:] There exists \(u_1,u_2\in U\) such that \(u_1u_2\in E(G)\).
+
+        Let \(P\) be a \(u-u_1\) geodesic and let \(P'\) be a \(u-u_2\) geodesic.  Both are even paths.  Let \(u_i\)
+        be the last vertex in common between \(P\) and \(P'\).
+        \begin{description}
+        \item[Case i:] \(u_i\in U\)
+
+          And so \(d(u,u_i)\) is even.  This means that \(d(u_i,u_1)\) and \(d(u_i,u_2)\) are both even, and thus the
+          cycle \(u_i,\ldots,u_1,u_2,\ldots,u_i\) is an odd cycle, contradicting the assumption.
+
+        \item[Case ii:] \(u_i\in W\)
+
+          And so \(d(u,u_i)\) is odd.  This means that \(d(u_i,u_1)\) and \(d(u_i,u_2)\) are both odd, and thus the
+          cycle \(u_i,\ldots,u_1,u_2,\ldots,u_i\) is an odd cycle, contradicting the assumption.
+        \end{description}
+
+      \item[Case b:] There exists \(w_1,w_2\in W\) such that \(w_1w_2\in E(G)\).
+
+        Let \(P\) be a \(u-w_1\) geodesic and let \(P'\) be a \(u-w_2\) geodesic.  Both are odd paths.  Let \(u_i\)
+        be the last vertex in common between \(P\) and \(P'\).
+        \begin{description}
+        \item[Case i:] \(u_i\in U\)
+
+          And so \(d(u,u_i)\) is even.  This means that \(d(u_i,w_1)\) and \(d(u_i,w_2)\) are both odd, and thus the
+          cycle \(u_i,\ldots,w_1,w_2,\ldots,u_i\) is an odd cycle, contradicting the assumption.
+
+        \item[Case ii:] \(u_i\in W\)
+
+          And so \(d(u,u_i)\) is odd.  This means that \(d(u_i,w_1)\) and \(d(u_i,w_2)\) are both even, and thus the
+          cycle \(u_i,\ldots,w_1,w_2,\ldots,u_i\) is an odd cycle, contradicting the assumption.
+        \end{description}
+      \end{description}
+
+      \(\therefore G=B(U,W)\) is bipartite.
+
+    \item[Case 2:] \(G\) is disconnected.
+
+      This means that \(G\) is composed of \(k\) connected components \(G_1,G_2,\ldots,G_k\).  But since \(G\)
+      contains no odd cycles, none of the \(G_i\) can contain any odd cycles, and so by the first case, each
+      \(G_i\) is bipartite.  So let \(G_i=B(U_i,W_i)\) be the \(k\) bipartite components and let:
+      \begin{gather*}
+        U=\bigcup_{1\le i\le k}U_i \\
+        W=\bigcup_{1\le i\le k}W_i
+      \end{gather*}
+      Now assume \(u\in U\).  Then \(u\in U_i\) for some \(i\).  Furthermore, assume \(uw\in E(G)\).  Then
+      \(w\in W_i\subseteq W\) and thus \(w\in W\).
+
+      \(\therefore G=B(U,W)\) is bipartite.
+    \end{description}
+  \end{description}
+\end{proof}
+
+\begin{corollary}
+  Let \(G\) be a graph with \(k\) components:
+  \begin{quote}
+    \(G\) is bipartite \(\iff\) each component \(G_i\) is bipartite.
+  \end{quote}
+\end{corollary}
+
+\begin{proof}
+  \(G\) is bipartite \(\iff\ G\) contains no odd cycles \(\iff\) every component \(G_i\) has no odd cycles
+  \(\iff\) each component \(G_i\) is bipartite.
+\end{proof}
+
+\end{document}

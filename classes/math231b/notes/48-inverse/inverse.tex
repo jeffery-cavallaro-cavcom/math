@@ -1,0 +1,224 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\md}{\mathcal{D}}
+\newcommand{\mr}{\mathcal{R}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\begin{document}
+\section*{Invertible Operators}
+
+\begin{definition}[Inverse]
+  Let $E$ be a vector space and let $A$ be an operator on some subspace of
+  $A$. To say that an operator $B$ on $\mr(A)$ is an \emph{inverse} of $A$
+  means:
+  \begin{itemize}
+  \item $\forall\vx\in\md(A), (BA)\vx=x$
+  \item $\forall\vy\in\mr(A), (AB)\vy=y$
+  \end{itemize}
+  If $B$ exists then $A$ is said to be \emph{invertible} and $B$ can be
+  denoted by $B=A^{-1}$.
+\end{definition}
+
+\begin{properties}
+  Let $E$ be a vector space and let $A$ and $B$ be linear operators on some
+  subspace of $E$.
+  \begin{enumerate}
+  \item $A$ is invertible $\implies A^{-1}$ is unique.
+  \item $A$ is invertible $\implies A^{-1}$ linear.
+  \item $A$ is invertible $\iff\ker(A)=\{\vo\}$.
+  \item $A$ is invertible and $\{\vx_1,\ldots,\vx_n\}$ is a linearly
+    independent set $\implies\{A\vx_1,\ldots,A\vx_n\}$ is a linearly
+    independent set.
+  \item $A$ and $B$ invertible $\implies AB$ is invertible and
+    $(AB)^{-1}=B^{-1}A^{-1}$.
+  \end{enumerate}
+\end{properties}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item Assume $A$ is invertible.
+    
+    Assume $S$ and $T$ are inverses of $A$.
+
+    $S=SI=S(AT)=(SA)T=IT=I$
+
+  \item Assume $A$ is invertible.
+
+    Assume $\vy_1,\vy_2\in\mr(A)$.
+    
+    $\exists\,\vx_1,\vx_2\in\md(A)$ such that $\vy_1=A\vx_1$ and
+    $\vy_2=A\vx_2$.
+    
+    $A^{-1}\vy_1=\vx_1$ and $A^{-1}\vy_2=\vx_2$.
+    
+    Assume $\a,\b\in\F$:
+    \begin{eqnarray*}
+      A^{-1}(\a\vy_1+\b\vy_2) &=& A^{-1}(\a A\vx_1+\b A\vx_2) \\
+      &=& A^{-1}A(\a\vx_1+\b\vx_2) \\
+      &=& \a\vx_1+\b\vx_2 \\
+      &=& (\a A^{-1}\vy_1+\b A^{-1}\vy_2)
+    \end{eqnarray*}
+    Therefore $A^{-1}$ is linear.
+
+  \item
+    \begin{description}
+    \item $\implies$ Assume $A$ is invertible.
+
+      $\vx\in\ker(A)\iff A\vx=\vo\iff A^{-1}A\vx=A^{-1}\vo\iff I\vx=\vo\iff
+      \vx=\vo$
+
+    \item $\impliedby$ Assume $\ker(A)=\{\vo\}$.
+
+      $A$ is one-to-one. \\
+      But $A$ is also onto $\mr(A)$.
+      
+      Therefore $A$ is bijective and thus invertible.
+    \end{description}
+
+  \item Assume $A$ is invertible.
+
+    Assume $\sum_{k=1}^n\a_kA\vx_k=\vo$:
+    \begin{eqnarray*}
+      A\sum_{k=1}^n\a_k\vx &=& \vo \\
+      A^{-1}A\sum_{k=1}^n\a_k\vx &=& A^{-1}\vo \\
+      \sum_{k=1}^n\a_k\vx &=& \vo
+    \end{eqnarray*}
+    But $\{\vx_1,\ldots,\vx_n\}$ is a linearly independent set.
+
+    Therefore $\a_k=0$ and thus $\{A\vx_1,\ldots,A\vx_n\}$ is a linearly
+    independent set.
+
+  \item Assume $A$ and $B$ are invertible.
+
+    $(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AIA^{-1}=AA^{-1}=I$
+
+    $(B^{-1}A^{-1})(AB)=B^{-1}(A^{-1}A)B=B^{-1}IB=BB^{-1}=I$
+
+    Therefore, since the inverse is unique, $AB$ is invertible and
+    $(AB)^{-1}=B^{-1}A^{-1}$.
+  \end{enumerate}
+\end{theproof}
+
+\begin{corollary}
+  Let $E$ be a finite dimensional vector space and let $A$ be a linear
+  operator on $E$. If $A$ is invertible then $A$ is onto.
+\end{corollary}
+
+\begin{theproof}
+  Assume $A$ is invertible. \\
+  Assume $\dim(E)=n$. \\
+  Assume $\{\vx_1,\ldots,\vx_n\}$ is a basis for $E$. \\
+  $\{\vx_1,\ldots,\vx_n\}$ is a linearly independent set. \\
+  So $\{A\vx_1,\ldots,A\vx_n\}$ is a linearly independent set. \\
+  Thus $\{A\vx_1,\ldots,A\vx_n\}$ is also a basis for $E$. \\
+  Now assume $\vy\in E$. \\
+  $\exists\,\a_k\in\F$ such that $\vy=\sum_{k=1}^n\a_kA\vx_k=
+  A\sum_{k=1}^n\a_kA\vx_k$. \\
+  But $\vx=\sum_{k=1}^n\a_kA\vx_k\in \md(A)=E$ and so $A\vx=\vy$.
+
+  Therefore $A$ is onto.
+\end{theproof}
+
+\begin{example}
+  Let $E=\ell^2$ and $A(z_1,z_2,z_3,\ldots)=(0,z_1,z_2,z_3,\ldots)$.
+
+  $A$ is linear, one-to-one, and invertible; however, $A$ is not onto.
+\end{example}
+
+Note that the inverse of a bounded linear operator need not be bounded:
+
+\begin{example}
+  Consider $T:\ell^2\to\ell^2$ defined by
+  $T(z_1,z_2,z_3,\ldots)=\left(z_1,\frac{z_2}{2},\frac{z_3}{3},\ldots\right)$.
+
+  Claim: $T$ is bounded.
+
+  Assume $z=(z_n)\in\ell^2$:
+  \[\norm{Tz}^2=\sum_{k=1}^{\infty}\abs{Tz_k}^2=
+  \sum_{k=1}^{\infty}\abs{\frac{z_k}{k}}^2=
+  \sum_{k=1}^{\infty}\frac{1}{k^2}\abs{z_k}^2\le
+  \sum_{k=1}^{\infty}\abs{z_k}^2=\norm{z}^2\]
+  Thus $\norm{Tz}\le\norm{z}$ and so $\norm{T}\le1$ (bounded).
+
+  Claim: $T$ is invertible.
+
+  Let $T^{-1}(z_1,z_2,z_3,\ldots)=(z_1,2z_2,3z_3,\ldots)$. \\
+  $T(T^{-1}z)=T^{-1}(Tz)=z$
+
+  Therefore $T$ and $T^{-1}$ are inverses.
+
+  Claim: $T^{-1}$ is unbounded.
+
+  $\norm{T^{-1}e_n}=\norm{ne_n}=n\norm{e_n}=n\cdot1=n$
+
+  So $\norm{T^{-1}e_n}\to\infty$ as $n\to\infty$. \\
+  But $\norm{e_n}=1$.
+
+  Therefore $T^{-1}$ is unbounded.
+\end{example}
+
+If $E$ is finite dimensional and $A$ on $E$ is invertible, then both $A$ and
+$A^{-1}$ are bounded because all operators on finite dimensional vector spaces
+are bounded.
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $A\in\mb(H)$ such that $\exists\,m>0$
+  such that $\forall\,\vx\in H, \norm{A\vx}\ge m\norm{\vx}$:
+
+  \qquad$A$ is invertible and $A^{-1}$ is bounded.
+\end{theorem}
+
+\begin{theproof}
+  $A\vx=\vo\iff\vx=\vo$
+
+  Therefore $A$ is invertible.
+
+  Assume $\vy\in H$. \\
+  Since $A^{-1}$ is onto, $\exists\,\vx\in H$ such that $A^{-1}\vy=\vx$. \\
+  And so $A\vx=\vy$. \\
+  By assumption, $m\norm{\vx}\le\norm{A\vx}$.
+
+  Therefore $\norm{A^{-1}\vy}\le\frac{1}{m}\norm{\vy}$ and thus $A^{-1}$ is
+  bounded.
+\end{theproof}
+
+The number $m(A)=\inf_{\norm{\vx}=1}\norm{A\vx}$ is called the \emph{conorm} of
+$A$. Thus, if $m(A)>0$ then $A$ is invertible and
+$\norm{A^{-1}}=\frac{1}{m(A)}$
+
+Note that the previous example failed because $\norm{Te_n}=\frac{1}{n}\to0$.
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$ be invertible such that
+  $T^{-1}\in\mb(H)$:
+  \[(T^{-1})^*=(T^*)^{-1}\]
+\end{theorem}
+
+\begin{theproof}
+  $(T^{-1})^*T^*=(TT^{-1})^*=I^*=I$
+
+  $T^*(T^{-1})^*=(T^{-1}T)^*=I^*=I$
+
+  Therefore, since inverses are unique, $(T^{-1})^*=(T^*)^{-1}$.
+\end{theproof}
+
+\begin{corollary}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$ be invertible such that
+  $T$ is self-adjoint and $T^{-1}\in\mb(H)$:
+  
+  \qquad$T^{-1}$ is self-adjoint.
+\end{corollary}
+
+\begin{theproof}
+  $(T^{-1})^*=(T^*)^{-1}=T^{-1}$
+\end{theproof}
+
+\end{document}

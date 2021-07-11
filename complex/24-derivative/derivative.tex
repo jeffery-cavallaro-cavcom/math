@@ -1,0 +1,141 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{centernot}
+\pagestyle{empty}
+\newcommand{\D}{\Delta}
+\newcommand{\limz}{\lim_{z\to z_0}}
+\newcommand{\limzz}{\lim_{z\to 0}}
+\newcommand{\limdz}{\lim_{\D z\to0}}
+\newcommand{\limdx}{\lim_{\D x\to0}}
+\newcommand{\limdiy}{\lim_{i\D y\to0}}
+\begin{document}
+\section*{Derivatives}
+
+\begin{definition}
+  Let $f(z)$ be defined on a domain $D$ and let $z_0\in D$. The derivative of
+  $f$ at $z_0$, denoted $f'(z_0)$, is given by:
+  \[f'(z_0)=\limz{\frac{f(z)-f(z_0)}{z-z_0}}\]
+  Replacing $z-z_0$ with $\D z$:
+  \[f'(z_0)=\limdz{\frac{f(z_0+\D z)-f(z_0)}{\D z}}\]
+  To say that $f$ is differentiable at $z_0$ means that the limit exists,
+  regardless of path from $z$ to $z_0$.
+\end{definition}
+
+When considering any $z\in D$, and letting $\D w=f(z+\D z)-f(z)$:
+\[\frac{dw}{dz}=\limdz{\frac{\D w}{\D z}}\]
+
+\begin{example}
+  $f(z)=z^2$
+  \begin{eqnarray*}
+    f'(z) &=& \limdz{\frac{(z+\D z)^2-z^2}{\D z}} \\
+    &=& \limdz{{z^2+2z(\D z)+(\D z)^2-z^2}{\D z}} \\
+    &=& \limdz{\frac{2z(\D z)+(\D z)^2}{\D z}} \\
+    &=& \limdz{2z+\D z} \\
+    &=& 2z \\
+  \end{eqnarray*}
+\end{example}
+
+\begin{example}
+  $f(z)=\bar{z}$
+  \begin{eqnarray*}
+    f'(z) &=& \limdz{\frac{\overline{z+\D z}-\bar{z}}{\D z}} \\
+    &=& \limdz{\frac{\bar{z}+\overline{\D z}-\bar{z}}{\D z}} \\
+    &=& \limdz{\frac{\overline{\D z}}{\D z}} \\
+  \end{eqnarray*}
+
+  Consider a path along the $x$-axis, where $\D z=\D x$:
+  \[\limdz{\frac{\overline{\D z}}{\D z}}=\limdx{\frac{\overline{\D x}}{\D x}}=
+  \limdx{\frac{\D x}{\D x}}=1\]
+
+  Now consider a path along the $y$=axis, where $D z=i\D y$:
+  \[\limdz{\frac{\overline{\D z}}{\D z}}=
+  \limdiy{\frac{\overline{i\D y}}{i\D y}}=
+  \limdiy{\frac{-i\D y}{i\D y}}=-1\]
+
+  Thus, the limit DNE and $\therefore f(z)=\bar{z}$ is not differentiable
+  anywhere.
+\end{example}
+
+\begin{example}
+  $f(z)=\abs{z}^2=z\bar{z}$
+  \begin{eqnarray*}
+    f'(z) &=& \limdz{\frac{(z+\D z)(\overline{z+\D z})-z\bar{z}}{\D z}} \\
+    &=& \limdz{\frac{(z+\D z)(\bar{z}+\overline{\D z})-z\bar{z}}{\D z}} \\
+    &=& \limdz{\frac{z\bar{z}+z\overline{\D z}+ \bar{z}\D z+
+        \D z\overline{\D z}-z\bar{z}}{\D z}} \\
+    &=& \limdz{\left(\bar{z}+\overline{\D z}+z\frac{\overline{\D z}}{\D z}
+    \right)} \\
+  \end{eqnarray*}
+
+  But this limit can only possibly exist at $z=0$ and
+  \[\limdz{\left(0+\overline{\D z}+0\right)}=\limdz{\overline{\D z}}=0\]
+\end{example}
+
+\begin{theorem}
+  Let $f(z)$ be a real-valued function:
+
+  $f$ differentiable $\implies f$ is only differentiable at $f(z)=0$
+\end{theorem}
+
+\begin{theproof}
+  Assume $f$ is differentiable \\
+  Let $L_R=\lim_{h\to 0}\frac{f(z+h)-f(z)}{h}$ \\
+  Let $L_I=\lim_{ih\to 0}\frac{f(z+ih)-f(z)}{ih}$ \\
+  $L_R$ and $L_I$ must exist \\
+  $L_R\in\R$ and $L_I\in\C$ \\
+  But $L_R=L_I$ \\
+  This can only at $f(z)=0$
+\end{theproof}
+\newpage
+\begin{example}
+  $f(z)=\abs{z}$
+
+  Since $f(z)$ is real-valued, $f(z)$ can only be differentiable at:
+  $f(z)=\abs{z}=0$, which only occurs at $z=0$
+  \begin{eqnarray*}
+    f'(z) &=& \limzz{\frac{f(z)-f(0)}{z-0}} \\
+    &=& \limzz{\frac{\abs{z}-\abs{0}}{z-0}} \\
+    &=& \limzz{\frac{\abs{z}}{z}} \\
+    &=& \limzz{\frac{\sqrt{z\bar{z}}}{z}} \\
+    &=& \limzz{\sqrt{\frac{\bar{z}}{z}}} \\
+  \end{eqnarray*}
+  But that limit DNE, so $f(z)=\abs{z}$ is nowhere differentiable.
+\end{example}
+
+\begin{properties}[Consequences]
+  Let $f(z)=u(x,y)+iv(x,y)$
+  \begin{enumerate}
+  \item $u$ and $v$ differentiable $\centernot\implies f$ differentiable.
+    
+    Example: $f(z)=\bar{z}=x-iy$
+
+  \item $f(z)$ may be differentiable at only one point and nowhere else.
+
+    Example: $f(z)=\abs{z}^2$ is only differentiable at $z=0$
+
+  \item Continuity does not imply differentiability
+
+    Example: $f(z)=\abs{z}$ is continuous everywhere but differentiable
+    nowhere.
+  \end{enumerate}
+\end{properties}
+
+\begin{theorem}
+  $f(z)$ differentiable at $z_0\implies f(z)$ continuous at $z_0$
+\end{theorem}
+
+\begin{theproof}
+  Assume $f(z)$ is differentiable at $z_0$ \\
+  $f'(z)=\limz{\frac{f(z)-f(z_0)}{z-z_0}}$ exists \\
+  $\limz{(z-z_0)}=0$ exists \\
+  \begin{eqnarray*}
+    \limz{[f(z)-f(z_0)]} &=&
+    \limz{\left[\frac{f(z)-f(z_0)}{z-z_0}(z-z_0)\right]} \\
+    &=& \limz{\frac{f(z)-f(z_0)}{z-z_0}}\limz{(z-z_0)} \\
+    &=& f'(z)\cdot0 \\
+    &=& 0 \\
+  \end{eqnarray*}
+  $\therefore \limz{f(z)}=f(z_0)$
+\end{theproof}
+
+\end{document}

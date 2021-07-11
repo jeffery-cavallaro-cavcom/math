@@ -1,0 +1,144 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Integers}
+
+\begin{definition}
+The set of \emph{Integers}, denoted $\mathbb{Z}$, are the positive and negative
+whole numbers and 0:
+\[\mathbb{Z}=\{n|n\in\mathbb{N}\}\cup\{-n|n\in\mathbb{N}\}\cup\{0\}=
+    \{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots\}\]
+\end{definition}
+
+\theoremstyle{mathitem}
+\newtheorem*{closure}{Closure Property}
+\begin{closure}
+$\forall n,m\in\mathbb{Z}$:
+\begin{enumerate}
+\item{$n+m\in\mathbb{Z}$}
+\item{$nm\in\mathbb{Z}$}
+\end{enumerate}
+\end{closure}
+
+\begin{definition}
+To say that an integer $n$ divides an integer $m$, denoted $n|m$, means
+$\exists k\in\mathbb{Z},m=kn$.
+\end{definition}
+
+\begin{definition}
+To say that an integer $n$ is \emph{even} mean that $2|n$. Otherwise $n$ is
+said to be \emph{odd}. Thus, $\forall n\in\mathbb{Z}$:
+\begin{enumerate}
+\item{n even $\iff\exists k\in\mathbb{Z},n=2k$}
+\item{n odd $\iff\exists k\in\mathbb{Z},n=2k+1$}
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+$\forall n,m\in\mathbb{Z}$:
+\begin{enumerate}
+\item{$n$ even and $m$ even $\implies n+m$ even.}
+\item{$n$ odd and $m$ odd $\implies n+m$ even}
+\item{$n$ even and $m$ odd $\implies n+m$ odd}
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+Assume $n,m\in\mathbb{Z}$.
+\begin{enumerate}
+\item{Assume $n$ even and $m$ even \\}
+$\exists k\in\mathbb{Z},n=2k$ \\
+$\exists j\in\mathbb{Z},m=2j$ \\
+$n+m=2k+2j=2(k+j)$ \\
+But by closure, $k+j\in\mathbb{Z}$. \\
+$\therefore n+m$ is even.
+
+\item {Assume $n$ odd and $m$ odd \\}
+$\exists k\in\mathbb{Z},n=2k+1$ \\
+$\exists j\in\mathbb{Z},m=2j+1$ \\
+$n+m=(2k+1)+(2j+1)=2k+2j+2=2(k+j+1)$ \\
+But by closure, $k+j+1\in\mathbb{Z}$. \\
+$\therefore n+m$ is even.
+
+\item {Assume $n$ even and $m$ odd \\}
+$\exists k\in\mathbb{Z},n=2k$ \\
+$\exists j\in\mathbb{Z},m=2j+1$ \\
+$n+m=2k+2j+1=2(k+j)+1$ \\
+But by closure, $k+j\in\mathbb{Z}$. \\
+$\therefore n+m$ is odd.
+\end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+$\forall n,m\in\mathbb{Z}$:
+\begin{enumerate}
+\item{$n$ even and $m$ even $\implies nm$ even.}
+\item{$n$ odd and $m$ odd $\implies nm$ odd}
+\item{$n$ even and $m$ odd $\implies nm$ even}
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+Assume $n,m\in\mathbb{Z}$.
+\begin{enumerate}
+\item{Assume $n$ even and $m$ even \\}
+$\exists k\in\mathbb{Z},n=2k$ \\
+$\exists j\in\mathbb{Z},m=2j$ \\
+$nm=(2k)(2j)=2(2kj)$ \\
+But by closure, $2kj\in\mathbb{Z}$. \\
+$\therefore nm$ is even.
+
+\item {Assume $n$ odd and $m$ odd \\}
+$\exists k\in\mathbb{Z},n=2k+1$ \\
+$\exists j\in\mathbb{Z},m=2j+1$ \\
+$nm=(2k+1)(2j+1)=4kj+2k+2j+1=2(2kj+k+j)+1$ \\
+But by closure, $2kj+k+j\in\mathbb{Z}$. \\
+$\therefore nm$ is odd.
+
+\item {Assume $n$ even and $m$ odd \\}
+$\exists k\in\mathbb{Z},n=2k$ \\
+$\exists j\in\mathbb{Z},m=2j+1$ \\
+$nm=(2k)(2j+1)=2(2kj+k)$ \\
+But by closure, $2kj+k\in\mathbb{Z}$. \\
+$\therefore nm$ is even.
+\end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+$\forall n\in\mathbb{Z}$:
+\begin{enumerate}
+\item{$n$ even $\iff$ $n^2$ even}
+\item{$n$ odd $\iff$ $n^2$ odd}
+\end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item{Assume $n\in\mathbb{Z}$.}
+\begin{description}
+\item{$\implies$ Assume $n$ is even. \\}
+$\exists k\in\mathbb{Z},n=2k$ \\
+$n^2=(2k)^2=4k^2=2(2kk)$ \\
+But by closure, $2kk\in\mathbb{Z}$. \\
+$\therefore n^2$ is even.
+
+\item{$\impliedby$ Assume $n^2$ is even. \\}
+Contrapositive of (2).
+\end{description}
+
+\item{Assume $n\in\mathbb{Z}$.}
+\begin{description}
+\item{$\implies$ Assume $n$ is odd. \\}
+$\exists k\in\mathbb{Z},n=2k+1$ \\
+$n^2=(2k+1)^2=4k^2+4k+1=2(2kk+2k)+1$ \\
+But by closure, $2kk+2k\in\mathbb{Z}$. \\
+$\therefore n^2$ is odd.
+
+\item{$\impliedby$ Assume $n^2$ is odd. \\}
+Contrapositive of (1).
+\end{description}
+\end{enumerate}
+\end{theproof}
+\end{document}

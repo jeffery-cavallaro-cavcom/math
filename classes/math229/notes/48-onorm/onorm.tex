@@ -1,0 +1,86 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\mnorm}[1]{\left\lvert\left\lvert\left\lvert#1
+  \right\rvert\right\rvert\right\rvert}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{0}}
+\begin{document}
+\section*{Operator Norm}
+
+\begin{definition}[Operator Norm]
+  Let $\norm{\cdot}$ be a vector norm on $C^n$ and $A\in M_n$. The
+  vector-induced matrix norm with respect to $\norm{\cdot}$ is given by:
+  \[\mnorm{A}=\max_{\norm{\vx}=1}\{\norm{A\vx}\}\]
+  This norm is often called the \emph{operator norm}.
+\end{definition}
+
+Check the five properties to make sure that the operator norm is in fact a
+proper matrix norm:
+\begin{enumerate}
+\item Nonnegativity
+
+  Assume $A\in M_n$ \\
+  Assume $\vx\in\C^n$ such that $\norm{\vx}=1$ \\
+  By nonnegativity of the vector norm, $\norm{A\vx}\ge0$ \\
+  So $\max_{\norm{\vx}=1}\{\norm{A\vx}\}\ge0$
+  
+  $\therefore\mnorm{A}\ge0$
+
+\item Positivity
+  \begin{description}
+  \item $\implies$ Assume $A\ne0$
+
+    $\exists\,\vy\in\C^n,\norm{\vy}=1$ and $A\vy\ne0$ \\
+    $\mnorm{A}=\max_{\norm{\vx}=1}\{\norm{A\vx}\}\ge\norm{A\vy}>0$
+
+    $\therefore\mnorm{A}\ne0$
+
+  \item $\impliedby$ Assume $A=0$
+
+    Assume $\vx\in\C^n,\norm{\vx}=0$ \\
+    $A\vx=\vz$ \\
+    $\norm{A\vx}=\norm{\vz}=0$ \\
+    $\max_{\norm{\vx}=1}\{\norm{A\vx}\}=0$
+
+    $\therefore\mnorm{A}=0$
+  \end{description}
+
+\item Homogeneity
+  Assume $c\in\C$:
+  \begin{eqnarray*}
+    \mnorm{cA} &=& \max_{\norm{\vx}=1}\{\norm{cA\vx}\} \\
+    &=& \max_{\norm{\vx}=1}\{\abs{c}\norm{A\vx}\} \\
+    &=& \abs{c}\max_{\norm{\vx}=1}\{\norm{A\vx}\} \\
+    &=& \abs{c}\mnorm{A}
+  \end{eqnarray*}
+
+\item Subadditivity
+  \begin{eqnarray*}
+    \mnorm{A+B} &=& \max_{\norm{\vx}=1}\{\norm{(A+B)\vx}\} \\
+    &=& \max_{\norm{\vx}=1}\{\norm{A\vx+B\vx}\} \\
+    &\le& \max_{\norm{\vx}=1}\{\norm{A\vx}+\norm{B\vx}\} \\
+    &\le& \max_{\norm{\vx}=1}\{\norm{A\vx}\}+\max_{\norm{\vx}=1}\{\norm{B\vx}\} \\
+    &=& \mnorm{A}+\mnorm{B}
+  \end{eqnarray*}
+
+\item Submultiplicativity
+
+  Assume $A,B\in M_n$ \\
+  Assume $\vx\in\C^n,\norm{\vx}=1$ \\
+  Assume $B\vx\in\C^n$ \\
+  \begin{eqnarray*}
+    \norm{A\frac{B\vx}{\norm{B\vx}}} &\le& \mnorm{A} \\
+    \norm{A(B\vx)} &\le& \mnorm{A}\norm{B\vx} \\
+    \norm{(AB)\vx} &\le& \mnorm{A}\norm{B\vx} \\
+    \\
+    \mnorm{AB} &=& \max_{\norm{\vx}=1}\{\norm{(AB)\vx}\} \\
+    &\le& \max_{\norm{\vx}=1}\{\mnorm{A}\norm{B\vx}\} \\
+    &=& \mnorm{A}\max_{\norm{\vx}=1}\{\norm{B\vx}\} \\
+    &=& \mnorm{A}\mnorm{B}
+  \end{eqnarray*}
+\end{enumerate}
+
+\end{document}

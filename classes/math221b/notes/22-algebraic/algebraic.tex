@@ -1,0 +1,55 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\a}{\alpha}
+\newcommand{\w}{\omega}
+\begin{document}
+\section*{Algebraic Numbers}
+
+\begin{definition}[Algebraic Number]
+  To say that $\a\in\C$ is an \emph{algebraic number} means that it is the
+  zero of some monic polynomial with rational coefficients:
+  \[f(x)=\sum_{k=0}^na_kx^k\]
+  where $a_k\in\Q$ and $f(\a)=0$.
+
+  Otherwise, $\a$ is called a \emph{transcendental number}.
+\end{definition}
+
+\begin{theorem}
+  Every algebraic number has a unique minimal monic polynomial, which is a
+  polynomial of minimal degree that divides all other polynomials with
+  rational coefficients that have $\a$ as a zero.
+\end{theorem}
+
+\begin{example}
+  \begin{tabular}{c|c}
+    $\a$ & $f(x)$ \\
+    \hline
+    $r\in\Q$ & $x-r$ \\
+    $i$ & $x^2+1$ \\
+    $\w$ & $x^2+x+1$ \\
+    $\sqrt[3]{2}$ & $x^3-2$ \\
+    $\frac{1}{\sqrt[3]{2}}$ & $x^3-\frac{1}{2}$ \\
+  \end{tabular}
+
+  Transcendental: $\pi$, $e$, $e^{\pi}$
+\end{example}
+
+\begin{theorem}
+  $\Q[x]$ is a PID.
+\end{theorem}
+
+\begin{theorem}
+  Let $\a\in\C$. The set of polynomials for which $\a$ is a zero is an ideal in
+  $\Q[x]$.
+\end{theorem}
+
+\begin{theorem}
+  Let $\overline{\Q}$ be the set of algebraic numbers:
+
+  $\overline{\Q}$ is a field.
+\end{theorem}
+
+Thus, sums and products of algebraic numbers are also algebraic.
+
+\end{document}

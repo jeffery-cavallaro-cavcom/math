@@ -1,0 +1,120 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{0}}
+\DeclareMathOperator{\Null}{Null}
+\DeclareMathOperator{\nullity}{nullity}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\rnk}{rank}
+\begin{document}
+\section*{Rank}
+
+\begin{definition}[Nullity and Rank]
+  Let $A\in M_{n,m}$:
+  \begin{itemize}
+  \item The \emph{null space} of $A$ is given by:
+    \[\Null(A)=\{\vx\in\C^n\mid A\vx=\vz\}\]
+
+  \item The \emph{nullity} of $A$ is given by:
+    \[\nullity(A)=\dim\Null(A)\]
+
+  \item The \emph{range} of $A$, denoted $\range(A)$, is the space spanned by
+    the columns of $A$.
+
+  \item The \emph{rank} of $A$ is given by:
+    \[\rnk(A)=\dim\range(A)\]
+  \end{itemize}
+\end{definition}
+
+\begin{theorem}[Dimension Theorem]
+  Let $A\in M_{m,n}$:
+  \[n=\rnk(A)+\nullity(A)\]
+  where $\rnk(A)$ equals the number of pivots in the REF of $A$ and
+  $\nullity(A)$ equals the number of free variables in the REF of $A$.
+\end{theorem}
+
+Note that the transformation $T:\C^n\to\C^m$ defined by $T(\vx)=A\vx$ is a
+linear transformation.
+
+\begin{theorem}
+  Let $T:\C^n\to\C^n$ be the linear transformation defined by $T(\vx)=A\vx$ for
+  some $A\in M_{m,n}$:
+  \[T\ \mbox{is injective} \iff \Null(A)\ \mbox{is trivial}\]
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $T$ is injective
+
+    Assume $T(\vx)=T(\vy)$ \\
+    $T(\vx)-T(\vy)=\vz$ \\
+    $T(\vx-\vy)=\vz$ \\
+    But $T$ is injective, so $\vx=\vy$ \\
+    Thus, $T(\vz)=\vz$ \\
+    Furthermore, since $T$ is injective, no other element in the domain may
+    map to $\vz$
+
+    Therefore $\Null(A)$ is trivial.
+
+  \item $\impliedby$ Assume $\Null(A)$ is trivial
+
+    Assume $T(\vx)=T(\vy)$ \\
+    $T(\vx)-T(\vy)=\vz$ \\
+    $T(\vx-\vy)=\vz$ \\
+    But the null space is trivial, and so $\vx-\vy=\vz$ \\
+    and so $\vx=\vy$
+
+    Therefore $T$ is injective.
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $T:\C^n\to\C^n$ be the linear transformation defined by $T(\vx)=A\vx$ for
+  some $A\in M_{m,n}$:
+  \[T\ \mbox{is injective} \iff T\ \mbox{is surjective}\]
+\end{theorem}
+
+\begin{theproof}
+  $T$ is injective \\
+  $\iff$ the null space is trivial \\
+  $\iff \nullity(A)=0$ \\
+  $\iff \rnk(A)=n-0=n$ \\
+  $\iff $ the column space of $A$ spans $C^n$ \\
+  $\iff T$ is surjective.
+\end{theproof}
+
+\begin{lemma}
+  Let $A\in M_{m,k}$ and $B\in M_{k,n}$:
+  \[\rnk(AB)\le\rnk(A)\]
+\end{lemma}
+
+\begin{theproof}
+  $\range(AB)=\{(AB)\vx|\vx\in\C^n\}=\{A(B\vx)|\vx\in\C^n\}\subseteq\range(A)$
+
+  $\therefore \rnk(AB)\le\rnk(A)$
+\end{theproof}
+
+\begin{theorem}
+  Let $A\in M_{m,n}$:
+  \[\rnk(A)=\rnk(A^T)\]
+  Thus, the dimension of the column space equals the dimension of the row
+  space.
+\end{theorem}
+\newpage
+\begin{theproof}
+  Let $\rnk(A)=r\le n$ \\
+  Thus, only $r$ of the $n$ columns of $A$ are linearly independent \\
+  So construct $B\in M_{m,r}$ from the linearly independent columns of $A$ \\
+  Assume $A=BX$ for some $X\in M_{r,n}$ \\
+  $\rnk(A^T)=\rnk((BX)^T)=\rnk(X^TB^T)\le\rnk(X^T)$ \\
+  But $X^T\in M_{n,r}$ and so $\rnk(X^T)\le r$ \\
+  So $\rnk(A^T)\le r=\rnk(A)$ \\
+  But since $(A^T)^T=A$, $\rnk(A)\le\rnk(A^T)$
+
+  $\therefore \rnk(A)=\rnk(A^T)$
+\end{theproof}
+
+\end{document}

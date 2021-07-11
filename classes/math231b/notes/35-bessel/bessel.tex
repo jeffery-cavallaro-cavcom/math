@@ -1,0 +1,71 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\weak}{\overset{w}{\longrightarrow}}
+\DeclareMathOperator{\spn}{Span}
+\DeclareMathOperator{\proj}{proj}
+\begin{document}
+\section*{Bessel's Inequality}
+
+\begin{theorem}[Bessel]
+  Let $E$ be an inner product space and let $(\vx_n)$ be an orthonormal
+  sequence in $E$. $\forall\,\vx\in E$:
+  \[\sum_{n=1}^{\infty}\abs{\inner{\vx,\vx_n}}^2\le\norm{\vx}^2\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\{\vx_{n_1},\ldots,\vx_{n_r}\}$ is a finite subset of $(\vx_n)$. \\
+  Let $S=\spn\{\vx_{n_1},\ldots,\vx_{n_r}\}$. \\
+  Let $y=\proj_S\vx=\sum_{k=1}^r\inner{\vx,\vx_{n_k}}\vx_{n_k}$. \\
+  \begin{eqnarray*}
+    \norm{\vx}^2 &=& \norm{(\vx-\vy)+\vy}^2 \\
+    &=& \norm{\vx-\vy}^2+\norm{\vy}^2 \\
+    &\ge& \norm{\vy}^2 \\
+    &=& \norm{\sum_{k=1}^r\inner{\vx,\vx_{n_k}}\vx_{n_k}}^2 \\
+    &=& \inner{\sum_{k=1}^r\inner{\vx,\vx_{n_k}}\vx_{n_k},
+      \sum_{j=1}^r\inner{\vx,\vx_{n_j}}\vx_{n_j}} \\
+    &=& \sum_{k=1}^r\abs{\inner{\vx,\vx_{n_k}}}^2
+  \end{eqnarray*}
+  Now, let $r\to\infty$.
+
+  $\therefore\sum_{n=1}^{\infty}\abs{\inner{\vx,\vx_n}}^2\le\norm{\vx}^2$
+\end{theproof}
+
+\begin{corollary}
+  Let $E$ be an inner product space and let $(\vx_n)$ be an orthonormal
+  sequence in $E$. $\forall\,\vx\in E$:
+
+  \qquad$(\inner{\vx,\vx_n})$ is a sequence in $\ell^2$.
+\end{corollary}
+
+\begin{theproof}
+  $\sum_{n=1}^{\infty}\abs{\inner{\vx,\vx_n}}^2\le\norm{\vx}^2<\infty$
+
+  Therefore, by definition, $(\inner{\vx,\vx_n})$ is in $\ell^2$.
+\end{theproof}
+
+\newpage
+
+\begin{corollary}
+  Let $E$ be an inner product space and let $(\vx_n)$ be an orthonormal
+  sequence in $E$:
+  \[\vx\weak\vo\]
+\end{corollary}
+
+\begin{theproof}
+  Assume $\vx\in E$. \\
+  $(\inner{\vx,\vx_n})$ is a sequence in $\ell^2$. \\
+  And so $\inner{\vx,\vx_n}\to0=\inner{\vx,\vo}$.
+
+  $\therefore\vx\weak\vo$
+\end{theproof}
+
+But note that for an orthonormal sequence $(\vx_n)$, $\vx_n\not\to\vo$:
+\[\norm{\vx_n-\vo}=\norm{\vx_n}=1\not\to0\]
+
+\end{document}

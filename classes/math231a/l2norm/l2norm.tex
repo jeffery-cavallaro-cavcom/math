@@ -1,0 +1,52 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\Rd}{\mathbb{R}^d}
+\newcommand{\LtwoRd}{L^2(\mathbb{R}^d)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\begin{document}
+
+\section*{L\textsuperscript2 Norm}
+
+\begin{theorem}
+$\norm{\cdot}$ is a proper norm for $L^2$
+\end{theorem}
+
+\begin{theproof}
+\listbreak
+\begin{description}
+\item{N1:} Assume $f\in L^2$
+
+$\norm{f}=0\iff f=0\;\; a.e.\qquad(property)$ \\
+Note that, once again, we are dealing with equivalence classes, where: \\
+$f\sim g$ means $f=g\;\;a.e.$
+
+\item{N2:} Assume $f\in L^2$ and $\alpha\in\mathbb{C}$
+
+$\norm{\alpha f}=\left(\int\abs{\alpha f}^2\right)^{\frac{1}{2}}=
+    \left(\abs{\alpha}^2\int\abs{f}^2\right)^{\frac{1}{2}}=
+    \abs{\alpha}\left(\int\abs{f}^2\right)^{\frac{1}{2}}=
+    \abs{\alpha}\norm{f}$
+
+\item{N3:} Assume $f,g\in L^2$
+\[\begin{array}{rcl}
+\norm{f+g}^2 &=& \int\abs{f+g}^2 \\
+    &=& \int(f+g)\Conj{(f+g)} \\
+    &=& \int(f+g)(\conj{f}+\conj{g}) \\
+    &=& \int(f\conj{f}+g\conj{g}+f\conj{g}+g\conj{f}) \\
+    &=& \int\abs{f}^2+\int\abs{g}^2+\int f\conj{g}+\int g\conj{f}) \\
+    &=& \norm{f}^2+\norm{g}^2+\inner{f}{g}+\inner{g}{f} \\
+    &\le& \norm{f}^2+\norm{g}^2+\norm{f}\norm{g}+\norm{g}\norm{f} \\
+    &=& \norm{f}^2+\norm{g}^2+2\norm{f}\norm{g} \\
+    &=& \left(\norm{f}+\norm{g}\right)^2 \\
+\end{array}\]
+
+$\therefore \norm{f+g}\le\norm{f}+\norm{g}$
+\end{description}
+\end{theproof}
+
+\end{document}

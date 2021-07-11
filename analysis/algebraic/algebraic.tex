@@ -1,0 +1,48 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Algebraic Numbers}
+
+\begin{definition}
+To say that a number is \emph{algebraic} means that there exists a polynomial
+equation of the form $\sum_{k=0}^nc_kx^k$ such that $n\ge1$, $c_k\in\mathbb{Z}$,
+and $c_n\ne0$ for which the number is a solution. The set of all algebraic
+numbers is denoted by $\mathbb{A}$.
+\end{definition}
+
+\begin{theorem}
+$\mathbb{Q}\subset\mathbb{A}$
+\end{theorem}
+
+\begin{theproof}
+Assume $r\in\mathbb{Q}$. \\
+$\exists p,q\in\mathbb{Z},r=\frac{p}{q}, q\ne0$ \\
+Consider the polynomial equation $qx-p=0$. \\
+$r$ is a solution. \\
+$\therefore r\in\mathbb{A}$
+\end{theproof}
+
+\begin{example}
+Show that $\sqrt{2}\in\mathbb{A}$. \\
+\\
+Let $x=\sqrt{2}$. \\
+$x^2=2$ \\
+$x^2-2=0$ \\
+$\sqrt{2}$ is a solution to this polynomial equation. \\
+$\therefore\sqrt{2}\in\mathbb{A}$
+\end{example}
+
+\begin{example}
+Show that $\sqrt[3]{2+\sqrt{5}}\in\mathbb{A}$. \\
+\\
+Let $x=\sqrt[3]{2+\sqrt{5}}$. \\
+$x^3=2+\sqrt{5}$ \\
+$x^3-2=\sqrt{5}$ \\
+$(x^3-2)^2=5$ \\
+$x^6-4x^3+4=5$ \\
+$x^6-4x^3-1=0$ \\
+$\sqrt[3]{2+\sqrt{5}}$ is a solution to this polynomial equation. \\
+$\therefore\sqrt[3]{2+\sqrt{5}}\in\mathbb{A}$
+\end{example}
+\end{document}

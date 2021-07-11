@@ -1,0 +1,133 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\o}{\omega}
+\renewcommand{\O}{\Omega}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vo}{\vec{0}}
+\begin{document}
+\section*{Vector Subspaces}
+
+\begin{definition}[Vector Subspace]
+  Let $E$ be a vector space over a scalar field $\F$ and let $E'\subseteq E$. To
+  say that $E'$ is a \emph{subspace} of $E$ means that $E'$ is also a vector
+  space using the same scalar field and operations as $E$.
+
+  To say that $E'$ is a \emph{proper} subspace of $E$ means that $E'$ is a
+  subspace of $E$; however, $E'\ne E$.
+\end{definition}
+
+\begin{theorem}[Subspace Test]
+  Let $E$ be a vector space over a scalar field $\F$ and let $E'\subseteq E$:
+
+  $E'$ is a subspace of $E\iff\forall\,\vx,\vy\in E'$ and
+  $\forall\,\a,\b\in\F$, $\a\vx+\b\vy\in E'$.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $E'$ is a subspace of $E$.
+
+    Assume $\vx,\vy\in E'$ and $\a,\b\in\F$. \\
+    By closure, $\a\vx\in E'$ and $\b\vy\in E'$. \\
+    $\therefore$ by closure, $\a\vx+\b\vy\in E'$.
+
+  \item $\impliedby$ Assume $\forall\,\vx,\vy\in E'$ and $\forall\,\a,\b\in\F$,
+    $\a\vx+\b\vy\in E'$.
+
+    Since $E'\subseteq E$, $E'$ inherits most of the necessary properties
+    from $E$; only closure and $\exists\,\vz\in E',\vx+\vz=\vy$ need to be
+    proven.
+
+    Assume $\vx,\vy\in E'$ \\
+    $1\vx+1\vy=\vx+\vy\in E'$ \\
+    $\therefore E'$ is closed under vector addition.
+    
+    Assume $\a\in\F$. \\
+    $\a\vx+0\vy=\a\vx\in E'$ \\
+    $\therefore E'$ is closed under scalar multiplication.
+
+    By closure, $\exists\,\vz\in E',(-1)\vx+1\vy=(-\vx)+\vy=\vz$:
+    \begin{eqnarray*}
+      \vx+((-\vx)+\vy) &=& \vx+\vz \\
+      (\vx+(-\vx))+\vy &=& \vx+\vz \\
+      \vo+\vy &=& \vx+\vz \\
+      \vy+\vo &=& \vx+\vz \\
+      \vy &=& \vx+\vz \\
+    \end{eqnarray*}
+  \end{description}
+\end{theproof}
+
+\begin{examples}
+  Let $\O$ be an open subset of $\R$ or $\C$. The following are all subspaces
+  of $\mathcal{F}$, the vector space of complex-valued functions on $\O$:
+  \begin{enumerate}
+  \item $C(\O)=$ the space of all continuous functions on $\O$.
+  \item $C^k(\O)=$ the space of all functions with continuous partial
+    derivatives of order up to and including $k$ on $\O$.
+  \item $C^{\infty}=$ the space of all infinitely-differentiable functions on
+    $\O$.
+  \item $C^{\o}=$ the space of all analytic functions (i.e., functions that
+    have a power series representation) on $\O$.
+  \item $P(\O)=$ the space of all polynomial functions in $n$ variables on
+    $\O$.
+  \end{enumerate}
+\end{examples}
+
+Note that:
+\[C^0(\O)\supset C^1(\O)\supset C^2(\O)\supset\ldots\supset C^{\infty}(\O)
+\supset C^{\o}(\O)\]
+Also note that:
+\[P(\O)\subseteq C^{\o}(\O)\]
+
+\begin{theorem}
+  Let $E_1$ and $E_2$ be two vector spaces over a scalar field $\F$:
+
+  \qquad$E_1\cap E_2$ is a subspace of both $E_1$ and $E_2$.
+\end{theorem}
+
+\begin{theproof}
+  $E_1\cap E_2\subseteq E_1$ and $E_1\cap E_2\subseteq E_2$.
+
+  Assume $\a,\b\in\F$. \\
+  Assume $\vx,\vy\in E\cap E'$. \\
+  $\vx,\vy\in E_1$ and $\vx,\vy\in E_2$. \\
+  By closure, $\a\vx+\b\vy\in E_1$ and $\a\vx+\b\vy\in E_2$, \\
+  $\a\vx+\b\vy\in E_1\cap E_2$
+  
+  $\therefore$ by the subspace test, $E_1\cap E_2$ is a subspace of both $E_1$
+  and $E_2$.
+\end{theproof}
+
+\begin{theorem}
+  Let $E_1$ and $E_2$ be subspaces of a vector space $E$ such that
+  $E_1\subseteq E_2$:
+
+  \qquad$E_1$ is a subspace of $E_2$.
+\end{theorem}
+
+\begin{theproof}
+  $E_1=E_1\cap E_2$ \\
+  But by previous theorem, $E_1\cap E_2$ is a subspace of $E_2$.
+
+  $\therefore E_1$ is a subspace of $E_2$.
+\end{theproof}
+
+\newpage
+
+\begin{example}
+  $P(\O)$ and $C^{\o}(\O)$ are subspaces of $C^{\infty}(\O)$.
+  
+  $P(\O)\subset C^{\o}(\O)$.
+
+  $\therefore P(\O)$ is a subspace of $C^{\o}(\O)$.
+\end{example}
+
+\end{document}
+

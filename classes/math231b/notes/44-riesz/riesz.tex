@@ -1,0 +1,94 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\ve}{\vec{e}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vo}{\vec{0}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\mn}{\mathcal{N}}
+\renewcommand{\a}{\alpha}
+\DeclareMathOperator{\proj}{proj}
+\begin{document}
+\section*{Riesz Representation Theorem}
+
+\begin{lemma}
+  Let $H$ be a Hilbert space and let $f\in H'$ such that $f\not\equiv0$:
+  \[\dim \mn(f)^{\perp}=1\]
+\end{lemma}
+
+\begin{tikzpicture}
+  \draw (0,0) -- (5,0) -- (6,2) -- (1,2) -- cycle;
+  \node at (1,0.5) {$\mn(f)$};
+  \node [draw,circle,fill,scale=0.5] (z) at (3,1) {};
+  \node [left] at (z) {$\vo$};
+  \draw [->] (3,1) -- node [right] {$\mn(f)^{\perp}$} (3,4);
+  \draw [dashed] (3,1) -- (3,0);
+  \draw [->] (3,0) -- (3,-2);
+\end{tikzpicture}
+
+\begin{theproof}
+  Since $f\not\equiv0$, $\mn(f)$ is a proper subset of $H$ and thus
+  $\mn(f)^{\perp}$ is not trivial, so fix a $\vx\in\mn(f)^{\perp}$ such that
+  $\vx\ne\vo$. \\
+  Assume $\vy\in\mn(f)^{\perp}$ such that $\vy\ne\vo$. \\
+  Thus $f(\vx),f(\vy)\ne0$; otherwise $\vx,\vy\in\mn(f)$. \\
+  So $\exists\,\a\in\C$ such that $f(\vy)=\a f(\vx)$. \\
+  $f(\vy)-\a f(\vx)=0$ \\
+  $f(\vy-\a\vx)=0$ \\
+  Thus $\vy-\a\vx\in\mn(f)$. \\
+  But $\mn(f)^{\perp}$ is subspace of $H$, and so $\vy-\a\vx\in\mn(f)^{\perp}$
+  also. \\
+  Therefore $\vy-\a\vx=0$ and thus $\vy=\a\vx$.
+\end{theproof}
+
+\begin{theorem}[Riesz]
+  Let $H$ be a Hilbert space and let $f\in H'$. There exists a unique element
+  $\vy\in H$ such that $\forall\,\vx\in H$:
+  \[f(\vx)=\inner{\vx,\vy}\]
+  Moreover, $\norm{f}=\norm{\vy}$.
+\end{theorem}
+
+\newpage
+
+\begin{theproof}
+  \begin{minipage}{3in}
+    \begin{tikzpicture}
+      \draw (0,0) -- (5,0) -- (6,2) -- (1,2) -- cycle;
+      \node at (1,0.5) {$\mn(f)$};
+      \node [draw,circle,fill,scale=0.5] (z) at (3,1) {};
+      \node [left] at (z) {$\vo$};
+      \draw [->] (3,1) -- node [left] {$\mn(f)^{\perp}$} (3,4);
+      \draw [dashed] (3,1) -- (3,0);
+      \draw [->] (3,0) -- (3,-2);
+      \node [draw,circle,fill,scale=0.5] (x) at (5,3) {};
+      \draw [->] (z) to node [left,pos=0.75] {$\vx$} (x);
+      \draw [dashed] (3,3) to (x);
+      \draw [dashed] (5,1) to (x);
+      \draw [->] (z) to node [below] {$\vx-\vx_0$} (5,1);
+      \draw [->] (z) to node [right,pos=0.75] {$\vx_0$} (3,3);
+      \draw [->] (z) to node [left] {$\ve$} (3,1.75);
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{3.5in}
+    Let $\ve\in\mn(f)$ such that $\norm{\ve}=1$. \\
+    Assume $\vx\in H$. \\
+    Let $\vx_0=\proj_{N(f)^{\perp}}\vx$. \\
+    By lemma, $\dim N(f)^{\perp}=1$. \\
+    And so $\ve$ is an orthonormal basis for $\dim N(f)^{\perp}$. \\
+    Thus $\vx_0=\inner{\vx,\ve}\ve$.
+  \end{minipage}
+
+  But $\vx-\vx_0\in\mn{f}$ and so $f(\vx-\vx_0)=0$. \\
+  $f(\vx)-f(\vx_0)=0$ \\
+  $f(\vx)=f(\vx_0)=f(\inner{\vx,\ve}\ve)=\inner{\vx,\ve}f(\ve)=
+  \inner{\vx,\conj{f(\ve)}\ve}$
+
+  Therefore $f(x)=\inner{\vx,\vy}$ where $\vy=\conj{f(\ve)}\ve$.
+
+  The fact that $\norm{f}=\norm{y}$ was previously proven.
+\end{theproof}
+
+\end{document}

@@ -1,0 +1,99 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Nilpotence}
+
+\begin{definition}
+  Let $R$ be a ring and $a\in R$. To say that $a$ is \emph{nilpotent} in $R$
+  means: $\exists\,n\in\Z^+,a^n=0$.
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a commutative ring and $N=\{a\in R\mid a$ is nilpotent in $R\}$. \\
+  $N$ is closed under addition.
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in N$ \\
+  $\exists\,n\in\Z^+,a^n=0$ \\
+  $\exists\,m\in\Z^+,b^m=0$ \\
+  $(a+b)^{n+m}=\sum_{k=0}^{n+m}\binom{n+m}{k}\cdot a^{n+m-k}b^k$ \\
+  For $0\le k\le m, a^{n+m-k}=a^na^r=0a^r=0$ \\
+  For $m\le k\le n+m, b^k=b^mb^s=0b^s=0$ \\
+  $(a+b)^{n+m}=0$ \\
+  $a+b\in N$
+
+  $\therefore N$ is closed under addition.
+\end{theproof}
+
+\begin{theorem}
+  Let $\phi:R\to R'$ be a homomorphism of rings:
+
+  $a$ nilpotent in $R\implies\phi(a)$ nilpotent in $R'$
+\end{theorem}
+
+\begin{theproof}
+  Assume $a$ is nilpotent in $R$ \\
+  $\exists\,n\in\Z^+,a^n=0$ \\
+  $\phi(a^n)=\phi(0)=0'$ \\
+  $\phi(a^n)=\phi(a)^n$ \\
+  $\phi(a)^n=0'$
+
+  $\therefore\phi(a)$ is nilpotent in $R'$.
+\end{theproof}
+
+\begin{theorem}
+  Let $R$ be a ring:
+
+  $R$ has no non-zero nilpotent elements $\iff \left(x^2=0\iff x=0\right)$.
+\end{theorem}
+\newpage
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $R$ has no non-zero nilpotent elements
+    \begin{description}
+    \item $\implies$ Assume $x\ne0$
+
+      $x^2\ne0$, otherwise $x$ would be nilpotent (contradiction)
+
+    \item $\impliedby$ Assume $x=0$
+
+      $x^2=0^2=(0)(0)=0$
+    \end{description}
+    
+    $\therefore x^2=0\iff x=0$
+
+  \item $\impliedby$ Assume $x^2=0\iff x=0$
+
+    ABC: $x\ne0$ is nilpotent in $R$ \\
+    Let $n\in\Z^+$ be the smallest $n$ such that $x^n=0$
+    \begin{description}
+    \item Case 1: $n$ even
+
+      $\left(x^{\frac{n}{2}}\right)^2=0$ \\
+      But by minimality of $n$, $x^{\frac{n}{2}}\ne0$ \\
+      Contradiction!
+      
+    \item Case 2: $n$ odd
+      \begin{description}
+      \item Case A: $n=1$
+
+        $x=0$ \\
+        Contradiction!
+
+      \item Case B: $n>1$
+        
+        $\left(x^{\frac{n+1}{2}}\right)^2=0$ \\
+        But by minimality of $n$, $x^{\frac{n+1}{2}}\ne0$ \\
+        Contradiction!
+      \end{description}
+    \end{description}
+
+    So $x$ is not nilpotent in $R$ \\
+    $\therefore R$ contains no non-zero nilpotent elements.
+  \end{description}
+\end{theproof}
+
+\end{document}

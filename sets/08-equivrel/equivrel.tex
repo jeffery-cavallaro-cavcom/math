@@ -1,0 +1,132 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{multicol}
+\pagestyle{empty}
+\begin{document}
+\section*{Equivalence Relations and Partitions}
+\begin{definition}
+An \emph{equivalence relation} on a set $A$ is a relation on $A$ that satisfies
+the following three properties:
+\begin{enumerate}
+\item \textbf{Reflexive}
+\[\forall\,a\in A,a\sim a\]
+\item \textbf{Symmetric}
+\[\forall\,a,b\in A,a\sim b\implies b\sim a\]
+\item \textbf{Transitive}
+\[\forall\,a,b,c\in A,a\sim b\ \mbox{and}\ b\sim c\implies a\sim c\]
+\end{enumerate}
+\end{definition}
+\begin{definition}
+To say that two sets $A$ and $B$ are \emph{disjoint} means:
+\[A\cap B=\emptyset\]
+
+To say that a family of indexed sets $\{A_i\mid i\in I\}$ is
+\emph{mutually disjoint} means:
+\[\forall\,i,j\in I,i\ne j\implies A_i\cap A_j=\emptyset\]
+\end{definition}
+\begin{definition}
+Let $A$ be a non-empty set. To say that an indexed family of sets
+$\{A_i\mid i\in I\}$ \emph{partitions} $A$ means:
+\begin{enumerate}
+\item All of the $A_i$ are non-empty:
+\[\forall\,i\in I,A_i\ne\emptyset\]
+\item The $A_i$ are mutually disjoint:
+\[\forall\,i,j\in I,i\ne j\implies A_i\cap A_j=\emptyset\]
+\item The union of the $A_i$ equals $A$:
+\[A=\bigcup_{i\in I}A_i\]
+\end{enumerate}
+Each $A_i$ is called a \emph{cell} of the partition.
+\end{definition}
+\begin{definition}
+An \emph{equivalence class} of an equivalence relation on a set $A$ is given by:
+\[\bar{a}=\{b\in A\mid a\sim b\}\]
+\end{definition}
+\begin{theorem}
+An equivalence relation on a set $A$ defines a partition of $A$, where the
+equivalence classes of the equivalence relation are the cells of the partition.
+\end{theorem}
+\begin{theproof}
+\listbreak
+\begin{enumerate}
+\item Assume $\bar{a}$ is an equivalence class. \\
+$a\in\bar{a}$ \\
+$\bar{a}\ne\emptyset$ \\
+Therefore, the equivalence classes are non-empty.
+
+\item Assume $\bar{a}\cap\bar{b}\ne\emptyset$ \\
+$\exists\,y\in A,y\in\bar{a}\cap\bar{b}$ \\
+$y\in\bar{a}$ and $y\in\bar{b}$ \\
+$y\sim a$ and $y\sim b$ \\
+
+\begin{multicols}{2}
+Assume $x\in\bar{a}$ \\
+$x\sim a$ \\
+$a\sim y$ \\
+$x\sim y$ \\
+$x\sim b$ \\
+$x\in\bar{b}$ \\
+
+\columnbreak
+Assume $x\in\bar{b}$ \\
+$x\sim b$ \\
+$b\sim y$ \\
+$x\sim y$ \\
+$x\sim a$ \\
+$x\in\bar{a}$ \\
+\end{multicols}
+
+$\bar{a}\cap\bar{b}\ne\emptyset\implies\bar{a}=\bar{b}$ \\
+$\bar{a}\ne\bar{b}\implies\bar{a}\cap\bar{b}=\emptyset$ \\
+Therefore, the equivalence classes are mutually disjoint.
+
+\item
+\begin{multicols}{2}
+Assume $x\in\bigcap_{a\in A}\bar{a}$ \\
+$\exists\,a\in A,x\in\bar{a}$ \\
+$x\in A$
+
+\columnbreak
+Assume $x\in A$ \\
+$x\sim x$ \\
+$x\in\bar{x}$ \\
+Let $a=x$ \\
+$\exists\,a\in A,x\in\bar{a}$ \\
+$x\in\bigcap_{a\in A}\bar{a}$
+\end{multicols}
+Therefore, $\bigcap_{a\in A}\bar{a}=A$
+\end{enumerate}
+\end{theproof}
+\newpage
+\begin{theorem}
+A partition on a set $A$ defines an equivalence relation on $A$, where the
+cells of the partition are the equivalence classes for the equivalence
+relation.
+\end{theorem}
+\begin{theproof}
+Assume $\{A_i\mid i\in I\}$ is a partition of $A$.
+\begin{enumerate}
+\item Assume $a\in A$ \\
+$a\in\bigcap_{i\in I}A_i$ \\
+$\exists\,i\in I,a\in A_i$ \\
+$a\in A_i$ and $a\in A_i$ \\
+$a\sim a$ \\
+Therefore, the relation is reflexive.
+
+\item Assume $a\sim b$ \\
+$\exists\,i\in I,a\in A_i$ and $b\in A_i$ \\
+$b\in A_i$ and $a\in A_i$ \\
+$b\sim a$ \\
+Therefore, the relation is symmetric.
+
+\item Assume $a\sim b$ and $b\sim c$ \\
+$\exists\,i\in I,a\in A_i$ and $b\in A_i$ \\
+$\exists\,j\in I,b\in A_j$ and $c\in A_j$ \\
+$b\in A_i$ and $b\in A_j$ \\
+$A_i\cap A_j\ne\emptyset$ \\
+$A_i=A_j$ \\
+$a\in A_i$ and $c\in A_i$ \\
+$a\sim c$ \\
+Therefore, the relation is transitive.
+\end{enumerate}
+\end{theproof}
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Rational Zeros Theorem}
+
+\begin{theorem}
+Let $\sum_{k=0}^na_kx^k=0$ be a polynomial equation such that $n\ge1$ and
+$a_n,a_0\ne0$. If $r\in\mathbb{Q}$ where $r=\frac{p}{q}$ such that $(p,q)=1$ is
+a solution to the polynomial equation then $p|a_0$ and $q|a_n$.
+\end{theorem}
+
+\begin{theproof}
+Assume $r=\frac{p}{q}$ is a solution to $\sum_{k=0}^na_kx^k=0$. \\
+$\sum_{k=0}^na_k\left(\frac{p}{q}\right)^k=0$
+Multiply by $q^k$. \\
+$\sum_{k=0}^na_kp^kq^{n-k}=0$ \\
+\\
+$a_0q^n+\sum_{k=1}^na_kp^kq^{n-k}=0$ \\
+$a_0q^n=-\sum_{k=1}^na_kp^kq^{n-k}$ \\
+$a_0q^n=-p\sum_{k=1}^na_kp^{k-1}q^{n-k}$ \\
+But $a_k, p^{k-1}, q^{n-k}\in\mathbb{Z}$ for $k\in\{1,...,n\}$. \\
+so $p|a_0q^n$, but $(p,q)=1$. \\
+$\therefore p|a_0$ \\
+\\
+$\sum_{k=0}^{n-1}a_kp^kq^{n-k}+a_np^n=0$ \\
+$a_np^n=-\sum_{k=0}^{n-1}a_kp^kq^{n-k}$ \\
+$a_np^n=-q\sum_{k=0}^{n-1}a_kp^kq^{n-k-1}$ \\
+But $a_k, p^k, q^{n-k+1}\in\mathbb{Z}$ for $k\in\{1,...,n-1\}$. \\
+so $q|a_np^n$, but $(p,q)=1$. \\
+$\therefore q|a_n$ \\
+\end{theproof}
+
+\begin{example}
+Show that $\sqrt{2}$ is irrational. \\
+\\
+$\sqrt{2}$ is a solution to $x^2-2=0$. \\
+But by the RZT, the only possible rational solutions are $\pm1,\pm2$. \\
+$2^2-2=2\ne0$ \\
+$(-2)^2-2=2\ne0$ \\
+$1^2-2=-1\ne0$ \\
+$(-1)^2-2=-1\ne0$ \\
+So the polynomial equation has no rational solutions. \\
+$\therefore\sqrt{2}\notin\mathbb{Q}$
+\end{example}
+\end{document}

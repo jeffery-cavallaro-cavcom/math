@@ -1,0 +1,142 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{tikz}
+\pagestyle{empty}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\begin{document}
+\section*{Triangle Inequality}
+Since complex numbers are vector-like, we can add complex numbers graphically
+in vector-like style:
+
+\begin{figure}[h]
+\begin{tikzpicture}
+\draw (-1,0) -- (4,0);
+\draw (0,-1) -- (0,4);
+\draw [->] (0,0) -- (3,1);
+\draw [->] (0,0) -- (1,2);
+\draw [dashed] (3,1) -- (4,3);
+\draw [dashed] (1,2) -- (4,3);
+\draw [->] (0,0) -- (4,3);
+\node [below] at (1.8,0.6) {$z_1$};
+\node [above,rotate=75] at (0.6,1.1) {$z_2$};
+\node [above,rotate=43] at (2,1.5) {$z_1+z_2$};
+\node [rotate=75] at (3.6,1.7) {$z_2$};
+\node at (7,2) {$\abs{z_1+z_1}\le\abs{z_1}+\abs{z_2}$};
+\end{tikzpicture}
+\end{figure}
+
+Note that the triangle inequality is evident from the diagram; however, it can
+also be proved analytically:
+
+\begin{theorem}
+$\forall z_1,z_2\in\C$:
+\[\abs{\abs{a}-\abs{b}}\le\abs{z_1+z_2}\le\abs{z_1}+\abs{z_2}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $z_1,z_2\in\C$ \\
+  \begin{minipage}[t]{3.25in}
+    \begin{eqnarray*}
+      \abs{z_1+z_2}^2 &=& (z_1+z_2)\Conj{(z_1+z_2)} \\
+      &=& (z_1+z_2)(\conj{z}_1+\conj{z}_2) \\
+      &=& z_1\conj{z}_1+z_2\conj{z}_2+z_1\conj{z}_2+\conj{z}_1z_2 \\
+      &=& \abs{z_1}^2+\abs{z_2}^2+z_1\conj{z}_2+\Conj{z_1\conj{z}_2} \\
+      &=& \abs{z_1}^2+\abs{z_2}^2+2Re(z_1\conj{z}_2) \\
+      &\le& \abs{z_1}^2+\abs{z_2}^2+2\abs{z_1\conj{z}_2} \\
+      &=& \abs{z_1}^2+\abs{z_2}^2+2\abs{z_1}\abs{\conj{z}_2} \\
+      &=& \abs{z_1}^2+\abs{z_2}^2+2\abs{z_1}\abs{z_2} \\
+      &=& (\abs{z_1}+\abs{z_2})^2 \\
+      \abs{z_1+z_2} &\le& \abs{z_1}+\abs{z_2} \\
+    \end{eqnarray*}
+  \end{minipage}
+  \begin{minipage}[t]{3.25in}
+    \begin{eqnarray*}
+      \abs{z_1-z_2}^2 &=& (z_1-z_2)\Conj{(z_1-z_2)} \\
+      &=& (z_1-z_2)(\conj{z}_1-\conj{z}_2) \\
+      &=& z_1\conj{z}_1+z_2\conj{z}_2-z_1\conj{z}_2-\conj{z}_1z_2 \\
+      &=& \abs{z_1}^2+\abs{z_2}^2-(z_1\conj{z}_2+\Conj{z_1\conj{z}_2}) \\
+      &=& \abs{z_1}^2+\abs{z_2}^2-2Re(z_1\conj{z}_2) \\
+      &\ge& \abs{z_1}^2+\abs{z_2}^2-2\abs{z_1\conj{z}_2} \\
+      &=& \abs{z_1}^2+\abs{z_2}^2-2\abs{z_1}\abs{\conj{z}_2} \\
+      &=& \abs{z_1}^2+\abs{z_2}^2-2\abs{z_1}\abs{z_2} \\
+      &=& (\abs{z_1}-\abs{z_2})^2 \\
+      \abs{z_1-z_2} &\ge& \abs{\abs{z_1}+\abs{z_2}} \\
+      \abs{z_1-(-z_2)} &\ge& \abs{\abs{z_1}+\abs{-z_2}} \\
+      \abs{z_1+z_2} &\ge& \abs{\abs{z_1}+\abs{z_2}} \\
+    \end{eqnarray*}
+  \end{minipage}
+
+  $\therefore\abs{\abs{a}-\abs{b}}\le\abs{z_1+z_2}\le\abs{z_1}+\abs{z_2}$
+\end{theproof}
+
+\begin{theproof}[alternate]
+  Assume $z_1,z_2\in\C$ \\
+  \[\abs{z_1}=\abs{z_1+z_2-z_2}\le\abs{z_1+z_2}+\abs{z_2}\]
+  \[\abs{z_1}-\abs{z_2}\le\abs{z_1+z_2}\]
+  \[\abs{z_2}=\abs{z_2+z_1-z_1}\le\abs{z_2+z_1}+\abs{z_1}\]
+  \[\abs{z_2}-\abs{z_1}=-(\abs{z_1}-\abs{z_2})\le\abs{z_1+z_2}\]
+  \[\therefore\abs{\abs{z_1}-\abs{z_2}}\le\abs{z_1+z_2}\]
+\end{theproof}
+
+\begin{corollary}
+$\forall z_1,z_2\in\C$:
+\[\abs{z_1-z_2}\le\abs{z_1}+\abs{z_2}\]
+\end{corollary}
+
+\begin{theproof}
+Assume $z_1,z_2\in\C$ \\
+\[\abs{z_1-z_2}=\abs{z_1+(-z_2)}\le\abs{z_1}+\abs{-z_2}=\abs{z_1}+\abs{z_2}\]
+\end{theproof}
+
+\begin{theorem}
+$\forall n\in\N$:
+\[\abs{\sum_{k=1}^{n}z_k}\le\sum_{k=1}^{n}\abs{z_k}\]
+\end{theorem}
+
+\begin{theproof}
+(by induction)
+\begin{description}
+\item{Base Case: $n=1$} \\
+$\abs{\sum_{k=1}^{1}z_k}=\abs{z_1}$ \\
+$\sum_{k=1}^{1}\abs{z_k}=\abs{z_1}$
+
+\item{Assume $\abs{\sum_{k=1}^{n}z_k}\le\sum_{k=1}^{n}\abs{z_k}$}
+
+\item Consider $\abs{\sum_{k=1}^{n+1}z_k}$
+  \[\abs{\sum_{k=1}^{n+1}z_k}=\abs{\sum_{k=1}^{n}z_k+z_{n+1}}\le
+  \abs{\sum_{k=1}^{n}z_k}+\abs{z_{n+1}}\le
+  \sum_{k=1}^{n}\abs{z_k}+\abs{z_{n+1}}=
+  \sum_{k=1}^{n+1}\abs{z_k}\]
+\end{description}
+\end{theproof}
+
+\begin{theorem}
+  $\forall\,z=x+iy\in\C$:
+  \[\frac{\abs{x}+\abs{y}}{\sqrt{2}}\le\abs{z}\le\abs{x}+\abs{y}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $z=x+iy\in\C$
+  \begin{eqnarray*}
+    \left(\abs{x}-\abs{y}\right)^2 &=& \abs{x}^2+\abs{y}^2-2\abs{x}\abs{y} \\
+    &=& 2\abs{x}^2+2\abs{y}^2-\abs{x}^2-\abs{y}^2-2\abs{x}\abs{y} \\
+    &=& 2(\abs{x}^2+\abs{y}^2)-(\abs{x}^2+\abs{y}^2+2\abs{x}\abs{y}) \\
+    &=& 2(\abs{z}^2)-(\abs{x}+\abs{y})^2 \\
+    &\ge& 0 \\
+  \end{eqnarray*}
+  \begin{eqnarray*}
+    (\abs{x}+\abs{y})^2 &\le& 2(\abs{z}^2) \\
+    \abs{x}+\abs{y} &\le& \sqrt{2}\abs{z} \\
+    \frac{\abs{x}+\abs{y}}{\sqrt{2}} &\le& \abs{z} \\
+  \end{eqnarray*}
+  \[\abs{z}=\abs{x+iy}\le\abs{x}+\abs{iy}=\abs{x}+\abs{i}\abs{y}=
+  \abs{x}+(1)\abs{y}=\abs{x}+\abs{y}\]
+
+  $\therefore\frac{\abs{x}+\abs{y}}{\sqrt{2}}\le\abs{z}\le\abs{x}+\abs{y}$
+\end{theproof}
+
+Note that equality occurs in the first case when $\abs{x}=\abs{y}$, and in the
+second case when $x=0$ or $y=0$.
+
+\end{document}

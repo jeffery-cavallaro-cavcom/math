@@ -1,0 +1,71 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\Rd}{\mathbb{R}^d}
+\newcommand{\LtwoRd}{L^2(\Rd)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}
+\newcommand{\conj}[1]{\bar{#1}}
+\newcommand{\Conj}[1]{\overline{#1}}
+\begin{document}
+\section*{L\textsuperscript{2} Separability}
+
+\begin{definition}
+Let $V$ be a vector space equipped with a norm $\norm{\cdot}$. To say that $V$
+is \emph{separable} means there exists a countable set $S\subset V$ such that
+$span(S)$ is dense in $V$.
+\end{definition}
+
+\begin{theorem}
+$L^2$ is separable.
+\end{theorem}
+
+\begin{theproof}
+Assume $f\in L^2$ \\
+Let:
+\[g_n(x)=\begin{cases}
+f(x), & \abs{x}\le n\ \mbox{and}\ \abs{f(x)}\le n \\
+0, & otherwise \\
+\end{cases}\]
+Since $f\in L^2, f<\infty\;\;a.e.$, and so $g\to f\;\;a.e.$
+\[\abs{f-g_n}\le\abs{f}+\abs{g_n}\le \abs{f}+\abs{f}=2\abs{f}\]
+\[\abs{f-g_n}^2\le4\abs{f}^2\]
+Thus, by the DCT:
+\[\lim\int\abs{f-g_n}^2=\int\lim\abs{f-g_n}^2=0\]
+$\therefore \norm{f-g_n}\to0$
+
+Assume $\epsilon>0$ \\
+$\exists N,\norm{f-g_N}<\frac{\epsilon}{2}$ \\
+Let $g=g_N$ \\
+Since $g$ is a bounded function supported on a bounded set, \\
+$g\in L^1$ \\
+Since the step functions are dense in $L^1$, there exists a step function
+$\phi$ such that: \\
+$\abs{\phi}\le N$ and $\int\abs{g-\phi}<\frac{\epsilon^2}{16N}$
+
+Now, consider the family of functions $S=\{r\chi_R\}$, where $r$ is a complex
+number with rational real and imaginary parts, and $R$ is a rectangle in $\Rd$
+with rational coordinates.
+
+Let $\psi$ be a linear combination of step functions from this family with real
+and imaginary parts arbitrarily close to those of $\phi$ so that
+$\abs{\psi}\le N$ and $\int\abs{\phi-\psi}<\frac{\epsilon^2}{16N}$.
+\[\int\abs{g-\psi}\le\int\abs{(g-\phi)+(\phi-\psi)}\le
+    \int\abs{g-\phi}+\int\abs{\phi-\psi}<
+    \frac{\epsilon^2}{16N}+\frac{\epsilon^2}{16N}=
+    \frac{\epsilon^2}{8N}\]
+\[\abs{g-\psi}^2=\abs{g-\psi}\abs{g-\psi}\le(\abs{g}+\abs{\psi})\abs{g-\psi}\le
+    (N+N)\abs{g-\psi}=2N\abs{g-\psi}\]
+\[\int\abs{g-\psi}^2\le2N\int\abs{g-\psi}<
+    2N\left(\frac{\epsilon^2}{8N}\right)=\frac{\epsilon^2}{4}\]
+so:
+\[\norm{g-\psi}<\frac{\epsilon}{2}\]
+and finally:
+\[\norm{f-\psi}=\norm{(f-g)+(g-\psi)}\le\norm{f-g}+\norm{g-\psi}<
+    \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon\]
+
+$\therefore span(S)$ is dense in $L^2$ and thus $L^2$ is separable.
+\end{theproof}
+
+\end{document}

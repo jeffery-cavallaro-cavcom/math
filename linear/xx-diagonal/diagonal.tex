@@ -1,0 +1,43 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Dn}{D_n(\F)}
+\newcommand{\Mn}{M_n(\F)}
+\begin{document}
+\section*{Diagonal Matrices}
+
+\begin{definition}
+  To say that a square matrix $A$ is \emph{diagonal} means:
+  \[i\ne j\implies A_{ij}=0\]
+  Thus, all entries not on the main diagonal must be 0.
+
+  Note that a zero matrix is a diagonal matrix.
+\end{definition}
+
+\begin{theorem}
+  Let $\Dn$ be the set of $n\times n$ diagonal matrices over a field $\F$:
+
+  $\Dn$ is a subspace of $\Mn$.
+\end{theorem}
+
+\begin{theproof}
+  Clearly, $I_n\in\Dn$
+
+  Assume $A,B\in\Dn$ \\
+  Assume $i\ne j$ \\
+  $(A+B)_{ij}=A_{ij}+B_{ij}=0+0=0$ \\
+  Thus, $A+B\in\Dn$
+
+  Therefore, $\Dn$ is closed under matrix addition.
+
+  Assume $c\in\F$ \\
+  $(cA)_{ij}=cA_{ij}=c\cdot0=0$ \\
+  Thus, $cA\in\Dn$
+
+  Therefore, $\Dn$ is closed under scalar multiplication.
+
+  Therefore, by the subspace test, $\Dn$ is a subspace of $\Mn$.
+\end{theproof}
+
+\end{document}

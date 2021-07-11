@@ -1,0 +1,130 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Integral Domain}
+
+\begin{definition}[Zero Divisor]
+  Let $R$ be a ring and $r,s\in\R^*$ such that $r,s\ne0$ and  $rs=0$. $r$ is
+  called a \emph{left zero divisor} of $s$ and $s$ is called a
+  \emph{right zero divisor} of $r$.
+\end{definition}
+
+\begin{example}
+  \listbreak
+  \begin{enumerate}
+  \item $\Z\times\Z$
+
+    $(0,a)(b,0)=(0,0)$
+
+  \item $\Z_6$
+
+    $2\cdot3=0$
+
+  \item $M_2(Z)$
+
+    $\begin{bmatrix} 1 & -2 \\ -2 & 4 \end{bmatrix}
+    \begin{bmatrix} 6 & 2 \\ 3 & 1 \end{bmatrix}=
+    \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$
+  \end{enumerate}
+\end{example}
+
+\begin{definition}[Integral Domain]
+  Let $R$ be a commutative ring with $1\ne0$. To say that $R$ is an
+  \emph{integral domain} means that $R$ has no zero divisors.
+\end{definition}
+
+\begin{theorem}
+  Let $R$ be a commutative ring with $1\ne0$. $R$ is an integral domain iff
+  the cancellation laws hold.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $R$ is an integral domain
+
+    Assume $rs=rt$ for $r,s,t\in R$ and $r\ne0$ \\
+    $rs-rt=0$ \\
+    $r(s-t)=0$ \\
+    But $r\ne0$ by assumption, so $s-t=0$ and $s=t$
+
+    Therefore, the left cancellation law holds.
+
+    Similarly, $sr=tr$ \\
+    $sr-tr=0$ \\
+    $(s-t)r=0$ \\
+    and thus $s=t$
+
+    Therefore the right cancellation law holds.
+\newpage
+  \item $\impliedby$ Assume that the cancellation laws hold
+
+    Assume $r,s\in R$ such that $r\ne0$ and $rs=0$ \\
+    $r0=0$ \\
+    $rs=r0$ \\
+    So by left cancellation, $s=0$
+
+    Therefore $R$ contains no left zero divisors.
+
+    Similarly, assume $t\in R$ such that $tr=0$ \\
+    $0r=0$ \\
+    $tr=0r$ \\
+    So by right cancellation, $t=0$
+    
+    Therefore $R$ contains no right zero divisors.
+
+    Therefore $R$ is an integral domain.
+  \end{description}
+\end{theproof}
+
+\begin{example}
+  \listbreak
+  \begin{enumerate}
+  \item $\Z$, $\Q$, $\R$, $\C$
+  \item $\Z[x]$
+  \item $\Z[x,y]$
+  \item $\Z[i]$
+  \item $\Z[\omega]$
+  \end{enumerate}
+\end{example}
+
+Note that $M_n(R)$ is not an integral domain due to lack of multiplicative
+commutativity.
+
+\begin{definition}[Field]
+  Let $F$ be an integral domain. To say that $F$ is a field means:
+  \[F^{\times}=F^*\]
+  In other words, every non-zero element in $F$ is a unit.
+\end{definition}
+
+\begin{theorem}
+  Let $F$ be a finite integral domain. $F$ is a field.
+\end{theorem}
+
+\begin{theproof}
+  By definition, $F$ is a commutative ring with unity $1\ne0$
+
+  Assume $a\in F,a\ne0$ \\
+  Let $L_a:F\to F$ be defined by $L_a(x)=ax$
+\newpage
+  Assume $L_a(x)=L_a(y)$ \\
+  $ax=ay$ \\
+  But $F$ is an integral domain, so the cancellation laws hold \\
+  $x=y$ \\
+  $\therefore L_a$ is one-to-one.
+
+  But $F$ is finite, so $L_a$ is also onto \\
+  $\therefore L_a$ is a bijection on $F$.
+
+  $1\in F$ \\
+  $\exists\,x\in F,L_a(x)=1$ \\
+  $ax=1$ \\
+  But $F$ is commutative so $xa=1$ \\
+  So $x$ is a multiplicative inverse for $a$ \\
+  Thus every non-zero element of $F$ has a multiplicative inverse
+
+  $\therefore F$ is a field.
+\end{theproof}
+
+\end{document}

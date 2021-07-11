@@ -1,0 +1,151 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\inner}[1]{\left<#1\right>}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\renewcommand{\a}{\alpha}
+\allowdisplaybreaks
+\begin{document}
+\section*{Self-adjoint Operators}
+
+\begin{definition}[Self-adjoint]
+  Let $H$ be a Hilbert space and $A\in\mb(H)$. To say that $A$ is
+  \emph{self-adjoint} means:
+  \[A^*=A\]
+  Thus, $\inner{A\vx,\vy}=\inner{\vx,A\vy}$.
+\end{definition}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $H=C^N$ and $A\in\mb(H)$.
+
+    $[A]_e=[a_{ij}]$ and $[A^*]_e=[\conj{a_{ji}}]$. \\
+    So for $A=A^*$, $a_{ij}=\conj{a_{ji}}$. \\
+    Such a matrix is called \emph{Hermitian}.
+
+  \item Let $H=L^2[a,b]$ and let $f_0\in H$ such that $f_0$ is continuuous and
+    real-valued.
+    
+    Let $T\in\mb(H)$ where $Tf=f_0f$
+
+    Claim: $T$ is self-adjoint.
+
+    $\inner{Tf,g}=\int_a^b(f_0f)\conj{g}=\int_a^bf\conj{f_0g}=\inner{f,Tg}$
+
+  \item Let $H=L^2[a,b]$ and let $T\in\mb(H)$ where:
+    \[(Tf)(s)=\int_a^bK(s,t)f(t)dt\]
+    where $K\in L^2(Q)$ for $Q=[a,b]\times[a,b]$.
+
+    Claim: $T$ is self-adjoint iff $K(s,t)=\conj{K(t,s)}$
+
+    Assume $f,g\in L^2[a,b]$:
+    \begin{eqnarray*}
+      \inner{Tf,g} &=& \int_a^b(Tf)(s)\conj{g(s)}ds \\
+      &=& \int_a^b\left[\int_a^bK(s,t)f(t)dt\right]\conj{g(s)}ds \\
+      &=& \int_a^b\left[\int_a^bK(s,t)f(t)\conj{g(s)}dt\right]ds \\
+      &=& \int_a^b\left[\int_a^bK(s,t)f(t)\conj{g(s)}ds\right]dt \\
+      &=& \int_a^bf(t)\left[\int_a^bK(s,t)\conj{g(s)}ds\right]dt \\
+      &=& \int_a^bf(t)\conj{\left[\int_a^b\conj{K(s,t)}g(s)ds\right]}dt \\
+      &=& \int_a^bf(s)\conj{\left[\int_a^b\conj{K(t,s)}g(t)dt\right]}ds \\
+      &=& \inner{f,T^*g}
+    \end{eqnarray*}
+    where $(T^*g)(s)=\int_a^b\conj{K(t,s)}g(t)dt$
+
+    Therefore $T=T^*$ iff $K(s,t)=\conj{K(t,s)}$
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $A\in\mb(H)$:
+  \begin{enumerate}
+  \item $A+A^*$ is self-adjoint.
+  \item $A^*A$ is self-adjoint.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx,\vy\in H$.
+  \begin{enumerate}
+  \item $\inner{(A+A^*)\vx,\vy}=\inner{\vx,(A+A^*)^*\vy}=
+    \inner{\vx,(A^*+(A^*)^*)\vy}=\inner{\vx,(A^*+A)\vy}=
+    \inner{\vx,(A+A^*)\vy}$
+
+  \item $\inner{(A^*A)\vx,\vy}=\inner{\vx,(A^*A)^*\vy}=
+    \inner{\vx,(A^*(A^*)^*)\vy}=\inner{\vx,(A^*A)\vy}$
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $T\in\mb(H)$. There exists unique
+  self-adjoint $A,B\in\mb(H)$ such that:
+  \begin{itemize}
+  \item $T=A+iB$
+  \item $T^*=A-iB$
+  \end{itemize}
+\end{theorem}
+
+\begin{theproof}
+  Solving for $A$ and $B$:
+  \[A=\frac{1}{2}(T+T^*)\]
+  \[B=\frac{1}{2i}(T-T^*)\]
+  and this solution is unique. Furthermore:
+  \[A^*=\left[\frac{1}{2}(T+T^*)\right]^*=\frac{1}{2}(T+T^*)^*=
+  \frac{1}{2}(T+T^*)=A\]
+  \[B^*=\left[\frac{1}{2i}(T-T^*)\right]^*=-\frac{1}{2i}(T^*-T)=
+  \frac{1}{2i}(T-T^*)=B\]
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $A,B\in\mb(H)$ be self-adjoint:
+
+  \qquad$AB$ is self-adjoint iff $A$ and $B$ commute.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $AB$ is self-adjoint.
+
+    $(AB)^*=B^*A^*=BA$
+
+  \item $\impliedby$ Assume $A$ and $B$ commute.
+
+    $AB=(AB)^*=BA$
+  \end{description}
+\end{theproof}
+
+\begin{corollary}
+  Let $p(z)=\sum_{k=1}^n\a_kz^n$ be a polynomial such that $\a_k\in\R$. Let $H$
+  be a Hilbert space and let $A\in\mb(H)$ be self-adjoint:
+
+  \qquad$p(A)$ is self-adjoint.
+\end{corollary}
+
+\begin{theproof}
+  $p(A)^*=\left[\sum_{k=1}^n\a_kA^k\right]^*=\sum_{k=1}^n\conj{\a_k}(A^*)^k=
+  \sum_{k=1}^n\a_kA^k=p(A)$
+\end{theproof}
+
+\begin{theorem}
+  Let $H$ be a Hilbert space and let $A\in\mb(H)$ such that $A$ is
+  self-adjoint:
+  \[\norm{A}=\sup_{\norm{\vx}=1}\abs{\inner{A\vx,\vx}}\]
+\end{theorem}
+
+\begin{theproof}
+  Let $M=\sup_{\norm{\vx}=1}\abs{\inner{A\vx,\vx}}$.
+  
+  Assume $\norm{\vx}=1$.
+
+  $\abs{\inner{A\vx,\vx}}\le\norm{A\vx}\norm{\vx}=\norm{A\vx}\le
+  \norm{A}\norm{\vx}=\norm{A}$
+
+  $\therefore M\le\norm{A}$.
+\end{theproof}
+
+\end{document}

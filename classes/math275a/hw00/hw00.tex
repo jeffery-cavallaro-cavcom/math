@@ -1,0 +1,116 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\usepackage{enumitem}
+\pagestyle{plain}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 275A \\
+Homework \#0
+
+\subsection*{3.1}
+
+Define two points $(x_0,y_0)$ and $(x_1,y_1)$ of the plane to be equivalent if:
+\[y_0-x_0^2=y_1-x_1^2\]
+Check that this is an equivalence relation and describe the equivalence
+classes.
+
+\bigskip
+
+\begin{description}
+\item (R) Assume $(x_0,y_0)\in\R^2$.
+
+  $y_0-x_0^2=y_0-x_0^2$
+
+  $\therefore(x_0,y_0)\sim(x_0,y_0)$
+
+\item (S) Assume $(x_0,y_0)\sim(x_1,y_1)$.
+
+  $y_0-x_0^2=y_1-x_1^2$ \\
+  $y_1-x_1^2=y_0-x_0^2$
+
+  $\therefore(x_1,y_1)\sim(x_0,y_0)$
+
+\item (T) Assume $(x_0,y_0)\sim(x_1,y_1)$ and $(x_1,y_1)\sim(x_2,y_2)$.
+  
+  $y_0-x_0^2=y_1-x_1^2$ and $y_1-x_1^2=y_2-x_2^2$ \\
+  $y_0-x_0^2=y_2-x_2^2$
+
+  $\therefore(x_0,y_0)\sim(x_2,y_2)$
+\end{description}
+
+The equivalence classes are the parabolas $y=x^2+c$.
+
+\subsection*{3.3}
+
+Here is a ``proof'' that every relation $\sim$ that is both symmetric and
+transitive is also reflexive: ``Since $\sim$ is symmetric,
+$a\sim b\implies b\sim a$. Since $\sim$ is transitive,
+$a\sim b$ and $b\sim a\implies a\sim $, as desired. Find the flaw in this
+argument.
+
+\bigskip
+
+Suppose $a$ is not related to any $b$? For example, consider the set
+$X=\{1,2,3\}$ and define a relation on $X$ as follows:
+\[\left\{(2,2),(2,3),(3,2),(3,3)\right\}\]
+There no way to show $1\sim1$ without an explicit statement of reflexivity.
+
+\subsection*{3.4}
+
+Let $f:A\to B$ be a surjective function. Let us define a relation on $A$ by
+setting $a_0\sim a_1$ if:
+\[f(a_0)=f(a_1)\]
+\begin{enumerate}[label=(\alph*)]
+\item Show that this is an equivalence relation.
+  \begin{description}
+  \item (R) Assume $a_0\in A$.
+
+    $f$ is well-defined. \\
+    And so $f(a_0)=f(a_0)$
+    
+    $\therefore a_0\sim a_0$
+
+  \item (S) Assume $a_0\sim a_1$.
+
+    $f(a_0)=f(a_1)$ \\
+    $f(a_1)=f(a_0)$
+
+    $\therefore a_1\sim a_0$
+
+  \item (T) Assume $a_0\sim a_1$ and $a_1\sim a_2$.
+
+    $f(a_0)=f(a_1)$ and $f(a_1)=f(a_2)$ \\
+    $f(a_0)=f(a_2)$
+
+    $\therefore a_0\sim a_2$
+  \end{description}
+
+\item Let $A^*$ be the set of equivalence classes. Show that there is a
+  bijective correspondence of $A^*$ with $B$.
+
+  Define $g:A^*\to B$ by $g(a^*)=b$ where $\forall\,a\in a^*,f(a)=b$.
+
+  Assume $g(a_0^*)=g(a_1^*)$. \\
+  Assume $a_0\in a_0^*$ and $a_1\in a_1^*$. \\
+  $f(a_0)=f(a_1)$ and so $a_0\sim a_1$.
+  
+  $\therefore a_0^*=a_1^*$ and thus $g$ is injective.
+
+  Assume $b\in B$. \\
+  Since $f$ is surjective, $\exists a\in A,f(a)=b$. \\
+  But $a\in a^*$.
+
+  $\therefore g(a^*)=b$ and thus $g$ is surjective.
+
+  $\therefore g$ is bijective.
+\end{enumerate}
+
+\subsection*{3.6}
+
+\subsection*{3.9}
+
+\subsection*{3.10}
+
+\subsection*{3.12}
+
+\end{document}

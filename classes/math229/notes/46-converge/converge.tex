@@ -1,0 +1,123 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\nc}{\norm{\cdot}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\e}{\epsilon}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\begin{document}
+\section*{Convergence in a Vector Norm}
+
+\begin{definition}[Convergence]
+  Let $\nc$ be a vector norm on $\C^n$. To say that a sequence of vectors
+  $\{\vx_k\}$ in $\C^n$ \emph{converges} with respect to the norm means
+  $\exists\,\vx_0\in\C^n$ such that:
+  \[\lim_{k\to\infty}\norm{\vx_k-\vx_0}=0\]
+\end{definition}
+
+\begin{definition}[Cauchy]
+  Let $\nc$ be a vector norm on $\C^n$. To say that a sequence of vectors
+  $\{\vx_k\}$ in $\C^n$ is \emph{Cauchy} with respect to the norm means:
+  \[\forall\,\e>0,\exists\,N_{\e}>0,\forall\,i,j>N_{\e},\norm{\vx_i-\vx_j}<\e\]
+\end{definition}
+
+\begin{definition}[Complete]
+  Let $\nc$ be a vector norm on $\C^n$. To say that $\C^n$ is \emph{complete}
+  with respect to the norm means that every Cauchy sequence in $\C^n$ converges
+  to to some $\vx_0\in\C^n$.
+\end{definition}
+
+\begin{theorem}
+  $\C^n$ is complete with respect to $\ell_{\infty}$ \\
+\end{theorem}
+
+\begin{theproof}
+  Assume $\{\vx_k\}$ in $\C^n$ is Cauchy with respect to $\ell_{\infty}$ \\
+  Let $\vx_k(i)$ refer to the $i^{th}$ component of $\vx_k$ \\
+  Assume $1\le i\le n$ \\
+  Assume $\e_1>0$ \\
+  $\exists\,N_{\e_1}>0,\forall\,j,k>N_{\e_1},\norm{\vx_j-\vx_k}<\e_1$ \\
+  Assume $j,k>N_{\e_1}$
+  \[\abs{\vx_j(i)-\vx_k(i)}\le
+  \max_{1\le i\le n}\abs{\vx_j(i)-\vx_k(i)}=\norm{\vx_j-\vx_k}_{\infty}<\e_1\]
+  So $\{\vx_k(i)\}$ is Cauchy in $\C$ \\
+  But $\C$ is complete, so $\{\vx_k(i)\}\to\vx_0(i)$ as $k\to\infty$ \\
+  Assume $\e>0$ \\
+  $\exists\,N_{\e}(i)>0,\forall\,k>N_{\e}(i),\abs{\vx_k(i)-\vx_0(i)}<\e$ \\
+  Let:
+  \[N_{\e}=\max_{1\le i\le n}N_{\e}(i)\]
+  Assume $k>N_{\e}$
+  \[\norm{\vx_k-\vx_0}=\max_{1\le i\le n}\abs{\vx_k(i)-\vx_0(i)}<\e\]
+  Therefore:
+  \[\lim_{k\to\infty}\norm{\vx_k-\vx_0}=0\]
+  and thus $\{\vx_k\}$ converges with respect to the norm to some
+  $\vx_0\in\C^n$.
+\end{theproof}
+
+\begin{theorem}
+  Let $\nc_{\a}$ and $\nc_{\b}$ be two norms on $\C^n$. There exists
+  $c_m,c_M\in\R$ such that $\forall\,\vx\in\C^n$:
+  \[c_m\norm{\vx}_{\a}\le\norm{\vx}_{\b}\le c_M\norm{\vx}_{\a}\]
+\end{theorem}
+
+\begin{theproof}
+  Consider $S=\{\vx\in\C^n\mid\norm{\vx}_2=1\}$ \\
+  $S$ is compact \\
+  Let $h(\vx)=\frac{\norm{\vx}_{\b}}{\norm{\vx}_{\a}}$ \\
+  $h(\vx)$ is continuous \\
+  $h[S]$ is compact in $\R$ \\
+  Let $h[S]=[c_m,c_M]$ \\
+  Assume $\vx\in S$ \\
+  $c_m\le\frac{\norm{\vx}_{\b}}{\norm{\vx}_{\a}}\le c_M$ \\
+  $c_m\norm{\vx}_{\a}\le\norm{\vx}_{\b}\le c_M\norm{\vx}_{\a}$ \\
+  Now, assume $\vx\in\C^n$ \\
+  $\frac{\vx}{\norm{\vx}_2}\in S$ \\
+  $c_m\norm{\frac{\vx}{\norm{\vx}_2}}_{\a}\le
+  \norm{\frac{\vx}{\norm{\vx}_2}}_{\b}\le
+  c_M\norm{\frac{\vx}{\norm{\vx}_2}}_{\a}$
+
+  $\therefore c_m\norm{\vx}_{\a}\le\norm{\vx}_{\b}\le c_M\norm{\vx}_{\a}$
+\end{theproof}
+
+\begin{example}
+  $c_m\norm{\vx}_2\le\norm{\vx}_1\le c_M\norm{\vx}_2$
+
+  Clearly, $c_m=1$
+
+  $\sum_{k=1}^n\abs{x_k}\le c_M(\sum_{k=1}^n\abs{x_k}^2)^{\frac{1}{2}}$
+
+  But by C-S:
+
+  $\sum_{k=1}^n1\cdot\abs{x_k}\le
+  (\sum_{k=1}^n1^2)^{\frac{1}{2}}(\sum_{k=1}^n\abs{x_k}^2)^{\frac{1}{2}}$
+
+  So $c_M=(\sum_{k=1}^n1^2)^{\frac{1}{2}}=\sqrt{n}$
+\end{example}
+
+\begin{theorem}
+  Let $\nc$ be a vector norm on $\C^n$ and let $\{\vx_k\}$ be a sequence in
+  $\C^n$:
+
+  The sequence converges iff the sequence is Cauchy.
+\end{theorem}
+\newpage
+\begin{theproof}
+  The statement holds for $\ell_{\infty}$ \\
+  Assume $\vx\in\C^n$ \\
+  There exists some $c_M$ such that
+  $0\le\norm{\vx}\le c_M\norm{\vx}_{\infty}$ \\
+  So, by the squeeze theorem, the statement also holds for $\nc$.
+\end{theproof}
+
+Consequences:
+\begin{enumerate}
+\item $\{\vx_k\}$ Cauchy wrt $\nc_{\a}\implies\{\vx_k\}$ Cauchy wrt
+  $\nc_{\b}$.
+\item $\{\vx_k\}$ converges wrt $\nc_{\a}\implies\{\vx_k\}$ converges wrt
+  $\nc_{\b}$.
+\item All $\nc$ on $\C^n$ are complete.
+\end{enumerate}
+
+\end{document}

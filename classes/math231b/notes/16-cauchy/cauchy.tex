@@ -1,0 +1,150 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\e}{\epsilon}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\renewcommand{\mp}{\mathcal{P}}
+\newcommand{\mc}{\mathcal{C}}
+\begin{document}
+\section*{Cauchy Sequences}
+
+\begin{definition}[Cauchy]
+  Let $E$ be a normed space and $(\vx_n)$ be a sequence in $E$. To say that
+  $(\vx_n)$ is \emph{Cauchy} means:
+  \[\forall\,\e>0,\exists\,N>0,m,n>N\implies\norm{\vx_n-\vx_m}<\e\]
+  In other words, $\norm{\vx_n-\vx_m}\to0$.
+\end{definition}
+
+\begin{theorem}
+  Let $E$ be a normed space and let $(\vx_n)$ be a sequence in $E$. TFAE:
+  \begin{enumerate}
+  \item $(\vx_n)$ is Cauchy sequence.
+  \item For every pair of increasing sequences $(p_n)$ and $(q_n)$ in $\N$,
+    $\norm{\vx_{p_n}-\vx_{q_n}}\to0$.
+  \item For every increasing sequence $(p_n)$ in $\N$,
+    $\norm{\vx_{p_{n+1}}-\vx_{p_n}}\to0$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $1\implies2$: Assume $(\vx_n)$ is Cauchy.
+
+    Assume $\e>0$. \\
+    $\exists\,N>0,m,n>N\implies\norm{\vx_n-\vx_m}<\e$
+
+    Assume $(p_n)$ and $(q_n)$ are increasing sequences in $\N$. \\
+    Assume $p_n,q_n>N$. \\
+    $\norm{\vx_{p_n}-\vx_{q_n}}<\e$
+
+    $\therefore\norm{\vx_{p_n}-\vx_{q_n}}\to0$
+
+  \item $2\implies3$: Assume for every pair of increasing sequences $(p_n)$ and
+    $(q_n)$ in $\N$, $\norm{\vx_{p_n}-\vx_{q_n}}\to0$.
+
+    Let $p_n=n+1$ and $q_n=n$.
+
+    $\norm{\vx_{p_n}-\vx_{q_n}}=\norm{\vx_{n+1}-\vx_n}\to0$.
+
+  \item $3\implies1$: Assume $(\vx_n)$ is not Cauchy.
+
+    $\exists\,\e>0,\forall\,N>0,\exists\,n,m>N,\norm{\vx_n-\vx_m}\ge\e$ \\
+    Let $\e$ be such an $\e$. \\
+    Assume $N>0$. \\
+    $\exists\,n>N,\norm{\vx_{n+1}-\vx_n}\ge\e$
+
+    WTS: $\exists\,(p_n),\exists\,\e>0,\forall\,N>0,\exists\,p_n>N,
+    \norm{\vx_{p_{n+1}}-\vx_{p_n}}\ge\e$
+
+    Let $p_k=k$.
+
+    $\norm{\vx_{p_{n+1}}-\vx_{p_n}}=\norm{\vx_{n+1}-\vx_n}\ge\e$
+  \end{description}
+\end{theproof}
+
+\newpage
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $E=\R$ and $\norm{x}=\abs{x}$
+
+    $(x_n)=\{3, 3.1, 3.14, 3.141, \ldots\}$
+
+    $(x_n)$ is a Cauchy sequence in $\Q$; however, it converges to
+    $\pi\notin\Q$.
+
+  \item $E=\mp[0,1]$ and the sup norm.
+
+    $f_n=\sum_{k=1}^n\frac{t^k}{k!}$
+
+    $f_n$ is a Cauchy sequence in $\mp[0,1]$; however, it converges to
+    $e^t\notin\mp[0,1]$.
+  \end{enumerate}
+\end{examples}
+
+\begin{theorem}
+  Let $E$ be a normed space and let $(\vx_n)$ be a sequence in $E$:
+  \[\vx_n\to\vx\in E\implies(\vx_n)\ \mbox{is Cauchy}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $\vx_n\to\vx\in E$. \\
+  $\norm{\vx_n-\vx_m}=\norm{(\vx_n-\vx)+(\vx-\vx_m)}\le
+  \norm{\vx_n-\vx}+\norm{\vx_m-\vx}\to0+0=0$
+
+  Therefore $(\vx_n)$ is Cauchy.
+\end{theproof}
+
+Note that the converse holds in finite-dimensional spaces, but does not always
+hold in infinite=dimensional spaces.
+
+\begin{theorem}
+  Let $E$ be a normed space and let $(\vx_n)$ be a sequence in $E$:
+  \[(\vx_n)\ \mbox{Cauchy}\implies(\norm{\vx_n})\ \mbox{converges}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $(\vx_n)$ is Cauchy.
+
+  $\abs{\norm{\vx_n}-\norm{\vx_m}}\le\norm{\vx_n-\vx_m}\to0$
+
+  $\therefore(\norm{\vx_n})$ converges.
+\end{theproof}
+
+\begin{corollary}
+  Let $E$ be a normed space and let $(\vx_n)$ be a sequence in $E$:
+  \[(\vx_n)\ \mbox{Cauchy}\implies(\vx_n)\ \mbox{bounded}\]
+\end{corollary}
+
+\newpage
+
+\begin{theproof}
+  Assume $(\vx_n)$ is Cauchy.
+
+  Thus $(\norm{\vx_n})$ converges in $\R$, and therefore is bounded.
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a normed space and let $(\vx_n)$ be Cauchy in $E$:
+
+  \qquad $(\vx_n)$ has a convergent subsequence $\implies(\vx_n)$ converges to
+  the same limit.
+\end{theorem}
+
+\begin{theproof}
+  Assume $(\vx_n)$ has a convergent subsequence $(\vx_{n_k})\to\vx\in E$.
+
+  $\norm{\vx_n-\vx}=\norm{(\vx_n-\vx_{n_k})+(\vx_{n_k}-\vx)}\le
+  \norm{\vx_n-\vx_{n_k}}+\norm{\vx_{n_k}-\vx}$
+
+  But $(\vx_n)$ is Cauchy and so $\norm{\vx_n-\vx_{n_k}}\to0$. \\
+  Furthermore, $\vx_{n_k}\to\vx$ and so $\norm{\vx_{n_k}-\vx}\to0$. \\
+  And so $\norm{\vx_n-\vx}\to0$.
+
+  Therefore $(\vx_n)$ converges to the same limit.
+\end{theproof}
+
+\end{document}

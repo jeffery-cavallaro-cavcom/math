@@ -1,0 +1,98 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\norm}[1]{\|#1\|}
+\begin{document}
+\section*{Vector Norm}
+
+\begin{definition}[Vector Norm]
+  Let $V$ be a vector space over a field $F$. To say that a function
+  $\norm{\cdot}:V\to\R$ is a \emph{vector norm} means that it satifies the
+  following four properties $\forall\,\vx,\vy\in V$ and $\forall\,c\in F$:
+  \begin{enumerate}
+  \item Nonnegativity: $\norm{\vx}\ge0$
+  \item Positivity: $\norm{\vx}=0\iff\vx=0$
+  \item Homogeneity: $\norm{c\vx}=\abs{c}\norm{\vx}$
+  \item Subadditivity: $\norm{\vx+\vy}\le\norm{\vx}+\norm{\vy}$
+    (triangle inequality)
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  Let $V$ be a vector space and let $\vx\in V$:
+  \[\norm{-\vx}=\norm{\vx}\]
+\end{theorem}
+
+\begin{theproof}
+  $\norm{-\vx}=\norm{(-1)\vx}=\abs{-1}\norm{\vx}=1\cdot\norm{\vx}=\norm{\vx}$
+\end{theproof}
+
+\begin{theorem}
+  The nonnegativity property of the norm can be derived from the other three
+  properties.
+\end{theorem}
+
+\begin{theproof}
+  Assume $V$ be a vector space over a field $F$ \\
+  Assume $\vx\in V$
+  \begin{eqnarray*}
+    \norm{\vx-\vx} &\le& \norm{\vx}+\norm{-\vx} \\
+    \norm{\vz} &\le& \norm{\vx}+\norm{\vx} \\
+    0 &\le& 2\norm{\vx} \\
+    \therefore\norm{\vx} &\ge& 0
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{theorem}
+  Let $V$ be a vector space over a field $F$. $\forall\,\vx,\vy\in V$:
+  \[\abs{\norm{x}-\norm{y}}\le\norm{\vx-\vy}\le\norm{\vx}+\norm{\vy}\]
+\end{theorem}
+
+\begin{theproof}
+  $\norm{\vy}=\norm{\vx+(\vy-\vx)}\le\norm{\vx}+\norm{\vy-\vx}=
+  \norm{\vx}+\norm{\vx-\vy}$ \\
+  $\norm{\vy}-\norm{\vx}\le\norm{\vx-\vy}$ \\
+  $-(\norm{\vx}-\norm{\vy})\le\norm{\vx-\vy}$
+
+  $\norm{\vx}=\norm{\vy+(\vx-\vy)}\le\norm{\vy}+\norm{\vx-\vy}$ \\
+  $\norm{\vx}-\norm{\vy}\le\norm{\vx-\vy}$
+
+  $\pm(\norm{\vx}-\norm{\vy})\le\norm{\vx-\vy}$ \\
+  $\abs{\norm{\vx}-\norm{\vy}}\le\norm{\vx-\vy}$
+
+  $\norm{\vx-\vy}\le\norm{\vx}+\norm{-\vy}=\norm{\vx}+\norm{\vy}$
+
+  $\therefore\abs{\norm{x}-\norm{y}}\le\norm{\vx-\vy}\le\norm{\vx}+\norm{\vy}$
+\end{theproof}
+
+\begin{example}
+  Let $V=\C^n$:
+  \begin{enumerate}
+  \item $\ell_2$ (Euclidean) Norm
+
+    $\norm{\vx}_2=\left(\sum_{k=1}^n\abs{x_k}^2\right)^{\frac{1}{2}}=
+    \vx^{\,*}\vx$\hspace{2ex}(standard norm)
+
+  \item $\ell_1$ Norm
+
+    $\norm{\vx}_1=\sum_{k=1}^n\abs{x_k}$
+
+  \item $\ell_{\infty}$ Norm
+    
+    $\norm{\vx}_1=\max\{\abs{x_k}\mid 1\le k\le n\}$
+
+  \item $\ell_p$ Norm ($1\le p\le \infty$)
+
+    $\norm{\vx}_p=\left(\sum_{k=1}^n\abs{x_k}^p\right)^{\frac{1}{p}}$
+
+  \item $k$-norm ($k\in\Z^+$
+
+    $\norm{\vx}_{[k]}=\sum_{i=1}^k\abs{x_{j_i}}$ where the components have been
+    permuted such that $\abs{x_{j_i}}\ge\abs{x_{j_{i+1}}}$
+  \end{enumerate}
+\end{example}
+
+\end{document}

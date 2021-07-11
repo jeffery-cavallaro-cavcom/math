@@ -1,0 +1,244 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\newcommand{\mc}{\mathcal{C}}
+\renewcommand{\mp}{\mathcal{P}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\renewcommand{\l}{\lambda}
+\renewcommand{\O}{\Omega}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\DeclareMathOperator{\spn}{Span}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 231b \\
+Homework \#1
+
+\subsection*{1.7.9}
+
+Prove: $1\le p<q\implies\ell^p$ is a proper subspace of $\ell^q$.
+
+Assume $1\le p<q$. \\
+It was previously shown that $\ell^p$ and $\ell^q$ are both vector spaces,
+so it sufficies to show that $\ell^p\subset\ell^q$.
+
+Assume $(a_n)\in\ell^p$. \\
+By definition: $\sum_{n=1}^{\infty}\abs{a_n}^p<\infty$. \\
+By the convergence theorem, it must be the case that $\abs{a_n}^p\to0$, and
+thus $\abs{a_n}\to0$. \\
+So $\exists\,N>0$ such that $n>N\implies\abs{a_n}<1$. \\
+Assume $n>N$. \\
+Since $\abs{a_n}<1$ and $1\le p<1$, we have $\abs{a_n}^q<\abs{a_n}^p$. \\
+And so by the comparison theorem: $\sum_{n>N}\abs{a_n}^q<\infty$. \\
+And then by the tail convergence theorem:
+$\sum_{k=1}^{\infty}\abs{a_n}^q<\infty$.
+
+$\therefore (a_n)\in\ell^q$ and $\ell^p\subseteq\ell^q$.
+
+Now, consider $a_n=\left(\frac{1}{n}\right)^{\frac{1}{p}}$. \\
+$\sum_{n=1}^{\infty}\left[\left(\frac{1}{n}\right)^{\frac{1}{p}}\right]^p=
+\sum_{n=1}^{\infty}\frac{1}{n}$, which diverges (harmonic series). \\
+$\sum_{n=1}^{\infty}\left[\left(\frac{1}{n}\right)^{\frac{1}{p}}\right]^q=
+\sum_{n=1}^{\infty}\left(\frac{1}{n}\right)^{\frac{q}{p}}$, which converges since
+$\frac{q}{p}>1$. \\
+Thus, $(a_n)\in\ell^q$ but $(a_n)\notin\ell^p$.
+
+Therefore, $\ell^p$ is a proper subset of $\ell^q$.
+
+\subsection*{1.7.14}
+
+Prove: $\mc(\O)$, $\mc^k(\R^N)$, and $\mc^{\infty}(\R^N)$ are infinite
+dimensional, where $\O$ is a open subset of $\R^N$.
+
+Consider $\mp(\O)$, the vector space of all polynomials in $N$ variables over
+domain $\O$. \\
+Since polynomials are infinitely continuously differentiable, $\mp(\O)$ is a
+subspace of $\mc(\O)$, and $\mp(\O)$ with $\O=\R$ is a subspace of both
+$\mc^k(\R^N)$ and $\mc^{\infty}(\R^N)$. \\
+Claim: $\mp(\O)$ is infinite dimensional, and thus so are the rest.
+
+ABC: $\mp(\O)$ is finite dimensional and let $\dim\mp(\O)=n$. \\
+Then every linearly independent set of $n$ elements is a basis for $\mp(\O)$. \\
+Let $\{1,x,x^2,\ldots,x^n\}$ be such a basis (i.e., the powers of the other
+$n-1$ variables are $0$). \\
+Consider $x^{n+1}\in\mp(\O)$. \\
+But $x^{n+1}\notin\spn\{1,x,x^2,\ldots,x^n\}\implies$ CONTRADICTION!
+
+Therefore, $\mp(\O)$ is infinite dimensional.
+
+\subsection*{1.7.15}
+
+Denote by $\ell_0$ the space of all infinite sequences of complex numbers
+$(z_n)$ such that $z_n=0$ for all but a finite number of indices $n$. Find a
+basis for $\ell_0$.
+
+Let $e_n$ be the sequence in $\ell_0$ such that the $n^{th}$ element is $1$ and
+all other elements are $0$.
+
+Claim: $E=\{e_n\mid n\in\N\}$ is a basis for $\ell_0$.
+
+Assume $S=\{e_{n_1},e_{n_2},\ldots,e_{n_r}\}$ is a finite subset of $E$. \\
+Assume $\sum_{k=1}^r\a_ke_{n_k}=(0)$. \\
+Consider the $j^{th}$ element in the sequence:
+\[z_j=a_j\cdot1+\sum_{j\ne k}(a_k\cdot0)=0\]
+And so $a_j=0$.
+This means that all of the $a_k=0$ and so $S$ is a linearly independent set. \\
+Thus, every finite subset of $E$ is a linearly independent set.
+
+Therefore, $E$ is a linearly independent set.
+
+Now, assume $(z_n)\in\ell_0$ such that the last non-zero element occurs in the
+$r^{th}$ position. \\
+Consider $S=\{e_n\mid1\le n\le r\}\subset E$.
+\begin{eqnarray*}
+  (z_n) &=& (z_1,z_2,\ldots,z_r,0,\ldots) \\
+  &=& (z_1,0,\ldots)+(0,z_2,0,\ldots)+\cdots+(0,\ldots,0,z_r,0,\ldots) \\
+  &=& \sum_{k=1}^rz_ke_k
+\end{eqnarray*}
+And so $(z_n)\in\spn S$. \\
+Thus, every element in $\ell_0$ is in the span of some finite subset of
+$\ell_0$.
+
+Therefore, $E$ spans $\ell_0$.
+
+Therefore, $E$ is a basis for $\ell_0$.
+
+\subsection*{1.7.44}
+
+Consider the space $\mc[a,b]$ with the norm defined as:
+\[\norm{f}=\int_a^b\abs{f(t)}dt\]
+Is this a Banach space?
+
+Consider the following counterexample for $\mc[0,1]$. Define:
+
+\begin{minipage}{3.5in}
+\[f_n(t)=\begin{cases}
+1-nt, & 0\le t\le\frac{1}{n} \\
+0, & \frac{1}{n}\le t\le1
+\end{cases}\]
+\end{minipage}
+\begin{minipage}{3in}
+  \begin{tikzpicture}
+    \draw (0,0) -- (4,0);
+    \draw (0,0) -- (0,4);
+    \node [left] at (0,3) {$1$};
+    \node [below left] at (0,0) {$0$};
+    \node [below] at (3,0) {$1$};
+    \node [below] at (1,0) {$\frac{1}{n}$};
+    \draw [line width=1] (0,3) -- (1,0) -- (3,0);
+  \end{tikzpicture}
+\end{minipage}
+
+Clearly $(f_n)$ is a sequence in $\mc[0,1]$.
+
+Claim: $(f_n)$ is Cauchy.
+
+AWLOG: $n<m$. Since $\norm{f_n}$ is simply the area under the triangle:
+\[\norm{f_n-f_m}=\frac{1}{2n}-\frac{1}{2m}\to0\]
+Therefore, $(f_n)$ is Cauchy.
+
+Now, define:
+
+\begin{minipage}{3.5in}
+\[f(t)=\begin{cases}
+1, & t=0 \\
+0, & 0<t\le1
+\end{cases}\]
+\end{minipage}
+\begin{minipage}{3in}
+  \begin{tikzpicture}
+    \draw (0,0) -- (4,0);
+    \draw (0,0) -- (0,4);
+    \node [left] at (0,3) {$1$};
+    \node [below left] at (0,0) {$0$};
+    \node [below] at (3,0) {$1$};
+    \node [draw,circle,fill,scale=0.5] (a) at (0,3) {};
+    \node [draw,circle,scale=0.5] (b) at (0,0) {};
+    \node [draw,circle,fill,scale=0.5] (c) at (3,0) {};
+    \draw [line width=1] (b) to (c);
+  \end{tikzpicture}
+\end{minipage}
+
+Claim: $f_n\to f$.
+
+At $t=0$: $f_n=f=1$.
+
+For $t\in(0,1]$: $\norm{f_n-f}=\norm{f_n}=\frac{1}{2n}\to0$
+
+Therefore, $f_n\to f$.
+
+But clearly, $f\notin\mc[0,1]$ and therefore $C[0,1]$ is not complete and thus
+is not Banach.
+
+\subsection*{1.7.45}
+
+Show that $L(f)(x)=\int_0^xf(t)dt$ defines a continuous linear mapping from
+$\mc[0,1]$ into itself.
+
+Claim: $L$ is linear.
+
+Assume $f,g\in\mc[0,1]$ and $\a,\b\in\F$:
+\[L(\a f+\b g)=\int_0^x(\a f+\b g)=\a\int_0^xf+\b\int_0^xg=\a Lf+\b Lg\]
+Therefore, $L$ is linear.
+
+Furthermore, by the FTC, since $f\in\mc[a,b]$, it must be the case that
+$Lf\in\mc[a,b]$.
+
+Claim: $L$ is continuous.
+
+Assume $(f_n)$ is a sequence in $\mc[a,b]$ such that $f_n\to f$. Note that
+$\mc[a,b]$ need not be Banach. \\
+Thus $\norm{f_n-f}\to0$. \\
+$\norm{Lf_n-Lf}=\norm{L(f_n-f)}=\norm{\int_0^x(f_n-f)}\le\int_0^x\norm{f_n-f}
+\to0$ (since $\norm{f_n-f}\to0$).
+
+Therefore, $L$ is continuous.
+
+\subsection*{1.7.46}
+
+Give an example of a linear mapping from a normed space into a normed space
+that is not continuous.
+
+Let $E=\mc^{\infty}[0,\pi]$ and let $L=D$ (the differentiation operator) and let
+the norm be the uniform convergence norm:
+\[\norm{f(x)}=\norm{f(x)}_{\infty}=\sup_{x\in[0,\pi]}\abs{f(x)}\]
+$D$ is clearly linear:
+\[D(\a f+\b g)=\a Df+\b Dg\]
+Furthermore, by definition, $Df\in\mc^{\infty}[0,\pi]$.
+
+Claim: $D$ is not continuous.
+
+Consider the counterexample:
+\[f_n(x)=\frac{\sin(nx)}{n}\]
+Note that $\norm{f_n(x)}=\frac{1}{n}\to0$, which occurs at
+$x=\frac{\pi}{2n}\in[0,\pi]$. \\
+And thus $f_n$ converges to the zero function. \\
+$\norm{Df_n-Df}=\norm{Df_n}=\norm{\frac{n\cos(nx)}{n}}=\norm{\cos(nx)}=1$,
+which occurs at $x=0\in[0,\pi]$.
+
+Therefore, $D$ is not continuous.
+
+\subsection*{1.7.52}
+
+Let $E=\mc^{\infty}[a,b]$ be the space of infinitly differentiable functions on
+the interval $[a,b]$ with $\norm{f}=\max_{x\in[a,b]}\abs{f(x)}$. Is the
+differential operator $D=\frac{d}{dx}$ a contraction mapping?
+
+Claim: $D$ is not a contraction mapping.
+
+Let $E=\mc^{\infty}[0,\pi]$, $f(x)=\sin{x}$, and $g(x)=\cos{x}$.
+
+$\norm{\sin{x}-\cos{x}}=\norm{\sqrt{2}\sin(x-\frac{\pi}{4})}=\sqrt{2}$,
+which occurs at $x=\frac{3\pi}{4}\in[0,\pi]$.
+
+$\norm{D\sin{x}-D\cos{x}}=\norm{\cos{x}+\sin{x}}=
+\norm{\sqrt{2}\sin(x+\frac{\pi}{4})}=\sqrt{2}$,
+which occurs at $x=\frac{\pi}{4}\in[0,\pi]$.
+
+And so there is no $\l\in(0,1)$ such that
+$\norm{D\sin{x}-D\cos{x}}\le\l\norm{\sin{x}-\cos{x}}$.
+
+Therefore, $D$ is not a contraction mapping.
+
+\end{document}

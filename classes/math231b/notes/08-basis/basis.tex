@@ -1,0 +1,50 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\cl}[1]{\overline{#1}}
+\renewcommand{\O}{\Omega}
+\DeclareMathOperator{\spn}{Span}
+\pagestyle{empty}
+\begin{document}
+\section*{Bases}
+
+\begin{definition}[Finite Basis]
+  Let $E$ be a vector space over a scalar field $\F$ and let $B$ be a
+  non-empty, finite subset of $E$. To say that $B$ is a \emph{finite basis} of
+  $E$ means:
+  \begin{enumerate}
+  \item $B$ is a linearly independent set.
+  \item $\spn{B}=E$.
+  \end{enumerate}
+  A vector space with such a finite basis is called a \emph{finite dimensional}
+  vector space. If no such finite basis exists then the vector space is called
+  an \emph{infinite dimensional} vector space.
+\end{definition}
+
+$\R^n$ and $C^n$ are finite-dimensional vector spaces. In fact, all other
+finite-dimensional vector spaces are isomorphic to these.
+
+Now, consider a space like $\ell^2$ and the set $S=\{e_k|k\in\N\}$. Since
+linear combinations are of a finite number of elements, the span of $S$
+consists of sequences with a finite number of non-zero elements. This is
+clearly not all of $\ell^2$.
+
+\begin{definition}[Closure]
+  Let $E$ be a vector space over a scalar field $\F$ and let $S\subset E$. The
+  \emph{closure} of the span of $S$, denoted $\cl{S}$, is the union of the
+  $\spn(S)$ and the limits of all partial sums in $\spn(S)$.
+\end{definition}
+
+\begin{definition}[Basis]
+  Let $E$ be a vector space over a scalar field $\F$ and let $B$ be a non-empty
+  subset of $E$. To say that $B$ is a \emph{basis} of $E$ means:
+  \begin{enumerate}
+  \item $B$ is a linearly independent set.
+  \item $\cl{\spn(B)}=E$.
+  \end{enumerate}
+\end{definition}
+
+Examples of infinite-dimensional vector spaces are: $C^k(\O)$, $P(\O)$, and
+$\ell^p$.
+
+\end{document}

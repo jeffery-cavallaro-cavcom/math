@@ -1,0 +1,387 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{plain}
+\renewcommand{\l}{\lambda}
+\newcommand{\mnorm}[1]{\left|\left|\left|#1\right|\right|\right|}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\vw}{\vec{w}}
+\newcommand{\rr}[1]{\frac{\vxct#1\vx}{\vxct\vx}}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\spn}{span}
+\begin{document}
+Cavallaro, Jeffery \\
+Math 229 \\
+Exam 2
+
+\bigskip
+
+
+\begin{enumerate}
+\item Let $J_{a,b}$ be the $a\times b$ matrix with all entries equal to $1$
+  and $I_c$ be the $c\times c$ identity matrix. Consider the matrix:
+  \[D=\begin{bmatrix}
+  2(J_{n,n}-I_n) & J_{n,m} \\
+  J_{m,n} & 2(J_{m,m}-I_m)
+  \end{bmatrix}\]
+  where $n\ge m\ge2$.
+  \begin{enumerate}
+  \item Compute $\Sp(A)$ where $D=A+J_{m+n,m+n}$
+
+    Let $B_n$ be the $n\times n$ matrix with $-1$ on the diagonal and $1$
+    everywhere else. Note that:
+    \[B_n=J_{n,n}-2I_n\]
+    Also note that $J_{n,n}$ is a rank-one matrix that can be generated
+    by $J_{n,1}J_{1,n}$, and so:
+    \[\Sp(J_{n,n})=\{0^{(n-1)},J_{1,n}J_{n,1}\}=\{0^{(n-1)},n\}\]
+    and so:
+    \[\Sp(B_n)=\{(-2)^{(n-1)},n-2\}\]
+    Now, since:
+    \[A=D-J_{m+n,m+n}=\begin{bmatrix} B_n & 0 \\ 0 & B_m \end{bmatrix}-
+    2I_{n+m}\]
+    and using the principle to find eigenvalues for block matrices:
+    \[\Sp(A)=\{(-2)^{n+m-2},m-2,n-2\}\]
+    Some examples using MATLAB:
+    \[\begin{array}{cc|l}
+    m & n & \Sp(A) \\
+    \hline
+    2 & 2 & \{-2,-2,0,0\} \\
+    2 & 3 & \{-2,-2,-2,0,1\} \\
+    2 & 4 & \{-2,-2,-2,-2,0,2\} \\
+    3 & 3 & \{-2,-2,-2,-2,1,1\} \\
+    3 & 4 & \{-2,-2,-2,-2,-2,1,2\}
+    \end{array}\]
+
+  \item Use MATLAB to complete the table for $\Sp(D)$.
+    \[\begin{array}{cc|l}
+    m & n & \Sp(D) \\
+    \hline
+    2 & 2 & \{-2,-2,0,4\} \\
+    2 & 3 & \{-2,-2,-2,0.3542,5.6458\} \\
+    2 & 4 & \{-2,-2,-2,-2,0.5359,7.4641\} \\
+    3 & 3 & \{-2,-2,-2,-2,1,7\} \\
+    3 & 4 & \{-2,-2,-2,-2,-2,1.3944,8.6056\}
+    \end{array}\]
+
+  \item Guess the number of negative eigenvalues of $D$ in general.
+
+    For $D_{m,n}$, the number of negative eigenvalues is the same as the
+    number of negative eigenvalues for $A_{m,n}$ which equals $m+n-2$.
+
+  \item Prove the guess in (c).
+
+    Since $D$ and $A$ are Hermitian and have real eigenvalues, and since
+    $J_{n+m,n+m}$ is rank-one, we can apply the rank-one interlacing theorem to
+    $D=A+J_{m+n,m+n}$ to show that $\l_1(D),\ldots,\l_{n+m-3}(D)=-2$ and
+    $\l_{n+m-1}(D),\l_{n+m}(D)\ge 0$. Thus, it remains to show that
+    $\l_{n+m-2}(D)<0$.
+
+    Let $\vu_k$ be an eigenvector for $A$, $\vv_k$ be an eigenvector for $B$, and
+    $\vw_k$ be an eigenvector for $D$, and let:
+
+    $S_A=\spn\{\vu_2,\ldots,\vu_{n+m-2}\}$ \\
+    $S_B=\spn\{\vv_2,\ldots,\vv_{n+m-2}\}$ \\
+    $S_D=\spn\{\vw_{n+m-2},\vw_{n+m-1},\vw_{n+m}\}$
+    \begin{eqnarray*}
+      \dim(S_A\cap S_B\cap S_D) &\ge& \dim(S_A)+\dim(S_B)+\dim(S_D)-2(n+m) \\
+      &=& (n+m-1)+(n+m-1)+3-2(n+m) \\
+      &=& 1
+    \end{eqnarray*}
+    Thus, the intersection of the three spaces is non-empty.
+
+    Assume $\vx\in S_A\cap S_B\cap S_D$:
+
+    $\l_{n+m-2}(D)\le\rr{(A+B)}$ because $\vx\in S_D$
+
+    $\rr{A}\le\l_{n+m-2}(A)$ because $\vx\in S_A$
+
+    $\rr{B}\le\l_{n+m-2}(B)$ because $\vx\in S_B$
+
+    $\l_{n+m-2}(D)\le\rr{(A+B)}\le\rr{A}+\rr{B}\le\l_{n+m-2}(A)+\l_{n+m-2}(B)$
+
+    We already know that $\l_{n+m-2}(A)=-2$ and $\l_{n+m-2}(B)=0$, and so:
+
+    $\l_{n+m-2}(D)\le-2+0=-2<0$
+
+    Therefore, $D$ has $n+m-2$ negative eigenvalues.
+  \end{enumerate}
+
+  \newpage
+
+\item Let $\mnorm{\cdot}_1$ be the $\ell_1$ norm induced matrix norm (i.e.,
+  the maximum column sum) and $\mnorm{\cdot}_2$ be the $\ell_2$ norm induced
+  matrix norm (i.e., max singular value).
+  \begin{enumerate}
+  \item Define a new matrix norm $\mnorm{A}_{\infty}=\mnorm{A^*}_1$, called
+    the maximum row sum norm. Verify all 5 conditions of a matrix norm are
+    satisfied.
+
+    By definition:
+    \[\mnorm{A^*}_1=\max_{\norm{\vx}_1=1}\{\norm{A^*\vx}_1\}\]
+    \begin{enumerate}
+    \item Nonnegativity
+
+      Assume $A\in M_n$ \\
+      Assume $\vx\in\C^n$ such that $\norm{\vx}_1=1$ \\
+      By nonnegativity of the vector norm, $\norm{A^*\vx}_1\ge0$ \\
+      So $\max_{\norm{\vx}_1=1}\{\norm{A^*\vx}_1\}\ge0$
+  
+      $\therefore\mnorm{A^*}_1\ge0$
+
+    \item Positivity
+      \begin{description}
+      \item $\implies$ Assume $A\ne0$
+
+        $A^*\ne0$ \\
+        $\exists\,\vy\in\C^n,\norm{\vy}_1=1$ and $A^*\vy\ne0$ \\
+        $\mnorm{A^*}_1=\max_{\norm{\vx}_1=1}\{\norm{A^*\vx}_1\}\ge
+        \norm{A^*\vy}_1>0$
+
+        $\therefore\mnorm{A^*}_1\ne0$
+
+      \item $\impliedby$ Assume $A=0$
+
+        $A^*=0$ \\
+        Assume $\vx\in\C^n,\norm{\vx}_1=1$ \\
+        $A^*\vx=\vz$ \\
+        $\norm{A^*\vx}_1=\norm{\vz}_1=0$ \\
+        $\max_{\norm{\vx}_1=1}\{\norm{A^*\vx}_1\}=0$
+
+        $\therefore\mnorm{A^*}_1=0$
+      \end{description}
+
+    \item Homogeneity
+      
+      Assume $c\in\C$:
+      \begin{eqnarray*}
+        \mnorm{cA^*}_1 &=& \max_{\norm{\vx}_1=1}\{\norm{cA^*\vx}_1\} \\
+        &=& \max_{\norm{\vx}_1=1}\{\abs{c}\norm{A^*\vx}_1\} \\
+        &=& \abs{c}\max_{\norm{\vx}_=1}\{\norm{A^*\vx}_1\} \\
+        &=& \abs{c}\mnorm{A^*}_1
+      \end{eqnarray*}
+
+    \item Subadditivity
+      \begin{eqnarray*}
+        \mnorm{A+B}_{\infty} &=& \mnorm{(A+B)^*}_1 \\
+        &=& \max_{\norm{\vx}_1=1}\{\norm{(A+B)^*\vx}_1\} \\
+        &=& \max_{\norm{\vx}_1=1}\{\norm{A^*\vx+B^*\vx}_1\} \\
+        &\le& \max_{\norm{\vx}_1=1}\{\norm{A\vx}_1+\norm{B\vx}_1\} \\
+        &\le& \max_{\norm{\vx}_1=1}\{\norm{A^*\vx}_1\}+
+        \max_{\norm{\vx}_1=1}\{\norm{B^*\vx}_1\} \\
+        &=& \mnorm{A^*}_1+\mnorm{B^*}_1 \\
+        &=& \mnorm{A^*}_{\infty}+\mnorm{B^*}_{\infty}
+      \end{eqnarray*}
+
+    \item Submultiplicativity
+      
+      Assume $A,B\in M_n$ \\
+      Trivial if $A=0$ or $B=0$, so AWLOG: $A,B\ne0$ \\
+      Assume $\vx\in\C^n,\norm{\vx}_1=1$ \\
+      $\frac{A^*\vx}{\norm{A^*\vx}_1}$ is a unit vector \\
+      \begin{eqnarray*}
+        \mnorm{B}_{\infty} &=& \mnorm{B^*}_1 \\
+        &=& \max_{\norm{\vx}=1}\{\norm{B^*\vx}_1\} \\
+        &\ge& \norm{B^*\frac{A^*\vx}{\norm{A^*\vx}_1}}_1 \\
+        \mnorm{B}_{\infty}\norm{A^*\vx}_1 &\ge& \norm{B^*(A^*\vx)}_1 \\
+        \mnorm{B}_{\infty}\norm{A^*\vx}_1 &\ge& \norm{(AB)^*\vx)}_1
+      \end{eqnarray*}
+      And now:
+      \begin{eqnarray*}
+        \mnorm{AB}_{\infty} &=& \mnorm{(AB)^*}_1 \\
+        &=& \max_{\norm{\vx}=1}\{\norm{(AB)^*\vx}\} \\
+        &\le& \max_{\norm{\vx}=1}\{\mnorm{B}_{\infty}\norm{A^*\vx}_1\} \\
+        &=& \mnorm{B}_{\infty}\max_{\norm{\vx}=1}\{\norm{A^*\vx}_1\} \\
+        &=& \mnorm{B}_{\infty}\mnorm{A^*}_1 \\
+        &=& \mnorm{B}_{\infty}\mnorm{A}_{\infty} \\
+        \mnorm{AB}_{\infty} &\le& \mnorm{A}_{\infty}\mnorm{B}_{\infty}
+      \end{eqnarray*}
+    \end{enumerate}
+
+  \item Prove that $\mnorm{A}_{\infty}\le n\mnorm{A}_1$ and find a matrix $B$ where
+    equality holds.
+
+    It has already been proved $\mnorm{A}_1=\max_{1\le j\le n}\sum_{i=1}^n\abs{a_{ij}}$,
+    which is the maximum column sum for $A$, so clearly,
+    $\mnorm{A}_{\infty}=\mnorm{A^*}_1$ is the maximum row sum for $A$.
+
+    By definition:
+    \[\mnorm{A}_1=\max_{\norm{\vx}_1=1}\norm{A\vx}_1\]
+    Note that $\norm{\frac{1}{n}J_{n,1}}_1=1$ and so:
+    \[\mnorm{A}_1\ge\norm{A\left(\frac{1}{n}J_{n,1}\right)}_1=
+    \frac{1}{n}\norm{AJ_{n,1}}_1\]
+    But $AJ_{n,1}$ is a vector consisting of the row sums of $A$, and so its norm is
+    greater than or equal to the maximum row sum, and so:
+    \[n\mnorm{A}_1\ge\norm{AJ_{n,1}}_1\ge\mnorm{A^*}_1=\mnorm{A}_{\infty}\]
+    $\therefore\mnorm{A}_{\infty}\le n\mnorm{A}_1$
+
+    Let $B$ be the rank-one matrix consisting of all 1's in the first row and
+    0's everywhere else:
+    \[B=\begin{bmatrix}
+    1 & 1 & \cdots & 1 \\
+    0 & 0 & \cdots & 0 \\
+    \vdots & \vdots & & \vdots \\
+    0 & 0 & \cdots & 0
+    \end{bmatrix}\]
+
+    $\mnorm{B}_{\infty}=n$ and $\mnorm{B}_1=1$ and so equality holds.
+
+  \item Prove that $\mnorm{A}_2\le\sqrt{n}\mnorm{A}_1$ and find a matrix $B$ where
+    equality holds.
+
+    Assume $\vx\in\C^n$. Using Cauchy-Schwarz:
+    \[\norm{\vx}_1=\sum_{k=1}^n\abs{x_k}\le
+    \left(\sum_{k=1}^n1^2\right)^{\frac{1}{2}}
+    \left(\sum_{k=1}^n\abs{x_k}^2\right)^{\frac{1}{2}}=\sqrt{n}\norm{\vx}_2\]
+    Now:
+    \begin{eqnarray*}
+      \mnorm{A}_2 &=& \max_{\norm{\vx}_2=1}\norm{A\vx}_2 \\
+      &=& \max_{\vx\ne0}\norm{A\frac{\vx}{\norm{\vx}_2}}_2 \\
+      &\le& \max_{\vx\ne0}\norm{A\frac{\vx}{\frac{1}{\sqrt{n}}\norm{\vx}_1}}_1 \\
+      &=& \sqrt{n}\max_{\vx\ne0}\norm{A\frac{\vx}{\norm{\vx}_1}}_1 \\
+      &=& \sqrt{n}\max_{\norm{\vx}_1=1}\norm{A\vx}_1 \\
+      &=& \sqrt{n}\mnorm{A}_1
+    \end{eqnarray*}
+    
+  \end{enumerate}
+
+  \newpage
+  
+\item Let $A\in M_n$ be positive definite.
+
+  \newcommand{\ma}{\begin{bmatrix}
+      \l_1 & & 0 \\ & \ddots & \\ 0 & & \l_n \end{bmatrix}
+  }
+  \newcommand{\ms}{\begin{bmatrix}
+      \sqrt{\l_1} & & 0 \\ & \ddots & \\ 0 & & \sqrt{\l_n} \end{bmatrix}
+  }
+
+  \begin{enumerate}
+  \item Prove that $A$ has a positive definite square root.
+
+    $A$ is postive definite $\implies A$ is Hermitian $\implies A$ is
+    unitary diagonalizable with all $\l_k(A)\in(0,\infty)$
+    \begin{eqnarray*}
+      A &=& U\ma U^* \\
+      &=& U\ms U^*U\ms U^* \\
+    \end{eqnarray*}
+    Let $S=U\ms U^*$
+
+    $\therefore A=S^2$
+
+    Now, note that since $\l_k(S)\in(0,\infty)$:
+    \begin{eqnarray*}
+      S^* &=& \left(U\ms U^*\right)^* \\
+      &=& (U^*)^*\ms^*U^* \\
+      &=& U\ms U^* \\
+      &=& S
+    \end{eqnarray*}
+    So $S$ is Hermitian and $\l_k(S)\in(0,\infty)$
+
+    Therefore $S$ is positive definite.
+
+  \item Prove that $S$ is unique.
+
+    Assume that $S$ and $T$ are square roots of $A$. Since $S$ and $T$ are
+    positive definite, and thus normal, they are diagonalizable. Since a
+    diagonalization of $S$ or $T$ must contain the square roots of the
+    eigenvalues of $A$ and since such diagonalizations are permutation similar,
+    AWLOG that: $S=UDU^*$ and $T=VDV^*$ for some unitary $U$ and $V$.
+
+    $S^2=UD^2U^*$ and $T^2=VD^2V^*$ and so:
+    \begin{eqnarray*}
+      S^2 &=& T^2 \\
+      UD^2U^* &=& VD^2V^* \\
+      D^2 &=& U^*VD^2V^*U \\
+      D^2 &=& U^*VD^2(U^*V)^* \\
+      D &=& U^*VD(U^*V)^* \\
+      D &=& U^*VDV^*U
+    \end{eqnarray*}
+    And now:
+    \[S=UDU^*=U(U^*VDV^*U)U^*=VDV^*=T\]
+
+    \newcommand{\mb}{\begin{bmatrix}
+        28 & -12 & 12 & 12 \\
+        -12 & 28 & 12 & -12 \\
+        -12 & 12 & 28 & -12 \\
+        12 & -12 & -12 & 28
+    \end{bmatrix}}
+    
+  \item Show that the matrix $\mb$ is positive definite.
+
+    Note that the matrix is Hermitian, so it suffices to prove that all of its
+    eigenvalues are nonnegative.
+    
+    Let $A=\begin{bmatrix}
+    0 & -1 & -1 & 1 \\
+    -1 & 0 & 1 & -1 \\
+    -1 & 1 & 0 & -1 \\
+    1 & -1 & -1 & 0
+    \end{bmatrix}$
+    
+    $\mb=12A+28I_4$
+
+    So we need the eigenvalues of $A$. Use the principle minors trick to find
+    the characteristic polynomial of $A$:
+    \[E_1=\tr(A)=0\]
+    \begin{eqnarray*}
+      E_2 &=& |A_{12}|+|A_{13}|+|A_{14}|+|A_{23}|+|A_{24}|+|A_{34}| \\
+      &=& \begin{vmatrix} 0 & -1 \\ -1 & 0 \end{vmatrix}+
+      \begin{vmatrix} 0 & -1 \\ -1 & 1 \end{vmatrix}+
+      \begin{vmatrix} 0 & 1 \\ -1 & -1 \end{vmatrix}+
+      \begin{vmatrix} 0 & 1 \\ 1 & 0 \end{vmatrix}+
+      \begin{vmatrix} 0 & -1 \\ -1 & 0 \end{vmatrix}+
+      \begin{vmatrix} 0 & -1 \\ -1 & 0 \end{vmatrix} \\
+      &=& (-1)+(-1)+(-1)+(-1)+(-1)+(-1) \\
+      &=& -6
+    \end{eqnarray*}
+    \begin{eqnarray*}
+      E_3 &=& |A_{123}|+|A_{124}|+|A_{134}|+|A_{234}| \\
+      &=& \begin{vmatrix} 0 & -1 & -1 \\ -1 & 0 & 1 \\ -1 & 1 & 0
+      \end{vmatrix}+
+      \begin{vmatrix} 0 & -1 & 1 \\ -1 & 0 & -1 \\ 1 & -1 & 0
+      \end{vmatrix}+
+      \begin{vmatrix} 0 & -1 & 1 \\ -1 & 0 & -1 \\ 1 & -1 & 0
+      \end{vmatrix}+
+      \begin{vmatrix} 0 & 1 & -1 \\ 1 & 0 & -1 \\ -1 & -1 & 0
+      \end{vmatrix} \\
+      &=& 2+2+2+2 \\
+      &=& 8
+    \end{eqnarray*}
+    \[E_4=\begin{vmatrix}
+    0 & -1 & -1 & 1 \\
+    -1 & 0 & 1 & -1 \\
+    -1 & 1 & 0 & -1 \\
+    1 & -1 & -1 & 0
+    \end{vmatrix}=-3\]
+  \end{enumerate}
+  $p_A(t)=t^4-E_1t^3+E_2t^2-E_3t+E_4=t^4-6t^2-8t-3$
+
+  Using the rational root test and long division, this factors as follows:
+
+  $p_A(t)=(t+1)^3(t-3)$
+
+  And so $\Sp(A)=\{-1,-1,-1,3\}$ and thus $\Sp(A)=\{16,16,16,64\}$
+
+  So the original matrix is Hermitian and has nonnegative eigenvalues and is
+  therefore positive definite.
+
+\item Find the unique positive definite square root of the matrix in
+  part (c).
+
+  One could sit and solves SOLEs to find the eigenvectors in order to
+  construct $U$; however, MATLAB has a \emph{sqrtm} command:
+  \[S=\begin{bmatrix}
+  5 & -1 & -1 & 1 \\
+  -1 & 5 & 1 & -1 \\
+  -1 & 1 & 5 & -1 \\
+  1 & -1 & -1 & 5
+  \end{bmatrix}\]
+\end{enumerate}
+
+\end{document}

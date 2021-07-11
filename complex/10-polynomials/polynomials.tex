@@ -1,0 +1,58 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Polynomials}
+\begin{definition}
+A \emph{polynomial} in a complex variable $z$ of degree $n\in\N\bigcup\{0\}$ is
+given by:
+\[p(z)=\sum_{k=0}^{n}a_kz^k, a_k\in\C, a_n\ne0\]
+The special case $p(z)=0$ is called the \emph{zero polynomial}.
+\end{definition}
+Note that for $\abs{z}<R$, $p(z)$ is bounded.
+\begin{example}
+Let $p(z)=3+z+z^2$ and $\abs{z}<2$.
+\begin{eqnarray*}
+\abs{p(z)} &=& \abs{3+z+z^2} \\
+    &\le& \abs{3}+\abs{z}+\abs{z^2} \\
+    &=& 3+\abs{z}+\abs{z}^2 \\
+    &<& 3+2+2^2 \\
+    &=& 9 \\
+\end{eqnarray*}
+\end{example}
+\begin{theorem}
+Let $p(z)$ be a complex polynomial. There exists $R>0$ such that
+$\forall \abs{z}<R$:
+\[\abs{p(z)}>\frac{\abs{a_n}R^n}{2}\]
+and thus:
+\[\abs{\frac{1}{p(z)}}<\frac{2}{\abs{a_n}R^n}\]
+Thus, $\frac{1}{p(z)}$ is bounded for all $z$ outside the circle
+$\abs{z}=R$ for R sufficiently big.
+\end{theorem}
+\begin{theproof}
+Let $w=\sum_{k=0}^{n-1}\frac{a_k}{z^{n-k}}$. \\
+$\abs{w}=\abs{\sum_{k=0}^{n-1}\frac{a_k}{z^{n-k}}}\le
+    \sum_{k=0}^{n-1}\abs{\frac{a_k}{z^{n-k}}}=
+    \sum_{k=0}^{n-1}\frac{\abs{a_k}}{\abs{z^{n-k}}}=
+    \sum_{k=0}^{n-1}\frac{\abs{a_k}}{\abs{z}^{n-k}}$ \\
+Let $\abs{a_m}=max\{\abs{a_k}\mid0\le k\le n\}$ \\
+$\exists c\in\R,\abs{a_n}=c\abs{a_m}$ \\
+Let $R=max\left\{1,\frac{2n}{c}\right\}$ \\
+Assume $\abs{z}>R\ge1$ \\
+\begin{eqnarray*}
+\abs{w} &\le& \sum_{k=0}^{n-1}\frac{\abs{a_k}}{\abs{z}^{n-k}} \\
+    &\le& \sum_{k=0}^{n-1}\frac{\abs{a_m}}{\abs{z}} \\
+    &\le& \sum_{k=0}^{n-1}\frac{\abs{a_n}}{c\abs{z}} \\
+    &<& \sum_{k=0}^{n-1}\frac{\abs{a_n}}{c\frac{2n}{c}} \\
+    &<& \sum_{k=0}^{n-1}\frac{\abs{a_n}}{2n} \\
+    &=& n\frac{\abs{a_n}}{2n} \\
+    &=& \frac{\abs{a_n}}{2} \\
+\end{eqnarray*}
+$\abs{a_n+w}\ge\abs{\abs{a_n}-\abs{w}}=\abs{\abs{a_n}-\frac{\abs{a_n}}{2}}=
+    \abs{\frac{\abs{a_n}}{2}}=\frac{\abs{a_n}}{2}$ \\
+$p(z)=a_nz^n+wz^n=(a_n+w)z^n$ \\
+$\abs{p(z)}=\abs{(a_n+w)z^n}=\abs{a_n+w}\abs{z^n}\ge
+    \frac{\abs{a_n}}{2}\abs{z}^n>\frac{\abs{a_n}R^n}{2}$ \\
+$\therefore \abs{\frac{1}{p(z)}}<\frac{2}{\abs{a_n}R^n}$
+\end{theproof}
+\end{document}

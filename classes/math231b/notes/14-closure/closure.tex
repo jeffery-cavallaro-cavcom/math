@@ -1,0 +1,137 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\bcl}[1]{\overline{#1}}
+\newcommand{\vx}{\vec{x}}
+\renewcommand{\mp}{\mathcal{P}}
+\newcommand{\mc}{\mathcal{C}}
+\newcommand{\e}{\epsilon}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\DeclareMathOperator{\cl}{cl}
+\begin{document}
+\section*{Closure}
+
+\begin{definition}[Closure]
+  Let $E$ be a normed space and $S\subseteq E$. The \emph{closure} of $S$,
+  denoted $\cl(S)$ or $\bcl{S}$, is the intersection of all closed subsets
+  $V\subseteq E$ that contain $S$:
+  \[\cl(S)=\bigcap\,\{V\subseteq E\mid V$ is closed and $S\subseteq V\}\]
+\end{definition}
+
+\begin{properties}
+  Let $E$ be a normed space and $S\subseteq E$:
+  \begin{enumerate}
+  \item $cl(S)$ is closed.
+  \item $cl(S)$ is the smallest closed subset of $E$ containing $S$.
+  \end{enumerate}
+\end{properties}
+
+\begin{theproof}
+  \listbreak
+  \begin{enumerate}
+  \item By definition, $\cl(S)$ is an intersection of closed sets.
+
+    Therefore, $\cl(S)$ is closed.
+
+  \item Assume $S\subseteq V\subseteq E$ such that $V$ is closed.
+
+    By definition, $\cl(S)\subseteq\cl(S)\cap V$.
+
+    $\therefore\cl(S)\subseteq V$.
+  \end{enumerate}
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a normed space and $S\subseteq E$. The closure of $S$ is the set
+  of all limit points of $S$ in $E$.
+\end{theorem}
+
+\begin{theproof}
+  Let $\bcl(S)$ be the closure of $S$ and $S'$ be the set of all limit points
+  of $S$. \\
+  WTS: $\bcl(S)=S'$
+  
+  \begin{description}
+  \item $(\subset)$ ABC: $\bcl{S}\not\subseteq S'$.
+
+    There exists elements in $\bcl{S}$ that are not limit points of $S$. \\
+    Let $T$ be the set of all such non-$S$ limit points in $\bcl{S}$. \\
+    Let $V=\bcl{S}\setminus T$. \\
+    $V$ is still closed, but $S\subseteq V\subset\bcl{S}$. \\
+    CONTRADICTION! (of the minimality of $\bcl{S}$)
+
+    $\therefore\bcl{S}\subseteq S'$
+
+  \item $(\supset)$ Assume $\vx\in S'$
+
+    But $S\subseteq\bcl{S}$ and $\bcl{S}$ is closed. \\
+    So $\vx\in\bcl{S}$.
+
+    $\therefore S'\subseteq\bcl{S}$.
+  \end{description}
+\end{theproof}
+
+\begin{examples}
+  \listbreak
+  \begin{enumerate}
+  \item $\cl(\Q)=\R$
+  \item $\cl(\mp[a,b])=\mc[a,b]$
+  \end{enumerate}
+\end{examples}
+
+\begin{definition}[Dense]
+  Let $E$ be a normed space and $S\subseteq E$. To say that $S$ is
+  \emph{dense} in $E$ means:
+  \[\cl(S)=E\]
+\end{definition}
+
+\begin{theorem}
+  Let $E$ be a normed space and $S\subseteq E$. TFAE:
+  \begin{enumerate}
+  \item $S$ is dense in $E$.
+  \item $\forall\,\vx\in E,\exists\,(\vx_n)$ in $S$ such that $\vx_n\to\vx$.
+  \item Every non-empty, open subset of $E$ contains an element of $S$.
+  \end{enumerate}
+  In summary, every element in $E$ is arbitrarity close to some element in $S$.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $(1\iff2)$
+
+    \begin{tabular}{lcl}
+    $S$ is dense in $E$ & $\iff$ &
+    Every element in $E$ is a limit point of $S$ \\
+    & $\iff$ & $\forall\,\vx\in E,\exists\,(\vx_n)$ in $S$ such that
+    $\vx_n\to\vx$
+    \end{tabular}
+
+  \item $(2\implies3)$ Assume $\forall\,\vx\in E,\exists\,(\vx_n)$ in $S$ such
+    that $\vx_n\to\vx$.
+
+    Assume $U$ is a non-empty, open subset of $E$. \\
+    Assume $\vx\in U$. \\
+    Since $U$ is open, $\exists\,\e>0,B(\vx,\e)\subseteq U$. \\
+    By assumption: $\exists\,(\vx_n)$ in $S$ such that $\vx_n\to\vx$. \\
+    So $\exists\,N>0$ sufficiently large such that $\norm{\vx_N-\vx}<\e$. \\
+    And so $\vx_N\in B(\vx,\e)$.
+
+    $\therefore\vx_N\in U$.
+
+  \item $(3\implies2)$ Assume that every non-empty, open subset of $E$
+    contains an element of $S$.
+
+    Assume $\vx\in E$. \\
+    Construct a sequence $(\vx_n)$ in $S$ such that
+    $\vx_n\in B(\vx,\frac{1}{n})$. \\
+    Assume $\e>0$. \\
+    Let $N=\frac{1}{\e}$, and so $\frac{1}{N}=\e$. \\
+    Assume $n>N$. \\
+    $\norm{\vx_n-\vx}<\frac{1}{N}=\e$.
+
+    $\therefore\vx_n\to\vx$.
+  \end{description}
+\end{theproof}
+
+\end{document}

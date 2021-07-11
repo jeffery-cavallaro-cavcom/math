@@ -1,0 +1,131 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage{matharticle}
+\usepackage{graphtheory}
+\pagestyle{empty}
+\begin{document}
+
+\section*{Connected Graphs}
+
+\begin{definition}
+  Let \(G\) be a graph and let \(u,v\in V(G)\):
+  \begin{itemize}
+  \item To say that \(u\) and \(v\) are \emph{connected} means that \(G\) contains a \(u-v\) path.
+  \item To say that \(G\) is \emph{connected} means that \(\forall\,u,v\in G\), \(u\) and \(v\) are connected.
+    Otherwise, \(G\) is said to be \emph{disconnected}.
+  \item By definition, the trivial graph is connected.
+  \end{itemize}
+\end{definition}
+
+\begin{examples}
+  \begin{minipage}[t]{2.5in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node}]
+        \cycleVnodes{\(a\),\(b\),\(c\),\(d\)}{(0,0)}{0.75in}{135}{}
+        \draw (1) edge (2) edge (3) edge (4);
+      \end{tikzpicture}
+      \begin{gather*}
+        (a,b) \\
+        (a,c) \\
+        (a,d) \\
+        (b,a,c) \\
+        (b,a,d) \\
+        (c,a,d)
+      \end{gather*}
+      CONNECTED
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \begin{center}
+      \begin{tikzpicture}[every node/.style={labeled node},node distance=2cm]
+        \cycleVnodes{\(a\),\(b\),\(c\)}{(0,0)}{0.75in}{90}{l}
+        \draw (l1) edge (l2) edge (l3);
+        \pathVnodes{\(d\),\(e\)}{(3,0.5)}{right}{r};
+        \draw (r1) edge (r2);
+      \end{tikzpicture}
+
+      \bigskip
+      
+      No path from any of \(a,b,c\) to any of \(d,e\)
+
+      \bigskip
+
+      DISCONNECTED
+    \end{center}
+  \end{minipage}
+\end{examples}
+
+\begin{theorem}
+  Let \(G\) be a graph with \(n(G)\ge3\):
+  \begin{quote}
+    \(G\) is connected\(\iff\exists\,u,v\in V(G),u\ne v\) such that \(G-u\) and \(G-v\) are connected.
+  \end{quote}
+\end{theorem}
+
+\begin{proof}
+  \begin{description}
+  \item[]
+  \item{\(\implies\)} Assume \(G\) is connected.
+
+    Let \(u,v\in V(G)\) such that \(d(u,v)=\diam(G)\).
+
+    ABC/WLOG: \(G-v\) is disconnected.
+
+    Since \(n(G)\ge3\), there exists distinct \(x,y\in V(G-v)\) such that \(x\) and \(y\) are not connected in
+    \(G-v\).  However, \(G\) is connected and so \(x\) and \(y\) are connected in \(G\).  So let \(P_1\) be a
+    \(x-u\) geodesic in \(G\) and let \(P_2\) be a \(u-y\) geodesic in \(G\).  Since \(v\) cannot appear in \(P_1\)
+    or \(P_2\), \(P_1\) and \(P_2\) are paths in \(G-v\) as well.  Thus \(P_1\cup P_2\) is a \(x-y\) walk in
+    \(G-v\), and so there exists a \(x-y\) path in \(G-v\), contradicting the disconnectedness of \(x\) and \(y\).
+    And so \(G-v\) is connected.  Likewise, \(G-u\) is connected.
+
+    \(\therefore \exists\,u,v\in V(G),u\ne v\) such that \(G-u\) and \(G-v\) are connected.
+
+  \item{\(\impliedby\)} Assume \(\exists\,u,v\in V(G),u\ne v\) such that \(G-u\) and \(G-v\) are connected.
+
+    Assume \(x,y\in V(G)\)
+
+    \begin{description}
+    \item{Case 1:} \(\set{x,y}\ne\set{u,v}\)
+
+      AWLOG: \(u\notin\set{x,y}\)
+
+      By assumption, \(x\) and \(y\) are connected in \(G-u\), and thus are connected in \(G\).
+
+    \item{Case 2:} \(\set{x,y}=\set{u,v}\)
+
+      Since, by assumption, \(G\) contains at least three vertices, there exists a third distinct vertex \(w\in
+      V(G)\).  Also by assumption, \(u\) and \(w\) are connected in \(G-v\) and hence \(G\).  Likewise, \(v\) and
+      \(w\) are connected in \(G-u\) and hence \(G\). So let \(P_1\) be a \(u-w\) path in \(G\) and let \(P_2\) be
+      a \(v-w\) path in \(G\).  \(P_1\cup P_2\) is a \(u-v\) walk in \(G\), and so \(G\) must contain a \(u-v\)
+      path, and thus \(u\) and \(v\) are connected in \(G\).
+    \end{description}
+
+    \(\therefore G\) is connected.
+
+  \end{description}
+\end{proof}
+
+\begin{theorem}
+  Let \(G\) be a connected graph and let \(P\) and \(Q\) be two longest paths in \(G\), both of length \(k\):
+  \begin{quote}
+    \(P\) and \(Q\) have at least one vertex in common.
+  \end{quote}
+\end{theorem}
+
+\begin{proof}
+  ABC: \(P\) and \(Q\) have no vertices in common.
+
+  Let \(P=(u_0,u_1,\ldots,u_k)\) and \(Q=(v_0,v_1,\ldots,v_k)\).  Since \(G\) is connected, every \(u_i\) in \(P\)
+  is connected to every \(v_j\) in \(Q\).  Let \(R=(u_i=w_1,w_2,\ldots,w_{\ell}=v_j)\) be the shortest such path
+  and AWLOG that \(i\ge j\).  Note that no other vertices in \(P\) or \(Q\) can exist in \(R\), otherwise the
+  minimality of \(\abs{R}\) is contradicted.  Now, consider the path \(S=(u_0,\ldots,u_i,\ldots v_j,\ldots v_k)\):
+  \begin{align*}
+    \abs{S} &= i+\ell+(k-j) \\
+    &= k +\ell+(i-j) \\
+    &> k
+  \end{align*}
+  since \(\ell>0\) and \(i-j\ge0\), thus contradicting the maximality of \(\abs{P}\) and \(\abs{Q}\).
+
+  \(\therefore, P\) and \(Q\) share at least one vertex in common.
+\end{proof}
+
+\end{document}

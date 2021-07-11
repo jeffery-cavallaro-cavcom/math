@@ -1,0 +1,285 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Greatest Common Divisor (GCD)}
+
+\begin{theorem}
+  $\forall\,a,b\in\Z$:
+  \begin{enumerate}
+  \item $D_a\cap D_b\ne\emptyset$, in fact: $1\in D_a\cap D_b$
+  \item $a\ne0$ or $b\ne0\implies D_a\cap D_b$ is finite
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in \Z$
+
+  $1\in D_a$ and $1\in D_b$ \\
+  $\therefore 1\in D_a\cap D_b$ and $D_a\cap D_b\ne\emptyset$
+
+  AWLOG: $a\ne0$ \\
+  $D_a$ is finite \\
+  $\therefore D_a\cap D_b$ is finite
+\end{theproof}
+
+\begin{definition}
+  Let $a,b\in Z$ and $a\ne0$ or $b\ne0$. To say that $d\in\Z$ is the
+  \emph{greatest common divisor} of $a$ and $b$, denoted $(a,b)$ or
+  $\gcd(a,b)$, means:
+  \begin{enumerate}
+  \item $d\in D_a\cap D_b$
+    
+  \item $\forall\,c\in D_a\cap D_b,c\le d$
+  \end{enumerate}
+
+  By convention, $(0,0)=0$.
+\end{definition}
+
+\begin{theorem}
+  \listbreak
+  \[\forall\,a,b\in\Z,a\ne0\ \mbox{or}\ b\ne0\implies(a,b)\in\Z+\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in\Z$ \\
+  AWLOG: $a\ne0$ \\
+  $1\in D_a\cap D_b$ \\
+  $(a,b)\ge1$ \\
+  $\therefore (a,b)\in\Z^+$
+\end{theproof}
+
+\begin{theorem}
+  \listbreak
+  \[\forall\,a,b\in\Z,(a,b)=(\abs{a},\abs{b})\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in\Z$
+
+  \begin{description}
+  \item {Case 1: $a=b=0$}
+
+    $\abs{0}=0$ \\
+    $(0,0)=(\abs{0},\abs{0})=0$
+
+  \item {Case 2: $a\ne0$ or $b\ne0$}
+
+    $D_a=D_{-a}=D_{\abs{a}}$ \\
+    $D_b=D_{-b}=D_{\abs{b}}$ \\
+    $D_a\cap D_b=D_{\abs{a}}\cap D_{\abs{b}}$ \\
+    $\therefore (a,b)=(\abs{a},\abs{b})$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  Let $a.b\in\Z,a\ne0$ or $b\ne0$. $(a,b)$ is the least positive integer that
+  is an integer linear combination of $a$ and $b$:
+  \[(a,b)=\min\{ma+nb\in\Z^+\mid m,n\in\Z\}\]
+\end{theorem}
+
+\begin{theproof}
+  Let $d=\min\{ma+nb\in\Z^+\mid m,n\in\Z\}$, which must exist because at least
+  one of the following must be true:
+  \begin{eqnarray*}
+  1a+0b &>& 0 \\
+  (-1)a+0b &>& 0 \\
+  0a+1b &>& 0 \\
+  0a+(-1)b &>& 0 \\
+  \end{eqnarray*}
+  $\exists\,m,n\in\Z,d=ma+nb$ \\
+  By the division algorithm, $\exists\,q,r\in\Z,a=qd+r$, where $0\le r<d$ \\
+  $r=a-qd=a-q(ma+nb)=(1-qm)a-(qn)b$ \\
+  So $r$ is also an integer linear combination of $a$ and $b$ \\
+  Thus, by the minimality of $d$, it must be the case that $r=0$ \\
+  $a=qd$ \\
+  $d\mid a$ \\
+  By similar argument, $d\mid b$
+
+  Now, assume $c\in\Z^+,c\mid a$ and $c\mid b$ \\
+  $\forall\,m,n\in\Z,c\mid ma+nb$ \\
+  So, $c\mid d$ \\
+  Thus, $c\le d$ \\
+  $\therefore (a,b)=d$
+\end{theproof}
+
+\begin{corollary}[B\'ezout's Theorem]
+  \listbreak
+  \[\forall\,a,b\in\Z,\exists\,m,n\in\Z,(a,b)=ma+nb\]
+\end{corollary}
+
+\begin{theproof}
+  Assume $a,b\in\Z$
+  \begin{description}
+  \item{Case 1: $a=b=0$}
+
+    Assume $m,n\in\Z$ \\
+    $(0,0)=0$ \\
+    $m0+n0=0=(0,0)$
+
+  \item{Case 2: $a\ne0$ or $b\ne0$}
+    
+    $(a,b)=\min\{ma+nb\in\Z^+\mid m,n\in\Z\}$ \\
+    $\therefore \exists\,m,n\in\Z,(a,b)=ma+nb$
+  \end{description}
+\end{theproof}
+
+Given $a$ and $b$, Euclid's algorithm can be used to find $(a,b)$ and then
+reversed to find $m$ and $n$.
+
+\begin{example}
+  Let $a=616$ and $b=24$
+
+  \begin{minipage}[t]{3in}
+    \begin{eqnarray*}
+      616 &=& 25\cdot24+16 \\
+      24 &=& 1\cdot16+8 \\
+      16 &=& 2\cdot8+0 \\
+    \end{eqnarray*}
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    \begin{eqnarray*}
+      8 &=& 1\cdot24-1\cdot16 \\
+      &=& 1\cdot24-1\cdot(616-25\cdot24) \\
+      &=& -1\cdot616+26\cdot24 \\
+    \end{eqnarray*}
+  \end{minipage}
+
+  $m=-1$ and $n=26$
+\end{example}
+
+\begin{theorem}
+  $\forall\,a,b\in\Z$, the set of integer linear combinations of $a$ and $b$ is
+  the same as the set of integer multiples of $(a,b)$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in\Z$ \\
+  Let $d=(a,b)$ \\
+  Let $L=\{ma+nb\mid m,n\in\Z\}$ \\
+  Let $M=\{kd\mid k\in\Z\}$
+
+  \begin{minipage}[t]{3in}
+    Assume $\ell\in L$ \\
+    $\exists\,m,n\in\Z,\ell=ma+nb$ \\
+    $d\mid a$ and $d\mid b$ \\
+    $d\mid ma+nb$ \\
+    $d\mid\ell$ \\
+    $\exists\,k\in\Z,kd=\ell$ \\
+    $\therefore\ell\in M$
+  \end{minipage}
+  \begin{minipage}[t]{3in}
+    Assume $m\in M$ \\
+    $\exists\,k\in\Z,kd=m$ \\
+    $\exists\,r,s\in\Z,ra+sb=d$ \\
+    $m=k(ra+sb)=(kr)a+(ks)b$ \\
+    But, by closure, $kr,ks\in\Z$ \\
+    $\therefore m\in L$
+  \end{minipage}
+
+  \bigskip
+  
+  $\therefore L=M$
+\end{theproof}
+
+\begin{theorem}
+  Let $a,b\in\Z$ such that $a\ne0$ or $b\ne0$. $d=(a,b)\iff$
+  \begin{enumerate}
+  \item $d\mid a$ and $d\mid b$
+  \item $\forall\,c\in\Z,c\mid a$ and $c\mid b\implies c\mid d$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume $d=(a,b)$
+
+    By definition, $d\mid a$ and $d\mid b$ \\
+    Assume $c\in\Z$ \\
+    Assume $c\mid a$ and $c\mid b$ \\
+    $\exists\,m,n\in\Z,ma+nb=d$ \\
+    $c\mid ma+nb$ \\
+    $\therefore c\mid d$
+    
+  \item $\impliedby$ Assume the above two conditions hold.
+
+    $d\in D_a\cap D_b$ \\
+    Let $c\in\Z,c\mid a$ and $c\mid b$ \\
+    $c\mid d$ \\
+    $c\le d$ \\
+    $\therefore d=(a,b)$
+  \end{description}
+\end{theproof}
+
+\begin{theorem}
+  \listbreak
+  \[\forall\,a,b,c\in\Z,(a+cb,b)=(a,b)\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b,c\in\Z$
+  \begin{description}
+  \item $\implies$ Assume $x\in D_{a+cb}\cap D_b$
+
+    $x\mid a+cb$ and $x\mid b$ \\
+    $x\mid 1(a+cb)-cb$ \\
+    $x\mid a$ \\
+    $x\mid a$ and $x\mid b$ \\
+    $\therefore x\in D_a\cap D_b$
+
+  \item $\impliedby$ Assume $x\in D_a\cap D_b$
+    
+    $x\mid a$ and $x\mid b$ \\
+    $x\mid 1a+cb$ \\
+    $x\mid a+cb$ and $x\mid b$ \\
+    $\therefore x\in D_{a+cb}\cap D_b$
+  \end{description}
+
+  So $D_{a+cb}\cap D_b=D_a\cap D_b$ \\
+  $\therefore (a+cb,b)=(a,b)$ \\
+\end{theproof}
+
+\begin{theorem}
+  Let $a,b\in\Z$ and $d=(a,b)$:
+  \[\forall\,c\in\Z-\{0\},c\mid a\ \mbox{and}\ c\mid b\implies
+      (\frac{a}{c},\frac{b}{c})=\frac{d}{c}\]
+\end{theorem}
+
+\begin{theproof}
+  Assume $c\in\Z,c\ne0$ \\
+  Assume $c\mid a$ and $c\mid b$
+
+  \begin{description}
+  \item{Case 1: $a=b=0$}
+
+    $(a,b)=(0,0)=0$ \\
+    $0=\frac{0}{c}$ \\
+    $\therefore (\frac{0}{c},\frac{0}{c})=\frac{0}{c}$
+
+  \item{Case 2: $a\ne0$ or $b\ne0$}
+
+    Since $(a,b)=(\abs{a},\abs{b})$, AWLOG: $a,b\ge0$ \\
+    $c\mid d$, since $c\mid a $ and $c\mid b$ \\
+    $\exists\,m,n\in\Z,ma+nb=d$ \\
+    $\exists\,h,k,\ell\in\Z,a=hc,b=kc,$ and $d=\ell c$ \\
+    $m(hc)+n(kc)=\ell c$ \\
+    $(mh+nk)c=\ell c$ \\
+    $mh+nk=\ell$ \\
+    Let $e=(h,k)$ \\
+    $\exists r\in\Z,\ell=mh+nk=re$ \\
+    $\exists s,t\in\Z,h=se$ and $k=te$ \\
+    $mse+nte=re$ \\
+    $msec+ntec=rec$ \\
+    But $sec=hc=a$ and $tec=kc=b$ and $rec=\ell c=d$ \\
+    So $ec\mid a$ and $ec\mid b$ \\
+    So $ec\le d$ \\
+    So $ec\le rec$ \\
+    But $r\ne0$, since $rec=d\ne0$ \\
+    So $r=1$ and $\ell=e=(h,k)$ \\
+    But $c\ne0$, so $h=\frac{a}{c},k=\frac{b}{c},$ and $\ell=\frac{d}{c}$ \\
+    $\therefore (\frac{a}{c},\frac{b}{c})=\frac{d}{c}$
+  \end{description}
+\end{theproof}
+
+\end{document}

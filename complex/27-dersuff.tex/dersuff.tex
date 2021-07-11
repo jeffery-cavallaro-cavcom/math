@@ -1,0 +1,124 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\limx}{\lim_{x\to 0}}
+\newcommand{\limy}{\lim_{y\to 0}}
+\newcommand{\limz}{\lim_{z\to 0}}
+\newcommand{\e}{\epsilon}
+\newcommand{\D}{\Delta}
+\newcommand{\Dx}{\D x}
+\newcommand{\Dy}{\D y}
+\newcommand{\Dz}{\D z}
+\newcommand{\Du}{\D u}
+\newcommand{\Dv}{\D v}
+\newcommand{\Dw}{\D w}
+\newcommand{\limDz}{\lim_{\Dz\to 0}}
+\newcommand{\zb}{\bar{z}}
+\newcommand{\pzb}{\partial\zb}
+\begin{document}
+\section*{Sufficient Conditions for Differentiability}
+
+The Cauchy-Riemann equations holding is a necessary condition for
+differentiability; however, it is not sufficient.
+
+\begin{example}
+  Let:
+  \[f(z)=\begin{cases}
+  \frac{x^3-y^3}{x^2+y^2}+i\frac{x^3+y^3}{x^2+y^2}, & z\ne0 \\
+  0, & z=0 \\
+  \end{cases}\]
+  Is it differentiable at $z=0$?
+  \[u_x(0,0)=\limx{\frac{u(x,0)-u(0,0)}{x-0}}=\limx{\frac{x-0}{x}}=
+  \limx{\frac{x}{x}}=\limx{1}=1\]
+  \[v_y(0,0)=\limy{\frac{u(0,y)-u(0,0)}{0-y}}=\limy{\frac{y-0}{y}}=
+  \limy{\frac{y}{y}}=\limy{1}=1\]
+  \[v_x(0,0)=\limx{\frac{v(x,0)-v(0,0)}{x-0}}=\limx{\frac{x-0}{x}}=
+  \limx{\frac{x}{x}}=\limx{1}=1\]
+  \[u_y(0,0)=\limy{\frac{u(0,y)-u(0,0)}{0-y}}=\limy{\frac{-y-0}{y}}=
+  \limy{\frac{-y}{y}}=\limy{-1}=-1\]
+
+  $u_x=v_y$ and $v_x=-u_y$
+  \[f'(z)=\limz{\frac{f(z)-f(0)}{z-0}}=\limz{\frac{f(z)-0}{z}}=
+  \limz{\frac{f(z)}{z}}\]
+
+  $(x,0)\to(0,0)$:
+  \[f'(z)=\limx{\frac{x+ix}{x-0}}=\limx{\frac{x+ix}{x}}=\limx{1+i}=1+i\]
+  $(0,y)\to(0,0)$:
+  \[f'(z)=\limx{\frac{-y+iy}{y-0}}=\limx{\frac{-y+iy}{y}}=\limx{-1+i}=-1+i\]
+  Thus CR holds; however $f'(z)$ DNE.
+\end{example}
+
+\begin{theorem}
+  Let $f(z)=u(x,y)+iv(x,y)$ be defined in some domain $D$:
+
+  $u_x,u_y,v_x,v_y$ exist, are continuous, and satisfy CR in $D\implies$ $f$ is
+  differentiable in $D$.
+\end{theorem}
+
+\begin{theproof}
+  Assume $u_x,u_y,v_x,v_y$ exist, are continuous, and satisfy CR in $D$ \\
+  Assume $z_0=x_0+iy_0\in D$ \\
+  There exists some $N_{\e}(z_0)\in D$ where the assumptions hold \\
+  Let $\Dz=\Dx+i\Dy$ where $0<\abs{\Dz}<\e$ \\
+  SInce the first order partials exist: \\
+  $du=u_xdx+u_ydy$ and $dv=v_xdx+v_ydy$ \\
+  Since the first order partials are continuous: \\
+  $\Du=u_x\Dx+u_y\Dy+\e_1\Dx+\e_2\Dy$ and \\
+  $\Dv=v_x\Dx+v_y\Dy+\e_3\Dx+\e_4\Dy$ \\
+  where the epsilons go to $0$ as $(\Dx,\Dy)\to(0,0)$ \\
+  \begin{eqnarray*}
+    \Dw &=& \Du+i\Dv \\
+    &=& u_x\Dx+u_y\Dy+\e_1\Dx+\e_2\Dy+i(v_x\Dx+v_y\Dy+\e_3\Dx+\e_4\Dy) \\
+  \end{eqnarray*}
+  Because CR holds, let $u_y=-v_x$ and $v_y=u_x$:
+  \begin{eqnarray*}
+    \Dw &=& u_x\Dx-v_x\Dy+\e_1\Dx+\e_2\Dy+i(v_x\Dx+u_x\Dy+\e_3\Dx+\e_4\Dy) \\
+    &=& u_x(\Dx+i\Dy)+v_x(i\Dx-\Dy)+(\e_1+\e_3)\Dx+(\e_2+\e_4)\Dy \\
+    &=& u_x(\Dx+i\Dy)+iv_x(\Dx+i\Dy)+(\e_1+\e_3)\Dx+(\e_2+\e_4)\Dy \\
+    &=& u_x(\Dz)+iv_x(\Dz)+(\e_1+\e_3)\Dx+(\e_2+\e_4)\Dy \\
+    \frac{\Dw}{\Dz} &=& u_x+iv_x+(\e_1+\e_3)\frac{\Dx}{\Dz}+
+    (\e_2+\e_4)\frac{\Dy}{\Dz} \\
+  \end{eqnarray*}
+  But $\abs{\Dx}\le\abs{\Dz}$ and $\abs{\Dy}\le\abs{\Dz}$ and so:
+  \[\abs{(\e_1+i\e_3)\frac{\Dx}{\Dz}}\le\abs{\e_1+i\e_3}\le
+  \abs{\e_1}+\abs{\e_3}\]
+  \[\abs{(\e_2+i\e_4)\frac{\Dx}{\Dz}}\le\abs{\e_2+i\e_4}\le
+  \abs{\e_2}+\abs{\e_4}\]
+  and therefore:
+  \[f'(z)=\limDz{\frac{\Dw}{\Dz}}=u_x+iv_x+0+0=u_x+iv_x=f_x\]
+  and:
+  \[f'(z)=v_y-iu_y=-i(u_y+iv_y)=-if_y\]
+\end{theproof}
+
+\begin{theorem}
+  $f'(z)$ exists $\implies f_{\zb}=0$
+\end{theorem}
+
+\begin{theproof}
+  Assume $f'(z)$ exists
+  \begin{eqnarray*}
+    f_{\zb} &=& f_xx_{\zb}+f_yy_{\zb} \\
+    f_x &=& u_x+iv_x \\
+    f_y &=& u_y+iv_y \\
+    x_{\zb} &=& \frac{\partial}{\pzb}\left(\frac{z+\zb}{2}\right)=\frac{1}{2} \\
+    y_{\zb} &=& \frac{\partial}{\pzb}\left(\frac{z-\zb}{2i}\right)=
+    -\frac{1}{2i}=\frac{1}{2}i \\
+    f_{\zb} &=& \frac{1}{2}(u_x+iv_x)+\frac{1}{2}i(u_y+iv_y) \\
+    &=& \frac{1}{2}(u_x+iv_x)+\frac{1}{2}(-v_y+iu_y) \\
+    &=& \frac{1}{2}(u_x-v_y)+i\frac{1}{2}(v_x+u_y) \\
+    &=& \frac{1}{2}(0)+i\frac{1}{2}(0) \\
+    &=& 0+i0 \\
+    &=& 0 \\
+  \end{eqnarray*}
+\end{theproof}
+
+\begin{example}
+  $f(z)=z+\zb=2x$
+
+  We already know that this is only differentiable at $z=0$. Otherwise:
+  \[f_{\zb}=1\ne0\]
+  $u=2x$ and $v=0$, so the the first-order partials exist and are continuous;
+  however, CR only holds at $z=0$.
+\end{example}
+
+\end{document}

@@ -1,0 +1,112 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\renewcommand{\l}{\lambda}
+\renewcommand{\o}{\sigma}
+\newcommand{\p}{\rho}
+\newcommand{\mb}{\mathcal{B}}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\begin{document}
+\section*{Resolvent and Spectrum}
+
+\begin{definition}[Resolvent and Spectrum]
+  Let $E$ be a normed space and let $A$ be an operator on $E$. The
+  \emph{resolvent} of $A$, denoted $A_{\l}$, is given by:
+  \[A_{\l}=(A-\l I)^{-1}\]
+  Note that $\l$ is an eigenvalue of $A$ iff $A_{\l}$ is not defined.
+
+  To say that $\l$ is a \emph{regular value} of $A$ means $A_{\l}\in\mb(E)$.
+
+  The \emph{resolvent set} of $A$, denoted $\p(A)$, is the set of all regular
+  values of $A$.
+
+  The \emph{spectrum} of $A$, denoted $\o(A)$, is given by:
+  \[\o(A)=\C\setminus\p(A)\]
+
+  The \emph{spectral radius} of $A$, denoted $r(A)$, is given by:
+  \[r(A)=\sup\{\abs{\l}\mid\l\in\o(A)\}\]
+\end{definition}
+
+If $\l$ is an eigenvalue of $A$ then $\l\in\o(A)$. But note that the spectrum
+can contain non-eigenvalues and no eigenvalues.
+
+\begin{lemma}
+  Let $E$ be a Banach space and let $A\in\mb(E)$ such that $\norm{A}<1$:
+  \begin{enumerate}
+  \item $I-A$ is invertible.
+  \item $(I-A)^{-1}=\sum_{n=0}^{\infty}A^n$
+  \end{enumerate}
+\end{lemma}
+
+\begin{theproof}
+  Let $S_n=\sum_{k=0}^nA^k$. \\
+  AWLOG: $n>m$.
+  \[\norm{S_n-S_m}=\norm{\sum_{k=m+1}^nA^k}\le\sum_{k=m+1}^n\norm{A^k}=
+  \sum_{k=m+1}^n\norm{A}^k\to0\]
+  And so $(S_n)$ is Cauchy. \\
+  But $E$ Banach $\implies\mb(E)$ Banach. \\
+  And $A\in\mb(E)\implies S_n\in\mb(E)$. \\
+  Thus $(S_n)$ converges to $S\in\mb(E)$ where $S=\sum_{n=0}^{\infty}A^n$.
+
+  $S(I-A)=\left(\sum_{n=0}^{\infty}A^n\right)(I-A)=
+  \sum_{n=0}^{\infty}A^n-\sum_{n=0}^{\infty}A^{n+1}=A^0=I$
+
+  $(I-A)S=(I-A)\left(\sum_{n=0}^{\infty}A^n\right)=
+  \sum_{n=0}^{\infty}A^n-\sum_{n=0}^{\infty}A^{n+1}=A^0=I$
+
+  $\therefore S=(I-A)^{-1}=\sum_{n=0}^{\infty}A^n$
+\end{theproof}
+
+\begin{corollary}
+  Let $E$ be a Banach space and $T\in\mb(E)$ such that $\norm{I-T}<1$:
+  \begin{enumerate}
+  \item $T$ is invertible.
+  \item $T^{-1}=\sum_{n=0}^{\infty}(I-T)^n$
+  \end{enumerate}
+\end{corollary}
+
+\begin{theproof}
+  $T^{-1}=[I-(I-T)]^{-1}=\sum_{n=0}^{\infty}(I-T)^n$
+\end{theproof}
+
+\begin{theorem}
+  Let $E$ be a Banach space and let $A\in\mb(E)$ and $\norm{A}\le\abs{\l}$:
+  \begin{enumerate}
+  \item $A_{\l}=-\sum_{n=0}^{\infty}\frac{1}{\l^{n+1}}A^n$
+  \item $\norm{A_{\l}}\le\frac{1}{\abs{\l}-\norm{A}}$
+  \end{enumerate}
+  Thus, $A_{\l}\in\mb(E)$.
+\end{theorem}
+
+\begin{theproof}
+  Let $B=\frac{A}{\l}$. \\
+  $\norm{B}=\frac{\norm{A}}{\abs{\l}}<1$ \\
+  $\sum_{n=0}^{\infty}B^n=(I-B)^{-1}$ \\
+  $\sum_{n=1}^{\infty}\left(\frac{A}{\l}\right)^n=
+  \left(I-\frac{A}{\l}\right)^{-1}=-\frac{1}{\l}(A-\l I)^{-1}$
+  
+  $\therefore A_{\l}=(A-\l I)^{-1}=-\sum_{n=0}^{\infty}\frac{1}{\l^{n+1}}A^n$
+
+  $\norm{A_{\l}}=\norm{-\sum_{n=0}^{\infty}\frac{1}{\l^{n+1}}A^n}\le
+  \sum_{n=0}^{\infty}\norm{\frac{1}{\l^{n+1}}A^n}=
+  \frac{1}{\abs{\l}}\sum_{n=1}^{\infty}\left(\frac{\norm{A}}{\abs{\l}}\right)^n=
+  \frac{1}{\abs{\l}}\left(\frac{1}{1-\frac{\norm{A}}{\abs{\l}}}\right)$
+
+  $\therefore\norm{A_{\l}}\le\frac{1}{\abs{\l}-\norm{A}}$
+\end{theproof}
+
+Thus, if $\l$ is an eigenvalue of $A$, then $\abs{\l}<\norm{A}$ and
+$r(A)\le\norm{A}$ and $\o(A)$ is an open set.
+
+\begin{figure}[h]
+  \setlength{\leftskip}{1in}
+  \begin{tikzpicture}
+    \draw [dashed] (0,0) circle [radius=2];
+    \draw [dashed] (0,0) -- node [above] {$\norm{A}$} (2,0);
+    \node at (0,-1) {$\o(A)$};
+    \node at (2,2) {$\p(A)$};
+    \node at (-3/4,3/4) {$\l$};
+  \end{tikzpicture}
+\end{figure}
+
+\end{document}

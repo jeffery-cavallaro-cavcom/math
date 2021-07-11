@@ -1,0 +1,47 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vxct}{\vx^{\,*}}
+\newcommand{\vz}{\vec{0}}
+\newcommand{\vu}{\vec{u}}
+\renewcommand{\ss}{S-\{\vz\}}
+\renewcommand{\l}{\lambda}
+\newcommand{\rr}{\frac{\vxct A\vx}{\vxct\vx}}
+\DeclareMathOperator{\spn}{span}
+\begin{document}
+\section*{Courant-Fischer Minimax}
+
+\begin{theorem}[Courant-Fischer]
+  Let $A\in M_n$ be Hermitian with eigenvalues $\l_1\le\cdots\le\l_n$ and
+  orthonormal eigenvectors $\{\vu_1,\ldots,\vu_n\}$ and let
+  $S=\spn\{\vu_{i_1},\ldots,\vu_{i_m}\}$ where $i_1\le\cdots\le i_m$:
+  \[\l_k=\min_{\dim(S)=k}\left(\max_{\vx\in\ss}\rr\right)\]
+\end{theorem}
+
+Recall that if $S_k$ are subspaces in $\C^n$ then:
+\begin{enumerate}
+\item $\dim(S_1\cap S_2)=\dim(S_1)+\dim(S_2)-\dim(S_1+S_2)$
+\item $\dim(S_1\cap S_2)\ge\dim(S_1)+\dim(S_2)-n$
+\item $\dim(S_1\cap S_2\cap S_3)\ge\dim(S_1)+\dim(S_2)+\dim(S_3)-2n$
+\end{enumerate}
+
+\begin{theproof}
+  Assume $\dim(S)=k$ \\
+  Let $T=\spn\{\vu_k,\ldots.\vu_n\}$ \\
+  $\dim(S\cap T)\ge\dim(S)+\dim(T)-n=k+(n-k+1)-n=1$ \\
+  Thus, $\exists\,\vx\in S\cap T$ such that $\vx\ne\vz$ \\
+  Since these $\vx\in T$, by the key lemma, $\forall\,\vx\in S\cap T$:
+  \[\l_k\le\rr\]
+  But since these $\vx\in S$ also, $\forall\vx\in S$:
+  \[\l_k\le\max_{\vx\in\ss}\rr\]
+  Now, let $S_0=\spn\{\vu_1,\ldots,\vu_k\}$ \\
+  $\dim{S_0}=k$ \\
+  By the key lemma and its corollaries, at $\vx=\vu_k$:
+  \[\l_k=\rr\]
+  So there exists a subspace $S$ of dimension $k$ at which the minimum is achieved, and
+  therefore:
+  \[\l_k=\min_{\dim(S)=k}\left(\max_{\vx\in\ss}\rr\right)\]
+\end{theproof}
+
+\end{document}

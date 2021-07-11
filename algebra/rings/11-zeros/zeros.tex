@@ -1,0 +1,166 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\begin{document}
+\section*{Zero Divisors}
+
+\begin{definition}
+  Let $R$ be a ring and $a\in R$ such that $a\ne0$:
+  \begin{itemize}
+  \item To say that $a$ is a \emph{left zero divisor} of $R$ means:
+    \[\exists\,b\in R,b\ne0\ \mbox{and}\ ab=0\]
+
+  \item To say that $a$ is a \emph{right zero divisor} of $R$ means:
+    \[\exists\,b\in R,b\ne0\ \mbox{and}\ ba=0\]
+
+  \item To say that $a$ is a \emph{zero divider} of $R$ means that $a$ is a
+    left or a right zero divisor of $R$.
+
+  \item To say that $a$ is a \emph{two-sided zero divider} of $R$ means that
+    $a$ is a left and a right zero divisor of $R$.
+  \end{itemize}
+\end{definition}
+
+Note that for a two-sided zero divisor: $ax=ya=0$, where $x$ need not equal
+$y$, unless $R$ is commutative.
+
+\begin{example}
+  $\Z_{12}$
+
+  \begin{tabular}{cc}
+    \textbf{0-divisors} & \textbf{units} \\
+    $2\cdot6=0$ & $1\cdot1=1$ \\
+    $3\cdot4=0$ & $5\cdot5=1$ \\
+    $8\cdot3=0$ & $7\cdot7=1$ \\
+    $9\cdot4=0$ & $11\cdot11=1$ \\
+    $10\cdot6=0$ & \\
+  \end{tabular}
+\end{example}
+
+\begin{theorem}
+  $z\in\Z_n$ is a zero divisor $\iff (z,n)\ne1$
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+    \begin{minipage}[t]{3in}
+    \item $\implies$ Assume $(z,n)=1$
+
+      Assume $\exists\,s\in\Z_n,zs=0$ \\
+      $n\mid zs$ \\
+      But $n\nmid z$, so $n\mid s$ \\
+      Thus, $s=0$ \\
+      $\therefore z$ is not a zero divisor.
+    \end{minipage}
+    \begin{minipage}[t]{3in}
+    \item $\impliedby$ Assume $(u,n)\ne1$
+
+      Let $(z,n)=d>1$ \\
+      $d\mid z$ and $d\mid n$ \\
+      $z\frac{n}{d}=n\frac{z}{d}=0$ \\
+      But $z,\frac{n}{d}\ne0$ \\
+      $\therefore z$ is a zero divisor.
+    \end{minipage}
+  \end{description}
+\end{theproof}
+\newpage
+\begin{corollary}
+  $\forall\,a\in\Z_n$, exactly one of the following is true:
+  \begin{enumerate}
+  \item $a=0$
+  \item $a$ is a unit
+  \item $a$ is a zero divisor
+  \end{enumerate}
+\end{corollary}
+
+\begin{corollary}
+  $p$ prime $\implies \Z_p$ has no zero divisors.
+\end{corollary}
+
+\begin{theorem}
+  Let $R$ be a ring. The cancellation laws hold in $R$ iff $R$ has no zero
+  divisors.
+\end{theorem}
+
+\begin{theproof}
+  \listbreak
+  \begin{description}
+  \item $\implies$ Assume the cancellation laws hold in $R$
+
+    Assume $a,b\in R,ab=0$
+    \begin{description}
+      \begin{minipage}[t]{3in}
+      \item Case 1: $a\ne0$
+
+        a0=0 \\
+        ab=a0 \\
+        b=0
+
+        $\therefore a$ is not a zero divisor.
+      \end{minipage}
+      \begin{minipage}[t]{3in}
+      \item Case 2: $b\ne0$
+
+        0b=0 \\
+        ab=0b \\
+        a=0
+
+        $\therefore b$ is not a zero divisor.
+      \end{minipage}
+    \end{description}
+
+    $\therefore R$ has no zero divisors.
+    
+  \item $\impliedby$ Assume $R$ has no zero divisors
+
+    Assume $a,b,c\in R$ such that $a\ne0$ and $ab=ac$ \\
+    $ab-ac=0$ \\
+    $a(b-c)=0$ \\
+    Since $a\ne0$ and $R$ has no zero divisors, $b-c=0$ \\
+    $b=c$
+
+    $\therefore$ the left cancellation law holds in $R$.
+
+    Assume $a,b,c\in R$ such that $a\ne0$ and $ba=ca$ \\
+    $ba-ca=0$ \\
+    $(b-c)a=0$ \\
+    Since $a\ne0$ and $R$ has no zero divisors, $b-c=0$ \\
+    $b=c$
+
+    $\therefore$ the right cancellation law holds in $R$.
+
+    $\therefore$ the cancellation laws hold in $R$.
+  \end{description}
+\end{theproof}
+\newpage
+\begin{theorem}
+  Let $R$ be ring with no zero divisors. $\forall\,a,b\in R$, the equations $ax=b$ and
+  $xa=b$ each have at most one solution.
+\end{theorem}
+
+\begin{theproof}
+  Assume $a,b\in R$
+
+  Assume $ax=b$ has two solutions: $x_1$ and $x_2$ \\
+  $ax_1=ax_2$ \\
+  But the left cancellation law holds in $R$ \\
+  $\therefore x_1=x_2$.
+
+  Assume $xa=b$ has two solutions: $x_1$ and $x_2$ \\
+  $x_1a=x_2a$ \\
+  But the right cancellation law holds in $R$ \\
+  $\therefore x_1=x_2$.
+\end{theproof}
+
+Note that when $R$ is a ring with unity $1\ne0$ and $a$ is a unit in $R$ then
+the unique solution to $ax=b$ is given by $x=a^{-1}b$. Likewise, the unique
+solution to $xa=b$ is $x=ba^{1}$. If $R$ is commutative then these two
+solutions are the same.
+
+\begin{notation}
+  Let $F$ be a field. $\forall\,a,b\in F$, since $a^{-1}b=ba^{-1}$, this
+  element in $F$ is denoted by $\frac{b}{a}$.
+\end{notation}
+
+\end{document}

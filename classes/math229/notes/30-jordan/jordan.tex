@@ -1,0 +1,375 @@
+\documentclass[letterpaper,12pt,fleqn]{article}
+\usepackage{matharticle}
+\pagestyle{empty}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rnk}{rank}
+\renewcommand{\l}{\lambda}
+\newcommand{\m}{\mu}
+\renewcommand{\o}{\sigma}
+\newcommand{\va}{\vec{a}}
+\newcommand{\ve}{\vec{e}}
+\allowdisplaybreaks
+\begin{document}
+\section*{Jordan Canonical Form}
+
+\begin{definition}[Jordan Block]
+  A \emph{Jordan block} of size $k$ for a value $\l$, denoted $J_k(\l)$, is a $k\times k$
+  upper triangular matrix with $\l$ on the diagonal, $1$ on the super-diagonal, and $0$
+  everywhere else:
+  \[J_k(\l)=\begin{bmatrix}
+  \l & 1 & 0 & 0 & 0 & \cdots & 0 \\
+  0 & \l & 1 & 0 & 0 & \cdots & 0 \\
+  0 & 0 & \l & 1 & 0 & \cdots & 0 \\
+  & & & \vdots & & & \\
+  0 & 0 & 0 & \cdots & 0 & \l & 1 \\
+  0 & 0 & 0 & \cdots & 0 & 0 & \l
+  \end{bmatrix}\]
+\end{definition}
+
+\begin{example}
+  $J_2(1)=\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}$
+  \hspace{4ex}
+  $J_3(0)=\begin{bmatrix}
+  0 & 1 & 0 \\
+  0 & 0 & 1 \\
+  0 & 0 & 0
+  \end{bmatrix}$
+\end{example}
+
+\begin{notation}[Direct Sum]
+  $A\oplus B=\begin{bmatrix} A & 0 \\ 0 & B \end{bmatrix}$
+\end{notation}
+
+\begin{definition}[Jordan Canonical Form]
+  A \emph{Jordan Matrix} is a direct sum of Jordan blocks.
+
+  The \emph{Jordan Canonical Form} for a matrix $A\in M_n$ is a Jordan matrix where
+  each block corresponds to $\l\in\Sp(A)$:
+  \[J_A=J_{n_1}({\l_1})\oplus J_{n_2}({\l_2})\oplus\cdots\oplus J_{n_k}({\l_k})\]
+  where the $n_i$ and the $\l_i$ are not necessarily distinct.
+\end{definition}
+
+\begin{properties}[$J_k(\l)$]
+  \listbreak
+  \begin{enumerate}
+  \item $\tr(J_k(\l))=k\l$
+  \item $\det(J_k(\l)=\l^k$
+  \item $p_{J_k(\l)}=(t-\l)^k$
+  \item $\o(J_k(\l))=\{\l\}$
+  \item $\rnk(J_k(\l)-\l I)^m=\rnk(J_k(0))^m=\begin{cases}
+    0, & m\ge k \\
+    k-m, & m<k
+  \end{cases}$
+  \item $J_k(\l)\sim J_k(\m)\iff\l=\m$
+  \end{enumerate}
+\end{properties}
+
+\begin{lemma}
+  Let $T\in UT(n)$ such that $T$ is of the form:
+  \[T=\begin{bmatrix}
+  T_1 & & & R \\
+  & T_2 & & \\
+  & & \ddots & \\
+  0 & & & T_k \\
+  \end{bmatrix}\]
+  where $T_i$ is triangular with constant diagonal $\l_i$, the $\l_i$ are distinct, and
+  $R$ is any matrix:
+  \[T\sim T_1\oplus T_2\oplus\cdots\oplus T_k\]
+\end{lemma}
+
+\begin{proof}
+  Proof by induction $k$, the number of distinct diagonal values.
+  \begin{description}
+  \item Base case: $k=1$
+
+    $T=\begin{bmatrix} \l \end{bmatrix}$
+    Done.
+
+  \item Assume the statement is true for $k-1$ distinct diagonal values.
+
+  \item Consider $T=\left[\begin{array}{c|c}
+    T' & R \\
+    \hline
+    0 & T_k
+  \end{array}\right]$
+
+    By the inductive assumption: $T'\sim T_1\oplus T_2\oplus\cdots\oplus T_{k-1}$ \\
+    Note that by construction, $\o(T')\cup\o(T_k)=\emptyset$ \\
+    So by the Sylvester equation: $T'X-XT_k=R$ has a solution for all $R$.
+    Let $X$ be such a solution and let:
+    \[S=\begin{bmatrix} I & X \\ 0 & I \end{bmatrix}\]
+    Note that:
+    \[\begin{bmatrix} I & X \\ 0 & I \end{bmatrix}
+    \begin{bmatrix} I & -X \\ 0 & I \end{bmatrix}=
+    \begin{bmatrix} I & 0 \\ 0 & I \end{bmatrix}\]
+    So $S$ is invertible and:
+    \begin{eqnarray*}
+      T &\sim& \begin{bmatrix} I & X \\ 0 & I \end{bmatrix}
+      \begin{bmatrix} T' & R \\ 0 & T_k \end{bmatrix}
+      \begin{bmatrix} I & -X \\ 0 & I \end{bmatrix} \\
+      &=& \begin{bmatrix} T' & R+XT_k \\ 0 & T_k \end{bmatrix}
+      \begin{bmatrix} I & -X \\ 0 & I \end{bmatrix} \\
+      &=& \begin{bmatrix} T' & -T'X+R+XT_k \\ 0 & T_k \end{bmatrix}
+    \end{eqnarray*}
+    But $T'X-XT_k=R$ and so $-T'X+R+XT_k=0$ and so:
+    \[T\sim\begin{bmatrix} T' & 0 \\ 0 & T_k \end{bmatrix}=T'\oplus T_k\]
+    $\therefore T\sim T_1\oplus T_2\oplus\cdots\oplus T_k$
+  \end{description}
+\end{proof}
+
+\begin{lemma}
+  Let $S\in M_n$ be a strictly upper triangular matrix. $S$ is similar to a direct sum of
+  Jordan blocks with respect to $0$:
+  \[S\sim J_{n_1}(0)\oplus J_{n_2}(0)\oplus\cdots\oplus J_{n_m}(0)\]
+\end{lemma}
+
+\begin{theproof}
+  Proof by strong induction on $n$, the size of $S$:
+  \begin{description}
+  \item Base case: $n=1$
+
+    $S=\begin{bmatrix} 0 \end{bmatrix}=J_1(0)$ \\
+    Done.
+
+  \item Assume the statement is true for size $n-1$
+
+  \item Consider $S\in M_n$ where $S=\begin{bmatrix} 0 & \va^T \\ 0 & S_1 \end{bmatrix}$
+    where $S_1$ is strictly upper triangular.
+
+    By the inductive assumption, $S_1$ is similar to a direct sum of Jordan blocks with
+    respect to 0. So there exists invertible $P$ such that:
+    \[S_1=P_1(J_{k_1}(0)\oplus L)P^{-1}\]
+    where $J_{k_1}(0)$ is the Jordan block with the largest size and $L$ is the direct
+    sum of the remaining Jordan blocks. \\
+    Note that:
+    \[\begin{bmatrix} 1 & 0 \\ 0 & P_1^{-1} \end{bmatrix}
+    \begin{bmatrix} 1 & 0 \\ 0 & P_1 \end{bmatrix}=I\]
+    and so:
+    \begin{eqnarray*}
+      S &\sim& \begin{bmatrix} 1 & 0 \\ 0 & P_1^{-1} \end{bmatrix}
+      \begin{bmatrix} 0 & \va^T \\ 0 & S_1 \end{bmatrix}
+      \begin{bmatrix} 1 & 0 \\ 0 & P_1 \end{bmatrix} \\
+      &=& \begin{bmatrix}
+        0 & \va^T \\
+        0 & P_1^{-1}S_1
+      \end{bmatrix}
+      \begin{bmatrix} 1 & 0 \\ 0 & P_1 \end{bmatrix} \\
+      &=& \begin{bmatrix} 0 & \va^TP_1 \\ 0 & P_1^{-1}S_1P \end{bmatrix} \\
+      &=& \left[\begin{array}{c|cc}
+          0 & \va_1^T & \va_2^T \\
+          \hline
+          & J_{k_1}(0) & 0 \\
+          0 & 0 & L
+        \end{array}\right] \\
+      &\sim& \begin{bmatrix}
+        1 & -\va^TJ_{k_1}(0) & 0 \\
+        0 & I & 0 \\
+        0 & 0 & I
+      \end{bmatrix}
+      \begin{bmatrix}
+        0 & \va_1^T & \va_2^T \\
+        0 & J_{k_1}(0) & 0 \\
+        0 & 0 & L
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 & \va^TJ_{k_1}(0) & 0 \\
+        0 & I & 0 \\
+        0 & 0 & I
+      \end{bmatrix} \\
+      &=& \begin{bmatrix}
+        0 & (\va_1^T\ve_1)\ve_1^T & \va_2^T \\
+        0 & J_{k_1}(0) & 0 \\
+        0 & 0 & L
+      \end{bmatrix}
+    \end{eqnarray*}
+    \begin{description}
+    \item Case 1: $\va_T\ve_1=0$
+      
+      $S\sim\begin{bmatrix}
+      0 & 0 & \va_2^T \\
+      0 & J_{k_1}(0) & 0 \\
+      0 & 0 & L
+    \end{bmatrix}\sim\left[\begin{array}{c|cc}
+        J_{k_1}(0) & 0 & 0 \\
+        \hline
+        0 & 0 & \va_2^T \\
+        0 & 0 & L
+      \end{array}\right]$
+
+      But note that the lower quarter is a strictly upper triangular array of size
+      less than $n$, and so by the inductive assumption is similar to a direct sum of
+      Jordan blocks.
+
+      Therefore, $S$ is similar to a direct sum of Jordan blocks.
+
+    \item Case 2: $\va_T\ve_1\ne0$
+      \begin{eqnarray*}
+        S &\sim& \begin{bmatrix}
+          \frac{1}{\va_1^T\ve_1} & 0 & 0 \\
+          0 & I & 0 \\
+          0 & 0 & \frac{1}{\va_1^T\ve_1}I
+        \end{bmatrix}
+        \begin{bmatrix}
+          0 & (\va_1^T\ve_1)\ve_1^T & \va_2^T \\
+          0 & J_{k_1}(0) & 0 \\
+          0 & 0 & L
+        \end{bmatrix}
+        \begin{bmatrix}
+          \va_1^T\ve_1 & 0 & 0 \\
+          0 & I & 0 \\
+          0 & 0 & \va_1^T\ve_1I
+        \end{bmatrix} \\
+        &=& \begin{bmatrix}
+          0 & \ve_1^T & \frac{1}{\va_1^T\ve_1}\va_2^T \\
+          0 & J_{k_1}(0) & 0 \\
+          0 & 0 & \frac{1}{\va_1^T\ve_1}L
+        \end{bmatrix}
+        \begin{bmatrix}
+          \va_1^T\ve_1 & 0 & 0 \\
+          0 & I & 0 \\
+          0 & 0 & \va_1^T\ve_1I
+        \end{bmatrix} \\
+        &=& \begin{bmatrix}
+          0 & \ve_1^T & \va_2^T \\
+          0 & J_{k_1}(0) & 0 \\
+          0 & 0 & L
+        \end{bmatrix} \\
+        &=& \begin{bmatrix}
+          J_{k_1+1}(0) & \ve_1\va_2^T \\
+          0 & L
+        \end{bmatrix} \\
+        &\sim& \begin{bmatrix}
+          I & \ve_2\va_2^T \\
+          0 & I
+        \end{bmatrix}
+        \begin{bmatrix}
+          J_{k_1+1}(0) & \ve_1\va_2^T \\
+          0 & L
+        \end{bmatrix}
+        \begin{bmatrix}
+          I & -\ve_2\va_2^T \\
+          0 & I
+        \end{bmatrix} \\
+        &=& \begin{bmatrix}
+          J_{k_1+1}(0) & \ve_1\va_2^T+\ve_2\va_2^TL \\
+          0 & L
+        \end{bmatrix}
+        \begin{bmatrix}
+          I & -\ve_2\va_2^T \\
+          0 & I
+        \end{bmatrix} \\
+        &=& \begin{bmatrix}
+          J_{k_1+1}(0) & -J_{k_1+1}(0)\ve_2\va_2^T+\ve_1\va_2^T+\ve_2\va_2^TL \\
+          0 & L
+        \end{bmatrix} \\
+        &=& \begin{bmatrix}
+          J_{k_1+1}(0) & -\ve_1\va_2^T+\ve_1\va_2^T+\ve_2\va_2^TL \\
+          0 & L
+        \end{bmatrix} \\
+        &=& \begin{bmatrix}
+          J_{k_1+1}(0) & \ve_2\va_2^TL \\
+          0 & L
+        \end{bmatrix} \\
+        &\sim& \begin{bmatrix}
+          I & \ve_2\va_2^TL \\
+          0 & I
+        \end{bmatrix}
+        \begin{bmatrix}
+          J_{k_1+1}(0) & \ve_2\va_2^TL \\
+          0 & L
+        \end{bmatrix}
+        \begin{bmatrix}
+          I & -\ve_2\va_2^TL \\
+          0 & I
+        \end{bmatrix} \\
+        &=& \begin{bmatrix}
+          J_{k_1+1}(0) & \ve_3\va_2^TL^2 \\
+          0 & L
+        \end{bmatrix} \\
+        &\sim& \begin{bmatrix}
+          J_{k_1+1}(0) & \ve_4\va_2^TL^3 \\
+          0 & L
+        \end{bmatrix} \\
+        &\sim& \vdots \\
+        &\sim& \begin{bmatrix}
+          J_{k_1+1}(0) & \ve_{k_1+1}\va_2^TL^{k_1} \\
+          0 & L
+        \end{bmatrix} \\
+        &=& \begin{bmatrix}
+          J_{k_1+1}(0) & 0 \\
+          0 & L
+        \end{bmatrix}
+      \end{eqnarray*}
+      Therefore, $S$ is similar to a direct sum of Jordan blocks.
+    \end{description}
+  \end{description}
+\end{theproof}
+
+\begin{theorem}[Jordan Decomposition]
+  Let $A\in M_n$. There exists a Jordan matrix $J_A$ such that:
+  \[A\sim J_A\]
+\end{theorem}
+
+\begin{theproof}
+  Per Schur triangularization, $A$ is similar to an upper triangular matrix $T$ such that
+  the eigenvalues of $A$ are on the diagonal of T (reflecting their algebraic
+  multiplicity) and like eigenvalues are grouped together on the diagonal.
+
+  But by the first lemma, $T\sim T_1\oplus T_2\oplus\cdots\oplus T_k$ where each $T_i$
+  corresponds to a distinct $\l_i\in\o(A)$ and is of the form:
+  \[T_i=\begin{bmatrix}
+  \l_i & & & R \\
+  & \l_i & & \\
+  & & \ddots & \\
+  0 & & & \l_i
+  \end{bmatrix}=\l_iI-\begin{bmatrix}
+    0 & & & R \\
+    & 0 & & \\
+    & & \ddots & \\
+    0 & & & 0
+  \end{bmatrix}=\l_iI-S_i\]
+  where $S_i$ is strictly triangular.
+
+  But by the second lemma, $S_i$ is similar to a direct sum of Jordan blocks with
+  respect to $0$, so there exists invertible $P_i$ such that:
+  \begin{eqnarray*}
+    S_i &=& P_i\begin{bmatrix}
+    J_{n_1}(0) & & 0 \\
+    & \ddots & \\
+    0 & & J_{n_m}(0)
+    \end{bmatrix}P_i^{-1} \\
+    \l_iI+S_i &=& \l_iI+ P_i\begin{bmatrix}
+    J_{n_1}(0) & & 0 \\
+    & \ddots & \\
+    0 & & J_{n_m}(0)
+    \end{bmatrix}P_i^{-1} \\
+    &=& \l_iP_iIP_i^{-1}+ P_i\begin{bmatrix}
+    J_{n_1}(0) & & 0 \\
+    & \ddots & \\
+    0 & & J_{n_m}(0)
+    \end{bmatrix}P_i^{-1} \\
+    &=& P_i\left(\l_iI+\begin{bmatrix}
+    J_{n_1}(0) & & 0 \\
+    & \ddots & \\
+    0 & & J_{n_m}(0)
+    \end{bmatrix}\right)P_i^{-1} \\
+    &=& P_i\begin{bmatrix}
+    J_{n_1}(\l_i) & & 0 \\
+    & \ddots & \\
+    0 & & J_{n_m}(\l_i)
+    \end{bmatrix}P_i^{-1}
+  \end{eqnarray*}
+  Thus, each $T_i$ is similar to a direct sum of Jordan blocks.
+
+  Now, note that:
+  \[(P_1\oplus I\oplus\cdots\oplus I)(T_1\oplus T_2\oplus\cdots\oplus T_k)
+  (P_1^{-1}\oplus I\oplus\cdots\oplus I)=
+  PT_1P^{-1}\oplus T_2\oplus\cdots\oplus T_k)\]
+  and likewise for each $T_i$, thus replacing each $T_i$ with its corresponding
+  direct sum of Jordan blocks.
+
+  Therefore $A$ is similar to a direct sum of Jordan blocks.
+\end{theproof}
+
+\end{document}
